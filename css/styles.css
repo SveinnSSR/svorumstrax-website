@@ -491,7 +491,7 @@ nav {
 }
 
 .service-card.featured::after {
-    content: 'AI-studd';
+    content: 'AI-drifið';
     position: absolute;
     top: 20px;
     right: 20px;
@@ -548,11 +548,31 @@ nav {
     gap: 10px;
 }
 
-/* Jobs Section */
+/* Jobs Section with Barcelona Background */
 .jobs-section {
-    padding: 100px 5%;
-    background: rgba(107, 91, 149, 0.1);
     position: relative;
+    padding: 0;
+    min-height: 600px;
+    background-image: url('../assets/images/barcelona-skyline.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jobs-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 14, 39, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 5%;
 }
 
 .jobs-content {
@@ -562,14 +582,20 @@ nav {
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .jobs-text h2 {
     font-size: 2.5rem;
     margin-bottom: 24px;
-    background: linear-gradient(to right, var(--text-light) 0%, var(--accent-purple) 100%);
+    background: linear-gradient(to right, var(--text-light) 0%, var(--primary-orange) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.jobs-text p {
+    color: var(--text-light);
 }
 
 .jobs-benefits {
@@ -582,17 +608,27 @@ nav {
     display: flex;
     align-items: start;
     gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.benefit-item p {
+    color: var(--text-light);
+    opacity: 0.9;
 }
 
 .benefit-icon {
     width: 40px;
     height: 40px;
-    background: rgba(107, 91, 149, 0.2);
+    background: rgba(255, 107, 53, 0.2);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--accent-purple);
+    color: var(--primary-orange);
     flex-shrink: 0;
 }
 
@@ -604,6 +640,10 @@ nav {
     padding: 40px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.jobs-image p {
+    color: var(--text-light);
 }
 
 /* Trust Section */
@@ -851,5 +891,9 @@ footer {
 
     .section-header h2 {
         font-size: 2rem;
+    }
+
+    .jobs-section {
+        background-attachment: scroll;
     }
 }

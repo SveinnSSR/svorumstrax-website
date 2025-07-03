@@ -64,10 +64,12 @@ if (typingMessage) {
 
 // Dynamic chat messages
 const chatMessages = [
-    { type: 'user', text: 'Getið þið tekið við allri okkar símsvörun?' },
-    { type: 'ai', text: 'Já, við getum það! Við svörum öllum símtölum í nafni fyrirtækisins, tökum skilaboð og sendum á réttan starfsmann. Getum byrjað innan viku.' },
-    { type: 'user', text: 'En hvað með tölvupóstana okkar?' },
-    { type: 'ai', text: 'Við sjáum líka um alla tölvupósta - svörum, flokkum og sendum áfram. Starfsfólk okkar lærir fljótt inn á ykkar fyrirtæki og veitir persónulega þjónustu.' }
+    { type: 'user', text: 'Getið þið séð um alla okkar símsvörun?' },
+    { type: 'ai', text: 'Já, við sérhæfum okkur í símsvörun - allt frá almennri ritaraþjónustu til fullþjálfaðra sérfræðinga. Svörum í nafni fyrirtækisins, tökum skilaboð og sendum á réttan starfsmann.' },
+    { type: 'user', text: 'En hvað með úthringingar og sölu?' },
+    { type: 'ai', text: 'Við erum með reynd söluteymi fyrir bæði B2B og B2C markaði. Notum nýjustu CRM kerfi og AI greiningu til að hámarka árangur. Getum líka leigt ykkur sérhæfða starfsmenn (stöðugildi) eingöngu fyrir ykkar þarfir.' },
+    { type: 'user', text: 'Hvernig nýtist AI í þessu öllu?' },
+    { type: 'ai', text: 'AI greinir öll samskipti, finnur sölutækifæri og veitir rekstrarinnsýn í rauntíma. Þú ræður hvort AI eða manneskja svarar - við bjóðum heildarlausn sem hentar þínum þörfum.' }
 ];
 
 let messageIndex = 0;
