@@ -34,7 +34,7 @@
     widgetContainer.id = 'svorum-premium-chat-widget';
     document.body.appendChild(widgetContainer);
 
-    // Widget state
+    // Widget state.
     let isMinimized = true;
     let showOptions = true;
     let messages = [];
