@@ -1,7 +1,7 @@
-/* Svörum strax Premium Chat Widget Styles */
+/* Svörum strax Premium Chat Widget - Luxury 2025 Tech Design */
 
 /* Main container */
-.svorum-chat-container {
+.svorum-premium-container {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -10,8 +10,8 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Minimized state - Circular bubble with ring */
-.svorum-chat-bubble {
+/* Minimized state - Premium circular bubble */
+.svorum-premium-bubble {
     width: 70px;
     height: 70px;
     cursor: pointer;
@@ -21,73 +21,75 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.svorum-chat-container.minimized .svorum-chat-bubble {
+.svorum-premium-container.minimized .svorum-premium-bubble {
     opacity: 1;
     transform: scale(1);
 }
 
-/* Premium ring effect */
-.svorum-chat-ring {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.svorum-chat-ring-outer {
+/* Premium animated ring */
+.svorum-premium-ring-outer {
     position: absolute;
     inset: -3px;
-    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    background: linear-gradient(135deg, #7C4DFF 0%, #9C27B0 100%);
     border-radius: 50%;
-    opacity: 0.3;
-    animation: svorumPulseRing 2s ease-in-out infinite;
+    opacity: 0;
+    animation: svorumPremiumPulse 2s ease-in-out infinite;
 }
 
-.svorum-chat-ring-inner {
+.svorum-premium-ring {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    background: linear-gradient(135deg, #1A2B4D 0%, #2C3E66 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4),
+    box-shadow: 0 4px 20px rgba(26, 43, 77, 0.4),
                 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
     transition: all 0.3s ease;
 }
 
-.svorum-chat-ring-inner:hover {
+.svorum-premium-ring:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5),
+    box-shadow: 0 6px 25px rgba(26, 43, 77, 0.5),
                 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 }
 
-/* Pulse animation */
-.svorum-chat-pulse {
-    position: absolute;
-    inset: -20px;
-    border: 2px solid #FF6B35;
-    border-radius: 50%;
-    opacity: 0;
-    animation: svorumPulse 2s ease-out infinite;
+/* Avatar in bubble */
+.svorum-premium-avatar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Logo icon */
-.svorum-logo-icon {
-    width: 40px;
-    height: 40px;
+.svorum-logo-circle {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #7C4DFF 0%, #9C27B0 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(124, 77, 255, 0.3);
 }
 
 /* Chat window */
-.svorum-chat-window {
+.svorum-premium-window {
     position: absolute;
     bottom: 0;
     right: 0;
     width: 400px;
     height: 600px;
     background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2),
-                0 0 0 1px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(0, 0, 0, 0.05),
+                0 20px 60px rgba(26, 43, 77, 0.15);
     display: flex;
     flex-direction: column;
     opacity: 0;
@@ -97,141 +99,210 @@
     overflow: hidden;
 }
 
-.svorum-chat-container:not(.minimized) .svorum-chat-window {
+.svorum-premium-container:not(.minimized) .svorum-premium-window {
     opacity: 1;
     transform: scale(1) translateY(0);
     pointer-events: all;
 }
 
-.svorum-chat-container:not(.minimized) .svorum-chat-bubble {
+.svorum-premium-container:not(.minimized) .svorum-premium-bubble {
     opacity: 0;
     transform: scale(0.8);
     pointer-events: none;
 }
 
-/* Header */
-.svorum-chat-header {
-    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
-    padding: 20px;
+/* Premium header with gradient */
+.svorum-premium-header {
+    background: linear-gradient(135deg, #1A2B4D 0%, #2C3E66 100%);
+    padding: 24px 20px;
     cursor: pointer;
     position: relative;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-.svorum-chat-header::before {
+.svorum-premium-header:hover {
+    background: linear-gradient(135deg, #1F3052 0%, #31436B 100%);
+}
+
+.svorum-premium-header::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+    background: linear-gradient(135deg, transparent 0%, rgba(124, 77, 255, 0.05) 100%);
     pointer-events: none;
 }
 
-.svorum-chat-header-content {
+.svorum-premium-header-content {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     position: relative;
     z-index: 1;
 }
 
-.svorum-chat-avatar {
+.svorum-premium-header-avatar .svorum-logo-circle {
     width: 50px;
     height: 50px;
-    flex-shrink: 0;
+    font-size: 26px;
 }
 
-.svorum-chat-avatar svg {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-.svorum-chat-header-text {
+.svorum-premium-header-info {
     flex: 1;
 }
 
-.svorum-chat-title {
+.svorum-premium-title {
     color: white;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: -0.02em;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.svorum-chat-subtitle {
-    color: rgba(255, 255, 255, 0.9);
+.svorum-premium-subtitle {
+    color: rgba(255, 255, 255, 0.85);
     font-size: 14px;
     margin-top: 2px;
 }
 
-.svorum-chat-status {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 6px 12px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-}
-
-.svorum-status-dot {
-    width: 8px;
-    height: 8px;
-    background: #4ade80;
-    border-radius: 50%;
-    box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.3);
-    animation: svorumStatusPulse 2s ease-in-out infinite;
-}
-
-.svorum-status-text {
-    color: white;
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.svorum-chat-minimize {
+.svorum-premium-minimize {
     position: absolute;
-    top: 20px;
+    top: 50%;
     right: 20px;
+    transform: translateY(-50%);
     color: white;
     opacity: 0.8;
     transition: opacity 0.2s ease;
 }
 
-.svorum-chat-minimize:hover {
+.svorum-premium-minimize:hover {
     opacity: 1;
 }
 
+/* Content area */
+.svorum-premium-content {
+    flex: 1;
+    overflow: hidden;
+    background: #FAFBFC;
+    position: relative;
+}
+
+/* Options screen */
+.svorum-premium-options {
+    padding: 32px 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.svorum-premium-options h2 {
+    color: #1A2B4D;
+    font-size: 21px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 0 28px 0;
+    letter-spacing: -0.01em;
+}
+
+.svorum-option-button {
+    background: white;
+    border: 2px solid #E8ECF1;
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.svorum-option-button.active {
+    background: linear-gradient(135deg, #7C4DFF 0%, #9C27B0 100%);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 4px 16px rgba(124, 77, 255, 0.3);
+}
+
+.svorum-option-button.active:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 77, 255, 0.4);
+}
+
+.svorum-option-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.option-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(124, 77, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.svorum-option-button.active .option-icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.option-content {
+    flex: 1;
+}
+
+.option-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.option-desc {
+    font-size: 13px;
+    opacity: 0.8;
+    line-height: 1.4;
+}
+
+.svorum-premium-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #8B92A2;
+    margin-top: auto;
+    padding-top: 20px;
+}
+
 /* Messages area */
-.svorum-chat-messages {
+.svorum-premium-messages {
     flex: 1;
     overflow-y: auto;
-    padding: 20px;
-    background: #fafafa;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     scroll-behavior: smooth;
 }
 
-.svorum-chat-messages::-webkit-scrollbar {
+.svorum-premium-messages::-webkit-scrollbar {
     width: 6px;
 }
 
-.svorum-chat-messages::-webkit-scrollbar-track {
+.svorum-premium-messages::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.svorum-chat-messages::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.1);
+.svorum-premium-messages::-webkit-scrollbar-thumb {
+    background: rgba(26, 43, 77, 0.2);
     border-radius: 3px;
 }
 
-.svorum-chat-messages::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.2);
+.svorum-premium-messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(26, 43, 77, 0.3);
 }
 
 /* Messages */
 .svorum-message {
     display: flex;
-    margin-bottom: 16px;
     animation: svorumMessageSlide 0.3s ease-out;
 }
 
@@ -243,60 +314,76 @@
     justify-content: flex-end;
 }
 
+.svorum-message-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 80%;
+}
+
 .svorum-message-avatar {
-    width: 36px;
-    height: 36px;
-    margin-right: 10px;
     flex-shrink: 0;
 }
 
-.svorum-message-content {
-    max-width: 70%;
+.svorum-logo-circle-small {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #7C4DFF 0%, #9C27B0 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(124, 77, 255, 0.25);
 }
 
 .svorum-message-bubble {
-    padding: 12px 18px;
-    border-radius: 18px;
+    padding: 14px 18px;
+    border-radius: 20px;
     position: relative;
     word-wrap: break-word;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    line-height: 1.5;
+    font-size: 14px;
 }
 
 .svorum-message-bot .svorum-message-bubble {
     background: white;
-    color: #1a1a2e;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: #1A2B4D;
+    border: 1px solid rgba(26, 43, 77, 0.08);
 }
 
 .svorum-message-user .svorum-message-bubble {
-    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    background: linear-gradient(135deg, #1A2B4D 0%, #2C3E66 100%);
     color: white;
-    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 2px 8px rgba(26, 43, 77, 0.3);
 }
 
 /* Typing indicator */
-.svorum-typing-indicator {
+.svorum-premium-typing {
     display: flex;
     align-items: center;
     padding: 0 20px 20px;
-    background: #fafafa;
+    gap: 10px;
 }
 
 .svorum-typing-dots {
     display: flex;
     align-items: center;
     gap: 4px;
-    padding: 12px 18px;
+    padding: 14px 18px;
     background: white;
-    border-radius: 18px;
+    border-radius: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(26, 43, 77, 0.08);
 }
 
 .svorum-typing-dots span {
     width: 8px;
     height: 8px;
-    background: #93918f;
+    background: #8B92A2;
     border-radius: 50%;
     opacity: 0.4;
     animation: svorumTyping 1.4s infinite;
@@ -311,85 +398,67 @@
 }
 
 /* Input area */
-.svorum-chat-input-container {
+.svorum-premium-input-container {
     display: flex;
     align-items: center;
-    padding: 16px;
+    padding: 16px 20px;
     background: white;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(26, 43, 77, 0.08);
     gap: 12px;
 }
 
-.svorum-chat-input {
+.svorum-premium-input {
     flex: 1;
     padding: 12px 20px;
-    border: 2px solid #f0f0f0;
-    border-radius: 24px;
+    border: 2px solid #E8ECF1;
+    border-radius: 25px;
     outline: none;
     font-size: 14px;
     transition: all 0.2s ease;
-    background: #fafafa;
+    background: #FAFBFC;
 }
 
-.svorum-chat-input:focus {
-    border-color: #FF6B35;
+.svorum-premium-input:focus {
+    border-color: #7C4DFF;
     background: white;
-    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.1);
 }
 
-.svorum-chat-send {
-    width: 44px;
-    height: 44px;
+.svorum-premium-send {
+    padding: 10px 24px;
     border: none;
-    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    background: linear-gradient(135deg, #7C4DFF 0%, #9C27B0 100%);
     color: white;
-    border-radius: 50%;
+    border-radius: 25px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 2px 8px rgba(124, 77, 255, 0.3);
 }
 
-.svorum-chat-send:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+.svorum-premium-send:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(124, 77, 255, 0.4);
 }
 
-.svorum-chat-send:active {
-    transform: scale(0.95);
+.svorum-premium-send:active {
+    transform: translateY(0);
 }
 
 /* Animations */
-@keyframes svorumPulse {
+@keyframes svorumPremiumPulse {
     0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1.6);
-        opacity: 0;
-    }
-}
-
-@keyframes svorumPulseRing {
-    0%, 100% {
         transform: scale(1);
         opacity: 0.3;
     }
     50% {
-        transform: scale(1.1);
-        opacity: 0.5;
+        transform: scale(1.2);
+        opacity: 0.1;
     }
-}
-
-@keyframes svorumStatusPulse {
-    0%, 100% {
-        box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.2);
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
     }
 }
 
@@ -415,14 +484,16 @@
     }
 }
 
-@keyframes svorumFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Premium hover effects */
+.svorum-message-bot .svorum-message-bubble:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
 }
 
-/* Responsive */
+/* Responsive design */
 @media (max-width: 500px) {
-    .svorum-chat-window {
+    .svorum-premium-window {
         width: 100vw;
         height: 100vh;
         bottom: 0;
@@ -431,25 +502,20 @@
         max-height: 100vh;
     }
     
-    .svorum-chat-bubble {
+    .svorum-premium-bubble {
         width: 60px;
         height: 60px;
     }
     
-    .svorum-logo-icon {
-        width: 35px;
-        height: 35px;
+    .svorum-logo-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
     }
 }
 
-/* Premium hover effects */
-.svorum-chat-container:not(.minimized) .svorum-chat-header:hover {
-    background: linear-gradient(135deg, #ff7f50 0%, #ffa500 100%);
-}
-
-/* Message hover effect */
-.svorum-message-bot .svorum-message-bubble:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-1px);
-    transition: all 0.2s ease;
+/* Ensure smooth transitions */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

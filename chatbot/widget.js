@@ -1,91 +1,164 @@
-// Svörum strax Premium Chat Widget
+// Svörum strax Premium Chat Widget - Matching Sky Lagoon/ELKO Brand Standards
 (function() {
     'use strict';
 
-    // Configuration
-    const TYPING_SPEED = 20;
+    // Premium brand theme with sophisticated navy/purple
+    const theme = {
+        colors: {
+            primary: "#1A2B4D", // Deep sophisticated navy
+            secondary: "#7C4DFF", // Modern purple accent
+            headerBg: "linear-gradient(135deg, #1A2B4D 0%, #2C3E66 100%)", // Premium gradient
+            text: "#333333",
+            background: "#FFFFFF",
+            messageBg: "#F5F5F5",
+            userMessage: "#1A2B4D",
+            botMessage: "#F0F0F0",
+            lightAccent: "rgba(124, 77, 255, 0.1)",
+        },
+        fonts: {
+            body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        },
+    };
+
+    // Configuration for premium effects
     const CHUNK_REVEAL_DELAY = 250;
     const FADE_IN_DURATION = 300;
-    const API_URL = 'https://svorumstrax-chatbot-api.vercel.app/api/';
+    const MOBILE_BREAKPOINT = 768;
+
+    // Session management
+    const SESSION_ID_KEY = "svorumChatSessionId";
+    const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 minutes
 
     // Create widget container
     const widgetContainer = document.createElement('div');
-    widgetContainer.id = 'svorum-chat-widget';
+    widgetContainer.id = 'svorum-premium-chat-widget';
     document.body.appendChild(widgetContainer);
 
     // Widget state
     let isMinimized = true;
+    let showOptions = true;
     let messages = [];
+    let inputValue = '';
     let isTyping = false;
+    let sessionId = '';
+    let windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
     let typingMessages = {};
-    let currentLanguage = document.documentElement.lang === 'is' ? 'is' : 'en';
+    const isMobile = windowWidth <= MOBILE_BREAKPOINT;
 
-    // Create widget HTML
+    // Create widget HTML with Sky Lagoon/ELKO structure
     function createWidget() {
         const html = `
-            <div class="svorum-chat-container ${isMinimized ? 'minimized' : ''}">
-                <!-- Minimized state - circular button matching Sky Lagoon -->
-                <div class="svorum-chat-bubble" onclick="toggleChat()">
-                    <div class="svorum-chat-ring">
-                        <div class="svorum-chat-ring-inner">
-                            <svg class="svorum-logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <text x="50" y="65" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="36" font-weight="700" fill="white">S</text>
-                            </svg>
+            <div class="svorum-premium-container ${isMinimized ? 'minimized' : ''}">
+                <!-- Minimized state - Premium circular button with ring -->
+                <div class="svorum-premium-bubble" onclick="toggleChat()">
+                    <div class="svorum-premium-ring-outer"></div>
+                    <div class="svorum-premium-ring">
+                        <div class="svorum-premium-avatar">
+                            <div class="svorum-logo-circle">S</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Expanded state -->
-                <div class="svorum-chat-window">
-                    <!-- Header -->
-                    <div class="svorum-chat-header" onclick="toggleChat()">
-                        <div class="svorum-chat-header-content">
-                            <div class="svorum-chat-avatar">
-                                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="30" cy="30" r="30" fill="#3A4361"/>
-                                    <text x="30" y="40" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="white">S</text>
-                                </svg>
+                <!-- Expanded state - Premium chat window -->
+                <div class="svorum-premium-window">
+                    <!-- Premium header with large clickable area -->
+                    <div class="svorum-premium-header" onclick="toggleChat()">
+                        <div class="svorum-premium-header-content">
+                            <div class="svorum-premium-header-avatar">
+                                <div class="svorum-logo-circle">S</div>
                             </div>
-                            <div class="svorum-chat-header-text">
-                                <div class="svorum-chat-title">Svörum strax</div>
-                                <div class="svorum-chat-subtitle">AI Þjónusturáðgjafi</div>
+                            <div class="svorum-premium-header-info">
+                                <div class="svorum-premium-title">Svörum strax</div>
+                                <div class="svorum-premium-subtitle">AI Þjónusturáðgjafi</div>
                             </div>
                         </div>
-                        <div class="svorum-chat-minimize">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
+                        <div class="svorum-premium-minimize">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
                     </div>
 
-                    <!-- Messages area -->
-                    <div class="svorum-chat-messages" id="svorum-messages">
-                        <!-- Messages will be inserted here -->
-                    </div>
+                    <!-- Content area -->
+                    <div class="svorum-premium-content">
+                        <!-- Options screen -->
+                        <div class="svorum-premium-options" style="display: ${showOptions ? 'block' : 'none'};">
+                            <h2>Hvernig getum við aðstoðað?</h2>
+                            
+                            <div class="svorum-option-button disabled">
+                                <div class="option-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                        <circle cx="12" cy="13" r="4"></circle>
+                                    </svg>
+                                </div>
+                                <div class="option-content">
+                                    <div class="option-title">Sölufulltrúi</div>
+                                    <div class="option-desc">Talaðu við sölufulltrúa í gegnum myndspjall</div>
+                                </div>
+                            </div>
 
-                    <!-- Typing indicator -->
-                    <div class="svorum-typing-indicator" id="svorum-typing" style="display: none;">
-                        <div class="svorum-typing-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                            <div class="svorum-option-button active" onclick="handleAIClick()">
+                                <div class="option-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                        <circle cx="9" cy="10" r="1" fill="currentColor"></circle>
+                                        <circle cx="12" cy="10" r="1" fill="currentColor"></circle>
+                                        <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
+                                    </svg>
+                                </div>
+                                <div class="option-content">
+                                    <div class="option-title">AI Aðstoð</div>
+                                    <div class="option-desc">Spjallaðu við gervigreind sem svarar samstundis</div>
+                                </div>
+                            </div>
+
+                            <div class="svorum-option-button disabled">
+                                <div class="option-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="option-content">
+                                    <div class="option-title">Mannleg þjónusta</div>
+                                    <div class="option-desc">Talaðu við þjónustufulltrúa</div>
+                                </div>
+                            </div>
+
+                            <div class="svorum-premium-footer">
+                                Opnunartími þjónustuvers: 9-17 alla virka daga
+                            </div>
+                        </div>
+
+                        <!-- Chat messages area -->
+                        <div class="svorum-premium-messages" id="svorum-messages" style="display: ${showOptions ? 'none' : 'flex'};">
+                            <!-- Messages will be inserted here -->
+                        </div>
+
+                        <!-- Typing indicator -->
+                        <div class="svorum-premium-typing" id="svorum-typing" style="display: none;">
+                            <div class="svorum-typing-avatar">
+                                <div class="svorum-logo-circle-small">S</div>
+                            </div>
+                            <div class="svorum-typing-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Input area -->
-                    <div class="svorum-chat-input-container">
+                    <div class="svorum-premium-input-container" style="display: ${showOptions ? 'none' : 'flex'};">
                         <input 
                             type="text" 
-                            class="svorum-chat-input" 
+                            class="svorum-premium-input" 
                             id="svorum-input"
-                            placeholder="${currentLanguage === 'is' ? 'Skrifaðu skilaboð...' : 'Type your message...'}"
+                            placeholder="Skrifaðu skilaboð..."
                             onkeypress="handleKeyPress(event)"
                         >
-                        <button class="svorum-chat-send" onclick="sendMessage()">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="22" y1="2" x2="11" y2="13"></line>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                            </svg>
+                        <button class="svorum-premium-send" onclick="sendMessage()">
+                            <span>Senda</span>
                         </button>
                     </div>
                 </div>
@@ -94,23 +167,47 @@
         widgetContainer.innerHTML = html;
     }
 
+    // Generate session ID
+    function generateSessionId() {
+        return `session_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+    }
+
+    // Initialize session
+    function initializeSession() {
+        let existingSessionId = localStorage.getItem(SESSION_ID_KEY);
+        
+        if (!existingSessionId) {
+            existingSessionId = generateSessionId();
+            localStorage.setItem(SESSION_ID_KEY, existingSessionId);
+        }
+        
+        sessionId = existingSessionId;
+    }
+
     // Toggle chat window
     window.toggleChat = function() {
         isMinimized = !isMinimized;
-        const container = document.querySelector('.svorum-chat-container');
+        const container = document.querySelector('.svorum-premium-container');
         container.classList.toggle('minimized');
         
-        if (!isMinimized && messages.length === 0) {
+        if (!isMinimized && messages.length === 0 && !showOptions) {
             showWelcomeMessage();
         }
     };
 
+    // Handle AI option click
+    window.handleAIClick = function() {
+        showOptions = false;
+        document.querySelector('.svorum-premium-options').style.display = 'none';
+        document.querySelector('.svorum-premium-messages').style.display = 'flex';
+        document.querySelector('.svorum-premium-input-container').style.display = 'flex';
+        
+        showWelcomeMessage();
+    };
+
     // Show welcome message
     function showWelcomeMessage() {
-        const welcomeMsg = currentLanguage === 'is' 
-            ? "Halló! Ég er AI þjónusturáðgjafi Svörum strax. Hvernig get ég aðstoðað þig í dag?"
-            : "Hello! I'm the Svörum strax AI service advisor. How can I help you today?";
-        
+        const welcomeMsg = "Halló! Ég er AI þjónusturáðgjafi Svörum strax. Hvernig get ég aðstoðað þig í dag?";
         addMessage('bot', welcomeMsg);
     }
 
@@ -127,13 +224,10 @@
         
         if (type === 'bot') {
             messageEl.innerHTML = `
-                <div class="svorum-message-avatar">
-                    <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="20" cy="20" r="20" fill="#3A4361"/>
-                        <text x="20" y="28" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="white">S</text>
-                    </svg>
-                </div>
-                <div class="svorum-message-content">
+                <div class="svorum-message-wrapper">
+                    <div class="svorum-message-avatar">
+                        <div class="svorum-logo-circle-small">S</div>
+                    </div>
                     <div class="svorum-message-bubble">
                         <span class="svorum-message-text"></span>
                     </div>
@@ -141,7 +235,7 @@
             `;
         } else {
             messageEl.innerHTML = `
-                <div class="svorum-message-content">
+                <div class="svorum-message-wrapper">
                     <div class="svorum-message-bubble">
                         <span class="svorum-message-text">${content}</span>
                     </div>
@@ -152,14 +246,44 @@
         messagesContainer.appendChild(messageEl);
         
         if (type === 'bot' && !skipEffect) {
-            startChunkReveal(messageId, content);
+            renderMessage(messageId, content);
         }
         
         scrollToBottom();
     }
 
-    // Premium chunk reveal effect
-    function startChunkReveal(messageId, fullText) {
+    // Premium message rendering
+    function renderMessage(messageId, fullText) {
+        if (!fullText) return null;
+        
+        const safeText = typeof fullText === 'string' ? fullText : String(fullText || '');
+        
+        if (isMobile) {
+            return startSimpleRender(messageId, safeText);
+        } else {
+            return startChunkedReveal(messageId, safeText);
+        }
+    }
+
+    // Simple render for mobile
+    function startSimpleRender(messageId, fullText) {
+        const messageEl = document.getElementById(messageId);
+        if (!messageEl) return;
+        
+        const textEl = messageEl.querySelector('.svorum-message-text');
+        textEl.textContent = fullText;
+        textEl.style.opacity = '0';
+        
+        setTimeout(() => {
+            textEl.style.transition = `opacity ${FADE_IN_DURATION}ms ease-in`;
+            textEl.style.opacity = '1';
+        }, 50);
+        
+        return messageId;
+    }
+
+    // Chunked reveal for desktop
+    function startChunkedReveal(messageId, fullText) {
         const messageEl = document.getElementById(messageId);
         if (!messageEl) return;
         
@@ -175,18 +299,9 @@
         }
         
         const chunkSize = Math.ceil(fullText.length / numberOfChunks);
-        typingMessages[messageId] = {
-            text: fullText,
-            visibleChars: 0,
-            currentChunk: 0,
-            totalChunks: numberOfChunks
-        };
-        
-        // Add fade-in effect
-        messageEl.style.opacity = '0';
-        messageEl.style.animation = 'svorumFadeIn 0.3s ease forwards';
         
         let currentChunk = 0;
+        textEl.style.opacity = '0';
         
         const revealNextChunk = () => {
             if (currentChunk < numberOfChunks) {
@@ -195,15 +310,17 @@
                     fullText.length
                 );
                 
-                typingMessages[messageId].visibleChars = charsToReveal;
                 textEl.textContent = fullText.substring(0, charsToReveal);
+                
+                if (currentChunk === 0) {
+                    textEl.style.transition = `opacity ${FADE_IN_DURATION}ms ease-in`;
+                    textEl.style.opacity = '1';
+                }
                 
                 currentChunk++;
                 
                 if (currentChunk < numberOfChunks) {
                     setTimeout(revealNextChunk, CHUNK_REVEAL_DELAY);
-                } else {
-                    delete typingMessages[messageId];
                 }
                 
                 scrollToBottom();
@@ -211,6 +328,7 @@
         };
         
         setTimeout(revealNextChunk, 100);
+        return messageId;
     }
 
     // Handle key press
@@ -236,7 +354,7 @@
         document.getElementById('svorum-typing').style.display = 'flex';
         
         try {
-            const response = await fetch(API_URL, {
+            const response = await fetch('https://svorumstrax-chatbot-api.vercel.app/api/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -244,7 +362,8 @@
                 body: JSON.stringify({
                     messages: [
                         { role: 'user', content: message }
-                    ]
+                    ],
+                    sessionId: sessionId
                 })
             });
             
@@ -262,10 +381,7 @@
             document.getElementById('svorum-typing').style.display = 'none';
             isTyping = false;
             
-            const errorMsg = currentLanguage === 'is' 
-                ? 'Fyrirgefðu, eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur.'
-                : 'Sorry, something went wrong. Please try again.';
-            
+            const errorMsg = 'Fyrirgefðu, eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur.';
             addMessage('bot', errorMsg);
         }
     };
@@ -273,16 +389,17 @@
     // Scroll to bottom
     function scrollToBottom() {
         const messagesContainer = document.getElementById('svorum-messages');
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        if (messagesContainer) {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
     }
 
-    // Initialize widget
-    createWidget();
-    
-    // Listen for language changes
-    window.addEventListener('languagechange', function() {
-        currentLanguage = document.documentElement.lang === 'is' ? 'is' : 'en';
-        document.getElementById('svorum-input').placeholder = 
-            currentLanguage === 'is' ? 'Skrifaðu skilaboð...' : 'Type your message...';
+    // Window resize listener
+    window.addEventListener('resize', () => {
+        windowWidth = window.innerWidth;
     });
+
+    // Initialize widget
+    initializeSession();
+    createWidget();
 })();
