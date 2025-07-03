@@ -24,22 +24,14 @@
     function createWidget() {
         const html = `
             <div class="svorum-chat-container ${isMinimized ? 'minimized' : ''}">
-                <!-- Minimized state - circular button with ring -->
+                <!-- Minimized state - circular button matching Sky Lagoon -->
                 <div class="svorum-chat-bubble" onclick="toggleChat()">
                     <div class="svorum-chat-ring">
-                        <div class="svorum-chat-ring-outer"></div>
                         <div class="svorum-chat-ring-inner">
                             <svg class="svorum-logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <linearGradient id="svorum-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#FF6B35" />
-                                        <stop offset="100%" style="stop-color:#F7931E" />
-                                    </linearGradient>
-                                </defs>
-                                <text x="50" y="65" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="800" fill="white">S</text>
+                                <text x="50" y="65" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="36" font-weight="700" fill="white">S</text>
                             </svg>
                         </div>
-                        <div class="svorum-chat-pulse"></div>
                     </div>
                 </div>
 
@@ -50,21 +42,17 @@
                         <div class="svorum-chat-header-content">
                             <div class="svorum-chat-avatar">
                                 <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="30" cy="30" r="30" fill="url(#svorum-gradient)"/>
-                                    <text x="30" y="40" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" fill="white">S</text>
+                                    <circle cx="30" cy="30" r="30" fill="#3A4361"/>
+                                    <text x="30" y="40" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="white">S</text>
                                 </svg>
                             </div>
                             <div class="svorum-chat-header-text">
                                 <div class="svorum-chat-title">Svörum strax</div>
                                 <div class="svorum-chat-subtitle">AI Þjónusturáðgjafi</div>
                             </div>
-                            <div class="svorum-chat-status">
-                                <span class="svorum-status-dot"></span>
-                                <span class="svorum-status-text">Virk</span>
-                            </div>
                         </div>
                         <div class="svorum-chat-minimize">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
                         </div>
@@ -141,8 +129,8 @@
             messageEl.innerHTML = `
                 <div class="svorum-message-avatar">
                     <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="20" cy="20" r="20" fill="url(#svorum-gradient)"/>
-                        <text x="20" y="28" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="800" fill="white">S</text>
+                        <circle cx="20" cy="20" r="20" fill="#3A4361"/>
+                        <text x="20" y="28" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="white">S</text>
                     </svg>
                 </div>
                 <div class="svorum-message-content">
