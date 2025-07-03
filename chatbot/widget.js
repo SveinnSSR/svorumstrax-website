@@ -2,18 +2,18 @@
 (function() {
     'use strict';
 
-    // Premium brand theme with sophisticated navy/purple
+    // Premium brand theme with sophisticated navy/orange
     const theme = {
         colors: {
-            primary: "#1A2B4D", // Deep sophisticated navy
-            secondary: "#7C4DFF", // Modern purple accent
-            headerBg: "linear-gradient(135deg, #1A2B4D 0%, #2C3E66 100%)", // Premium gradient
+            primary: "#0A0E27", // Deep sophisticated navy from website
+            secondary: "#FF6B35", // Orange accent from website
+            headerBg: "linear-gradient(135deg, #0A0E27 0%, #1B2735 100%)", // Premium gradient
             text: "#333333",
             background: "#FFFFFF",
             messageBg: "#F5F5F5",
-            userMessage: "#1A2B4D",
+            userMessage: "#0A0E27",
             botMessage: "#F0F0F0",
-            lightAccent: "rgba(124, 77, 255, 0.1)",
+            lightAccent: "rgba(255, 107, 53, 0.1)",
         },
         fonts: {
             body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -51,10 +51,27 @@
             <div class="svorum-premium-container ${isMinimized ? 'minimized' : ''}">
                 <!-- Minimized state - Premium circular button with ring -->
                 <div class="svorum-premium-bubble" onclick="toggleChat()">
-                    <div class="svorum-premium-ring-outer"></div>
                     <div class="svorum-premium-ring">
                         <div class="svorum-premium-avatar">
-                            <div class="svorum-logo-circle">S</div>
+                            <svg class="svorum-logo-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#FAFAFA;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="30" cy="30" r="28" fill="url(#bgGrad)"/>
+                                <!-- Chat bubble design -->
+                                <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
+                                      fill="#0A0E27" opacity="0.9"/>
+                                <circle cx="25" cy="27.5" r="1.5" fill="white"/>
+                                <circle cx="30" cy="27.5" r="1.5" fill="white"/>
+                                <circle cx="35" cy="27.5" r="1.5" fill="white"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -65,7 +82,21 @@
                     <div class="svorum-premium-header" onclick="toggleChat()">
                         <div class="svorum-premium-header-content">
                             <div class="svorum-premium-header-avatar">
-                                <div class="svorum-logo-circle">S</div>
+                                <svg class="svorum-logo-svg-header" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="logoGradHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle cx="30" cy="30" r="30" fill="white"/>
+                                    <!-- Chat bubble design -->
+                                    <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
+                                          fill="#0A0E27" opacity="0.9"/>
+                                    <circle cx="25" cy="27.5" r="1.5" fill="white"/>
+                                    <circle cx="30" cy="27.5" r="1.5" fill="white"/>
+                                    <circle cx="35" cy="27.5" r="1.5" fill="white"/>
+                                </svg>
                             </div>
                             <div class="svorum-premium-header-info">
                                 <div class="svorum-premium-title">Svörum strax</div>
@@ -82,7 +113,7 @@
                     <!-- Content area -->
                     <div class="svorum-premium-content">
                         <!-- Options screen -->
-                        <div class="svorum-premium-options" style="display: ${showOptions ? 'block' : 'none'};">
+                        <div class="svorum-premium-options" style="display: ${showOptions ? 'flex' : 'none'};">
                             <h2>Hvernig getum við aðstoðað?</h2>
                             
                             <div class="svorum-option-button disabled">
@@ -130,20 +161,37 @@
                             </div>
                         </div>
 
-                        <!-- Chat messages area -->
-                        <div class="svorum-premium-messages" id="svorum-messages" style="display: ${showOptions ? 'none' : 'flex'};">
-                            <!-- Messages will be inserted here -->
-                        </div>
-
-                        <!-- Typing indicator -->
-                        <div class="svorum-premium-typing" id="svorum-typing" style="display: none;">
-                            <div class="svorum-typing-avatar">
-                                <div class="svorum-logo-circle-small">S</div>
+                        <!-- Chat area container - only visible when options are hidden -->
+                        <div class="svorum-premium-chat-area" style="display: ${showOptions ? 'none' : 'flex'}; flex-direction: column; flex: 1; min-height: 0;">
+                            <!-- Chat messages area -->
+                            <div class="svorum-premium-messages" id="svorum-messages">
+                                <!-- Messages will be inserted here -->
                             </div>
-                            <div class="svorum-typing-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
+
+                            <!-- Typing indicator -->
+                            <div class="svorum-premium-typing" id="svorum-typing" style="display: none;">
+                                <div class="svorum-typing-avatar">
+                                    <svg class="svorum-logo-svg-small" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <linearGradient id="logoGradTyping" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
+                                            </linearGradient>
+                                        </defs>
+                                        <circle cx="20" cy="20" r="20" fill="white"/>
+                                        <!-- Chat bubble design scaled down -->
+                                        <path d="M 13 17 Q 13 14, 16 14 L 24 14 Q 27 14, 27 17 L 27 20 Q 27 23, 24 23 L 19 23 L 15 27 L 15 23 L 16 23 Q 13 23, 13 20 Z" 
+                                              fill="#0A0E27" opacity="0.9"/>
+                                        <circle cx="16.5" cy="18.5" r="1" fill="white"/>
+                                        <circle cx="20" cy="18.5" r="1" fill="white"/>
+                                        <circle cx="23.5" cy="18.5" r="1" fill="white"/>
+                                    </svg>
+                                </div>
+                                <div class="svorum-typing-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -199,7 +247,7 @@
     window.handleAIClick = function() {
         showOptions = false;
         document.querySelector('.svorum-premium-options').style.display = 'none';
-        document.querySelector('.svorum-premium-messages').style.display = 'flex';
+        document.querySelector('.svorum-premium-chat-area').style.display = 'flex';
         document.querySelector('.svorum-premium-input-container').style.display = 'flex';
         
         showWelcomeMessage();
@@ -226,7 +274,21 @@
             messageEl.innerHTML = `
                 <div class="svorum-message-wrapper">
                     <div class="svorum-message-avatar">
-                        <div class="svorum-logo-circle-small">S</div>
+                        <svg class="svorum-logo-svg-small" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="logoGradSmall${messageId}" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="20" cy="20" r="20" fill="white"/>
+                            <!-- Chat bubble design scaled down -->
+                            <path d="M 13 17 Q 13 14, 16 14 L 24 14 Q 27 14, 27 17 L 27 20 Q 27 23, 24 23 L 19 23 L 15 27 L 15 23 L 16 23 Q 13 23, 13 20 Z" 
+                                  fill="#0A0E27" opacity="0.9"/>
+                            <circle cx="16.5" cy="18.5" r="1" fill="white"/>
+                            <circle cx="20" cy="18.5" r="1" fill="white"/>
+                            <circle cx="23.5" cy="18.5" r="1" fill="white"/>
+                        </svg>
                     </div>
                     <div class="svorum-message-bubble">
                         <span class="svorum-message-text"></span>
@@ -249,7 +311,10 @@
             renderMessage(messageId, content);
         }
         
-        scrollToBottom();
+        // Ensure scrolling happens after DOM update
+        requestAnimationFrame(() => {
+            scrollToBottom();
+        });
     }
 
     // Premium message rendering
@@ -321,9 +386,12 @@
                 
                 if (currentChunk < numberOfChunks) {
                     setTimeout(revealNextChunk, CHUNK_REVEAL_DELAY);
+                } else {
+                    // Final scroll after all chunks revealed
+                    requestAnimationFrame(() => {
+                        scrollToBottom();
+                    });
                 }
-                
-                scrollToBottom();
             }
         };
         
@@ -349,9 +417,13 @@
         addMessage('user', message, true);
         input.value = '';
         
-        // Show typing indicator
+        // Show typing indicator inside the messages area
         isTyping = true;
-        document.getElementById('svorum-typing').style.display = 'flex';
+        const typingIndicator = document.getElementById('svorum-typing');
+        if (typingIndicator) {
+            typingIndicator.style.display = 'flex';
+            scrollToBottom();
+        }
         
         try {
             const response = await fetch('https://svorumstrax-chatbot-api.vercel.app/api/', {
@@ -370,7 +442,10 @@
             const data = await response.json();
             
             // Hide typing indicator
-            document.getElementById('svorum-typing').style.display = 'none';
+            const typingIndicator = document.getElementById('svorum-typing');
+            if (typingIndicator) {
+                typingIndicator.style.display = 'none';
+            }
             isTyping = false;
             
             // Add bot response
@@ -378,7 +453,10 @@
             
         } catch (error) {
             console.error('Error:', error);
-            document.getElementById('svorum-typing').style.display = 'none';
+            const typingIndicator = document.getElementById('svorum-typing');
+            if (typingIndicator) {
+                typingIndicator.style.display = 'none';
+            }
             isTyping = false;
             
             const errorMsg = 'Fyrirgefðu, eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur.';
@@ -388,10 +466,15 @@
 
     // Scroll to bottom
     function scrollToBottom() {
-        const messagesContainer = document.getElementById('svorum-messages');
-        if (messagesContainer) {
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
+        setTimeout(() => {
+            const messagesContainer = document.getElementById('svorum-messages');
+            if (messagesContainer) {
+                const scrollHeight = messagesContainer.scrollHeight;
+                const height = messagesContainer.clientHeight;
+                const maxScrollTop = scrollHeight - height;
+                messagesContainer.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+            }
+        }, 100);
     }
 
     // Window resize listener
