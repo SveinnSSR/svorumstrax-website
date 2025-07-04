@@ -1,4 +1,4 @@
-/* Svörum strax Premium Chat Widget - Luxury 2025 Tech Design */
+/* Svörum strax Premium Chat Widget - Translucent Orange Tech Design */
 
 /* Main container */
 .svorum-premium-container {
@@ -10,7 +10,7 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Minimized state - Premium circular bubble */
+/* Minimized state - Premium circular bubble with glassmorphism */
 .svorum-premium-bubble {
     width: 70px;
     height: 70px;
@@ -30,22 +30,27 @@
 .svorum-premium-ring {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #0A0E27 0%, #1B2735 100%);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.95) 0%, rgba(255, 143, 101, 0.85) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 20px rgba(10, 14, 39, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.1) inset,
-                0 0 0 3px rgba(255, 107, 53, 0.15);
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+                0 0 0 3px rgba(255, 107, 53, 0.1),
+                0 8px 32px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .svorum-premium-ring:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 25px rgba(10, 14, 39, 0.5),
-                0 0 0 1px rgba(255, 255, 255, 0.2) inset,
-                0 0 0 4px rgba(255, 107, 53, 0.2);
+    box-shadow: 0 6px 25px rgba(255, 107, 53, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+                0 0 0 4px rgba(255, 107, 53, 0.15),
+                0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Avatar in bubble */
@@ -62,7 +67,6 @@
     height: 50px;
     filter: drop-shadow(0 2px 8px rgba(255, 107, 53, 0.2));
     border-radius: 50%;
-    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.1);
 }
 
 .svorum-logo-svg-header {
@@ -70,7 +74,8 @@
     height: 60px;
     filter: drop-shadow(0 2px 8px rgba(255, 107, 53, 0.2));
     border-radius: 50%;
-    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
 }
 
 .svorum-logo-svg-small {
@@ -78,7 +83,7 @@
     height: 36px;
     filter: drop-shadow(0 1px 4px rgba(255, 107, 53, 0.15));
     border-radius: 50%;
-    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.08);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 /* Chat window */
@@ -114,15 +119,15 @@
     pointer-events: none;
 }
 
-/* Premium header with gradient */
+/* Premium header with dark background */
 .svorum-premium-header {
     background: linear-gradient(135deg, #0A0E27 0%, #1B2735 100%);
-    padding: 32px 24px 28px;
+    padding: 36px 24px 32px; /* Increased spacing for premium feel */
     cursor: pointer;
     position: relative;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    min-height: 120px;
+    min-height: 130px;
 }
 
 .svorum-premium-header:hover {
@@ -140,7 +145,7 @@
 .svorum-premium-header-content {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 18px;
     position: relative;
     z-index: 1;
 }
@@ -186,106 +191,25 @@
     opacity: 1;
 }
 
-/* Content area */
+/* Content area with subtle tech background */
 .svorum-premium-content {
     flex: 1;
     overflow: hidden;
-    background: #FAFBFC;
+    background: linear-gradient(180deg, #FAFBFC 0%, #F8F9FA 100%);
     position: relative;
     display: flex;
     flex-direction: column;
     min-height: 0;
 }
 
-/* Options screen */
-.svorum-premium-options {
-    padding: 36px 24px 24px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.svorum-premium-options h2 {
-    color: #0A0E27;
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    margin: 0 0 32px 0;
-    letter-spacing: -0.01em;
-}
-
-.svorum-option-button {
-    background: white;
-    border: 2px solid #E8ECF1;
-    border-radius: 18px;
-    padding: 20px 22px;
-    margin-bottom: 14px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.svorum-option-button.active {
-    background: linear-gradient(135deg, #FF6B35 0%, #FF8F65 100%);
-    border-color: transparent;
-    color: white;
-    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
-}
-
-.svorum-option-button.active:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
-}
-
-.svorum-option-button.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.option-icon {
-    width: 48px;
-    height: 48px;
-    background: rgba(255, 107, 53, 0.1);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.svorum-option-button.active .option-icon {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.option-content {
-    flex: 1;
-}
-
-.option-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: #0A0E27;
-}
-
-.svorum-option-button.active .option-title {
-    color: white;
-}
-
-.option-desc {
-    font-size: 13px;
-    opacity: 0.8;
-    line-height: 1.4;
-}
-
-.svorum-premium-footer {
-    text-align: center;
-    font-size: 13px;
-    color: #8B92A2;
-    margin-top: auto;
-    padding-top: 24px;
-    font-weight: 400;
+.svorum-premium-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 143, 101, 0.02) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 /* Chat area container */
@@ -295,6 +219,8 @@
     flex: 1;
     min-height: 0;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 /* Messages area */
@@ -319,12 +245,12 @@
 }
 
 .svorum-premium-messages::-webkit-scrollbar-thumb {
-    background: rgba(10, 14, 39, 0.2);
+    background: rgba(255, 107, 53, 0.2);
     border-radius: 3px;
 }
 
 .svorum-premium-messages::-webkit-scrollbar-thumb:hover {
-    background: rgba(10, 14, 39, 0.3);
+    background: rgba(255, 107, 53, 0.3);
 }
 
 /* Messages */
@@ -363,15 +289,18 @@
 }
 
 .svorum-message-bot .svorum-message-bubble {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
     color: #0A0E27;
     border: 1px solid rgba(10, 14, 39, 0.08);
 }
 
 .svorum-message-user .svorum-message-bubble {
-    background: linear-gradient(135deg, #0A0E27 0%, #1B2735 100%);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.95) 0%, rgba(255, 143, 101, 0.85) 100%);
     color: white;
-    box-shadow: 0 2px 8px rgba(10, 14, 39, 0.3);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 /* Typing indicator */
@@ -380,7 +309,7 @@
     align-items: center;
     padding: 0 20px 20px;
     gap: 10px;
-    background: #FAFBFC;
+    background: transparent;
     flex-shrink: 0;
 }
 
@@ -389,7 +318,8 @@
     align-items: center;
     gap: 4px;
     padding: 14px 18px;
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
     border-radius: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(10, 14, 39, 0.08);
@@ -398,7 +328,7 @@
 .svorum-typing-dots span {
     width: 8px;
     height: 8px;
-    background: #8B92A2;
+    background: #FF6B35;
     border-radius: 50%;
     opacity: 0.4;
     animation: svorumTyping 1.4s infinite;
@@ -508,10 +438,9 @@
         height: 60px;
     }
     
-    .svorum-logo-circle {
+    .svorum-logo-svg {
         width: 40px;
         height: 40px;
-        font-size: 20px;
     }
 }
 

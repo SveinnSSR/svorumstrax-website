@@ -1,19 +1,22 @@
-// Svörum strax Premium Chat Widget - Matching Sky Lagoon/ELKO Brand Standards
+// Svörum strax Premium Chat Widget - Translucent Orange Tech Design
 (function() {
     'use strict';
 
-    // Premium brand theme with sophisticated navy/orange
+    // Premium brand theme with translucent orange gradient
     const theme = {
         colors: {
-            primary: "#0A0E27", // Deep sophisticated navy from website
-            secondary: "#FF6B35", // Orange accent from website
-            headerBg: "linear-gradient(135deg, #0A0E27 0%, #1B2735 100%)", // Premium gradient
+            primary: "#FF6B35", // Orange primary
+            secondary: "#FF8F65", // Lighter orange
+            gradient: "linear-gradient(135deg, rgba(255, 107, 53, 0.95) 0%, rgba(255, 143, 101, 0.85) 100%)", // Translucent orange
+            solidGradient: "linear-gradient(135deg, #FF6B35 0%, #FF8F65 100%)", // Solid for buttons
+            headerBg: "linear-gradient(135deg, #0A0E27 0%, #1B2735 100%)", // Keep dark header
             text: "#333333",
             background: "#FFFFFF",
             messageBg: "#F5F5F5",
-            userMessage: "#0A0E27",
+            userMessage: "#FF6B35", // Orange for user messages
             botMessage: "#F0F0F0",
             lightAccent: "rgba(255, 107, 53, 0.1)",
+            darkBg: "#1A1F2E", // Dark background from screenshot
         },
         fonts: {
             body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -34,9 +37,9 @@
     widgetContainer.id = 'svorum-premium-chat-widget';
     document.body.appendChild(widgetContainer);
 
-    // Widget state.
+    // Widget state - showOptions now defaults to false
     let isMinimized = true;
-    let showOptions = true;
+    let showOptions = false; // Changed to false - go straight to chat
     let messages = [];
     let inputValue = '';
     let isTyping = false;
@@ -45,11 +48,11 @@
     let typingMessages = {};
     const isMobile = windowWidth <= MOBILE_BREAKPOINT;
 
-    // Create widget HTML with Sky Lagoon/ELKO structure
+    // Create widget HTML with premium structure
     function createWidget() {
         const html = `
             <div class="svorum-premium-container ${isMinimized ? 'minimized' : ''}">
-                <!-- Minimized state - Premium circular button with ring -->
+                <!-- Minimized state - Premium circular button with translucent orange -->
                 <div class="svorum-premium-bubble" onclick="toggleChat()">
                     <div class="svorum-premium-ring">
                         <div class="svorum-premium-avatar">
@@ -63,14 +66,21 @@
                                         <stop offset="0%" style="stop-color:#FAFAFA;stop-opacity:1" />
                                         <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
                                     </linearGradient>
+                                    <filter id="glassmorphism">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+                                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="glow" />
+                                        <feBlend in="SourceGraphic" in2="glow" />
+                                    </filter>
                                 </defs>
-                                <circle cx="30" cy="30" r="28" fill="url(#bgGrad)"/>
-                                <!-- Chat bubble design -->
-                                <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
-                                      fill="#0A0E27" opacity="0.9"/>
-                                <circle cx="25" cy="27.5" r="1.5" fill="white"/>
-                                <circle cx="30" cy="27.5" r="1.5" fill="white"/>
-                                <circle cx="35" cy="27.5" r="1.5" fill="white"/>
+                                <circle cx="30" cy="30" r="28" fill="url(#bgGrad)" opacity="0.9"/>
+                                <!-- Modern tech chat bubble -->
+                                <g filter="url(#glassmorphism)">
+                                    <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
+                                          fill="url(#logoGrad)" opacity="0.85"/>
+                                    <circle cx="25" cy="27.5" r="1.5" fill="white"/>
+                                    <circle cx="30" cy="27.5" r="1.5" fill="white"/>
+                                    <circle cx="35" cy="27.5" r="1.5" fill="white"/>
+                                </g>
                             </svg>
                         </div>
                     </div>
@@ -78,7 +88,7 @@
 
                 <!-- Expanded state - Premium chat window -->
                 <div class="svorum-premium-window">
-                    <!-- Premium header with large clickable area -->
+                    <!-- Premium header with more space -->
                     <div class="svorum-premium-header" onclick="toggleChat()">
                         <div class="svorum-premium-header-content">
                             <div class="svorum-premium-header-avatar">
@@ -89,18 +99,20 @@
                                             <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
                                         </linearGradient>
                                     </defs>
-                                    <circle cx="30" cy="30" r="30" fill="white"/>
+                                    <circle cx="30" cy="30" r="30" fill="white" opacity="0.95"/>
                                     <!-- Chat bubble design -->
-                                    <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
-                                          fill="#0A0E27" opacity="0.9"/>
-                                    <circle cx="25" cy="27.5" r="1.5" fill="white"/>
-                                    <circle cx="30" cy="27.5" r="1.5" fill="white"/>
-                                    <circle cx="35" cy="27.5" r="1.5" fill="white"/>
+                                    <g>
+                                        <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
+                                              fill="url(#logoGradHeader)" opacity="0.9"/>
+                                        <circle cx="25" cy="27.5" r="1.5" fill="white"/>
+                                        <circle cx="30" cy="27.5" r="1.5" fill="white"/>
+                                        <circle cx="35" cy="27.5" r="1.5" fill="white"/>
+                                    </g>
                                 </svg>
                             </div>
                             <div class="svorum-premium-header-info">
-                                <div class="svorum-premium-title">Svörum strax</div>
-                                <div class="svorum-premium-subtitle">AI Þjónusturáðgjafi</div>
+                                <div class="svorum-premium-title">AI Aðstoð</div>
+                                <div class="svorum-premium-subtitle">Svörum strax</div>
                             </div>
                         </div>
                         <div class="svorum-premium-minimize">
@@ -112,57 +124,8 @@
 
                     <!-- Content area -->
                     <div class="svorum-premium-content">
-                        <!-- Options screen -->
-                        <div class="svorum-premium-options" style="display: ${showOptions ? 'flex' : 'none'};">
-                            <h2>Hvernig getum við aðstoðað?</h2>
-                            
-                            <div class="svorum-option-button disabled">
-                                <div class="option-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                                        <circle cx="12" cy="13" r="4"></circle>
-                                    </svg>
-                                </div>
-                                <div class="option-content">
-                                    <div class="option-title">Sölufulltrúi</div>
-                                    <div class="option-desc">Talaðu við sölufulltrúa í gegnum myndspjall</div>
-                                </div>
-                            </div>
-
-                            <div class="svorum-option-button active" onclick="handleAIClick()">
-                                <div class="option-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                        <circle cx="9" cy="10" r="1" fill="currentColor"></circle>
-                                        <circle cx="12" cy="10" r="1" fill="currentColor"></circle>
-                                        <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
-                                    </svg>
-                                </div>
-                                <div class="option-content">
-                                    <div class="option-title">AI Aðstoð</div>
-                                    <div class="option-desc">Spjallaðu við gervigreind sem svarar samstundis</div>
-                                </div>
-                            </div>
-
-                            <div class="svorum-option-button disabled">
-                                <div class="option-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                                    </svg>
-                                </div>
-                                <div class="option-content">
-                                    <div class="option-title">Mannleg þjónusta</div>
-                                    <div class="option-desc">Talaðu við þjónustufulltrúa</div>
-                                </div>
-                            </div>
-
-                            <div class="svorum-premium-footer">
-                                Opnunartími þjónustuvers: 9-17 alla virka daga
-                            </div>
-                        </div>
-
-                        <!-- Chat area container - only visible when options are hidden -->
-                        <div class="svorum-premium-chat-area" style="display: ${showOptions ? 'none' : 'flex'}; flex-direction: column; flex: 1; min-height: 0;">
+                        <!-- Chat area container - now shows by default -->
+                        <div class="svorum-premium-chat-area" style="display: flex; flex-direction: column; flex: 1; min-height: 0;">
                             <!-- Chat messages area -->
                             <div class="svorum-premium-messages" id="svorum-messages">
                                 <!-- Messages will be inserted here -->
@@ -178,10 +141,10 @@
                                                 <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
                                             </linearGradient>
                                         </defs>
-                                        <circle cx="20" cy="20" r="20" fill="white"/>
+                                        <circle cx="20" cy="20" r="20" fill="white" opacity="0.95"/>
                                         <!-- Chat bubble design scaled down -->
                                         <path d="M 13 17 Q 13 14, 16 14 L 24 14 Q 27 14, 27 17 L 27 20 Q 27 23, 24 23 L 19 23 L 15 27 L 15 23 L 16 23 Q 13 23, 13 20 Z" 
-                                              fill="#0A0E27" opacity="0.9"/>
+                                              fill="url(#logoGradTyping)" opacity="0.9"/>
                                         <circle cx="16.5" cy="18.5" r="1" fill="white"/>
                                         <circle cx="20" cy="18.5" r="1" fill="white"/>
                                         <circle cx="23.5" cy="18.5" r="1" fill="white"/>
@@ -196,8 +159,8 @@
                         </div>
                     </div>
 
-                    <!-- Input area -->
-                    <div class="svorum-premium-input-container" style="display: ${showOptions ? 'none' : 'flex'};">
+                    <!-- Input area - now shows by default -->
+                    <div class="svorum-premium-input-container" style="display: flex;">
                         <input 
                             type="text" 
                             class="svorum-premium-input" 
@@ -238,19 +201,9 @@
         const container = document.querySelector('.svorum-premium-container');
         container.classList.toggle('minimized');
         
-        if (!isMinimized && messages.length === 0 && !showOptions) {
+        if (!isMinimized && messages.length === 0) {
             showWelcomeMessage();
         }
-    };
-
-    // Handle AI option click
-    window.handleAIClick = function() {
-        showOptions = false;
-        document.querySelector('.svorum-premium-options').style.display = 'none';
-        document.querySelector('.svorum-premium-chat-area').style.display = 'flex';
-        document.querySelector('.svorum-premium-input-container').style.display = 'flex';
-        
-        showWelcomeMessage();
     };
 
     // Show welcome message
@@ -281,10 +234,10 @@
                                     <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
                                 </linearGradient>
                             </defs>
-                            <circle cx="20" cy="20" r="20" fill="white"/>
+                            <circle cx="20" cy="20" r="20" fill="white" opacity="0.95"/>
                             <!-- Chat bubble design scaled down -->
                             <path d="M 13 17 Q 13 14, 16 14 L 24 14 Q 27 14, 27 17 L 27 20 Q 27 23, 24 23 L 19 23 L 15 27 L 15 23 L 16 23 Q 13 23, 13 20 Z" 
-                                  fill="#0A0E27" opacity="0.9"/>
+                                  fill="url(#logoGradSmall${messageId})" opacity="0.9"/>
                             <circle cx="16.5" cy="18.5" r="1" fill="white"/>
                             <circle cx="20" cy="18.5" r="1" fill="white"/>
                             <circle cx="23.5" cy="18.5" r="1" fill="white"/>
