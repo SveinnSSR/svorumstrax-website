@@ -659,14 +659,14 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 30px;
 }
 
 .client-logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 200px;
+    width: 180px;
     height: 100px;
     padding: 20px;
     border-radius: 10px;
@@ -674,9 +674,10 @@ nav {
 }
 
 .client-img {
-    height: 50px;
-    width: auto;
+    max-height: 60px;
     max-width: 160px;
+    width: auto;
+    height: auto;
     object-fit: contain;
     filter: brightness(0) invert(1) opacity(0.7);
     transition: all 0.3s ease;
@@ -693,12 +694,14 @@ nav {
 }
 
 .client-logo:hover .client-img {
-    filter: brightness(0) invert(1) opacity(1);
+    filter: none;
+    opacity: 1;
     transform: scale(1.1);
 }
 
 .client-logo:hover .client-img.light-logo {
-    filter: opacity(1);
+    filter: none;
+    opacity: 1;
     transform: scale(1.1);
 }
 
@@ -713,11 +716,13 @@ nav {
     }
     
     .client-logo:hover .client-img {
-        filter: brightness(0) invert(1) opacity(1);
+        filter: none;
+        opacity: 1;
     }
     
     .client-logo:hover .client-img.light-logo {
-        filter: opacity(1);
+        filter: none;
+        opacity: 1;
     }
 }
 
@@ -936,17 +941,17 @@ footer {
     }
 
     .clients-grid {
-        gap: 30px;
+        gap: 20px;
     }
 
     .client-logo {
-        width: 150px;
+        width: 140px;
         height: 80px;
         padding: 15px;
     }
     
     .client-img {
-        height: 40px;
+        max-height: 50px;
         max-width: 120px;
     }
     
