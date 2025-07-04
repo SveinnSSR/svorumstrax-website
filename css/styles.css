@@ -659,13 +659,14 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 80px;
+    gap: 40px;
 }
 
 .client-logo {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 200px;
     height: 100px;
     padding: 20px;
     border-radius: 10px;
@@ -673,10 +674,9 @@ nav {
 }
 
 .client-img {
-    max-height: 80px;
-    max-width: 220px;
+    height: 50px;
     width: auto;
-    height: auto;
+    max-width: 160px;
     object-fit: contain;
     filter: brightness(0) invert(1) opacity(0.7);
     transition: all 0.3s ease;
@@ -936,12 +936,18 @@ footer {
     }
 
     .clients-grid {
-        gap: 50px;
+        gap: 30px;
     }
 
+    .client-logo {
+        width: 150px;
+        height: 80px;
+        padding: 15px;
+    }
+    
     .client-img {
-        max-height: 65px;
-        max-width: 180px;
+        height: 40px;
+        max-width: 120px;
     }
     
     .client-img.light-logo {
