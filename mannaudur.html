@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="is">
 <head>
@@ -79,6 +78,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .staff-avatar:hover {
+            transform: scale(1.05);
         }
 
         .staff-avatar.placeholder {
@@ -95,13 +100,15 @@
         }
 
         .staff-avatar img {
-            width: 100%;
-            height: 100%;
+            width: 110%;
+            height: 110%;
             object-fit: cover;
-            object-position: center;
+            object-position: center center;
             filter: contrast(1.05) brightness(1.02);
-            -webkit-transform: scale(1.01);
-            transform: scale(1.01);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .staff-name {
@@ -236,7 +243,7 @@
                 </div>
             </div>
 
-            <!-- 4th position - Elma -->
+            <!-- Second row -->
             <div class="staff-card">
                 <div class="staff-avatar">
                     <img src="assets/images/staff/elma-thorhallsdottir.jpeg" alt="Elma Jenný Þórhallsdóttir" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'EJÞ'); this.remove();">
@@ -246,7 +253,6 @@
                 <a href="mailto:elma.j@svorumstrax.is" class="staff-email">elma.j@svorumstrax.is</a>
             </div>
 
-            <!-- Bryndís and Oddný -->
             <div class="staff-card">
                 <div class="staff-avatar">
                     <img src="assets/images/staff/bryndis-asgeirsdottir.jpeg" alt="Bryndís Þóra Ásgeirsdóttir" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'BÞÁ'); this.remove();">
@@ -263,7 +269,7 @@
                 <p class="staff-title">Verkefnastjóri / Þjónustustjóri</p>
             </div>
 
-            <!-- Other staff members -->
+            <!-- Third row -->
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="DT"></div>
                 <h3 class="staff-name">Daníel Thorstensen</h3>
@@ -279,6 +285,19 @@
             </div>
 
             <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="GOD"></div>
+                <h3 class="staff-name">Gunnar Óli Dagmararson</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <!-- Fourth row -->
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="FW"></div>
+                <h3 class="staff-name">Frosti Wendel</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="SFJ"></div>
                 <h3 class="staff-name">Sigrún Fanný Jónsdóttir</h3>
                 <p class="staff-title">Þjónustufulltrúi</p>
@@ -290,19 +309,7 @@
                 <p class="staff-title">Rekstrarstjóri Bókhaldssviðs</p>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-avatar placeholder" data-initials="SZ"></div>
-                <h3 class="staff-name">Samantha Zeni</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
-            </div>
-
-            <!-- New employees -->
-            <div class="staff-card">
-                <div class="staff-avatar placeholder" data-initials="GOD"></div>
-                <h3 class="staff-name">Gunnar Óli Dagmararson</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
-            </div>
-
+            <!-- Fifth row -->
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="FF"></div>
                 <h3 class="staff-name">Freyja Finnbogadóttir</h3>
@@ -315,6 +322,13 @@
                 <p class="staff-title">Þjónustufulltrúi</p>
             </div>
 
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="AA"></div>
+                <h3 class="staff-name">Aron Arnarsson</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <!-- Sixth row -->
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="HOÓ"></div>
                 <h3 class="staff-name">Hildur Ósk Ólafsdóttir</h3>
@@ -333,9 +347,41 @@
                 <p class="staff-title">Þjónustufulltrúi</p>
             </div>
 
+            <!-- Seventh row -->
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="MM"></div>
+                <h3 class="staff-name">María Mikaelsdóttir</h3>
+                <p class="staff-title">Bókhald og Viðskiptastjórnun</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="ET"></div>
+                <h3 class="staff-name">Embla Torfadóttir</h3>
+                <p class="staff-title">Viðskiptastjóri</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="GKV"></div>
+                <h3 class="staff-name">Guðrún Kristín Valgeirsdóttir</h3>
+                <p class="staff-title">Viðskiptastjóri</p>
+            </div>
+
+            <!-- Eighth row -->
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="TT"></div>
                 <h3 class="staff-name">Tatjana Tanja</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="UÞB"></div>
+                <h3 class="staff-name">Unnar Þór Benediktsson</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="SZ"></div>
+                <h3 class="staff-name">Samantha Zeni</h3>
                 <p class="staff-title">Þjónustufulltrúi</p>
             </div>
         </div>
