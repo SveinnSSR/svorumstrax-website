@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mannauður - Svörum strax</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Additional styles for staff page */
+        .staff-hero {
+            padding: 120px 5% 60px;
+            background: radial-gradient(ellipse at top, #1B2735 0%, #090A0F 100%);
+            text-align: center;
+            min-height: auto;
+        }
+
+        .staff-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, var(--text-light) 0%, var(--primary-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .staff-intro {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            text-align: center;
+        }
+
+        .staff-intro p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .staff-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 0 5% 100px;
+        }
+
+        .staff-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .staff-card.founder {
+            border-color: rgba(255, 107, 53, 0.3);
+            background: rgba(255, 107, 53, 0.02);
+        }
+
+        .staff-card.founder::before {
+            content: 'Eigandi';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient-orange);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .staff-avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            background: var(--gradient-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .staff-avatar.placeholder {
+            background: linear-gradient(135deg, #2D3561 0%, #1B2735 100%);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .staff-avatar.placeholder::before {
+            content: attr(data-initials);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            opacity: 0.8;
+        }
+
+        .staff-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .staff-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        .staff-title {
+            font-size: 1rem;
+            color: var(--primary-orange);
+            margin-bottom: 12px;
+        }
+
+        .staff-email {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .staff-email:hover {
+            color: var(--primary-orange);
+        }
+
+        .values-section {
+            padding: 80px 5%;
+            background: rgba(27, 39, 53, 0.3);
+            text-align: center;
+        }
+
+        .values-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: var(--gradient-orange);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        @media (max-width: 768px) {
+            .staff-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .staff-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: block;">
+                    <img src="assets/images/svorum-strax-logo.svg" alt="Svörum strax" style="height: 36px;">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Heim</a></li>
+                <li><a href="index.html#tjonusta">Þjónusta</a></li>
+                <li><a href="index.html#um-okkur">Um okkur</a></li>
+                <li><a href="mannaudur.html" class="active">Mannauður</a></li>
+                <li><a href="index.html#contact" class="cta-button">Hafa samband</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Staff Hero Section -->
+    <section class="staff-hero">
+        <h1>Mannauður</h1>
+        <div class="staff-intro">
+            <p>
+                Starfsmenn Svörum strax eru reynslumiklir og búa yfir fjölbreyttri reynslu. 
+                Við eigum það öll sameiginlegt að vera búsett á Spáni í góða veðrinu og elskum að veita góða þjónustu.
+            </p>
+            <p>
+                Við leggjum okkur fram í öllum samskiptum að mynda góð tengsl og veita sem besta þjónustu 
+                fyrir þig og þína viðskiptavini!
+            </p>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="values-container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--text-light);">Okkar gildi</h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 50px;">
+                Framtíðarsýn okkar er að skapa gott starfsumhverfi fyrir Íslendinga á Spáni og vera það 
+                útvistunarfyrirtæki sem veitir hvað besta þjónustu á íslenskum markaði.
+            </p>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3 style="color: var(--text-light); margin-bottom: 10px;">Samvinna</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Við vinnum saman sem eitt teymi þvert á landamæri
+                    </p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🛡️</div>
+                    <h3 style="color: var(--text-light); margin-bottom: 10px;">Traust</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Áreiðanleiki og traust eru hornsteinar í okkar starfi
+                    </p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3 style="color: var(--text-light); margin-bottom: 10px;">Fjölbreytni</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Fjölbreyttur bakgrunnur styrkir þjónustu okkar
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Grid -->
+    <section class="staff-section" style="padding: 80px 0; background: rgba(15, 23, 42, 0.5);">
+        <div class="staff-grid">
+            <!-- Founders -->
+            <div class="staff-card founder">
+                <div class="staff-avatar placeholder" data-initials="DÞI"></div>
+                <h3 class="staff-name">Daníel Þór Irvine</h3>
+                <p class="staff-title">Framkvæmdastjóri</p>
+                <a href="mailto:daniel@svorumstrax.is" class="staff-email">daniel@svorumstrax.is</a>
+            </div>
+
+            <div class="staff-card founder">
+                <div class="staff-avatar placeholder" data-initials="AC"></div>
+                <h3 class="staff-name">Aris Crespo</h3>
+                <p class="staff-title">Mannauðsstjóri</p>
+                <a href="mailto:aris@svorumstrax.is" class="staff-email">aris@svorumstrax.is</a>
+            </div>
+
+            <div class="staff-card founder">
+                <div class="staff-avatar placeholder" data-initials="SSR"></div>
+                <h3 class="staff-name">Sveinn Sigurður Rafnsson</h3>
+                <p class="staff-title">Viðskiptaþróunarstjóri</p>
+                <a href="mailto:sveinn@svorumstrax.is" class="staff-email">sveinn@svorumstrax.is</a>
+            </div>
+
+            <!-- Other staff members -->
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="DT"></div>
+                <h3 class="staff-name">Daníel Thorstensen</h3>
+                <p class="staff-title">Viðskiptastjóri</p>
+                <a href="mailto:daniel.t@svorumstrax.is" class="staff-email">daniel.t@svorumstrax.is</a>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="DFH"></div>
+                <h3 class="staff-name">Davíð Freyr Hlynsson</h3>
+                <p class="staff-title">Vefsíðu- og kerfisstjóri</p>
+                <a href="mailto:david@svorumstrax.is" class="staff-email">david@svorumstrax.is</a>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="SFJ"></div>
+                <h3 class="staff-name">Sigrún Fanný Jónsdóttir</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="BÞÁ"></div>
+                <h3 class="staff-name">Bryndís Þóra Ásgeirsdóttir</h3>
+                <p class="staff-title">Verkefnastjóri</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="OHO"></div>
+                <h3 class="staff-name">Oddný Halldóra Oddsdóttir</h3>
+                <p class="staff-title">Verkefnastjóri</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="EJÞ"></div>
+                <h3 class="staff-name">Elma Jenný Þórhallsdóttir</h3>
+                <p class="staff-title">Verkefnastjóri</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="MK"></div>
+                <h3 class="staff-name">Margrét Karlsdóttir</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="JK"></div>
+                <h3 class="staff-name">Jóel Kristinsson</h3>
+                <p class="staff-title">Rekstrarstjóri Bókhaldssviðs</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="SZ"></div>
+                <h3 class="staff-name">Samantha Zeni</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <!-- Add more staff placeholder cards as needed -->
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="?"></div>
+                <h3 class="staff-name">Nýr starfsmaður</h3>
+                <p class="staff-title">Staða</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="?"></div>
+                <h3 class="staff-name">Nýr starfsmaður</h3>
+                <p class="staff-title">Staða</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Svörum strax</h3>
+                <p>
+                    Öflugt þjónustuver í Barcelona með 35+ íslenska sérfræðinga. 
+                    Við samþættum mannlega þjónustu og gervigreind til að veita 
+                    framúrskarandi upplifun fyrir þína viðskiptavini.
+                </p>
+                <p style="margin-top: 20px; font-size: 0.9rem;">
+                    Svörum strax er stofnað og rekið í Barcelona á Spáni.<br>
+                    El MUNDO BUENO DE ISLANDIA, SOCIEDAD LIMITADA.
+                </p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Þjónusta</h4>
+                <ul>
+                    <li><a href="index.html#tjonusta">Símsvörun</a></li>
+                    <li><a href="index.html#tjonusta">Tölvupóstþjónusta</a></li>
+                    <li><a href="index.html#tjonusta">AI þjónusta</a></li>
+                    <li><a href="index.html#tjonusta">Viðskiptagreining</a></li>
+                    <li><a href="index.html#tjonusta">Úthringingar</a></li>
+                    <li><a href="index.html#tjonusta">Stöðugildi</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Fyrirtækið</h4>
+                <ul>
+                    <li><a href="index.html#um-okkur">Um okkur</a></li>
+                    <li><a href="mannaudur.html">Mannauður</a></li>
+                    <li><a href="index.html#starfsfolk">Störf</a></li>
+                    <li><a href="index.html#um-okkur">Barcelona</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Hafðu samband</h4>
+                <ul>
+                    <li>📧 svorumstrax@svorumstrax.is</li>
+                    <li>📞 537-0800</li>
+                    <li>📍 Barcelona, Spánn</li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Svörum strax. Allur réttur áskilinn.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    
+    <!-- Svörum strax Premium Chat Widget -->
+    <link rel="stylesheet" href="chatbot/widget.css">
+    <script src="chatbot/widget.js"></script>
+</body>
+</html>
