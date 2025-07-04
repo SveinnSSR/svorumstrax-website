@@ -78,12 +78,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .staff-avatar:hover {
             transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
         }
 
         .staff-avatar.placeholder {
@@ -100,15 +100,9 @@
         }
 
         .staff-avatar img {
-            width: 110%;
-            height: 110%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            object-position: center center;
-            filter: contrast(1.05) brightness(1.02);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
 
         .staff-name {
@@ -442,6 +436,69 @@
     </footer>
 
     <script src="js/main.js"></script>
+    
+    <!-- Lightbox for full images -->
+    <div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 9999; cursor: pointer; opacity: 0; transition: opacity 0.3s ease;">
+        <img id="lightbox-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5); transition: transform 0.3s ease;">
+        <span style="position: absolute; top: 30px; right: 40px; color: white; font-size: 40px; font-weight: 300; cursor: pointer; opacity: 0.8; transition: opacity 0.3s;" onclick="closeLightbox()">&times;</span>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        function openLightbox(imgSrc, altText) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imgSrc;
+            lightboxImg.alt = altText;
+            lightbox.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Animate in
+            setTimeout(() => {
+                lightbox.style.opacity = '1';
+                lightboxImg.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, 10);
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            // Animate out
+            lightbox.style.opacity = '0';
+            lightboxImg.style.transform = 'translate(-50%, -50%) scale(0.9)';
+            
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        // Add click handlers to all staff images
+        document.addEventListener('DOMContentLoaded', function() {
+            const staffImages = document.querySelectorAll('.staff-avatar img');
+            staffImages.forEach(img => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function() {
+                    openLightbox(this.src, this.alt);
+                });
+            });
+
+            // Close lightbox on background click
+            document.getElementById('lightbox').addEventListener('click', function(e) {
+                if (e.target.id === 'lightbox') {
+                    closeLightbox();
+                }
+            });
+
+            // Close lightbox on ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
     
     <!-- Svörum strax Premium Chat Widget -->
     <link rel="stylesheet" href="chatbot/widget.css">
