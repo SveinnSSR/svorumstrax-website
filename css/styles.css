@@ -682,6 +682,11 @@ nav {
     transition: all 0.3s ease;
 }
 
+/* For logos that are already light/white */
+.client-img.light-logo {
+    filter: opacity(0.7);
+}
+
 .client-logo:hover {
     background: rgba(255, 255, 255, 0.05);
     transform: translateY(-5px);
@@ -692,14 +697,27 @@ nav {
     transform: scale(1.1);
 }
 
+.client-logo:hover .client-img.light-logo {
+    filter: opacity(1);
+    transform: scale(1.1);
+}
+
 /* Dark mode inversion for better visibility on dark background */
 @media (prefers-color-scheme: dark) {
     .client-img {
         filter: brightness(0) invert(1) opacity(0.7);
     }
     
+    .client-img.light-logo {
+        filter: opacity(0.7);
+    }
+    
     .client-logo:hover .client-img {
         filter: brightness(0) invert(1) opacity(1);
+    }
+    
+    .client-logo:hover .client-img.light-logo {
+        filter: opacity(1);
     }
 }
 
@@ -924,5 +942,9 @@ footer {
     .client-img {
         max-height: 65px;
         max-width: 180px;
+    }
+    
+    .client-img.light-logo {
+        filter: opacity(0.7);
     }
 }
