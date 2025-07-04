@@ -659,22 +659,22 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    gap: 80px;
 }
 
 .client-logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80px;
+    height: 100px;
     padding: 20px;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
 
 .client-img {
-    max-height: 60px;
-    max-width: 180px;
+    max-height: 80px;
+    max-width: 220px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -918,11 +918,11 @@ footer {
     }
 
     .clients-grid {
-        gap: 40px;
+        gap: 50px;
     }
 
     .client-img {
-        max-height: 50px;
-        max-width: 150px;
+        max-height: 65px;
+        max-width: 180px;
     }
 }
