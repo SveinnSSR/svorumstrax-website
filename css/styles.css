@@ -646,7 +646,7 @@ nav {
     color: var(--text-light);
 }
 
-/* Trust Section */
+/* Trust Section - Updated for logos */
 .trust-section {
     padding: 80px 5%;
     background: rgba(10, 14, 39, 0.6);
@@ -655,32 +655,52 @@ nav {
 .clients-grid {
     max-width: 1200px;
     margin: 40px auto 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    opacity: 0.7;
-    filter: grayscale(100%);
-    transition: all 0.3s ease;
-}
-
-.clients-grid:hover {
-    opacity: 1;
-    filter: grayscale(0%);
+    gap: 60px;
 }
 
 .client-logo {
-    text-align: center;
-    font-size: 18px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
     padding: 20px;
     border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.client-img {
+    max-height: 60px;
+    max-width: 180px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1) opacity(0.7);
+    transition: all 0.3s ease;
 }
 
 .client-logo:hover {
     background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+}
+
+.client-logo:hover .client-img {
+    filter: brightness(0) invert(1) opacity(1);
     transform: scale(1.1);
+}
+
+/* Dark mode inversion for better visibility on dark background */
+@media (prefers-color-scheme: dark) {
+    .client-img {
+        filter: brightness(0) invert(1) opacity(0.7);
+    }
+    
+    .client-logo:hover .client-img {
+        filter: brightness(0) invert(1) opacity(1);
+    }
 }
 
 /* Testimonials */
@@ -895,5 +915,14 @@ footer {
 
     .jobs-section {
         background-attachment: scroll;
+    }
+
+    .clients-grid {
+        gap: 40px;
+    }
+
+    .client-img {
+        max-height: 50px;
+        max-width: 150px;
     }
 }
