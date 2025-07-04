@@ -23,13 +23,13 @@
         }
 
         .staff-intro {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto 80px;
             text-align: center;
         }
 
         .staff-intro p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
             line-height: 1.8;
             margin-bottom: 20px;
@@ -41,7 +41,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
-            padding: 0 5% 100px;
+            padding: 80px 5% 100px;
         }
 
         .staff-card {
@@ -62,7 +62,7 @@
         }
 
         .staff-card.founder::before {
-            content: 'Eigandi';
+            content: 'Stofnandi';
             position: absolute;
             top: 15px;
             right: 15px;
@@ -136,58 +136,14 @@
             color: var(--primary-orange);
         }
 
-        .values-section {
-            padding: 80px 5%;
-            background: rgba(27, 39, 53, 0.3);
-            text-align: center;
-        }
-
-        .values-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .value-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .value-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 107, 53, 0.3);
-        }
-
-        .value-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 20px;
-            background: var(--gradient-orange);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
+        .staff-section {
+            background: rgba(15, 23, 42, 0.5);
         }
 
         @media (max-width: 768px) {
             .staff-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 30px;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
             }
 
             .staff-hero h1 {
@@ -220,73 +176,72 @@
         <h1>Mannauður</h1>
         <div class="staff-intro">
             <p>
-                Starfsmenn Svörum strax eru reynslumiklir og búa yfir fjölbreyttri reynslu. 
-                Við eigum það öll sameiginlegt að vera búsett á Spáni í góða veðrinu og elskum að veita góða þjónustu.
+                Hjá Svörum strax starfa yfir 35 íslenskir sérfræðingar í Barcelona sem deila ástríðu 
+                fyrir framúrskarandi þjónustu. Við sameinum reynslu, nýsköpun og alþjóðlegt sjónarhorn 
+                til að skapa einstakt vinnuumhverfi þar sem fagmennska og gleði fara saman.
             </p>
             <p>
-                Við leggjum okkur fram í öllum samskiptum að mynda góð tengsl og veita sem besta þjónustu 
-                fyrir þig og þína viðskiptavini!
+                Fjölbreyttur bakgrunnur starfsfólks okkar, nútímaleg tækni og sveigjanleg vinnuaðstaða 
+                gera okkur kleift að veita persónulega og skilvirka þjónustu sem stenst alþjóðlegan samanburð.
             </p>
-        </div>
-    </section>
-
-    <!-- Values Section -->
-    <section class="values-section">
-        <div class="values-container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--text-light);">Okkar gildi</h2>
-            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 50px;">
-                Framtíðarsýn okkar er að skapa gott starfsumhverfi fyrir Íslendinga á Spáni og vera það 
-                útvistunarfyrirtæki sem veitir hvað besta þjónustu á íslenskum markaði.
-            </p>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">🤝</div>
-                    <h3 style="color: var(--text-light); margin-bottom: 10px;">Samvinna</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">
-                        Við vinnum saman sem eitt teymi þvert á landamæri
-                    </p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🛡️</div>
-                    <h3 style="color: var(--text-light); margin-bottom: 10px;">Traust</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">
-                        Áreiðanleiki og traust eru hornsteinar í okkar starfi
-                    </p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🌍</div>
-                    <h3 style="color: var(--text-light); margin-bottom: 10px;">Fjölbreytni</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">
-                        Fjölbreyttur bakgrunnur styrkir þjónustu okkar
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Staff Grid -->
-    <section class="staff-section" style="padding: 80px 0; background: rgba(15, 23, 42, 0.5);">
+    <section class="staff-section">
         <div class="staff-grid">
             <!-- Founders -->
             <div class="staff-card founder">
-                <div class="staff-avatar placeholder" data-initials="DÞI"></div>
+                <div class="staff-avatar">
+                    <img src="assets/images/staff/daniel-irvine.jpg" alt="Daníel Þór Irvine" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'DÞI'); this.remove();">
+                </div>
                 <h3 class="staff-name">Daníel Þór Irvine</h3>
                 <p class="staff-title">Framkvæmdastjóri</p>
                 <a href="mailto:daniel@svorumstrax.is" class="staff-email">daniel@svorumstrax.is</a>
             </div>
 
             <div class="staff-card founder">
-                <div class="staff-avatar placeholder" data-initials="AC"></div>
+                <div class="staff-avatar">
+                    <img src="assets/images/staff/aris-crespo.jpg" alt="Aris Crespo" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'AC'); this.remove();">
+                </div>
                 <h3 class="staff-name">Aris Crespo</h3>
                 <p class="staff-title">Mannauðsstjóri</p>
                 <a href="mailto:aris@svorumstrax.is" class="staff-email">aris@svorumstrax.is</a>
             </div>
 
             <div class="staff-card founder">
-                <div class="staff-avatar placeholder" data-initials="SSR"></div>
+                <div class="staff-avatar">
+                    <img src="assets/images/staff/sveinn-rafnsson.jpg" alt="Sveinn Sigurður Rafnsson" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'SSR'); this.remove();">
+                </div>
                 <h3 class="staff-name">Sveinn Sigurður Rafnsson</h3>
-                <p class="staff-title">Viðskiptaþróunarstjóri</p>
+                <p class="staff-title">Viðskiptaþróunarstjóri & Tæknileiðtogi</p>
                 <a href="mailto:sveinn@svorumstrax.is" class="staff-email">sveinn@svorumstrax.is</a>
+            </div>
+
+            <!-- 4th position - Elma -->
+            <div class="staff-card">
+                <div class="staff-avatar">
+                    <img src="assets/images/staff/elma-thorhallsdottir.jpg" alt="Elma Jenný Þórhallsdóttir" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'EJÞ'); this.remove();">
+                </div>
+                <h3 class="staff-name">Elma Jenný Þórhallsdóttir</h3>
+                <p class="staff-title">Þjónustuleiðtogi</p>
+            </div>
+
+            <!-- Bryndís and Oddný -->
+            <div class="staff-card">
+                <div class="staff-avatar">
+                    <img src="assets/images/staff/bryndis-asgeirsdottir.jpg" alt="Bryndís Þóra Ásgeirsdóttir" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'BÞÁ'); this.remove();">
+                </div>
+                <h3 class="staff-name">Bryndís Þóra Ásgeirsdóttir</h3>
+                <p class="staff-title">Vaxtarstjóri</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar">
+                    <img src="assets/images/staff/oddny-oddsdottir.jpg" alt="Oddný Halldóra Oddsdóttir" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'OHO'); this.remove();">
+                </div>
+                <h3 class="staff-name">Oddný Halldóra Oddsdóttir</h3>
+                <p class="staff-title">Viðskiptastýring</p>
             </div>
 
             <!-- Other staff members -->
@@ -311,30 +266,6 @@
             </div>
 
             <div class="staff-card">
-                <div class="staff-avatar placeholder" data-initials="BÞÁ"></div>
-                <h3 class="staff-name">Bryndís Þóra Ásgeirsdóttir</h3>
-                <p class="staff-title">Verkefnastjóri</p>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-avatar placeholder" data-initials="OHO"></div>
-                <h3 class="staff-name">Oddný Halldóra Oddsdóttir</h3>
-                <p class="staff-title">Verkefnastjóri</p>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-avatar placeholder" data-initials="EJÞ"></div>
-                <h3 class="staff-name">Elma Jenný Þórhallsdóttir</h3>
-                <p class="staff-title">Verkefnastjóri</p>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-avatar placeholder" data-initials="MK"></div>
-                <h3 class="staff-name">Margrét Karlsdóttir</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
-            </div>
-
-            <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="JK"></div>
                 <h3 class="staff-name">Jóel Kristinsson</h3>
                 <p class="staff-title">Rekstrarstjóri Bókhaldssviðs</p>
@@ -346,17 +277,47 @@
                 <p class="staff-title">Þjónustufulltrúi</p>
             </div>
 
-            <!-- Add more staff placeholder cards as needed -->
+            <!-- New employees -->
             <div class="staff-card">
-                <div class="staff-avatar placeholder" data-initials="?"></div>
-                <h3 class="staff-name">Nýr starfsmaður</h3>
-                <p class="staff-title">Staða</p>
+                <div class="staff-avatar placeholder" data-initials="GOD"></div>
+                <h3 class="staff-name">Gunnar Óli Dagmararson</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
             </div>
 
             <div class="staff-card">
-                <div class="staff-avatar placeholder" data-initials="?"></div>
-                <h3 class="staff-name">Nýr starfsmaður</h3>
-                <p class="staff-title">Staða</p>
+                <div class="staff-avatar placeholder" data-initials="FF"></div>
+                <h3 class="staff-name">Freyja Finnbogadóttir</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="TLRD"></div>
+                <h3 class="staff-name">Theodóra Líf Rodriguez Davíðsdóttir</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="HOÓ"></div>
+                <h3 class="staff-name">Hildur Ósk Ólafsdóttir</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="KVIH"></div>
+                <h3 class="staff-name">Klara Valgerður Inga Haraldsdóttir</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="VMH"></div>
+                <h3 class="staff-name">Veigar Már Helgason</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-avatar placeholder" data-initials="TT"></div>
+                <h3 class="staff-name">Tatjana Tanja</h3>
+                <p class="staff-title">Þjónustufulltrúi</p>
             </div>
         </div>
     </section>
