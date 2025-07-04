@@ -1,22 +1,20 @@
-// Svörum strax Premium Chat Widget - Translucent Orange Tech Design
+// Svörum strax Premium Chat Widget - Purple Tech Gradient
 (function() {
     'use strict';
 
-    // Premium brand theme with translucent orange gradient
+    // Premium brand theme with ELKO-inspired purple gradient
     const theme = {
         colors: {
-            primary: "#FF6B35", // Orange primary
-            secondary: "#FF8F65", // Lighter orange
-            gradient: "linear-gradient(135deg, rgba(255, 107, 53, 0.95) 0%, rgba(255, 143, 101, 0.85) 100%)", // Translucent orange
-            solidGradient: "linear-gradient(135deg, #FF6B35 0%, #FF8F65 100%)", // Solid for buttons
+            primary: "#667eea", // Purple start
+            secondary: "#764ba2", // Purple end
+            gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", // ELKO purple
             headerBg: "linear-gradient(135deg, #0A0E27 0%, #1B2735 100%)", // Keep dark header
             text: "#333333",
             background: "#FFFFFF",
             messageBg: "#F5F5F5",
-            userMessage: "#FF6B35", // Orange for user messages
+            userMessage: "#667eea", // Purple for user messages
             botMessage: "#F0F0F0",
-            lightAccent: "rgba(255, 107, 53, 0.1)",
-            darkBg: "#1A1F2E", // Dark background from screenshot
+            lightAccent: "rgba(102, 126, 234, 0.1)",
         },
         fonts: {
             body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -52,35 +50,28 @@
     function createWidget() {
         const html = `
             <div class="svorum-premium-container ${isMinimized ? 'minimized' : ''}">
-                <!-- Minimized state - Premium circular button with translucent orange -->
+                <!-- Minimized state - Premium circular button with purple gradient -->
                 <div class="svorum-premium-bubble" onclick="toggleChat()">
                     <div class="svorum-premium-ring">
                         <div class="svorum-premium-avatar">
                             <svg class="svorum-logo-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
                                     <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
+                                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
                                     </linearGradient>
                                     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                         <stop offset="0%" style="stop-color:#FAFAFA;stop-opacity:1" />
                                         <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
                                     </linearGradient>
-                                    <filter id="glassmorphism">
-                                        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-                                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="glow" />
-                                        <feBlend in="SourceGraphic" in2="glow" />
-                                    </filter>
                                 </defs>
-                                <circle cx="30" cy="30" r="28" fill="url(#bgGrad)" opacity="0.9"/>
-                                <!-- Modern tech chat bubble -->
-                                <g filter="url(#glassmorphism)">
-                                    <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
-                                          fill="url(#logoGrad)" opacity="0.85"/>
-                                    <circle cx="25" cy="27.5" r="1.5" fill="white"/>
-                                    <circle cx="30" cy="27.5" r="1.5" fill="white"/>
-                                    <circle cx="35" cy="27.5" r="1.5" fill="white"/>
-                                </g>
+                                <circle cx="30" cy="30" r="28" fill="url(#bgGrad)"/>
+                                <!-- Chat bubble design -->
+                                <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
+                                      fill="url(#logoGrad)" opacity="0.9"/>
+                                <circle cx="25" cy="27.5" r="1.5" fill="white"/>
+                                <circle cx="30" cy="27.5" r="1.5" fill="white"/>
+                                <circle cx="35" cy="27.5" r="1.5" fill="white"/>
                             </svg>
                         </div>
                     </div>
@@ -95,19 +86,17 @@
                                 <svg class="svorum-logo-svg-header" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
                                         <linearGradient id="logoGradHeader" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
-                                            <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
+                                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
                                         </linearGradient>
                                     </defs>
-                                    <circle cx="30" cy="30" r="30" fill="white" opacity="0.95"/>
+                                    <circle cx="30" cy="30" r="30" fill="white"/>
                                     <!-- Chat bubble design -->
-                                    <g>
-                                        <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
-                                              fill="url(#logoGradHeader)" opacity="0.9"/>
-                                        <circle cx="25" cy="27.5" r="1.5" fill="white"/>
-                                        <circle cx="30" cy="27.5" r="1.5" fill="white"/>
-                                        <circle cx="35" cy="27.5" r="1.5" fill="white"/>
-                                    </g>
+                                    <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
+                                          fill="url(#logoGradHeader)" opacity="0.9"/>
+                                    <circle cx="25" cy="27.5" r="1.5" fill="white"/>
+                                    <circle cx="30" cy="27.5" r="1.5" fill="white"/>
+                                    <circle cx="35" cy="27.5" r="1.5" fill="white"/>
                                 </svg>
                             </div>
                             <div class="svorum-premium-header-info">
@@ -137,11 +126,11 @@
                                     <svg class="svorum-logo-svg-small" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                                         <defs>
                                             <linearGradient id="logoGradTyping" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
-                                                <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
+                                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
                                             </linearGradient>
                                         </defs>
-                                        <circle cx="20" cy="20" r="20" fill="white" opacity="0.95"/>
+                                        <circle cx="20" cy="20" r="20" fill="white"/>
                                         <!-- Chat bubble design scaled down -->
                                         <path d="M 13 17 Q 13 14, 16 14 L 24 14 Q 27 14, 27 17 L 27 20 Q 27 23, 24 23 L 19 23 L 15 27 L 15 23 L 16 23 Q 13 23, 13 20 Z" 
                                               fill="url(#logoGradTyping)" opacity="0.9"/>
@@ -230,11 +219,11 @@
                         <svg class="svorum-logo-svg-small" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                             <defs>
                                 <linearGradient id="logoGradSmall${messageId}" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
+                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
                                 </linearGradient>
                             </defs>
-                            <circle cx="20" cy="20" r="20" fill="white" opacity="0.95"/>
+                            <circle cx="20" cy="20" r="20" fill="white"/>
                             <!-- Chat bubble design scaled down -->
                             <path d="M 13 17 Q 13 14, 16 14 L 24 14 Q 27 14, 27 17 L 27 20 Q 27 23, 24 23 L 19 23 L 15 27 L 15 23 L 16 23 Q 13 23, 13 20 Z" 
                                   fill="url(#logoGradSmall${messageId})" opacity="0.9"/>
