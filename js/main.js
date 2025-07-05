@@ -56,14 +56,23 @@ if (typingMessage) {
         // Add a new message after typing
         const newMessage = document.createElement('div');
         newMessage.className = 'message ai-message';
-        newMessage.textContent = 'Viltu bóka fund til að fræðast meira? Ég get hjálpað þér með það.';
+        
+        // Get current language
+        const currentLang = localStorage.getItem('language') || 'is';
+        
+        if (currentLang === 'is') {
+            newMessage.textContent = 'Viltu bóka fund til að fræðast meira? Ég get hjálpað þér með það.';
+        } else {
+            newMessage.textContent = 'Would you like to book a meeting to learn more? I can help you with that.';
+        }
+        
         newMessage.style.animation = 'slideIn 0.3s ease';
         typingMessage.parentElement.appendChild(newMessage);
     }, 3000);
 }
 
 // Dynamic chat messages
-const chatMessages = [
+const chatMessagesIS = [
     { type: 'user', text: 'Getið þið séð um alla okkar símsvörun?' },
     { type: 'ai', text: 'Já, við sérhæfum okkur í símsvörun - allt frá almennri ritaraþjónustu til fullþjálfaðra sérfræðinga. Svörum í nafni fyrirtækisins, tökum skilaboð og sendum á réttan starfsmann.' },
     { type: 'user', text: 'En hvað með úthringingar og sölu?' },
@@ -72,38 +81,80 @@ const chatMessages = [
     { type: 'ai', text: 'AI greinir öll samskipti, finnur sölutækifæri og veitir rekstrarinnsýn í rauntíma. Þú ræður hvort AI eða manneskja svarar - við bjóðum heildarlausn sem hentar þínum þörfum.' }
 ];
 
+const chatMessagesEN = [
+    { type: 'user', text: 'Can you handle all our phone support?' },
+    { type: 'ai', text: 'Yes, we specialize in phone support - everything from general secretarial service to fully trained specialists. We answer in your company name, take messages and forward to the right employee.' },
+    { type: 'user', text: 'What about outbound calls and sales?' },
+    { type: 'ai', text: 'We have experienced sales teams for both B2B and B2C markets. We use the latest CRM systems and AI analysis to maximize results. We can also rent you specialized employees (FTEs) exclusively for your needs.' },
+    { type: 'user', text: 'How does AI benefit all this?' },
+    { type: 'ai', text: 'AI analyzes all communications, finds sales opportunities and provides operational insights in real-time. You decide whether AI or human responds - we offer a complete solution that fits your needs.' }
+];
+
 let messageIndex = 0;
 const chatContainer = document.querySelector('.chat-messages');
 
-setInterval(() => {
-    // Remove typing indicator if exists
-    const typing = chatContainer.querySelector('.typing-indicator');
-    if (typing) typing.remove();
+// Clear existing interval if any
+let chatInterval;
 
-    if (messageIndex < chatMessages.length) {
-        const newMessage = document.createElement('div');
-        newMessage.className = `message ${chatMessages[messageIndex].type}-message`;
-        newMessage.textContent = chatMessages[messageIndex].text;
-        newMessage.style.animation = 'slideIn 0.3s ease';
-        
-        // Remove oldest messages if too many
-        if (chatContainer.children.length >= 4) {
-            chatContainer.removeChild(chatContainer.firstChild);
-        }
-        
-        chatContainer.appendChild(newMessage);
-        messageIndex++;
-        
-        // Add typing indicator after user message
-        if (chatMessages[messageIndex - 1].type === 'user' && messageIndex < chatMessages.length) {
-            setTimeout(() => {
-                const typingDiv = document.createElement('div');
-                typingDiv.className = 'message ai-message typing-indicator';
-                typingDiv.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
-                chatContainer.appendChild(typingDiv);
-            }, 500);
-        }
-    } else {
-        messageIndex = 0;
+function startChatAnimation() {
+    // Clear any existing interval
+    if (chatInterval) {
+        clearInterval(chatInterval);
     }
-}, 5000);
+    
+    // Reset message index
+    messageIndex = 0;
+    
+    chatInterval = setInterval(() => {
+        // Get current language
+        const currentLang = localStorage.getItem('language') || 'is';
+        const chatMessages = currentLang === 'is' ? chatMessagesIS : chatMessagesEN;
+        
+        // Remove typing indicator if exists
+        const typing = chatContainer.querySelector('.typing-indicator');
+        if (typing) typing.remove();
+
+        if (messageIndex < chatMessages.length) {
+            const newMessage = document.createElement('div');
+            newMessage.className = `message ${chatMessages[messageIndex].type}-message`;
+            newMessage.textContent = chatMessages[messageIndex].text;
+            newMessage.style.animation = 'slideIn 0.3s ease';
+            
+            // Remove oldest messages if too many
+            if (chatContainer.children.length >= 4) {
+                chatContainer.removeChild(chatContainer.firstChild);
+            }
+            
+            chatContainer.appendChild(newMessage);
+            messageIndex++;
+            
+            // Add typing indicator after user message
+            if (chatMessages[messageIndex - 1].type === 'user' && messageIndex < chatMessages.length) {
+                setTimeout(() => {
+                    const typingDiv = document.createElement('div');
+                    typingDiv.className = 'message ai-message typing-indicator';
+                    typingDiv.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+                    chatContainer.appendChild(typingDiv);
+                }, 500);
+            }
+        } else {
+            messageIndex = 0;
+        }
+    }, 5000);
+}
+
+// Start chat animation on page load
+if (chatContainer) {
+    startChatAnimation();
+}
+
+// Restart chat animation when language changes
+window.addEventListener('languageChanged', function() {
+    if (chatContainer) {
+        // Clear all messages except the first three (static messages)
+        while (chatContainer.children.length > 3) {
+            chatContainer.removeChild(chatContainer.lastChild);
+        }
+        startChatAnimation();
+    }
+});

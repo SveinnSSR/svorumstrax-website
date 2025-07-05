@@ -172,25 +172,31 @@
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html#home">Heim</a></li>
-                <li><a href="index.html#tjonusta">Þjónusta</a></li>
-                <li><a href="index.html#um-okkur">Um okkur</a></li>
-                <li><a href="mannaudur.html" class="active">Mannauður</a></li>
-                <li><a href="index.html#contact" class="cta-button">Hafa samband</a></li>
+                <li><a href="index.html#home" data-is="Heim" data-en="Home">Heim</a></li>
+                <li><a href="index.html#tjonusta" data-is="Þjónusta" data-en="Services">Þjónusta</a></li>
+                <li><a href="index.html#um-okkur" data-is="Um okkur" data-en="About Us">Um okkur</a></li>
+                <li><a href="mannaudur.html" class="active" data-is="Mannauður" data-en="Our Team">Mannauður</a></li>
+                <li><a href="index.html#contact" class="cta-button" data-is="Hafa samband" data-en="Contact">Hafa samband</a></li>
+                <li class="language-toggle">
+                    <button class="lang-btn active" onclick="setLanguage('is')">IS</button>
+                    <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+                </li>
             </ul>
         </div>
     </nav>
 
     <!-- Staff Hero Section -->
     <section class="staff-hero">
-        <h1>Mannauður</h1>
+        <h1 data-is="Mannauður" data-en="Our Team">Mannauður</h1>
         <div class="staff-intro">
-            <p>
+            <p data-is="Hjá Svörum strax starfa yfir 35 íslenskir sérfræðingar í Barcelona sem deila ástríðu fyrir framúrskarandi þjónustu. Við sameinum reynslu, nýsköpun og alþjóðlegt sjónarhorn til að skapa einstakt vinnuumhverfi þar sem fagmennska og gleði fara saman."
+               data-en="At Svörum strax, over 35 Icelandic experts work in Barcelona who share a passion for outstanding service. We combine experience, innovation and an international perspective to create a unique work environment where professionalism and joy go together.">
                 Hjá Svörum strax starfa yfir 35 íslenskir sérfræðingar í Barcelona sem deila ástríðu 
                 fyrir framúrskarandi þjónustu. Við sameinum reynslu, nýsköpun og alþjóðlegt sjónarhorn 
                 til að skapa einstakt vinnuumhverfi þar sem fagmennska og gleði fara saman.
             </p>
-            <p>
+            <p data-is="Fjölbreyttur bakgrunnur starfsfólks okkar, nútímaleg tækni og sveigjanleg vinnuaðstaða gera okkur kleift að veita persónulega og skilvirka þjónustu sem stenst alþjóðlegan samanburð."
+               data-en="The diverse background of our staff, modern technology and flexible workplace enable us to provide personal and efficient service that meets international standards.">
                 Fjölbreyttur bakgrunnur starfsfólks okkar, nútímaleg tækni og sveigjanleg vinnuaðstaða 
                 gera okkur kleift að veita persónulega og skilvirka þjónustu sem stenst alþjóðlegan samanburð.
             </p>
@@ -206,8 +212,8 @@
                     <img src="assets/images/staff/daniel-irvine.jpeg" alt="Daníel Þór Irvine" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'DÞI'); this.remove();">
                 </div>
                 <h3 class="staff-name">Daníel Þór Irvine</h3>
-                <p class="staff-title">Framkvæmdastjóri</p>
-                <div class="founder-badge">Stofnandi</div>
+                <p class="staff-title" data-is="Framkvæmdastjóri" data-en="CEO">Framkvæmdastjóri</p>
+                <div class="founder-badge" data-is="Stofnandi" data-en="Founder">Stofnandi</div>
                 <div>
                     <a href="mailto:daniel@svorumstrax.is" class="staff-email">daniel@svorumstrax.is</a>
                 </div>
@@ -218,8 +224,8 @@
                     <img src="assets/images/staff/aris-crespo.jpeg" alt="Aris Crespo" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'AC'); this.remove();">
                 </div>
                 <h3 class="staff-name">Aris Crespo</h3>
-                <p class="staff-title">Mannauðsstjóri</p>
-                <div class="founder-badge">Stofnandi</div>
+                <p class="staff-title" data-is="Mannauðsstjóri" data-en="HR Manager">Mannauðsstjóri</p>
+                <div class="founder-badge" data-is="Stofnandi" data-en="Founder">Stofnandi</div>
                 <div>
                     <a href="mailto:aris@svorumstrax.is" class="staff-email">aris@svorumstrax.is</a>
                 </div>
@@ -230,8 +236,8 @@
                     <img src="assets/images/staff/sveinn-rafnsson.jpeg" alt="Sveinn Sigurður Rafnsson" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'SSR'); this.remove();">
                 </div>
                 <h3 class="staff-name">Sveinn Sigurður Rafnsson</h3>
-                <p class="staff-title">Viðskiptaþróunarstjóri</p>
-                <div class="founder-badge">Stofnandi</div>
+                <p class="staff-title" data-is="Viðskiptaþróunarstjóri" data-en="Business Development Manager">Viðskiptaþróunarstjóri</p>
+                <div class="founder-badge" data-is="Stofnandi" data-en="Founder">Stofnandi</div>
                 <div>
                     <a href="mailto:sveinn@svorumstrax.is" class="staff-email">sveinn@svorumstrax.is</a>
                 </div>
@@ -243,7 +249,7 @@
                     <img src="assets/images/staff/elma-thorhallsdottir.jpeg" alt="Elma Jenný Þórhallsdóttir" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'EJÞ'); this.remove();">
                 </div>
                 <h3 class="staff-name">Elma Jenný Þórhallsdóttir</h3>
-                <p class="staff-title">Verkefnastjóri / Viðskiptastýring</p>
+                <p class="staff-title" data-is="Verkefnastjóri / Viðskiptastýring" data-en="Project Manager / Business Management">Verkefnastjóri / Viðskiptastýring</p>
                 <a href="mailto:elma.j@svorumstrax.is" class="staff-email">elma.j@svorumstrax.is</a>
             </div>
 
@@ -252,7 +258,7 @@
                     <img src="assets/images/staff/bryndis-asgeirsdottir.jpeg" alt="Bryndís Þóra Ásgeirsdóttir" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'BÞÁ'); this.remove();">
                 </div>
                 <h3 class="staff-name">Bryndís Þóra Ásgeirsdóttir</h3>
-                <p class="staff-title">Verkefnastjóri / Þjónustustjóri</p>
+                <p class="staff-title" data-is="Verkefnastjóri / Þjónustustjóri" data-en="Project Manager / Service Manager">Verkefnastjóri / Þjónustustjóri</p>
             </div>
 
             <div class="staff-card">
@@ -260,123 +266,123 @@
                     <img src="assets/images/staff/oddny-oddsdottir.jpeg" alt="Oddný Halldóra Oddsdóttir" onerror="this.parentElement.classList.add('placeholder'); this.parentElement.setAttribute('data-initials', 'OHO'); this.remove();">
                 </div>
                 <h3 class="staff-name">Oddný Halldóra Oddsdóttir</h3>
-                <p class="staff-title">Verkefnastjóri / Þjónustustjóri</p>
+                <p class="staff-title" data-is="Verkefnastjóri / Þjónustustjóri" data-en="Project Manager / Service Manager">Verkefnastjóri / Þjónustustjóri</p>
             </div>
 
             <!-- Third row -->
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="DT"></div>
                 <h3 class="staff-name">Daníel Thorstensen</h3>
-                <p class="staff-title">Viðskiptastjóri</p>
+                <p class="staff-title" data-is="Viðskiptastjóri" data-en="Business Manager">Viðskiptastjóri</p>
                 <a href="mailto:daniel.t@svorumstrax.is" class="staff-email">daniel.t@svorumstrax.is</a>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="DFH"></div>
                 <h3 class="staff-name">Davíð Freyr Hlynsson</h3>
-                <p class="staff-title">Vefsíðu- og kerfisstjóri</p>
+                <p class="staff-title" data-is="Vefsíðu- og kerfisstjóri" data-en="Web and Systems Manager">Vefsíðu- og kerfisstjóri</p>
                 <a href="mailto:david@svorumstrax.is" class="staff-email">david@svorumstrax.is</a>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="GOD"></div>
                 <h3 class="staff-name">Gunnar Óli Dagmararson</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
 
             <!-- Fourth row -->
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="FW"></div>
                 <h3 class="staff-name">Frosti Wendel</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="SFJ"></div>
                 <h3 class="staff-name">Sigrún Fanný Jónsdóttir</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="JK"></div>
                 <h3 class="staff-name">Jóel Kristinsson</h3>
-                <p class="staff-title">Rekstrarstjóri Bókhaldssviðs</p>
+                <p class="staff-title" data-is="Rekstrarstjóri Bókhaldssviðs" data-en="Operations Manager - Accounting">Rekstrarstjóri Bókhaldssviðs</p>
             </div>
 
             <!-- Fifth row -->
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="FF"></div>
                 <h3 class="staff-name">Freyja Finnbogadóttir</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="TLRD"></div>
                 <h3 class="staff-name">Theodóra Líf Rodriguez Davíðsdóttir</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="AA"></div>
                 <h3 class="staff-name">Aron Arnarsson</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
 
             <!-- Sixth row -->
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="HOÓ"></div>
                 <h3 class="staff-name">Hildur Ósk Ólafsdóttir</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="KVIH"></div>
                 <h3 class="staff-name">Klara Valgerður Inga Haraldsdóttir</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="VMH"></div>
                 <h3 class="staff-name">Veigar Már Helgason</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
 
             <!-- Seventh row -->
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="MM"></div>
                 <h3 class="staff-name">María Mikaelsdóttir</h3>
-                <p class="staff-title">Bókhald og Viðskiptastjórnun</p>
+                <p class="staff-title" data-is="Bókhald og Viðskiptastjórnun" data-en="Accounting and Business Management">Bókhald og Viðskiptastjórnun</p>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="ET"></div>
                 <h3 class="staff-name">Embla Torfadóttir</h3>
-                <p class="staff-title">Viðskiptastjóri</p>
+                <p class="staff-title" data-is="Viðskiptastjóri" data-en="Business Manager">Viðskiptastjóri</p>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="GKV"></div>
                 <h3 class="staff-name">Guðrún Kristín Valgeirsdóttir</h3>
-                <p class="staff-title">Viðskiptastjóri</p>
+                <p class="staff-title" data-is="Viðskiptastjóri" data-en="Business Manager">Viðskiptastjóri</p>
             </div>
 
             <!-- Eighth row -->
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="TT"></div>
                 <h3 class="staff-name">Tatjana Tanja</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="UÞB"></div>
                 <h3 class="staff-name">Unnar Þór Benediktsson</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
 
             <div class="staff-card">
                 <div class="staff-avatar placeholder" data-initials="SZ"></div>
                 <h3 class="staff-name">Samantha Zeni</h3>
-                <p class="staff-title">Þjónustufulltrúi</p>
+                <p class="staff-title" data-is="Þjónustufulltrúi" data-en="Service Representative">Þjónustufulltrúi</p>
             </div>
         </div>
     </section>
@@ -386,56 +392,99 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>Svörum strax</h3>
-                <p>
+                <p data-is="Öflugt þjónustuver í Barcelona með 35+ íslenska sérfræðinga. Við samþættum mannlega þjónustu og gervigreind til að veita framúrskarandi upplifun fyrir þína viðskiptavini."
+                   data-en="Powerful contact center in Barcelona with 35+ Icelandic experts. We integrate human service and artificial intelligence to provide outstanding experience for your customers.">
                     Öflugt þjónustuver í Barcelona með 35+ íslenska sérfræðinga. 
                     Við samþættum mannlega þjónustu og gervigreind til að veita 
                     framúrskarandi upplifun fyrir þína viðskiptavini.
                 </p>
                 <p style="margin-top: 20px; font-size: 0.9rem;">
-                    Svörum strax er stofnað og rekið í Barcelona á Spáni.<br>
+                    <span data-is="Svörum strax er stofnað og rekið í Barcelona á Spáni." data-en="Svörum strax is founded and operated in Barcelona, Spain.">Svörum strax er stofnað og rekið í Barcelona á Spáni.</span><br>
                     El MUNDO BUENO DE ISLANDIA, SOCIEDAD LIMITADA.
                 </p>
             </div>
             
             <div class="footer-column">
-                <h4>Þjónusta</h4>
+                <h4 data-is="Þjónusta" data-en="Services">Þjónusta</h4>
                 <ul>
-                    <li><a href="index.html#tjonusta">Símsvörun</a></li>
-                    <li><a href="index.html#tjonusta">Tölvupóstþjónusta</a></li>
-                    <li><a href="index.html#tjonusta">AI þjónusta</a></li>
-                    <li><a href="index.html#tjonusta">Viðskiptagreining</a></li>
-                    <li><a href="index.html#tjonusta">Úthringingar</a></li>
-                    <li><a href="index.html#tjonusta">Stöðugildi</a></li>
+                    <li><a href="index.html#tjonusta" data-is="Símsvörun" data-en="Phone Support">Símsvörun</a></li>
+                    <li><a href="index.html#tjonusta" data-is="Tölvupóstþjónusta" data-en="Email Service">Tölvupóstþjónusta</a></li>
+                    <li><a href="index.html#tjonusta" data-is="AI þjónusta" data-en="AI Service">AI þjónusta</a></li>
+                    <li><a href="index.html#tjonusta" data-is="Viðskiptagreining" data-en="Business Analytics">Viðskiptagreining</a></li>
+                    <li><a href="index.html#tjonusta" data-is="Úthringingar" data-en="Outbound Calls">Úthringingar</a></li>
+                    <li><a href="index.html#tjonusta" data-is="Stöðugildi" data-en="FTEs">Stöðugildi</a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
-                <h4>Fyrirtækið</h4>
+                <h4 data-is="Fyrirtækið" data-en="Company">Fyrirtækið</h4>
                 <ul>
-                    <li><a href="index.html#um-okkur">Um okkur</a></li>
-                    <li><a href="mannaudur.html">Mannauður</a></li>
-                    <li><a href="index.html#starfsfolk">Störf</a></li>
-                    <li><a href="index.html#um-okkur">Barcelona</a></li>
+                    <li><a href="index.html#um-okkur" data-is="Um okkur" data-en="About Us">Um okkur</a></li>
+                    <li><a href="mannaudur.html" data-is="Mannauður" data-en="Our Team">Mannauður</a></li>
+                    <li><a href="index.html#starfsfolk" data-is="Störf" data-en="Jobs">Störf</a></li>
+                    <li><a href="index.html#um-okkur" data-is="Barcelona" data-en="Barcelona">Barcelona</a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
-                <h4>Hafðu samband</h4>
+                <h4 data-is="Hafðu samband" data-en="Contact">Hafðu samband</h4>
                 <ul>
                     <li>📧 svorumstrax@svorumstrax.is</li>
                     <li>📞 537-0800</li>
-                    <li>📍 Barcelona, Spánn</li>
+                    <li>📍 Barcelona, <span data-is="Spánn" data-en="Spain">Spánn</span></li>
                     <li><a href="#">LinkedIn</a></li>
                 </ul>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>© 2025 Svörum strax. Allur réttur áskilinn.</p>
+            <p data-is="© 2025 Svörum strax. Allur réttur áskilinn." data-en="© 2025 Svörum strax. All rights reserved.">© 2025 Svörum strax. Allur réttur áskilinn.</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
+    
+    <!-- Language switching script -->
+    <script>
+        // Initialize language from localStorage or default to Icelandic
+        let currentLang = localStorage.getItem('language') || 'is';
+        
+        // Apply language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setLanguage(currentLang);
+        });
+        
+        // Language switching function
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[onclick="setLanguage('${lang}')"]`).classList.add('active');
+            
+            // Update document language
+            document.documentElement.lang = lang;
+            
+            // Update page title
+            if (lang === 'en') {
+                document.title = "Our Team - Svörum strax";
+            } else {
+                document.title = "Mannauður - Svörum strax";
+            }
+            
+            // Update all text elements
+            document.querySelectorAll('[data-is][data-en]').forEach(element => {
+                if (element.tagName === 'INPUT') {
+                    element.placeholder = element.getAttribute(`data-${lang}`);
+                } else {
+                    element.textContent = element.getAttribute(`data-${lang}`);
+                }
+            });
+        }
+    </script>
     
     <!-- Lightbox for full images -->
     <div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 9999; cursor: pointer; opacity: 0; transition: opacity 0.3s ease;">

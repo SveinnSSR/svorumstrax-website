@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="is">
 <head>
@@ -17,12 +16,16 @@
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Heim</a></li>
-                <li><a href="#tjonusta">Þjónusta</a></li>
-                <li><a href="#um-okkur">Um okkur</a></li>
-                <li><a href="mannaudur.html">Mannauður</a></li>
-                <li><a href="#starfsfolk">Störf</a></li>
-                <li><a href="#contact" class="cta-button">Hafa samband</a></li>
+                <li><a href="#home" data-is="Heim" data-en="Home">Heim</a></li>
+                <li><a href="#tjonusta" data-is="Þjónusta" data-en="Services">Þjónusta</a></li>
+                <li><a href="#um-okkur" data-is="Um okkur" data-en="About Us">Um okkur</a></li>
+                <li><a href="mannaudur.html" data-is="Mannauður" data-en="Our Team">Mannauður</a></li>
+                <li><a href="#starfsfolk" data-is="Störf" data-en="Jobs">Störf</a></li>
+                <li><a href="#contact" class="cta-button" data-is="Hafa samband" data-en="Contact">Hafa samband</a></li>
+                <li class="language-toggle">
+                    <button class="lang-btn active" onclick="setLanguage('is')">IS</button>
+                    <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+                </li>
             </ul>
         </div>
     </nav>
@@ -31,15 +34,19 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Nútímaleg þjónustulausn með réttu fólki og réttri tækni</h1>
-                <p>
+                <h1 data-is="Nútímaleg þjónustulausn með réttu fólki og réttri tækni" 
+                    data-en="Modern service solution with the right people and right technology">
+                    Nútímaleg þjónustulausn með réttu fólki og réttri tækni
+                </h1>
+                <p data-is="Yfir 100 fyrirtæki treysta Svörum strax fyrir samskiptum við sína viðskiptavini. Öflugt þjónustuver í Barcelona með 35+ sérhæfða íslenska sérfræðinga. Við nýtum gervigreind til að auka skilvirkni og veita betri rekstrarinnsýn."
+                   data-en="Over 100 companies trust Svörum strax for their customer communications. Powerful contact center in Barcelona with 35+ specialized Icelandic experts. We leverage AI to increase efficiency and provide better operational insights.">
                     Yfir 100 fyrirtæki treysta Svörum strax fyrir samskiptum við sína viðskiptavini. 
                     Öflugt þjónustuver í Barcelona með 35+ sérhæfða íslenska sérfræðinga. 
                     Við nýtum gervigreind til að auka skilvirkni og veita betri rekstrarinnsýn.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#tjonusta" class="primary-button">Sjá alla þjónustu</a>
-                    <a href="#contact" class="secondary-button">Fá ókeypis ráðgjöf</a>
+                    <a href="#tjonusta" class="primary-button" data-is="Sjá alla þjónustu" data-en="See All Services">Sjá alla þjónustu</a>
+                    <a href="#contact" class="secondary-button" data-is="Fá ókeypis ráðgjöf" data-en="Get Free Consultation">Fá ókeypis ráðgjöf</a>
                 </div>
             </div>
             
@@ -47,22 +54,21 @@
                 <div class="chat-header">
                     <div class="ai-avatar">💬</div>
                     <div>
-                        <div style="font-weight: 600;">Þú ræður - AI eða manneskja</div>
-                        <div style="font-size: 14px; color: var(--text-muted);">Snjöll samþætting fyrir bestu útkomuna</div>
+                        <div style="font-weight: 600;" data-is="Þú ræður - AI eða manneskja" data-en="You decide - AI or human">Þú ræður - AI eða manneskja</div>
+                        <div style="font-size: 14px; color: var(--text-muted);" data-is="Snjöll samþætting fyrir bestu útkomuna" data-en="Smart integration for best results">Snjöll samþætting fyrir bestu útkomuna</div>
                     </div>
                     <div class="ai-status">
                         <div class="status-dot"></div>
-                        <span style="font-size: 14px;">Virk</span>
                     </div>
                 </div>
                 <div class="chat-messages">
-                    <div class="message ai-message">
+                    <div class="message ai-message" data-is="Góðan daginn! Takk fyrir að hafa samband. Hvernig get ég aðstoðað þig í dag?" data-en="Good day! Thank you for contacting us. How can I assist you today?">
                         Góðan daginn! Takk fyrir að hafa samband. Hvernig get ég aðstoðað þig í dag?
                     </div>
-                    <div class="message user-message">
+                    <div class="message user-message" data-is="Getið þið séð um alla okkar þjónustu við viðskiptavini?" data-en="Can you handle all our customer service?">
                         Getið þið séð um alla okkar þjónustu við viðskiptavini?
                     </div>
-                    <div class="message ai-message">
+                    <div class="message ai-message" data-is="Já, við bjóðum heildarlausn - bæði AI fyrir hraða afgreiðslu og sérhæfða starfsmenn fyrir flóknari mál. Getum sett upp á 15-30 dögum og aðlagað að ykkar þörfum." data-en="Yes, we offer a complete solution - both AI for fast service and specialized staff for complex issues. We can set up in 15-30 days and adapt to your needs.">
                         Já, við bjóðum heildarlausn - bæði AI fyrir hraða afgreiðslu og sérhæfða starfsmenn fyrir flóknari mál. Getum sett upp á 15-30 dögum og aðlagað að ykkar þörfum.
                     </div>
                     <div class="message ai-message typing-indicator">
@@ -78,8 +84,9 @@
     <!-- Core Services Section -->
     <section class="features" style="background: rgba(27, 39, 53, 0.3); padding-top: 80px;">
         <div class="section-header">
-            <h2>Símsvörun og spjallmenni</h2>
-            <p>
+            <h2 data-is="Símsvörun og spjallmenni" data-en="Phone Support and Chatbots">Símsvörun og spjallmenni</h2>
+            <p data-is="Sérhæfð þjónusta síðan 2019. Rétt samspil mannauðs og gervigreindar grípur fleiri sölutækifæri og eykur ánægju viðskiptavina."
+               data-en="Specialized service since 2019. The right balance of human resources and AI captures more sales opportunities and increases customer satisfaction.">
                 Sérhæfð þjónusta síðan 2019. Rétt samspil mannauðs og gervigreindar  
                 grípur fleiri sölutækifæri og eykur ánægju viðskiptavina.
             </p>
@@ -88,8 +95,9 @@
         <div class="features-grid" style="max-width: 1200px;">
             <div class="feature-card">
                 <div class="feature-icon">📞</div>
-                <h3>Almenn símsvörun</h3>
-                <p>
+                <h3 data-is="Almenn símsvörun" data-en="General Phone Support">Almenn símsvörun</h3>
+                <p data-is="Einföld og góð þjónusta fyrir öll fyrirtæki. Við svörum í þínu nafni, sendum símann áfram á réttan starfsmann og tökum ítarleg skilaboð. Hægt að setja upp með stuttum fyrirvara."
+                   data-en="Simple and quality service for all businesses. We answer in your name, forward calls to the right employee and take detailed messages. Can be set up on short notice.">
                     Einföld og góð þjónusta fyrir öll fyrirtæki. Við svörum í þínu nafni, 
                     sendum símann áfram á réttan starfsmann og tökum ítarleg skilaboð. 
                     Hægt að setja upp með stuttum fyrirvara.
@@ -98,8 +106,9 @@
             
             <div class="feature-card">
                 <div class="feature-icon">🎯</div>
-                <h3>Sérhæfð þjónustusvörun</h3>
-                <p>
+                <h3 data-is="Sérhæfð þjónustusvörun" data-en="Specialized Support">Sérhæfð þjónustusvörun</h3>
+                <p data-is="Fullkomlega þjálfaðir starfsmenn sem þekkja þitt fyrirtæki, vörur og þjónustu. Geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð byggða á þínum upplýsingakerfum."
+                   data-en="Fully trained staff who know your company, products and services. Can answer complex questions, solve problems and provide technical support based on your information systems.">
                     Fullkomlega þjálfaðir starfsmenn sem þekkja þitt fyrirtæki, vörur og þjónustu. 
                     Geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð 
                     byggða á þínum upplýsingakerfum.
@@ -108,8 +117,9 @@
             
             <div class="feature-card">
                 <div class="feature-icon">🤖</div>
-                <h3>Spjallmenni</h3>
-                <p>
+                <h3 data-is="Spjallmenni" data-en="Chatbots">Spjallmenni</h3>
+                <p data-is="Gervigreind sem svarar allan sólarhringinn á öllum samskiptamiðlum. Hefur aðgang að upplýsingum fyrirtækisins, skilur samhengi og talar 100+ tungumál. Tengist beint við ykkar kerfi."
+                   data-en="AI that responds 24/7 on all communication channels. Has access to company information, understands context and speaks 100+ languages. Connects directly to your systems.">
                     Gervigreind sem svarar allan sólarhringinn á öllum samskiptamiðlum. 
                     Hefur aðgang að upplýsingum fyrirtækisins, skilur samhengi og 
                     talar 100+ tungumál. Tengist beint við ykkar kerfi.
@@ -122,8 +132,9 @@
     <section class="choice-section">
         <div class="choice-container">
             <div class="section-header">
-                <h2>Snjöll samþætting mannauðs og tækni</h2>
-                <p>
+                <h2 data-is="Snjöll samþætting mannauðs og tækni" data-en="Smart Integration of Human Resources and Technology">Snjöll samþætting mannauðs og tækni</h2>
+                <p data-is="Við bjóðum bæði AI og mannlega þjónustu - þú velur hvað hentar best hverju sinni. Gervigreind veitir hraða afgreiðslu og rekstrarinnsýn á meðan sérfræðingar okkar sjá um persónuleg samskipti."
+                   data-en="We offer both AI and human service - you choose what works best each time. AI provides fast service and operational insights while our experts handle personal interactions.">
                     Við bjóðum bæði AI og mannlega þjónustu - þú velur hvað hentar best hverju sinni. 
                     Gervigreind veitir hraða afgreiðslu og rekstrarinnsýn á meðan sérfræðingar okkar sjá um persónuleg samskipti.
                 </p>
@@ -132,46 +143,48 @@
             <div class="choice-grid">
                 <div class="choice-card ai-choice">
                     <div class="choice-icon">🤖</div>
-                    <h3>AI þjónusta</h3>
-                    <p>
+                    <h3 data-is="AI þjónusta" data-en="AI Service">AI þjónusta</h3>
+                    <p data-is="Spjallmenni sem afgreiða þúsundir fyrirspurna. Tengist beint við bókunarkerfi og CRM, svarar 24/7 meðan starfsfólk sinnir flóknari málum."
+                       data-en="Chatbots that handle thousands of inquiries. Connects directly to booking systems and CRM, responds 24/7 while staff handles complex issues.">
                         Spjallmenni sem afgreiða þúsundir fyrirspurna. Tengist beint við 
                         bókunarkerfi og CRM, svarar 24/7 meðan starfsfólk sinnir flóknari málum.
                     </p>
                     <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="color: var(--primary-orange);">✓</span>
-                            <span style="color: var(--text-muted);">Afgreiðir bókanir og breytingar</span>
+                            <span style="color: var(--text-muted);" data-is="Afgreiðir bókanir og breytingar" data-en="Handles bookings and changes">Afgreiðir bókanir og breytingar</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="color: var(--primary-orange);">✓</span>
-                            <span style="color: var(--text-muted);">Tengist kerfum fyrirtækja</span>
+                            <span style="color: var(--text-muted);" data-is="Tengist kerfum fyrirtækja" data-en="Connects to company systems">Tengist kerfum fyrirtækja</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="color: var(--primary-orange);">✓</span>
-                            <span style="color: var(--text-muted);">Þekkir þín viðskipti og vörur</span>
+                            <span style="color: var(--text-muted);" data-is="Þekkir þín viðskipti og vörur" data-en="Knows your business and products">Þekkir þín viðskipti og vörur</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="choice-card human-choice">
                     <div class="choice-icon">👥</div>
-                    <h3>Mannleg þjónusta</h3>
-                    <p>
+                    <h3 data-is="Mannleg þjónusta" data-en="Human Service">Mannleg þjónusta</h3>
+                    <p data-is="35+ sérfræðingar sem svara fyrir 50+ fyrirtæki. Með aðgang að bókunarkerfum, breyta pöntunum, vísa á réttan starfsmann og selja."
+                       data-en="35+ experts answering for 50+ companies. With access to booking systems, changing orders, directing to the right employee and selling.">
                         35+ sérfræðingar sem svara fyrir 50+ fyrirtæki. Með aðgang að 
                         bókunarkerfum, breyta pöntunum, vísa á réttan starfsmann og selja.
                     </p>
                     <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="color: var(--accent-purple);">✓</span>
-                            <span style="color: var(--text-muted);">200.000+ símtöl á ári</span>
+                            <span style="color: var(--text-muted);" data-is="200.000+ símtöl á ári" data-en="200,000+ calls per year">200.000+ símtöl á ári</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="color: var(--accent-purple);">✓</span>
-                            <span style="color: var(--text-muted);">Fullur aðgangur að kerfum</span>
+                            <span style="color: var(--text-muted);" data-is="Fullur aðgangur að kerfum" data-en="Full access to systems">Fullur aðgangur að kerfum</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="color: var(--accent-purple);">✓</span>
-                            <span style="color: var(--text-muted);">Sérhæfð teymi og stöðugildi</span>
+                            <span style="color: var(--text-muted);" data-is="Sérhæfð teymi og stöðugildi" data-en="Specialized teams and FTEs">Sérhæfð teymi og stöðugildi</span>
                         </div>
                     </div>
                 </div>
@@ -182,8 +195,9 @@
     <!-- Features Section -->
     <section class="features" id="um-okkur">
         <div class="section-header">
-            <h2>Af hverju að velja Svörum strax?</h2>
-            <p>
+            <h2 data-is="Af hverju að velja Svörum strax?" data-en="Why Choose Svörum strax?">Af hverju að velja Svörum strax?</h2>
+            <p data-is="Svörum strax er útvistunarfyrirtæki sem trúir því að samkeppnisforskot náist með ánægju starfsmanna. Við hjálpum íslenskum fyrirtækjum að vaxa með snjöllum lausnum."
+               data-en="Svörum strax is an outsourcing company that believes competitive advantage is achieved through employee satisfaction. We help Icelandic companies grow with smart solutions.">
                 Svörum strax er útvistunarfyrirtæki sem trúir því að samkeppnisforskot náist með ánægju starfsmanna. 
                 Við hjálpum íslenskum fyrirtækjum að vaxa með snjöllum lausnum.
             </p>
@@ -192,8 +206,9 @@
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">💰</div>
-                <h3>Hagstætt verð</h3>
-                <p>
+                <h3 data-is="Hagstætt verð" data-en="Competitive Pricing">Hagstætt verð</h3>
+                <p data-is="Þjónusta okkar er allt að 40% hagstæðari en sambærileg þjónusta á Íslandi. Barcelona staðsetningin gerir okkur kleift að bjóða hágæða þjónustu á samkeppnishæfu verði."
+                   data-en="Our service is up to 40% more affordable than comparable service in Iceland. The Barcelona location enables us to offer high-quality service at competitive prices.">
                     Þjónusta okkar er allt að 40% hagstæðari en sambærileg þjónusta á Íslandi. 
                     Barcelona staðsetningin gerir okkur kleift að bjóða hágæða þjónustu 
                     á samkeppnishæfu verði.
@@ -202,8 +217,9 @@
             
             <div class="feature-card">
                 <div class="feature-icon">📈</div>
-                <h3>Mælanleg árangur</h3>
-                <p>
+                <h3 data-is="Mælanleg árangur" data-en="Measurable Results">Mælanleg árangur</h3>
+                <p data-is="Við svörum yfir 200.000 símtölum á ári. AI greining veitir þér innsýn í viðskiptavini, greinir sölutækifæri og hjálpar við að taka upplýstar rekstrarákvarðanir."
+                   data-en="We answer over 200,000 calls per year. AI analysis provides you with customer insights, identifies sales opportunities and helps make informed business decisions.">
                     Við svörum yfir 200.000 símtölum á ári. 
                     AI greining veitir þér innsýn í viðskiptavini, greinir sölutækifæri 
                     og hjálpar við að taka upplýstar rekstrarákvarðanir.
@@ -212,8 +228,9 @@
             
             <div class="feature-card">
                 <div class="feature-icon">🎯</div>
-                <h3>Rétt nálgun</h3>
-                <p>
+                <h3 data-is="Rétt nálgun" data-en="Right Approach">Rétt nálgun</h3>
+                <p data-is="35+ íslenskir sérfræðingar með djúpa markaðsþekkingu. Samþættum nýjustu tækni við mannlega sérþekkingu til að tryggja bestu mögulegu útkomuna fyrir þitt fyrirtæki."
+                   data-en="35+ Icelandic experts with deep market knowledge. We integrate the latest technology with human expertise to ensure the best possible outcome for your company.">
                     35+ íslenskir sérfræðingar með djúpa markaðsþekkingu. 
                     Samþættum nýjustu tækni við mannlega sérþekkingu til að 
                     tryggja bestu mögulegu útkomuna fyrir þitt fyrirtæki.
@@ -225,8 +242,9 @@
     <!-- Services Section -->
     <section class="services" id="tjonusta">
         <div class="section-header">
-            <h2>Heildarlausnir fyrir nútíma fyrirtæki</h2>
-            <p>
+            <h2 data-is="Heildarlausnir fyrir nútíma fyrirtæki" data-en="Complete Solutions for Modern Companies">Heildarlausnir fyrir nútíma fyrirtæki</h2>
+            <p data-is="Allt sem þarf á einum stað - frá hefðbundinni símsvörun til háþróaðra AI lausna. Sérsniðnar lausnir sem auka afköst og bæta upplifun viðskiptavina."
+               data-en="Everything you need in one place - from traditional phone support to advanced AI solutions. Customized solutions that increase performance and improve customer experience.">
                 Allt sem þarf á einum stað - frá hefðbundinni símsvörun til háþróaðra AI lausna. 
                 Sérsniðnar lausnir sem auka afköst og bæta upplifun viðskiptavina.
             </p>
@@ -235,90 +253,98 @@
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">📞</div>
-                <h3>Símsvörun</h3>
-                <p>
+                <h3 data-is="Símsvörun" data-en="Phone Support">Símsvörun</h3>
+                <p data-is="Sérhæfum okkur í að svara símtölum fyrir íslensk fyrirtæki. Allt frá almennri ritaraþjónustu til fullkomlega sérhæfðra þjónustufulltrúa sem þekkja þitt fyrirtæki út og inn."
+                   data-en="We specialize in answering phone calls for Icelandic companies. Everything from general secretarial service to fully specialized service representatives who know your company inside out.">
                     Sérhæfum okkur í að svara símtölum fyrir íslensk fyrirtæki. 
                     Allt frá almennri ritaraþjónustu til fullkomlega sérhæfðra 
                     þjónustufulltrúa sem þekkja þitt fyrirtæki út og inn.
                 </p>
-                <a href="#" class="service-link">Skoða nánar →</a>
+                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card">
                 <div class="service-icon">📧</div>
-                <h3>Tölvupóstþjónusta</h3>
-                <p>
+                <h3 data-is="Tölvupóstþjónusta" data-en="Email Service">Tölvupóstþjónusta</h3>
+                <p data-is="Sérhæfðir starfsmenn sjá um að svara tölvupóstum hratt og faglega. Flokkum, forgangsröðum og svörum með þekkingu á þínu fyrirtæki. Sendum flókin mál áfram á réttan stað."
+                   data-en="Specialized staff handle email responses quickly and professionally. We categorize, prioritize and respond with knowledge of your company. Forward complex issues to the right place.">
                     Sérhæfðir starfsmenn sjá um að svara tölvupóstum hratt og faglega. 
                     Flokkum, forgangsröðum og svörum með þekkingu á þínu fyrirtæki. 
                     Sendum flókin mál áfram á réttan stað.
                 </p>
-                <a href="#" class="service-link">Skoða nánar →</a>
+                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card featured">
                 <div class="service-icon">💬</div>
-                <h3>AI Spjallþjónusta</h3>
-                <p>
-                    Gervigreind sem lærir af hverri samræðu og bætir stöðugt þjónustuna. 
+                <h3 data-is="AI Spjallþjónusta" data-en="AI Chat Service">AI Spjallþjónusta</h3>
+                <p data-is="Gervigreind sem svarar strax með aðgang að nýjustu upplýsingum. Veitir tafarlausar upplýsingar, greinir þarfir viðskiptavina og vísar flóknari málum áfram á réttan sérfræðing."
+                   data-en="AI that responds instantly with access to the latest information. Provides immediate answers, identifies customer needs and forwards complex issues to the right specialist.">
+                    Gervigreind sem svarar strax með aðgang að nýjustu upplýsingum. 
                     Veitir tafarlausar upplýsingar, greinir þarfir viðskiptavina og 
                     vísar flóknari málum áfram á réttan sérfræðing.
                 </p>
-                <a href="#" class="service-link">Skoða nánar →</a>
+                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card featured">
                 <div class="service-icon">📞</div>
-                <h3>AI Raddþjónusta</h3>
-                <p>
-                    Háþróuð raddgreining sem svarar símtölum með náttúrulegri röddu. 
-                    Talar íslensku og yfir 100 tungumál. Greinir tilfinningar og 
-                    aðlagar samtalið að þörfum viðskiptavinarins.
+                <h3 data-is="AI Raddþjónusta" data-en="AI Voice Service">AI Raddþjónusta</h3>
+                <p data-is="Svarar strax í síma, allan sólarhringinn. Tekur við pöntunum, svarar algengum spurningum og bókar tíma. Sendir flókin mál áfram á mannlega sérfræðinga."
+                   data-en="Answers phone calls instantly, 24/7. Takes orders, answers common questions and books appointments. Forwards complex issues to human specialists.">
+                    Svarar strax í síma, allan sólarhringinn. Tekur við pöntunum, 
+                    svarar algengum spurningum og bókar tíma. Sendir flókin mál 
+                    áfram á mannlega sérfræðinga.
                 </p>
-                <a href="#" class="service-link">Skoða nánar →</a>
+                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card featured">
                 <div class="service-icon">📊</div>
-                <h3>Viðskiptagreining</h3>
-                <p>
+                <h3 data-is="Viðskiptagreining" data-en="Business Analytics">Viðskiptagreining</h3>
+                <p data-is="AI greinir öll samskipti og veitir dýrmæta rekstrarinnsýn. Finnur mynstur, spáir fyrir um eftirspurn og auðkennir sölutækifæri sem annars færu framhjá þér."
+                   data-en="AI analyzes all communications and provides valuable operational insights. Finds patterns, predicts demand and identifies sales opportunities that would otherwise pass you by.">
                     AI greinir öll samskipti og veitir dýrmæta rekstrarinnsýn. 
                     Finnur mynstur, spáir fyrir um eftirspurn og auðkennir sölutækifæri 
                     sem annars færu framhjá þér.
                 </p>
-                <a href="#" class="service-link">Skoða nánar →</a>
+                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card">
                 <div class="service-icon">📤</div>
-                <h3>Úthringiþjónusta</h3>
-                <p>
+                <h3 data-is="Úthringiþjónusta" data-en="Outbound Service">Úthringiþjónusta</h3>
+                <p data-is="Sérhæfð söluteymi með reynslu af B2B og B2C markaði. Notum nýjustu tækni og CRM kerfi til að hámarka árangur og mæla árangur."
+                   data-en="Specialized sales teams with experience in B2B and B2C markets. We use the latest technology and CRM systems to maximize and measure results.">
                     Sérhæfð söluteymi með reynslu af B2B og B2C markaði. 
                     Notum nýjustu tækni og CRM kerfi til að 
                     hámarka árangur og mæla árangur.
                 </p>
-                <a href="#" class="service-link">Skoða nánar →</a>
+                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card">
                 <div class="service-icon">🏢</div>
-                <h3>Stöðugildi til leigu</h3>
-                <p>
+                <h3 data-is="Stöðugildi til leigu" data-en="FTE Rental">Stöðugildi til leigu</h3>
+                <p data-is="Leigðu sérhæfðan starfsmann án umsýslukostnaðar. Fullþjálfað starfsfólk sem verður hluti af þínu teymi og vinnur eingöngu fyrir þig."
+                   data-en="Rent a specialized employee without administrative costs. Fully trained staff who become part of your team and work exclusively for you.">
                     Leigðu sérhæfðan starfsmann án umsýslukostnaðar. 
                     Fullþjálfað starfsfólk sem verður hluti af þínu teymi 
                     og vinnur eingöngu fyrir þig.
                 </p>
-                <a href="#" class="service-link">Skoða nánar →</a>
+                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card">
                 <div class="service-icon">🎯</div>
-                <h3>Sérsniðnar lausnir</h3>
-                <p>
+                <h3 data-is="Sérsniðnar lausnir" data-en="Custom Solutions">Sérsniðnar lausnir</h3>
+                <p data-is="Lausnir sem taka mið af þínu umhverfi og þörfum. Við greinum þarfir, hönnum ferla og innleiðum tækni sem skilar mælanlegum árangri."
+                   data-en="Solutions tailored to your environment and needs. We analyze needs, design processes and implement technology that delivers measurable results.">
                     Lausnir sem taka mið af þínu umhverfi og þörfum. 
                     Við greinum þarfir, hönnum ferla og innleiðum tækni 
                     sem skilar mælanlegum árangri.
                 </p>
-                <a href="#" class="service-link">Skoða nánar →</a>
+                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
         </div>
     </section>
@@ -328,8 +354,10 @@
         <div class="jobs-overlay">
             <div class="jobs-content">
                 <div class="jobs-text">
-                    <h2>Störf fyrir Íslendinga á Spáni</h2>
-                    <p style="font-size: 1.25rem; color: var(--text-light); margin-bottom: 30px;">
+                    <h2 data-is="Störf fyrir Íslendinga á Spáni" data-en="Jobs for Icelanders in Spain">Störf fyrir Íslendinga á Spáni</h2>
+                    <p style="font-size: 1.25rem; color: var(--text-light); margin-bottom: 30px;"
+                       data-is="Ertu Íslendingur búsettur á Spáni? Við leitum alltaf að hæfileikaríku fólki sem vill vinna í skemmtilegu alþjóðlegu umhverfi í Barcelona."
+                       data-en="Are you an Icelander living in Spain? We're always looking for talented people who want to work in an exciting international environment in Barcelona.">
                         Ertu Íslendingur búsettur á Spáni? Við leitum alltaf að hæfileikaríku fólki 
                         sem vill vinna í skemmtilegu alþjóðlegu umhverfi í Barcelona.
                     </p>
@@ -338,35 +366,39 @@
                         <div class="benefit-item">
                             <div class="benefit-icon">☀️</div>
                             <div>
-                                <h4>Lífsgæði í Barcelona</h4>
-                                <p>Njóttu sólarinnar og menningarinnar á meðan þú vinnur fyrir íslenskan markað</p>
+                                <h4 data-is="Lífsgæði í Barcelona" data-en="Quality of Life in Barcelona">Lífsgæði í Barcelona</h4>
+                                <p data-is="Njóttu sólarinnar og menningarinnar á meðan þú vinnur fyrir íslenskan markað"
+                                   data-en="Enjoy the sun and culture while working for the Icelandic market">Njóttu sólarinnar og menningarinnar á meðan þú vinnur fyrir íslenskan markað</p>
                             </div>
                         </div>
                         
                         <div class="benefit-item">
                             <div class="benefit-icon">🏠</div>
                             <div>
-                                <h4>Sveigjanleiki</h4>
-                                <p>Fjarvinna og sveigjanlegar vaktir sem henta þínu lífi</p>
+                                <h4 data-is="Sveigjanleiki" data-en="Flexibility">Sveigjanleiki</h4>
+                                <p data-is="Fjarvinna og sveigjanlegar vaktir sem henta þínu lífi"
+                                   data-en="Remote work and flexible shifts that fit your life">Fjarvinna og sveigjanlegar vaktir sem henta þínu lífi</p>
                             </div>
                         </div>
                         
                         <div class="benefit-item">
                             <div class="benefit-icon">📈</div>
                             <div>
-                                <h4>Þróunarmöguleikar</h4>
-                                <p>Lærðu nýja hluti og þróaðu þig í starfi með frábæru teymi</p>
+                                <h4 data-is="Þróunarmöguleikar" data-en="Development Opportunities">Þróunarmöguleikar</h4>
+                                <p data-is="Lærðu nýja hluti og þróaðu þig í starfi með frábæru teymi"
+                                   data-en="Learn new things and develop professionally with a great team">Lærðu nýja hluti og þróaðu þig í starfi með frábæru teymi</p>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="#contact" class="primary-button" style="margin-top: 40px;">Sækja um starf</a>
+                    <a href="#contact" class="primary-button" style="margin-top: 40px;" data-is="Sækja um starf" data-en="Apply for Job">Sækja um starf</a>
                 </div>
                 
                 <div class="jobs-image">
                     <h3 style="font-size: 4rem; margin-bottom: 20px;">35+</h3>
-                    <p style="font-size: 1.25rem;">Íslenskir sérfræðingar í Barcelona</p>
-                    <p style="margin-top: 20px;">
+                    <p style="font-size: 1.25rem;" data-is="Íslenskir sérfræðingar í Barcelona" data-en="Icelandic experts in Barcelona">Íslenskir sérfræðingar í Barcelona</p>
+                    <p style="margin-top: 20px;" data-is="Við erum stolt af að vera einn stærsti íslenski vinnustaðurinn á Spáni og skapa störf fyrir Íslendinga erlendis."
+                       data-en="We're proud to be one of the largest Icelandic workplaces in Spain, creating jobs for Icelanders abroad.">
                         Við erum stolt af að vera einn stærsti íslenski vinnustaðurinn á Spáni 
                         og skapa störf fyrir Íslendinga erlendis.
                     </p>
@@ -378,7 +410,7 @@
     <!-- Trust Section - Updated with Logo -->
     <section class="trust-section">
         <div class="section-header">
-            <p style="text-align: center; color: var(--text-muted); font-size: 1.1rem;">Treyst af leiðandi fyrirtækjum</p>
+            <p style="text-align: center; color: var(--text-muted); font-size: 1.1rem;" data-is="Treyst af leiðandi fyrirtækjum" data-en="Trusted by leading companies">Treyst af leiðandi fyrirtækjum</p>
         </div>
         <div class="clients-grid">
             <div class="client-logo">
@@ -396,32 +428,34 @@
     <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="section-header">
-            <h2>Hvað segja viðskiptavinir okkar?</h2>
+            <h2 data-is="Hvað segja viðskiptavinir okkar?" data-en="What Our Customers Say">Hvað segja viðskiptavinir okkar?</h2>
         </div>
         
         <div class="testimonial-carousel">
             <div class="testimonial-card">
                 <div class="quote-icon">"</div>
-                <p class="testimonial-text">
+                <p class="testimonial-text" data-is="Ég get mælt hiklaust með Svörum strax, þau hafa veitt Rafal trausta og góða þjónustu frá fyrsta degi. Svörum strax tók við símsvörun hjá okkur 2022. Við erum virkilega ánægð með fyrirkomulagið og samskiptin okkar á milli. Þau eru með hraðar hendur og komust vel inn í starfsemina strax. Okkur finnst stundum eins og þau séu ein af okkar starfsfólki - samskiptin eru alveg frábær."
+                      data-en="I can highly recommend Svörum strax, they have provided Rafal with reliable and good service from day one. Svörum strax took over our phone support in 2022. We are really satisfied with the arrangement and our communication. They are quick and got into our operations right away. Sometimes we feel like they are one of our staff - the communication is excellent.">
                     Ég get mælt hiklaust með Svörum strax, þau hafa veitt Rafal trausta og góða þjónustu frá fyrsta degi. 
                     Svörum strax tók við símsvörun hjá okkur 2022. Við erum virkilega ánægð með fyrirkomulagið og 
                     samskiptin okkar á milli. Þau eru með hraðar hendur og komust vel inn í starfsemina strax. 
                     Okkur finnst stundum eins og þau séu ein af okkar starfsfólki - samskiptin eru alveg frábær.
                 </p>
-                <div class="testimonial-author">Hulda Símonardóttir</div>
-                <div class="testimonial-role">Þjónustu- og viðburðarstjóri, Rafal</div>
+                <div class="testimonial-author" data-is="Hulda Símonardóttir" data-en="Hulda Símonardóttir">Hulda Símonardóttir</div>
+                <div class="testimonial-role" data-is="Þjónustu- og viðburðarstjóri, Rafal" data-en="Service and Event Manager, Rafal">Þjónustu- og viðburðarstjóri, Rafal</div>
             </div>
             
             <div class="testimonial-card">
                 <div class="quote-icon">"</div>
-                <p class="testimonial-text">
+                <p class="testimonial-text" data-is="FlyOver Iceland nýtir sér þjónustu Svörum Strax og erum við virkilega ánægð með þetta fyrirkomulag. Starfsfólk Svörum Strax var mjög fljótt að læra inn á þjónustu okkar og einkennast öll samskipti af faglegum vinnubrögðum og góðu viðmóti. Þessi þjónusta hefur klárlega aukið ánægju gesta og aukið þjónustu okkar."
+                      data-en="FlyOver Iceland uses Svörum Strax services and we are really satisfied with this arrangement. Svörum Strax staff was very quick to learn our service and all communication is characterized by professional work methods and good attitude. This service has clearly increased guest satisfaction and enhanced our service.">
                     FlyOver Iceland nýtir sér þjónustu Svörum Strax og erum við virkilega ánægð 
                     með þetta fyrirkomulag. Starfsfólk Svörum Strax var mjög fljótt að læra inn á þjónustu okkar og 
                     einkennast öll samskipti af faglegum vinnubrögðum og góðu viðmóti. Þessi þjónusta hefur klárlega 
                     aukið ánægju gesta og aukið þjónustu okkar.
                 </p>
-                <div class="testimonial-author">Erla Björg Hafsteinsdóttir</div>
-                <div class="testimonial-role">Guest Experience Manager, FlyOver Iceland</div>
+                <div class="testimonial-author" data-is="Erla Björg Hafsteinsdóttir" data-en="Erla Björg Hafsteinsdóttir">Erla Björg Hafsteinsdóttir</div>
+                <div class="testimonial-role" data-is="Guest Experience Manager, FlyOver Iceland" data-en="Guest Experience Manager, FlyOver Iceland">Guest Experience Manager, FlyOver Iceland</div>
             </div>
         </div>
     </section>
@@ -429,14 +463,15 @@
     <!-- CTA Section -->
     <section class="cta-section" id="contact">
         <div class="cta-content">
-            <h2>Viltu bæta þjónustu og fá betri rekstrarinnsýn?</h2>
-            <p>
+            <h2 data-is="Viltu bæta þjónustu og fá betri rekstrarinnsýn?" data-en="Want to improve service and get better operational insights?">Viltu bæta þjónustu og fá betri rekstrarinnsýn?</h2>
+            <p data-is="Við getum byrjað að svara fyrir þig innan viku. Fáðu ókeypis greiningu á því hvernig við getum bætt þína þjónustu og veitt þér betri yfirsýn."
+               data-en="We can start answering for you within a week. Get a free analysis of how we can improve your service and provide you with better oversight.">
                 Við getum byrjað að svara fyrir þig innan viku. Fáðu ókeypis greiningu 
                 á því hvernig við getum bætt þína þjónustu og veitt þér betri yfirsýn.
             </p>
             <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px;">
-                <a href="#" class="primary-button">Bóka fund</a>
-                <a href="#" class="secondary-button">Sjá verðskrá</a>
+                <a href="#" class="primary-button" data-is="Bóka fund" data-en="Book a Meeting">Bóka fund</a>
+                <a href="#" class="secondary-button" data-is="Sjá verðskrá" data-en="See Pricing">Sjá verðskrá</a>
             </div>
         </div>
     </section>
@@ -446,57 +481,105 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>Svörum strax</h3>
-                <p>
+                <p data-is="Öflugt þjónustuver í Barcelona með 35+ íslenska sérfræðinga. Við samþættum mannlega þjónustu og gervigreind til að veita framúrskarandi upplifun fyrir þína viðskiptavini."
+                   data-en="Powerful contact center in Barcelona with 35+ Icelandic experts. We integrate human service and artificial intelligence to provide outstanding experience for your customers.">
                     Öflugt þjónustuver í Barcelona með 35+ íslenska sérfræðinga. 
                     Við samþættum mannlega þjónustu og gervigreind til að veita 
                     framúrskarandi upplifun fyrir þína viðskiptavini.
                 </p>
                 <p style="margin-top: 20px; font-size: 0.9rem;">
-                    Svörum strax er stofnað og rekið í Barcelona á Spáni.<br>
+                    <span data-is="Svörum strax er stofnað og rekið í Barcelona á Spáni." data-en="Svörum strax is founded and operated in Barcelona, Spain.">Svörum strax er stofnað og rekið í Barcelona á Spáni.</span><br>
                     El MUNDO BUENO DE ISLANDIA, SOCIEDAD LIMITADA.
                 </p>
             </div>
             
             <div class="footer-column">
-                <h4>Þjónusta</h4>
+                <h4 data-is="Þjónusta" data-en="Services">Þjónusta</h4>
                 <ul>
-                    <li><a href="#">Símsvörun</a></li>
-                    <li><a href="#">Tölvupóstþjónusta</a></li>
-                    <li><a href="#">AI þjónusta</a></li>
-                    <li><a href="#">Viðskiptagreining</a></li>
-                    <li><a href="#">Úthringingar</a></li>
-                    <li><a href="#">Stöðugildi</a></li>
+                    <li><a href="#" data-is="Símsvörun" data-en="Phone Support">Símsvörun</a></li>
+                    <li><a href="#" data-is="Tölvupóstþjónusta" data-en="Email Service">Tölvupóstþjónusta</a></li>
+                    <li><a href="#" data-is="AI þjónusta" data-en="AI Service">AI þjónusta</a></li>
+                    <li><a href="#" data-is="Viðskiptagreining" data-en="Business Analytics">Viðskiptagreining</a></li>
+                    <li><a href="#" data-is="Úthringingar" data-en="Outbound Calls">Úthringingar</a></li>
+                    <li><a href="#" data-is="Stöðugildi" data-en="FTEs">Stöðugildi</a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
-                <h4>Fyrirtækið</h4>
+                <h4 data-is="Fyrirtækið" data-en="Company">Fyrirtækið</h4>
                 <ul>
-                    <li><a href="#">Um okkur</a></li>
-                    <li><a href="#">Störf</a></li>
-                    <li><a href="mannaudur.html">Mannauður</a></li>
-                    <li><a href="#">Barcelona</a></li>
-                    <li><a href="#">Viðskiptavinir</a></li>
+                    <li><a href="#" data-is="Um okkur" data-en="About Us">Um okkur</a></li>
+                    <li><a href="#" data-is="Störf" data-en="Jobs">Störf</a></li>
+                    <li><a href="mannaudur.html" data-is="Mannauður" data-en="Our Team">Mannauður</a></li>
+                    <li><a href="#" data-is="Barcelona" data-en="Barcelona">Barcelona</a></li>
+                    <li><a href="#" data-is="Viðskiptavinir" data-en="Clients">Viðskiptavinir</a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
-                <h4>Hafðu samband</h4>
+                <h4 data-is="Hafðu samband" data-en="Contact">Hafðu samband</h4>
                 <ul>
                     <li>📧 svorumstrax@svorumstrax.is</li>
                     <li>📞 537-0800</li>
-                    <li>📍 Barcelona, Spánn</li>
+                    <li>📍 Barcelona, <span data-is="Spánn" data-en="Spain">Spánn</span></li>
                     <li><a href="#">LinkedIn</a></li>
                 </ul>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>© 2025 Svörum strax. Allur réttur áskilinn.</p>
+            <p data-is="© 2025 Svörum strax. Allur réttur áskilinn." data-en="© 2025 Svörum strax. All rights reserved.">© 2025 Svörum strax. Allur réttur áskilinn.</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
+    
+    <!-- Language switching script -->
+    <script>
+        // Initialize language from localStorage or default to Icelandic
+        let currentLang = localStorage.getItem('language') || 'is';
+        
+        // Apply language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setLanguage(currentLang);
+        });
+        
+        // Language switching function
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[onclick="setLanguage('${lang}')"]`).classList.add('active');
+            
+            // Update document language
+            document.documentElement.lang = lang;
+            
+            // Update page title
+            if (lang === 'en') {
+                document.title = "Svörum strax - The Contact Center of the Future";
+            } else {
+                document.title = "Svörum strax - Þjónustuver framtíðarinnar";
+            }
+            
+            // Update all text elements
+            document.querySelectorAll('[data-is][data-en]').forEach(element => {
+                if (element.tagName === 'INPUT') {
+                    element.placeholder = element.getAttribute(`data-${lang}`);
+                } else {
+                    element.textContent = element.getAttribute(`data-${lang}`);
+                }
+            });
+            
+            // Update featured service badges
+            document.querySelectorAll('.service-card.featured::after').forEach(badge => {
+                badge.style.content = lang === 'en' ? '"AI-powered"' : '"AI-drifið"';
+            });
+        }
+    </script>
     
     <!-- Svörum strax Premium Chat Widget -->
     <link rel="stylesheet" href="chatbot/widget.css">

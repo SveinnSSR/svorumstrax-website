@@ -48,8 +48,34 @@
     let typingMessages = {};
     const isMobile = windowWidth <= MOBILE_BREAKPOINT;
 
+    // Get current language
+    function getCurrentLanguage() {
+        return localStorage.getItem('language') || 'is';
+    }
+
+    // Translations
+    const translations = {
+        is: {
+            subtitle: "AI Aðstoð",
+            placeholder: "Skrifaðu skilaboð...",
+            send: "Senda",
+            welcome: "Halló! Ég er AI þjónusturáðgjafi Svörum strax. Hvernig get ég aðstoðað þig í dag?",
+            error: "Fyrirgefðu, eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur."
+        },
+        en: {
+            subtitle: "AI Assistant",
+            placeholder: "Write a message...",
+            send: "Send",
+            welcome: "Hello! I'm the AI service advisor from Svörum strax. How can I assist you today?",
+            error: "Sorry, something went wrong. Please try again."
+        }
+    };
+
     // Create widget HTML with premium structure
     function createWidget() {
+        const lang = getCurrentLanguage();
+        const t = translations[lang];
+        
         const html = `
             <div class="svorum-premium-container ${isMinimized ? 'minimized' : ''}">
                 <!-- Minimized state - Premium circular button with translucent orange -->
@@ -111,7 +137,7 @@
                                 </svg>
                             </div>
                             <div class="svorum-premium-header-info">
-                                <div class="svorum-premium-title">AI Aðstoð</div>
+                                <div class="svorum-premium-title">${t.subtitle}</div>
                                 <div class="svorum-premium-subtitle">Svörum strax</div>
                             </div>
                         </div>
@@ -165,11 +191,11 @@
                             type="text" 
                             class="svorum-premium-input" 
                             id="svorum-input"
-                            placeholder="Skrifaðu skilaboð..."
+                            placeholder="${t.placeholder}"
                             onkeypress="handleKeyPress(event)"
                         >
                         <button class="svorum-premium-send" onclick="sendMessage()">
-                            <span>Senda</span>
+                            <span>${t.send}</span>
                         </button>
                     </div>
                 </div>
@@ -208,7 +234,8 @@
 
     // Show welcome message
     function showWelcomeMessage() {
-        const welcomeMsg = "Halló! Ég er AI þjónusturáðgjafi Svörum strax. Hvernig get ég aðstoðað þig í dag?";
+        const lang = getCurrentLanguage();
+        const welcomeMsg = translations[lang].welcome;
         addMessage('bot', welcomeMsg);
     }
 
@@ -412,7 +439,8 @@
             }
             isTyping = false;
             
-            const errorMsg = 'Fyrirgefðu, eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur.';
+            const lang = getCurrentLanguage();
+            const errorMsg = translations[lang].error;
             addMessage('bot', errorMsg);
         }
     };
@@ -433,6 +461,25 @@
     // Window resize listener
     window.addEventListener('resize', () => {
         windowWidth = window.innerWidth;
+    });
+
+    // Update widget when language changes
+    window.addEventListener('languageChanged', function() {
+        // Update the widget interface
+        const lang = getCurrentLanguage();
+        const t = translations[lang];
+        
+        // Update input placeholder
+        const input = document.getElementById('svorum-input');
+        if (input) input.placeholder = t.placeholder;
+        
+        // Update send button
+        const sendBtn = document.querySelector('.svorum-premium-send span');
+        if (sendBtn) sendBtn.textContent = t.send;
+        
+        // Update subtitle
+        const subtitle = document.querySelector('.svorum-premium-title');
+        if (subtitle) subtitle.textContent = t.subtitle;
     });
 
     // Initialize widget
