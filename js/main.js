@@ -83,11 +83,11 @@ const chatMessagesIS = [
 
 const chatMessagesEN = [
     { type: 'user', text: 'Can you handle all our phone support?' },
-    { type: 'ai', text: 'Yes, we specialize in phone support - everything from general secretarial service to fully trained specialists. We answer in your company name, take messages and forward to the right employee.' },
-    { type: 'user', text: 'What about outbound calls and sales?' },
-    { type: 'ai', text: 'We have experienced sales teams for both B2B and B2C markets. We use the latest CRM systems and AI analysis to maximize results. We can also rent you specialized employees (FTEs) exclusively for your needs.' },
-    { type: 'user', text: 'How does AI benefit all this?' },
-    { type: 'ai', text: 'AI analyzes all communications, finds sales opportunities and provides operational insights in real-time. You decide whether AI or human responds - we offer a complete solution that fits your needs.' }
+    { type: 'ai', text: 'Absolutely! We specialize in full-service phone support—from general call answering to dedicated brand specialists. We answer in your company\'s name, take detailed messages, and route calls seamlessly to your team.' },
+    { type: 'user', text: 'What about outbound sales calls?' },
+    { type: 'ai', text: 'Yes! Our expert B2B/B2C sales teams use AI-powered CRM tools to maximize conversions. Need a dedicated agent? We also offer exclusive FTE rentals tailored to your business.' },
+    { type: 'user', text: 'How does AI enhance your service?' },
+    { type: 'ai', text: 'Our AI analyzes every interaction in real-time, uncovering sales opportunities and providing actionable insights. Choose AI for instant responses or human experts for complex issues—or let our smart hybrid system adapt dynamically to your needs.' }
 ];
 
 let messageIndex = 0;
