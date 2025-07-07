@@ -64,7 +64,7 @@
             placeholder: "Skrifaðu skilaboð...",
             send: "Senda",
             preview: "Þarftu aðstoð? Spjallaðu við mig! 💬",
-            welcome: "Halló! Ég er AI spjallmenni hjá Svörum strax. Ertu með fyrirtæki og hefur áhuga á þjónustu okkar? Eða hefur þú áhuga á að ganga til liðs við okkur í Barcelona?",
+            welcome: "Hæ! Ég er AI spjallmenni hjá Svörum strax. Ertu með fyrirtæki og hefur áhuga á þjónustu okkar? Eða hefur þú áhuga á að ganga til liðs við okkur í Barcelona?",
             error: "Fyrirgefðu, eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur."
         },
         en: {
