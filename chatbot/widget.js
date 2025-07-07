@@ -78,6 +78,35 @@
         }
     };
 
+    // Function to position the preview bar dynamically
+    function positionPreviewBar() {
+        const previewBar = document.getElementById('svorum-preview-bar');
+        if (!previewBar) return;
+        
+        // Get the chat bubble element
+        const chatBubble = document.querySelector('.svorum-premium-bubble');
+        
+        if (chatBubble) {
+            const rect = chatBubble.getBoundingClientRect();
+            
+            // Position preview bar above the chat bubble
+            previewBar.style.position = 'fixed';
+            previewBar.style.bottom = (window.innerHeight - rect.top + 10) + 'px';
+            previewBar.style.right = '20px';
+            
+            // On mobile, adjust positioning
+            if (isMobile) {
+                previewBar.style.right = '10px';
+                previewBar.style.maxWidth = 'calc(100vw - 100px)';
+            }
+        } else {
+            // Fallback positioning
+            previewBar.style.position = 'fixed';
+            previewBar.style.bottom = '90px';
+            previewBar.style.right = '20px';
+        }
+    }
+
     // Create widget HTML with premium structure
     function createWidget() {
         const lang = getCurrentLanguage();
@@ -109,6 +138,9 @@
                             </svg>
                         </button>
                     </div>
+                    <!-- Add arrow pointer like Sky Lagoon -->
+                    <div class="svorum-preview-pointer"></div>
+                    <div class="svorum-preview-pointer-border"></div>
                 </div>
 
                 <!-- Minimized state - Premium circular button with translucent orange -->
@@ -236,18 +268,24 @@
         `;
         widgetContainer.innerHTML = html;
 
-        // Show preview bar after delay
+        // Position preview bar after widget is created with a small delay to ensure DOM is ready
         setTimeout(() => {
+            positionPreviewBar();
+            
+            // Show preview bar after delay
             if (isMinimized && !previewShown) {
                 showPreview();
             }
-        }, PREVIEW_SHOW_DELAY);
+        }, 100);
     }
 
     // Show preview bar
     function showPreview() {
         const previewBar = document.getElementById('svorum-preview-bar');
         if (previewBar && isMinimized) {
+            // Ensure positioning is correct before showing
+            positionPreviewBar();
+            
             previewBar.classList.add('show');
             previewShown = true;
             
@@ -546,6 +584,8 @@
     // Window resize listener
     window.addEventListener('resize', () => {
         windowWidth = window.innerWidth;
+        // Reposition preview bar on resize
+        positionPreviewBar();
     });
 
     // Update widget when language changes

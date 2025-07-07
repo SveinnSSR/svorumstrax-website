@@ -10,11 +10,8 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Preview Bar - Like Sky Lagoon */
+/* Preview Bar - Dynamic positioning handled by JavaScript */
 .svorum-preview-bar {
-    position: absolute;
-    bottom: 75px;
-    right: 92px;
     background: #FFFFFF;
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15),
@@ -27,7 +24,8 @@
     white-space: nowrap;
     max-width: 280px;
     cursor: pointer;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to show pointer */
+    /* Position will be set dynamically by JavaScript */
 }
 
 .svorum-preview-bar.show {
@@ -45,6 +43,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
+    z-index: 2;
 }
 
 .svorum-preview-avatar {
@@ -81,6 +81,31 @@
 .svorum-preview-close:hover {
     background: rgba(0, 0, 0, 0.06);
     color: #6B7280;
+}
+
+/* Arrow pointer for preview bar - like Sky Lagoon */
+.svorum-preview-pointer {
+    position: absolute;
+    bottom: -8px;
+    right: 28px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+    z-index: 1;
+}
+
+.svorum-preview-pointer-border {
+    position: absolute;
+    bottom: -9px;
+    right: 28px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid rgba(0, 0, 0, 0.05);
+    z-index: 0;
 }
 
 /* Hide preview bar when chat is open */
@@ -507,11 +532,8 @@
         right: 10px;
     }
 
-    /* Preview bar on mobile */
+    /* Preview bar on mobile - dynamic positioning handled by JS */
     .svorum-preview-bar {
-        bottom: 70px;
-        right: 72px;
-        max-width: calc(100vw - 100px);
         font-size: 13px;
         padding: 12px 16px;
     }
@@ -592,7 +614,6 @@
 /* Small mobile devices */
 @media (max-width: 375px) {
     .svorum-preview-bar {
-        right: 70px;
         padding: 8px 12px;
     }
 
