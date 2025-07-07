@@ -1492,3 +1492,246 @@ footer {
         font-size: 14px;
     }
 }
+
+/* Core Services Section - Enhanced Styling */
+/* Add this CSS after the existing .choice-grid-enhanced styles (around line 1550) */
+
+.core-services-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 32px;
+}
+
+.core-service-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.core-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.core-service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Service type indicators */
+.phone-indicator {
+    background: linear-gradient(90deg, transparent 0%, #4A90E2 20%, #6BB6FF 80%, transparent 100%);
+}
+
+.specialized-indicator {
+    background: linear-gradient(90deg, transparent 0%, #50C878 20%, #7DD8A3 80%, transparent 100%);
+}
+
+.ai-service-indicator {
+    background: linear-gradient(90deg, transparent 0%, #FF6B35 20%, #FF8F65 80%, transparent 100%);
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.service-icon-wrapper {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+}
+
+.phone-glow {
+    background: radial-gradient(circle, #4A90E2 0%, transparent 70%);
+}
+
+.specialized-glow {
+    background: radial-gradient(circle, #50C878 0%, transparent 70%);
+}
+
+.ai-service-glow {
+    background: radial-gradient(circle, #FF6B35 0%, transparent 70%);
+}
+
+.core-service-card .service-icon {
+    width: 100%;
+    height: 100%;
+    color: currentColor;
+}
+
+.phone-service .service-icon {
+    color: #4A90E2;
+}
+
+.specialized-service .service-icon {
+    color: #50C878;
+}
+
+.ai-service .service-icon {
+    color: #FF6B35;
+}
+
+.service-header h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-light);
+}
+
+.service-description {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    font-size: 15px;
+}
+
+/* Features Section */
+.service-features {
+    margin-bottom: 28px;
+}
+
+.feature-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    opacity: 0.7;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 28px;
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    background: currentColor;
+    opacity: 0.15;
+    border-radius: 4px;
+}
+
+.feature-list li::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    width: 6px;
+    height: 10px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    opacity: 0.8;
+}
+
+.phone-service .feature-list li::before {
+    background: #4A90E2;
+}
+
+.phone-service .feature-list li::after {
+    color: #4A90E2;
+}
+
+.specialized-service .feature-list li::before {
+    background: #50C878;
+}
+
+.specialized-service .feature-list li::after {
+    color: #50C878;
+}
+
+.ai-service .feature-list li::before {
+    background: #FF6B35;
+}
+
+.ai-service .feature-list li::after {
+    color: #FF6B35;
+}
+
+/* Setup Time Section */
+.setup-time {
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.setup-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    opacity: 0.7;
+    margin-right: 8px;
+}
+
+.setup-text {
+    font-size: 14px;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .core-services-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .core-service-card {
+        padding: 32px 24px;
+    }
+    
+    .service-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .service-icon-wrapper {
+        margin: 0 auto;
+    }
+    
+    .feature-list li {
+        font-size: 13px;
+    }
+}
