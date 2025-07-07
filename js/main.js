@@ -356,48 +356,65 @@ function closeContactModal() {
 }
 
 // Handle contact form submission
-function handleContactSubmit(event) {
+async function handleContactSubmit(event) {
     event.preventDefault();
     
     const form = event.target;
     const formData = new FormData(form);
     const currentLang = localStorage.getItem('language') || 'is';
     
-    // Get form values
-    const companyName = formData.get('companyName');
-    const contactPerson = formData.get('contactPerson');
-    const email = formData.get('email');
-    const phone = formData.get('phone');
-    const website = formData.get('website');
-    const message = formData.get('message');
-    
     // Get context-specific subject
     const content = modalContent[currentLang][currentContactType] || modalContent[currentLang]['contact'];
-    const subject = `${content.title} - ${companyName}`;
     
-    // Create email body
-    let emailBody = `${currentLang === 'is' ? 'Ný fyrirspurn frá' : 'New inquiry from'}: ${companyName}\n\n`;
-    emailBody += `${currentLang === 'is' ? 'Tegund fyrirspurnar' : 'Inquiry type'}: ${content.title}\n`;
-    emailBody += `${currentLang === 'is' ? 'Fyrirtæki' : 'Company'}: ${companyName}\n`;
-    emailBody += `${currentLang === 'is' ? 'Tengiliður' : 'Contact person'}: ${contactPerson}\n`;
-    emailBody += `${currentLang === 'is' ? 'Netfang' : 'Email'}: ${email}\n`;
-    if (phone) emailBody += `${currentLang === 'is' ? 'Sími' : 'Phone'}: ${phone}\n`;
-    if (website && currentContactType !== 'job') emailBody += `${currentLang === 'is' ? 'Vefsíða' : 'Website'}: ${website}\n`;
-    if (message) emailBody += `\n${currentLang === 'is' ? 'Skilaboð' : 'Message'}:\n${message}`;
+    // Create data object for Formspree
+    const data = {
+        _subject: `${content.title} - ${formData.get('companyName')}`,
+        inquiry_type: content.title,
+        company: formData.get('companyName'),
+        name: formData.get('contactPerson'),
+        email: formData.get('email'),
+        phone: formData.get('phone') || 'Not provided',
+        website: formData.get('website') || 'Not provided',
+        message: formData.get('message') || 'No message',
+        _replyto: formData.get('email')
+    };
     
-    // Create mailto link
-    const mailtoLink = `mailto:svorumstrax@svorumstrax.is?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Show success message (you might want to replace this with a nicer notification)
-    setTimeout(() => {
+    try {
+        // Show loading state
+        const submitBtn = form.querySelector('.modal-submit');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = currentLang === 'is' ? 'Sendi...' : 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Send to Formspree
+        const response = await fetch('https://formspree.io/f/mnnvyejz', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+            // Success
+            alert(currentLang === 'is' 
+                ? 'Takk fyrir fyrirspurnina! Við höfum samband við þig fljótlega.' 
+                : 'Thank you for your inquiry! We will contact you soon.');
+            closeContactModal();
+        } else {
+            throw new Error('Form submission failed');
+        }
+    } catch (error) {
+        // Error
         alert(currentLang === 'is' 
-            ? 'Takk fyrir fyrirspurnina! Við höfum samband við þig fljótlega.' 
-            : 'Thank you for your inquiry! We will contact you soon.');
-        closeContactModal();
-    }, 100);
+            ? 'Villa kom upp. Vinsamlegast reyndu aftur eða sendu okkur tölvupóst beint á svorumstrax@svorumstrax.is' 
+            : 'An error occurred. Please try again or email us directly at svorumstrax@svorumstrax.is');
+    } finally {
+        // Reset button
+        const submitBtn = form.querySelector('.modal-submit');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }
 }
 
 // Close modal when clicking outside
