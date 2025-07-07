@@ -550,7 +550,18 @@
 
     // Update widget when language changes
     window.addEventListener('languageChanged', function() {
-        // Update the widget interface
+        updateWidgetLanguage();
+    });
+
+    // Also listen for storage events for cross-tab language sync
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'language') {
+            updateWidgetLanguage();
+        }
+    });
+
+    // Function to update all widget text
+    function updateWidgetLanguage() {
         const lang = getCurrentLanguage();
         const t = translations[lang];
         
@@ -569,9 +580,19 @@
         // Update preview text
         const previewText = document.querySelector('.svorum-preview-text');
         if (previewText) previewText.textContent = t.preview;
-    });
+    }
 
     // Initialize widget
     initializeSession();
     createWidget();
+
+    // Check for language changes periodically (fallback)
+    let lastLang = getCurrentLanguage();
+    setInterval(() => {
+        const currentLang = getCurrentLanguage();
+        if (currentLang !== lastLang) {
+            lastLang = currentLang;
+            updateWidgetLanguage();
+        }
+    }, 500);
 })();

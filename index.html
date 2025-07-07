@@ -627,6 +627,9 @@
             currentLang = lang;
             localStorage.setItem('language', lang);
             
+            // ADD THIS LINE - Dispatch event for chat widget
+            window.dispatchEvent(new Event('languageChanged'));
+            
             // Update language buttons
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
