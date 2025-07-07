@@ -1,6 +1,7 @@
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        if (this.getAttribute('onclick')) return; // Skip if has onclick
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
@@ -156,5 +157,260 @@ window.addEventListener('languageChanged', function() {
             chatContainer.removeChild(chatContainer.lastChild);
         }
         startChatAnimation();
+    }
+});
+
+// Modal functionality
+let currentContactType = '';
+
+// Context-specific content for different CTAs
+const modalContent = {
+    is: {
+        contact: {
+            title: 'Hafðu samband',
+            subtitle: 'Við svörum öllum fyrirspurnum innan 24 tíma.',
+            submitText: 'Senda fyrirspurn'
+        },
+        consultation: {
+            title: 'Fá ókeypis ráðgjöf',
+            subtitle: 'Bókaðu ókeypis ráðgjöf með sérfræðingum okkar.',
+            submitText: 'Bóka ráðgjöf'
+        },
+        'phone-support': {
+            title: 'Símsvörun - Frekari upplýsingar',
+            subtitle: 'Fáðu tilboð í sérhæfða símsvörun fyrir þitt fyrirtæki.',
+            submitText: 'Fá tilboð'
+        },
+        'email-service': {
+            title: 'Tölvupóstþjónusta - Frekari upplýsingar',
+            subtitle: 'Láttu okkur sjá um tölvupóstsamskipti þín.',
+            submitText: 'Fá tilboð'
+        },
+        'ai-chat': {
+            title: 'AI Spjallþjónusta - Frekari upplýsingar',
+            subtitle: 'Kynntu þér hvernig AI getur bætt þjónustu þína.',
+            submitText: 'Fá upplýsingar'
+        },
+        'ai-voice': {
+            title: 'AI Raddþjónusta - Frekari upplýsingar',
+            subtitle: 'Sjálfvirk símsvörun allan sólarhringinn.',
+            submitText: 'Fá upplýsingar'
+        },
+        analytics: {
+            title: 'Viðskiptagreining - Frekari upplýsingar',
+            subtitle: 'Fáðu innsýn í þín viðskipti með AI greiningu.',
+            submitText: 'Fá upplýsingar'
+        },
+        outbound: {
+            title: 'Úthringiþjónusta - Frekari upplýsingar',
+            subtitle: 'Auktu sölu með sérhæfðu úthringiteymi.',
+            submitText: 'Fá tilboð'
+        },
+        fte: {
+            title: 'Stöðugildi til leigu',
+            subtitle: 'Leigðu sérhæfðan starfsmann án umsýslukostnaðar.',
+            submitText: 'Fá upplýsingar'
+        },
+        custom: {
+            title: 'Sérsniðnar lausnir',
+            subtitle: 'Láttu okkur hanna lausn sem hentar þínum þörfum.',
+            submitText: 'Fá ráðgjöf'
+        },
+        job: {
+            title: 'Sækja um starf',
+            subtitle: 'Sendu okkur ferilskrá og kynningu á þér.',
+            submitText: 'Senda umsókn'
+        },
+        meeting: {
+            title: 'Bóka fund',
+            subtitle: 'Við finnum tíma sem hentar þér.',
+            submitText: 'Bóka fund'
+        },
+        pricing: {
+            title: 'Fá verðtilboð',
+            subtitle: 'Fáðu sérsniðið tilboð miðað við þínar þarfir.',
+            submitText: 'Fá verðtilboð'
+        },
+        'ai-service': {
+            title: 'AI þjónusta',
+            subtitle: 'Kynntu þér heildstæðar AI lausnir okkar.',
+            submitText: 'Fá upplýsingar'
+        }
+    },
+    en: {
+        contact: {
+            title: 'Contact Us',
+            subtitle: 'We respond to all inquiries within 24 hours.',
+            submitText: 'Send Inquiry'
+        },
+        consultation: {
+            title: 'Get Free Consultation',
+            subtitle: 'Book a free consultation with our experts.',
+            submitText: 'Book Consultation'
+        },
+        'phone-support': {
+            title: 'Phone Support - Learn More',
+            subtitle: 'Get a quote for specialized phone support for your company.',
+            submitText: 'Get Quote'
+        },
+        'email-service': {
+            title: 'Email Service - Learn More',
+            subtitle: 'Let us handle your email communications.',
+            submitText: 'Get Quote'
+        },
+        'ai-chat': {
+            title: 'AI Chat Service - Learn More',
+            subtitle: 'Learn how AI can improve your service.',
+            submitText: 'Get Information'
+        },
+        'ai-voice': {
+            title: 'AI Voice Service - Learn More',
+            subtitle: 'Automated phone support 24/7.',
+            submitText: 'Get Information'
+        },
+        analytics: {
+            title: 'Business Analytics - Learn More',
+            subtitle: 'Get insights into your business with AI analysis.',
+            submitText: 'Get Information'
+        },
+        outbound: {
+            title: 'Outbound Service - Learn More',
+            subtitle: 'Increase sales with a specialized outbound team.',
+            submitText: 'Get Quote'
+        },
+        fte: {
+            title: 'FTE Rental',
+            subtitle: 'Rent a specialized employee without administrative costs.',
+            submitText: 'Get Information'
+        },
+        custom: {
+            title: 'Custom Solutions',
+            subtitle: 'Let us design a solution that fits your needs.',
+            submitText: 'Get Consultation'
+        },
+        job: {
+            title: 'Apply for Job',
+            subtitle: 'Send us your CV and introduction.',
+            submitText: 'Send Application'
+        },
+        meeting: {
+            title: 'Book a Meeting',
+            subtitle: 'We\'ll find a time that suits you.',
+            submitText: 'Book Meeting'
+        },
+        pricing: {
+            title: 'Get Pricing',
+            subtitle: 'Get a custom quote based on your needs.',
+            submitText: 'Get Quote'
+        },
+        'ai-service': {
+            title: 'AI Service',
+            subtitle: 'Learn about our comprehensive AI solutions.',
+            submitText: 'Get Information'
+        }
+    }
+};
+
+// Open contact modal
+function openContactModal(type) {
+    currentContactType = type || 'contact';
+    const modal = document.getElementById('contactModal');
+    const currentLang = localStorage.getItem('language') || 'is';
+    const content = modalContent[currentLang][currentContactType] || modalContent[currentLang]['contact'];
+    
+    // Update modal content based on type
+    document.getElementById('modalTitle').textContent = content.title;
+    document.getElementById('modalSubtitle').textContent = content.subtitle;
+    document.querySelector('.modal-submit').textContent = content.submitText;
+    
+    // Show/hide certain fields based on type
+    const messageField = document.querySelector('textarea[name="message"]').parentElement;
+    const websiteField = document.querySelector('input[name="website"]').parentElement;
+    
+    if (type === 'job') {
+        messageField.querySelector('label').textContent = currentLang === 'is' ? 'Kynning á þér' : 'About yourself';
+        messageField.querySelector('textarea').placeholder = currentLang === 'is' ? 'Segðu okkur aðeins frá þér...' : 'Tell us about yourself...';
+        websiteField.style.display = 'none';
+    } else {
+        messageField.querySelector('label').textContent = currentLang === 'is' ? 'Skilaboð' : 'Message';
+        messageField.querySelector('textarea').placeholder = '';
+        websiteField.style.display = 'block';
+    }
+    
+    // Show modal
+    modal.classList.add('show');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Close contact modal
+function closeContactModal() {
+    const modal = document.getElementById('contactModal');
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        // Reset form
+        document.getElementById('contactForm').reset();
+    }, 300);
+}
+
+// Handle contact form submission
+function handleContactSubmit(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    const currentLang = localStorage.getItem('language') || 'is';
+    
+    // Get form values
+    const companyName = formData.get('companyName');
+    const contactPerson = formData.get('contactPerson');
+    const email = formData.get('email');
+    const phone = formData.get('phone');
+    const website = formData.get('website');
+    const message = formData.get('message');
+    
+    // Get context-specific subject
+    const content = modalContent[currentLang][currentContactType] || modalContent[currentLang]['contact'];
+    const subject = `${content.title} - ${companyName}`;
+    
+    // Create email body
+    let emailBody = `${currentLang === 'is' ? 'Ný fyrirspurn frá' : 'New inquiry from'}: ${companyName}\n\n`;
+    emailBody += `${currentLang === 'is' ? 'Tegund fyrirspurnar' : 'Inquiry type'}: ${content.title}\n`;
+    emailBody += `${currentLang === 'is' ? 'Fyrirtæki' : 'Company'}: ${companyName}\n`;
+    emailBody += `${currentLang === 'is' ? 'Tengiliður' : 'Contact person'}: ${contactPerson}\n`;
+    emailBody += `${currentLang === 'is' ? 'Netfang' : 'Email'}: ${email}\n`;
+    if (phone) emailBody += `${currentLang === 'is' ? 'Sími' : 'Phone'}: ${phone}\n`;
+    if (website && currentContactType !== 'job') emailBody += `${currentLang === 'is' ? 'Vefsíða' : 'Website'}: ${website}\n`;
+    if (message) emailBody += `\n${currentLang === 'is' ? 'Skilaboð' : 'Message'}:\n${message}`;
+    
+    // Create mailto link
+    const mailtoLink = `mailto:svorumstrax@svorumstrax.is?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message (you might want to replace this with a nicer notification)
+    setTimeout(() => {
+        alert(currentLang === 'is' 
+            ? 'Takk fyrir fyrirspurnina! Við höfum samband við þig fljótlega.' 
+            : 'Thank you for your inquiry! We will contact you soon.');
+        closeContactModal();
+    }, 100);
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('contactModal');
+    if (event.target === modal) {
+        closeContactModal();
+    }
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeContactModal();
     }
 });

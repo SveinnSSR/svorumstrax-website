@@ -21,7 +21,7 @@
                 <li><a href="#um-okkur" data-is="Um okkur" data-en="About Us">Um okkur</a></li>
                 <li><a href="mannaudur.html" data-is="Mannauður" data-en="Our Team">Mannauður</a></li>
                 <li><a href="#starfsfolk" data-is="Störf" data-en="Jobs">Störf</a></li>
-                <li><a href="#contact" class="cta-button" data-is="Hafa samband" data-en="Contact">Hafa samband</a></li>
+                <li><a href="#" class="cta-button" onclick="openContactModal('contact')" data-is="Hafa samband" data-en="Contact">Hafa samband</a></li>
                 <li class="language-toggle">
                     <button class="lang-btn active" onclick="setLanguage('is')">IS</button>
                     <button class="lang-btn" onclick="setLanguage('en')">EN</button>
@@ -46,7 +46,7 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#tjonusta" class="primary-button" data-is="Sjá alla þjónustu" data-en="See All Services">Sjá alla þjónustu</a>
-                    <a href="#contact" class="secondary-button" data-is="Fá ókeypis ráðgjöf" data-en="Get Free Consultation">Fá ókeypis ráðgjöf</a>
+                    <a href="#" onclick="openContactModal('consultation')" class="secondary-button" data-is="Fá ókeypis ráðgjöf" data-en="Get Free Consultation">Fá ókeypis ráðgjöf</a>
                 </div>
             </div>
             
@@ -108,7 +108,7 @@
                 <div class="feature-icon">🎯</div>
                 <h3 data-is="Sérhæfð þjónustusvörun" data-en="Specialized Human Support">Sérhæfð þjónustusvörun</h3>
                 <p data-is="Fullkomlega þjálfaðir starfsmenn sem þekkja þitt fyrirtæki, vörur og þjónustu. Geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð byggða á þínum upplýsingakerfum."
-                   data-en="Dedicated experts trained in your company’s products and systems. They handle complex inquiries, troubleshoot issues, and deliver personalized support using your knowledge base.">
+                   data-en="Dedicated experts trained in your company's products and systems. They handle complex inquiries, troubleshoot issues, and deliver personalized support using your knowledge base.">
                     Fullkomlega þjálfaðir starfsmenn sem þekkja þitt fyrirtæki, vörur og þjónustu. 
                     Geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð 
                     byggða á þínum upplýsingakerfum.
@@ -260,7 +260,7 @@
                     Allt frá almennri ritaraþjónustu til fullkomlega sérhæfðra 
                     þjónustufulltrúa sem þekkja þitt fyrirtæki út og inn.
                 </p>
-                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
+                <a href="#" class="service-link" onclick="openContactModal('phone-support')" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card">
@@ -272,7 +272,7 @@
                     Flokkum, forgangsröðum og svörum með þekkingu á þínu fyrirtæki. 
                     Sendum flókin mál áfram á réttan stað.
                 </p>
-                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
+                <a href="#" class="service-link" onclick="openContactModal('email-service')" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card featured">
@@ -284,7 +284,7 @@
                     Veitir tafarlausar upplýsingar, greinir þarfir viðskiptavina og 
                     vísar flóknari málum áfram á réttan sérfræðing.
                 </p>
-                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
+                <a href="#" class="service-link" onclick="openContactModal('ai-chat')" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card featured">
@@ -296,7 +296,7 @@
                     svarar algengum spurningum og bókar tíma. Sendir flókin mál 
                     áfram á mannlega sérfræðinga.
                 </p>
-                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
+                <a href="#" class="service-link" onclick="openContactModal('ai-voice')" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card featured">
@@ -308,7 +308,7 @@
                     Finnur mynstur, spáir fyrir um eftirspurn og auðkennir sölutækifæri 
                     sem annars færu framhjá þér.
                 </p>
-                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
+                <a href="#" class="service-link" onclick="openContactModal('analytics')" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card">
@@ -320,7 +320,7 @@
                     Notum nýjustu tækni og CRM kerfi til að 
                     hámarka árangur og mæla árangur.
                 </p>
-                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
+                <a href="#" class="service-link" onclick="openContactModal('outbound')" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card">
@@ -332,7 +332,7 @@
                     Fullþjálfað starfsfólk sem verður hluti af þínu teymi 
                     og vinnur eingöngu fyrir þig.
                 </p>
-                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
+                <a href="#" class="service-link" onclick="openContactModal('fte')" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
             
             <div class="service-card">
@@ -344,7 +344,7 @@
                     Við greinum þarfir, hönnum ferla og innleiðum tækni 
                     sem skilar mælanlegum árangri.
                 </p>
-                <a href="#" class="service-link" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
+                <a href="#" class="service-link" onclick="openContactModal('custom')" data-is="Skoða nánar →" data-en="Learn more →">Skoða nánar →</a>
             </div>
         </div>
     </section>
@@ -391,7 +391,7 @@
                         </div>
                     </div>
                     
-                    <a href="#contact" class="primary-button" style="margin-top: 40px;" data-is="Sækja um starf" data-en="Apply for Job">Sækja um starf</a>
+                    <a href="#" class="primary-button" style="margin-top: 40px;" onclick="openContactModal('job')" data-is="Sækja um starf" data-en="Apply for Job">Sækja um starf</a>
                 </div>
                 
                 <div class="jobs-image">
@@ -470,8 +470,8 @@
                 á því hvernig við getum bætt þína þjónustu og veitt þér betri yfirsýn.
             </p>
             <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px;">
-                <a href="#" class="primary-button" data-is="Bóka fund" data-en="Book a Meeting">Bóka fund</a>
-                <a href="#" class="secondary-button" data-is="Sjá verðskrá" data-en="See Pricing">Sjá verðskrá</a>
+                <a href="#" class="primary-button" onclick="openContactModal('meeting')" data-is="Bóka fund" data-en="Book a Meeting">Bóka fund</a>
+                <a href="#" class="secondary-button" onclick="openContactModal('pricing')" data-is="Sjá verðskrá" data-en="See Pricing">Sjá verðskrá</a>
             </div>
         </div>
     </section>
@@ -496,12 +496,12 @@
             <div class="footer-column">
                 <h4 data-is="Þjónusta" data-en="Services">Þjónusta</h4>
                 <ul>
-                    <li><a href="#" data-is="Símsvörun" data-en="Phone Support">Símsvörun</a></li>
-                    <li><a href="#" data-is="Tölvupóstþjónusta" data-en="Email Service">Tölvupóstþjónusta</a></li>
-                    <li><a href="#" data-is="AI þjónusta" data-en="AI Service">AI þjónusta</a></li>
-                    <li><a href="#" data-is="Viðskiptagreining" data-en="Business Analytics">Viðskiptagreining</a></li>
-                    <li><a href="#" data-is="Úthringingar" data-en="Outbound Calls">Úthringingar</a></li>
-                    <li><a href="#" data-is="Stöðugildi" data-en="FTEs">Stöðugildi</a></li>
+                    <li><a href="#" onclick="openContactModal('phone-support')" data-is="Símsvörun" data-en="Phone Support">Símsvörun</a></li>
+                    <li><a href="#" onclick="openContactModal('email-service')" data-is="Tölvupóstþjónusta" data-en="Email Service">Tölvupóstþjónusta</a></li>
+                    <li><a href="#" onclick="openContactModal('ai-service')" data-is="AI þjónusta" data-en="AI Service">AI þjónusta</a></li>
+                    <li><a href="#" onclick="openContactModal('analytics')" data-is="Viðskiptagreining" data-en="Business Analytics">Viðskiptagreining</a></li>
+                    <li><a href="#" onclick="openContactModal('outbound')" data-is="Úthringingar" data-en="Outbound Calls">Úthringingar</a></li>
+                    <li><a href="#" onclick="openContactModal('fte')" data-is="Stöðugildi" data-en="FTEs">Stöðugildi</a></li>
                 </ul>
             </div>
             
@@ -509,7 +509,7 @@
                 <h4 data-is="Fyrirtækið" data-en="Company">Fyrirtækið</h4>
                 <ul>
                     <li><a href="#" data-is="Um okkur" data-en="About Us">Um okkur</a></li>
-                    <li><a href="#" data-is="Störf" data-en="Jobs">Störf</a></li>
+                    <li><a href="#" onclick="openContactModal('job')" data-is="Störf" data-en="Jobs">Störf</a></li>
                     <li><a href="mannaudur.html" data-is="Mannauður" data-en="Our Team">Mannauður</a></li>
                     <li><a href="#" data-is="Barcelona" data-en="Barcelona">Barcelona</a></li>
                     <li><a href="#" data-is="Viðskiptavinir" data-en="Clients">Viðskiptavinir</a></li>
@@ -531,6 +531,55 @@
             <p data-is="© 2025 Svörum strax. Allur réttur áskilinn." data-en="© 2025 Svörum strax. All rights reserved.">© 2025 Svörum strax. Allur réttur áskilinn.</p>
         </div>
     </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" data-is="Hafðu samband" data-en="Contact Us">Hafðu samband</h2>
+                <span class="modal-close" onclick="closeContactModal()">&times;</span>
+            </div>
+            <p id="modalSubtitle" data-is="Fylltu út upplýsingarnar hér að neðan og við höfum samband." data-en="Fill out the information below and we'll contact you.">
+                Fylltu út upplýsingarnar hér að neðan og við höfum samband.
+            </p>
+            
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                <div class="form-group">
+                    <label for="companyName" data-is="Nafn fyrirtækis" data-en="Company Name">Nafn fyrirtækis</label>
+                    <input type="text" id="companyName" name="companyName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactPerson" data-is="Nafn tengiliðs" data-en="Contact Person">Nafn tengiliðs</label>
+                    <input type="text" id="contactPerson" name="contactPerson" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" data-is="Netfang" data-en="Email">Netfang</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" data-is="Símanúmer" data-en="Phone Number">Símanúmer</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="website" data-is="Vefsíða fyrirtækis" data-en="Company Website">Vefsíða fyrirtækis</label>
+                    <input type="url" id="website" name="website" placeholder="https://example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" data-is="Skilaboð" data-en="Message">Skilaboð</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="modal-submit" data-is="Senda fyrirspurn" data-en="Send Inquiry">
+                    Senda fyrirspurn
+                </button>
+            </form>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
     

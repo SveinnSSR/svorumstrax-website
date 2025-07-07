@@ -176,7 +176,7 @@
                 <li><a href="index.html#tjonusta" data-is="Þjónusta" data-en="Services">Þjónusta</a></li>
                 <li><a href="index.html#um-okkur" data-is="Um okkur" data-en="About Us">Um okkur</a></li>
                 <li><a href="mannaudur.html" class="active" data-is="Mannauður" data-en="Our Team">Mannauður</a></li>
-                <li><a href="index.html#contact" class="cta-button" data-is="Hafa samband" data-en="Contact">Hafa samband</a></li>
+                <li><a href="#" class="cta-button" onclick="openContactModal('contact')" data-is="Hafa samband" data-en="Contact">Hafa samband</a></li>
                 <li class="language-toggle">
                     <button class="lang-btn active" onclick="setLanguage('is')">IS</button>
                     <button class="lang-btn" onclick="setLanguage('en')">EN</button>
@@ -408,12 +408,12 @@
             <div class="footer-column">
                 <h4 data-is="Þjónusta" data-en="Services">Þjónusta</h4>
                 <ul>
-                    <li><a href="index.html#tjonusta" data-is="Símsvörun" data-en="Phone Support">Símsvörun</a></li>
-                    <li><a href="index.html#tjonusta" data-is="Tölvupóstþjónusta" data-en="Email Service">Tölvupóstþjónusta</a></li>
-                    <li><a href="index.html#tjonusta" data-is="AI þjónusta" data-en="AI Service">AI þjónusta</a></li>
-                    <li><a href="index.html#tjonusta" data-is="Viðskiptagreining" data-en="Business Analytics">Viðskiptagreining</a></li>
-                    <li><a href="index.html#tjonusta" data-is="Úthringingar" data-en="Outbound Calls">Úthringingar</a></li>
-                    <li><a href="index.html#tjonusta" data-is="Stöðugildi" data-en="FTEs">Stöðugildi</a></li>
+                    <li><a href="#" onclick="openContactModal('phone-support')" data-is="Símsvörun" data-en="Phone Support">Símsvörun</a></li>
+                    <li><a href="#" onclick="openContactModal('email-service')" data-is="Tölvupóstþjónusta" data-en="Email Service">Tölvupóstþjónusta</a></li>
+                    <li><a href="#" onclick="openContactModal('ai-service')" data-is="AI þjónusta" data-en="AI Service">AI þjónusta</a></li>
+                    <li><a href="#" onclick="openContactModal('analytics')" data-is="Viðskiptagreining" data-en="Business Analytics">Viðskiptagreining</a></li>
+                    <li><a href="#" onclick="openContactModal('outbound')" data-is="Úthringingar" data-en="Outbound Calls">Úthringingar</a></li>
+                    <li><a href="#" onclick="openContactModal('fte')" data-is="Stöðugildi" data-en="FTEs">Stöðugildi</a></li>
                 </ul>
             </div>
             
@@ -422,7 +422,7 @@
                 <ul>
                     <li><a href="index.html#um-okkur" data-is="Um okkur" data-en="About Us">Um okkur</a></li>
                     <li><a href="mannaudur.html" data-is="Mannauður" data-en="Our Team">Mannauður</a></li>
-                    <li><a href="index.html#starfsfolk" data-is="Störf" data-en="Jobs">Störf</a></li>
+                    <li><a href="#" onclick="openContactModal('job')" data-is="Störf" data-en="Jobs">Störf</a></li>
                     <li><a href="index.html#um-okkur" data-is="Barcelona" data-en="Barcelona">Barcelona</a></li>
                 </ul>
             </div>
@@ -442,6 +442,55 @@
             <p data-is="© 2025 Svörum strax. Allur réttur áskilinn." data-en="© 2025 Svörum strax. All rights reserved.">© 2025 Svörum strax. Allur réttur áskilinn.</p>
         </div>
     </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" data-is="Hafðu samband" data-en="Contact Us">Hafðu samband</h2>
+                <span class="modal-close" onclick="closeContactModal()">&times;</span>
+            </div>
+            <p id="modalSubtitle" data-is="Fylltu út upplýsingarnar hér að neðan og við höfum samband." data-en="Fill out the information below and we'll contact you.">
+                Fylltu út upplýsingarnar hér að neðan og við höfum samband.
+            </p>
+            
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                <div class="form-group">
+                    <label for="companyName" data-is="Nafn fyrirtækis" data-en="Company Name">Nafn fyrirtækis</label>
+                    <input type="text" id="companyName" name="companyName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactPerson" data-is="Nafn tengiliðs" data-en="Contact Person">Nafn tengiliðs</label>
+                    <input type="text" id="contactPerson" name="contactPerson" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" data-is="Netfang" data-en="Email">Netfang</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" data-is="Símanúmer" data-en="Phone Number">Símanúmer</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="website" data-is="Vefsíða fyrirtækis" data-en="Company Website">Vefsíða fyrirtækis</label>
+                    <input type="url" id="website" name="website" placeholder="https://example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" data-is="Skilaboð" data-en="Message">Skilaboð</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="modal-submit" data-is="Senda fyrirspurn" data-en="Send Inquiry">
+                    Senda fyrirspurn
+                </button>
+            </form>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
     
