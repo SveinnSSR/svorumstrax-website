@@ -580,6 +580,24 @@
         // Update preview text
         const previewText = document.querySelector('.svorum-preview-text');
         if (previewText) previewText.textContent = t.preview;
+        
+        // Update welcome message if it exists
+        if (messages.length > 0 && messages[0].type === 'bot') {
+            // Check if first message is the welcome message
+            const isWelcomeIS = messages[0].content === translations.is.welcome;
+            const isWelcomeEN = messages[0].content === translations.en.welcome;
+            
+            if (isWelcomeIS || isWelcomeEN) {
+                // Update the message content
+                messages[0].content = t.welcome;
+                
+                // Update the DOM
+                const firstMessageEl = document.querySelector('.svorum-message-bot .svorum-message-text');
+                if (firstMessageEl) {
+                    firstMessageEl.textContent = t.welcome;
+                }
+            }
+        }
     }
 
     // Initialize widget
