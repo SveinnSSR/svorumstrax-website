@@ -353,6 +353,8 @@ function closeContactModal() {
         // Reset form
         document.getElementById('contactForm').reset();
     }, 300);
+    // Prevent default action that might cause scrolling
+    return false;
 }
 
 // Handle contact form submission

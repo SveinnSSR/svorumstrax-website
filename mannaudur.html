@@ -448,7 +448,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="modalTitle" data-is="Hafðu samband" data-en="Contact Us">Hafðu samband</h2>
-                <span class="modal-close" onclick="closeContactModal()">&times;</span>
+                <span class="modal-close" onclick="event.preventDefault(); closeContactModal(); return false;">&times;</span>
             </div>
             <p id="modalSubtitle" data-is="Fylltu út upplýsingarnar hér að neðan og við höfum samband." data-en="Fill out the information below and we'll contact you.">
                 Fylltu út upplýsingarnar hér að neðan og við höfum samband.

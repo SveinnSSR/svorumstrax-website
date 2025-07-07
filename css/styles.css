@@ -4,6 +4,16 @@
     box-sizing: border-box;
 }
 
+/* Preload critical styles */
+.modal {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
 :root {
     --primary-orange: #FF6B35;
     --primary-dark: #0A0E27;
@@ -912,7 +922,6 @@ footer {
     overflow: auto;
     background-color: rgba(10, 14, 39, 0.95);
     backdrop-filter: blur(20px);
-    animation: modalFadeIn 0.3s ease;
 }
 
 .modal.show {
@@ -922,12 +931,14 @@ footer {
 .modal-content {
     background: rgba(27, 39, 53, 0.98);
     backdrop-filter: blur(20px);
-    margin: 5% auto;
-    padding: 40px;
+    margin: 50px auto;
+    padding: 30px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
+    border-radius: 20px;
     width: 90%;
-    max-width: 600px;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
                 0 0 0 1px rgba(255, 107, 53, 0.2);
     position: relative;
@@ -970,7 +981,7 @@ footer {
 
 /* Form Styles */
 .form-group {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
 }
 
 .form-group label {
@@ -1010,17 +1021,17 @@ footer {
 
 .modal-submit {
     width: 100%;
-    padding: 16px 32px;
+    padding: 14px 28px;
     background: var(--gradient-orange);
     color: white;
     border: none;
-    border-radius: 30px;
-    font-size: 1.1rem;
+    border-radius: 25px;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .modal-submit:hover {
