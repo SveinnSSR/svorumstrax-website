@@ -419,6 +419,35 @@ async function handleContactSubmit(event) {
     }
 }
 
+// Auto-detect staff photos vs placeholders
+document.addEventListener('DOMContentLoaded', function() {
+    // Only run on pages with staff cards
+    const staffCards = document.querySelectorAll('.staff-card');
+    
+    if (staffCards.length > 0) {
+        staffCards.forEach(card => {
+            const avatar = card.querySelector('.staff-avatar');
+            
+            if (avatar) {
+                // Remove any existing founder class to ensure equal treatment
+                card.classList.remove('founder');
+                
+                // Check if it has a real image or is a placeholder
+                const hasImage = avatar.querySelector('img');
+                const isPlaceholder = avatar.classList.contains('placeholder');
+                
+                if (hasImage && !isPlaceholder) {
+                    // Has a real photo
+                    card.classList.add('has-photo');
+                } else {
+                    // Has placeholder initials
+                    card.classList.add('has-placeholder');
+                }
+            }
+        });
+    }
+});
+
 // Close modal when clicking outside
 window.onclick = function(event) {
     const modal = document.getElementById('contactModal');

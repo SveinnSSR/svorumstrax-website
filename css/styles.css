@@ -1064,6 +1064,175 @@ footer {
     }
 }
 
+/* Staff Section - UPDATED STYLING */
+/* Additional styles for staff page */
+.staff-hero {
+    padding: 120px 5% 60px;
+    background: radial-gradient(ellipse at top, #1B2735 0%, #090A0F 100%);
+    text-align: center;
+    min-height: auto;
+}
+
+.staff-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 24px;
+    background: linear-gradient(to right, var(--text-light) 0%, var(--primary-orange) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.staff-intro {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.staff-intro p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.staff-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 80px 5% 100px;
+}
+
+.staff-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* UPDATED: Remove founder-specific styling */
+.staff-card.founder {
+    /* No special styling for founders anymore */
+}
+
+/* NEW: Add styling for cards with photos */
+.staff-card.has-photo {
+    border-color: rgba(255, 107, 53, 0.3);
+    background: rgba(255, 107, 53, 0.02);
+}
+
+/* NEW: Optional styling for placeholder cards */
+.staff-card.has-placeholder {
+    /* Keep default styling or add subtle difference */
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.staff-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+    border-color: rgba(255, 107, 53, 0.3);
+}
+
+.staff-avatar {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    background: #1B2735;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.staff-avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+}
+
+.staff-avatar.placeholder {
+    background: linear-gradient(135deg, #2D3561 0%, #1B2735 100%);
+    border: 2px solid rgba(255, 107, 53, 0.3);
+}
+
+.staff-avatar.placeholder::before {
+    content: attr(data-initials);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-orange);
+    opacity: 0.8;
+}
+
+.staff-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.staff-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+.staff-title {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.founder-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    color: var(--text-muted);
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 12px;
+    opacity: 0.7;
+}
+
+.staff-email {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    opacity: 0.7;
+}
+
+.staff-email:hover {
+    color: var(--primary-orange);
+    opacity: 1;
+}
+
+.staff-section {
+    background: rgba(15, 23, 42, 0.5);
+}
+
+@media (max-width: 768px) {
+    .staff-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .staff-hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
@@ -1492,4 +1661,3 @@ footer {
         font-size: 14px;
     }
 }
-
