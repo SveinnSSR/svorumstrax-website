@@ -1,4 +1,4 @@
-// Svörum strax Premium Chat Widget - Translucent Orange Tech Design
+// Svörum strax Premium Chat Widget - Enhanced Version
 (function() {
     'use strict';
 
@@ -27,6 +27,8 @@
     const CHUNK_REVEAL_DELAY = 250;
     const FADE_IN_DURATION = 300;
     const MOBILE_BREAKPOINT = 768;
+    const PREVIEW_SHOW_DELAY = 3000; // Show preview after 3 seconds
+    const PREVIEW_HIDE_DELAY = 10000; // Hide preview after 10 seconds
 
     // Session management
     const SESSION_ID_KEY = "svorumChatSessionId";
@@ -37,15 +39,16 @@
     widgetContainer.id = 'svorum-premium-chat-widget';
     document.body.appendChild(widgetContainer);
 
-    // Widget state - showOptions now defaults to false
+    // Widget state
     let isMinimized = true;
-    let showOptions = false; // Changed to false - go straight to chat
+    let showOptions = false;
     let messages = [];
     let inputValue = '';
     let isTyping = false;
     let sessionId = '';
     let windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
     let typingMessages = {};
+    let previewShown = false;
     const isMobile = windowWidth <= MOBILE_BREAKPOINT;
 
     // Get current language
@@ -53,20 +56,24 @@
         return localStorage.getItem('language') || 'is';
     }
 
-    // Translations
+    // Enhanced translations with professional messaging
     const translations = {
         is: {
-            subtitle: "AI Aðstoð",
+            title: "AI þjónustufulltrúi",
+            subtitle: "Svörum strax",
             placeholder: "Skrifaðu skilaboð...",
             send: "Senda",
-            welcome: "Halló! Ég er AI þjónusturáðgjafi Svörum strax. Hvernig get ég aðstoðað þig í dag?",
+            preview: "Þarftu aðstoð? Spjallaðu við mig! 💬",
+            welcome: "Halló! Ég er AI þjónustufulltrúi Svörum strax. Ertu með fyrirtæki og hefur áhuga á þjónustu okkar? Eða hefur þú áhuga á að ganga til liðs við okkur í Barcelona?",
             error: "Fyrirgefðu, eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur."
         },
         en: {
-            subtitle: "AI Assistant",
-            placeholder: "Write a message...",
+            title: "AI Assistant",
+            subtitle: "Svörum strax",
+            placeholder: "Type a message...",
             send: "Send",
-            welcome: "Hello! I'm the AI service advisor from Svörum strax. How can I assist you today?",
+            preview: "Need assistance? Chat with me! 💬",
+            welcome: "Hello! I'm the AI assistant at Svörum strax. Are you a business interested in our services? Or are you looking to join our team in Barcelona?",
             error: "Sorry, something went wrong. Please try again."
         }
     };
@@ -78,6 +85,32 @@
         
         const html = `
             <div class="svorum-premium-container ${isMinimized ? 'minimized' : ''}">
+                <!-- Preview bar -->
+                <div class="svorum-preview-bar" id="svorum-preview-bar" onclick="toggleChat()">
+                    <div class="svorum-preview-content">
+                        <svg class="svorum-preview-avatar" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="previewGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="20" cy="20" r="20" fill="white" opacity="0.95"/>
+                            <path d="M 13 17 Q 13 14, 16 14 L 24 14 Q 27 14, 27 17 L 27 20 Q 27 23, 24 23 L 19 23 L 15 27 L 15 23 L 16 23 Q 13 23, 13 20 Z" 
+                                  fill="url(#previewGrad)" opacity="0.9"/>
+                            <circle cx="16.5" cy="18.5" r="1" fill="white"/>
+                            <circle cx="20" cy="18.5" r="1" fill="white"/>
+                            <circle cx="23.5" cy="18.5" r="1" fill="white"/>
+                        </svg>
+                        <span class="svorum-preview-text">${t.preview}</span>
+                        <button class="svorum-preview-close" onclick="hidePreview(event)">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 1L1 13M1 1L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Minimized state - Premium circular button with translucent orange -->
                 <div class="svorum-premium-bubble" onclick="toggleChat()">
                     <div class="svorum-premium-ring">
@@ -137,8 +170,8 @@
                                 </svg>
                             </div>
                             <div class="svorum-premium-header-info">
-                                <div class="svorum-premium-title">${t.subtitle}</div>
-                                <div class="svorum-premium-subtitle">Svörum strax</div>
+                                <div class="svorum-premium-title">${t.title}</div>
+                                <div class="svorum-premium-subtitle">${t.subtitle}</div>
                             </div>
                         </div>
                         <div class="svorum-premium-minimize">
@@ -202,7 +235,41 @@
             </div>
         `;
         widgetContainer.innerHTML = html;
+
+        // Show preview bar after delay
+        setTimeout(() => {
+            if (isMinimized && !previewShown) {
+                showPreview();
+            }
+        }, PREVIEW_SHOW_DELAY);
     }
+
+    // Show preview bar
+    function showPreview() {
+        const previewBar = document.getElementById('svorum-preview-bar');
+        if (previewBar && isMinimized) {
+            previewBar.classList.add('show');
+            previewShown = true;
+            
+            // Auto-hide after delay
+            setTimeout(() => {
+                if (isMinimized) {
+                    hidePreview();
+                }
+            }, PREVIEW_HIDE_DELAY);
+        }
+    }
+
+    // Hide preview bar
+    window.hidePreview = function(event) {
+        if (event) {
+            event.stopPropagation();
+        }
+        const previewBar = document.getElementById('svorum-preview-bar');
+        if (previewBar) {
+            previewBar.classList.remove('show');
+        }
+    };
 
     // Generate session ID
     function generateSessionId() {
@@ -227,8 +294,26 @@
         const container = document.querySelector('.svorum-premium-container');
         container.classList.toggle('minimized');
         
-        if (!isMinimized && messages.length === 0) {
-            showWelcomeMessage();
+        // Hide preview when chat opens
+        if (!isMinimized) {
+            hidePreview();
+            if (messages.length === 0) {
+                showWelcomeMessage();
+            }
+            // Focus input on desktop
+            if (!isMobile) {
+                setTimeout(() => {
+                    const input = document.getElementById('svorum-input');
+                    if (input) input.focus();
+                }, 300);
+            }
+        } else {
+            // Show preview again after delay when minimized
+            setTimeout(() => {
+                if (isMinimized) {
+                    showPreview();
+                }
+            }, PREVIEW_SHOW_DELAY);
         }
     };
 
@@ -477,9 +562,13 @@
         const sendBtn = document.querySelector('.svorum-premium-send span');
         if (sendBtn) sendBtn.textContent = t.send;
         
-        // Update subtitle
-        const subtitle = document.querySelector('.svorum-premium-title');
-        if (subtitle) subtitle.textContent = t.subtitle;
+        // Update title
+        const title = document.querySelector('.svorum-premium-title');
+        if (title) title.textContent = t.title;
+        
+        // Update preview text
+        const previewText = document.querySelector('.svorum-preview-text');
+        if (previewText) previewText.textContent = t.preview;
     });
 
     // Initialize widget
