@@ -1930,6 +1930,45 @@ footer {
     font-size: 15px;
 }
 
+/* Warm AI Choice Card - Claude AI style */
+.choice-card-enhanced.ai-enhanced {
+    background: linear-gradient(135deg, rgba(250, 247, 244, 0.95) 0%, rgba(245, 240, 234, 0.9) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.choice-card-enhanced.ai-enhanced:hover {
+    background: linear-gradient(135deg, rgba(252, 250, 248, 0.98) 0%, rgba(247, 243, 239, 0.95) 100%);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-color: rgba(255, 107, 53, 0.2);
+}
+
+.choice-card-enhanced.ai-enhanced .choice-description,
+.choice-card-enhanced.ai-enhanced .capability-list li {
+    color: #4A5568;
+}
+
+.choice-card-enhanced.ai-enhanced .choice-header h3 {
+    color: #2D3748;
+}
+
+.choice-card-enhanced.ai-enhanced .capability-title,
+.choice-card-enhanced.ai-enhanced .ideal-label {
+    color: #718096;
+}
+
+.choice-card-enhanced.ai-enhanced .ideal-text {
+    color: #4A5568;
+}
+
+/* Fix the AI icon color for warm background */
+.choice-card-enhanced.ai-enhanced .choice-icon {
+    color: #FF6B35;
+}
+
+.choice-card-enhanced.ai-enhanced .icon-glow {
+    opacity: 0.2;
+}
+
 /* Capabilities Section */
 .choice-capabilities {
     margin-bottom: 28px;
