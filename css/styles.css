@@ -714,6 +714,13 @@ nav {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+/* Fix gradient text to use orange color on warm background */
+.features.warm-section .section-header h2 {
+    background: linear-gradient(to right, #FF6B35 0%, #FF6B35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /* Mobile adjustments for warm section */
 @media (max-width: 768px) {
     .features.warm-section {
