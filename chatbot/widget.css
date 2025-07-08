@@ -515,15 +515,26 @@
     /* Preview bar on mobile */
     .svorum-preview-bar {
         bottom: 80px;
-        right: 72px;
-        max-width: 190px;
-        font-size: 12px;
-        padding: 10px 14px;
+        right: 10px;
+        max-width: 180px;
+        padding: 8px 12px;
         display: inline-block;
+    }
+    
+    .svorum-preview-content {
+        flex-wrap: wrap;
+        max-width: 100%;
     }
     
     .svorum-preview-text {
         font-size: 12px;
+        line-height: 1.3;
+        max-width: calc(100% - 40px);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .svorum-preview-avatar {
@@ -554,11 +565,11 @@
     /* Full screen chat on mobile */
     .svorum-premium-window {
         width: 100vw;
-        height: 100vh;
+        height: 85vh;
         bottom: 0;
         right: 0;
-        border-radius: 0;
-        max-height: 100vh;
+        border-radius: 20px 20px 0 0;
+        max-height: 85vh;
     }
 
     /* Adjusted header for mobile */
