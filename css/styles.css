@@ -1386,82 +1386,104 @@ footer {
         font-size: 2rem;
     }
 
-    /* FIX 3: Enhanced content separation on mobile */
+    /* FIX 3: Clear section separation on mobile */
     .services {
-        padding-bottom: 100px;
-        padding-top: 80px;
+        padding-bottom: 40px;
+        background: rgba(10, 14, 39, 0.8);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Hard boundary between services and jobs */
+    .services::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--primary-dark);
+        z-index: 10;
+    }
+
+    .jobs-section {
+        margin-top: 0;
+        margin-bottom: 0;
+        background-attachment: scroll;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+    }
+
+    .jobs-overlay {
+        padding: 80px 5% 80px;
+        background: rgba(10, 14, 39, 0.98);
         position: relative;
         z-index: 1;
     }
 
-    /* Create clear separation before jobs section */
-    .services::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 40px;
-        background: linear-gradient(to bottom, transparent, var(--primary-dark));
-    }
-
-    .jobs-section {
-        margin-top: 120px;
-        margin-bottom: 0;
-        background-attachment: scroll;
+    /* Ensure jobs content is contained */
+    .jobs-content {
         position: relative;
         z-index: 2;
     }
 
-    .jobs-overlay {
-        padding: 80px 5% 100px;
-        background: rgba(10, 14, 39, 0.95);
-    }
-
-    /* Fix jobs text section specifically */
-    .jobs-text {
-        padding-bottom: 40px;
-    }
-
     .jobs-text h2 {
-        padding-top: 20px;
         margin-top: 0;
+        padding-top: 0;
     }
 
+    .jobs-image {
+        margin-bottom: 0;
+    }
+
+    /* Clear separation for trust section */
     .trust-section {
-        padding-top: 120px;
-        padding-bottom: 100px;
+        padding-top: 80px;
+        padding-bottom: 80px;
         margin-top: 0;
         position: relative;
-        z-index: 3;
-        background: rgba(10, 14, 39, 0.8);
+        background: rgba(10, 14, 39, 0.6);
+        isolation: isolate;
+        overflow: hidden;
     }
 
-    /* Add visual separator before trust section */
+    /* Hard boundary at top of trust section */
     .trust-section::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        height: 40px;
-        background: linear-gradient(to bottom, var(--primary-dark), transparent);
+        height: 2px;
+        background: var(--primary-dark);
+        z-index: 10;
     }
 
-    /* Ensure proper stacking */
+    /* Ensure all sections are properly contained */
     section {
         position: relative;
+        overflow: hidden;
     }
 
-    /* Clear any overlapping content */
-    .services-grid {
-        position: relative;
-        z-index: 1;
-    }
-
-    .jobs-content {
-        position: relative;
-        z-index: 2;
+    /* Add clear visual gaps between problem sections on mobile */
+    @media (max-width: 768px) {
+        /* Create gap before jobs section */
+        .jobs-section {
+            margin-top: 40px;
+        }
+        
+        /* Create gap before trust section */
+        .trust-section {
+            margin-top: 40px;
+        }
+        
+        /* Ensure jobs overlay doesn't bleed */
+        .jobs-overlay {
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
     }
 
     .service-card:last-child {
@@ -1495,6 +1517,17 @@ footer {
 
     .modal-header h2 {
         font-size: 1.5rem;
+    }
+
+    /* Additional mobile-specific gaps between sections */
+    .jobs-section {
+        margin-top: 40px;
+        border-top: 40px solid var(--primary-dark);
+    }
+    
+    .trust-section {
+        margin-top: 40px;
+        border-top: 40px solid var(--primary-dark);
     }
 }
 /* Enhanced Choice Section - Enterprise Grade */
