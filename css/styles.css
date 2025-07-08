@@ -1355,6 +1355,14 @@ footer {
         font-size: 18px;
     }
 
+    /* FIX 1: Better padding for mobile menu CTA button */
+    .nav-links .cta-button {
+        display: inline-block;
+        text-align: center;
+        padding: 12px 30px;
+        width: auto;
+    }
+
     .language-toggle {
         margin-top: 20px;
         align-self: flex-start;
@@ -1378,25 +1386,41 @@ footer {
         font-size: 2rem;
     }
 
-    /* Fix content blending on mobile */
+    /* FIX 3: Enhanced content separation on mobile */
     .services {
-        padding-bottom: 40px;
+        padding-bottom: 60px;
+        padding-top: 60px;
     }
 
     .jobs-section {
-        margin-top: 40px;
+        margin-top: 80px;
+        margin-bottom: 80px;
         background-attachment: scroll;
     }
 
-    .trust-section {
-        padding-top: 60px;
-        padding-bottom: 60px;
-        margin-top: 40px;
+    .jobs-overlay {
+        padding: 60px 5%;
     }
 
-    /* Add clear separation between sections */
+    .trust-section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        margin-top: 0;
+    }
+
+    /* Add clear visual separation between sections */
     section {
         position: relative;
+    }
+
+    /* Add extra spacing for services to jobs transition */
+    .services + .jobs-section {
+        margin-top: 100px;
+    }
+
+    /* Add extra spacing for jobs to trust transition */
+    .jobs-section + .trust-section {
+        padding-top: 100px;
     }
 
     .service-card:last-child {
