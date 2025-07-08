@@ -124,8 +124,16 @@
                 <div class="feature-icon-wrapper">
                     <div class="feature-icon-card">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
                     </div>
                     <div class="icon-pulse"></div>
@@ -182,9 +190,12 @@
                         <div class="choice-icon-wrapper">
                             <div class="icon-glow ai-glow"></div>
                             <svg class="choice-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                <path d="M24 5L26.5 18.5L40 21L26.5 23.5L24 37L21.5 23.5L8 21L21.5 18.5L24 5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M36 12L37 16L41 17L37 18L36 22L35 18L31 17L35 16L36 12Z" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
-                                <path d="M12 28L13 32L17 33L13 34L12 38L11 34L7 33L11 32L12 28Z" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+                                <rect x="12" y="12" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="18" cy="18" r="2" fill="currentColor"/>
+                                <circle cx="30" cy="18" r="2" fill="currentColor"/>
+                                <path d="M18 30H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M8 24H12M36 24H40" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+                                <path d="M24 8V12M24 36V40" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
                             </svg>
                         </div>
                         <h3 data-is="AI Spjallmenni" data-en="AI Agents">AI Spjallmenni</h3>
@@ -265,31 +276,32 @@
         
         <div class="features-grid">
             <div class="feature-card">
+                <div class="feature-icon">💰</div>
                 <h3 data-is="Hagstætt verð" data-en="Competitive Pricing">Hagstætt verð</h3>
                 <p data-is="Þjónusta okkar er allt að 40% hagstæðari en sambærileg þjónusta á Íslandi. Barcelona staðsetningin gerir okkur kleift að bjóða hágæða þjónustu á samkeppnishæfu verði."
                    data-en="Our service is up to 40% more affordable than comparable service in Iceland. The Barcelona location enables us to offer high-quality service at competitive prices.">
-                    Þjónusta okkar er allt að <span class="highlight-number">40% hagstæðari</span> en sambærileg þjónusta á Íslandi. 
+                    Þjónusta okkar er allt að 40% hagstæðari en sambærileg þjónusta á Íslandi. 
                     Barcelona staðsetningin gerir okkur kleift að bjóða hágæða þjónustu 
                     á samkeppnishæfu verði.
                 </p>
             </div>
             
             <div class="feature-card">
+                <div class="feature-icon">📈</div>
                 <h3 data-is="Mælanlegur árangur" data-en="Measurable Results">Mælanlegur árangur</h3>
-                <p data-is="200,000+ símtöl á ári | 20,000+ AI-samtöl | 30,000+ úthringingar mánaðarlega. Mánaðarlegar söluherferðir fyrir íslensk fyrirtæki með mælanlegum árangri."
-                   data-en="200,000+ calls per year | 20,000+ AI chats | 30,000+ outbound calls monthly. Monthly sales campaigns for Icelandic companies with measurable results.">
-                    <span class="highlight-number">200,000+</span> símtöl á ári | 
-                    <span class="highlight-number">20,000+</span> AI-samtöl | 
-                    <span class="highlight-number">30,000+</span> úthringingar mánaðarlega.<br>
-                    Mánaðarlegar söluherferðir fyrir íslensk fyrirtæki með mælanlegum árangri.
+                <p data-is="200,000+ símtöl á ári | 20,000+ AI-samtöl fyrir íslensk fyrirtæki. Við greinum samskipti í rauntíma, grípum tækifæri og hjálpum þér að vaxa."
+                   data-en="200,000+ calls per year | 20,000+ AI chats for Icelandic businesses. We analyze interactions in real-time, capture opportunities, and help you grow.">
+                    <strong>200,000+ símtöl á ári | 20,000+ AI-samtöl fyrir íslensk fyrirtæki.</strong><br>
+                    Við greinum samskipti í rauntíma, grípum tækifæri og hjálpum þér að vaxa.
                 </p>
             </div>
             
             <div class="feature-card">
+                <div class="feature-icon">🎯</div>
                 <h3 data-is="Rétt nálgun" data-en="Right Approach">Rétt nálgun</h3>
                 <p data-is="35+ íslenskir sérfræðingar með djúpa markaðsþekkingu. Samþættum nýjustu tækni við mannlega sérþekkingu til að tryggja bestu mögulegu útkomuna fyrir þitt fyrirtæki."
                    data-en="35+ Icelandic experts with deep market knowledge. We integrate the latest technology with human expertise to ensure the best possible outcome for your company.">
-                    <span class="highlight-number">35+</span> íslenskir sérfræðingar með djúpa markaðsþekkingu. 
+                    35+ íslenskir sérfræðingar með djúpa markaðsþekkingu. 
                     Samþættum nýjustu tækni við mannlega sérþekkingu til að 
                     tryggja bestu mögulegu útkomuna fyrir þitt fyrirtæki.
                 </p>
