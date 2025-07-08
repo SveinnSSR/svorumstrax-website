@@ -1388,39 +1388,80 @@ footer {
 
     /* FIX 3: Enhanced content separation on mobile */
     .services {
-        padding-bottom: 60px;
-        padding-top: 60px;
+        padding-bottom: 100px;
+        padding-top: 80px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Create clear separation before jobs section */
+    .services::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: linear-gradient(to bottom, transparent, var(--primary-dark));
     }
 
     .jobs-section {
-        margin-top: 80px;
-        margin-bottom: 80px;
+        margin-top: 120px;
+        margin-bottom: 0;
         background-attachment: scroll;
+        position: relative;
+        z-index: 2;
     }
 
     .jobs-overlay {
-        padding: 60px 5%;
+        padding: 80px 5% 100px;
+        background: rgba(10, 14, 39, 0.95);
     }
 
-    .trust-section {
-        padding-top: 80px;
-        padding-bottom: 80px;
+    /* Fix jobs text section specifically */
+    .jobs-text {
+        padding-bottom: 40px;
+    }
+
+    .jobs-text h2 {
+        padding-top: 20px;
         margin-top: 0;
     }
 
-    /* Add clear visual separation between sections */
+    .trust-section {
+        padding-top: 120px;
+        padding-bottom: 100px;
+        margin-top: 0;
+        position: relative;
+        z-index: 3;
+        background: rgba(10, 14, 39, 0.8);
+    }
+
+    /* Add visual separator before trust section */
+    .trust-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: linear-gradient(to bottom, var(--primary-dark), transparent);
+    }
+
+    /* Ensure proper stacking */
     section {
         position: relative;
     }
 
-    /* Add extra spacing for services to jobs transition */
-    .services + .jobs-section {
-        margin-top: 100px;
+    /* Clear any overlapping content */
+    .services-grid {
+        position: relative;
+        z-index: 1;
     }
 
-    /* Add extra spacing for jobs to trust transition */
-    .jobs-section + .trust-section {
-        padding-top: 100px;
+    .jobs-content {
+        position: relative;
+        z-index: 2;
     }
 
     .service-card:last-child {
