@@ -242,14 +242,15 @@ nav {
     border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Live Chat Demo */
+/* Live Chat Demo - Refined with warmth */
 .chat-demo {
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(135deg, #FDFBF7 0%, #F8F6F1 100%);
     backdrop-filter: blur(20px);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(139, 112, 78, 0.08),
+                0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(139, 112, 78, 0.12);
     animation: floatAnimation 6s ease-in-out infinite;
     position: relative;
 }
@@ -265,7 +266,7 @@ nav {
     gap: 15px;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(139, 112, 78, 0.1);
 }
 
 .ai-status {
@@ -292,13 +293,14 @@ nav {
 .ai-avatar {
     width: 40px;
     height: 40px;
-    background: var(--gradient-orange);
+    background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     font-size: 20px;
+    box-shadow: 0 2px 8px rgba(139, 112, 78, 0.15);
 }
 
 .chat-messages {
@@ -315,17 +317,21 @@ nav {
     max-width: 85%;
     animation: slideIn 0.3s ease;
     font-size: 0.95rem;
+    color: #4A4A4A;
 }
 
 .user-message {
-    background: var(--gradient-orange);
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8454 100%);
     align-self: flex-end;
     color: white;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
 }
 
 .ai-message {
-    background: rgba(255, 255, 255, 0.1);
+    background: white;
     align-self: flex-start;
+    border: 1px solid rgba(139, 112, 78, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .typing-indicator {
