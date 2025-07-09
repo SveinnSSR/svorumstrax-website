@@ -1810,6 +1810,54 @@ footer {
     border-color: rgba(255, 255, 255, 0.15);
 }
 
+/* Warm beige for BOTH choice cards */
+.choice-card-enhanced.ai-enhanced,
+.choice-card-enhanced.human-enhanced {
+    background: linear-gradient(135deg, rgba(250, 247, 244, 0.95) 0%, rgba(245, 240, 234, 0.9) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.choice-card-enhanced.ai-enhanced:hover,
+.choice-card-enhanced.human-enhanced:hover {
+    background: linear-gradient(135deg, rgba(252, 250, 248, 0.98) 0%, rgba(247, 243, 239, 0.95) 100%);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-color: rgba(255, 107, 53, 0.2);
+}
+
+/* Fix text colors for warm background */
+.choice-card-enhanced.ai-enhanced .choice-description,
+.choice-card-enhanced.ai-enhanced .capability-list li,
+.choice-card-enhanced.human-enhanced .choice-description,
+.choice-card-enhanced.human-enhanced .capability-list li {
+    color: #4A5568;
+}
+
+.choice-card-enhanced.ai-enhanced .choice-header h3,
+.choice-card-enhanced.human-enhanced .choice-header h3 {
+    color: #2D3748;
+}
+
+.choice-card-enhanced.ai-enhanced .capability-title,
+.choice-card-enhanced.ai-enhanced .ideal-label,
+.choice-card-enhanced.human-enhanced .capability-title,
+.choice-card-enhanced.human-enhanced .ideal-label {
+    color: #718096;
+}
+
+.choice-card-enhanced.ai-enhanced .ideal-text,
+.choice-card-enhanced.human-enhanced .ideal-text {
+    color: #4A5568;
+}
+
+/* Keep the service indicator colors distinct */
+.ai-enhanced .choice-icon {
+    color: #FF6B35;
+}
+
+.human-enhanced .choice-icon {
+    color: #6B5B95;
+}
+
 /* Service Indicators - Modern gradient bars */
 .service-indicator {
     position: absolute;
