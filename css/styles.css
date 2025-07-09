@@ -1041,11 +1041,23 @@ nav {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Footer */
+/* Footer - Premium Claude-inspired aesthetic */
 footer {
-    padding: 60px 5% 40px;
-    background: #090a0f;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 80px 5% 40px;
+    background: linear-gradient(to bottom, #0F1419 0%, #0A0D11 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: radial-gradient(ellipse at top center, rgba(255, 107, 53, 0.02) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .footer-content {
@@ -1062,6 +1074,47 @@ footer {
     background: var(--gradient-orange);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Subtle hover effect on footer links */
+.footer-column a {
+    position: relative;
+    padding-left: 0;
+    transition: all 0.3s ease;
+}
+
+.footer-column a::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    width: 6px;
+    height: 1px;
+    background: var(--primary-orange);
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.footer-column a:hover::before {
+    opacity: 1;
+    left: -10px;
+}
+
+/* Premium divider line */
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
 
 .footer-brand p {
