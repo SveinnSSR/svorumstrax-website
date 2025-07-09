@@ -25,6 +25,13 @@
     --gradient-orange: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
     --gradient-dark: linear-gradient(135deg, #0A0E27 0%, #1B2735 100%);
     --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Warm sophistication palette */
+    --warm-cream: #FDFBF7;
+    --warm-beige: #F8F6F1;
+    --warm-accent: #D4A574;
+    --warm-accent-dark: #C19A6B;
+    --warm-border: rgba(212, 165, 116, 0.12);
+    --text-sophisticated: #4A4A4A;
 }
 
 body {
@@ -455,9 +462,11 @@ nav {
 .section-header h2 {
     font-size: 3rem;
     margin-bottom: 20px;
-    background: linear-gradient(to right, var(--text-light) 0%, var(--primary-orange) 100%);
+    background: linear-gradient(135deg, var(--text-light) 0%, var(--warm-accent) 60%, var(--primary-orange) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .section-header p {
@@ -475,11 +484,11 @@ nav {
     gap: 30px;
 }
 
-/* Standard feature card (unchanged for other sections) */
+/* Standard feature card - with warm refinement */
 .feature-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(135deg, rgba(253, 251, 247, 0.5) 0%, rgba(248, 246, 241, 0.3) 100%);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(212, 165, 116, 0.08);
     border-radius: 20px;
     padding: 40px;
     transition: all 0.3s ease;
@@ -493,8 +502,8 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: var(--gradient-orange);
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #D4A574, transparent);
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -637,17 +646,18 @@ nav {
     font-size: 0.95rem;
 }
 
-/* Standard feature icon (for other sections) */
+/* Standard feature icon - warm sophistication */
 .feature-icon {
     width: 60px;
     height: 60px;
-    background: var(--gradient-orange);
-    border-radius: 15px;
+    background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 28px;
     margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(212, 165, 116, 0.2);
 }
 
 .feature-card h3 {
@@ -714,13 +724,22 @@ nav {
 .service-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-orange), #F7931E);
-    border-radius: 15px;
+    background: linear-gradient(135deg, #FFF8F3 0%, #FEFCF9 100%);
+    border: 1px solid rgba(212, 165, 116, 0.2);
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    font-size: 28px;
+    color: #D4A574;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
 }
 
 .service-card h3 {
