@@ -717,6 +717,12 @@ nav {
     font-size: 28px;
 }
 
+.service-icon svg {
+    width: 28px;
+    height: 28px;
+    color: white;
+}
+
 .service-card h3 {
     font-size: 1.3rem;
     font-weight: 700;
