@@ -178,13 +178,16 @@ nav {
     margin-bottom: 40px;
     font-weight: 800;
     letter-spacing: -0.03em;
-    color: var(--text-light);
+    background: linear-gradient(to bottom, var(--text-light) 0%, rgba(232, 233, 243, 0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     animation: fadeIn 1.5s ease;
 }
 
 .hero-text-center h1 .text-accent {
-    color: #FF9A76; /* Softer, muted orange */
-    opacity: 0.9;
+    background: var(--gradient-orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-text-center p {
@@ -206,16 +209,39 @@ nav {
     animation: fadeIn 1.5s ease 0.5s backwards;
 }
 
-/* Update primary button to be more subtle */
-.hero .primary-button {
-    background: rgba(255, 107, 53, 0.9);
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+/* Keep your existing button styles */
+.primary-button {
+    background: var(--gradient-orange);
+    color: white;
+    padding: 16px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
-.hero .primary-button:hover {
-    background: rgba(255, 107, 53, 1);
+.primary-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.secondary-button {
+    background: transparent;
+    color: var(--text-light);
+    padding: 16px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.secondary-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Add fadeIn animation */
@@ -225,6 +251,27 @@ nav {
     }
     to {
         opacity: 1;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .hero-text-center h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-text-center p {
+        font-size: 1.1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-buttons a {
+        width: 100%;
+        text-align: center;
     }
 }
 
