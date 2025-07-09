@@ -1826,6 +1826,16 @@ footer {
     font-size: 15px;
 }
 
+/* Hide the icon wrappers in choice cards */
+.choice-card-enhanced .choice-icon-wrapper {
+    display: none;
+}
+
+/* Adjust the header spacing without icons */
+.choice-card-enhanced .choice-header {
+    gap: 0;
+}
+
 /* Capabilities Section */
 .choice-capabilities {
     margin-bottom: 28px;
