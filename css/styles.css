@@ -178,16 +178,13 @@ nav {
     margin-bottom: 40px;
     font-weight: 800;
     letter-spacing: -0.03em;
-    background: linear-gradient(to bottom, var(--text-light) 0%, rgba(232, 233, 243, 0.7) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-light);
     animation: fadeIn 1.5s ease;
 }
 
 .hero-text-center h1 .text-accent {
-    background: var(--gradient-orange);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #FF9A76; /* Softer, muted orange */
+    opacity: 0.9;
 }
 
 .hero-text-center p {
@@ -209,6 +206,18 @@ nav {
     animation: fadeIn 1.5s ease 0.5s backwards;
 }
 
+/* Update primary button to be more subtle */
+.hero .primary-button {
+    background: rgba(255, 107, 53, 0.9);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+}
+
+.hero .primary-button:hover {
+    background: rgba(255, 107, 53, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+}
+
 /* Add fadeIn animation */
 @keyframes fadeIn {
     from {
@@ -218,8 +227,6 @@ nav {
         opacity: 1;
     }
 }
-
-/* Remove all old hero styles including .hero-text, .chat-demo, etc. */
 
 /* Choice Section */
 .choice-section {
@@ -320,9 +327,8 @@ nav {
 .section-header h2 {
     font-size: 3rem;
     margin-bottom: 20px;
-    background: linear-gradient(to right, var(--text-light) 0%, var(--primary-orange) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-light); /* Remove gradient, use solid color */
+    font-weight: 700;
 }
 
 .section-header p {
