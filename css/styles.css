@@ -1041,11 +1041,11 @@ nav {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Footer - Premium Claude-inspired aesthetic */
+/* Footer - Claude AI Desert Aesthetic. */
 footer {
     padding: 80px 5% 40px;
-    background: linear-gradient(to bottom, #0F1419 0%, #0A0D11 100%);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(to bottom, #FBF8F3 0%, #F7F3ED 100%);
+    border-top: 1px solid rgba(194, 163, 128, 0.2);
     position: relative;
 }
 
@@ -1056,29 +1056,91 @@ footer::before {
     left: 0;
     right: 0;
     height: 200px;
-    background: radial-gradient(ellipse at top center, rgba(255, 107, 53, 0.02) 0%, transparent 70%);
+    background: radial-gradient(ellipse at top center, rgba(212, 165, 116, 0.08) 0%, transparent 70%);
     pointer-events: none;
-}
-
-.footer-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 60px;
-}
-
-.footer-brand h3 {
-    font-size: 28px;
-    margin-bottom: 16px;
-    background: var(--gradient-orange);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .footer-content {
     position: relative;
     z-index: 2;
+}
+
+.footer-brand h3 {
+    font-size: 28px;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-brand p {
+    color: #6B5D54;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.footer-column h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #3D342C;
+    font-weight: 600;
+}
+
+.footer-column ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-column a {
+    color: #6B5D54;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 0;
+}
+
+.footer-column a:hover {
+    color: #C19A6B;
+}
+
+.footer-column a::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    width: 6px;
+    height: 1px;
+    background: #D4A574;
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.footer-column a:hover::before {
+    opacity: 1;
+    left: -10px;
+}
+
+/* Contact items with icons */
+.footer-column li {
+    color: #6B5D54;
+}
+
+.footer-column li svg {
+    color: #C19A6B;
+}
+
+/* Premium divider line */
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(194, 163, 128, 0.15);
+    text-align: center;
+    color: #8B7968;
+    font-size: 0.9rem;
+    opacity: 0.9;
 }
 
 /* Subtle hover effect on footer links */
