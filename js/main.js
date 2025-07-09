@@ -13,14 +13,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar background on scroll
+// Navbar background on scroll - Updated for light nav
 window.addEventListener('scroll', function() {
     const nav = document.querySelector('nav');
     if (window.scrollY > 50) {
-        nav.style.background = 'rgba(10, 14, 39, 0.95)';
-        nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';
+        nav.style.background = 'rgba(255, 255, 255, 0.98)';
+        nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
     } else {
-        nav.style.background = 'rgba(10, 14, 39, 0.8)';
+        nav.style.background = 'rgba(255, 255, 255, 0.95)';
         nav.style.boxShadow = 'none';
     }
 });
