@@ -31,7 +31,7 @@
     --gradient-button: linear-gradient(135deg, #1F2937 0%, #111827 100%);
     
     /* ADD THIS NEW COLOR */
-    --warm-orange: #E85A4F; /* Comfortable, modern orange - not too bright */
+    --warm-orange: #F4A09C; /* Soft coral - much less red, more peachy/pinkish */
 }
 
 body {
@@ -368,9 +368,8 @@ nav {
 .section-header h2 {
     font-size: 3rem;
     margin-bottom: 20px;
-    background: linear-gradient(to right, var(--text-light) 0%, var(--primary-orange) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    /* REMOVE the gradient lines */
+    color: var(--warm-orange); /* Solid soft coral color */
 }
 
 .section-header p {
@@ -631,8 +630,9 @@ nav {
 }
 
 .features.warm-section .feature-icon {
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 143, 101, 0.05) 100%);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    background: var(--warm-orange); /* Solid soft coral */
+    box-shadow: 0 4px 15px rgba(244, 160, 156, 0.2);
+    transition: all 0.3s ease;
 }
 
 /* Services Section */
