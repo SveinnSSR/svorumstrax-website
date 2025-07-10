@@ -160,11 +160,11 @@ nav {
     align-items: center;
     padding: 140px 5% 100px;
     position: relative;
-    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+    background: linear-gradient(180deg, #1e3a8a 0%, #2563eb 40%, #3b82f6 70%, #1e40af 100%);
     overflow: hidden;
 }
 
-/* Subtle geometric pattern overlay */
+/* Optional: Add a very subtle gradient overlay for depth */
 .hero::before {
     content: '';
     position: absolute;
@@ -172,27 +172,19 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        linear-gradient(30deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
-        linear-gradient(150deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
-        linear-gradient(30deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
-        linear-gradient(150deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
-        linear-gradient(60deg, rgba(255, 255, 255, 0.04) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.04) 75%, rgba(255, 255, 255, 0.04)),
-        linear-gradient(60deg, rgba(255, 255, 255, 0.04) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.04) 75%, rgba(255, 255, 255, 0.04));
-    background-size: 80px 140px;
-    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    background: radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
     pointer-events: none;
 }
 
-/* Add subtle gradient fade on right side */
+/* Darker gradient at bottom for smooth transition to next section */
 .hero::after {
     content: '';
     position: absolute;
-    top: 0;
-    right: 0;
     bottom: 0;
-    width: 50%;
-    background: linear-gradient(to right, transparent 0%, rgba(30, 58, 138, 0.3) 100%);
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(10, 14, 39, 0.4) 100%);
     pointer-events: none;
 }
 
