@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -153,18 +154,22 @@ nav {
     box-shadow: 0 2px 8px rgba(31, 41, 55, 0.3);
 }
 
-/* Hero Section - REDESIGNED */
+/* Hero Section - MODERN REDESIGN */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding: 140px 5% 100px;
     position: relative;
-    background: linear-gradient(180deg, #1e3a8a 0%, #2563eb 40%, #3b82f6 70%, #1e40af 100%);
+    background: #1e3c72;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%);
     overflow: hidden;
 }
 
-/* Optional: Add a very subtle gradient overlay for depth */
+/* Subtle noise texture for modern depth */
 .hero::before {
     content: '';
     position: absolute;
@@ -172,19 +177,22 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    opacity: 0.03;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px);
     pointer-events: none;
 }
 
-/* Darker gradient at bottom for smooth transition to next section */
+/* Modern gradient orb effect */
 .hero::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    background: linear-gradient(to bottom, transparent 0%, rgba(10, 14, 39, 0.4) 100%);
+    top: -50%;
+    right: -25%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    filter: blur(100px);
     pointer-events: none;
 }
 
