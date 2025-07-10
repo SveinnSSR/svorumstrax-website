@@ -153,17 +153,18 @@ nav {
     box-shadow: 0 2px 8px rgba(31, 41, 55, 0.3);
 }
 
-/* Hero Section */
+/* Hero Section - REDESIGNED */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 120px 5% 80px;
+    padding: 140px 5% 100px;
     position: relative;
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
     overflow: hidden;
 }
 
+/* Subtle geometric pattern overlay */
 .hero::before {
     content: '';
     position: absolute;
@@ -171,39 +172,61 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(247, 147, 30, 0.08) 0%, transparent 50%);
+    background-image: 
+        linear-gradient(30deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
+        linear-gradient(150deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
+        linear-gradient(30deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
+        linear-gradient(150deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
+        linear-gradient(60deg, rgba(255, 255, 255, 0.04) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.04) 75%, rgba(255, 255, 255, 0.04)),
+        linear-gradient(60deg, rgba(255, 255, 255, 0.04) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.04) 75%, rgba(255, 255, 255, 0.04));
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    pointer-events: none;
+}
+
+/* Add subtle gradient fade on right side */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    background: linear-gradient(to right, transparent 0%, rgba(30, 58, 138, 0.3) 100%);
     pointer-events: none;
 }
 
 .hero-content {
     max-width: 1400px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    display: flex;
     align-items: center;
     z-index: 2;
     position: relative;
 }
 
+.hero-text {
+    max-width: 720px;
+    width: 100%;
+}
+
 .hero-text h1 {
     font-size: 3.5rem;
-    line-height: 1.2;
-    margin-bottom: 24px;
-    font-weight: 900;
-    background: linear-gradient(to right, var(--text-light) 0%, var(--primary-orange) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    line-height: 1.15;
+    margin-bottom: 32px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
     animation: fadeInUp 1s ease;
 }
 
 .hero-text p {
-    font-size: 1.25rem;
-    line-height: 1.8;
-    color: var(--text-muted);
-    margin-bottom: 40px;
+    font-size: 1.35rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 48px;
     animation: fadeInUp 1s ease 0.2s backwards;
+    max-width: 600px;
 }
 
 .hero-buttons {
@@ -230,8 +253,9 @@ nav {
 }
 
 .secondary-button {
-    background: transparent;
-    color: var(--text-light);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: white;
     padding: 16px 40px;
     border-radius: 30px;
     text-decoration: none;
@@ -242,116 +266,9 @@ nav {
 }
 
 .secondary-button:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.5);
-}
-
-/* Live Chat Demo */
-.chat-demo {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    animation: floatAnimation 6s ease-in-out infinite;
-    position: relative;
-}
-
-@keyframes floatAnimation {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.chat-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.ai-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: auto;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-    background: #10b981;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-    70% { opacity: 1; box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-    100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-}
-
-.ai-avatar {
-    width: 40px;
-    height: 40px;
-    background: var(--gradient-orange);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.chat-messages {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.message {
-    padding: 12px 20px;
-    border-radius: 18px;
-    max-width: 85%;
-    animation: slideIn 0.3s ease;
-    font-size: 0.95rem;
-}
-
-.user-message {
-    background: var(--gradient-orange);
-    align-self: flex-end;
-    color: white;
-}
-
-.ai-message {
-    background: rgba(255, 255, 255, 0.1);
-    align-self: flex-start;
-}
-
-.typing-indicator {
-    display: inline-flex;
-    gap: 4px;
-    padding: 8px 12px;
-}
-
-.typing-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--text-muted);
-    border-radius: 50%;
-    animation: typing 1.4s infinite;
-}
-
-.typing-dot:nth-child(2) { animation-delay: 0.2s; }
-.typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes typing {
-    0%, 60%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-10px); }
+    transform: translateY(-2px);
 }
 
 /* Choice Section */
@@ -1851,9 +1768,18 @@ footer {
         margin-top: 20px;
         align-self: flex-start;
     }
+    
+    /* Hero mobile adjustments */
+    .hero {
+        padding: 100px 5% 60px;
+    }
 
     .hero-text h1 {
         font-size: 2rem;
+    }
+    
+    .hero-text p {
+        font-size: 1.1rem;
     }
 
     .hero-buttons {
