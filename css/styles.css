@@ -1792,3 +1792,52 @@ footer {
         font-size: 0.95rem;
     }
 }
+
+/* Add subtle floating animation to feature cards */
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+.features.warm-section .feature-card {
+    animation: gentleFloat 6s ease-in-out infinite;
+}
+
+.features.warm-section .feature-card:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.features.warm-section .feature-card:nth-child(3) {
+    animation-delay: 4s;
+}
+
+/* Add accent to feature icons in warm section */
+.features.warm-section .feature-icon {
+    background: linear-gradient(135deg, var(--warm-orange) 0%, rgba(232, 90, 79, 0.7) 100%);
+    box-shadow: 0 4px 15px rgba(232, 90, 79, 0.2);
+    transition: all 0.3s ease;
+}
+
+.features.warm-section .feature-card:hover .feature-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(232, 90, 79, 0.3);
+}
+
+/* Subtle dot pattern for warm sections */
+.hero.warm-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle, rgba(232, 90, 79, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero.warm-hero .hero-content {
+    position: relative;
+    z-index: 2;
+}
