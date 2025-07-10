@@ -561,8 +561,8 @@ nav {
 }
 
 .features.warm-section .section-header h2 {
-    color: #1A1A2E;
-    mix-blend-mode: multiply;
+    color: var(--warm-orange); /* CHANGED from #1A1A2E */
+    /* REMOVE the mix-blend-mode line */
 }
 
 .features.warm-section .section-header p {
