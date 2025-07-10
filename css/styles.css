@@ -15,17 +15,20 @@
 }
 
 :root {
-    /* Updated colors - replacing orange with sophisticated teal/blue-green */
-    --primary-orange: #0891B2; /* Changed from #FF6B35 to professional teal */
+    --primary-orange: #FF6B35;
     --primary-dark: #0A0E27;
     --primary-blue: #2D3561;
     --accent-purple: #6B5B95;
     --text-light: #E8E9F3;
     --text-dark: #1A1A2E;
     --text-muted: #B8BCC8;
-    --gradient-orange: linear-gradient(135deg, #0891B2 0%, #06B6D4 100%); /* Teal gradient */
+    --gradient-orange: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
     --gradient-dark: linear-gradient(135deg, #0A0E27 0%, #1B2735 100%);
     --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* New button-specific colors */
+    --button-primary: #1F2937; /* Sophisticated charcoal */
+    --button-primary-hover: #111827; /* Darker on hover */
+    --gradient-button: linear-gradient(135deg, #1F2937 0%, #111827 100%);
 }
 
 body {
@@ -102,19 +105,19 @@ nav {
 }
 
 .cta-button {
-    background: var(--gradient-orange);
+    background: var(--gradient-button);
     color: white !important;
     padding: 12px 30px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(8, 145, 178, 0.3);
+    box-shadow: 0 4px 15px rgba(31, 41, 55, 0.3);
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(8, 145, 178, 0.4);
+    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.4);
 }
 
 /* Language Toggle */
@@ -145,9 +148,9 @@ nav {
 }
 
 .lang-btn.active {
-    background: var(--gradient-orange);
+    background: var(--gradient-button);
     color: white;
-    box-shadow: 0 2px 8px rgba(8, 145, 178, 0.3);
+    box-shadow: 0 2px 8px rgba(31, 41, 55, 0.3);
 }
 
 /* Hero Section */
@@ -168,8 +171,8 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(8, 145, 178, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
+    background: radial-gradient(circle at 30% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(247, 147, 30, 0.08) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -210,7 +213,7 @@ nav {
 }
 
 .primary-button {
-    background: var(--gradient-orange);
+    background: var(--gradient-button);
     color: white;
     padding: 16px 40px;
     border-radius: 30px;
@@ -218,12 +221,12 @@ nav {
     font-weight: 600;
     transition: all 0.3s ease;
     display: inline-block;
-    box-shadow: 0 4px 15px rgba(8, 145, 178, 0.3);
+    box-shadow: 0 4px 15px rgba(31, 41, 55, 0.3);
 }
 
 .primary-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(8, 145, 178, 0.4);
+    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.4);
 }
 
 .secondary-button {
@@ -387,7 +390,7 @@ nav {
 }
 
 .choice-card.ai-choice {
-    border-color: rgba(8, 145, 178, 0.3);
+    border-color: rgba(255, 107, 53, 0.3);
 }
 
 .choice-card.human-choice {
@@ -428,8 +431,8 @@ nav {
     right: 0;
     bottom: 0;
     background-image: 
-        linear-gradient(rgba(8, 145, 178, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(8, 145, 178, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(255, 107, 53, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
     opacity: 0;
     animation: fadeInGrid 1s ease-out 0.5s forwards;
@@ -500,8 +503,8 @@ nav {
 
 .feature-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(8, 145, 178, 0.3);
-    box-shadow: 0 10px 30px rgba(8, 145, 178, 0.1);
+    border-color: rgba(255, 107, 53, 0.3);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
 }
 
 /* Enhanced feature cards for section 2 */
@@ -525,8 +528,8 @@ nav {
     height: 1px;
     background: linear-gradient(90deg, 
         transparent, 
-        rgba(8, 145, 178, 0.4) 20%, 
-        rgba(6, 182, 212, 0.4) 80%, 
+        rgba(255, 107, 53, 0.4) 20%, 
+        rgba(255, 143, 101, 0.4) 80%, 
         transparent);
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -538,10 +541,10 @@ nav {
 
 .feature-card.enhanced:hover {
     transform: translateY(-8px);
-    border-color: rgba(8, 145, 178, 0.2);
+    border-color: rgba(255, 107, 53, 0.2);
     box-shadow: 
-        0 20px 40px rgba(8, 145, 178, 0.1),
-        0 0 0 1px rgba(8, 145, 178, 0.1);
+        0 20px 40px rgba(255, 107, 53, 0.1),
+        0 0 0 1px rgba(255, 107, 53, 0.1);
 }
 
 /* Icon wrapper for positioning */
@@ -556,15 +559,15 @@ nav {
 .feature-icon-card {
     width: 64px;
     height: 64px;
-    background: linear-gradient(135deg, rgba(8, 145, 178, 0.08) 0%, rgba(6, 182, 212, 0.04) 100%);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 143, 101, 0.04) 100%);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(8, 145, 178, 0.15);
+    border: 1px solid rgba(255, 107, 53, 0.15);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 
-        0 4px 20px rgba(8, 145, 178, 0.08),
+        0 4px 20px rgba(255, 107, 53, 0.08),
         inset 0 1px 1px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     position: relative;
@@ -574,7 +577,7 @@ nav {
 .feature-icon-card svg {
     width: 28px;
     height: 28px;
-    color: #0891B2;
+    color: #FF6B35;
     transition: all 0.3s ease;
 }
 
@@ -586,7 +589,7 @@ nav {
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    background: rgba(8, 145, 178, 0.2);
+    background: rgba(255, 107, 53, 0.2);
     transform: translate(-50%, -50%);
     opacity: 0;
     z-index: 1;
@@ -609,12 +612,12 @@ nav {
 
 .feature-card.enhanced:hover .feature-icon-card {
     transform: scale(1.05);
-    border-color: rgba(8, 145, 178, 0.3);
-    background: linear-gradient(135deg, rgba(8, 145, 178, 0.12) 0%, rgba(6, 182, 212, 0.06) 100%);
+    border-color: rgba(255, 107, 53, 0.3);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.12) 0%, rgba(255, 143, 101, 0.06) 100%);
 }
 
 .feature-card.enhanced:hover .feature-icon-card svg {
-    color: #06B6D4;
+    color: #FF8F65;
 }
 
 /* Enhanced typography */
@@ -683,8 +686,8 @@ nav {
 }
 
 .service-card.featured {
-    border-color: rgba(8, 145, 178, 0.3);
-    background: rgba(8, 145, 178, 0.03);
+    border-color: rgba(255, 107, 53, 0.3);
+    background: rgba(255, 107, 53, 0.03);
 }
 
 .service-card.featured::after {
@@ -702,14 +705,14 @@ nav {
 
 .service-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(8, 145, 178, 0.3);
-    box-shadow: 0 10px 30px rgba(8, 145, 178, 0.1);
+    border-color: rgba(255, 107, 53, 0.3);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
 }
 
 .service-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-orange), #06B6D4);
+    background: linear-gradient(135deg, var(--primary-orange), #F7931E);
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -826,7 +829,7 @@ nav {
 .benefit-icon {
     width: 40px;
     height: 40px;
-    background: rgba(8, 145, 178, 0.2);
+    background: rgba(255, 107, 53, 0.2);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -982,7 +985,7 @@ nav {
 /* CTA Section */
 .cta-section {
     padding: 100px 5%;
-    background: linear-gradient(135deg, rgba(8, 145, 178, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 147, 30, 0.05) 100%);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1132,7 +1135,7 @@ footer {
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(8, 145, 178, 0.2);
+                0 0 0 1px rgba(255, 107, 53, 0.2);
     position: relative;
     animation: modalSlideIn 0.3s ease;
 }
@@ -1202,7 +1205,7 @@ footer {
     outline: none;
     background: rgba(255, 255, 255, 0.08);
     border-color: var(--primary-orange);
-    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
 }
 
 .form-group input::placeholder,
@@ -1214,7 +1217,7 @@ footer {
 .modal-submit {
     width: 100%;
     padding: 14px 28px;
-    background: var(--gradient-orange);
+    background: var(--gradient-button);
     color: white;
     border: none;
     border-radius: 25px;
@@ -1222,13 +1225,13 @@ footer {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(8, 145, 178, 0.3);
+    box-shadow: 0 4px 15px rgba(31, 41, 55, 0.3);
     margin-top: 20px;
 }
 
 .modal-submit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(8, 145, 178, 0.4);
+    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.4);
 }
 
 .modal-submit:active {
@@ -1314,8 +1317,8 @@ footer {
 
 /* NEW: Add styling for cards with photos */
 .staff-card.has-photo {
-    border-color: rgba(8, 145, 178, 0.3);
-    background: rgba(8, 145, 178, 0.02);
+    border-color: rgba(255, 107, 53, 0.3);
+    background: rgba(255, 107, 53, 0.02);
 }
 
 /* NEW: Optional styling for placeholder cards */
@@ -1327,8 +1330,8 @@ footer {
 
 .staff-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(8, 145, 178, 0.1);
-    border-color: rgba(8, 145, 178, 0.3);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+    border-color: rgba(255, 107, 53, 0.3);
 }
 
 .staff-avatar {
@@ -1347,12 +1350,12 @@ footer {
 
 .staff-avatar:hover {
     transform: scale(1.05);
-    box-shadow: 0 5px 20px rgba(8, 145, 178, 0.3);
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
 }
 
 .staff-avatar.placeholder {
     background: linear-gradient(135deg, #2D3561 0%, #1B2735 100%);
-    border: 2px solid rgba(8, 145, 178, 0.3);
+    border: 2px solid rgba(255, 107, 53, 0.3);
 }
 
 .staff-avatar.placeholder::before {
@@ -1497,7 +1500,7 @@ footer {
 }
 
 .ai-indicator {
-    background: linear-gradient(90deg, transparent 0%, #0891B2 20%, #06B6D4 80%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, #FF6B35 20%, #FF8F65 80%, transparent 100%);
 }
 
 .human-indicator {
@@ -1528,7 +1531,7 @@ footer {
 }
 
 .ai-glow {
-    background: radial-gradient(circle, #0891B2 0%, transparent 70%);
+    background: radial-gradient(circle, #FF6B35 0%, transparent 70%);
 }
 
 .human-glow {
@@ -1546,7 +1549,7 @@ footer {
 }
 
 .ai-enhanced .choice-icon {
-    color: #0891B2;
+    color: #FF6B35;
 }
 
 .human-enhanced .choice-icon {
@@ -1635,11 +1638,11 @@ footer {
 }
 
 .ai-enhanced .capability-list li::before {
-    background: #0891B2;
+    background: #FF6B35;
 }
 
 .ai-enhanced .capability-list li::after {
-    color: #0891B2;
+    color: #FF6B35;
 }
 
 .human-enhanced .capability-list li::before {
@@ -1676,7 +1679,7 @@ footer {
 /* Smart Integration Banner */
 .smart-integration-banner {
     margin-top: 60px;
-    background: linear-gradient(135deg, rgba(8, 145, 178, 0.03) 0%, rgba(107, 91, 149, 0.03) 100%);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.03) 0%, rgba(107, 91, 149, 0.03) 100%);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     padding: 32px 40px;
@@ -1713,7 +1716,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #0891B2;
+    color: #FF6B35;
 }
 
 .integration-text h4 {
