@@ -29,9 +29,6 @@
     --button-primary: #1F2937; /* Sophisticated charcoal */
     --button-primary-hover: #111827; /* Darker on hover */
     --gradient-button: linear-gradient(135deg, #1F2937 0%, #111827 100%);
-    
-    /* ADD THIS NEW COLOR */
-    --warm-orange: #FF6B35; /* Your chatbot's orange - vibrant but not too bright */
 }
 
 body {
@@ -196,7 +193,7 @@ nav {
     line-height: 1.2;
     margin-bottom: 24px;
     font-weight: 900;
-    color: #FF6B35; /* Your chatbot orange */
+    color: #1A1A2E;
     animation: fadeInUp 1s ease;
 }
 
@@ -250,63 +247,28 @@ nav {
 
 /* Hero Integration Section (Right Side) */
 .hero-integration {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(251, 248, 245, 0.8) 100%);
-    backdrop-filter: blur(20px);
-    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04),
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05),
                 0 8px 40px rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(232, 90, 79, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     animation: fadeInUp 1s ease 0.6s backwards;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Add a subtle gradient accent */
-.hero-integration::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(232, 90, 79, 0.03) 0%, transparent 50%);
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-}
-
-/* Hover effects */
-.hero-integration:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(232, 90, 79, 0.08),
-                0 16px 60px rgba(0, 0, 0, 0.04);
-    border-color: rgba(232, 90, 79, 0.2);
-}
-
-.hero-integration:hover::before {
-    opacity: 1;
-}
-
-/* Integration card heading */
 .hero-integration h3 {
     font-size: 1.75rem;
     font-weight: 700;
-    color: #FF6B35; /* Your chatbot orange */
+    color: #2D3748;
     margin-bottom: 20px;
     line-height: 1.3;
-    transition: transform 0.3s ease;
-}
-
-.hero-integration:hover h3 {
-    transform: translateX(4px);
 }
 
 .hero-integration p {
     font-size: 1rem;
     line-height: 1.7;
-    color: #5A6670; /* Slightly darker for better readability */
+    color: #4A5568;
 }
 
 /* Old Hero Section styles - keeping for reference */
@@ -596,7 +558,8 @@ nav {
 }
 
 .features.warm-section .section-header h2 {
-    color: #FF6B35; /* Your chatbot orange - solid color */
+    color: #1A1A2E;
+    mix-blend-mode: multiply;
 }
 
 .features.warm-section .section-header p {
@@ -688,15 +651,13 @@ nav {
 .service-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 143, 101, 0.05) 100%);
+    background: linear-gradient(135deg, var(--primary-orange), #F7931E);
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
     font-size: 28px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(255, 107, 53, 0.1);
 }
 
 .service-icon svg {
@@ -1793,53 +1754,4 @@ footer {
         padding: 14px 32px;
         font-size: 0.95rem;
     }
-}
-
-/* Add subtle floating animation to feature cards */
-@keyframes gentleFloat {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-}
-
-.features.warm-section .feature-card {
-    animation: gentleFloat 6s ease-in-out infinite;
-}
-
-.features.warm-section .feature-card:nth-child(2) {
-    animation-delay: 2s;
-}
-
-.features.warm-section .feature-card:nth-child(3) {
-    animation-delay: 4s;
-}
-
-/* Add accent to feature icons in warm section */
-.features.warm-section .feature-icon {
-    background: linear-gradient(135deg, var(--warm-orange) 0%, rgba(232, 90, 79, 0.7) 100%);
-    box-shadow: 0 4px 15px rgba(232, 90, 79, 0.2);
-    transition: all 0.3s ease;
-}
-
-.features.warm-section .feature-card:hover .feature-icon {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 6px 20px rgba(232, 90, 79, 0.3);
-}
-
-/* Subtle dot pattern for warm sections */
-.hero.warm-hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: radial-gradient(circle, rgba(232, 90, 79, 0.05) 1px, transparent 1px);
-    background-size: 30px 30px;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.hero.warm-hero .hero-content {
-    position: relative;
-    z-index: 2;
 }
