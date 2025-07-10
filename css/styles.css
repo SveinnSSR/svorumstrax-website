@@ -29,6 +29,9 @@
     --button-primary: #1F2937; /* Sophisticated charcoal */
     --button-primary-hover: #111827; /* Darker on hover */
     --gradient-button: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+    
+    /* ADD THIS NEW COLOR */
+    --warm-orange: #E85A4F; /* Comfortable, modern orange - not too bright */
 }
 
 body {
@@ -193,7 +196,7 @@ nav {
     line-height: 1.2;
     margin-bottom: 24px;
     font-weight: 900;
-    color: #1A1A2E;
+    color: var(--warm-orange); /* CHANGED from #1A1A2E */
     animation: fadeInUp 1s ease;
 }
 
