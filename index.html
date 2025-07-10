@@ -36,32 +36,59 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+<!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-text-center">
+            <div class="hero-text">
                 <h1 data-is="Nútímaleg þjónustulausn með réttu fólki og réttri tækni" 
                     data-en="Modern customer service solutions—powered by the perfect blend of people and technology">
-                    Nútímaleg þjónustulausn með <span class="text-accent" data-is="réttu fólki" data-en="the right people">réttu fólki</span> og <span class="text-accent" data-is="réttri tækni" data-en="the right technology">réttri tækni</span>
+                    Nútímaleg þjónustulausn með réttu fólki og réttri tækni
                 </h1>
-                
                 <p data-is="Yfir 100 fyrirtæki treysta Svörum strax fyrir samskiptum við sína viðskiptavini. Öflugt þjónustuver í Barcelona með 35+ sérhæfða íslenska sérfræðinga. Við nýtum gervigreind til að auka skilvirkni og veita betri rekstrarinnsýn."
                    data-en="Over 100 companies trust Svörum strax to handle their customer communications. Our Barcelona-based contact center combines 35+ specialized Icelandic experts with cutting-edge AI to boost efficiency, capture more sales, and deliver real-time insights.">
                     Yfir 100 fyrirtæki treysta Svörum strax fyrir samskiptum við sína viðskiptavini. 
                     Öflugt þjónustuver í Barcelona með 35+ sérhæfða íslenska sérfræðinga. 
                     Við nýtum gervigreind til að auka skilvirkni og veita betri rekstrarinnsýn.
                 </p>
-                
                 <div class="hero-buttons">
                     <a href="#tjonusta" class="primary-button" data-is="Sjá alla þjónustu" data-en="See All Services">Sjá alla þjónustu</a>
                     <a href="#" onclick="openContactModal('consultation')" class="secondary-button" data-is="Fá ókeypis ráðgjöf" data-en="Get Free Consultation">Fá ókeypis ráðgjöf</a>
                 </div>
             </div>
+            
+            <div class="chat-demo">
+                <div class="chat-header">
+                    <div class="ai-avatar">💬</div>
+                    <div>
+                        <div style="font-weight: 600;" data-is="AI eða manneskja" data-en="AI or Human—You Decide">Þjónusta að þínum vali – AI, manneskja eða blanda</div>
+                        <div style="font-size: 14px; color: var(--text-muted);" data-is="Veldu það sem hentar þér best" data-en="Smart integration for seamless results">Veldu það sem hentar þér best</div>
+                    </div>
+                    <div class="ai-status">
+                        <div class="status-dot"></div>
+                    </div>
+                </div>
+                <div class="chat-messages">
+                    <div class="message ai-message" data-is="Góðan daginn! Takk fyrir að hafa samband. Hvernig get ég aðstoðað þig í dag?" data-en="How can we help you today?">
+                        Góðan daginn! Takk fyrir að hafa samband. Hvernig get ég aðstoðað þig í dag?
+                    </div>
+                    <div class="message user-message" data-is="Getið þið séð um alla okkar þjónustu við viðskiptavini?" data-en="Can you handle all our customer service?">
+                        Getið þið séð um alla okkar þjónustu við viðskiptavini?
+                    </div>
+                    <div class="message ai-message" data-is="Já, við bjóðum heildarlausn - bæði AI fyrir hraða afgreiðslu og sérhæfða starfsmenn fyrir flóknari mál. Getum sett upp á 15-30 dögum og aðlagað að ykkar þörfum." data-en="Yes! We offer a complete solution—AI for instant responses and human experts for complex issues. Fully customizable, with setup in 15-30 days.">
+                        Já, við bjóðum heildarlausn - bæði AI fyrir hraða afgreiðslu og sérhæfða starfsmenn fyrir flóknari mál. Getum sett upp á 15-30 dögum og aðlagað að ykkar þörfum.
+                    </div>
+                    <div class="message ai-message typing-indicator">
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Enhanced Core Services Section -->
-    <section class="features dark-section" style="position: relative;">
+<!-- Enhanced Core Services Section -->
+    <section class="features" style="background: rgba(27, 39, 53, 0.3); padding-top: 80px; position: relative;">
         <!-- Subtle grid pattern background -->
         <div class="tech-grid-bg"></div>
         
@@ -135,8 +162,8 @@
         </div>
     </section>
 
-    <!-- Choice Section -->
-    <section class="choice-section light-section">
+<!-- Choice Section -->
+    <section class="choice-section">
         <div class="choice-container">
             <div class="section-header">
                 <h2 data-is="Snjöll samþætting mannauðs og tækni" data-en="Smart Integration of Humans + AI">Snjöll samþætting mannauðs og tækni</h2>
@@ -152,6 +179,17 @@
                 <div class="choice-card-enhanced ai-enhanced">
                     <div class="service-indicator ai-indicator"></div>
                     <div class="choice-header">
+                        <div class="choice-icon-wrapper">
+                            <div class="icon-glow ai-glow"></div>
+                            <svg class="choice-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <rect x="12" y="12" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="18" cy="18" r="2" fill="currentColor"/>
+                                <circle cx="30" cy="18" r="2" fill="currentColor"/>
+                                <path d="M18 30H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M8 24H12M36 24H40" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+                                <path d="M24 8V12M24 36V40" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+                            </svg>
+                        </div>
                         <h3 data-is="Gervigreindarfulltrúi" data-en="AI Agents">Gervigreindarfulltrúi</h3>
                     </div>
                     
@@ -181,6 +219,14 @@
                 <div class="choice-card-enhanced human-enhanced">
                     <div class="service-indicator human-indicator"></div>
                     <div class="choice-header">
+                        <div class="choice-icon-wrapper">
+                            <div class="icon-glow human-glow"></div>
+                            <svg class="choice-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <circle cx="24" cy="16" r="6" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 40C12 32.268 18.268 26 26 26H22C29.732 26 36 32.268 36 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M34 28L38 32L42 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                         <h3 data-is="Þjónustufulltrúi" data-en="Human Service">Þjónustufulltrúi</h3>
                     </div>
                     
@@ -210,7 +256,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features light-features" id="um-okkur">
+    <section class="features" id="um-okkur">
         <div class="section-header">
             <h2 data-is="Af hverju að velja Svörum strax?" data-en="Why Partner with Svörum strax?">Af hverju að velja Svörum strax?</h2>
             <p data-is="Svörum strax er útvistunarfyrirtæki sem trúir því að samkeppnisforskot náist með ánægju starfsmanna. Við hjálpum íslenskum fyrirtækjum að vaxa með snjöllum lausnum."
@@ -221,7 +267,7 @@
         </div>
         
         <div class="features-grid">
-            <div class="feature-card light-card">
+            <div class="feature-card">
                 <div class="feature-icon">💰</div>
                 <h3 data-is="Hagstætt verð" data-en="Competitive Pricing">Hagstætt verð</h3>
                 <p data-is="Þjónusta okkar er allt að 40% hagstæðari en sambærileg þjónusta á Íslandi. Barcelona staðsetningin gerir okkur kleift að bjóða hágæða þjónustu á samkeppnishæfu verði."
@@ -232,7 +278,7 @@
                 </p>
             </div>
             
-            <div class="feature-card light-card">
+            <div class="feature-card">
                 <div class="feature-icon">📈</div>
                 <h3 data-is="Mælanlegur árangur" data-en="Measurable Results">Mælanlegur árangur</h3>
                 <p data-is="Við sérhæfum okkur í samtölum. Yfir 200,000 símtöl árlega og 20,000+ AI-samtöl í gegnum okkar lausnir. Snjöll gervigreind, söluteymi og rekstrarinnsýn í rauntíma tryggja stöðugan árangur og sífelldar umbætur."
@@ -241,7 +287,7 @@
                 </p>
             </div>
             
-            <div class="feature-card light-card">
+            <div class="feature-card">
                 <div class="feature-icon">🎯</div>
                 <h3 data-is="Rétt nálgun" data-en="Right Approach">Rétt nálgun</h3>
                 <p data-is="35+ íslenskir sérfræðingar með djúpa markaðsþekkingu. Samþættum nýjustu tækni við mannlega sérþekkingu til að tryggja bestu mögulegu útkomuna fyrir þitt fyrirtæki."
@@ -255,7 +301,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services dark-section" id="tjonusta">
+    <section class="services" id="tjonusta">
         <div class="section-header">
             <h2 data-is="Heildarlausnir fyrir nútíma fyrirtæki" data-en="Complete Solutions for Modern Companies">Heildarlausnir fyrir nútíma fyrirtæki</h2>
             <p data-is="Allt sem þarf á einum stað - frá hefðbundinni símsvörun til háþróaðra AI lausna. Sérsniðnar lausnir sem auka afköst og bæta upplifun viðskiptavina."
@@ -449,7 +495,7 @@
                         </div>
                     </div>
                     
-                    <a href="#" class="primary-button barcelona-button" style="margin-top: 40px;" onclick="openContactModal('job')" data-is="Sækja um starf" data-en="Apply for Job">Sækja um starf</a>
+                    <a href="#" class="primary-button" style="margin-top: 40px;" onclick="openContactModal('job')" data-is="Sækja um starf" data-en="Apply for Job">Sækja um starf</a>
                 </div>
                 
                 <div class="jobs-image">
@@ -466,9 +512,9 @@
     </section>
 
     <!-- Trust Section - Updated with Logo -->
-    <section class="trust-section light-section">
+    <section class="trust-section">
         <div class="section-header">
-            <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem;" data-is="Treyst af leiðandi fyrirtækjum" data-en="Trusted by leading companies">Treyst af leiðandi fyrirtækjum</p>
+            <p style="text-align: center; color: var(--text-muted); font-size: 1.1rem;" data-is="Treyst af leiðandi fyrirtækjum" data-en="Trusted by leading companies">Treyst af leiðandi fyrirtækjum</p>
         </div>
         <div class="clients-grid">
             <div class="client-logo">
@@ -519,16 +565,16 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section dark-section" id="contact">
+    <section class="cta-section" id="contact">
         <div class="cta-content">
-            <h2 data-is="Viltu bæta þjónustu og fá betri rekstrarinnsýn?" data-en="Want to improve service and get better operational insights?">Viltu bæta þjónustu og fá <span class="gold-accent">betri rekstrarinnsýn?</span></h2>
+            <h2 data-is="Viltu bæta þjónustu og fá betri rekstrarinnsýn?" data-en="Want to improve service and get better operational insights?">Viltu bæta þjónustu og fá betri rekstrarinnsýn?</h2>
             <p data-is="Við getum byrjað að svara fyrir þig innan viku. Fáðu ókeypis greiningu á því hvernig við getum bætt þína þjónustu og veitt þér betri yfirsýn."
                data-en="We can start answering for you within a week. Get a free analysis of how we can improve your service and provide you with better oversight.">
                 Við getum byrjað að svara fyrir þig innan viku. Fáðu ókeypis greiningu 
                 á því hvernig við getum bætt þína þjónustu og veitt þér betri yfirsýn.
             </p>
             <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px;">
-                <a href="#" class="primary-button gold-button" onclick="openContactModal('meeting')" data-is="Bóka fund" data-en="Book a Meeting">Bóka fund</a>
+                <a href="#" class="primary-button" onclick="openContactModal('meeting')" data-is="Bóka fund" data-en="Book a Meeting">Bóka fund</a>
                 <a href="#" class="secondary-button" onclick="openContactModal('pricing')" data-is="Sjá verðskrá" data-en="See Pricing">Sjá verðskrá</a>
             </div>
         </div>
