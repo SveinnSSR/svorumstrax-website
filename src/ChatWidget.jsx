@@ -255,8 +255,6 @@ const ChatWidget = () => {
     };
 
     const TypingIndicator = () => {
-        const lang = getCurrentLanguage();
-        
         return (
             <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '16px', alignItems: 'flex-start', gap: '8px' }}>
                 <div style={{ position: 'relative', height: '32px', width: '32px' }}>
@@ -398,13 +396,17 @@ const ChatWidget = () => {
             bottom: '20px',
             right: '20px',
             width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : (windowWidth <= 768 ? '100vw' : '400px'),
-            height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : (windowWidth <= 768 ? '85vh' : '600px'),
+            height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
             maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
-            backgroundColor: isMinimized ? 'transparent' : 'transparent',
+            backgroundColor: isMinimized ? 'rgba(139, 115, 85, 0.95)' : 'rgba(250, 247, 244, 0.98)',
             borderRadius: isMinimized ? '50%' : (windowWidth <= 768 ? '20px 20px 0 0' : '24px'),
+            boxShadow: isMinimized 
+                ? '0 4px 20px rgba(139, 115, 85, 0.2), 0 0 15px rgba(255, 255, 255, 0.1)' 
+                : '0 10px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(139, 115, 85, 0.1)',
             overflow: 'hidden',
             transformOrigin: 'bottom right',
             transition: 'all 0.3s ease',
+            backdropFilter: 'blur(8px)',
             zIndex: 9999,
             maxWidth: isMinimized ? 'auto' : (windowWidth <= 768 ? '100vw' : '90vw'),
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
