@@ -1,4 +1,3 @@
-
 // Svörum strax Premium Chat Widget - Enhanced Version
 (function() {
     'use strict';
@@ -109,13 +108,27 @@
         }
     }
 
-    // Create widget HTML with premium structure
+    // Create widget HTML with premium structure - RE-style inline dimensions
     function createWidget() {
         const lang = getCurrentLanguage();
         const t = translations[lang];
         
+        // Add inline styles to container for RE-style animation
+        const containerStyle = {
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
+            height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '600px',
+            transformOrigin: 'bottom right',
+            transition: 'all 0.3s ease',
+            zIndex: '10000'
+        };
+        
+        const styleString = Object.entries(containerStyle).map(([k, v]) => `${k.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${v}`).join('; ');
+        
         const html = `
-            <div class="svorum-premium-container ${isMinimized ? 'minimized' : ''}">
+            <div class="svorum-premium-container ${isMinimized ? 'minimized' : ''}" style="${styleString}">
                 <!-- Preview bar -->
                 <div class="svorum-preview-bar" id="svorum-preview-bar" onclick="toggleChat()">
                     <div class="svorum-preview-content">
@@ -279,15 +292,21 @@
         sessionId = existingSessionId;
     }
 
-    // Toggle chat window - Made more responsive
+    // Toggle chat window - RE-style with dimension changes
     window.toggleChat = function() {
         isMinimized = !isMinimized;
         const container = document.querySelector('.svorum-premium-container');
         
         if (isMinimized) {
             container.classList.add('minimized');
+            // Update container dimensions for minimized state
+            container.style.width = windowWidth <= 768 ? '60px' : '70px';
+            container.style.height = windowWidth <= 768 ? '60px' : '70px';
         } else {
             container.classList.remove('minimized');
+            // Update container dimensions for expanded state
+            container.style.width = windowWidth <= 768 ? '100vw' : '400px';
+            container.style.height = windowWidth <= 768 ? '85vh' : '600px';
         }
         
         // Hide preview when chat opens
@@ -533,6 +552,18 @@
     window.addEventListener('resize', () => {
         windowWidth = window.innerWidth;
         positionPreviewBar();
+        
+        // Update container dimensions on resize
+        const container = document.querySelector('.svorum-premium-container');
+        if (container) {
+            if (isMinimized) {
+                container.style.width = windowWidth <= 768 ? '60px' : '70px';
+                container.style.height = windowWidth <= 768 ? '60px' : '70px';
+            } else {
+                container.style.width = windowWidth <= 768 ? '100vw' : '400px';
+                container.style.height = windowWidth <= 768 ? '85vh' : '600px';
+            }
+        }
     });
 
     // Update widget when language changes
