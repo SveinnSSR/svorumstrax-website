@@ -8,31 +8,9 @@ const CHUNK_REVEAL_DELAY = 250;
 const FADE_IN_DURATION = 300;
 const MOBILE_BREAKPOINT = 768;
 
-// Message interfaces
-interface Message {
-  type: 'user' | 'bot';
-  content: string;
-  id?: string;
-  timestamp?: number;
-}
-
-interface TypingMessage {
-  text: string;
-  visibleChars: number;
-  currentChunk?: number;
-  totalChunks?: number;
-  isComplete: boolean;
-  fadeIn: boolean;
-}
-
-interface MessageFeedback {
-  isPositive: boolean;
-  submitted: boolean;
-}
-
 // Error boundary for graceful error handling
-class ErrorBoundary extends Component<{children: React.ReactNode}, {hasError: boolean}> {
-  constructor(props: {children: React.ReactNode}) {
+class ErrorBoundary extends Component {
+  constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
@@ -41,7 +19,7 @@ class ErrorBoundary extends Component<{children: React.ReactNode}, {hasError: bo
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error) {
+  componentDidCatch(error) {
     console.error("Chat error:", error);
   }
 
@@ -78,7 +56,7 @@ class ErrorBoundary extends Component<{children: React.ReactNode}, {hasError: bo
 }
 
 // Message formatter component
-const MessageFormatter: React.FC<{ message: string }> = ({ message }) => {
+const MessageFormatter = ({ message }) => {
   // Simple URL regex for Google Maps links
   const urlRegex = /https:\/\/www\.google\.com\/maps\/[^"\s]+/g;
   const paragraphs = message.split('\n\n').filter(Boolean);
@@ -123,15 +101,15 @@ const MessageFormatter: React.FC<{ message: string }> = ({ message }) => {
 };
 
 const ChatWidget = () => {
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef(null);
   const [isMinimized, setIsMinimized] = useState(true);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [sessionId, setSessionId] = useState('');
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
-  const [typingMessages, setTypingMessages] = useState<{[key: string]: TypingMessage}>({});
-  const [messageFeedback, setMessageFeedback] = useState<{[key: string]: MessageFeedback}>({});
+  const [typingMessages, setTypingMessages] = useState({});
+  const [messageFeedback, setMessageFeedback] = useState({});
   const isMobile = windowWidth <= MOBILE_BREAKPOINT;
 
   // Get current language
@@ -201,7 +179,7 @@ const ChatWidget = () => {
   }, [messages, typingMessages]);
 
   // Chunked reveal effect (premium feel)
-  const renderMessage = useCallback((messageId: string, fullText: string) => {
+  const renderMessage = useCallback((messageId, fullText) => {
     if (!fullText) return null;
     
     const safeText = typeof fullText === 'string' ? fullText : String(fullText || '');
@@ -213,7 +191,7 @@ const ChatWidget = () => {
     }
   }, [isMobile]);
 
-  const startSimpleRender = (messageId: string, fullText: string) => {
+  const startSimpleRender = (messageId, fullText) => {
     try {
       setTypingMessages(prev => ({
         ...prev,
@@ -233,7 +211,7 @@ const ChatWidget = () => {
     }
   };
 
-  const startChunkedReveal = (messageId: string, fullText: string) => {
+  const startChunkedReveal = (messageId, fullText) => {
     try {
       let numberOfChunks = 1;
       
@@ -315,7 +293,7 @@ const ChatWidget = () => {
     }
   }, [isMinimized, messages.length, renderMessage, getCurrentLanguage]);
 
-  const shouldShowFeedback = (message: Message) => {
+  const shouldShowFeedback = (message) => {
     if (!message.content) return false;
     
     // Skip welcome messages
@@ -330,7 +308,7 @@ const ChatWidget = () => {
     return true;
   };
 
-  const handleMessageFeedback = async (messageId: string, isPositive: boolean) => {
+  const handleMessageFeedback = async (messageId, isPositive) => {
     if (messageFeedback[messageId]) return;
     
     setMessageFeedback(prev => ({
