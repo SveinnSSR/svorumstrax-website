@@ -29,8 +29,8 @@
     --button-primary: #1F2937; /* Sophisticated charcoal */
     --button-primary-hover: #111827; /* Darker on hover */
     --gradient-button: linear-gradient(135deg, #1F2937 0%, #111827 100%);
-    /* New service icon color */
-    --service-icon-beige: #faf8f5;
+    /* Claude AI inspired warm cream color for emojis */
+    --emoji-cream: #f4f1ea; /* Warm desert sand/cream like Claude AI */
 }
 
 body {
@@ -538,7 +538,7 @@ nav {
 .feature-icon {
     width: 60px;
     height: 60px;
-    background: var(--gradient-orange);
+    background: var(--emoji-cream);
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -585,8 +585,8 @@ nav {
 }
 
 .service-card.featured {
-    border-color: rgba(250, 248, 245, 0.3);
-    background: rgba(250, 248, 245, 0.03);
+    border-color: rgba(255, 107, 53, 0.3);
+    background: rgba(255, 107, 53, 0.03);
 }
 
 .service-card.featured::after {
@@ -594,8 +594,8 @@ nav {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: var(--service-icon-beige);
-    color: var(--primary-dark);
+    background: var(--primary-orange);
+    color: white;
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
@@ -604,14 +604,14 @@ nav {
 
 .service-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(250, 248, 245, 0.3);
-    box-shadow: 0 10px 30px rgba(250, 248, 245, 0.1);
+    border-color: rgba(255, 107, 53, 0.3);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
 }
 
 .service-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--service-icon-beige), #f5f0e8);
+    background: linear-gradient(135deg, var(--primary-orange), #F7931E);
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -623,7 +623,7 @@ nav {
 .service-icon svg {
     width: 28px;
     height: 28px;
-    color: var(--primary-dark);
+    color: white;
 }
 
 .service-card h3 {
@@ -640,7 +640,7 @@ nav {
 }
 
 .service-link {
-    color: var(--service-icon-beige);
+    color: var(--primary-orange);
     text-decoration: none;
     font-weight: 600;
     display: inline-flex;
