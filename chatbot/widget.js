@@ -1,4 +1,4 @@
-// Svörum strax Premium Chat Widget - Enhanced Version
+// Svörum strax Premium Chat Widget - Enhanced Version with RE-style Animation
 (function() {
     'use strict';
 
@@ -83,197 +83,274 @@
         }
     };
 
-    // Function to position the preview bar dynamically
-    function positionPreviewBar() {
-        const previewBar = document.getElementById('svorum-preview-bar');
-        if (!previewBar) return;
+    // Create and style container with RE-style inline dimensions
+    function createContainer() {
+        const container = document.createElement('div');
+        container.className = 'svorum-premium-container';
+        container.id = 'svorum-container';
         
-        const chatBubble = document.querySelector('.svorum-premium-bubble');
+        // Apply RE-style inline styles
+        updateContainerStyle(container);
         
-        if (chatBubble) {
-            const rect = chatBubble.getBoundingClientRect();
-            
-            previewBar.style.position = 'fixed';
-            previewBar.style.bottom = (window.innerHeight - rect.top + 10) + 'px';
-            previewBar.style.right = '20px';
-            
-            if (isMobile) {
-                previewBar.style.right = '10px';
-                previewBar.style.maxWidth = 'calc(100vw - 100px)';
-            }
-        } else {
-            previewBar.style.position = 'fixed';
-            previewBar.style.bottom = '90px';
-            previewBar.style.right = '20px';
-        }
+        return container;
     }
 
-    // Create widget HTML with premium structure - RE-style inline dimensions
-    function createWidget() {
-        const lang = getCurrentLanguage();
-        const t = translations[lang];
-        
-        // Add inline styles to container for RE-style animation
-        const containerStyle = {
+    // Update container style based on state (RE-style)
+    function updateContainerStyle(container) {
+        const styles = {
             position: 'fixed',
             bottom: '20px',
             right: '20px',
-            width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
-            height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '600px',
+            width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : (windowWidth <= 768 ? '100vw' : '400px'),
+            height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : (windowWidth <= 768 ? '85vh' : '600px'),
+            maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
+            backgroundColor: isMinimized ? 'rgba(74, 161, 158, 0.95)' : 'transparent',
+            borderRadius: isMinimized ? '50%' : (windowWidth <= 768 ? '20px 20px 0 0' : '24px'),
+            boxShadow: isMinimized ? '0 4px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 255, 255, 0.1)' : 'none',
+            overflow: 'hidden',
             transformOrigin: 'bottom right',
             transition: 'all 0.3s ease',
-            zIndex: '10000'
+            backdropFilter: isMinimized ? 'blur(8px)' : 'none',
+            zIndex: '9999',
+            maxWidth: isMinimized ? 'auto' : (windowWidth <= 768 ? '100vw' : '90vw'),
+            fontFamily: theme.fonts.body
         };
-        
-        const styleString = Object.entries(containerStyle).map(([k, v]) => `${k.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${v}`).join('; ');
-        
-        const html = `
-            <div class="svorum-premium-container ${isMinimized ? 'minimized' : ''}" style="${styleString}">
-                <!-- Preview bar -->
-                <div class="svorum-preview-bar" id="svorum-preview-bar" onclick="toggleChat()">
-                    <div class="svorum-preview-content">
-                        <div class="svorum-preview-avatar">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#8B7355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <circle cx="8" cy="10" r="1" fill="#8B7355"/>
-                                <circle cx="12" cy="10" r="1" fill="#8B7355"/>
-                                <circle cx="16" cy="10" r="1" fill="#8B7355"/>
-                            </svg>
-                        </div>
-                        <span class="svorum-preview-text">${t.preview}</span>
-                        <button class="svorum-preview-close" onclick="hidePreview(event)">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 1L1 13M1 1L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="svorum-preview-pointer"></div>
-                    <div class="svorum-preview-pointer-border"></div>
-                </div>
 
-                <!-- Minimized state - Premium circular button -->
-                <div class="svorum-premium-bubble" onclick="toggleChat()">
-                    <div class="svorum-premium-ring">
-                        <div class="svorum-premium-avatar">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill="#2D3748"/>
-                                <circle cx="10.67" cy="13.33" r="1.33" fill="white"/>
-                                <circle cx="16" cy="13.33" r="1.33" fill="white"/>
-                                <circle cx="21.33" cy="13.33" r="1.33" fill="white"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+        // Apply styles to container
+        Object.assign(container.style, styles);
+    }
 
-                <!-- Expanded state - Premium chat window -->
-                <div class="svorum-premium-window">
-                    <!-- Premium header -->
-                    <div class="svorum-premium-header" onclick="toggleChat()">
-                        <div class="svorum-premium-header-content">
-                            <div class="svorum-premium-header-avatar">
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="40" height="40" rx="20" fill="white" fill-opacity="0.95"/>
-                                    <path d="M30 23.33a2 2 0 0 1-2 2H14l-4 4V11.33a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12z" fill="#8B7355"/>
-                                    <circle cx="16" cy="17.33" r="1" fill="white"/>
-                                    <circle cx="20" cy="17.33" r="1" fill="white"/>
-                                    <circle cx="24" cy="17.33" r="1" fill="white"/>
+    // Create widget content
+    function createWidgetContent() {
+        const lang = getCurrentLanguage();
+        const t = translations[lang];
+        
+        return `
+            <!-- Header - Click anywhere to toggle -->
+            <div 
+                class="svorum-header-clickable"
+                onclick="toggleChat()"
+                style="
+                    padding: ${isMinimized ? '0' : '20px 16px'};
+                    display: flex;
+                    align-items: center;
+                    justify-content: ${isMinimized ? 'center' : 'flex-start'};
+                    cursor: pointer;
+                    gap: 12px;
+                    background: ${isMinimized ? 'transparent' : 'rgba(74, 161, 158, 1)'};
+                    width: 100%;
+                    height: ${isMinimized ? '100%' : 'auto'};
+                    box-sizing: border-box;
+                    flex-direction: ${isMinimized ? 'row' : 'column'};
+                    box-shadow: ${isMinimized ? 'none' : '0 2px 4px rgba(0, 0, 0, 0.1)'};
+                "
+            >
+                <div style="
+                    position: relative;
+                    height: ${isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px'};
+                    width: ${isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px'};
+                    border-radius: 50%;
+                    background: ${isMinimized ? 'transparent' : 'white'};
+                    padding: ${isMinimized ? '0' : '8px'};
+                    box-shadow: ${isMinimized ? 'none' : '0 2px 4px rgba(0, 0, 0, 0.1)'};
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <svg width="${isMinimized ? (windowWidth <= 768 ? '40' : '50') : '44'}" height="${isMinimized ? (windowWidth <= 768 ? '40' : '50') : '44'}" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M37 26.4a3.3 3.3 0 0 1-3.3 3.3H14.7L8.8 35.2V11a3.3 3.3 0 0 1 3.3-3.3h21.6A3.3 3.3 0 0 1 37 11v15.4z" fill="${isMinimized ? 'white' : '#8B7355'}"/>
+                        <circle cx="18.7" cy="18.7" r="1.65" fill="${isMinimized ? '#8B7355' : 'white'}"/>
+                        <circle cx="22" cy="18.7" r="1.65" fill="${isMinimized ? '#8B7355' : 'white'}"/>
+                        <circle cx="25.3" cy="18.7" r="1.65" fill="${isMinimized ? '#8B7355' : 'white'}"/>
+                    </svg>
+                </div>
+                
+                ${!isMinimized ? `
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 4px;
+                    ">
+                        <span style="
+                            color: white;
+                            font-size: 16px;
+                            font-weight: 500;
+                            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+                        ">
+                            ${t.title}
+                        </span>
+                        <span style="
+                            color: #e0e0e0;
+                            font-size: 14px;
+                            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+                        ">
+                            ${t.subtitle}
+                        </span>
+                    </div>
+                ` : ''}
+                
+                ${!isMinimized ? `
+                    <svg 
+                        width="20" 
+                        height="20" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        style="
+                            color: white;
+                            position: absolute;
+                            right: 16px;
+                            top: 16px;
+                        "
+                    >
+                        <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                ` : ''}
+            </div>
+
+            ${!isMinimized ? `
+                <!-- Chat area -->
+                <div style="
+                    height: 400px;
+                    background: white;
+                    overflow-y: auto;
+                    padding: 16px;
+                ">
+                    <div id="svorum-messages">
+                        <!-- Messages will be inserted here -->
+                    </div>
+                    
+                    <!-- Typing indicator -->
+                    <div id="svorum-typing" style="display: none; margin-top: 16px;">
+                        <div style="
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                        ">
+                            <div style="
+                                width: 32px;
+                                height: 32px;
+                                border-radius: 50%;
+                                background: #8B7355;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            ">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
+                                    <circle cx="7.5" cy="8.75" r="0.625" fill="#8B7355"/>
+                                    <circle cx="10" cy="8.75" r="0.625" fill="#8B7355"/>
+                                    <circle cx="12.5" cy="8.75" r="0.625" fill="#8B7355"/>
                                 </svg>
                             </div>
-                            <div class="svorum-premium-header-info">
-                                <div class="svorum-premium-title">${t.title}</div>
-                                <div class="svorum-premium-subtitle">${t.subtitle}</div>
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                gap: 4px;
+                                padding: 8px 12px;
+                                background: #f0f0f0;
+                                border-radius: 16px;
+                            ">
+                                <span style="
+                                    width: 6px;
+                                    height: 6px;
+                                    background: #8B7355;
+                                    border-radius: 50%;
+                                    animation: typing 1.4s infinite;
+                                "></span>
+                                <span style="
+                                    width: 6px;
+                                    height: 6px;
+                                    background: #8B7355;
+                                    border-radius: 50%;
+                                    animation: typing 1.4s infinite;
+                                    animation-delay: 0.2s;
+                                "></span>
+                                <span style="
+                                    width: 6px;
+                                    height: 6px;
+                                    background: #8B7355;
+                                    border-radius: 50%;
+                                    animation: typing 1.4s infinite;
+                                    animation-delay: 0.4s;
+                                "></span>
                             </div>
                         </div>
-                        <div class="svorum-premium-minimize">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <!-- Content area -->
-                    <div class="svorum-premium-content">
-                        <div class="svorum-premium-chat-area" style="display: flex; flex-direction: column; flex: 1; min-height: 0;">
-                            <div class="svorum-premium-messages" id="svorum-messages">
-                                <!-- Messages will be inserted here -->
-                            </div>
-
-                            <!-- Typing indicator -->
-                            <div class="svorum-premium-typing" id="svorum-typing" style="display: none;">
-                                <div class="svorum-typing-avatar">
-                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M24.5 17.5a1.75 1.75 0 0 1-1.75 1.75H8.75L5.25 22.75V7a1.75 1.75 0 0 1 1.75-1.75h15.75A1.75 1.75 0 0 1 24.5 7v10.5z" fill="#8B7355"/>
-                                        <circle cx="10.5" cy="12.25" r="0.875" fill="white"/>
-                                        <circle cx="14" cy="12.25" r="0.875" fill="white"/>
-                                        <circle cx="17.5" cy="12.25" r="0.875" fill="white"/>
-                                    </svg>
-                                </div>
-                                <div class="svorum-typing-dots">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Input area -->
-                    <div class="svorum-premium-input-container" style="display: flex;">
-                        <input 
-                            type="text" 
-                            class="svorum-premium-input" 
-                            id="svorum-input"
-                            placeholder="${t.placeholder}"
-                            onkeypress="handleKeyPress(event)"
-                        >
-                        <button class="svorum-premium-send" onclick="sendMessage()">
-                            <span>${t.send}</span>
-                        </button>
                     </div>
                 </div>
-            </div>
-        `;
-        widgetContainer.innerHTML = html;
 
-        // Position preview bar after widget is created
-        setTimeout(() => {
-            positionPreviewBar();
-            
-            // Show preview bar after delay
-            if (isMinimized && !previewShown) {
-                showPreview();
-            }
-        }, 100);
-    }
+                <!-- Input area -->
+                <div style="
+                    padding: 12px 16px;
+                    background: white;
+                    border-top: 1px solid #eee;
+                    display: flex;
+                    gap: 8px;
+                ">
+                    <input
+                        type="text"
+                        id="svorum-input"
+                        placeholder="${t.placeholder}"
+                        onkeypress="handleKeyPress(event)"
+                        style="
+                            flex: 1;
+                            padding: 8px 16px;
+                            border-radius: 20px;
+                            border: 1px solid rgba(139, 115, 85, 0.3);
+                            outline: none;
+                            font-size: 14px;
+                            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+                        "
+                    />
+                    <button
+                        onclick="sendMessage()"
+                        style="
+                            background: linear-gradient(135deg, #8B7355 0%, #A39A8D 100%);
+                            color: white;
+                            border: none;
+                            padding: 8px 20px;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            font-size: 14px;
+                            font-weight: 500;
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                            transition: all 0.3s ease;
+                        "
+                    >
+                        ${t.send}
+                    </button>
+                </div>
+            ` : ''}
 
-    // Show preview bar
-    function showPreview() {
-        const previewBar = document.getElementById('svorum-preview-bar');
-        if (previewBar && isMinimized) {
-            positionPreviewBar();
-            
-            previewBar.classList.add('show');
-            previewShown = true;
-            
-            // Auto-hide after delay
-            setTimeout(() => {
-                if (isMinimized) {
-                    hidePreview();
+            <!-- Styles -->
+            <style>
+                @keyframes typing {
+                    0%, 60%, 100% {
+                        transform: translateY(0);
+                        opacity: 0.4;
+                    }
+                    30% {
+                        transform: translateY(-6px);
+                        opacity: 1;
+                    }
                 }
-            }, PREVIEW_HIDE_DELAY);
-        }
+                
+                @media (max-width: 768px) {
+                    input, button {
+                        font-size: 16px !important;
+                    }
+                }
+            </style>
+        `;
     }
 
-    // Hide preview bar
-    window.hidePreview = function(event) {
-        if (event) {
-            event.stopPropagation();
-        }
-        const previewBar = document.getElementById('svorum-preview-bar');
-        if (previewBar) {
-            previewBar.classList.remove('show');
-        }
-    };
+    // Create widget HTML with RE-style approach
+    function createWidget() {
+        const container = createContainer();
+        container.innerHTML = createWidgetContent();
+        widgetContainer.innerHTML = '';
+        widgetContainer.appendChild(container);
+    }
 
     // Generate session ID
     function generateSessionId() {
@@ -295,26 +372,18 @@
     // Toggle chat window - RE-style with dimension changes
     window.toggleChat = function() {
         isMinimized = !isMinimized;
-        const container = document.querySelector('.svorum-premium-container');
         
-        if (isMinimized) {
-            container.classList.add('minimized');
-            // Update container dimensions for minimized state
-            container.style.width = windowWidth <= 768 ? '60px' : '70px';
-            container.style.height = windowWidth <= 768 ? '60px' : '70px';
-        } else {
-            container.classList.remove('minimized');
-            // Update container dimensions for expanded state
-            container.style.width = windowWidth <= 768 ? '100vw' : '400px';
-            container.style.height = windowWidth <= 768 ? '85vh' : '600px';
-        }
+        // Recreate widget with new state (like RE does)
+        createWidget();
         
-        // Hide preview when chat opens
         if (!isMinimized) {
-            hidePreview();
             if (messages.length === 0) {
                 showWelcomeMessage();
+            } else {
+                // Re-render existing messages
+                renderExistingMessages();
             }
+            
             // Focus input on desktop
             if (!isMobile) {
                 setTimeout(() => {
@@ -322,15 +391,22 @@
                     if (input) input.focus();
                 }, 100);
             }
-        } else {
-            // Show preview again after delay when minimized
-            setTimeout(() => {
-                if (isMinimized) {
-                    showPreview();
-                }
-            }, PREVIEW_SHOW_DELAY);
         }
     };
+
+    // Re-render existing messages
+    function renderExistingMessages() {
+        const messagesContainer = document.getElementById('svorum-messages');
+        if (!messagesContainer) return;
+        
+        messagesContainer.innerHTML = '';
+        
+        messages.forEach(message => {
+            addMessageToDOM(message.type, message.content, true);
+        });
+        
+        scrollToBottom();
+    }
 
     // Show welcome message
     function showWelcomeMessage() {
@@ -345,33 +421,76 @@
         const message = { id: messageId, type, content };
         messages.push(message);
         
+        addMessageToDOM(type, content, skipEffect);
+    }
+
+    // Add message to DOM
+    function addMessageToDOM(type, content, skipEffect = false) {
         const messagesContainer = document.getElementById('svorum-messages');
+        if (!messagesContainer) return;
+        
         const messageEl = document.createElement('div');
-        messageEl.className = `svorum-message svorum-message-${type}`;
-        messageEl.id = messageId;
+        messageEl.style.cssText = `
+            display: flex;
+            justify-content: ${type === 'user' ? 'flex-end' : 'flex-start'};
+            margin-bottom: 16px;
+            align-items: flex-start;
+            gap: 8px;
+        `;
         
         if (type === 'bot') {
             messageEl.innerHTML = `
-                <div class="svorum-message-wrapper">
-                    <div class="svorum-message-avatar">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M24.5 17.5a1.75 1.75 0 0 1-1.75 1.75H8.75L5.25 22.75V7a1.75 1.75 0 0 1 1.75-1.75h15.75A1.75 1.75 0 0 1 24.5 7v10.5z" fill="#8B7355"/>
-                            <circle cx="10.5" cy="12.25" r="0.875" fill="white"/>
-                            <circle cx="14" cy="12.25" r="0.875" fill="white"/>
-                            <circle cx="17.5" cy="12.25" r="0.875" fill="white"/>
-                        </svg>
-                    </div>
-                    <div class="svorum-message-bubble">
-                        <span class="svorum-message-text"></span>
-                    </div>
+                <div style="
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    background: #8B7355;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                ">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
+                        <circle cx="7.5" cy="8.75" r="0.625" fill="#8B7355"/>
+                        <circle cx="10" cy="8.75" r="0.625" fill="#8B7355"/>
+                        <circle cx="12.5" cy="8.75" r="0.625" fill="#8B7355"/>
+                    </svg>
+                </div>
+                <div style="
+                    max-width: 70%;
+                    padding: 12px 16px;
+                    border-radius: 16px;
+                    background: #f0f0f0;
+                    color: #333333;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                    border: 1px solid rgba(0, 0, 0, 0.05);
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
+                    word-break: break-word;
+                " class="message-content">
+                    ${content}
                 </div>
             `;
         } else {
             messageEl.innerHTML = `
-                <div class="svorum-message-wrapper">
-                    <div class="svorum-message-bubble">
-                        <span class="svorum-message-text">${content}</span>
-                    </div>
+                <div style="
+                    max-width: 70%;
+                    padding: 12px 16px;
+                    border-radius: 16px;
+                    background: linear-gradient(135deg, #8B7355 0%, #A39A8D 100%);
+                    color: white;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    box-shadow: 0 2px 8px rgba(139, 115, 85, 0.3);
+                    border: 1px solid rgba(255, 255, 255, 0.18);
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
+                    word-break: break-word;
+                ">
+                    ${content}
                 </div>
             `;
         }
@@ -379,7 +498,7 @@
         messagesContainer.appendChild(messageEl);
         
         if (type === 'bot' && !skipEffect) {
-            renderMessage(messageId, content);
+            renderMessage(messageEl, content);
         }
         
         // Ensure scrolling happens after DOM update
@@ -389,41 +508,34 @@
     }
 
     // Premium message rendering
-    function renderMessage(messageId, fullText) {
-        if (!fullText) return null;
+    function renderMessage(messageEl, fullText) {
+        if (!fullText) return;
+        
+        const contentEl = messageEl.querySelector('.message-content');
+        if (!contentEl) return;
         
         const safeText = typeof fullText === 'string' ? fullText : String(fullText || '');
         
         if (isMobile) {
-            return startSimpleRender(messageId, safeText);
+            startSimpleRender(contentEl, safeText);
         } else {
-            return startChunkedReveal(messageId, safeText);
+            startChunkedReveal(contentEl, safeText);
         }
     }
 
     // Simple render for mobile
-    function startSimpleRender(messageId, fullText) {
-        const messageEl = document.getElementById(messageId);
-        if (!messageEl) return;
-        
-        const textEl = messageEl.querySelector('.svorum-message-text');
-        textEl.textContent = fullText;
-        textEl.style.opacity = '0';
+    function startSimpleRender(contentEl, fullText) {
+        contentEl.textContent = fullText;
+        contentEl.style.opacity = '0';
         
         setTimeout(() => {
-            textEl.style.transition = `opacity ${FADE_IN_DURATION}ms ease-in`;
-            textEl.style.opacity = '1';
+            contentEl.style.transition = `opacity ${FADE_IN_DURATION}ms ease-in`;
+            contentEl.style.opacity = '1';
         }, 50);
-        
-        return messageId;
     }
 
     // Chunked reveal for desktop
-    function startChunkedReveal(messageId, fullText) {
-        const messageEl = document.getElementById(messageId);
-        if (!messageEl) return;
-        
-        const textEl = messageEl.querySelector('.svorum-message-text');
+    function startChunkedReveal(contentEl, fullText) {
         let numberOfChunks = 1;
         
         if (fullText.length < 100) {
@@ -437,7 +549,7 @@
         const chunkSize = Math.ceil(fullText.length / numberOfChunks);
         
         let currentChunk = 0;
-        textEl.style.opacity = '0';
+        contentEl.style.opacity = '0';
         
         const revealNextChunk = () => {
             if (currentChunk < numberOfChunks) {
@@ -446,11 +558,11 @@
                     fullText.length
                 );
                 
-                textEl.textContent = fullText.substring(0, charsToReveal);
+                contentEl.textContent = fullText.substring(0, charsToReveal);
                 
                 if (currentChunk === 0) {
-                    textEl.style.transition = `opacity ${FADE_IN_DURATION}ms ease-in`;
-                    textEl.style.opacity = '1';
+                    contentEl.style.transition = `opacity ${FADE_IN_DURATION}ms ease-in`;
+                    contentEl.style.opacity = '1';
                 }
                 
                 currentChunk++;
@@ -466,7 +578,6 @@
         };
         
         setTimeout(revealNextChunk, 100);
-        return messageId;
     }
 
     // Handle key press
@@ -479,6 +590,8 @@
     // Send message
     window.sendMessage = async function() {
         const input = document.getElementById('svorum-input');
+        if (!input) return;
+        
         const message = input.value.trim();
         
         if (!message || isTyping) return;
@@ -491,7 +604,7 @@
         isTyping = true;
         const typingIndicator = document.getElementById('svorum-typing');
         if (typingIndicator) {
-            typingIndicator.style.display = 'flex';
+            typingIndicator.style.display = 'block';
             scrollToBottom();
         }
         
@@ -550,18 +663,20 @@
 
     // Window resize listener
     window.addEventListener('resize', () => {
-        windowWidth = window.innerWidth;
-        positionPreviewBar();
-        
-        // Update container dimensions on resize
-        const container = document.querySelector('.svorum-premium-container');
-        if (container) {
-            if (isMinimized) {
-                container.style.width = windowWidth <= 768 ? '60px' : '70px';
-                container.style.height = windowWidth <= 768 ? '60px' : '70px';
-            } else {
-                container.style.width = windowWidth <= 768 ? '100vw' : '400px';
-                container.style.height = windowWidth <= 768 ? '85vh' : '600px';
+        const newWindowWidth = window.innerWidth;
+        if (newWindowWidth !== windowWidth) {
+            windowWidth = newWindowWidth;
+            
+            // Update container dimensions on resize
+            const container = document.getElementById('svorum-container');
+            if (container) {
+                updateContainerStyle(container);
+                // Recreate content with new dimensions
+                container.innerHTML = createWidgetContent();
+                
+                if (!isMinimized && messages.length > 0) {
+                    renderExistingMessages();
+                }
             }
         }
     });
@@ -580,38 +695,11 @@
 
     // Function to update all widget text
     function updateWidgetLanguage() {
-        const lang = getCurrentLanguage();
-        const t = translations[lang];
+        // Recreate widget with new language
+        createWidget();
         
-        // Update input placeholder
-        const input = document.getElementById('svorum-input');
-        if (input) input.placeholder = t.placeholder;
-        
-        // Update send button
-        const sendBtn = document.querySelector('.svorum-premium-send span');
-        if (sendBtn) sendBtn.textContent = t.send;
-        
-        // Update title
-        const title = document.querySelector('.svorum-premium-title');
-        if (title) title.textContent = t.title;
-        
-        // Update preview text
-        const previewText = document.querySelector('.svorum-preview-text');
-        if (previewText) previewText.textContent = t.preview;
-        
-        // Update welcome message if it exists
-        if (messages.length > 0 && messages[0].type === 'bot') {
-            const isWelcomeIS = messages[0].content === translations.is.welcome;
-            const isWelcomeEN = messages[0].content === translations.en.welcome;
-            
-            if (isWelcomeIS || isWelcomeEN) {
-                messages[0].content = t.welcome;
-                
-                const firstMessageEl = document.querySelector('.svorum-message-bot .svorum-message-text');
-                if (firstMessageEl) {
-                    firstMessageEl.textContent = t.welcome;
-                }
-            }
+        if (!isMinimized && messages.length > 0) {
+            renderExistingMessages();
         }
     }
 
