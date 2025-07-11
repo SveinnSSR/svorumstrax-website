@@ -1,4 +1,5 @@
-// Svörum strax Premium Chat Widget - Enhanced Version with RE-style Animation
+
+// Svörum strax Premium Chat Widget - Enhanced Version
 (function() {
     'use strict';
 
@@ -83,47 +84,76 @@
         }
     };
 
-    // Create widget HTML with RE-style inline styles
+    // Function to position the preview bar dynamically
+    function positionPreviewBar() {
+        const previewBar = document.getElementById('svorum-preview-bar');
+        if (!previewBar) return;
+        
+        const chatBubble = document.querySelector('.svorum-premium-bubble');
+        
+        if (chatBubble) {
+            const rect = chatBubble.getBoundingClientRect();
+            
+            previewBar.style.position = 'fixed';
+            previewBar.style.bottom = (window.innerHeight - rect.top + 10) + 'px';
+            previewBar.style.right = '20px';
+            
+            if (isMobile) {
+                previewBar.style.right = '10px';
+                previewBar.style.maxWidth = 'calc(100vw - 100px)';
+            }
+        } else {
+            previewBar.style.position = 'fixed';
+            previewBar.style.bottom = '90px';
+            previewBar.style.right = '20px';
+        }
+    }
+
+    // Create widget HTML with premium structure
     function createWidget() {
         const lang = getCurrentLanguage();
         const t = translations[lang];
         
-        // Container styles that will change - like RE widget
-        const containerStyles = {
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
-            height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
-            maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
-            backgroundColor: isMinimized ? theme.colors.iconBg.replace('linear-gradient(135deg, ', '').replace(' 0%, ', ', ').replace(' 100%)', '').split(',')[0] : '#ffffff',
-            borderRadius: isMinimized ? '50%' : '24px',
-            boxShadow: isMinimized ? '0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06)' : '0 10px 40px rgba(0, 0, 0, 0.15)',
-            overflow: 'hidden',
-            transformOrigin: 'bottom right',
-            transition: 'all 0.3s ease',
-            backdropFilter: 'blur(10px)',
-            zIndex: 10000,
-            maxWidth: isMinimized ? 'auto' : '90vw',
-            background: isMinimized ? theme.colors.iconBg : '#ffffff',
-            border: isMinimized ? '1px solid rgba(0, 0, 0, 0.06)' : 'none',
-            cursor: isMinimized ? 'pointer' : 'default'
-        };
-        
         const html = `
-            <div class="svorum-premium-container" style="${Object.entries(containerStyles).map(([k, v]) => `${k.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${v}`).join('; ')}">
-                ${isMinimized ? `
-                    <!-- Minimized state - Just the icon -->
-                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;" onclick="toggleChat()">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill="#2D3748"/>
-                            <circle cx="10.67" cy="13.33" r="1.33" fill="white"/>
-                            <circle cx="16" cy="13.33" r="1.33" fill="white"/>
-                            <circle cx="21.33" cy="13.33" r="1.33" fill="white"/>
-                        </svg>
+            <div class="svorum-premium-container ${isMinimized ? 'minimized' : ''}">
+                <!-- Preview bar -->
+                <div class="svorum-preview-bar" id="svorum-preview-bar" onclick="toggleChat()">
+                    <div class="svorum-preview-content">
+                        <div class="svorum-preview-avatar">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#8B7355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="8" cy="10" r="1" fill="#8B7355"/>
+                                <circle cx="12" cy="10" r="1" fill="#8B7355"/>
+                                <circle cx="16" cy="10" r="1" fill="#8B7355"/>
+                            </svg>
+                        </div>
+                        <span class="svorum-preview-text">${t.preview}</span>
+                        <button class="svorum-preview-close" onclick="hidePreview(event)">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 1L1 13M1 1L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
                     </div>
-                ` : `
-                    <!-- Expanded state - Chat window -->
+                    <div class="svorum-preview-pointer"></div>
+                    <div class="svorum-preview-pointer-border"></div>
+                </div>
+
+                <!-- Minimized state - Premium circular button -->
+                <div class="svorum-premium-bubble" onclick="toggleChat()">
+                    <div class="svorum-premium-ring">
+                        <div class="svorum-premium-avatar">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill="#2D3748"/>
+                                <circle cx="10.67" cy="13.33" r="1.33" fill="white"/>
+                                <circle cx="16" cy="13.33" r="1.33" fill="white"/>
+                                <circle cx="21.33" cy="13.33" r="1.33" fill="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expanded state - Premium chat window -->
+                <div class="svorum-premium-window">
                     <!-- Premium header -->
                     <div class="svorum-premium-header" onclick="toggleChat()">
                         <div class="svorum-premium-header-content">
@@ -187,28 +217,6 @@
                             <span>${t.send}</span>
                         </button>
                     </div>
-                `}
-                
-                <!-- Preview bar -->
-                <div class="svorum-preview-bar" id="svorum-preview-bar" onclick="toggleChat()">
-                    <div class="svorum-preview-content">
-                        <div class="svorum-preview-avatar">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#8B7355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <circle cx="8" cy="10" r="1" fill="#8B7355"/>
-                                <circle cx="12" cy="10" r="1" fill="#8B7355"/>
-                                <circle cx="16" cy="10" r="1" fill="#8B7355"/>
-                            </svg>
-                        </div>
-                        <span class="svorum-preview-text">${t.preview}</span>
-                        <button class="svorum-preview-close" onclick="hidePreview(event)">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 1L1 13M1 1L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="svorum-preview-pointer"></div>
-                    <div class="svorum-preview-pointer-border"></div>
                 </div>
             </div>
         `;
@@ -223,31 +231,6 @@
                 showPreview();
             }
         }, 100);
-    }
-
-    // Function to position the preview bar dynamically
-    function positionPreviewBar() {
-        const previewBar = document.getElementById('svorum-preview-bar');
-        if (!previewBar) return;
-        
-        const container = document.querySelector('.svorum-premium-container');
-        
-        if (container) {
-            const rect = container.getBoundingClientRect();
-            
-            previewBar.style.position = 'fixed';
-            previewBar.style.bottom = (window.innerHeight - rect.top + 10) + 'px';
-            previewBar.style.right = '20px';
-            
-            if (isMobile) {
-                previewBar.style.right = '10px';
-                previewBar.style.maxWidth = 'calc(100vw - 100px)';
-            }
-        } else {
-            previewBar.style.position = 'fixed';
-            previewBar.style.bottom = '90px';
-            previewBar.style.right = '20px';
-        }
     }
 
     // Show preview bar
@@ -296,32 +279,16 @@
         sessionId = existingSessionId;
     }
 
-    // Toggle chat window - RE style with dimension changes
+    // Toggle chat window - Made more responsive
     window.toggleChat = function() {
         isMinimized = !isMinimized;
         const container = document.querySelector('.svorum-premium-container');
         
-        // Update container styles like RE widget
-        const newStyles = {
-            width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
-            height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
-            maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
-            backgroundColor: isMinimized ? '' : '#ffffff',
-            borderRadius: isMinimized ? '50%' : '24px',
-            boxShadow: isMinimized ? '0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06)' : '0 10px 40px rgba(0, 0, 0, 0.15)',
-            background: isMinimized ? theme.colors.iconBg : '#ffffff',
-            border: isMinimized ? '1px solid rgba(0, 0, 0, 0.06)' : 'none',
-            cursor: isMinimized ? 'pointer' : 'default',
-            maxWidth: isMinimized ? 'auto' : '90vw'
-        };
-        
-        // Apply new styles
-        Object.entries(newStyles).forEach(([key, value]) => {
-            container.style[key] = value;
-        });
-        
-        // Recreate content
-        createWidget();
+        if (isMinimized) {
+            container.classList.add('minimized');
+        } else {
+            container.classList.remove('minimized');
+        }
         
         // Hide preview when chat opens
         if (!isMinimized) {
@@ -334,7 +301,7 @@
                 setTimeout(() => {
                     const input = document.getElementById('svorum-input');
                     if (input) input.focus();
-                }, 300);
+                }, 100);
             }
         } else {
             // Show preview again after delay when minimized
@@ -360,8 +327,6 @@
         messages.push(message);
         
         const messagesContainer = document.getElementById('svorum-messages');
-        if (!messagesContainer) return;
-        
         const messageEl = document.createElement('div');
         messageEl.className = `svorum-message svorum-message-${type}`;
         messageEl.id = messageId;
@@ -423,8 +388,6 @@
         if (!messageEl) return;
         
         const textEl = messageEl.querySelector('.svorum-message-text');
-        if (!textEl) return;
-        
         textEl.textContent = fullText;
         textEl.style.opacity = '0';
         
@@ -442,8 +405,6 @@
         if (!messageEl) return;
         
         const textEl = messageEl.querySelector('.svorum-message-text');
-        if (!textEl) return;
-        
         let numberOfChunks = 1;
         
         if (fullText.length < 100) {
@@ -499,8 +460,6 @@
     // Send message
     window.sendMessage = async function() {
         const input = document.getElementById('svorum-input');
-        if (!input) return;
-        
         const message = input.value.trim();
         
         if (!message || isTyping) return;
@@ -574,13 +533,6 @@
     window.addEventListener('resize', () => {
         windowWidth = window.innerWidth;
         positionPreviewBar();
-        
-        // Update container dimensions on resize if needed
-        const container = document.querySelector('.svorum-premium-container');
-        if (container && isMinimized) {
-            container.style.width = windowWidth <= 768 ? '60px' : '70px';
-            container.style.height = windowWidth <= 768 ? '60px' : '70px';
-        }
     });
 
     // Update widget when language changes
