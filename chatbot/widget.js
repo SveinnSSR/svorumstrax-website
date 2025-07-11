@@ -1,22 +1,28 @@
+
 // Svörum strax Premium Chat Widget - Enhanced Version
 (function() {
     'use strict';
 
-    // Premium brand theme with translucent orange gradient
+    // Premium brand theme with Claude AI-inspired colors
     const theme = {
         colors: {
-            primary: "#FF6B35", // Orange primary
-            secondary: "#FF8F65", // Lighter orange
-            gradient: "linear-gradient(135deg, rgba(255, 107, 53, 0.95) 0%, rgba(255, 143, 101, 0.85) 100%)", // Translucent orange
-            solidGradient: "linear-gradient(135deg, #FF6B35 0%, #FF8F65 100%)", // Solid for buttons
+            primary: "#8B7355", // Warm taupe (replacing orange)
+            secondary: "#A39A8D", // Lighter taupe
+            gradient: "linear-gradient(135deg, rgba(139, 115, 85, 0.95) 0%, rgba(163, 154, 141, 0.85) 100%)", // Translucent taupe
+            solidGradient: "linear-gradient(135deg, #8B7355 0%, #A39A8D 100%)", // Solid for buttons
             headerBg: "linear-gradient(135deg, #0A0E27 0%, #1B2735 100%)", // Keep dark header
             text: "#333333",
             background: "#FFFFFF",
             messageBg: "#F5F5F5",
-            userMessage: "#FF6B35", // Orange for user messages
+            userMessage: "#8B7355", // Taupe for user messages
             botMessage: "#F0F0F0",
-            lightAccent: "rgba(255, 107, 53, 0.1)",
-            darkBg: "#1A1F2E", // Dark background from screenshot
+            lightAccent: "rgba(139, 115, 85, 0.1)",
+            darkBg: "#1A1F2E",
+            // Claude AI inspired colors
+            iconBg: "linear-gradient(135deg, rgba(250, 247, 244, 0.95) 0%, rgba(245, 240, 234, 0.9) 100%)",
+            iconColor: "#2D3748",
+            inputBorder: "rgba(139, 115, 85, 0.3)",
+            inputFocus: "rgba(139, 115, 85, 0.5)",
         },
         fonts: {
             body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -27,12 +33,12 @@
     const CHUNK_REVEAL_DELAY = 250;
     const FADE_IN_DURATION = 300;
     const MOBILE_BREAKPOINT = 768;
-    const PREVIEW_SHOW_DELAY = 3000; // Show preview after 3 seconds
-    const PREVIEW_HIDE_DELAY = 10000; // Hide preview after 10 seconds
+    const PREVIEW_SHOW_DELAY = 3000;
+    const PREVIEW_HIDE_DELAY = 10000;
 
     // Session management
     const SESSION_ID_KEY = "svorumChatSessionId";
-    const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 minutes
+    const SESSION_TIMEOUT = 30 * 60 * 1000;
 
     // Create widget container
     const widgetContainer = document.createElement('div');
@@ -83,24 +89,20 @@
         const previewBar = document.getElementById('svorum-preview-bar');
         if (!previewBar) return;
         
-        // Get the chat bubble element
         const chatBubble = document.querySelector('.svorum-premium-bubble');
         
         if (chatBubble) {
             const rect = chatBubble.getBoundingClientRect();
             
-            // Position preview bar above the chat bubble
             previewBar.style.position = 'fixed';
             previewBar.style.bottom = (window.innerHeight - rect.top + 10) + 'px';
             previewBar.style.right = '20px';
             
-            // On mobile, adjust positioning
             if (isMobile) {
                 previewBar.style.right = '10px';
                 previewBar.style.maxWidth = 'calc(100vw - 100px)';
             }
         } else {
-            // Fallback positioning
             previewBar.style.position = 'fixed';
             previewBar.style.bottom = '90px';
             previewBar.style.right = '20px';
@@ -117,20 +119,14 @@
                 <!-- Preview bar -->
                 <div class="svorum-preview-bar" id="svorum-preview-bar" onclick="toggleChat()">
                     <div class="svorum-preview-content">
-                        <svg class="svorum-preview-avatar" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="previewGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="20" cy="20" r="20" fill="white" opacity="0.95"/>
-                            <path d="M 13 17 Q 13 14, 16 14 L 24 14 Q 27 14, 27 17 L 27 20 Q 27 23, 24 23 L 19 23 L 15 27 L 15 23 L 16 23 Q 13 23, 13 20 Z" 
-                                  fill="url(#previewGrad)" opacity="0.9"/>
-                            <circle cx="16.5" cy="18.5" r="1" fill="white"/>
-                            <circle cx="20" cy="18.5" r="1" fill="white"/>
-                            <circle cx="23.5" cy="18.5" r="1" fill="white"/>
-                        </svg>
+                        <div class="svorum-preview-avatar">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#8B7355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="8" cy="10" r="1" fill="#8B7355"/>
+                                <circle cx="12" cy="10" r="1" fill="#8B7355"/>
+                                <circle cx="16" cy="10" r="1" fill="#8B7355"/>
+                            </svg>
+                        </div>
                         <span class="svorum-preview-text">${t.preview}</span>
                         <button class="svorum-preview-close" onclick="hidePreview(event)">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -138,40 +134,19 @@
                             </svg>
                         </button>
                     </div>
-                    <!-- Add arrow pointer like Sky Lagoon -->
                     <div class="svorum-preview-pointer"></div>
                     <div class="svorum-preview-pointer-border"></div>
                 </div>
 
-                <!-- Minimized state - Premium circular button with translucent orange -->
+                <!-- Minimized state - Premium circular button -->
                 <div class="svorum-premium-bubble" onclick="toggleChat()">
                     <div class="svorum-premium-ring">
                         <div class="svorum-premium-avatar">
-                            <svg class="svorum-logo-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
-                                    </linearGradient>
-                                    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#FAFAFA;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
-                                    </linearGradient>
-                                    <filter id="glassmorphism">
-                                        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-                                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="glow" />
-                                        <feBlend in="SourceGraphic" in2="glow" />
-                                    </filter>
-                                </defs>
-                                <circle cx="30" cy="30" r="28" fill="url(#bgGrad)" opacity="0.9"/>
-                                <!-- Modern tech chat bubble -->
-                                <g filter="url(#glassmorphism)">
-                                    <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
-                                          fill="url(#logoGrad)" opacity="0.85"/>
-                                    <circle cx="25" cy="27.5" r="1.5" fill="white"/>
-                                    <circle cx="30" cy="27.5" r="1.5" fill="white"/>
-                                    <circle cx="35" cy="27.5" r="1.5" fill="white"/>
-                                </g>
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill="#2D3748"/>
+                                <circle cx="10.67" cy="13.33" r="1.33" fill="white"/>
+                                <circle cx="16" cy="13.33" r="1.33" fill="white"/>
+                                <circle cx="21.33" cy="13.33" r="1.33" fill="white"/>
                             </svg>
                         </div>
                     </div>
@@ -179,26 +154,16 @@
 
                 <!-- Expanded state - Premium chat window -->
                 <div class="svorum-premium-window">
-                    <!-- Premium header with more space -->
+                    <!-- Premium header -->
                     <div class="svorum-premium-header" onclick="toggleChat()">
                         <div class="svorum-premium-header-content">
                             <div class="svorum-premium-header-avatar">
-                                <svg class="svorum-logo-svg-header" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <linearGradient id="logoGradHeader" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
-                                            <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
-                                        </linearGradient>
-                                    </defs>
-                                    <circle cx="30" cy="30" r="30" fill="white" opacity="0.95"/>
-                                    <!-- Chat bubble design -->
-                                    <g>
-                                        <path d="M 20 25 Q 20 20, 25 20 L 35 20 Q 40 20, 40 25 L 40 30 Q 40 35, 35 35 L 28 35 L 23 40 L 23 35 L 25 35 Q 20 35, 20 30 Z" 
-                                              fill="url(#logoGradHeader)" opacity="0.9"/>
-                                        <circle cx="25" cy="27.5" r="1.5" fill="white"/>
-                                        <circle cx="30" cy="27.5" r="1.5" fill="white"/>
-                                        <circle cx="35" cy="27.5" r="1.5" fill="white"/>
-                                    </g>
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" rx="20" fill="white" fill-opacity="0.95"/>
+                                    <path d="M30 23.33a2 2 0 0 1-2 2H14l-4 4V11.33a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12z" fill="#8B7355"/>
+                                    <circle cx="16" cy="17.33" r="1" fill="white"/>
+                                    <circle cx="20" cy="17.33" r="1" fill="white"/>
+                                    <circle cx="24" cy="17.33" r="1" fill="white"/>
                                 </svg>
                             </div>
                             <div class="svorum-premium-header-info">
@@ -215,9 +180,7 @@
 
                     <!-- Content area -->
                     <div class="svorum-premium-content">
-                        <!-- Chat area container - now shows by default -->
                         <div class="svorum-premium-chat-area" style="display: flex; flex-direction: column; flex: 1; min-height: 0;">
-                            <!-- Chat messages area -->
                             <div class="svorum-premium-messages" id="svorum-messages">
                                 <!-- Messages will be inserted here -->
                             </div>
@@ -225,20 +188,11 @@
                             <!-- Typing indicator -->
                             <div class="svorum-premium-typing" id="svorum-typing" style="display: none;">
                                 <div class="svorum-typing-avatar">
-                                    <svg class="svorum-logo-svg-small" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                                        <defs>
-                                            <linearGradient id="logoGradTyping" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
-                                                <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
-                                            </linearGradient>
-                                        </defs>
-                                        <circle cx="20" cy="20" r="20" fill="white" opacity="0.95"/>
-                                        <!-- Chat bubble design scaled down -->
-                                        <path d="M 13 17 Q 13 14, 16 14 L 24 14 Q 27 14, 27 17 L 27 20 Q 27 23, 24 23 L 19 23 L 15 27 L 15 23 L 16 23 Q 13 23, 13 20 Z" 
-                                              fill="url(#logoGradTyping)" opacity="0.9"/>
-                                        <circle cx="16.5" cy="18.5" r="1" fill="white"/>
-                                        <circle cx="20" cy="18.5" r="1" fill="white"/>
-                                        <circle cx="23.5" cy="18.5" r="1" fill="white"/>
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M24.5 17.5a1.75 1.75 0 0 1-1.75 1.75H8.75L5.25 22.75V7a1.75 1.75 0 0 1 1.75-1.75h15.75A1.75 1.75 0 0 1 24.5 7v10.5z" fill="#8B7355"/>
+                                        <circle cx="10.5" cy="12.25" r="0.875" fill="white"/>
+                                        <circle cx="14" cy="12.25" r="0.875" fill="white"/>
+                                        <circle cx="17.5" cy="12.25" r="0.875" fill="white"/>
                                     </svg>
                                 </div>
                                 <div class="svorum-typing-dots">
@@ -250,7 +204,7 @@
                         </div>
                     </div>
 
-                    <!-- Input area - now shows by default -->
+                    <!-- Input area -->
                     <div class="svorum-premium-input-container" style="display: flex;">
                         <input 
                             type="text" 
@@ -268,7 +222,7 @@
         `;
         widgetContainer.innerHTML = html;
 
-        // Position preview bar after widget is created with a small delay to ensure DOM is ready
+        // Position preview bar after widget is created
         setTimeout(() => {
             positionPreviewBar();
             
@@ -283,7 +237,6 @@
     function showPreview() {
         const previewBar = document.getElementById('svorum-preview-bar');
         if (previewBar && isMinimized) {
-            // Ensure positioning is correct before showing
             positionPreviewBar();
             
             previewBar.classList.add('show');
@@ -326,11 +279,16 @@
         sessionId = existingSessionId;
     }
 
-    // Toggle chat window
+    // Toggle chat window - Made more responsive
     window.toggleChat = function() {
         isMinimized = !isMinimized;
         const container = document.querySelector('.svorum-premium-container');
-        container.classList.toggle('minimized');
+        
+        if (isMinimized) {
+            container.classList.add('minimized');
+        } else {
+            container.classList.remove('minimized');
+        }
         
         // Hide preview when chat opens
         if (!isMinimized) {
@@ -343,7 +301,7 @@
                 setTimeout(() => {
                     const input = document.getElementById('svorum-input');
                     if (input) input.focus();
-                }, 300);
+                }, 100);
             }
         } else {
             // Show preview again after delay when minimized
@@ -377,20 +335,11 @@
             messageEl.innerHTML = `
                 <div class="svorum-message-wrapper">
                     <div class="svorum-message-avatar">
-                        <svg class="svorum-logo-svg-small" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="logoGradSmall${messageId}" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#FF8F65;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="20" cy="20" r="20" fill="white" opacity="0.95"/>
-                            <!-- Chat bubble design scaled down -->
-                            <path d="M 13 17 Q 13 14, 16 14 L 24 14 Q 27 14, 27 17 L 27 20 Q 27 23, 24 23 L 19 23 L 15 27 L 15 23 L 16 23 Q 13 23, 13 20 Z" 
-                                  fill="url(#logoGradSmall${messageId})" opacity="0.9"/>
-                            <circle cx="16.5" cy="18.5" r="1" fill="white"/>
-                            <circle cx="20" cy="18.5" r="1" fill="white"/>
-                            <circle cx="23.5" cy="18.5" r="1" fill="white"/>
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24.5 17.5a1.75 1.75 0 0 1-1.75 1.75H8.75L5.25 22.75V7a1.75 1.75 0 0 1 1.75-1.75h15.75A1.75 1.75 0 0 1 24.5 7v10.5z" fill="#8B7355"/>
+                            <circle cx="10.5" cy="12.25" r="0.875" fill="white"/>
+                            <circle cx="14" cy="12.25" r="0.875" fill="white"/>
+                            <circle cx="17.5" cy="12.25" r="0.875" fill="white"/>
                         </svg>
                     </div>
                     <div class="svorum-message-bubble">
@@ -490,7 +439,6 @@
                 if (currentChunk < numberOfChunks) {
                     setTimeout(revealNextChunk, CHUNK_REVEAL_DELAY);
                 } else {
-                    // Final scroll after all chunks revealed
                     requestAnimationFrame(() => {
                         scrollToBottom();
                     });
@@ -520,7 +468,7 @@
         addMessage('user', message, true);
         input.value = '';
         
-        // Show typing indicator inside the messages area
+        // Show typing indicator
         isTyping = true;
         const typingIndicator = document.getElementById('svorum-typing');
         if (typingIndicator) {
@@ -584,7 +532,6 @@
     // Window resize listener
     window.addEventListener('resize', () => {
         windowWidth = window.innerWidth;
-        // Reposition preview bar on resize
         positionPreviewBar();
     });
 
@@ -623,15 +570,12 @@
         
         // Update welcome message if it exists
         if (messages.length > 0 && messages[0].type === 'bot') {
-            // Check if first message is the welcome message
             const isWelcomeIS = messages[0].content === translations.is.welcome;
             const isWelcomeEN = messages[0].content === translations.en.welcome;
             
             if (isWelcomeIS || isWelcomeEN) {
-                // Update the message content
                 messages[0].content = t.welcome;
                 
-                // Update the DOM
                 const firstMessageEl = document.querySelector('.svorum-message-bot .svorum-message-text');
                 if (firstMessageEl) {
                     firstMessageEl.textContent = t.welcome;
