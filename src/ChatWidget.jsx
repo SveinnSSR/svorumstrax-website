@@ -240,7 +240,7 @@ const ChatWidget = () => {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             onClick={(e) => e.stopPropagation()}
-                                            style={{ color: '#8B7355', textDecoration: 'underline' }}
+                                            style={{ color: '#FF6B35', textDecoration: 'underline' }}
                                         >
                                             View location on Google Maps 📍
                                         </a>
@@ -255,34 +255,31 @@ const ChatWidget = () => {
     };
 
     const TypingIndicator = () => {
-        const lang = getCurrentLanguage();
-        
         return (
             <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '16px', alignItems: 'flex-start', gap: '8px' }}>
                 <div style={{ position: 'relative', height: '32px', width: '32px' }}>
-                    <svg 
-                        width="32" 
-                        height="32" 
-                        viewBox="0 0 32 32" 
-                        fill="none" 
-                        style={{
-                            background: 'linear-gradient(135deg, rgba(250, 247, 244, 0.95) 0%, rgba(245, 240, 234, 0.9) 100%)',
-                            borderRadius: '50%',
-                            padding: '4px',
-                            border: '1px solid rgba(0, 0, 0, 0.06)',
-                            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
-                        }}
-                    >
-                        <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill="#2D3748"/>
-                        <circle cx="10.67" cy="13.33" r="1.33" fill="white"/>
-                        <circle cx="16" cy="13.33" r="1.33" fill="white"/>
-                        <circle cx="21.33" cy="13.33" r="1.33" fill="white"/>
-                    </svg>
+                    <div style={{
+                        background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                        borderRadius: '50%',
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: '0 2px 8px rgba(255, 107, 53, 0.3)'
+                    }}>
+                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
+                            <circle cx="7.5" cy="8.75" r="0.625" fill="#FF6B35"/>
+                            <circle cx="10" cy="8.75" r="0.625" fill="#FF6B35"/>
+                            <circle cx="12.5" cy="8.75" r="0.625" fill="#FF6B35"/>
+                        </svg>
+                    </div>
                 </div>
                 <div style={{
                     padding: '12px 16px',
                     borderRadius: '16px',
-                    background: '#f0f0f0',
+                    background: '#f8f9fa',
                     display: 'flex',
                     gap: '4px',
                     alignItems: 'center',
@@ -292,7 +289,7 @@ const ChatWidget = () => {
                     <span style={{
                         height: '8px',
                         width: '8px',
-                        background: '#8B7355',
+                        background: '#FF6B35',
                         borderRadius: '50%',
                         opacity: '0.4',
                         animation: 'typing 1.4s infinite'
@@ -300,7 +297,7 @@ const ChatWidget = () => {
                     <span style={{
                         height: '8px',
                         width: '8px',
-                        background: '#8B7355',
+                        background: '#FF6B35',
                         borderRadius: '50%',
                         opacity: '0.4',
                         animation: 'typing 1.4s infinite',
@@ -309,7 +306,7 @@ const ChatWidget = () => {
                     <span style={{
                         height: '8px',
                         width: '8px',
-                        background: '#8B7355',
+                        background: '#FF6B35',
                         borderRadius: '50%',
                         opacity: '0.4',
                         animation: 'typing 1.4s infinite',
@@ -397,81 +394,112 @@ const ChatWidget = () => {
             position: 'fixed',
             bottom: '20px',
             right: '20px',
-            width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : (windowWidth <= 768 ? '100vw' : '400px'),
-            height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : (windowWidth <= 768 ? '85vh' : '600px'),
+            width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
+            height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
             maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
-            backgroundColor: isMinimized ? 'transparent' : 'transparent',
-            borderRadius: isMinimized ? '50%' : (windowWidth <= 768 ? '20px 20px 0 0' : '24px'),
+            backgroundColor: isMinimized ? 'rgba(255, 107, 53, 0.95)' : '#FAF7F2',
+            borderRadius: isMinimized ? '50%' : '16px',
+            boxShadow: isMinimized 
+                ? '0 4px 20px rgba(255, 107, 53, 0.3), 0 0 15px rgba(255, 255, 255, 0.1)' 
+                : '0 10px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 107, 53, 0.1)',
             overflow: 'hidden',
             transformOrigin: 'bottom right',
             transition: 'all 0.3s ease',
+            backdropFilter: 'blur(8px)',
             zIndex: 9999,
-            maxWidth: isMinimized ? 'auto' : (windowWidth <= 768 ? '100vw' : '90vw'),
+            maxWidth: isMinimized ? 'auto' : '90vw',
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
         }}>
             {/* Minimized state bubble */}
             {isMinimized && (
                 <div 
                     onClick={toggleChat}
-                    className="svorum-premium-bubble"
                     style={{
                         width: '100%',
                         height: '100%',
                         cursor: 'pointer',
-                        position: 'relative',
-                        padding: 0
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'relative'
                     }}
                 >
-                    <div className="svorum-premium-ring">
-                        <div className="svorum-premium-avatar">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill="#2D3748"/>
-                                <circle cx="10.67" cy="13.33" r="1.33" fill="white"/>
-                                <circle cx="16" cy="13.33" r="1.33" fill="white"/>
-                                <circle cx="21.33" cy="13.33" r="1.33" fill="white"/>
-                            </svg>
-                        </div>
-                    </div>
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill="white"/>
+                        <circle cx="10.67" cy="13.33" r="1.33" fill="#FF6B35"/>
+                        <circle cx="16" cy="13.33" r="1.33" fill="#FF6B35"/>
+                        <circle cx="21.33" cy="13.33" r="1.33" fill="#FF6B35"/>
+                    </svg>
                 </div>
             )}
 
             {/* Expanded state */}
             {!isMinimized && (
-                <div className="svorum-premium-window">
+                <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
                     {/* Header */}
                     <div 
-                        className="svorum-premium-header"
                         onClick={toggleChat}
-                        style={{ cursor: 'pointer' }}
+                        style={{
+                            background: 'linear-gradient(135deg, #0A0E27 0%, #1B2735 100%)',
+                            padding: '20px 16px',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            borderRadius: '16px 16px 0 0',
+                            boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
+                            position: 'relative'
+                        }}
                     >
-                        <div className="svorum-premium-header-content">
-                            <div className="svorum-premium-header-avatar">
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="40" height="40" rx="20" fill="white" fillOpacity="0.95"/>
-                                    <path d="M30 23.33a2 2 0 0 1-2 2H14l-4 4V11.33a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12z" fill="#8B7355"/>
-                                    <circle cx="16" cy="17.33" r="1" fill="white"/>
-                                    <circle cx="20" cy="17.33" r="1" fill="white"/>
-                                    <circle cx="24" cy="17.33" r="1" fill="white"/>
-                                </svg>
-                            </div>
-                            <div className="svorum-premium-header-info">
-                                <div className="svorum-premium-title">{t.title}</div>
-                                <div className="svorum-premium-subtitle">{t.subtitle}</div>
-                            </div>
-                        </div>
-                        <div className="svorum-premium-minimize">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 9L12 16L5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <div style={{
+                            position: 'relative',
+                            height: '50px',
+                            width: '50px',
+                            background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                            borderRadius: '50%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            boxShadow: '0 2px 8px rgba(255, 107, 53, 0.3)'
+                        }}>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z" fill="white"/>
+                                <circle cx="9" cy="10" r="1" fill="#FF6B35"/>
+                                <circle cx="12" cy="10" r="1" fill="#FF6B35"/>
+                                <circle cx="15" cy="10" r="1" fill="#FF6B35"/>
                             </svg>
                         </div>
+                        
+                        <div style={{ flex: 1 }}>
+                            <div style={{ 
+                                color: 'white',
+                                fontSize: '18px',
+                                fontWeight: '600',
+                                marginBottom: '4px'
+                            }}>
+                                {t.title}
+                            </div>
+                            <div style={{ 
+                                color: 'rgba(255, 255, 255, 0.8)',
+                                fontSize: '14px'
+                            }}>
+                                {t.subtitle}
+                            </div>
+                        </div>
+                        
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ color: 'white', opacity: 0.8 }}>
+                            <path d="M19 9L12 16L5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                     </div>
 
                     {/* Chat area */}
                     <div style={{
-                        height: windowWidth <= 768 ? 'calc(85vh - 200px)' : '400px',
-                        background: 'white',
+                        flex: 1,
+                        background: '#FAF7F2',
                         overflowY: 'auto',
-                        padding: '16px'
+                        padding: '16px',
+                        minHeight: '300px',
+                        maxHeight: '400px'
                     }}>
                         {messages.map((msg) => (
                             <div 
@@ -495,20 +523,19 @@ const ChatWidget = () => {
                                             position: 'relative', 
                                             height: '32px', 
                                             width: '32px',
-                                            background: 'linear-gradient(135deg, rgba(250, 247, 244, 0.95) 0%, rgba(245, 240, 234, 0.9) 100%)',
+                                            background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
                                             borderRadius: '50%',
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                             flexShrink: 0,
-                                            border: '1px solid rgba(0, 0, 0, 0.06)',
-                                            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
+                                            boxShadow: '0 2px 8px rgba(255, 107, 53, 0.3)'
                                         }}>
-                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="#8B7355"/>
-                                                <circle cx="7.5" cy="8.75" r="0.625" fill="white"/>
-                                                <circle cx="10" cy="8.75" r="0.625" fill="white"/>
-                                                <circle cx="12.5" cy="8.75" r="0.625" fill="white"/>
+                                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                                <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
+                                                <circle cx="7.5" cy="8.75" r="0.625" fill="#FF6B35"/>
+                                                <circle cx="10" cy="8.75" r="0.625" fill="#FF6B35"/>
+                                                <circle cx="12.5" cy="8.75" r="0.625" fill="#FF6B35"/>
                                             </svg>
                                         </div>
                                     )}
@@ -517,13 +544,21 @@ const ChatWidget = () => {
                                         maxWidth: '70%',
                                         padding: '12px 16px',
                                         borderRadius: '16px',
-                                        backgroundColor: msg.type === 'user' ? 'linear-gradient(135deg, #8B7355 0%, #A39A8D 100%)' : '#f0f0f0',
-                                        background: msg.type === 'user' ? 'linear-gradient(135deg, #8B7355 0%, #A39A8D 100%)' : '#f0f0f0',
+                                        backgroundColor: msg.type === 'user' 
+                                            ? 'linear-gradient(135deg, #2D3561 0%, #3B4A7A 100%)'
+                                            : 'white',
+                                        background: msg.type === 'user' 
+                                            ? 'linear-gradient(135deg, #2D3561 0%, #3B4A7A 100%)'
+                                            : 'white',
                                         color: msg.type === 'user' ? 'white' : '#333333',
                                         fontSize: '14px',
                                         lineHeight: '1.5',
-                                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-                                        border: msg.type === 'user' ? '1px solid rgba(255, 255, 255, 0.18)' : '1px solid rgba(0, 0, 0, 0.05)',
+                                        boxShadow: msg.type === 'user' 
+                                            ? '0 2px 8px rgba(45, 53, 97, 0.3)'
+                                            : '0 2px 8px rgba(0, 0, 0, 0.1)',
+                                        border: msg.type === 'user' 
+                                            ? '1px solid rgba(255, 255, 255, 0.15)' 
+                                            : '1px solid rgba(0, 0, 0, 0.05)',
                                         position: 'relative',
                                         overflowWrap: 'break-word',
                                         wordWrap: 'break-word',
@@ -556,21 +591,76 @@ const ChatWidget = () => {
                     </div>
 
                     {/* Input area */}
-                    <div className="svorum-premium-input-container">
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '16px',
+                        background: 'white',
+                        borderTop: '1px solid rgba(0, 0, 0, 0.08)',
+                        gap: '12px',
+                        borderRadius: '0 0 16px 16px'
+                    }}>
                         <input
                             type="text"
-                            className="svorum-premium-input"
                             value={inputValue}
                             onChange={(e) => setInputValue(e.target.value)}
                             onKeyPress={(e) => e.key === 'Enter' && !isTyping && handleSend()}
                             placeholder={t.placeholder}
+                            style={{
+                                flex: 1,
+                                padding: '12px 16px',
+                                border: '2px solid rgba(255, 107, 53, 0.2)',
+                                borderRadius: '25px',
+                                outline: 'none',
+                                fontSize: '14px',
+                                transition: 'all 0.2s ease',
+                                background: '#FAF7F2'
+                            }}
+                            onFocus={(e) => {
+                                e.target.style.borderColor = 'rgba(255, 107, 53, 0.5)';
+                                e.target.style.background = 'white';
+                                e.target.style.boxShadow = '0 0 0 3px rgba(255, 107, 53, 0.1)';
+                            }}
+                            onBlur={(e) => {
+                                e.target.style.borderColor = 'rgba(255, 107, 53, 0.2)';
+                                e.target.style.background = '#FAF7F2';
+                                e.target.style.boxShadow = 'none';
+                            }}
                         />
                         <button
-                            className="svorum-premium-send"
                             onClick={handleSend}
                             disabled={isTyping}
+                            style={{
+                                background: isTyping 
+                                    ? 'linear-gradient(135deg, #ccc 0%, #aaa 100%)'
+                                    : 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                                color: 'white',
+                                border: 'none',
+                                padding: '12px 20px',
+                                borderRadius: '25px',
+                                cursor: isTyping ? 'default' : 'pointer',
+                                fontSize: '14px',
+                                fontWeight: '600',
+                                transition: 'all 0.2s ease',
+                                boxShadow: isTyping 
+                                    ? 'none'
+                                    : '0 2px 8px rgba(255, 107, 53, 0.3)',
+                                opacity: isTyping ? 0.7 : 1
+                            }}
+                            onMouseOver={(e) => {
+                                if (!isTyping) {
+                                    e.target.style.transform = 'translateY(-1px)';
+                                    e.target.style.boxShadow = '0 4px 12px rgba(255, 107, 53, 0.4)';
+                                }
+                            }}
+                            onMouseOut={(e) => {
+                                if (!isTyping) {
+                                    e.target.style.transform = 'translateY(0)';
+                                    e.target.style.boxShadow = '0 2px 8px rgba(255, 107, 53, 0.3)';
+                                }
+                            }}
                         >
-                            <span>{t.send}</span>
+                            {t.send}
                         </button>
                     </div>
                 </div>
