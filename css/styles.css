@@ -332,8 +332,8 @@ nav {
     right: 0;
     bottom: 0;
     background-image: 
-        linear-gradient(rgba(255, 107, 53, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(255, 107, 53, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 107, 53, 0.02) 1px, transparent 1px);
     background-size: 50px 50px;
     opacity: 0;
     animation: fadeInGrid 1s ease-out 0.5s forwards;
@@ -429,8 +429,8 @@ nav {
     height: 1px;
     background: linear-gradient(90deg, 
         transparent, 
-        rgba(255, 107, 53, 0.4) 20%, 
-        rgba(255, 143, 101, 0.4) 80%, 
+        rgba(255, 107, 53, 0.3) 20%, 
+        rgba(255, 143, 101, 0.3) 80%, 
         transparent);
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -442,10 +442,10 @@ nav {
 
 .feature-card.enhanced:hover {
     transform: translateY(-8px);
-    border-color: rgba(255, 107, 53, 0.2);
+    border-color: rgba(255, 107, 53, 0.15);
     box-shadow: 
-        0 20px 40px rgba(255, 107, 53, 0.1),
-        0 0 0 1px rgba(255, 107, 53, 0.1);
+        0 20px 40px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(255, 107, 53, 0.05);
 }
 
 /* Icon wrapper for positioning */
@@ -460,15 +460,15 @@ nav {
 .feature-icon-card {
     width: 64px;
     height: 64px;
-    background: var(--service-sand);
+    background: linear-gradient(135deg, rgba(250, 247, 244, 0.95) 0%, rgba(245, 240, 234, 0.9) 100%);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(229, 212, 177, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 
-        0 4px 20px rgba(229, 212, 177, 0.15),
+        0 4px 20px rgba(0, 0, 0, 0.04),
         inset 0 1px 1px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     position: relative;
@@ -490,7 +490,7 @@ nav {
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    background: rgba(255, 107, 53, 0.2);
+    background: rgba(255, 107, 53, 0.15);
     transform: translate(-50%, -50%);
     opacity: 0;
     z-index: 1;
@@ -513,8 +513,9 @@ nav {
 
 .feature-card.enhanced:hover .feature-icon-card {
     transform: scale(1.05);
-    border-color: rgba(255, 107, 53, 0.3);
-    background: var(--service-sand);
+    border-color: rgba(255, 107, 53, 0.2);
+    background: linear-gradient(135deg, rgba(252, 250, 248, 0.98) 0%, rgba(247, 243, 239, 0.95) 100%);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .feature-card.enhanced:hover .feature-icon-card svg {
@@ -587,8 +588,8 @@ nav {
 }
 
 .service-card.featured {
-    border-color: rgba(255, 107, 53, 0.3);
-    background: rgba(255, 107, 53, 0.03);
+    border-color: rgba(255, 107, 53, 0.2);
+    background: rgba(255, 107, 53, 0.02);
 }
 
 .service-card.featured::after {
@@ -596,36 +597,50 @@ nav {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: var(--primary-orange);
-    color: white;
+    background: linear-gradient(135deg, rgba(250, 247, 244, 0.95) 0%, rgba(245, 240, 234, 0.9) 100%);
+    color: var(--primary-dark);
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 600;
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 107, 53, 0.3);
-    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+    border-color: rgba(255, 107, 53, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .service-icon {
     width: 60px;
     height: 60px;
-    background: var(--service-sand);
+    background: linear-gradient(135deg, rgba(250, 247, 244, 0.95) 0%, rgba(245, 240, 234, 0.9) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
     font-size: 28px;
+    transition: all 0.3s ease;
 }
 
 .service-icon svg {
     width: 28px;
     height: 28px;
     color: var(--primary-dark);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    background: linear-gradient(135deg, rgba(252, 250, 248, 0.98) 0%, rgba(247, 243, 239, 0.95) 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-color: rgba(255, 107, 53, 0.15);
+}
+
+.service-card:hover .service-icon svg {
+    color: var(--primary-orange);
 }
 
 .service-card h3 {
@@ -648,11 +663,12 @@ nav {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    transition: gap 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .service-link:hover {
     gap: 10px;
+    opacity: 0.8;
 }
 
 /* Jobs Section with Barcelona Background */
