@@ -2006,7 +2006,7 @@ footer {
     --tech-green: #00C896;
     --tech-green-dark: #00CC6F;
     --tech-teal: #00C896;
-    --tech-coral: #FF6B6B;
+    --tech-coral: #00C896;
 }
 
 /* Subtle green accents on service icons - just on hover */
@@ -2017,7 +2017,7 @@ footer {
 
 .service-card:hover .service-icon svg {
     color: #00C896 !important;
-    filter: drop-shadow(0 0 8px rgba(0, 200, 150, 0.3));
+    filter: drop-shadow(0 0 8px rgba(0, 200, 150,, 0.3));
     transform: scale(1.05);
 }
 
