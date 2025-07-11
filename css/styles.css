@@ -16,24 +16,27 @@
 }
 
 :root {
-    --primary-orange: #8B7355; /* Change from orange to sophisticated taupe */
+    --primary-orange: #FF6B35;
     --primary-dark: #0A0E27;
     --primary-blue: #2D3561;
     --accent-purple: #6B5B95;
     --text-light: #E8E9F3;
     --text-dark: #1A1A2E;
     --text-muted: #B8BCC8;
-    
-    /* New sophisticated palette inspired by Sky Lagoon */
-    --signature-sage: #7A8B7A; /* Sophisticated sage green */
-    --signature-taupe: #8B7355; /* Your current taupe */
-    --signature-cream: #F5F2ED; /* Warm cream */
-    --signature-slate: #4A5568; /* Professional slate */
-    
-    /* Updated gradients - more sophisticated */
-    --gradient-primary: linear-gradient(135deg, #8B7355 0%, #7A8B7A 100%);
+    --gradient-orange: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
     --gradient-dark: linear-gradient(135deg, #0A0E27 0%, #1B2735 100%);
-    --gradient-button: linear-gradient(135deg, #7A8B7A 0%, #6B7A6B 100%); /* Sage green buttons */
+    --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* New button-specific colors */
+    --button-primary: #1F2937; /* Sophisticated charcoal */
+    --button-primary-hover: #111827; /* Darker on hover */
+    --gradient-button: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+    /* Claude AI inspired warm cream color for emojis */
+    --emoji-cream: #f4f1ea; /* Warm desert sand/cream like Claude AI */
+    /* Warmer sand/desert color for service SVG icons */
+    --service-sand: #e5d4b1; /* Golden desert sand */
+    /* Muted warm tones for interactive elements */
+    --muted-brown: #8B7355; /* Warm taupe */
+    --muted-brown-dark: #6B5645; /* Darker taupe */
 }
 
 body {
@@ -110,7 +113,7 @@ nav {
 }
 
 .cta-button {
-    background: linear-gradient(135deg, #7A8B7A 0%, #6B7A6B 100%) !important;
+    background: var(--gradient-button);
     color: white !important;
     padding: 12px 30px;
     border-radius: 30px;
@@ -223,7 +226,7 @@ nav {
 }
 
 .primary-button {
-    background: linear-gradient(135deg, #7A8B7A 0%, #6B7A6B 100%) !important;
+    background: var(--gradient-button);
     color: white;
     padding: 16px 40px;
     border-radius: 30px;
@@ -642,7 +645,7 @@ nav {
 }
 
 .service-card:hover .service-icon svg {
-    color: #6B7A6B !important;
+    color: var(--muted-brown);
     transform: scale(1.05);
 }
 
@@ -1420,7 +1423,7 @@ footer {
 }
 
 .ai-indicator {
-    background: linear-gradient(90deg, transparent 0%, #7A8B7A 20%, #8B7355 80%, transparent 100%) !important;
+    background: linear-gradient(90deg, transparent 0%, #FF6B35 20%, #FF8F65 80%, transparent 100%);
 }
 
 .human-indicator {
@@ -1965,9 +1968,9 @@ footer {
     }
 }
 
-/* Service icons with sage green */
+/* Service icons - change from white to your taupe color. Delete the whole block if you want to change back */
 .service-icon svg {
-    color: #7A8B7A !important; /* Sophisticated sage */
+    color: #8B7355 !important; /* Your existing taupe instead of white */
 }
 
 .service-card:hover .service-icon svg {
@@ -1984,6 +1987,7 @@ footer {
     color: #6B5645 !important;
     transform: scale(1.05);
 }
+/* Service icons - change from white to your taupe color. Delete the whole block if you want to change back */
 
 /* Small mobile devices */
 @media (max-width: 375px) {
