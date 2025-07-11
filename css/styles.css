@@ -31,6 +31,8 @@
     --gradient-button: linear-gradient(135deg, #1F2937 0%, #111827 100%);
     /* Claude AI inspired warm cream color for emojis */
     --emoji-cream: #f4f1ea; /* Warm desert sand/cream like Claude AI */
+    /* Warmer sand/desert color for service SVG icons */
+    --service-sand: #e5d4b1; /* Golden desert sand */
 }
 
 body {
@@ -458,15 +460,15 @@ nav {
 .feature-icon-card {
     width: 64px;
     height: 64px;
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 143, 101, 0.04) 100%);
+    background: var(--service-sand);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 107, 53, 0.15);
+    border: 1px solid rgba(229, 212, 177, 0.3);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 
-        0 4px 20px rgba(255, 107, 53, 0.08),
+        0 4px 20px rgba(229, 212, 177, 0.15),
         inset 0 1px 1px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     position: relative;
@@ -476,7 +478,7 @@ nav {
 .feature-icon-card svg {
     width: 28px;
     height: 28px;
-    color: #FF6B35;
+    color: var(--primary-dark);
     transition: all 0.3s ease;
 }
 
@@ -512,11 +514,11 @@ nav {
 .feature-card.enhanced:hover .feature-icon-card {
     transform: scale(1.05);
     border-color: rgba(255, 107, 53, 0.3);
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.12) 0%, rgba(255, 143, 101, 0.06) 100%);
+    background: var(--service-sand);
 }
 
 .feature-card.enhanced:hover .feature-icon-card svg {
-    color: #FF8F65;
+    color: #FF6B35;
 }
 
 /* Enhanced typography */
@@ -611,7 +613,7 @@ nav {
 .service-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-orange), #F7931E);
+    background: var(--service-sand);
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -623,7 +625,7 @@ nav {
 .service-icon svg {
     width: 28px;
     height: 28px;
-    color: white;
+    color: var(--primary-dark);
 }
 
 .service-card h3 {
