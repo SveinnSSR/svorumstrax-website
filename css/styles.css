@@ -1968,6 +1968,26 @@ footer {
     }
 }
 
+/* Service icons - change from white to your taupe color */
+.service-icon svg {
+    color: #8B7355 !important; /* Your existing taupe instead of white */
+}
+
+.service-card:hover .service-icon svg {
+    color: #6B5645 !important; /* Darker taupe on hover */
+    transform: scale(1.05);
+}
+
+/* Feature icons - same change */
+.feature-icon-card svg {
+    color: #8B7355 !important;
+}
+
+.feature-card.enhanced:hover .feature-icon-card svg {
+    color: #6B5645 !important;
+    transform: scale(1.05);
+}
+
 /* Small mobile devices */
 @media (max-width: 375px) {
     .primary-button,
