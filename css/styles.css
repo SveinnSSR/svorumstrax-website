@@ -2003,7 +2003,7 @@ footer {
 /* Tech-forward green accent integration */
 :root {
     /* Keep existing colors and add: */
-    --tech-green: #00FF88;
+    --tech-green: #00C896;
     --tech-green-dark: #00CC6F;
     --tech-teal: #00C896;
     --tech-coral: #FF6B6B;
@@ -2016,8 +2016,8 @@ footer {
 }
 
 .service-card:hover .service-icon svg {
-    color: #00FF88 !important;
-    filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.3));
+    color: #00C896 !important;
+    filter: drop-shadow(0 0 8px rgba(0, 200, 150, 0.3));
     transform: scale(1.05);
 }
 
@@ -2028,15 +2028,15 @@ footer {
 }
 
 .feature-card.enhanced:hover .feature-icon-card svg {
-    color: #00FF88 !important;
-    filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.3));
+    color: #00C896 !important;
+    filter: drop-shadow(0 0 8px rgba(0, 200, 150, 0.3));
     transform: scale(1.05);
 }
 
 /* Add subtle green accent to featured service cards */
 .service-card.featured {
-    border-color: rgba(0, 255, 136, 0.15);
-    background: rgba(0, 255, 136, 0.02);
+    border-color: rgba(0, 200, 150, 0.15);
+    background: rgba(0, 200, 150, 0.02);
     position: relative;
     overflow: hidden;
 }
@@ -2048,7 +2048,7 @@ footer {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 136, 0.1) 50%, transparent 70%);
+    background: linear-gradient(45deg, transparent 30%, rgba(0, 200, 150, 0.1) 50%, transparent 70%);
     opacity: 0;
     transition: opacity 0.3s ease;
     animation: shimmer 3s infinite;
@@ -2066,34 +2066,34 @@ footer {
 
 /* Update featured badge with tech green */
 .service-card.featured::after {
-    background: linear-gradient(135deg, rgba(0, 255, 136, 0.9) 0%, rgba(0, 255, 136, 0.8) 100%);
+    background: linear-gradient(135deg, rgba(0, 200, 150, 0.9) 0%, rgba(0, 200, 150, 0.8) 100%);
     color: #0A0E27;
     font-weight: 700;
-    box-shadow: 0 2px 8px rgba(0, 255, 136, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 200, 150, 0.3);
 }
 
 /* Subtle green accent on CTA buttons on hover */
 .cta-button:hover {
-    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.4), 0 0 20px rgba(0, 255, 136, 0.1);
-    border: 1px solid rgba(0, 255, 136, 0.2);
+    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.4), 0 0 20px rgba(0, 200, 150, 0.1);
+    border: 1px solid rgba(0, 200, 150, 0.2);
 }
 
 /* Primary buttons get subtle green glow on hover */
 .primary-button:hover {
-    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.4), 0 0 20px rgba(0, 255, 136, 0.1);
+    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.4), 0 0 20px rgba(0, 200, 150, 0.1);
 }
 
 /* Form inputs get green focus state */
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--tech-green);
-    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 200, 150, 0.1);
 }
 
 /* Links in footer get green on hover */
 .footer-column a:hover {
     color: var(--tech-green);
-    text-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
+    text-shadow: 0 0 8px rgba(0, 200, 150, 0.3);
 }
 
 /* Modal close button uses green */
@@ -2108,12 +2108,12 @@ footer {
 
 .service-link:hover {
     color: var(--tech-green);
-    text-shadow: 0 0 8px rgba(0, 255, 136, 0.2);
+    text-shadow: 0 0 8px rgba(0, 200, 150, 0.2);
 }
 
 /* Update the icon pulse animation for enhanced cards */
 .feature-card.enhanced:hover .icon-pulse {
-    background: rgba(0, 255, 136, 0.15);
+    background: rgba(0, 200, 150, 0.15);
 }
 
 /* Mobile menu active state with green accent */
