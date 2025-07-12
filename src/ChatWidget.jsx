@@ -320,7 +320,10 @@ const ChatWidget = () => {
           boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
+              <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
+              <circle cx="6" cy="8.5" r="1" fill="white"/>
+              <circle cx="10" cy="8.5" r="1" fill="white"/>
+              <circle cx="14" cy="8.5" r="1" fill="white"/>
           </svg>
         </div>
       </div>
@@ -486,7 +489,10 @@ const ChatWidget = () => {
             justifyContent: 'center'
           }}>
             <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
+                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
+                <circle cx="10" cy="14" r="2" fill="white"/>
+                <circle cx="16" cy="14" r="2" fill="white"/>
+                <circle cx="22" cy="14" r="2" fill="white"/>
             </svg>
           </div>
           
@@ -573,7 +579,10 @@ const ChatWidget = () => {
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
                       <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                        <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
+                          <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
+                          <circle cx="6" cy="8.5" r="1" fill="white"/>
+                          <circle cx="10" cy="8.5" r="1" fill="white"/>
+                          <circle cx="14" cy="8.5" r="1" fill="white"/>
                       </svg>
                     </div>
                   )}
