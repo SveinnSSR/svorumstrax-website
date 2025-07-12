@@ -1,5 +1,15 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 
+// THEME CONFIGURATION - Change this to switch widget color
+const WIDGET_THEME = {
+  // Pick ONE by uncommenting:
+  // color: '#00C896',  // Teal (sophisticated)
+  color: '#00D4FF',  // Electric Blue (tech-forward)
+  // color: '#FFA500',  // Orange (matches logo)
+  // color: '#FF6B6B',  // Coral (friendly)
+  // color: '#00FF88',  // Neon Green (bold)
+};
+
 // Constants for session management
 const SESSION_ID_KEY = 'svorumChatSessionId';
 
@@ -39,7 +49,7 @@ class ErrorBoundary extends Component {
             onClick={() => window.location.reload()}
             style={{
               padding: '4px 8px',
-              backgroundColor: '#00FF88',
+              backgroundColor: WIDGET_THEME.color,
               color: '#0A0E27',
               border: 'none',
               borderRadius: '4px',
@@ -87,7 +97,7 @@ const MessageFormatter = ({ message }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    style={{ color: '#00FF88', textDecoration: 'underline' }}
+                    style={{ color: WIDGET_THEME.color, textDecoration: 'underline' }}
                   >
                     View location on Google Maps 📍
                   </a>
@@ -103,7 +113,7 @@ const MessageFormatter = ({ message }) => {
 
 const ChatWidget = () => {
   const messagesEndRef = useRef(null);
-  const typingTimeoutRef = useRef(null);
+  const inputRef = useRef(null);
   const [isMinimized, setIsMinimized] = useState(true);
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -298,18 +308,17 @@ const ChatWidget = () => {
     <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '16px', alignItems: 'flex-start', gap: '8px' }}>
       <div style={{ position: 'relative', height: '32px', width: '32px' }}>
         <div style={{
-          background: 'linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 255, 136, 0.1) 100%)',
+          background: `${WIDGET_THEME.color}15`,
           borderRadius: '50%',
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          border: '1px solid rgba(0, 255, 136, 0.3)',
-          boxShadow: '0 2px 8px rgba(0, 255, 136, 0.2)'
+          border: `1px solid ${WIDGET_THEME.color}30`
         }}>
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="#00FF88"/>
+            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
           </svg>
         </div>
       </div>
@@ -326,7 +335,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: '#00FF88',
+          background: WIDGET_THEME.color,
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite'
@@ -334,7 +343,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: '#00FF88',
+          background: WIDGET_THEME.color,
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite',
@@ -343,7 +352,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: '#00FF88',
+          background: WIDGET_THEME.color,
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite',
@@ -354,7 +363,12 @@ const ChatWidget = () => {
   );
 
   const handleSend = async () => {
-    if (!inputValue.trim() || isTyping) return;
+    if (!inputValue.trim()) return;
+
+    // Don't allow sending while bot is typing
+    if (isTyping) {
+      return;
+    }
 
     const messageText = inputValue.trim();
     setInputValue('');
@@ -368,11 +382,6 @@ const ChatWidget = () => {
     }]);
     
     setIsTyping(true);
-
-    // Clear any existing typing timeout to prevent stalling
-    if (typingTimeoutRef.current) {
-      clearTimeout(typingTimeoutRef.current);
-    }
 
     try {
       const response = await fetch('https://svorumstrax-chatbot-api.vercel.app/api/', {
@@ -424,11 +433,6 @@ const ChatWidget = () => {
       renderMessage(errorMsgId, errorMessage);
     } finally {
       setIsTyping(false);
-      // Clear timeout reference
-      if (typingTimeoutRef.current) {
-        clearTimeout(typingTimeoutRef.current);
-        typingTimeoutRef.current = null;
-      }
     }
   };
 
@@ -444,11 +448,9 @@ const ChatWidget = () => {
         width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
         height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
         maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
-        backgroundColor: isMinimized ? 'rgba(0, 255, 136, 0.95)' : 'rgba(250, 250, 250, 0.98)',
+        backgroundColor: isMinimized ? `${WIDGET_THEME.color}F2` : 'rgba(250, 250, 250, 0.98)',
         borderRadius: isMinimized ? '50%' : '16px',
-        boxShadow: isMinimized ? 
-          '0 4px 20px rgba(0, 255, 136, 0.4), 0 0 40px rgba(0, 255, 136, 0.2)' : 
-          '0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 255, 136, 0.3)',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
         overflow: 'hidden',
         transformOrigin: 'bottom right',
         transition: 'all 0.3s ease',
@@ -466,7 +468,7 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            backgroundColor: isMinimized ? 'transparent' : '#00FF88',
+            backgroundColor: isMinimized ? 'transparent' : WIDGET_THEME.color,
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
@@ -487,7 +489,7 @@ const ChatWidget = () => {
             justifyContent: 'center'
           }}>
             <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill="#00FF88"/>
+              <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
             </svg>
           </div>
           
@@ -564,17 +566,16 @@ const ChatWidget = () => {
                       position: 'relative',
                       height: '32px',
                       width: '32px',
-                      background: 'linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 255, 136, 0.1) 100%)',
+                      background: `${WIDGET_THEME.color}15`,
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
-                      border: '1px solid rgba(0, 255, 136, 0.3)',
-                      boxShadow: '0 2px 8px rgba(0, 255, 136, 0.2)'
+                      border: `1px solid ${WIDGET_THEME.color}30`
                     }}>
                       <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                        <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="#00FF88"/>
+                        <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
                       </svg>
                     </div>
                   )}
@@ -590,7 +591,7 @@ const ChatWidget = () => {
                       lineHeight: '1.5',
                       boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                       border: msg.type === 'user' ? 
-                        '1px solid rgba(0, 255, 136, 0.3)' : 
+                        `1px solid ${WIDGET_THEME.color}30` : 
                         '1px solid rgba(0, 0, 0, 0.05)',
                       position: 'relative',
                       overflowWrap: 'break-word',
@@ -647,11 +648,17 @@ const ChatWidget = () => {
             gap: '8px'
           }}>
             <input
+              ref={inputRef}
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && !isTyping && handleSend()}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' && !isTyping) {
+                  handleSend();
+                }
+              }}
               placeholder={t.placeholder}
+              disabled={isTyping}
               style={{
                 flex: 1,
                 padding: '8px 16px',
@@ -661,10 +668,14 @@ const ChatWidget = () => {
                 fontSize: '14px',
                 boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
                 transition: 'all 0.2s ease',
+                opacity: isTyping ? 0.6 : 1,
+                cursor: isTyping ? 'not-allowed' : 'text'
               }}
               onFocus={(e) => {
-                e.target.style.borderColor = '#00FF88';
-                e.target.style.boxShadow = '0 0 0 3px rgba(0, 255, 136, 0.1)';
+                if (!isTyping) {
+                  e.target.style.borderColor = WIDGET_THEME.color;
+                  e.target.style.boxShadow = `0 0 0 2px ${WIDGET_THEME.color}20`;
+                }
               }}
               onBlur={(e) => {
                 e.target.style.borderColor = '#E5E7EB';
@@ -673,18 +684,18 @@ const ChatWidget = () => {
             />
             <button
               onClick={handleSend}
-              disabled={isTyping}
+              disabled={isTyping || !inputValue.trim()}
               style={{
-                backgroundColor: isTyping ? '#94A3B8' : '#00FF88',
-                color: isTyping ? 'white' : '#0A0E27',
+                backgroundColor: isTyping || !inputValue.trim() ? '#94A3B8' : WIDGET_THEME.color,
+                color: isTyping || !inputValue.trim() ? 'white' : '#0A0E27',
                 border: 'none',
                 padding: '8px 20px',
                 borderRadius: '20px',
-                cursor: isTyping ? 'default' : 'pointer',
+                cursor: isTyping || !inputValue.trim() ? 'not-allowed' : 'pointer',
                 fontSize: '14px',
                 fontWeight: '600',
                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                opacity: isTyping ? 0.7 : 1,
+                opacity: isTyping || !inputValue.trim() ? 0.6 : 1,
                 transition: 'all 0.3s ease'
               }}
             >

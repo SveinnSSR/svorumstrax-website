@@ -2000,140 +2000,110 @@ footer {
 
 /* ADD THESE TO THE BOTTOM OF YOUR css/styles.css FILE */
 
-/* Tech-forward green accent integration */
+/* Tech-forward accent colors - NO EXCESSIVE GLOW */
 :root {
     /* Keep existing colors and add: */
-    --tech-green: #FF6B6B;
-    --tech-green-dark: #00CC6F;
-    --tech-teal: #FF6B6B;
+    --tech-accent: #00C896; /* Using teal as default - change to your preference */
+    --tech-green: #00FF88;
+    --tech-teal: #00C896;
     --tech-coral: #FF6B6B;
+    --tech-orange: #FFA500;
+    --tech-blue: #00D4FF;
 }
 
-/* Subtle green accents on service icons - just on hover */
+/* Service icons - subtle color change only */
 .service-icon svg {
     color: #8B7355 !important;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .service-card:hover .service-icon svg {
-    color: #FF6B6B !important;
-    filter: drop-shadow(0 0 8px rgba(255, 107, 107,, 0.3));
+    color: var(--tech-accent) !important;
     transform: scale(1.05);
 }
 
-/* Feature icons get subtle green glow on hover */
+/* Feature icons - subtle color change only */
 .feature-icon-card svg {
     color: #8B7355 !important;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .feature-card.enhanced:hover .feature-icon-card svg {
-    color: #FF6B6B !important;
-    filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.3));
+    color: var(--tech-accent) !important;
     transform: scale(1.05);
 }
 
-/* Add subtle green accent to featured service cards */
+/* Featured service cards - subtle border only */
 .service-card.featured {
-    border-color: rgba(255, 107, 107, 0.15);
-    background: rgba(255, 107, 107, 0.02);
-    position: relative;
-    overflow: hidden;
+    border-color: rgba(139, 115, 85, 0.15);
+    background: rgba(250, 247, 244, 0.02);
 }
 
-.service-card.featured::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 107, 107, 0.1) 50%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    animation: shimmer 3s infinite;
-    z-index: -1;
+.service-card.featured:hover {
+    border-color: rgba(0, 200, 150, 0.3); /* Using teal */
 }
 
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-.service-card.featured:hover::before {
-    opacity: 1;
-}
-
-/* Update featured badge with tech green */
+/* Update featured badge - NO ANIMATION */
 .service-card.featured::after {
-    background: linear-gradient(135deg, rgba(255, 107, 107, 0.9) 0%, rgba(255, 107, 107, 0.8) 100%);
-    color: #0A0E27;
-    font-weight: 700;
-    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+    background: linear-gradient(135deg, #8B7355 0%, #6B5645 100%);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-/* Subtle green accent on CTA buttons on hover */
+.service-card.featured:hover::after {
+    background: linear-gradient(135deg, var(--tech-accent) 0%, var(--tech-accent) 100%);
+}
+
+/* Subtle accent on buttons - no glow */
 .cta-button:hover {
-    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.4), 0 0 20px rgba(255, 107, 107, 0.1);
-    border: 1px solid rgba(255, 107, 107, 0.2);
+    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.4);
+    border-color: rgba(139, 115, 85, 0.3);
 }
 
-/* Primary buttons get subtle green glow on hover */
 .primary-button:hover {
-    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.4), 0 0 20px rgba(255, 107, 107, 0.1);
+    box-shadow: 0 6px 20px rgba(31, 41, 55, 0.4);
 }
 
-/* Form inputs get green focus state */
+/* Form inputs - subtle focus state */
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: var(--tech-green);
-    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+    border-color: var(--tech-accent);
+    box-shadow: 0 0 0 2px rgba(0, 200, 150, 0.1);
 }
 
-/* Links in footer get green on hover */
+/* Links - simple color change */
 .footer-column a:hover {
-    color: var(--tech-green);
-    text-shadow: 0 0 8px rgba(255, 107, 107, 0.3);
+    color: var(--tech-accent);
 }
 
-/* Modal close button uses green */
 .modal-close:hover {
-    color: var(--tech-green);
-}
-
-/* Service links use green */
-.service-link {
-    color: #8B7355;
+    color: var(--tech-accent);
 }
 
 .service-link:hover {
-    color: var(--tech-green);
-    text-shadow: 0 0 8px rgba(255, 107, 107, 0.2);
+    color: var(--tech-accent);
 }
 
-/* Update the icon pulse animation for enhanced cards */
+/* Remove icon pulse effect */
 .feature-card.enhanced:hover .icon-pulse {
-    background: rgba(255, 107, 107, 0.15);
+    display: none;
 }
 
-/* Mobile menu active state with green accent */
+/* Mobile menu active state */
 @media (max-width: 768px) {
     .nav-links a:active {
-        color: var(--tech-green);
+        color: var(--tech-accent);
     }
 }
 
-/* Alternative Color Scheme Options (commented out) */
 /* 
-Option 2 - Teal Tech (#00C896):
-Replace all instances of #00FF88 with #00C896
-Replace rgba(0, 255, 136, ...) with rgba(0, 200, 150, ...)
+QUICK COLOR SWITCHING GUIDE:
+To change accent color throughout the site, just change --tech-accent value:
 
-Option 3 - Coral Tech (#FF6B6B):
-Replace all instances of #00FF88 with #FF6B6B
-Replace rgba(0, 255, 136, ...) with rgba(255, 107, 107, ...)
-
-Option 4 - Electric Blue (#00D4FF):
-Replace all instances of #00FF88 with #00D4FF
-Replace rgba(0, 255, 136, ...) with rgba(0, 212, 255, ...)
+Option 1 - Teal (current): --tech-accent: #00C896;
+Option 2 - Electric Blue: --tech-accent: #00D4FF;
+Option 3 - Orange (like logo): --tech-accent: #FFA500;
+Option 4 - Coral: --tech-accent: #FF6B6B;
+Option 5 - Neon Green: --tech-accent: #00FF88;
 */
