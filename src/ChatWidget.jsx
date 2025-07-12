@@ -593,7 +593,7 @@ const ChatWidget = () => {
                       maxWidth: '70%',
                       padding: '12px 16px',
                       borderRadius: '16px',
-                      backgroundColor: msg.type === 'user' ? '#0A0E27' : 'rgba(240, 221, 186, 0.15)',
+                      backgroundColor: msg.type === 'user' ? '#0A0E27' : 'rgba(241, 245, 249, 0.95)',
                       color: msg.type === 'user' ? 'white' : '#1e293b',
                       fontSize: '14px',
                       lineHeight: '1.5',
