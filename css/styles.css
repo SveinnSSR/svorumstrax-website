@@ -2003,7 +2003,7 @@ footer {
 /* Tech-forward accent colors - NO EXCESSIVE GLOW */
 :root {
     /* Keep existing colors and add: */
-    --tech-accent: #00FF88; /* Using teal as default - change to your preference - Update this to match your widget colour */
+    --tech-accent: #FFA500; /* Using teal as default - change to your preference - Update this to match your widget colour */
     --tech-green: #00FF88;
     --tech-teal: #00C896;
     --tech-coral: #FF6B6B;
@@ -2014,7 +2014,7 @@ footer {
 
 /* Service icons - subtle color change only */
 .service-icon svg {
-    color: #FF6B6B !important;
+    color: #00C896 !important;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
