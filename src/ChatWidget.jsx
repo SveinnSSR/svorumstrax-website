@@ -474,8 +474,8 @@ const ChatWidget = () => {
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
             flexDirection: isMinimized ? 'row' : 'column',
-            boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.04)',
-            borderBottom: isMinimized ? 'none' : '1px solid #000000' // Solid black border
+            boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)',
+            borderBottom: isMinimized ? 'none' : '1px solid rgba(0, 0, 0, 0.08)' // Added border
           }}
         >
           <div style={{
