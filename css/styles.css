@@ -2021,7 +2021,7 @@ footer {
 
 /* Service icons - subtle color change only */
 .service-icon svg {
-    color: #FF6B6B !important;
+    color: #000000 !important;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
