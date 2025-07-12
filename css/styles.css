@@ -33,9 +33,7 @@
     --emoji-cream: #f4f1ea; /* Warm desert sand/cream like Claude AI */
     /* Warmer sand/desert color for service SVG icons */
     --service-sand: #e5d4b1; /* Golden desert sand */
-    /* Muted warm tones for interactive elements */
-    --muted-brown: #8B7355; /* Warm taupe */
-    --muted-brown-dark: #6B5645; /* Darker taupe */
+    --warm-cream: #F0DDBA; /* Warm peachy-cream for subtle accents */
 }
 
 body {
