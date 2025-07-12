@@ -449,7 +449,7 @@ const ChatWidget = () => {
         width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
         height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
         maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
-        background: isMinimized ? '#F0DDBA' : 'rgba(250, 250, 250, 0.98)',
+        background: isMinimized ? WIDGET_THEME.gradient : 'rgba(250, 250, 250, 0.98)',
         borderRadius: isMinimized ? '50%' : '16px',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
         overflow: 'hidden',
