@@ -2014,7 +2014,7 @@ footer {
 
 /* Service icons - subtle color change only */
 .service-icon svg {
-    color: #FFA500 !important;
+    color: #FF6B6B !important;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
