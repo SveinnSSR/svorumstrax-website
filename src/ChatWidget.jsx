@@ -5,7 +5,7 @@ const WIDGET_THEME = {
   // Pick ONE by uncommenting:
   // color: '#00C896',  // Teal (sophisticated)
   // color: '#00D4FF',  // Electric Blue (tech-forward)
-   color: '#FFA500',  // Orange (matches logo)
+  color: '#FFA500',  // Orange (matches logo)
   // color: '#FF6B6B',  // Coral (friendly)
   // color: '#00FF88',  // Neon Green (bold)
 };
@@ -308,17 +308,18 @@ const ChatWidget = () => {
     <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '16px', alignItems: 'flex-start', gap: '8px' }}>
       <div style={{ position: 'relative', height: '32px', width: '32px' }}>
         <div style={{
-          background: `${WIDGET_THEME.color}15`,
+          background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
           borderRadius: '50%',
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          border: `1px solid ${WIDGET_THEME.color}30`
+          border: `1px solid rgba(0, 0, 0, 0.06)`,
+          boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
+            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="#0A0E27"/>
           </svg>
         </div>
       </div>
@@ -335,7 +336,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: WIDGET_THEME.color,
+          background: '#0A0E27',
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite'
@@ -343,7 +344,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: WIDGET_THEME.color,
+          background: '#0A0E27',
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite',
@@ -352,7 +353,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: WIDGET_THEME.color,
+          background: '#0A0E27',
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite',
@@ -481,15 +482,15 @@ const ChatWidget = () => {
             height: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
             width: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
             borderRadius: '50%',
-            backgroundColor: isMinimized ? 'rgba(10, 14, 39, 0.9)' : 'rgba(10, 14, 39, 0.95)',
+            backgroundColor: isMinimized ? 'white' : 'white',
             padding: '8px',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+            boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
           }}>
             <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
+              <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill="#0A0E27"/>
             </svg>
           </div>
           
@@ -501,7 +502,7 @@ const ChatWidget = () => {
               gap: '4px'
             }}>
               <span style={{ 
-                color: '#0A0E27',
+                color: 'white',
                 fontSize: '16px',
                 fontWeight: '600',
                 textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
@@ -509,7 +510,7 @@ const ChatWidget = () => {
                 {t.subtitle}
               </span>
               <span style={{ 
-                color: 'rgba(10, 14, 39, 0.8)',
+                color: 'rgba(255, 255, 255, 0.9)',
                 fontSize: '14px',
                 fontWeight: '500'
               }}>
@@ -525,7 +526,7 @@ const ChatWidget = () => {
               viewBox="0 0 24 24" 
               fill="none"
               style={{ 
-                color: '#0A0E27',
+                color: 'white',
                 position: 'absolute',
                 right: '16px',
                 top: '16px'
@@ -566,16 +567,17 @@ const ChatWidget = () => {
                       position: 'relative',
                       height: '32px',
                       width: '32px',
-                      background: `${WIDGET_THEME.color}15`,
+                      background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
-                      border: `1px solid ${WIDGET_THEME.color}30`
+                      border: `1px solid rgba(0, 0, 0, 0.06)`,
+                      boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
                       <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                        <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
+                        <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="#0A0E27"/>
                       </svg>
                     </div>
                   )}
@@ -591,7 +593,7 @@ const ChatWidget = () => {
                       lineHeight: '1.5',
                       boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                       border: msg.type === 'user' ? 
-                        `1px solid ${WIDGET_THEME.color}30` : 
+                        `1px solid ${WIDGET_THEME.color}40` : 
                         '1px solid rgba(0, 0, 0, 0.05)',
                       position: 'relative',
                       overflowWrap: 'break-word',
