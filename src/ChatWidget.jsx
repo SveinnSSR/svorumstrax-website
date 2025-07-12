@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 
-// THEME CONFIGURATION - Match Svörum strax logo
+const WIDGET_THEME = {
+  color: '#FFA947',  // Your preferred warm orange
+  gradient: 'linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%)', // Logo gradient
+};
+
+/*// THEME CONFIGURATION - Match Svörum strax logo
 const WIDGET_THEME = {
   color: '#FF6B35',  // Primary orange from logo
   gradient: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)', // Logo gradient
-};
+};*/
 
 /*// THEME CONFIGURATION - AI-powered tech gradient
 const WIDGET_THEME = {
