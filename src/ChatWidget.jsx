@@ -469,7 +469,7 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            background: isMinimized ? 'transparent' : 'rgba(45, 39, 58, 0.98)',
+            background: isMinimized ? 'transparent' : 'linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.96) 100%)',
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
