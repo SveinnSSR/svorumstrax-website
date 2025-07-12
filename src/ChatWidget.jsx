@@ -5,10 +5,10 @@ const WIDGET_THEME = {
   // Pick ONE by uncommenting:
   // color: '#00C896',  // Teal (sophisticated)
   // color: '#00D4FF',  // Electric Blue (tech-forward)
-  // color: '#FFA500',  // Orange (matches logo)
+   color: '#FFA500',  // Orange (matches logo)
   // color: '#FF6B6B',  // Coral (friendly)
   // color: '#00FF88',  // Neon Green (bold)
-  color: '#E8F5E9',  // Your new color
+  // color: '#E8F5E9',  // Your new color
 };
 
 // Constants for session management
