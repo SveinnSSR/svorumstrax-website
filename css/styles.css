@@ -362,11 +362,10 @@ nav {
 }
 
 .section-header h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    font-weight: 800;
     margin-bottom: 20px;
-    background: linear-gradient(to right, var(--text-light) 0%, var(--primary-orange) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ffffff;
 }
 
 .section-header p {
@@ -1975,26 +1974,25 @@ footer {
     }
 }
 
-/* Service icons - change from white to your taupe color. Delete the whole block if you want to change back */
+/* Service icons - black for better contrast */
 .service-icon svg {
-    color: #8B7355 !important; /* Your existing taupe instead of white */
+    color: #000000 !important;
 }
 
 .service-card:hover .service-icon svg {
-    color: #6B5645 !important; /* Darker taupe on hover */
+    color: #1a1a1a !important;
     transform: scale(1.05);
 }
 
-/* Feature icons - same change */
+/* Feature icons - black for better contrast */
 .feature-icon-card svg {
-    color: #8B7355 !important;
+    color: #000000 !important;
 }
 
 .feature-card.enhanced:hover .feature-icon-card svg {
-    color: #6B5645 !important;
+    color: #1a1a1a !important;
     transform: scale(1.05);
 }
-/* Service icons - change from white to your taupe color. Delete the whole block if you want to change back */
 
 /* Small mobile devices */
 @media (max-width: 375px) {
@@ -2032,8 +2030,10 @@ footer {
 
 /* Feature icons - subtle color change only */
 .feature-icon-card svg {
-    color: #8B7355 !important;
-    transition: color 0.3s ease, transform 0.3s ease;
+    width: 28px;
+    height: 28px;
+    color: #000000;
+    transition: all 0.3s ease;
 }
 
 .feature-card.enhanced:hover .feature-icon-card svg {
