@@ -505,15 +505,15 @@ const ChatWidget = () => {
               gap: '4px'
             }}>
               <span style={{ 
-                color: 'white',
+                color: 'rgba(0, 0, 0, 0.85)',  // Changed from white
                 fontSize: '16px',
                 fontWeight: '600',
-                textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)'
+                textShadow: 'none'  // Remove text shadow
               }}>
                 {t.subtitle}
               </span>
               <span style={{ 
-                color: 'rgba(255, 255, 255, 0.9)',
+                color: 'rgba(0, 0, 0, 0.7)',  // Slightly lighter black
                 fontSize: '14px',
                 fontWeight: '500'
               }}>
