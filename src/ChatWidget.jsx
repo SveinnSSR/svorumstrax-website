@@ -1,14 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 
-// THEME CONFIGURATION - Change this to switch widget color
+// THEME CONFIGURATION - AI-powered tech gradient
 const WIDGET_THEME = {
-  // Pick ONE by uncommenting:
-  // color: '#00C896',  // Teal (sophisticated)
-  // color: '#00D4FF',  // Electric Blue (tech-forward)
-  // color: '#FFA500',  // Orange (matches logo)
-   color: '#FF6B6B',  // Coral (friendly)
-  // color: '#00FF88',  // Neon Green (bold)
-  // color: '#E8F5E9',  // Your new color
+  color: '#3b82f6',  // Primary blue (for solid colors)
+  gradient: 'linear-gradient(45deg, #3b82f6, #10b981)', // VedurAI blue-to-green gradient
 };
 
 // Constants for session management
@@ -448,7 +443,7 @@ const ChatWidget = () => {
         width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
         height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
         maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
-        backgroundColor: isMinimized ? `${WIDGET_THEME.color}F2` : 'rgba(250, 250, 250, 0.98)',
+        background: isMinimized ? WIDGET_THEME.gradient : 'rgba(250, 250, 250, 0.98)',
         borderRadius: isMinimized ? '50%' : '16px',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
         overflow: 'hidden',
@@ -468,7 +463,7 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            backgroundColor: isMinimized ? 'transparent' : WIDGET_THEME.color,
+            background: isMinimized ? 'transparent' : WIDGET_THEME.gradient,
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
@@ -687,7 +682,7 @@ const ChatWidget = () => {
             <button
               onClick={handleSend}
               style={{
-                backgroundColor: WIDGET_THEME.color,
+                background: WIDGET_THEME.gradient,
                 color: 'white',
                 border: 'none',
                 padding: '8px 20px',
