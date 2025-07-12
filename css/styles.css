@@ -244,16 +244,15 @@ nav {
 }
 
 .secondary-button {
-    background: linear-gradient(45deg, #3b82f6, #10b981);
-    color: white;
+    background: transparent;
+    color: var(--text-light);
     padding: 16px 40px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
     display: inline-block;
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
 }
 
 .secondary-button:hover {
