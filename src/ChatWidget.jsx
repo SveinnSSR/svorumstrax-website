@@ -469,13 +469,13 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            background: isMinimized ? 'transparent' : 'rgba(248, 246, 242, 0.98)', // Original soft sand
+            background: isMinimized ? 'transparent' : 'rgba(252, 250, 247, 0.98)', // Original warm cream
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
             flexDirection: isMinimized ? 'row' : 'column',
             boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)',
-            borderBottom: isMinimized ? 'none' : '1px solid rgba(0, 0, 0, 0.08)' // Added border
+            borderBottom: isMinimized ? 'none' : '1px solid #000000' // Solid black border
           }}
         >
           <div style={{
