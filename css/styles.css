@@ -605,6 +605,7 @@ nav {
     background: rgba(250, 247, 244, 0.02);
 }
 
+/* COMMENT OUT THIS ENTIRE BLOCK
 .service-card.featured::after {
     content: 'AI-drifið';
     position: absolute;
@@ -618,6 +619,7 @@ nav {
     font-weight: 600;
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
+*/
 
 .service-card:hover {
     transform: translateY(-5px);
@@ -642,7 +644,7 @@ nav {
 .service-icon svg {
     width: 28px;
     height: 28px;
-    color: #2D3748;
+    color: #000000;
     transition: all 0.3s ease;
 }
 
@@ -653,7 +655,7 @@ nav {
 }
 
 .service-card:hover .service-icon svg {
-    color: var(--muted-brown);
+    color: #000000;
     transform: scale(1.05);
 }
 
@@ -2049,21 +2051,26 @@ footer {
     background: rgba(250, 247, 244, 0.02);
 }
 
+/*
 .service-card.featured:hover {
     border-color: rgba(0, 200, 150, 0.3); /* Using teal */
 }
+*/
 
-/* Update featured badge - NO ANIMATION */
+/* COMMENT OUT THIS ENTIRE BLOCK
 .service-card.featured::after {
     background: linear-gradient(135deg, #8B7355 0%, #6B5645 100%);
     color: white;
     font-weight: 600;
     transition: all 0.3s ease;
 }
+*/
 
+/* COMMENT OUT THIS ENTIRE BLOCK
 .service-card.featured:hover::after {
     background: linear-gradient(135deg, var(--tech-accent) 0%, var(--tech-accent) 100%);
 }
+*/
 
 /* Subtle accent on buttons - no glow */
 .cta-button:hover {
