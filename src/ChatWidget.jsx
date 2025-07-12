@@ -3,10 +3,10 @@ import React, { useState, useEffect, useRef, useCallback, Component } from 'reac
 // THEME CONFIGURATION - Change this to switch widget color
 const WIDGET_THEME = {
   // Pick ONE by uncommenting:
-  // color: '#00C896',  // Teal (sophisticated)
+   color: '#00C896',  // Teal (sophisticated)
   // color: '#00D4FF',  // Electric Blue (tech-forward)
   // color: '#FFA500',  // Orange (matches logo)
-   color: '#FF6B6B',  // Coral (friendly)
+  // color: '#FF6B6B',  // Coral (friendly)
   // color: '#00FF88',  // Neon Green (bold)
 };
 
@@ -676,18 +676,16 @@ const ChatWidget = () => {
             />
             <button
               onClick={handleSend}
-              disabled={!inputValue.trim()}
               style={{
-                backgroundColor: !inputValue.trim() ? '#94A3B8' : WIDGET_THEME.color,
-                color: !inputValue.trim() ? 'white' : 'white',
+                backgroundColor: WIDGET_THEME.color,
+                color: 'white',
                 border: 'none',
                 padding: '8px 20px',
                 borderRadius: '20px',
-                cursor: !inputValue.trim() ? 'not-allowed' : 'pointer',
+                cursor: 'pointer',
                 fontSize: '14px',
                 fontWeight: '600',
                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                opacity: !inputValue.trim() ? 0.6 : 1,
                 transition: 'all 0.3s ease'
               }}
             >
