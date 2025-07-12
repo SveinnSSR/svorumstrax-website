@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 
-// THEME CONFIGURATION - AI-powered tech gradient
+// THEME CONFIGURATION - Match Svörum strax logo
+const WIDGET_THEME = {
+  color: '#FF6B35',  // Primary orange from logo
+  gradient: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)', // Logo gradient
+};
+
+/*// THEME CONFIGURATION - AI-powered tech gradient
 const WIDGET_THEME = {
   color: '#3b82f6',  // Primary blue (for solid colors)
   gradient: 'linear-gradient(45deg, #3b82f6, #10b981)', // VedurAI blue-to-green gradient
-};
+}; */
 
 // Constants for session management
 const SESSION_ID_KEY = 'svorumChatSessionId';
