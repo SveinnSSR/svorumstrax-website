@@ -3,11 +3,11 @@ import React, { useState, useEffect, useRef, useCallback, Component } from 'reac
 // THEME CONFIGURATION - Change this to switch widget color
 const WIDGET_THEME = {
   // Pick ONE by uncommenting:
-   color: '#00C896',  // Teal (sophisticated)
+  // color: '#00C896',  // Teal (sophisticated)
   // color: '#00D4FF',  // Electric Blue (tech-forward)
   // color: '#FFA500',  // Orange (matches logo)
   // color: '#FF6B6B',  // Coral (friendly)
-  // color: '#00FF88',  // Neon Green (bold)
+   color: '#00FF88',  // Neon Green (bold)
 };
 
 // Constants for session management
