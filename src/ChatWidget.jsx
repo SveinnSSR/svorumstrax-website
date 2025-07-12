@@ -5,9 +5,9 @@ const WIDGET_THEME = {
   // Pick ONE by uncommenting:
   // color: '#00C896',  // Teal (sophisticated)
   // color: '#00D4FF',  // Electric Blue (tech-forward)
-  // color: '#FFA500',  // Orange (matches logo)
+  color: '#FFA500',  // Orange (matches logo)
   // color: '#FF6B6B',  // Coral (friendly)
-   color: '#00FF88',  // Neon Green (bold)
+  // color: '#00FF88',  // Neon Green (bold)
 };
 
 // Constants for session management
@@ -319,7 +319,7 @@ const ChatWidget = () => {
           boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="#0A0E27"/>
+            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
           </svg>
         </div>
       </div>
@@ -336,7 +336,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: '#0A0E27',
+          background: WIDGET_THEME.color,
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite'
@@ -344,7 +344,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: '#0A0E27',
+          background: WIDGET_THEME.color,
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite',
@@ -353,7 +353,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: '#0A0E27',
+          background: WIDGET_THEME.color,
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite',
@@ -365,11 +365,6 @@ const ChatWidget = () => {
 
   const handleSend = async () => {
     if (!inputValue.trim()) return;
-
-    // Don't allow sending while bot is typing
-    if (isTyping) {
-      return;
-    }
 
     const messageText = inputValue.trim();
     setInputValue('');
@@ -490,7 +485,7 @@ const ChatWidget = () => {
             justifyContent: 'center'
           }}>
             <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill="#0A0E27"/>
+              <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
             </svg>
           </div>
           
@@ -577,7 +572,7 @@ const ChatWidget = () => {
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
                       <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                        <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="#0A0E27"/>
+                        <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
                       </svg>
                     </div>
                   )}
@@ -655,12 +650,11 @@ const ChatWidget = () => {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={(e) => {
-                if (e.key === 'Enter' && !isTyping) {
+                if (e.key === 'Enter') {
                   handleSend();
                 }
               }}
               placeholder={t.placeholder}
-              disabled={isTyping}
               style={{
                 flex: 1,
                 padding: '8px 16px',
@@ -669,15 +663,11 @@ const ChatWidget = () => {
                 outline: 'none',
                 fontSize: '14px',
                 boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
-                transition: 'all 0.2s ease',
-                opacity: isTyping ? 0.6 : 1,
-                cursor: isTyping ? 'not-allowed' : 'text'
+                transition: 'all 0.2s ease'
               }}
               onFocus={(e) => {
-                if (!isTyping) {
-                  e.target.style.borderColor = WIDGET_THEME.color;
-                  e.target.style.boxShadow = `0 0 0 2px ${WIDGET_THEME.color}20`;
-                }
+                e.target.style.borderColor = WIDGET_THEME.color;
+                e.target.style.boxShadow = `0 0 0 2px ${WIDGET_THEME.color}20`;
               }}
               onBlur={(e) => {
                 e.target.style.borderColor = '#E5E7EB';
@@ -686,18 +676,18 @@ const ChatWidget = () => {
             />
             <button
               onClick={handleSend}
-              disabled={isTyping || !inputValue.trim()}
+              disabled={!inputValue.trim()}
               style={{
-                backgroundColor: isTyping || !inputValue.trim() ? '#94A3B8' : WIDGET_THEME.color,
-                color: isTyping || !inputValue.trim() ? 'white' : '#0A0E27',
+                backgroundColor: !inputValue.trim() ? '#94A3B8' : WIDGET_THEME.color,
+                color: !inputValue.trim() ? 'white' : 'white',
                 border: 'none',
                 padding: '8px 20px',
                 borderRadius: '20px',
-                cursor: isTyping || !inputValue.trim() ? 'not-allowed' : 'pointer',
+                cursor: !inputValue.trim() ? 'not-allowed' : 'pointer',
                 fontSize: '14px',
                 fontWeight: '600',
                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                opacity: isTyping || !inputValue.trim() ? 0.6 : 1,
+                opacity: !inputValue.trim() ? 0.6 : 1,
                 transition: 'all 0.3s ease'
               }}
             >
