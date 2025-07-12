@@ -469,12 +469,12 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            background: isMinimized ? 'transparent' : 'rgba(247, 245, 242, 0.98)', // Slightly darker than chat area
+            background: isMinimized ? 'transparent' : 'rgba(245, 243, 239, 0.98)', // Slightly darker sand
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
             flexDirection: isMinimized ? 'row' : 'column',
-            boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)' // Softer, more subtle
+            boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)' // Softer shadow
           }}
         >
           <div style={{
