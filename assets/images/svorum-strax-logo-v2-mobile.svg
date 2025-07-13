@@ -1,4 +1,5 @@
-<svg width="240" height="48" viewBox="0 0 240 48" xmlns="http://www.w3.org/2000/svg">
+
+<svg width="280" height="56" viewBox="0 0 280 56" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <!-- Warmer tech-forward orange gradient -->
     <linearGradient id="warmOrange" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -9,16 +10,16 @@
   </defs>
   
   <!-- Logo: Mobile optimized bar chart -->
-  <g transform="translate(0, 6)">
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="translate(0, 8)">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
       <line x1="18" y1="20" x2="18" y2="10" stroke="#00E676"></line>
       <line x1="12" y1="20" x2="12" y2="4" stroke="#FFA947"></line>
       <line x1="6" y1="20" x2="6" y2="14" stroke="#8E44AD"></line>
     </svg>
   </g>
   
-  <!-- Company Name - mobile optimized -->
-  <text x="42" y="35" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="700" letter-spacing="-0.02em" fill="url(#warmOrange)">
+  <!-- Company Name - optimized for mobile readability -->
+  <text x="46" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="36" font-weight="600" letter-spacing="-0.01em" fill="url(#warmOrange)">
     Svörum strax
   </text>
 </svg>
