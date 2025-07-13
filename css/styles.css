@@ -775,7 +775,7 @@ nav {
 .jobs-text h2 {
     font-size: 2.5rem;
     margin-bottom: 24px;
-    background: linear-gradient(to right, var(--text-light) 0%, var(--primary-orange) 100%);
+    background: linear-gradient(to right, var(--text-light) 0%, #FF6B35 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -981,7 +981,7 @@ nav {
 .cta-content h2 {
     font-size: 3rem;
     margin-bottom: 24px;
-    background: linear-gradient(to right, var(--text-light) 0%, var(--primary-orange) 100%);
+    background: linear-gradient(to right, var(--text-light) 0%, #FF6B35 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
