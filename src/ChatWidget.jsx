@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 
 const WIDGET_THEME = {
@@ -6,7 +7,6 @@ const WIDGET_THEME = {
 };
 
 /*// THEME CONFIGURATION - Match Svörum strax logo
-
 const WIDGET_THEME = {
   color: '#FF6B35',  // Primary orange from logo
   gradient: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)', // Logo gradient
@@ -120,7 +120,7 @@ const MessageFormatter = ({ message }) => {
 };
 
 // External Text Bar Component
-const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
+const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
 
@@ -145,11 +145,16 @@ const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
     }
   };
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.stopPropagation();
     setIsClosing(true);
     setTimeout(() => {
       onClose();
     }, 300);
+  };
+
+  const handleClick = () => {
+    onOpenChat();
   };
 
   if (!isVisible) return null;
@@ -157,23 +162,27 @@ const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
   const t = textBarTranslations[currentLang];
 
   return (
-    <div style={{
-      position: 'fixed',
-      bottom: '110px', // Position above the chat widget
-      right: '20px',
-      maxWidth: '320px',
-      background: 'rgba(255, 255, 255, 0.98)',
-      backdropFilter: 'blur(10px)',
-      borderRadius: '16px',
-      padding: '16px 20px',
-      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
-      border: '1px solid rgba(0, 0, 0, 0.1)',
-      zIndex: 9998,
-      transform: isClosing ? 'translateY(10px)' : 'translateY(0)',
-      opacity: isClosing ? 0 : 1,
-      transition: 'all 0.3s ease',
-      animation: !isClosing ? 'slideInFromBottom 0.4s ease-out' : 'none'
-    }}>
+    <div 
+      onClick={handleClick}
+      style={{
+        position: 'fixed',
+        bottom: '110px', // Position above the chat widget
+        right: '20px',
+        maxWidth: '320px',
+        background: 'rgba(255, 255, 255, 0.98)',
+        backdropFilter: 'blur(10px)',
+        borderRadius: '16px',
+        padding: '16px 20px',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        zIndex: 9998,
+        transform: isClosing ? 'translateY(10px)' : 'translateY(0)',
+        opacity: isClosing ? 0 : 1,
+        transition: 'all 0.3s ease',
+        animation: !isClosing ? 'slideInFromBottom 0.4s ease-out' : 'none',
+        cursor: 'pointer'
+      }}
+    >
       {/* Close button */}
       <button
         onClick={handleClose}
@@ -188,7 +197,8 @@ const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
           color: '#666',
           padding: '4px',
           borderRadius: '4px',
-          transition: 'color 0.2s ease'
+          transition: 'color 0.2s ease',
+          zIndex: 10
         }}
         onMouseEnter={(e) => e.target.style.color = '#333'}
         onMouseLeave={(e) => e.target.style.color = '#666'}
