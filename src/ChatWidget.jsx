@@ -6,6 +6,7 @@ const WIDGET_THEME = {
 };
 
 /*// THEME CONFIGURATION - Match Svörum strax logo
+
 const WIDGET_THEME = {
   color: '#FF6B35',  // Primary orange from logo
   gradient: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)', // Logo gradient
@@ -118,6 +119,154 @@ const MessageFormatter = ({ message }) => {
   );
 };
 
+// External Text Bar Component
+const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
+  const [isClosing, setIsClosing] = useState(false);
+  const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
+
+  // Listen for language changes
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setCurrentLang(getCurrentLanguage());
+    };
+
+    window.addEventListener('languageChanged', handleLanguageChange);
+    return () => window.removeEventListener('languageChanged', handleLanguageChange);
+  }, [getCurrentLanguage]);
+
+  const textBarTranslations = {
+    is: {
+      message: "Hæ! Ég er AI þjónustufulltrúi hjá Svörum strax. Hvað get ég aðstoðað þig með í dag?",
+      close: "Loka"
+    },
+    en: {
+      message: "Hi! I'm an AI assistant at Svörum strax. How can I help you today?",
+      close: "Close"
+    }
+  };
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 300);
+  };
+
+  if (!isVisible) return null;
+
+  const t = textBarTranslations[currentLang];
+
+  return (
+    <div style={{
+      position: 'fixed',
+      bottom: '110px', // Position above the chat widget
+      right: '20px',
+      maxWidth: '320px',
+      background: 'rgba(255, 255, 255, 0.98)',
+      backdropFilter: 'blur(10px)',
+      borderRadius: '16px',
+      padding: '16px 20px',
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+      border: '1px solid rgba(0, 0, 0, 0.1)',
+      zIndex: 9998,
+      transform: isClosing ? 'translateY(10px)' : 'translateY(0)',
+      opacity: isClosing ? 0 : 1,
+      transition: 'all 0.3s ease',
+      animation: !isClosing ? 'slideInFromBottom 0.4s ease-out' : 'none'
+    }}>
+      {/* Close button */}
+      <button
+        onClick={handleClose}
+        style={{
+          position: 'absolute',
+          top: '8px',
+          right: '8px',
+          background: 'none',
+          border: 'none',
+          fontSize: '18px',
+          cursor: 'pointer',
+          color: '#666',
+          padding: '4px',
+          borderRadius: '4px',
+          transition: 'color 0.2s ease'
+        }}
+        onMouseEnter={(e) => e.target.style.color = '#333'}
+        onMouseLeave={(e) => e.target.style.color = '#666'}
+      >
+        ×
+      </button>
+
+      {/* Message content */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: '12px',
+        paddingRight: '24px'
+      }}>
+        {/* AI Avatar */}
+        <div style={{
+          width: '32px',
+          height: '32px',
+          background: WIDGET_THEME.gradient,
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+          marginTop: '2px'
+        }}>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
+            <circle cx="6" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
+            <circle cx="10" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
+            <circle cx="14" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
+          </svg>
+        </div>
+
+        {/* Message text */}
+        <div style={{
+          flex: 1,
+          color: '#2D3748',
+          fontSize: '14px',
+          lineHeight: '1.4',
+          fontWeight: '500'
+        }}>
+          {t.message}
+        </div>
+      </div>
+
+      {/* Pointer arrow */}
+      <div style={{
+        position: 'absolute',
+        bottom: '-8px',
+        right: '60px',
+        width: '16px',
+        height: '16px',
+        background: 'rgba(255, 255, 255, 0.98)',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        borderTop: 'none',
+        borderLeft: 'none',
+        transform: 'rotate(45deg)',
+        borderRadius: '0 0 4px 0'
+      }} />
+
+      {/* Keyframe animation styles */}
+      <style jsx>{`
+        @keyframes slideInFromBottom {
+          0% {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 const ChatWidget = () => {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
@@ -128,6 +277,8 @@ const ChatWidget = () => {
   const [sessionId, setSessionId] = useState('');
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const [typingMessages, setTypingMessages] = useState({});
+  const [showTextBar, setShowTextBar] = useState(true);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const isMobile = windowWidth <= MOBILE_BREAKPOINT;
 
   // Get current language
@@ -175,6 +326,23 @@ const ChatWidget = () => {
   useEffect(() => {
     initializeSession();
   }, [initializeSession]);
+
+  // Hide text bar after 10 seconds or when user interacts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowTextBar(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Handle interactions
+  useEffect(() => {
+    if (!isMinimized && !hasInteracted) {
+      setHasInteracted(true);
+      setShowTextBar(false);
+    }
+  }, [isMinimized, hasInteracted]);
 
   // Window resize listener
   useEffect(() => {
@@ -378,6 +546,8 @@ const ChatWidget = () => {
 
     const messageText = inputValue.trim();
     setInputValue('');
+    setHasInteracted(true);
+    setShowTextBar(false);
 
     const userMsgId = 'user-' + Date.now();
     setMessages(prev => [...prev, {
@@ -442,11 +612,26 @@ const ChatWidget = () => {
     }
   };
 
+  const handleToggleChat = () => {
+    setIsMinimized(!isMinimized);
+    if (isMinimized) {
+      setHasInteracted(true);
+      setShowTextBar(false);
+    }
+  };
+
   const lang = getCurrentLanguage();
   const t = translations[lang];
 
   return (
     <ErrorBoundary>
+      {/* External Text Bar */}
+      <ExternalTextBar 
+        isVisible={showTextBar && isMinimized} 
+        onClose={() => setShowTextBar(false)}
+        getCurrentLanguage={getCurrentLanguage}
+      />
+
       <div style={{
         position: 'fixed',
         bottom: '20px',
@@ -466,7 +651,7 @@ const ChatWidget = () => {
       }}>
         {/* Header - Click anywhere to toggle */}
         <div 
-          onClick={() => setIsMinimized(!isMinimized)}
+          onClick={handleToggleChat}
           style={{
             padding: isMinimized ? '0' : '20px 16px',
             display: 'flex',
@@ -474,13 +659,13 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            background: isMinimized ? 'transparent' : 'rgba(252, 250, 247, 0.98)', // Original warm cream
+            background: isMinimized ? 'transparent' : 'rgba(252, 250, 247, 0.98)',
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
             flexDirection: isMinimized ? 'row' : 'column',
             boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)',
-            borderBottom: isMinimized ? 'none' : '1px solid rgba(0, 0, 0, 0.12)' // Added border
+            borderBottom: isMinimized ? 'none' : '1px solid rgba(0, 0, 0, 0.12)'
           }}
         >
           <div style={{
@@ -511,15 +696,15 @@ const ChatWidget = () => {
               gap: '4px'
             }}>
               <span style={{ 
-                color: 'rgba(0, 0, 0, 0.85)',  // Changed from white
+                color: 'rgba(0, 0, 0, 0.85)',
                 fontSize: '16px',
                 fontWeight: '600',
-                textShadow: 'none'  // Remove text shadow
+                textShadow: 'none'
               }}>
                 {t.subtitle}
               </span>
               <span style={{ 
-                color: 'rgba(0, 0, 0, 0.7)',  // Slightly lighter black
+                color: 'rgba(0, 0, 0, 0.7)',
                 fontSize: '14px',
                 fontWeight: '500'
               }}>
