@@ -119,7 +119,7 @@ const MessageFormatter = ({ message }) => {
 };
 
 // External Text Bar Component
-const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage }) => {
+const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
 
@@ -144,18 +144,11 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
     }
   };
 
-  const handleClose = (e) => {
-    e.stopPropagation();
+  const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
       onClose();
     }, 300);
-  };
-
-  const handleClick = () => {
-    setShowTextBar(false);
-    setIsMinimized(false);
-    setHasInteracted(true);
   };
 
   if (!isVisible) return null;
@@ -164,7 +157,6 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
 
   return (
     <div 
-      onClick={handleClick}
       style={{
         position: 'fixed',
         bottom: '110px', // Position above the chat widget
@@ -180,8 +172,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
         transform: isClosing ? 'translateY(10px)' : 'translateY(0)',
         opacity: isClosing ? 0 : 1,
         transition: 'all 0.3s ease',
-        animation: !isClosing ? 'slideInFromBottom 0.4s ease-out' : 'none',
-        cursor: 'pointer'
+        animation: !isClosing ? 'slideInFromBottom 0.4s ease-out' : 'none'
       }}
     >
       {/* Close button */}
@@ -198,8 +189,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
           color: '#666',
           padding: '4px',
           borderRadius: '4px',
-          transition: 'color 0.2s ease',
-          zIndex: 10
+          transition: 'color 0.2s ease'
         }}
         onMouseEnter={(e) => e.target.style.color = '#333'}
         onMouseLeave={(e) => e.target.style.color = '#666'}
@@ -633,7 +623,6 @@ const ChatWidget = () => {
       <ExternalTextBar 
         isVisible={showTextBar && isMinimized} 
         onClose={() => setShowTextBar(false)}
-        onOpenChat={handleToggleChat}
         getCurrentLanguage={getCurrentLanguage}
       />
 
