@@ -87,22 +87,13 @@
             font-weight: 500;
         }
     
-        /* Enhanced Staff Cards with Orange Gradient Accents */
+        /* FIXED: Clean staff section without distracting overlays */
         .staff-section {
-            background: linear-gradient(180deg, rgba(248, 244, 240, 0.4) 0%, rgba(15, 23, 42, 0.8) 30%);
+            background: rgba(15, 23, 42, 0.5);
             position: relative;
         }
     
-        .staff-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 120px;
-            background: linear-gradient(180deg, rgba(245, 240, 234, 0.8) 0%, transparent 100%);
-            pointer-events: none;
-        }
+        /* REMOVED: The distracting gradient overlay */
     
         .staff-grid {
             max-width: 1400px;
@@ -110,7 +101,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
-            padding: 100px 5% 100px;
+            padding: 80px 5% 100px;
             position: relative;
             z-index: 2;
         }
@@ -127,7 +118,7 @@
             overflow: hidden;
         }
     
-        /* Enhanced founder cards with orange gradient */
+        /* TONED DOWN: Subtle founder cards */
         .staff-card.founder {
             border-color: rgba(255, 107, 53, 0.3);
             background: rgba(255, 107, 53, 0.02);
@@ -181,34 +172,21 @@
             box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
         }
     
-        /* Enhanced placeholder avatars with orange gradient */
+        /* FIXED: Removed the orange glow effect on placeholder avatars */
         .staff-avatar.placeholder {
             background: linear-gradient(135deg, #2D3561 0%, #1B2735 100%);
-            border: 3px solid rgba(255, 107, 53, 0.3);
+            border: 2px solid rgba(255, 107, 53, 0.3);
             position: relative;
         }
     
-        .staff-avatar.placeholder::after {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            background: linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-    
-        .staff-card:hover .staff-avatar.placeholder::after {
-            opacity: 1;
-        }
+        /* REMOVED: The orange glow effect that was too much */
     
         .staff-avatar.placeholder::before {
             content: attr(data-initials);
             font-size: 3rem;
             font-weight: 700;
             color: var(--primary-orange);
-            opacity: 0.9;
+            opacity: 0.8;
             z-index: 2;
             position: relative;
         }
@@ -219,19 +197,19 @@
             object-fit: cover;
         }
     
-        /* Enhanced founder badge */
+        /* FIXED: Simple founder badge like before */
         .founder-badge {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(255, 107, 53, 0.1) 100%);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
-            color: #FF6B35;
-            padding: 4px 12px;
-            border-radius: 20px;
+            color: var(--text-muted);
+            padding: 3px 10px;
+            border-radius: 15px;
             font-size: 0.75rem;
-            font-weight: 600;
-            border: 1px solid rgba(255, 107, 53, 0.2);
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 12px;
-            box-shadow: 0 2px 4px rgba(255, 107, 53, 0.1);
+            opacity: 0.7;
         }
     
         /* Enhanced name styling */
