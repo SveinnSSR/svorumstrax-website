@@ -271,6 +271,16 @@
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
+        
+        /* Remove red border from founder profile pictures */
+        .staff-card.founder .staff-avatar {
+            border: none !important;
+        }
+        
+        /* Make sure real photos have no border */
+        .staff-avatar:not(.placeholder) {
+            border: none !important;
+        }
     </style>
 </head>
 <body>
