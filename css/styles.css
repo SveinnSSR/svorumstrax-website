@@ -2334,3 +2334,13 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
         height: 28px; /* Even smaller on very small screens */
     }
 }
+
+/* Orange gradient text for the three core service card headers */
+.feature-card.enhanced:nth-child(1) h3,
+.feature-card.enhanced:nth-child(2) h3,
+.feature-card.enhanced:nth-child(3) h3 {
+    background: linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
