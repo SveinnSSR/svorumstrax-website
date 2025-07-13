@@ -5,6 +5,18 @@ const WIDGET_THEME = {
   gradient: 'linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%)', // Logo gradient
 };
 
+/*// THEME CONFIGURATION - Match Svörum strax logo
+const WIDGET_THEME = {
+  color: '#FF6B35',  // Primary orange from logo
+  gradient: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)', // Logo gradient
+};*/
+
+/*// THEME CONFIGURATION - AI-powered tech gradient
+const WIDGET_THEME = {
+  color: '#3b82f6',  // Primary blue (for solid colors)
+  gradient: 'linear-gradient(45deg, #3b82f6, #10b981)', // VedurAI blue-to-green gradient
+}; */
+
 // Constants for session management
 const SESSION_ID_KEY = 'svorumChatSessionId';
 
@@ -12,24 +24,6 @@ const SESSION_ID_KEY = 'svorumChatSessionId';
 const CHUNK_REVEAL_DELAY = 250;
 const FADE_IN_DURATION = 300;
 const MOBILE_BREAKPOINT = 768;
-
-// SVG Logo Component - Your bar chart logo
-const SvorumLogo = ({ width = 18, height = 18, className = "" }) => (
-  <svg 
-    width={width} 
-    height={height} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke-width="2.2" 
-    stroke-linecap="round" 
-    stroke-linejoin="round"
-    className={className}
-  >
-    <line x1="18" y1="20" x2="18" y2="10" stroke="#00E676"></line>
-    <line x1="12" y1="20" x2="12" y2="4" stroke="#FFA947"></line>
-    <line x1="6" y1="20" x2="6" y2="14" stroke="#8E44AD"></line>
-  </svg>
-);
 
 // Error boundary for graceful error handling
 class ErrorBoundary extends Component {
@@ -210,7 +204,7 @@ const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
         gap: '12px',
         paddingRight: '24px'
       }}>
-        {/* AI Avatar with logo */}
+        {/* AI Avatar */}
         <div style={{
           width: '32px',
           height: '32px',
@@ -222,7 +216,12 @@ const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
           flexShrink: 0,
           marginTop: '2px'
         }}>
-          <SvorumLogo width={18} height={18} />
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
+            <circle cx="6" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
+            <circle cx="10" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
+            <circle cx="14" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
+          </svg>
         </div>
 
         {/* Message text */}
@@ -488,7 +487,12 @@ const ChatWidget = () => {
           border: `1px solid rgba(0, 0, 0, 0.06)`,
           boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
-          <SvorumLogo width={18} height={18} />
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
+              <circle cx="6" cy="8.5" r="1" fill="white"/>
+              <circle cx="10" cy="8.5" r="1" fill="white"/>
+              <circle cx="14" cy="8.5" r="1" fill="white"/>
+          </svg>
         </div>
       </div>
       <div style={{
@@ -670,10 +674,12 @@ const ChatWidget = () => {
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-            <SvorumLogo 
-              width={isMinimized ? 24 : 32} 
-              height={isMinimized ? 24 : 32} 
-            />
+            <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
+                <circle cx="10" cy="14" r="2" fill="white"/>
+                <circle cx="16" cy="14" r="2" fill="white"/>
+                <circle cx="22" cy="14" r="2" fill="white"/>
+            </svg>
           </div>
           
           {!isMinimized && (
@@ -758,7 +764,12 @@ const ChatWidget = () => {
                       border: `1px solid rgba(0, 0, 0, 0.06)`,
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
-                      <SvorumLogo width={18} height={18} />
+                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                          <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
+                          <circle cx="6" cy="8.5" r="1" fill="white"/>
+                          <circle cx="10" cy="8.5" r="1" fill="white"/>
+                          <circle cx="14" cy="8.5" r="1" fill="white"/>
+                      </svg>
                     </div>
                   )}
                   
