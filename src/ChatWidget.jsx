@@ -154,6 +154,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
   };
 
   const handleClick = () => {
+    setShowTextBar(false);
     onOpenChat();
   };
 
@@ -337,14 +338,7 @@ const ChatWidget = () => {
     initializeSession();
   }, [initializeSession]);
 
-  // Hide text bar after 10 seconds or when user interacts
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowTextBar(false);
-    }, 10000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  // Text bar stays visible until manually closed or chat is opened
 
   // Handle interactions
   useEffect(() => {
@@ -514,12 +508,12 @@ const ChatWidget = () => {
       <div style={{
         padding: '12px 16px',
         borderRadius: '16px',
-        background: 'rgba(241, 245, 249, 0.95)',
+        background: 'rgba(229, 231, 235, 0.95)',
         display: 'flex',
         gap: '4px',
         alignItems: 'center',
         boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-        border: '1px solid rgba(0, 0, 0, 0.05)'
+        border: '1px solid rgba(0, 0, 0, 0.08)'
       }}>
         <span style={{
           height: '8px',
@@ -639,6 +633,7 @@ const ChatWidget = () => {
       <ExternalTextBar 
         isVisible={showTextBar && isMinimized} 
         onClose={() => setShowTextBar(false)}
+        onOpenChat={handleToggleChat}
         getCurrentLanguage={getCurrentLanguage}
       />
 
@@ -794,14 +789,14 @@ const ChatWidget = () => {
                       maxWidth: '70%',
                       padding: '12px 16px',
                       borderRadius: '16px',
-                      backgroundColor: msg.type === 'user' ? '#0A0E27' : 'rgba(241, 245, 249, 0.95)',
-                      color: msg.type === 'user' ? 'white' : '#1e293b',
+                      backgroundColor: msg.type === 'user' ? '#0A0E27' : 'rgba(229, 231, 235, 0.95)',
+                      color: msg.type === 'user' ? 'white' : '#1f2937',
                       fontSize: '14px',
                       lineHeight: '1.5',
                       boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                       border: msg.type === 'user' ? 
                         `1px solid ${WIDGET_THEME.color}40` : 
-                        '1px solid rgba(0, 0, 0, 0.05)',
+                        '1px solid rgba(0, 0, 0, 0.08)',
                       position: 'relative',
                       overflowWrap: 'break-word',
                       wordWrap: 'break-word',
@@ -871,18 +866,20 @@ const ChatWidget = () => {
                 flex: 1,
                 padding: '8px 16px',
                 borderRadius: '20px',
-                border: '1px solid #E5E7EB',
+                border: '1px solid #D1D5DB',
                 outline: 'none',
                 fontSize: '14px',
                 boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
-                transition: 'all 0.2s ease'
+                transition: 'all 0.2s ease',
+                backgroundColor: '#F3F4F6',
+                color: '#374151'
               }}
               onFocus={(e) => {
                 e.target.style.borderColor = WIDGET_THEME.color;
                 e.target.style.boxShadow = `0 0 0 2px ${WIDGET_THEME.color}20`;
               }}
               onBlur={(e) => {
-                e.target.style.borderColor = '#E5E7EB';
+                e.target.style.borderColor = '#D1D5DB';
                 e.target.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
               }}
             />
