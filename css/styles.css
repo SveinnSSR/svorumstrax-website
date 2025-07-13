@@ -15,14 +15,14 @@
 }
 
 :root {
-    --primary-orange: #FF6B35;
+    --primary-orange: #FFA947;
     --primary-dark: #0A0E27;
     --primary-blue: #2D3561;
     --accent-purple: #6B5B95;
     --text-light: #E8E9F3;
     --text-dark: #1A1A2E;
     --text-muted: #B8BCC8;
-    --gradient-orange: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    --gradient-orange: linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%);
     --gradient-dark: linear-gradient(135deg, #0A0E27 0%, #1B2735 100%);
     --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     /* New button-specific colors */
@@ -141,7 +141,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: var(--primary-orange);
+    color: #FFA947;
 }
 
 .nav-links a::after {
@@ -151,7 +151,7 @@ nav {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--primary-orange);
+    background: linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%);
     transition: width 0.3s ease;
 }
 
@@ -414,9 +414,7 @@ nav {
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 20px;
-    background: linear-gradient(to right, var(--text-light) 0%, var(--primary-orange) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-light);
 }
 
 .section-header p {
@@ -955,7 +953,7 @@ nav {
 
 .testimonial-author {
     font-weight: 600;
-    color: var(--primary-orange);
+    color: #FFA947;
     margin-bottom: 5px;
 }
 
