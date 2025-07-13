@@ -66,12 +66,14 @@ nav {
 }
 
 .logo {
-    font-size: 28px;
-    font-weight: 800;
-    background: var(--gradient-orange);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 36px;
+    width: auto;
+    transition: all 0.3s ease;
 }
 
 .nav-links {
@@ -2122,3 +2124,17 @@ Option 3 - Orange (like logo): --tech-accent: #FFA500;
 Option 4 - Coral: --tech-accent: #FF6B6B;
 Option 5 - Neon Green: --tech-accent: #00FF88;
 */
+
+/* Logo responsive behavior */
+@media (max-width: 768px) {
+    .logo img {
+        height: 32px; /* Slightly smaller on mobile */
+        content: url('../assets/images/svorum-strax-logo-v2-mobile.svg');
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        height: 28px; /* Even smaller on very small screens */
+    }
+}
