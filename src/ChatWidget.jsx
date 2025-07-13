@@ -135,11 +135,11 @@ const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
 
   const textBarTranslations = {
     is: {
-      message: "Hæ! Ég er AI þjónustufulltrúi hjá Svörum strax. Hvað get ég aðstoðað þig með í dag?",
+      message: "Hæ! Ég er AI þjónustufulltrúi hjá Svörum strax. Get ég hjálpað?",
       close: "Loka"
     },
     en: {
-      message: "Hi! I'm an AI assistant at Svörum strax. How can I help you today?",
+      message: "Hi! I'm an AI assistant at Svörum strax. Can I help you?",
       close: "Close"
     }
   };
