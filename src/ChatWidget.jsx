@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 
 const WIDGET_THEME = {
@@ -155,7 +154,8 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
 
   const handleClick = () => {
     setShowTextBar(false);
-    onOpenChat();
+    setIsMinimized(false);
+    setHasInteracted(true);
   };
 
   if (!isVisible) return null;
