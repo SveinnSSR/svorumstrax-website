@@ -68,12 +68,61 @@ nav {
 .logo {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .logo img {
     height: 36px;
     width: auto;
     transition: all 0.3s ease;
+}
+
+/* Mobile hybrid approach */
+@media (max-width: 768px) {
+    .logo {
+        gap: 8px;
+    }
+    
+    .logo img {
+        display: none; /* Hide full SVG on mobile */
+    }
+    
+    /* Show bars + CSS text on mobile */
+    .logo::before {
+        content: '';
+        display: block;
+        width: 28px;
+        height: 28px;
+        background-image: url('../assets/images/svorum-strax-bars-mobile.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        flex-shrink: 0;
+    }
+    
+    .logo::after {
+        content: 'Svörum strax';
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo::before {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .logo::after {
+        font-size: 20px;
+    }
 }
 
 .nav-links {
