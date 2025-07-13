@@ -383,28 +383,6 @@ nav {
     position: relative;
 }
 
-/* Tech grid background pattern */
-.tech-grid-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        linear-gradient(rgba(163, 138, 109, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(163, 138, 109, 0.02) 1px, transparent 1px);
-    background-size: 50px 50px;
-    opacity: 0;
-    animation: fadeInGrid 1s ease-out 0.5s forwards;
-    pointer-events: none;
-}
-
-@keyframes fadeInGrid {
-    to {
-        opacity: 1;
-    }
-}
-
 .section-header {
     text-align: center;
     margin-bottom: 80px;
