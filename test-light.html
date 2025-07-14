@@ -94,7 +94,7 @@
             box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
 
-        /* Hero Section - Enhanced */
+        /* Hero Section - Centered with subtle background */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -104,46 +104,58 @@
             z-index: 2;
         }
 
-        .hero-container {
-            max-width: 1400px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1000px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 900;
             color: #1a202c;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             letter-spacing: -0.03em;
             line-height: 1.1;
         }
 
         .hero-content p {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             color: #374151;
-            line-height: 1.7;
-            margin-bottom: 40px;
+            line-height: 1.8;
+            margin-bottom: 50px;
         }
 
         .hero-buttons {
             display: flex;
             gap: 20px;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
         .primary-button {
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
-            padding: 16px 40px;
+            padding: 18px 45px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            font-size: 1.1rem;
         }
 
         .primary-button:hover {
@@ -154,62 +166,21 @@
         .secondary-button {
             background: transparent;
             color: #1a202c;
-            padding: 16px 40px;
+            padding: 18px 45px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            border: 2px solid rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(26, 32, 44, 0.2);
             transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .secondary-button:hover {
-            background: rgba(0, 0, 0, 0.05);
-            border-color: rgba(0, 0, 0, 0.3);
+            background: rgba(26, 32, 44, 0.05);
+            border-color: rgba(26, 32, 44, 0.3);
         }
 
-        /* Hero Stats */
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            border: 1px solid rgba(59, 130, 246, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #3b82f6;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1a202c;
-            margin-bottom: 5px;
-        }
-
-        .stat-description {
-            font-size: 0.9rem;
-            color: #6b7280;
-            line-height: 1.4;
-        }
-
-        /* Common Section Styles */
+        /* Section Styles */
         .section {
             padding: 100px 5%;
             position: relative;
@@ -223,40 +194,38 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 80px;
         }
 
         .section-header h2 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 900;
             color: #1a202c;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             letter-spacing: -0.03em;
         }
 
-        /* AI Agent Section - Enhanced Layout */
-        .ai-container {
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 40px;
-            align-items: start;
+        .section-header p {
+            font-size: 1.25rem;
+            color: #374151;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
         }
 
-        .ai-sidebar {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(59, 130, 246, 0.1);
-            height: fit-content;
-            position: sticky;
-            top: 120px;
+        /* AI Section - Website-style layout */
+        .ai-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: start;
         }
 
         .ai-main {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             border-radius: 24px;
-            padding: 50px 40px;
+            padding: 50px 45px;
             box-shadow: 
                 0 8px 32px rgba(0, 0, 0, 0.06),
                 0 0 0 1px rgba(255, 255, 255, 0.8),
@@ -306,18 +275,18 @@
         }
 
         .ai-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: #1a202c;
             margin: 0;
+            line-height: 1.2;
         }
 
         .ai-description {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #374151;
             line-height: 1.7;
-            margin-bottom: 35px;
-            text-align: center;
+            margin-bottom: 40px;
         }
 
         .benefits-grid {
@@ -328,34 +297,52 @@
         }
 
         .benefit-card {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 16px;
             padding: 25px 20px;
             border: 1px solid rgba(59, 130, 246, 0.1);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6 0%, #10b981 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover::before {
+            transform: scaleX(1);
         }
 
         .benefit-card:hover {
             transform: translateY(-3px);
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.2);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
         }
 
         .benefit-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #1a202c;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
         .benefit-icon {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            border-radius: 6px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -366,17 +353,22 @@
             content: '✓';
             color: white;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .benefit-text {
             color: #374151;
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.5;
         }
 
-        /* Key Features from Marketing Material */
-        .key-features {
+        /* AI Side Content */
+        .ai-side {
+            display: grid;
+            gap: 30px;
+        }
+
+        .feature-highlights {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
@@ -402,79 +394,79 @@
             font-size: 2.5rem;
             font-weight: 900;
             color: #10b981;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .feature-label {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #2d3748;
             margin-bottom: 8px;
         }
 
         .feature-description {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #6b7280;
             line-height: 1.4;
         }
 
-        /* Sidebar Content */
-        .sidebar-title {
+        .side-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .side-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+        }
+
+        .side-card h4 {
             font-size: 1.3rem;
             font-weight: 700;
             color: #1a202c;
             margin-bottom: 20px;
-            text-align: center;
         }
 
-        .sidebar-list {
+        .side-list {
             list-style: none;
-            padding: 0;
-            margin: 0;
+            display: grid;
+            gap: 12px;
         }
 
-        .sidebar-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        .side-list li {
             color: #374151;
             font-size: 0.95rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            padding: 8px 0;
         }
 
-        .sidebar-list li:last-child {
-            border-bottom: none;
+        .side-list li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
-        .sidebar-list li::before {
-            content: '🤖';
-            font-size: 1.2rem;
-        }
-
-        /* Phone Support Section - Enhanced */
-        .phone-container {
+        /* Phone Support Section */
+        .phone-section {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 40px;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
             align-items: start;
-        }
-
-        .phone-sidebar {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 169, 71, 0.1);
-            height: fit-content;
-            position: sticky;
-            top: 120px;
         }
 
         .phone-main {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             border-radius: 24px;
-            padding: 50px 40px;
+            padding: 50px 45px;
             box-shadow: 
                 0 8px 32px rgba(0, 0, 0, 0.06),
                 0 0 0 1px rgba(255, 255, 255, 0.8),
@@ -524,33 +516,40 @@
         }
 
         .phone-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: #1a202c;
             margin: 0;
+            line-height: 1.2;
         }
 
         .phone-description {
             font-size: 1.2rem;
             color: #374151;
             line-height: 1.7;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         .features-list {
             display: grid;
-            gap: 15px;
-            margin-bottom: 35px;
+            gap: 18px;
+            margin-bottom: 40px;
         }
 
         .feature-item {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
-            padding: 20px;
+            gap: 18px;
+            padding: 25px;
             background: rgba(59, 130, 246, 0.04);
             border-radius: 16px;
             border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.1);
         }
 
         .feature-icon {
@@ -574,7 +573,7 @@
 
         .feature-text {
             color: #2d3748;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.6;
             font-weight: 500;
         }
@@ -588,7 +587,7 @@
         }
 
         .hours-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #1a202c;
             margin-bottom: 15px;
@@ -599,30 +598,52 @@
 
         .hours-title::before {
             content: '🕐';
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
         .hours-text {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #374151;
             font-weight: 500;
         }
 
-        /* Hybrid Approach Section */
+        /* Best For Section */
+        .best-for-section {
+            background: rgba(16, 185, 129, 0.06);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            text-align: center;
+        }
+
+        .best-for-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 15px;
+        }
+
+        .best-for-list {
+            font-size: 1.05rem;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        /* Hybrid Section */
         .hybrid-section {
             background: rgba(255, 169, 71, 0.06);
             border-radius: 20px;
-            padding: 40px;
+            padding: 35px;
             border: 1px solid rgba(255, 169, 71, 0.15);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .hybrid-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #1a202c;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -631,11 +652,11 @@
 
         .hybrid-title::before {
             content: '🤝';
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
         .hybrid-description {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #374151;
             text-align: center;
             line-height: 1.6;
@@ -654,65 +675,35 @@
             padding: 25px;
             text-align: center;
             border: 1px solid rgba(255, 169, 71, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .hybrid-option:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 169, 71, 0.1);
         }
 
         .option-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #2d3748;
             margin-bottom: 10px;
         }
 
         .option-description {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #6b7280;
             line-height: 1.4;
         }
 
-        .best-for-section {
-            background: rgba(16, 185, 129, 0.06);
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid rgba(16, 185, 129, 0.15);
-            text-align: center;
-        }
-
-        .best-for-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #1a202c;
-            margin-bottom: 15px;
-        }
-
-        .best-for-list {
-            font-size: 1.1rem;
-            color: #374151;
-            font-weight: 500;
-        }
-
         /* Mobile Responsive */
         @media (max-width: 1024px) {
-            .hero-container {
+            .ai-section, .phone-section {
                 grid-template-columns: 1fr;
-                gap: 60px;
+                gap: 50px;
             }
 
-            .ai-container, .phone-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .ai-sidebar, .phone-sidebar {
-                position: relative;
-                top: 0;
-                order: 2;
-            }
-
-            .ai-main, .phone-main {
-                order: 1;
-            }
-
-            .key-features {
+            .feature-highlights {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -722,10 +713,6 @@
         }
 
         @media (max-width: 768px) {
-            .hero-container {
-                text-align: center;
-            }
-
             .hero-content h1 {
                 font-size: 2.8rem;
             }
@@ -741,14 +728,14 @@
             }
 
             .ai-title, .phone-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .benefits-grid {
                 grid-template-columns: 1fr;
             }
 
-            .key-features {
+            .feature-highlights {
                 grid-template-columns: 1fr;
             }
 
@@ -763,11 +750,7 @@
             }
 
             .ai-main, .phone-main {
-                padding: 32px 24px;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
+                padding: 40px 30px;
             }
         }
     </style>
@@ -791,37 +774,12 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Snjallar lausnir fyrir nútíma þjónustu</h1>
-                <p>Yfir 100 fyrirtæki treysta Svörum strax fyrir samskiptum við sína viðskiptavini. Þjónustuver í Barcelona með 35+ íslenskum sérfræðingum.</p>
-                <div class="hero-buttons">
-                    <a href="#tjonusta" class="primary-button">Sjá alla þjónustu</a>
-                    <a href="#" class="secondary-button">Fá ókeypis ráðgjöf</a>
-                </div>
-            </div>
-            
-            <div class="hero-stats">
-                <div class="stat-card">
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label">Fyrirtæki</div>
-                    <div class="stat-description">Treysta okkur fyrir þjónustu</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">35+</div>
-                    <div class="stat-label">Sérfræðingar</div>
-                    <div class="stat-description">Í Barcelona</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">200k+</div>
-                    <div class="stat-label">Símtöl</div>
-                    <div class="stat-description">Á ári</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Þjónusta</div>
-                    <div class="stat-description">Allan sólarhringinn</div>
-                </div>
+        <div class="hero-content">
+            <h1>Snjallar lausnir fyrir nútíma þjónustu</h1>
+            <p>Yfir 100 fyrirtæki treysta Svörum strax fyrir samskiptum við sína viðskiptavini. Þjónustuver í Barcelona með 35+ íslenskum sérfræðingum. Við nýtum gervigreind til að auka skilvirkni og veita betri rekstrarinnsýn.</p>
+            <div class="hero-buttons">
+                <a href="#tjonusta" class="primary-button">Sjá alla þjónustu</a>
+                <a href="#" class="secondary-button">Fá ókeypis ráðgjöf</a>
             </div>
         </div>
     </section>
@@ -831,22 +789,10 @@
         <div class="section-container">
             <div class="section-header">
                 <h2>Gervigreindarfulltrúi</h2>
+                <p>Sérhæfð þjónusta síðan 2019. Rétt samspil mannauðs og gervigreindar grípur fleiri sölutækifæri og eykur ánægju viðskiptavina.</p>
             </div>
             
-            <div class="ai-container">
-                <!-- Left Sidebar -->
-                <div class="ai-sidebar">
-                    <div class="sidebar-title">Aðrir kostir</div>
-                    <ul class="sidebar-list">
-                        <li>Spjall á vefsíðu</li>
-                        <li>Tölvupóstsvörun</li>
-                        <li>Samfélagsmiðlar</li>
-                        <li>Raddþjónusta</li>
-                        <li>100+ tungumál</li>
-                        <li>Rauntíma greining</li>
-                    </ul>
-                </div>
-                
+            <div class="ai-section">
                 <!-- Main Content -->
                 <div class="ai-main">
                     <div class="ai-header">
@@ -865,26 +811,6 @@
                         Veitir nákvæmar upplýsingar samstundis, framkvæmir aðgerðir í þínum kerfum 
                         og greinir öll samskipti í rauntíma. Spjall- og raddþjónusta allan sólarhringinn.
                     </p>
-
-                    <div class="key-features">
-                        <div class="feature-card">
-                            <div class="feature-number">100+</div>
-                            <div class="feature-label">Tungumál</div>
-                            <div class="feature-description">Svarar á því tungumáli sem viðskiptavinurinn velur</div>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-number">∞</div>
-                            <div class="feature-label">Samtímis samskipti</div>
-                            <div class="feature-description">Getur sinnt mörgum fyrirspurnum samtímis</div>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-number">1</div>
-                            <div class="feature-label">Samskipti til lausnar</div>
-                            <div class="feature-description">Leysir flest mál í fyrstu samskiptum</div>
-                        </div>
-                    </div>
 
                     <div class="benefits-grid">
                         <div class="benefit-card">
@@ -928,17 +854,38 @@
                     </div>
                 </div>
                 
-                <!-- Right Sidebar -->
-                <div class="ai-sidebar">
-                    <div class="sidebar-title">Samþætting</div>
-                    <ul class="sidebar-list">
-                        <li>CRM kerfi</li>
-                        <li>Bókunarkerfi</li>
-                        <li>Tölvupóstkerfi</li>
-                        <li>Greiðslulausnir</li>
-                        <li>Vefsíður</li>
-                        <li>Öpp og tól</li>
-                    </ul>
+                <!-- Side Content -->
+                <div class="ai-side">
+                    <div class="feature-highlights">
+                        <div class="feature-card">
+                            <div class="feature-number">100+</div>
+                            <div class="feature-label">Tungumál</div>
+                            <div class="feature-description">Svarar á því tungumáli sem viðskiptavinurinn velur</div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-number">∞</div>
+                            <div class="feature-label">Samtímis samskipti</div>
+                            <div class="feature-description">Getur sinnt mörgum fyrirspurnum samtímis</div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-number">1</div>
+                            <div class="feature-label">Samskipti til lausnar</div>
+                            <div class="feature-description">Leysir flest mál í fyrstu samskiptum</div>
+                        </div>
+                    </div>
+
+                    <div class="side-card">
+                        <h4>Samþætting</h4>
+                        <ul class="side-list">
+                            <li>CRM kerfi og viðskiptavinagagnagrunnar</li>
+                            <li>Bókunarkerfi og dagatalslausnir</li>
+                            <li>Tölvupóstkerfi og samskiptatól</li>
+                            <li>Greiðslulausnir og reikningakerfi</li>
+                            <li>Vefsíður og farsímaforrit</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -949,21 +896,10 @@
         <div class="section-container">
             <div class="section-header">
                 <h2>Símsvörun</h2>
+                <p>Öflugt þjónustuver í Barcelona með 35+ íslenska sérfræðinga. Við samþættum mannlega þjónustu og gervigreind til að veita framúrskarandi upplifun.</p>
             </div>
             
-            <div class="phone-container">
-                <!-- Left Sidebar -->
-                <div class="phone-sidebar">
-                    <div class="sidebar-title">Þjónustutímar</div>
-                    <ul class="sidebar-list">
-                        <li>Virka daga 08:00-19:00</li>
-                        <li>Helgar 09:00-18:00</li>
-                        <li>Frídagar samkvæmt samkomulagi</li>
-                        <li>Neyðarþjónusta í boði</li>
-                        <li>Sérsniðin opnunartími</li>
-                    </ul>
-                </div>
-                
+            <div class="phone-section">
                 <!-- Main Content -->
                 <div class="phone-main">
                     <div class="phone-header">
@@ -1025,17 +961,29 @@
                     </div>
                 </div>
                 
-                <!-- Right Sidebar -->
-                <div class="phone-sidebar">
-                    <div class="sidebar-title">Sérþjónusta</div>
-                    <ul class="sidebar-list">
-                        <li>Stöðugildi til leigu</li>
-                        <li>Úthringiverkefni</li>
-                        <li>Söluteymi</li>
-                        <li>Tækniaðstoð</li>
-                        <li>Fjölþjóðleg þjónusta</li>
-                        <li>Sérsniðnar lausnir</li>
-                    </ul>
+                <!-- Side Content -->
+                <div class="ai-side">
+                    <div class="side-card">
+                        <h4>Sérhæfð þjónusta</h4>
+                        <ul class="side-list">
+                            <li>Stöðugildi til leigu</li>
+                            <li>Úthringiverkefni og söluherferðir</li>
+                            <li>Tæknileg þjónusta og aðstoð</li>
+                            <li>Fjölþjóðleg viðskiptaþjónusta</li>
+                            <li>Sérsniðnar lausnir fyrir stór fyrirtæki</li>
+                        </ul>
+                    </div>
+
+                    <div class="side-card">
+                        <h4>Þjónustutímar</h4>
+                        <ul class="side-list">
+                            <li>Virka daga 08:00-19:00</li>
+                            <li>Helgar 09:00-18:00</li>
+                            <li>Frídagar samkvæmt samkomulagi</li>
+                            <li>Neyðarþjónusta í boði</li>
+                            <li>Sérsniðinn opnunartími</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
