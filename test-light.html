@@ -154,13 +154,20 @@
         }
 
         .hero-content p {
-            font-size: 1.4rem;
-            color: #6b7280;
-            line-height: 1.6;
+            font-size: 1.5rem;
+            color: #374151;
+            line-height: 1.7;
             margin-bottom: 50px;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .hero-button {
@@ -179,6 +186,19 @@
         .hero-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .hero-button.secondary {
+            background: transparent;
+            color: #1a202c;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            box-shadow: none;
+        }
+
+        .hero-button.secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: none;
         }
 
         /* Section Styles */
@@ -294,36 +314,45 @@
             font-weight: 500;
         }
 
-        /* AI Visual - Clean stats */
+        /* AI Visual - Simple and clean */
         .ai-visual {
             background: rgba(255, 255, 255, 0.6);
             border-radius: 20px;
             padding: 50px 40px;
             border: 1px solid rgba(0, 0, 0, 0.08);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-
-        .stat-item {
             text-align: center;
         }
 
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #3b82f6;
-            margin-bottom: 8px;
+        .ai-visual-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 20px;
         }
 
-        .stat-label {
-            font-size: 1rem;
+        .ai-visual-text {
+            font-size: 1.1rem;
             color: #6b7280;
-            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .ai-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .ai-badge {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         /* Phone Support Section - Simplified */
@@ -454,7 +483,52 @@
             line-height: 1.5;
         }
 
-        /* Mobile Responsive */
+        /* Why Choose Us Section */
+        .why-choose {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 0;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .why-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .why-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 16px;
+        }
+
+        .why-card p {
+            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2.8rem;
@@ -505,12 +579,15 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Simplified -->
+    <!-- Hero Section - Restored company identity -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Snjallar lausnir fyrir nútíma þjónustu</h1>
-            <p>Við hjálpum íslenskum fyrirtækjum að bæta viðskiptaþjónustu með gervigreind og sérfræðingum í Barcelona.</p>
-            <a href="#tjonusta" class="hero-button">Skoða lausnir</a>
+            <p>Yfir 100 fyrirtæki treysta Svörum strax fyrir samskiptum við sína viðskiptavini. Þjónustuver í Barcelona með 35+ íslenskum sérfræðingum. Við nýtum gervigreind til að auka skilvirkni og veita betri rekstrarinnsýn.</p>
+            <div class="hero-buttons">
+                <a href="#tjonusta" class="hero-button">Sjá alla þjónustu</a>
+                <a href="#" class="hero-button secondary">Fá ókeypis ráðgjöf</a>
+            </div>
         </div>
     </section>
 
@@ -564,23 +641,13 @@
                 </div>
                 
                 <div class="ai-visual">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number">100+</div>
-                            <div class="stat-label">Tungumál</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">∞</div>
-                            <div class="stat-label">Samtímis</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Þjónusta</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">1</div>
-                            <div class="stat-label">Samskipti</div>
-                        </div>
+                    <div class="ai-visual-title">Hentar best fyrir</div>
+                    <div class="ai-visual-text">Upplýsingagjöf, bókanir, greiningar og fyrstu samskipti</div>
+                    <div class="ai-badges">
+                        <div class="ai-badge">100+ Tungumál</div>
+                        <div class="ai-badge">24/7 Þjónusta</div>
+                        <div class="ai-badge">Samtímis samskipti</div>
+                        <div class="ai-badge">CRM samþætting</div>
                     </div>
                 </div>
             </div>
@@ -646,6 +713,36 @@
                             Áframsending alltaf í boði.
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section why-choose">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Af hverju að velja Svörum strax?</h2>
+                <p>Svörum strax er útvistunarfyrirtæki sem trúir því að samkeppnisforskot náist með ánægju starfsmanna. Við hjálpum íslenskum fyrirtækjum að vaxa með snjöllum lausnum.</p>
+            </div>
+            
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="why-icon">💰</span>
+                    <h3>Hagstætt verð</h3>
+                    <p>Þjónusta okkar er allt að 40% hagstæðari en sambærileg þjónusta á Íslandi. Barcelona staðsetningin gerir okkur kleift að bjóða hágæða þjónustu á samkeppnishæfu verði.</p>
+                </div>
+                
+                <div class="why-card">
+                    <span class="why-icon">📈</span>
+                    <h3>Reynsla og árangur</h3>
+                    <p>Við sérhæfum okkur í samtölum. Yfir 200,000 símtöl árlega og 20,000+ AI-samtöl. Höfum séð um úthringiverkefni fyrir stærstu fyrirtæki landsins.</p>
+                </div>
+                
+                <div class="why-card">
+                    <span class="why-icon">🎯</span>
+                    <h3>Rétt nálgun</h3>
+                    <p>35+ íslenskir sérfræðingar með djúpa markaðsþekkingu. Samþættum nýjustu tækni við mannlega sérþekkingu til að tryggja bestu mögulegu útkomuna fyrir þitt fyrirtæki.</p>
                 </div>
             </div>
         </div>
