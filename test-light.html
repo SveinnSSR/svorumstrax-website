@@ -219,11 +219,11 @@
         }
 
         .section-header h2 {
-            font-size: 3rem;
-            font-weight: 800;
+            font-size: 3.5rem;
+            font-weight: 900;
             color: #1a202c;
             margin-bottom: 24px;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
         }
 
         .section-header p {
@@ -529,6 +529,153 @@
             color: #6b7280;
             line-height: 1.6;
         }
+
+        /* Barcelona Jobs Section */
+        .barcelona-jobs {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 152, 0, 0.06) 50%, rgba(255, 87, 34, 0.04) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .barcelona-jobs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 193, 7, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 152, 0, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .barcelona-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .barcelona-text h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #1a202c;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+
+        .barcelona-text p {
+            font-size: 1.2rem;
+            color: #374151;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .barcelona-benefits {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .barcelona-benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 152, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .barcelona-benefit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.1);
+        }
+
+        .barcelona-benefit-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .barcelona-benefit-content h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+
+        .barcelona-benefit-content p {
+            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .barcelona-cta {
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+            font-size: 1.1rem;
+            display: inline-block;
+        }
+
+        .barcelona-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+        }
+
+        .barcelona-visual {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+            border: 1px solid rgba(255, 152, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(255, 152, 0, 0.1);
+            position: relative;
+        }
+
+        .barcelona-visual::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 152, 0, 0.05) 100%);
+            border-radius: 24px;
+            z-index: -1;
+        }
+
+        .barcelona-number {
+            font-size: 6rem;
+            font-weight: 900;
+            color: #FF9800;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .barcelona-label {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 20px;
+        }
+
+        .barcelona-description {
+            font-size: 1.1rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2.8rem;
@@ -743,6 +890,55 @@
                     <span class="why-icon">🎯</span>
                     <h3>Rétt nálgun</h3>
                     <p>35+ íslenskir sérfræðingar með djúpa markaðsþekkingu. Samþættum nýjustu tækni við mannlega sérþekkingu til að tryggja bestu mögulegu útkomuna fyrir þitt fyrirtæki.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barcelona Jobs Section -->
+    <section class="section barcelona-jobs" id="starfsfolk">
+        <div class="section-container">
+            <div class="barcelona-content">
+                <div class="barcelona-text">
+                    <h2>Störf fyrir Íslendinga á Spáni</h2>
+                    <p>Ertu Íslendingur búsettur á Spáni? Við leitum alltaf að hæfileikaríku fólki sem vill vinna í skemmtilegu alþjóðlegu umhverfi í Barcelona, víðar á Spáni eða í fjarvinnu.</p>
+                    
+                    <div class="barcelona-benefits">
+                        <div class="barcelona-benefit">
+                            <div class="barcelona-benefit-icon">☀️</div>
+                            <div class="barcelona-benefit-content">
+                                <h4>Lífsgæði í Barcelona</h4>
+                                <p>Njóttu sólarinnar og menningarinnar á meðan þú vinnur fyrir íslenskan markað</p>
+                            </div>
+                        </div>
+                        
+                        <div class="barcelona-benefit">
+                            <div class="barcelona-benefit-icon">🏠</div>
+                            <div class="barcelona-benefit-content">
+                                <h4>Sveigjanleiki</h4>
+                                <p>Fjarvinna og sveigjanlegar vaktir sem henta þínu lífi</p>
+                            </div>
+                        </div>
+                        
+                        <div class="barcelona-benefit">
+                            <div class="barcelona-benefit-icon">📈</div>
+                            <div class="barcelona-benefit-content">
+                                <h4>Þróunarmöguleikar</h4>
+                                <p>Lærðu nýja hluti og þróaðu þig í starfi með frábæru teymi</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="barcelona-cta">Sækja um starf</a>
+                </div>
+                
+                <div class="barcelona-visual">
+                    <div class="barcelona-number">35+</div>
+                    <div class="barcelona-label">Íslenskir sérfræðingar í Barcelona</div>
+                    <div class="barcelona-description">
+                        Við erum stolt af að vera einn stærsti íslenski vinnustaðurinn á Spáni 
+                        og skapa störf fyrir Íslendinga erlendis.
+                    </div>
                 </div>
             </div>
         </div>
