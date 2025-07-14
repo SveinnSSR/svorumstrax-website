@@ -380,132 +380,91 @@
             border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
-        /* Phone Support Section - Simple */
-        .phone-section {
+        /* Phone Support Section - Numbered Cards Style */
+        .phone-services-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
         }
 
-        .phone-content {
-            padding: 40px 0;
-        }
-
-        .phone-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #FFA947 0%, #FF9A3C 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(255, 169, 71, 0.2);
-        }
-
-        .phone-icon svg {
-            width: 40px;
-            height: 40px;
-            color: white;
-        }
-
-        .phone-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #1a202c;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .phone-description {
-            font-size: 1.2rem;
-            color: #6b7280;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
-
-        .phone-features {
-            display: grid;
-            gap: 20px;
-        }
-
-        .phone-feature {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .phone-feature-icon {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #FFA947 0%, #FF9A3C 100%);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .phone-feature-icon::after {
-            content: '✓';
-            color: white;
-            font-weight: 700;
-            font-size: 12px;
-        }
-
-        .phone-feature-text {
-            color: #374151;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* Phone Visual - Clean info */
-        .phone-visual {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            padding: 50px 40px;
+        .service-card-numbered {
+            background: rgba(255, 255, 255, 0.8);
             border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hours-section {
-            text-align: center;
-            margin-bottom: 40px;
+        .service-card-numbered:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(59, 130, 246, 0.2);
         }
 
-        .hours-title {
+        .service-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .service-card-numbered:nth-child(1) .service-number {
+            color: #3b82f6;
+        }
+
+        .service-card-numbered:nth-child(2) .service-number {
+            color: #FFA947;
+        }
+
+        .service-card-numbered:nth-child(3) .service-number {
+            color: #10b981;
+        }
+
+        .service-card-title {
             font-size: 1.4rem;
             font-weight: 700;
             color: #1a202c;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            line-height: 1.3;
         }
 
-        .hours-text {
-            font-size: 1.1rem;
-            color: #6b7280;
-            font-weight: 500;
-        }
-
-        .hybrid-info {
-            background: rgba(255, 169, 71, 0.08);
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid rgba(255, 169, 71, 0.15);
-            text-align: center;
-        }
-
-        .hybrid-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #1a202c;
-            margin-bottom: 12px;
-        }
-
-        .hybrid-text {
+        .service-card-description {
             font-size: 1rem;
             color: #6b7280;
-            line-height: 1.5;
+            line-height: 1.6;
+        }
+
+        /* Add a subtle side accent */
+        .service-card-numbered::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.3), transparent);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card-numbered:hover::before {
+            transform: scaleY(1);
+        }
+
+        .service-card-numbered:nth-child(1)::before {
+            background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.5), transparent);
+        }
+
+        .service-card-numbered:nth-child(2)::before {
+            background: linear-gradient(to bottom, transparent, rgba(255, 169, 71, 0.5), transparent);
+        }
+
+        .service-card-numbered:nth-child(3)::before {
+            background: linear-gradient(to bottom, transparent, rgba(16, 185, 129, 0.5), transparent);
         }
 
         /* Why Choose Us Section - Enhanced with subtle background */
@@ -822,7 +781,7 @@
         }
 
         /* Enhanced shadows and animations */
-        .ai-visual, .phone-visual {
+        .ai-visual {
             background: rgba(255, 255, 255, 0.6);
             border-radius: 20px;
             padding: 50px 40px;
@@ -831,12 +790,12 @@
             transition: all 0.3s ease;
         }
 
-        .ai-visual:hover, .phone-visual:hover {
+        .ai-visual:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
-        .ai-feature, .phone-feature {
+        .ai-feature {
             display: flex;
             align-items: center;
             gap: 15px;
@@ -844,7 +803,7 @@
             transition: all 0.2s ease;
         }
 
-        .ai-feature:hover, .phone-feature:hover {
+        .ai-feature:hover {
             transform: translateX(4px);
         }
 
@@ -874,12 +833,25 @@
                 font-size: 2.4rem;
             }
 
-            .ai-section, .phone-section {
+            .ai-section {
                 grid-template-columns: 1fr;
                 gap: 50px;
             }
 
-            .ai-title, .phone-title {
+            .phone-services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card-numbered {
+                padding: 30px;
+            }
+
+            .service-number {
+                font-size: 2.5rem;
+            }
+
+            .ai-title {
                 font-size: 2rem;
             }
 
@@ -892,7 +864,7 @@
                 padding: 80px 5%;
             }
 
-            .ai-visual, .phone-visual {
+            .ai-visual {
                 padding: 40px 30px;
             }
         }
@@ -998,57 +970,35 @@
                 <p>Öflugt þjónustuver í Barcelona með 35+ íslenska sérfræðinga. Við samþættum mannlega þjónustu og gervigreind til að veita framúrskarandi upplifun.</p>
             </div>
             
-            <div class="phone-section">
-                <div class="phone-content">
-                    <div class="phone-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                    </div>
-                    
-                    <h3 class="phone-title">Þitt eigið þjónustuver</h3>
-                    
-                    <p class="phone-description">
-                        Heildarlausn fyrir símsvörun með umsjón tölvupósts og allri aðstoð 
-                        við sölu og þjónustu. Sérhæfing í þínum rekstri.
+            <div class="phone-services-grid">
+                <div class="service-card-numbered">
+                    <div class="service-number">01</div>
+                    <h3 class="service-card-title">Almenn símsvörun</h3>
+                    <p class="service-card-description">
+                        Einföld og góð þjónusta fyrir öll fyrirtæki. Við svörum í þínu nafni, 
+                        sendum símann áfram á réttan starfsmann og tökum ítarleg skilaboð. 
+                        Hægt að setja upp með stuttum fyrirvara.
                     </p>
-
-                    <div class="phone-features">
-                        <div class="phone-feature">
-                            <div class="phone-feature-icon"></div>
-                            <div class="phone-feature-text">Umsjón tölvupósts og samskipta</div>
-                        </div>
-                        
-                        <div class="phone-feature">
-                            <div class="phone-feature-icon"></div>
-                            <div class="phone-feature-text">Breytingar í þínum kerfum</div>
-                        </div>
-                        
-                        <div class="phone-feature">
-                            <div class="phone-feature-icon"></div>
-                            <div class="phone-feature-text">Sérhæfing í þínum rekstri</div>
-                        </div>
-                        
-                        <div class="phone-feature">
-                            <div class="phone-feature-icon"></div>
-                            <div class="phone-feature-text">Þjálfaðir íslenskir sérfræðingar</div>
-                        </div>
-                    </div>
                 </div>
                 
-                <div class="phone-visual">
-                    <div class="hours-section">
-                        <div class="hours-title">Þjónustutími</div>
-                        <div class="hours-text">08:00-19:00 virka daga<br>09:00-18:00 helgar</div>
-                    </div>
-                    
-                    <div class="hybrid-info">
-                        <div class="hybrid-title">AI + Mannlegur þjónustufulltrúi</div>
-                        <div class="hybrid-text">
-                            Þú velur hvort gervigreind eða mannlegur þjónustufulltrúi svari. 
-                            Áframsending alltaf í boði.
-                        </div>
-                    </div>
+                <div class="service-card-numbered">
+                    <div class="service-number">02</div>
+                    <h3 class="service-card-title">Þjónustusvörun</h3>
+                    <p class="service-card-description">
+                        Fullkomlega þjálfaðir starfsmenn sem þekkja þitt fyrirtæki, vörur og þjónustu. 
+                        Geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð 
+                        byggða á þínum upplýsingakerfum.
+                    </p>
+                </div>
+                
+                <div class="service-card-numbered">
+                    <div class="service-number">03</div>
+                    <h3 class="service-card-title">Þitt eigið þjónustuver</h3>
+                    <p class="service-card-description">
+                        Heildarlausn með sérhæfðu teymi fyrir þitt fyrirtæki. Umsjón tölvupósts, 
+                        breytingar í kerfum og full þjálfun í þínum rekstri. Frá einfaldri símsvörun 
+                        til fullkomlega sérhæfðrar þjónustu.
+                    </p>
                 </div>
             </div>
         </div>
