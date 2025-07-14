@@ -483,10 +483,30 @@
             line-height: 1.5;
         }
 
-        /* Why Choose Us Section */
+        /* Why Choose Us Section - Enhanced with subtle background */
         .why-choose {
-            background: rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, rgba(37, 99, 235, 0.02) 100%);
             border-radius: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-choose::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(37, 99, 235, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .why-choose .section-container {
+            position: relative;
+            z-index: 2;
         }
 
         .why-grid {
@@ -544,10 +564,27 @@
             left: 0;
             right: 0;
             bottom: 0;
+            background-image: url('assets/images/barcelona-skyline.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.06;
+            z-index: 1;
+        }
+
+        .barcelona-jobs::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.12) 0%, rgba(255, 152, 0, 0.08) 50%, rgba(255, 87, 34, 0.06) 100%);
             background-image: 
                 radial-gradient(circle at 20% 80%, rgba(255, 193, 7, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255, 152, 0, 0.08) 0%, transparent 50%);
             pointer-events: none;
+            z-index: 2;
         }
 
         .barcelona-content {
@@ -556,7 +593,7 @@
             gap: 80px;
             align-items: center;
             position: relative;
-            z-index: 2;
+            z-index: 3;
         }
 
         .barcelona-text h2 {
