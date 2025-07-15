@@ -2247,12 +2247,6 @@ footer::before {
     background: rgba(250, 247, 244, 0.02);
 }
 
-/*
-.service-card.featured:hover {
-    border-color: rgba(0, 200, 150, 0.3); /* Using teal */
-}
-*/
-
 /* COMMENT OUT THIS ENTIRE BLOCK
 .service-card.featured::after {
     background: linear-gradient(135deg, #8B7355 0%, #6B5645 100%);
