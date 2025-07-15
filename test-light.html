@@ -380,6 +380,14 @@
             border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
+        /* AI Services Grid - Same style as phone services */
+        .ai-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
         /* Phone Support Section - Numbered Cards Style */
         .phone-services-grid {
             display: grid;
@@ -781,47 +789,13 @@
         }
 
         /* Enhanced shadows and animations */
-        .ai-visual {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            padding: 50px 40px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        .service-card-numbered {
             transition: all 0.3s ease;
         }
 
-        .ai-visual:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .ai-feature {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 4px 0;
-            transition: all 0.2s ease;
-        }
-
-        .ai-feature:hover {
-            transform: translateX(4px);
-        }
-
-        .ai-badge {
-            background: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.2s ease;
-        }
-
-        .ai-badge:hover {
-            background: rgba(59, 130, 246, 0.15);
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-1px);
+        .service-card-numbered:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
         }
 
         @media (max-width: 768px) {
@@ -833,11 +807,7 @@
                 font-size: 2.4rem;
             }
 
-            .ai-section {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-
+            .ai-services-grid,
             .phone-services-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -851,10 +821,6 @@
                 font-size: 2.5rem;
             }
 
-            .ai-title {
-                font-size: 2rem;
-            }
-
             .barcelona-content {
                 grid-template-columns: 1fr;
                 gap: 50px;
@@ -862,10 +828,6 @@
 
             .section {
                 padding: 80px 5%;
-            }
-
-            .ai-visual {
-                padding: 40px 30px;
             }
         }
     </style>
@@ -907,56 +869,35 @@
                 <p>Sérhæfð þjónusta síðan 2019. Rétt samspil mannauðs og gervigreindar grípur fleiri sölutækifæri og eykur ánægju viðskiptavina.</p>
             </div>
             
-            <div class="ai-section">
-                <div class="ai-content">
-                    <div class="ai-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            <circle cx="9" cy="10" r="1" fill="currentColor"/>
-                            <circle cx="12" cy="10" r="1" fill="currentColor"/>
-                            <circle cx="15" cy="10" r="1" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    
-                    <h3 class="ai-title">Gervigreind sérhæfð í þínu fyrirtæki</h3>
-                    
-                    <p class="ai-description">
-                        Veitir nákvæmar upplýsingar samstundis og framkvæmir aðgerðir í þínum kerfum. 
-                        Spjall- og raddþjónusta allan sólarhringinn.
+            <div class="ai-services-grid">
+                <div class="service-card-numbered">
+                    <div class="service-number">01</div>
+                    <h3 class="service-card-title">AI Spjall og tölvupóstur</h3>
+                    <p class="service-card-description">
+                        Gervigreind þjálfuð í þínu fyrirtæki svarar á vefsíðu, samfélagsmiðlum og tölvupóstum. 
+                        Þekkir þínar vörur, verð og reglur - veitir nákvæmar upplýsingar og vísar flóknum málum 
+                        áfram á réttan sérfræðing.
                     </p>
-
-                    <div class="ai-features">
-                        <div class="ai-feature">
-                            <div class="ai-feature-icon"></div>
-                            <div class="ai-feature-text">24/7 þjónusta á öllum tungumálum</div>
-                        </div>
-                        
-                        <div class="ai-feature">
-                            <div class="ai-feature-icon"></div>
-                            <div class="ai-feature-text">Tengist beint við þín kerfi</div>
-                        </div>
-                        
-                        <div class="ai-feature">
-                            <div class="ai-feature-icon"></div>
-                            <div class="ai-feature-text">Leysir flest mál í fyrstu samskiptum</div>
-                        </div>
-                        
-                        <div class="ai-feature">
-                            <div class="ai-feature-icon"></div>
-                            <div class="ai-feature-text">Greinir og lærir af hverjum samtali</div>
-                        </div>
-                    </div>
                 </div>
                 
-                <div class="ai-visual">
-                    <div class="ai-visual-title">Hentar best fyrir</div>
-                    <div class="ai-visual-text">Upplýsingagjöf, bókanir, greiningar og fyrstu samskipti</div>
-                    <div class="ai-badges">
-                        <div class="ai-badge">100+ Tungumál</div>
-                        <div class="ai-badge">24/7 Þjónusta</div>
-                        <div class="ai-badge">Samtímis samskipti</div>
-                        <div class="ai-badge">CRM samþætting</div>
-                    </div>
+                <div class="service-card-numbered">
+                    <div class="service-number">02</div>
+                    <h3 class="service-card-title">AI Raddþjónusta</h3>
+                    <p class="service-card-description">
+                        Gervigreind sem þekkir þitt fyrirtæki svarar símanum allan sólarhringinn. 
+                        Tekur við pöntunum með þekkingu á þínum vörum, svarar spurningum um þína þjónustu 
+                        og vísar flóknum málum áfram á réttan sérfræðing.
+                    </p>
+                </div>
+                
+                <div class="service-card-numbered">
+                    <div class="service-number">03</div>
+                    <h3 class="service-card-title">AI Greining og þjálfun</h3>
+                    <p class="service-card-description">
+                        Gervigreind sem veitir innsýn í hvað viðskiptavinir þínir raunverulega þurfa. 
+                        Sjáðu nákvæmlega hvar tækifæri og vandamál eru, auk þjálfunar fyrir starfsfólk 
+                        í samskiptum við AI kerfið.
+                    </p>
                 </div>
             </div>
         </div>
