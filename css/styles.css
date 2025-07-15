@@ -2185,7 +2185,7 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
     }
 }
 
-/* Choice Section - White Theme with Blue/Orange/Green */
+/* Enhanced Choice Section - Brand Colors */
 .choice-section-white {
     background: linear-gradient(135deg, rgba(250, 247, 244, 0.98) 0%, rgba(245, 240, 234, 0.95) 100%);
     padding: 120px 5%;
@@ -2241,86 +2241,162 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
     margin-top: 60px;
 }
 
+/* Enhanced Cards with Brand Colors */
 .choice-card-white {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 16px;
+    border-radius: 20px;
     padding: 40px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.choice-card-white::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, currentColor 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.choice-card-white:hover::before {
+    opacity: 1;
 }
 
 .choice-card-white:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
 }
 
+/* AI Card - Brand Orange */
 .choice-card-white.ai-white {
-    border-color: rgba(59, 130, 246, 0.2);
-}
-
-.choice-card-white.ai-white:hover {
-    border-color: rgba(59, 130, 246, 0.3);
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.1);
-}
-
-.choice-card-white.human-white {
     border-color: rgba(255, 169, 71, 0.2);
 }
 
-.choice-card-white.human-white:hover {
-    border-color: rgba(255, 169, 71, 0.3);
-    box-shadow: 0 8px 30px rgba(255, 169, 71, 0.1);
+.choice-card-white.ai-white::before {
+    background: linear-gradient(90deg, transparent 0%, #FF9A3C 20%, #FFA947 50%, #FFB84D 80%, transparent 100%);
 }
 
+.choice-card-white.ai-white:hover {
+    border-color: rgba(255, 169, 71, 0.3);
+    box-shadow: 0 16px 40px rgba(255, 169, 71, 0.15);
+}
+
+/* Human Card - Complementary Blue */
+.choice-card-white.human-white {
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+.choice-card-white.human-white::before {
+    background: linear-gradient(90deg, transparent 0%, #3b82f6 20%, #2563eb 50%, #1d4ed8 80%, transparent 100%);
+}
+
+.choice-card-white.human-white:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 16px 40px rgba(59, 130, 246, 0.15);
+}
+
+/* Enhanced Icons */
 .choice-icon-white {
-    width: 56px;
-    height: 56px;
-    background: rgba(255, 255, 255, 0.8);
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 12px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 24px;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.choice-icon-white::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: currentColor;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.choice-card-white:hover .choice-icon-white::before {
+    opacity: 0.08;
 }
 
 .choice-card-white:hover .choice-icon-white {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .choice-icon-white svg {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .choice-card-white.ai-white .choice-icon-white svg {
-    color: #3b82f6;
-}
-
-.choice-card-white.human-white .choice-icon-white svg {
     color: #FFA947;
 }
 
+.choice-card-white.human-white .choice-icon-white svg {
+    color: #3b82f6;
+}
+
+.choice-card-white.ai-white .choice-icon-white::before {
+    background: linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%);
+}
+
+.choice-card-white.human-white .choice-icon-white::before {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+}
+
+/* Enhanced Typography */
 .choice-card-white h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    color: #1a202c;
     margin-bottom: 16px;
-    line-height: 1.3;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #1a202c 0%, #374151 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.choice-card-white.ai-white h3 {
+    background: linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.choice-card-white.human-white h3 {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .choice-description-white {
     font-size: 1rem;
     color: #6b7280;
-    line-height: 1.6;
+    line-height: 1.7;
     margin-bottom: 32px;
 }
 
+/* Enhanced Capabilities */
 .choice-capabilities-white {
     margin-bottom: 28px;
 }
@@ -2340,62 +2416,84 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
 .capability-list-white li {
     position: relative;
-    padding-left: 28px;
+    padding-left: 32px;
     color: #374151;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     line-height: 1.6;
+    font-weight: 500;
 }
 
 .capability-list-white li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 6px;
-    width: 16px;
-    height: 16px;
-    border-radius: 4px;
+    top: 8px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
     opacity: 0.15;
 }
 
 .capability-list-white li::after {
     content: '';
     position: absolute;
-    left: 5px;
-    top: 9px;
+    left: 6px;
+    top: 11px;
     width: 6px;
     height: 10px;
     border-right: 2px solid;
     border-bottom: 2px solid;
     transform: rotate(45deg);
-    opacity: 0.8;
 }
 
 .choice-card-white.ai-white .capability-list-white li::before {
-    background: #3b82f6;
+    background: linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%);
 }
 
 .choice-card-white.ai-white .capability-list-white li::after {
-    border-color: #3b82f6;
-}
-
-.choice-card-white.human-white .capability-list-white li::before {
-    background: #FFA947;
-}
-
-.choice-card-white.human-white .capability-list-white li::after {
     border-color: #FFA947;
 }
 
+.choice-card-white.human-white .capability-list-white li::before {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+}
+
+.choice-card-white.human-white .capability-list-white li::after {
+    border-color: #3b82f6;
+}
+
+/* Enhanced Ideal For */
 .ideal-for-white {
-    padding: 16px 20px;
+    padding: 20px;
     background: rgba(248, 250, 252, 0.8);
     border-radius: 12px;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.ideal-for-white::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: currentColor;
+    opacity: 0.3;
+}
+
+.choice-card-white.ai-white .ideal-for-white::before {
+    background: linear-gradient(to bottom, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%);
+}
+
+.choice-card-white.human-white .ideal-for-white::before {
+    background: linear-gradient(to bottom, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
 }
 
 .ideal-label-white {
@@ -2408,11 +2506,12 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
 }
 
 .ideal-text-white {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: #374151;
     font-weight: 500;
 }
 
+/* Mobile Responsive */
 @media (max-width: 768px) {
     .choice-section-white {
         padding: 80px 5%;
@@ -2429,5 +2528,15 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
     
     .choice-card-white {
         padding: 32px 24px;
+    }
+    
+    .choice-icon-white {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .choice-icon-white svg {
+        width: 24px;
+        height: 24px;
     }
 }
