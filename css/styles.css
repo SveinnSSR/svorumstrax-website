@@ -2402,24 +2402,55 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
     border-color: rgba(59, 130, 246, 0.2);
 }
 
-.light-number {
-    font-size: 3rem;
-    font-weight: 900;
-    color: #e2e8f0;
+.light-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
-    line-height: 1;
+    transition: all 0.3s ease;
 }
 
-.light-card:nth-child(1) .light-number {
+.light-card:hover .light-icon {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.light-icon svg {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+}
+
+.light-card:nth-child(1) .light-icon svg {
     color: #3b82f6;
 }
 
-.light-card:nth-child(2) .light-number {
+.light-card:nth-child(2) .light-icon svg {
     color: #FFA947;
 }
 
-.light-card:nth-child(3) .light-number {
+.light-card:nth-child(3) .light-icon svg {
     color: #10b981;
+}
+
+.light-card:hover:nth-child(1) .light-icon {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+.light-card:hover:nth-child(2) .light-icon {
+    background: rgba(255, 169, 71, 0.1);
+    border-color: rgba(255, 169, 71, 0.2);
+}
+
+.light-card:hover:nth-child(3) .light-icon {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.2);
 }
 
 .light-card h3 {
