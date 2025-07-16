@@ -135,7 +135,7 @@ const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
 
   const textBarTranslations = {
     is: {
-      message: "Hæ! Ég er AI þjónustufulltrúi hjá Svörum strax. Get ég hjálpað?",
+      message: "Hæ! Ég er gervigreindarfulltrúi hjá Svörum strax. Get ég hjálpað?",
       close: "Loka"
     },
     en: {
@@ -294,7 +294,7 @@ const ChatWidget = () => {
       subtitle: "Svörum strax",
       placeholder: "Skrifaðu skilaboð...",
       send: "Senda",
-      welcome: "Hæ! Ég er gervigreindarfulltrúi hjá Svörum strax. Ertu með fyrirtæki og hefur áhuga á þjónustu okkar? Eða hefur þú áhuga á að ganga til liðs við okkur í Barcelona?",
+      welcome: "Hæ! Ég er AI spjallmenni hjá Svörum strax. Ertu með fyrirtæki og hefur áhuga á þjónustu okkar? Eða hefur þú áhuga á að ganga til liðs við okkur í Barcelona?",
       error: "Fyrirgefðu, eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur."
     },
     en: {
