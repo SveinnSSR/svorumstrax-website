@@ -2131,30 +2131,30 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
 }
 
 .light-card:nth-child(1) .light-icon svg {
-    color: #3b82f6;
-}
-
-.light-card:nth-child(2) .light-icon svg {
-    color: #FFA947;
-}
-
-.light-card:nth-child(3) .light-icon svg {
     color: #10b981;
 }
 
+.light-card:nth-child(2) .light-icon svg {
+    color: #3b82f6;
+}
+
+.light-card:nth-child(3) .light-icon svg {
+    color: #FFA947;
+}
+
 .light-card:hover:nth-child(1) .light-icon {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+.light-card:hover:nth-child(2) .light-icon {
     background: rgba(59, 130, 246, 0.1);
     border-color: rgba(59, 130, 246, 0.2);
 }
 
-.light-card:hover:nth-child(2) .light-icon {
+.light-card:hover:nth-child(3) .light-icon {
     background: rgba(255, 169, 71, 0.1);
     border-color: rgba(255, 169, 71, 0.2);
-}
-
-.light-card:hover:nth-child(3) .light-icon {
-    background: rgba(16, 185, 129, 0.1);
-    border-color: rgba(16, 185, 129, 0.2);
 }
 
 .light-card h3 {
