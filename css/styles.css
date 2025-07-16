@@ -2408,9 +2408,8 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
 
 .choice-features-solid li {
     padding: 12px 0;
-    color: white;
-    font-size: 1.05rem;
-    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
     position: relative;
     padding-left: 30px;
     line-height: 1.5;
