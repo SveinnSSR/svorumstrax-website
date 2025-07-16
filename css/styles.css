@@ -2420,9 +2420,17 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
     position: absolute;
     left: 0;
     top: 12px;
-    color: rgba(255, 255, 255, 0.8);
+    color: white;
     font-weight: bold;
     font-size: 1.4rem;
+}
+
+.choice-card-solid.ai-solid .choice-features-solid li {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.choice-card-solid.ai-solid .choice-features-solid li::before {
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .choice-button-solid {
