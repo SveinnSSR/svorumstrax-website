@@ -290,11 +290,11 @@ const ChatWidget = () => {
   // Enhanced translations with professional messaging
   const translations = {
     is: {
-      title: "AI þjónustufulltrúi",
+      title: "Gervigreindarfulltrúi",
       subtitle: "Svörum strax",
       placeholder: "Skrifaðu skilaboð...",
       send: "Senda",
-      welcome: "Hæ! Ég er AI spjallmenni hjá Svörum strax. Ertu með fyrirtæki og hefur áhuga á þjónustu okkar? Eða hefur þú áhuga á að ganga til liðs við okkur í Barcelona?",
+      welcome: "Hæ! Ég er gervigreindarfulltrúi hjá Svörum strax. Ertu með fyrirtæki og hefur áhuga á þjónustu okkar? Eða hefur þú áhuga á að ganga til liðs við okkur í Barcelona?",
       error: "Fyrirgefðu, eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur."
     },
     en: {
