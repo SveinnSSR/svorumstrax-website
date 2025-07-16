@@ -2408,8 +2408,9 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
 
 .choice-features-solid li {
     padding: 12px 0;
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 1rem;
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 700;
     position: relative;
     padding-left: 30px;
     line-height: 1.5;
@@ -2420,17 +2421,9 @@ Option 5 - Neon Green: --tech-accent: #00FF88;
     position: absolute;
     left: 0;
     top: 12px;
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
     font-weight: bold;
     font-size: 1.4rem;
-}
-
-.choice-card-solid.ai-solid .choice-features-solid li {
-    color: rgba(0, 0, 0, 0.8);
-}
-
-.choice-card-solid.ai-solid .choice-features-solid li::before {
-    color: rgba(0, 0, 0, 0.6);
 }
 
 .choice-button-solid {
