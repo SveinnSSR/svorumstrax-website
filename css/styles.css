@@ -537,155 +537,106 @@ nav {
     line-height: 1.8;
 }
 
-/* Services Section - White Style */
-.services-white {
-    background: linear-gradient(135deg, rgba(250, 247, 244, 0.98) 0%, rgba(245, 240, 234, 0.95) 100%);
-    padding: 120px 5%;
-    position: relative;
-    overflow: hidden;
+/* Services Section - UPDATED SERVICE ICONS */
+.services {
+    padding: 100px 5%;
+    background: linear-gradient(180deg, rgba(10, 14, 39, 0.8) 0%, rgba(27, 39, 53, 0.5) 100%);
 }
 
-.services-white::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(248, 244, 240, 0.6) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-.services-white .section-header {
-    text-align: center;
-    margin-bottom: 80px;
-    position: relative;
-    z-index: 2;
-}
-
-.services-white .section-header h2 {
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: #1a202c;
-    margin-bottom: 24px;
-    letter-spacing: -0.03em;
-}
-
-.services-white .section-header p {
-    font-size: 1.2rem;
-    color: #6b7280;
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-.services-grid-white {
+.services-grid {
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
-    position: relative;
-    z-index: 2;
 }
 
-/* Professional Service Cards - No Interaction */
-.service-card-white {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+.service-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 40px 30px;
     transition: all 0.3s ease;
+    cursor: pointer;
     position: relative;
     overflow: hidden;
 }
 
-/* Subtle Color Coding */
-.service-card-white.traditional {
-    background: linear-gradient(135deg, rgba(240, 248, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%);
-    border-color: rgba(59, 130, 246, 0.1);
+.service-card.featured {
+    border-color: rgba(163, 138, 109, 0.2);
+    background: rgba(250, 247, 244, 0.02);
 }
 
-.service-card-white.ai-service {
-    background: linear-gradient(135deg, rgba(240, 253, 244, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%);
-    border-color: rgba(34, 197, 94, 0.1);
+/* COMMENT OUT THIS ENTIRE BLOCK
+.service-card.featured::after {
+    content: 'AI-drifið';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, rgba(250, 247, 244, 0.95) 0%, rgba(245, 240, 234, 0.9) 100%);
+    color: var(--primary-dark);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+*/
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(163, 138, 109, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-.service-card-white:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-}
-
-.service-card-white.traditional:hover {
-    border-color: rgba(59, 130, 246, 0.2);
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.1);
-}
-
-.service-card-white.ai-service:hover {
-    border-color: rgba(34, 197, 94, 0.2);
-    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.1);
-}
-
-.service-icon-white {
+.service-icon {
     width: 60px;
     height: 60px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: linear-gradient(135deg, rgba(250, 247, 244, 0.95) 0%, rgba(245, 240, 234, 0.9) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
+    font-size: 28px;
     transition: all 0.3s ease;
 }
 
-.service-card-white.traditional .service-icon-white {
-    background: linear-gradient(135deg, rgba(239, 246, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
-    border-color: rgba(59, 130, 246, 0.15);
-}
-
-.service-card-white.ai-service .service-icon-white {
-    background: linear-gradient(135deg, rgba(236, 253, 245, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
-    border-color: rgba(34, 197, 94, 0.15);
-}
-
-.service-icon-white svg {
+.service-icon svg {
     width: 28px;
     height: 28px;
-    color: #374151;
+    color: #000000;
     transition: all 0.3s ease;
 }
 
-.service-card-white:hover .service-icon-white {
+.service-card:hover .service-icon {
+    background: linear-gradient(135deg, rgba(252, 250, 248, 0.98) 0%, rgba(247, 243, 239, 0.95) 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-color: rgba(163, 138, 109, 0.2);
+}
+
+.service-card:hover .service-icon svg {
+    color: #000000;
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.service-card-white.traditional:hover .service-icon-white svg {
-    color: #2563eb;
-}
-
-.service-card-white.ai-service:hover .service-icon-white svg {
-    color: #16a34a;
-}
-
-.service-card-white h3 {
+.service-card h3 {
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 15px;
-    color: #1a202c;
+    color: #f1f5f9;
 }
 
-.service-card-white p {
-    color: #6b7280;
+.service-card p {
+    color: var(--text-muted);
     line-height: 1.6;
     margin-bottom: 20px;
 }
 
-.service-link-white {
-    color: #374151;
+.service-link {
+    color: #FFA500;
     text-decoration: none;
     font-weight: 600;
     display: inline-flex;
@@ -694,34 +645,9 @@ nav {
     transition: all 0.3s ease;
 }
 
-.service-card-white.traditional .service-link-white:hover {
-    color: #2563eb;
-    gap: 8px;
-}
-
-.service-card-white.ai-service .service-link-white:hover {
-    color: #16a34a;
-    gap: 8px;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .services-white {
-        padding: 80px 5%;
-    }
-    
-    .services-white .section-header h2 {
-        font-size: 2.4rem;
-    }
-    
-    .services-grid-white {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .service-card-white {
-        padding: 30px 24px;
-    }
+.service-link:hover {
+    gap: 10px;
+    color: #FF8C00;
 }
 
 /* Jobs Section with Barcelona Background */
