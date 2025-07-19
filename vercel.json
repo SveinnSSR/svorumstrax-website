@@ -1,6 +1,6 @@
+
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "./",
-  "installCommand": "npm install",
-  "devCommand": "npm run dev"
+  "buildCommand": "cd svorumstrax-website-react && npm run build",
+  "outputDirectory": "svorumstrax-website-react/dist",
+  "installCommand": "cd svorumstrax-website-react && npm install"
 }
