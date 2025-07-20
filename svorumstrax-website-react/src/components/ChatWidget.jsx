@@ -668,12 +668,10 @@ const ChatWidget = () => {
             justifyContent: 'center'
           }}>
             <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* Main 4-point star */}
-            <path d="M16 8 L18 14 L24 16 L18 18 L16 24 L14 18 L8 16 L14 14 Z" fill="white"/>
-            {/* Small star top-right */}
-            <path d="M24 10 L25 12 L27 13 L25 14 L24 16 L23 14 L21 13 L23 12 Z" fill="white" opacity="0.7"/>
-            {/* Small star bottom-left */}
-            <path d="M8 18 L9 20 L11 21 L9 22 L8 24 L7 22 L5 21 L7 20 Z" fill="white" opacity="0.7"/>
+                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
+                <circle cx="10" cy="14" r="2" fill="white"/>
+                <circle cx="16" cy="14" r="2" fill="white"/>
+                <circle cx="22" cy="14" r="2" fill="white"/>
             </svg>
           </div>
           
