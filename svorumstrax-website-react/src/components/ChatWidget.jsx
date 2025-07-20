@@ -639,7 +639,7 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            background: isMinimized ? WIDGET_THEME.gradient : 'linear-gradient(135deg, #FFA947 0%, #FFB84D 100%)',
+            background: isMinimized ? WIDGET_THEME.gradient : '#FF9A3C',
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
