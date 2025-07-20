@@ -691,7 +691,7 @@ const ChatWidget = () => {
                 {t.subtitle}
               </span>
               <span style={{ 
-                color: 'rgba(0, 0, 0, 0.7)',
+                color: 'rgba(255, 255, 255, 0.9)',
                 fontSize: '14px',
                 fontWeight: '500'
               }}>
