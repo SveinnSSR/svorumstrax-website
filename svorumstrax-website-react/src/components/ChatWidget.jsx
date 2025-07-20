@@ -691,7 +691,7 @@ const ChatWidget = () => {
                 {t.subtitle}
               </span>
               <span style={{ 
-                color: 'rgba(255, 255, 255, 0.9)',
+                color: 'rgba(0, 0, 0, 0.7)',
                 fontSize: '14px',
                 fontWeight: '500'
               }}>
@@ -758,7 +758,7 @@ const ChatWidget = () => {
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
                       <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                          <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
+                          <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
                           <circle cx="6" cy="8.5" r="1" fill="white"/>
                           <circle cx="10" cy="8.5" r="1" fill="white"/>
                           <circle cx="14" cy="8.5" r="1" fill="white"/>
