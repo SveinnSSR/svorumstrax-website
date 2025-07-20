@@ -13,7 +13,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 
 # Svörum strax - React/Tailwind Website
-// test
+// test.
 A modern, professional website for Svörum strax built with React and Tailwind CSS.
 
 ## Features
