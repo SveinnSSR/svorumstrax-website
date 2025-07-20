@@ -106,7 +106,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
         style={{
           width: "100%",
           height: "500px",
-          background: "linear-gradient(135deg, #4A90E2 0%, #357ABD 50%, #2563EB 100%)",
+          background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #1E40AF 100%)",
           margin: "40px 0 0 0",
         }}
       >
