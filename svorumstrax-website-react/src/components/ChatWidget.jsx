@@ -1,8 +1,15 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
-
+/*
 const WIDGET_THEME = {
   color: '#FFA947',  // Your preferred warm orange
   gradient: 'linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%)', // Logo gradient
+};
+*/
+
+// REPLACE WITH (GREEN OPTION):
+const WIDGET_THEME = {
+  color: '#66D893',  // Beautiful ELKO green
+  gradient: '#66D893', // Solid green background
 };
 
 // Constants for session management
@@ -639,7 +646,7 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            background: isMinimized ? WIDGET_THEME.gradient : '#FF9A3C',
+            background: isMinimized ? WIDGET_THEME.gradient : WIDGET_THEME.gradient,
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
