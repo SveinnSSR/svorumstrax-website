@@ -759,9 +759,9 @@ const ChatWidget = () => {
                     }}>
                       <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
                           <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
-                          <circle cx="6" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
-                          <circle cx="10" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
-                          <circle cx="14" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
+                          <circle cx="6" cy="8.5" r="1" fill="white"/>
+                          <circle cx="10" cy="8.5" r="1" fill="white"/>
+                          <circle cx="14" cy="8.5" r="1" fill="white"/>
                       </svg>
                     </div>
                   )}
