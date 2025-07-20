@@ -667,10 +667,11 @@ const ChatWidget = () => {
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-              <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <polygon points="16,6 18,12 24,12 19,16 21,22 16,18 11,22 13,16 8,12 14,12" fill="white"/>
-                 <polygon points="24,8 25,10 27,10 25.5,11.5 26,13.5 24,12.5 22,13.5 22.5,11.5 21,10 23,10" fill="white" opacity="0.8"/>
-                <polygon points="8,20 9,22 11,22 9.5,23.5 10,25.5 8,24.5 6,25.5 6.5,23.5 5,22 7,22" fill="white" opacity="0.8"/>
+            <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
+                <circle cx="10" cy="14" r="2" fill="white"/>
+                <circle cx="16" cy="14" r="2" fill="white"/>
+                <circle cx="22" cy="14" r="2" fill="white"/>
             </svg>
           </div>
           
