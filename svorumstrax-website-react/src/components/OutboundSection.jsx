@@ -6,7 +6,7 @@ import {
   UserGroupIcon
 } from '@heroicons/react/24/outline'
 // You'll need to add a mobile CRM mockup image to assets/images/
-import crmMobileImage from '../assets/images/outbound-phone.png'
+// import crmMobileImage from '../assets/images/crm-mobile.png'
 
 const OutboundSection = ({ currentLanguage, onContactClick }) => {
   const content = {
@@ -120,20 +120,26 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
         {/* Main Content with Mobile CRM Demo */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           
-          {/* Mobile Phone Image - Your custom image */}
+          {/* Mobile CRM Image - Placeholder for now */}
           <div className="relative order-1 lg:order-1">
-            <div className="relative max-w-sm mx-auto">
-              <img 
-                src="/src/assets/images/outbound-phone.png" 
-                alt="Outbound Call Interface" 
-                className="w-full h-auto max-w-xs mx-auto"
-                style={{
-                  filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.3))'
-                }}
-              />
+            <div className="relative max-w-sm mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 shadow-2xl">
+              {/* Phone mockup placeholder - replace with actual image */}
+              <div className="bg-white rounded-2xl p-6 min-h-[400px] flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <PhoneIcon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-sm text-gray-600 mb-4">CRM Mobile Interface</div>
+                  <div className="space-y-2 text-xs text-left">
+                    <div className="bg-green-100 p-2 rounded text-green-800">✓ Símtal lokið - Fundur bókaður</div>
+                    <div className="bg-blue-100 p-2 rounded text-blue-800">📞 Næsta símtal: 14:30</div>
+                    <div className="bg-orange-100 p-2 rounded text-orange-800">📊 Dagleg markmið: 8/10</div>
+                  </div>
+                </div>
+              </div>
             </div>
             
-            {/* Stats overlay - positioned to not interfere with phone */}
+            {/* Stats overlay */}
             <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-6 shadow-lg border border-slate-200/50">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
