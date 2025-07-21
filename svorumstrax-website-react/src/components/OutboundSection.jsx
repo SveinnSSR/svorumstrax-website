@@ -13,7 +13,7 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
     is: {
       title: 'Úthringingar',
       subtitle: 'Sérhæfð söluteymi með reynslu af B2B og B2C markaði. Notum nýjustu tækni og CRM kerfi til að hámarka árangur.',
-      mainDescription: 'Reynsla og tækni sem skilar árangri. Íslensk söluteymi í Barcelona með aðgang að nýjustu CRM tækni.',
+      mainDescription: 'Reynsla og tækni sem skilar árangri. Við höfum séð um úthringiátök og verkefni fyrir mörg af stærstu fyrirtækjum landsins.',
       features: [
         {
           icon: BuildingOffice2Icon,
@@ -27,8 +27,8 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
         },
         {
           icon: UserGroupIcon,
-          title: 'Þjálfað sölufólk',
-          description: 'Íslenskir sérfræðingar þjálfaðir í þínum vörum og þjónustu'
+          title: 'Öflugt sölufólk með reynslu',
+          description: 'Þjálfað í þínum vörum og þjónustu með áralanga söluþjálfun'
         }
       ],
       services: [
@@ -51,14 +51,14 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
         'B2B sérþekking',
         'B2C reynsla', 
         'CRM samþætting',
-        'Íslensk teymi'
+        'Öflugt sölufólk'
       ],
       button: 'Frekari upplýsingar'
     },
     en: {
       title: 'Outbound Calls',
       subtitle: 'Specialized sales teams with B2B and B2C market experience. We use the latest technology and CRM systems to maximize results.',
-      mainDescription: 'Experience and technology that delivers results. Icelandic sales teams in Barcelona with access to the latest CRM technology.',
+      mainDescription: 'Experience and technology that delivers results. We have handled outbound campaigns and projects for many of the country\'s largest companies.',
       features: [
         {
           icon: BuildingOffice2Icon,
@@ -72,8 +72,8 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
         },
         {
           icon: UserGroupIcon,
-          title: 'Trained sales staff',
-          description: 'Icelandic specialists trained in your products and services'
+          title: 'Experienced sales professionals',
+          description: 'Trained in your products and services with years of sales training'
         }
       ],
       services: [
@@ -96,7 +96,7 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
         'B2B expertise',
         'B2C experience',
         'CRM integration', 
-        'Icelandic teams'
+        'Experienced sales team'
       ],
       button: 'Learn More'
     }
@@ -133,7 +133,7 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
                   <div className="space-y-2 text-xs text-left">
                     <div className="bg-green-100 p-2 rounded text-green-800">✓ Símtal lokið - Fundur bókaður</div>
                     <div className="bg-blue-100 p-2 rounded text-blue-800">📞 Næsta símtal: 14:30</div>
-                    <div className="bg-orange-100 p-2 rounded text-orange-800">📊 Árangur dagsins: 75%</div>
+                    <div className="bg-orange-100 p-2 rounded text-orange-800">📊 Dagleg markmið: 8/10</div>
                   </div>
                 </div>
               </div>
@@ -146,8 +146,8 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
                   <ChartBarIcon className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-gray-900">75%</div>
-                  <div className="text-sm text-gray-600">Árangurshlutfall</div>
+                  <div className="text-2xl font-bold text-gray-900">8/10</div>
+                  <div className="text-sm text-gray-600">Dagleg markmið</div>
                 </div>
               </div>
             </div>
