@@ -1,4 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
+
+// Sparkle SVG Component for ChatWidget - Green Version
+const SparkleIcon = ({ size = "18" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <path d="M12 0L13.09 8.26L22 9L13.09 9.74L12 18L10.91 9.74L2 9L10.91 8.26L12 0Z" fill="#66D893"/>
+    <path d="M19 4L19.74 6.26L22 7L19.74 7.74L19 10L18.26 7.74L16 7L18.26 6.26L19 4Z" fill="#66D893" opacity="0.8"/>
+    <path d="M5 14L5.74 16.26L8 17L5.74 17.74L5 20L4.26 17.74L2 17L4.26 16.26L5 14Z" fill="#66D893" opacity="0.6"/>
+  </svg>
+);
 /*
 const WIDGET_THEME = {
   color: '#FFA947',  // Your preferred warm orange
@@ -211,12 +220,7 @@ const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
           flexShrink: 0,
           marginTop: '2px'
         }}>
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
-            <circle cx="6" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
-            <circle cx="10" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
-            <circle cx="14" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
-          </svg>
+          <SparkleIcon />
         </div>
 
         {/* Message text */}
@@ -480,12 +484,7 @@ const ChatWidget = () => {
           border: `1px solid rgba(0, 0, 0, 0.06)`,
           boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-              <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
-              <circle cx="6" cy="8.5" r="1" fill="white"/>
-              <circle cx="10" cy="8.5" r="1" fill="white"/>
-              <circle cx="14" cy="8.5" r="1" fill="white"/>
-          </svg>
+          <SparkleIcon />
         </div>
       </div>
       <div style={{
@@ -757,12 +756,7 @@ const ChatWidget = () => {
                       border: `1px solid rgba(0, 0, 0, 0.06)`,
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
-                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                          <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
-                          <circle cx="6" cy="8.5" r="1" fill="white"/>
-                          <circle cx="10" cy="8.5" r="1" fill="white"/>
-                          <circle cx="14" cy="8.5" r="1" fill="white"/>
-                      </svg>
+                      <SparkleIcon />
                     </div>
                   )}
                   
