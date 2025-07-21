@@ -82,35 +82,16 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                 </div>
               </div>
               
-              {/* Right Column - Phone Image Container */}
+              {/* Right Column - Visual Balance */}
               <div className="relative flex items-center justify-center lg:justify-end">
-                {/* Perfect container for your phone mockup image */}
+                {/* Subtle visual elements for balance */}
                 <div className="relative w-full max-w-lg h-[600px] flex items-center justify-center">
-                  {/* Placeholder for your phone image - replace with your image */}
+                  {/* Animated gradient orbs for visual interest */}
                   <div className="relative">
-                    {/* Add your phone image here */}
-                    <img 
-                      src="/src/assets/images/hero-phones.png" 
-                      alt="Phone Mockups" 
-                      className="w-full h-auto max-w-md lg:max-w-lg"
-                      style={{
-                        filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.3))'
-                      }}
-                    />
-                    
-                    {/* Fallback if no image - you can remove this once you add the image */}
-                    <div className="absolute inset-0 flex items-center justify-center text-white/20 text-sm font-medium">
-                      {/* This will be hidden once you add the image */}
-                      <div className="text-center p-8 border-2 border-dashed border-white/10 rounded-2xl backdrop-blur-sm">
-                        <p>Add your phone mockup image here:</p>
-                        <p className="mt-2 font-mono text-xs">hero-phones.png</p>
-                        <p className="mt-2 text-xs opacity-60">Recommended size: 400-600px width</p>
-                      </div>
-                    </div>
+                    <div className="w-32 h-32 bg-gradient-to-br from-blue-400/20 to-teal-400/20 rounded-full blur-xl animate-pulse"></div>
+                    <div className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-orange-400/15 to-amber-400/15 rounded-full blur-lg animate-pulse" style={{animationDelay: '1s'}}></div>
+                    <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-br from-teal-400/10 to-blue-400/10 rounded-full blur-md animate-pulse" style={{animationDelay: '2s'}}></div>
                   </div>
-                  
-                  {/* Subtle glow effect behind phone */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-orange-400/5 rounded-full blur-3xl scale-150 -z-10"></div>
                 </div>
               </div>
               
