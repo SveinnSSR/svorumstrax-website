@@ -7,8 +7,8 @@ import {
   ComputerDesktopIcon,
   EnvelopeIcon
 } from '@heroicons/react/24/outline'
-import analyticsImage from '../assets/images/analytics-dashboard.png'
 import mobileChatbotImage from '../assets/images/mobile-chatbot.png'
+import AIConversationDemo from './AIConversationDemo'
 
 const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
   const content = {
@@ -146,7 +146,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full"></div>
         </div>
 
-        {/* Main Content with Analytics Image */}
+        {/* Main Content with Live Conversation Demo */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           <div>
             <div className="flex items-center mb-8">
@@ -178,16 +178,10 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
             </div>
           </div>
           
-          {/* Analytics Dashboard Image */}
+          {/* Live Conversation Demo */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src={analyticsImage} 
-                alt="Analytics Dashboard" 
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-orange-900/20 via-transparent to-transparent"></div>
-            </div>
+            <AIConversationDemo currentLanguage={currentLanguage} />
+            
             <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg">
               <ChartBarIcon className="w-10 h-10 text-white" />
             </div>
