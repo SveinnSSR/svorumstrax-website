@@ -84,11 +84,11 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-200/30 to-orange-200/30 rounded-3xl blur-2xl transform scale-110"></div>
                   
                   {/* Phone image */}
-                  <div className="relative bg-white rounded-3xl p-8 shadow-2xl">
+                  <div className="relative">
                     <img 
                       src={outboundPhone} 
                       alt="Phone interface showing customer service features"
-                      className="w-full h-auto max-w-sm mx-auto drop-shadow-lg"
+                      className="w-full h-auto max-w-sm mx-auto drop-shadow-2xl"
                     />
                   </div>
                   
