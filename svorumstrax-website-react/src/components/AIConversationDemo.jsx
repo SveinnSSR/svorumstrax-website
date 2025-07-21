@@ -8,7 +8,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [isRestarting, setIsRestarting] = useState(false);
   const chatContainerRef = useRef(null);
 
-  // Sparkle SVG Component for Bot Avatar - Orange theme
+  // Sparkle SVG Component for Bot Avatar - Subtle theme
   const SparkleIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
       <path d="M12 0L13.09 8.26L22 9L13.09 9.74L12 18L10.91 9.74L2 9L10.91 8.26L12 0Z" fill="white"/>
@@ -192,10 +192,10 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
               }}
             >
               {/* Avatar - User on LEFT, Bot on RIGHT */}
-              <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg ${
+              <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm ${
                 message.type === 'user' 
                   ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700' 
-                  : 'bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700'
+                  : 'bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600'
               }`}>
                 {message.type === 'user' ? (
                   <span className="text-white text-sm font-bold">K</span>
@@ -209,21 +209,21 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                 message.type === 'user' ? 'mr-12' : 'ml-12'
               }`}>
                 <div
-                  className={`px-5 py-3 rounded-2xl text-sm font-medium leading-relaxed shadow-lg border backdrop-blur-sm ${
+                  className={`px-5 py-3 rounded-2xl text-sm font-medium leading-relaxed shadow-sm border backdrop-blur-sm ${
                     message.type === 'user'
                       ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 text-white border-blue-200/20 rounded-bl-md'
-                      : 'bg-white/90 text-slate-700 border-gray-200/50 rounded-br-md'
+                      : 'bg-white/95 text-slate-700 border-gray-200/30 rounded-br-md'
                   }`}
                 >
                   {message.content}
                   
-                  {/* Multiple Action Buttons - Orange theme */}
+                  {/* Multiple Action Buttons - Subtle orange */}
                   {message.hasButtons && message.buttons && (
                     <div className="mt-4 flex flex-wrap gap-2">
                       {message.buttons.map((buttonText, buttonIndex) => (
                         <button 
                           key={buttonIndex}
-                          className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:to-orange-800 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200"
+                          className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200"
                         >
                           {buttonText}
                         </button>
@@ -235,27 +235,27 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
             </div>
           ))}
 
-          {/* Typing Indicator - Orange theme */}
+          {/* Typing Indicator - Subtle theme */}
           {isTyping && (
             <div className="flex items-end gap-3 flex-row-reverse" style={{ animation: 'slideInUp 0.2s ease-out' }}>
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 flex items-center justify-center shadow-sm">
                 <SparkleIcon />
               </div>
-              <div className="bg-white/90 backdrop-blur-sm border border-gray-200/50 px-5 py-3 rounded-2xl rounded-br-md shadow-lg ml-12">
+              <div className="bg-white/95 backdrop-blur-sm border border-gray-200/30 px-5 py-3 rounded-2xl rounded-br-md shadow-sm ml-12">
                 <div className="flex gap-1">
-                  <div className="w-2 h-2 bg-orange-600 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-orange-600 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                  <div className="w-2 h-2 bg-orange-600 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                  <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                  <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Action Bar - Orange theme */}
+          {/* Action Bar - Subtle theme */}
           {actionBar && (
             <div className="flex justify-center" style={{ animation: 'fadeInScale 0.2s ease-out' }}>
-              <div className="bg-gradient-to-r from-orange-100/80 via-orange-200/80 to-orange-300/80 backdrop-blur-sm border border-orange-300/50 text-orange-700 px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-md">
-                <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-orange-700 rounded-full animate-spin"></div>
+              <div className="bg-orange-50/90 backdrop-blur-sm border border-orange-200/50 text-orange-700 px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-sm">
+                <div className="w-2 h-2 bg-orange-400 rounded-full animate-spin"></div>
                 {actionBar}
               </div>
             </div>
