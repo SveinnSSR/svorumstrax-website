@@ -41,58 +41,42 @@ const Hero = ({ currentLanguage, onContactClick }) => {
         {/* Hero Section */}
         <section className="relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[600px]">
+            <div className="text-center min-h-[600px] flex flex-col justify-center">
               
-              {/* Left Column - Content */}
-              <div className="text-left">
-                {/* Premium subtitle badge */}
-                <div className="inline-block bg-orange-500/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-orange-400/20">
-                  <span className="text-orange-300 font-semibold text-sm tracking-wide uppercase">
-                    Lausnir fyrir þjónustuver
-                  </span>
-                </div>
-                
-                {/* Premium title with gradient text */}
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-8 leading-tight">
-                  <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
-                    {currentContent.title}
-                  </span>
-                </h1>
-                
-                {/* Subtitle */}
-                <p className="text-xl sm:text-2xl text-slate-300 leading-relaxed mb-12 max-w-2xl">
-                  {currentContent.subtitle}
-                </p>
-                
-                {/* Premium buttons */}
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <button
-                    onClick={() => onContactClick('services')}
-                    className="bg-white hover:bg-gray-100 text-slate-900 font-semibold py-4 px-10 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg"
-                  >
-                    {currentContent.primaryButton}
-                  </button>
-                  
-                  <button
-                    onClick={() => onContactClick('consultation')}
-                    className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold py-4 px-10 rounded-full border border-white/20 hover:border-white/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg"
-                  >
-                    {currentContent.secondaryButton}
-                  </button>
-                </div>
+              {/* Premium subtitle badge */}
+              <div className="inline-block bg-orange-500/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-orange-400/20 mx-auto">
+                <span className="text-orange-300 font-semibold text-sm tracking-wide uppercase">
+                  Lausnir fyrir þjónustuver
+                </span>
               </div>
               
-              {/* Right Column - Visual Balance */}
-              <div className="relative flex items-center justify-center lg:justify-end">
-                {/* Subtle visual elements for balance */}
-                <div className="relative w-full max-w-lg h-[600px] flex items-center justify-center">
-                  {/* Animated gradient orbs for visual interest */}
-                  <div className="relative">
-                    <div className="w-32 h-32 bg-gradient-to-br from-blue-400/20 to-teal-400/20 rounded-full blur-xl animate-pulse"></div>
-                    <div className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-orange-400/15 to-amber-400/15 rounded-full blur-lg animate-pulse" style={{animationDelay: '1s'}}></div>
-                    <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-br from-teal-400/10 to-blue-400/10 rounded-full blur-md animate-pulse" style={{animationDelay: '2s'}}></div>
-                  </div>
-                </div>
+              {/* Premium title with gradient text */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-8 leading-tight">
+                <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
+                  {currentContent.title}
+                </span>
+              </h1>
+              
+              {/* Subtitle */}
+              <p className="text-xl sm:text-2xl text-slate-300 leading-relaxed mb-12 max-w-4xl mx-auto">
+                {currentContent.subtitle}
+              </p>
+              
+              {/* Premium buttons */}
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <button
+                  onClick={() => onContactClick('services')}
+                  className="bg-white hover:bg-gray-100 text-slate-900 font-semibold py-4 px-10 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg"
+                >
+                  {currentContent.primaryButton}
+                </button>
+                
+                <button
+                  onClick={() => onContactClick('consultation')}
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold py-4 px-10 rounded-full border border-white/20 hover:border-white/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg"
+                >
+                  {currentContent.secondaryButton}
+                </button>
               </div>
               
             </div>
