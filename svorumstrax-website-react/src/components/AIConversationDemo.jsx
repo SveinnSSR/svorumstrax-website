@@ -28,12 +28,12 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     scrollChatToBottom();
   }, [messages, isTyping, actionBar]);
 
-  // Conversation content with proper flow
+  // Conversation content with improved flow
   const conversationSteps = {
     is: [
       {
         type: 'user',
-        content: 'Hæ! Er þjónustuverið þitt opið um helgar?',
+        content: 'Hæ! Er hægt að bóka tíma hjá ykkur um helgina?',
         delay: 1000
       },
       {
@@ -62,7 +62,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     en: [
       {
         type: 'user',
-        content: 'Hi! Is your customer service open on weekends?',
+        content: 'Hi! Is it possible to book an appointment with you over the weekend?',
         delay: 1000
       },
       {
@@ -145,10 +145,10 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     resetConversation();
   }, [currentLanguage]);
 
-  // Auto-reset after completion
+  // Auto-reset after completion - LONGER pause at the end
   useEffect(() => {
     if (currentStep >= steps.length) {
-      const resetTimer = setTimeout(resetConversation, 4000);
+      const resetTimer = setTimeout(resetConversation, 8000); // Increased from 4000 to 8000ms (8 seconds)
       return () => clearTimeout(resetTimer);
     }
   }, [currentStep, steps.length]);
