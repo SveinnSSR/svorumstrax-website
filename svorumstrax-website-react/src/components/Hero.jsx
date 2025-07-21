@@ -134,59 +134,6 @@ const Hero = ({ currentLanguage, onContactClick }) => {
           </div>
         </section>
       </div>
-
-      {/* Professional Services Overview - More business-focused */}
-      <section className="relative bg-white/95 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-              {currentLanguage === 'is' ? 'Þjónustulausnir sem skila árangri' : 'Service Solutions That Deliver Results'}
-            </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              {currentLanguage === 'is' 
-                ? 'Veljið á milli mannlegrar þjónustu, gervigreindar eða blöndu af hvoru tveggja. Við aðlögum okkur að þínum þörfum.'
-                : 'Choose between human service, AI, or a combination of both. We adapt to your needs.'
-              }
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-            {currentContent.services.map((service, index) => (
-              <div 
-                key={index}
-                className="group relative bg-white rounded-xl p-8 shadow-sm border border-slate-200/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer"
-                onClick={() => onContactClick('service-info')}
-              >
-                {/* Service highlight badge */}
-                <div className="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                  {service.highlight}
-                </div>
-                
-                {/* Content */}
-                <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight">
-                  {service.title}
-                </h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-6">
-                  {service.description}
-                </p>
-                
-                {/* Learn more link */}
-                <div className="flex items-center text-slate-400 group-hover:text-slate-600 transition-colors duration-300">
-                  <span className="text-sm font-medium">
-                    {currentLanguage === 'is' ? 'Frekari upplýsingar' : 'Learn more'}
-                  </span>
-                  <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-                
-                {/* Hover effect */}
-                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-slate-200 to-slate-300 rounded-b-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
