@@ -195,7 +195,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
               <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg ${
                 message.type === 'user' 
                   ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700' 
-                  : 'bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600'
+                  : 'bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700'
               }`}>
                 {message.type === 'user' ? (
                   <span className="text-white text-sm font-bold">K</span>
@@ -223,7 +223,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                       {message.buttons.map((buttonText, buttonIndex) => (
                         <button 
                           key={buttonIndex}
-                          className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200"
+                          className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:to-orange-800 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200"
                         >
                           {buttonText}
                         </button>
@@ -238,14 +238,14 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           {/* Typing Indicator - Orange theme */}
           {isTyping && (
             <div className="flex items-end gap-3 flex-row-reverse" style={{ animation: 'slideInUp 0.2s ease-out' }}>
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 flex items-center justify-center shadow-lg">
                 <SparkleIcon />
               </div>
               <div className="bg-white/90 backdrop-blur-sm border border-gray-200/50 px-5 py-3 rounded-2xl rounded-br-md shadow-lg ml-12">
                 <div className="flex gap-1">
-                  <div className="w-2 h-2 bg-orange-500 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-orange-500 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                  <div className="w-2 h-2 bg-orange-500 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                  <div className="w-2 h-2 bg-orange-600 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-orange-600 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                  <div className="w-2 h-2 bg-orange-600 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                 </div>
               </div>
             </div>
@@ -254,8 +254,8 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           {/* Action Bar - Orange theme */}
           {actionBar && (
             <div className="flex justify-center" style={{ animation: 'fadeInScale 0.2s ease-out' }}>
-              <div className="bg-gradient-to-r from-orange-100/80 via-orange-50/80 to-orange-100/80 backdrop-blur-sm border border-orange-200/50 text-orange-700 px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-md">
-                <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full animate-spin"></div>
+              <div className="bg-gradient-to-r from-orange-100/80 via-orange-200/80 to-orange-300/80 backdrop-blur-sm border border-orange-300/50 text-orange-700 px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-md">
+                <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-orange-700 rounded-full animate-spin"></div>
                 {actionBar}
               </div>
             </div>
