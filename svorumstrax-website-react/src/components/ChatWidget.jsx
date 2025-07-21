@@ -1,11 +1,20 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 
-// Sparkle SVG Component for ChatWidget - Green Version
+// Chunky Sparkle SVG Component for ChatWidget - Green Version
 const SparkleIcon = ({ size = "18" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-    <path d="M12 0L13.09 8.26L22 9L13.09 9.74L12 18L10.91 9.74L2 9L10.91 8.26L12 0Z" fill="#66D893"/>
-    <path d="M19 4L19.74 6.26L22 7L19.74 7.74L19 10L18.26 7.74L16 7L18.26 6.26L19 4Z" fill="#66D893" opacity="0.8"/>
-    <path d="M5 14L5.74 16.26L8 17L5.74 17.74L5 20L4.26 17.74L2 17L4.26 16.26L5 14Z" fill="#66D893" opacity="0.6"/>
+    {/* Main large sparkle - made thicker */}
+    <path d="M12 1L14.5 9.5L23 12L14.5 14.5L12 23L9.5 14.5L1 12L9.5 9.5L12 1Z" fill="#66D893" stroke="#66D893" strokeWidth="0.5"/>
+    
+    {/* Top right sparkle - made bigger and chunkier */}
+    <path d="M18.5 2L19.8 6.2L24 7.5L19.8 8.8L18.5 13L17.2 8.8L13 7.5L17.2 6.2L18.5 2Z" fill="#66D893" opacity="0.9"/>
+    
+    {/* Bottom left sparkle - made bigger and chunkier */}
+    <path d="M5.5 11L6.8 15.2L11 16.5L6.8 17.8L5.5 22L4.2 17.8L0 16.5L4.2 15.2L5.5 11Z" fill="#66D893" opacity="0.8"/>
+    
+    {/* Extra small sparkle for more dimension */}
+    <circle cx="20" cy="4" r="1.5" fill="#66D893" opacity="0.7"/>
+    <circle cx="4" cy="20" r="1" fill="#66D893" opacity="0.6"/>
   </svg>
 );
 /*
