@@ -666,12 +666,7 @@ const ChatWidget = () => {
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-            <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
-                <circle cx="10" cy="14" r="2" fill="white"/>
-                <circle cx="16" cy="14" r="2" fill="white"/>
-                <circle cx="22" cy="14" r="2" fill="white"/>
-            </svg>
+            <SparkleIcon size={isMinimized ? '24' : '32'} />
           </div>
           
           {!isMinimized && (
