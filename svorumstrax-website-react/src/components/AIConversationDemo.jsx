@@ -5,6 +5,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
   const [actionBar, setActionBar] = useState(null);
+  const [isRestarting, setIsRestarting] = useState(false);
   const chatContainerRef = useRef(null);
 
   // Sparkle SVG Component for Bot Avatar
@@ -28,33 +29,33 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     scrollChatToBottom();
   }, [messages, isTyping, actionBar]);
 
-  // Conversation content with improved flow
+  // Conversation content with FASTER timing
   const conversationSteps = {
     is: [
       {
         type: 'user',
         content: 'Hæ! Er hægt að bóka tíma hjá ykkur um helgina?',
-        delay: 1000
+        delay: 600  // Faster start
       },
       {
         type: 'ai',
         content: 'Hæ! Já, við erum opin alla daga vikunnar. Um helgar erum við opin 10:00-16:00. Get ég hjálpað þér frekar?',
-        delay: 2500
+        delay: 1200  // Much faster AI response
       },
       {
         type: 'user',
         content: 'Frábært! Get ég bókað tíma á laugardaginn?',
-        delay: 1800
+        delay: 800  // Faster user reply
       },
       {
         type: 'action',
         content: 'Tengist bókunarkerfi...',
-        delay: 1200
+        delay: 600  // Quick action
       },
       {
         type: 'ai',
         content: 'Auðvitað! Ég sé að það eru laus tímabil á laugardaginn. Viltu klukkan 11:00 eða 14:30?',
-        delay: 2000,
+        delay: 1000,  // Faster final response
         hasButton: true,
         buttonText: 'Velja 11:00'
       }
@@ -63,27 +64,27 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
       {
         type: 'user',
         content: 'Hi! Is it possible to book an appointment with you over the weekend?',
-        delay: 1000
+        delay: 600
       },
       {
         type: 'ai',
         content: 'Hi! Yes, we are open every day of the week. On weekends we are open 10:00-16:00. Can I help you further?',
-        delay: 2500
+        delay: 1200
       },
       {
         type: 'user',
         content: 'Great! Can I book an appointment for Saturday?',
-        delay: 1800
+        delay: 800
       },
       {
         type: 'action',
         content: 'Connecting to booking system...',
-        delay: 1200
+        delay: 600
       },
       {
         type: 'ai',
         content: 'Of course! I can see available slots for Saturday. Would you prefer 11:00 or 14:30?',
-        delay: 2000,
+        delay: 1000,
         hasButton: true,
         buttonText: 'Choose 11:00'
       }
@@ -92,7 +93,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
   const steps = conversationSteps[currentLanguage];
 
-  // Auto-play conversation with proper timing
+  // Auto-play conversation with FASTER timing
   useEffect(() => {
     if (currentStep >= steps.length) return;
 
@@ -108,7 +109,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         return;
       }
 
-      // Show typing indicator for AI messages
+      // Show typing indicator for AI messages - FASTER
       if (step.type === 'ai') {
         setIsTyping(true);
         setTimeout(() => {
@@ -118,7 +119,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           }]);
           setIsTyping(false);
           setCurrentStep(prev => prev + 1);
-        }, 600);  // <-- CHANGED from 1000 to 600
+        }, 400);  // Much faster typing - was 600ms
       } else {
         // User messages appear instantly
         setMessages(prev => [...prev, {
@@ -127,17 +128,27 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         }]);
         setCurrentStep(prev => prev + 1);
       }
-    }, currentStep === 0 ? 800 : step.delay);
+    }, currentStep === 0 ? 500 : step.delay);
 
     return () => clearTimeout(timer);
   }, [currentStep, steps, currentLanguage]);
 
-  // Reset conversation
+  // Smooth restart with fade out/in animation
   const resetConversation = () => {
-    setMessages([]);
-    setCurrentStep(0);
-    setIsTyping(false);
-    setActionBar(null);
+    setIsRestarting(true);
+    
+    // Fade out current messages
+    setTimeout(() => {
+      setMessages([]);
+      setCurrentStep(0);
+      setIsTyping(false);
+      setActionBar(null);
+      
+      // Fade back in
+      setTimeout(() => {
+        setIsRestarting(false);
+      }, 200);
+    }, 300);
   };
 
   // Reset when language changes
@@ -145,10 +156,10 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     resetConversation();
   }, [currentLanguage]);
 
-  // Auto-reset after completion - LONGER pause at the end
+  // Auto-reset after completion - FASTER restart
   useEffect(() => {
     if (currentStep >= steps.length) {
-      const resetTimer = setTimeout(resetConversation, 8000); // Increased from 4000 to 8000ms (8 seconds)
+      const resetTimer = setTimeout(resetConversation, 4000);  // Reduced from 8000 to 4000ms
       return () => clearTimeout(resetTimer);
     }
   }, [currentStep, steps.length]);
@@ -161,7 +172,9 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         {/* Messages Area - Scrollable Container */}
         <div 
           ref={chatContainerRef}
-          className="h-96 overflow-y-auto p-6 space-y-4 scrollbar-hide"
+          className={`h-96 overflow-y-auto p-6 space-y-4 scrollbar-hide transition-opacity duration-300 ${
+            isRestarting ? 'opacity-0' : 'opacity-100'
+          }`}
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
@@ -175,7 +188,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                 message.type === 'user' ? 'flex-row' : 'flex-row-reverse'
               }`}
               style={{ 
-                animation: 'slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)' 
+                animation: 'slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)' // Faster animation
               }}
             >
               {/* Avatar - User on LEFT, Bot on RIGHT */}
@@ -219,7 +232,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
           {/* Typing Indicator */}
           {isTyping && (
-            <div className="flex items-end gap-3 flex-row-reverse" style={{ animation: 'slideInUp 0.3s ease-out' }}>
+            <div className="flex items-end gap-3 flex-row-reverse" style={{ animation: 'slideInUp 0.2s ease-out' }}>
               <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-400 via-orange-500 to-pink-500 flex items-center justify-center shadow-lg">
                 <SparkleIcon />
               </div>
@@ -235,7 +248,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
           {/* Action Bar */}
           {actionBar && (
-            <div className="flex justify-center" style={{ animation: 'fadeInScale 0.3s ease-out' }}>
+            <div className="flex justify-center" style={{ animation: 'fadeInScale 0.2s ease-out' }}>
               <div className="bg-gradient-to-r from-orange-100/80 via-orange-50/80 to-pink-100/80 backdrop-blur-sm border border-orange-200/50 text-orange-700 px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-md">
                 <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full animate-spin"></div>
                 {actionBar}
@@ -254,7 +267,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         @keyframes slideInUp {
           from {
             opacity: 0;
-            transform: translateY(15px) scale(0.95);
+            transform: translateY(12px) scale(0.97);
           }
           to {
             opacity: 1;
@@ -265,7 +278,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         @keyframes fadeInScale {
           from {
             opacity: 0;
-            transform: scale(0.9);
+            transform: scale(0.95);
           }
           to {
             opacity: 1;
