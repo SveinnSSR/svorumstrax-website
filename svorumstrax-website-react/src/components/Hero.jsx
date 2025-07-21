@@ -1,3 +1,5 @@
+import outboundPhone from '../assets/images/outbound-phone.png'
+
 const Hero = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
@@ -84,7 +86,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   {/* Phone image */}
                   <div className="relative bg-white rounded-3xl p-8 shadow-2xl">
                     <img 
-                      src="/src/assets/images/outbound-phone.png" 
+                      src={outboundPhone} 
                       alt="Phone interface showing customer service features"
                       className="w-full h-auto max-w-sm mx-auto drop-shadow-lg"
                     />
