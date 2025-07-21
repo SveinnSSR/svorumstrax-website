@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 
 const AIConversationDemo = ({ currentLanguage = 'is' }) => {
@@ -85,8 +86,8 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         type: 'ai',
         content: 'Of course! I can see available slots for Saturday. Would you prefer 11:00 or 14:30?',
         delay: 1000,
-        hasButton: true,
-        buttonText: 'Choose 11:00'
+        hasButtons: true,
+        buttons: ['Choose 11:00', 'Choose 14:30']
       }
     ]
   };
@@ -217,8 +218,22 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                 >
                   {message.content}
                   
-                  {/* Action Button */}
-                  {message.hasButton && (
+                  {/* Action Buttons - Multiple Options */}
+                  {message.hasButtons && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {message.buttons.map((buttonText, buttonIndex) => (
+                        <button 
+                          key={buttonIndex}
+                          className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200"
+                        >
+                          {buttonText}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {/* Legacy single button support */}
+                  {message.hasButton && !message.hasButtons && (
                     <div className="mt-4">
                       <button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200">
                         {message.buttonText}
