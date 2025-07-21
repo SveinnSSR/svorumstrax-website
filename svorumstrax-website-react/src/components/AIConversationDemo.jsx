@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 
 const AIConversationDemo = ({ currentLanguage = 'is' }) => {
@@ -30,35 +29,35 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     scrollChatToBottom();
   }, [messages, isTyping, actionBar]);
 
-  // Conversation content with FASTER timing
+  // Conversation content with FASTER timing and MULTIPLE BUTTONS
   const conversationSteps = {
     is: [
       {
         type: 'user',
         content: 'Hæ! Er hægt að bóka tíma hjá ykkur um helgina?',
-        delay: 600  // Faster start
+        delay: 600
       },
       {
         type: 'ai',
         content: 'Hæ! Já, við erum opin alla daga vikunnar. Um helgar erum við opin 10:00-16:00. Get ég hjálpað þér frekar?',
-        delay: 1200  // Much faster AI response
+        delay: 1200
       },
       {
         type: 'user',
         content: 'Frábært! Get ég bókað tíma á laugardaginn?',
-        delay: 800  // Faster user reply
+        delay: 800
       },
       {
         type: 'action',
         content: 'Tengist bókunarkerfi...',
-        delay: 600  // Quick action
+        delay: 600
       },
       {
         type: 'ai',
         content: 'Auðvitað! Ég sé að það eru laus tímabil á laugardaginn. Viltu klukkan 11:00 eða 14:30?',
-        delay: 1000,  // Faster final response
-        hasButton: true,
-        buttonText: 'Velja 11:00'
+        delay: 1000,
+        hasButtons: true,
+        buttons: ['Velja 11:00', 'Velja 14:30']
       }
     ],
     en: [
@@ -120,7 +119,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           }]);
           setIsTyping(false);
           setCurrentStep(prev => prev + 1);
-        }, 400);  // Much faster typing - was 600ms
+        }, 400);  // Much faster typing
       } else {
         // User messages appear instantly
         setMessages(prev => [...prev, {
@@ -160,7 +159,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   // Auto-reset after completion - FASTER restart
   useEffect(() => {
     if (currentStep >= steps.length) {
-      const resetTimer = setTimeout(resetConversation, 4000);  // Reduced from 8000 to 4000ms
+      const resetTimer = setTimeout(resetConversation, 4000);
       return () => clearTimeout(resetTimer);
     }
   }, [currentStep, steps.length]);
@@ -189,7 +188,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                 message.type === 'user' ? 'flex-row' : 'flex-row-reverse'
               }`}
               style={{ 
-                animation: 'slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)' // Faster animation
+                animation: 'slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
             >
               {/* Avatar - User on LEFT, Bot on RIGHT */}
@@ -218,8 +217,8 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                 >
                   {message.content}
                   
-                  {/* Action Buttons - Multiple Options */}
-                  {message.hasButtons && (
+                  {/* Multiple Action Buttons */}
+                  {message.hasButtons && message.buttons && (
                     <div className="mt-4 flex flex-wrap gap-2">
                       {message.buttons.map((buttonText, buttonIndex) => (
                         <button 
@@ -229,15 +228,6 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                           {buttonText}
                         </button>
                       ))}
-                    </div>
-                  )}
-                  
-                  {/* Legacy single button support */}
-                  {message.hasButton && !message.hasButtons && (
-                    <div className="mt-4">
-                      <button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200">
-                        {message.buttonText}
-                      </button>
                     </div>
                   )}
                 </div>
