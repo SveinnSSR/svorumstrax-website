@@ -44,8 +44,8 @@ const Hero = ({ currentLanguage, onContactClick }) => {
             <div className="text-center min-h-[600px] flex flex-col justify-center">
               
               {/* Premium subtitle badge */}
-              <div className="inline-block bg-orange-500/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-orange-400/20 mx-auto">
-                <span className="text-orange-300 font-semibold text-sm tracking-wide uppercase">
+              <div className="inline-block bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-white/20 mx-auto">
+                <span className="text-white font-semibold text-sm tracking-wide uppercase">
                   Lausnir fyrir þjónustuver
                 </span>
               </div>
