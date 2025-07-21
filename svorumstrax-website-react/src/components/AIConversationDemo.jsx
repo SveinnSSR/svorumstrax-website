@@ -5,7 +5,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
   const [actionBar, setActionBar] = useState(null);
-  const messagesEndRef = useRef(null);
+  const chatContainerRef = useRef(null);
 
   // Sparkle SVG Component for Bot Avatar
   const SparkleIcon = () => (
@@ -16,14 +16,16 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     </svg>
   );
 
-  // Auto-scroll to bottom
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  // Auto-scroll chat container only - NOT the whole page
+  const scrollChatToBottom = () => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   };
 
-  // Scroll to bottom when messages change
+  // Scroll chat when messages change - ONLY the chat container
   useEffect(() => {
-    scrollToBottom();
+    scrollChatToBottom();
   }, [messages, isTyping, actionBar]);
 
   // Conversation content with proper flow
@@ -156,93 +158,90 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
       {/* Seamless Chat Container - No Header */}
       <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 overflow-hidden">
         
-        {/* Messages Area - Invisible Scroll */}
-        <div className="h-96 overflow-hidden p-6 space-y-4 relative">
-          <div 
-            className="space-y-4 overflow-y-auto scrollbar-hide h-full pb-4"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none'
-            }}
-          >
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex items-end gap-3 ${
-                  message.type === 'user' ? 'flex-row' : 'flex-row-reverse'
-                }`}
-                style={{ 
-                  animation: 'slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)' 
-                }}
-              >
-                {/* Avatar - User on LEFT, Bot on RIGHT */}
-                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg ${
-                  message.type === 'user' 
-                    ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600' 
-                    : 'bg-gradient-to-br from-orange-400 via-orange-500 to-pink-500'
-                }`}>
-                  {message.type === 'user' ? (
-                    <span className="text-white text-sm font-bold">K</span>
-                  ) : (
-                    <SparkleIcon />
+        {/* Messages Area - Scrollable Container */}
+        <div 
+          ref={chatContainerRef}
+          className="h-96 overflow-y-auto p-6 space-y-4 scrollbar-hide"
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            scrollBehavior: 'smooth'
+          }}
+        >
+          {messages.map((message) => (
+            <div
+              key={message.id}
+              className={`flex items-end gap-3 ${
+                message.type === 'user' ? 'flex-row' : 'flex-row-reverse'
+              }`}
+              style={{ 
+                animation: 'slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)' 
+              }}
+            >
+              {/* Avatar - User on LEFT, Bot on RIGHT */}
+              <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg ${
+                message.type === 'user' 
+                  ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600' 
+                  : 'bg-gradient-to-br from-orange-400 via-orange-500 to-pink-500'
+              }`}>
+                {message.type === 'user' ? (
+                  <span className="text-white text-sm font-bold">K</span>
+                ) : (
+                  <SparkleIcon />
+                )}
+              </div>
+
+              {/* Message Bubble */}
+              <div className={`max-w-[75%] relative ${
+                message.type === 'user' ? 'mr-12' : 'ml-12'
+              }`}>
+                <div
+                  className={`px-5 py-3 rounded-2xl text-sm font-medium leading-relaxed shadow-lg border backdrop-blur-sm ${
+                    message.type === 'user'
+                      ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 text-white border-blue-200/20 rounded-bl-md'
+                      : 'bg-white/90 text-slate-700 border-gray-200/50 rounded-br-md'
+                  }`}
+                >
+                  {message.content}
+                  
+                  {/* Action Button */}
+                  {message.hasButton && (
+                    <div className="mt-4">
+                      <button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200">
+                        {message.buttonText}
+                      </button>
+                    </div>
                   )}
                 </div>
+              </div>
+            </div>
+          ))}
 
-                {/* Message Bubble */}
-                <div className={`max-w-[75%] relative ${
-                  message.type === 'user' ? 'mr-12' : 'ml-12'
-                }`}>
-                  <div
-                    className={`px-5 py-3 rounded-2xl text-sm font-medium leading-relaxed shadow-lg border backdrop-blur-sm ${
-                      message.type === 'user'
-                        ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 text-white border-blue-200/20 rounded-bl-md'
-                        : 'bg-white/90 text-slate-700 border-gray-200/50 rounded-br-md'
-                    }`}
-                  >
-                    {message.content}
-                    
-                    {/* Action Button */}
-                    {message.hasButton && (
-                      <div className="mt-4">
-                        <button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200">
-                          {message.buttonText}
-                        </button>
-                      </div>
-                    )}
-                  </div>
+          {/* Typing Indicator */}
+          {isTyping && (
+            <div className="flex items-end gap-3 flex-row-reverse" style={{ animation: 'slideInUp 0.3s ease-out' }}>
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-400 via-orange-500 to-pink-500 flex items-center justify-center shadow-lg">
+                <SparkleIcon />
+              </div>
+              <div className="bg-white/90 backdrop-blur-sm border border-gray-200/50 px-5 py-3 rounded-2xl rounded-br-md shadow-lg ml-12">
+                <div className="flex gap-1">
+                  <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                  <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                 </div>
               </div>
-            ))}
+            </div>
+          )}
 
-            {/* Typing Indicator */}
-            {isTyping && (
-              <div className="flex items-end gap-3 flex-row-reverse" style={{ animation: 'slideInUp 0.3s ease-out' }}>
-                <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-400 via-orange-500 to-pink-500 flex items-center justify-center shadow-lg">
-                  <SparkleIcon />
-                </div>
-                <div className="bg-white/90 backdrop-blur-sm border border-gray-200/50 px-5 py-3 rounded-2xl rounded-br-md shadow-lg ml-12">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                    <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
-                  </div>
-                </div>
+          {/* Action Bar */}
+          {actionBar && (
+            <div className="flex justify-center" style={{ animation: 'fadeInScale 0.3s ease-out' }}>
+              <div className="bg-gradient-to-r from-orange-100/80 via-orange-50/80 to-pink-100/80 backdrop-blur-sm border border-orange-200/50 text-orange-700 px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-md">
+                <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full animate-spin"></div>
+                {actionBar}
               </div>
-            )}
-
-            {/* Action Bar */}
-            {actionBar && (
-              <div className="flex justify-center" style={{ animation: 'fadeInScale 0.3s ease-out' }}>
-                <div className="bg-gradient-to-r from-orange-100/80 via-orange-50/80 to-pink-100/80 backdrop-blur-sm border border-orange-200/50 text-orange-700 px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-md">
-                  <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full animate-spin"></div>
-                  {actionBar}
-                </div>
-              </div>
-            )}
-
-            {/* Invisible scroll anchor */}
-            <div ref={messagesEndRef} />
-          </div>
+            </div>
+          )}
         </div>
       </div>
 
