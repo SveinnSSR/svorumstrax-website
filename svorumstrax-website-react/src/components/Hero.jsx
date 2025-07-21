@@ -85,8 +85,8 @@ const Hero = ({ currentLanguage, onContactClick }) => {
           <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-gradient-to-bl from-indigo-400/15 via-indigo-500/8 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}}></div>
         </div>
         
-        {/* Subtle noise texture overlay */}
-        <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Ccircle cx="7" cy="7" r="1"/%3E%3Ccircle cx="27" cy="7" r="1"/%3E%3Ccircle cx="47" cy="7" r="1"/%3E%3Ccircle cx="7" cy="27" r="1"/%3E%3Ccircle cx="27" cy="27" r="1"/%3E%3Ccircle cx="47" cy="27" r="1"/%3E%3Ccircle cx="7" cy="47" r="1"/%3E%3Ccircle cx="27" cy="47" r="1"/%3E%3Ccircle cx="47" cy="47" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+        {/* Additional subtle overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/5 to-slate-900/10"></div>
       </div>
 
       {/* Content */}
