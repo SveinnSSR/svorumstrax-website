@@ -8,31 +8,23 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       services: [
         {
           title: 'Símsvörun',
-          description: 'Sérhæfum okkur í símsvörun fyrir íslensk fyrirtæki með þjálfuðum sérfræðingum.',
-          icon: 'PhoneIcon',
-          gradient: 'from-emerald-400 to-emerald-600',
-          background: 'from-emerald-50 to-emerald-100/50'
+          description: 'Íslenskir sérfræðingar svara í þínu nafni með þjálfun í þínum rekstri',
+          highlight: 'Mannleg þjónusta'
         },
         {
           title: 'Gervigreindarfulltrúi',
-          description: 'AI þjálfuð í þínu fyrirtæki - spjall og raddþjónusta allan sólarhringinn.',
-          icon: 'ChatBubbleLeftRightIcon',
-          gradient: 'from-orange-400 to-orange-600',
-          background: 'from-orange-50 to-orange-100/50'
+          description: 'AI þjálfuð í þínu fyrirtæki vinnur allan sólarhringinn',
+          highlight: '24/7 þjónusta'
         },
         {
           title: 'Úthringingar',
-          description: 'Sérhæfð söluteymi fyrir B2B og B2C með nýjustu tækni og CRM.',
-          icon: 'MegaphoneIcon',
-          gradient: 'from-blue-400 to-blue-600',
-          background: 'from-blue-50 to-blue-100/50'
+          description: 'Sérhæfð söluteymi í Barcelona með nýjustu tækni',
+          highlight: 'Söluaukning'
         },
         {
           title: 'Stöðugildi',
-          description: 'Leigðu sérhæfðan starfsmann án umsýslu sem verður hluti af þínu teymi.',
-          icon: 'UserGroupIcon',
-          gradient: 'from-purple-400 to-purple-600',
-          background: 'from-purple-50 to-purple-100/50'
+          description: 'Þjálfaðir starfsmenn án umsýslu sem hluti af þínu teymi',
+          highlight: 'Fullur stjórn'
         }
       ]
     },
@@ -44,31 +36,23 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       services: [
         {
           title: 'Phone Support',
-          description: 'We specialize in phone support for Icelandic companies with trained specialists.',
-          icon: 'PhoneIcon',
-          gradient: 'from-emerald-400 to-emerald-600',
-          background: 'from-emerald-50 to-emerald-100/50'
+          description: 'Icelandic specialists answer on your behalf with training in your business',
+          highlight: 'Human Service'
         },
         {
           title: 'AI Agents',
-          description: 'AI trained in your business - chat and voice service available 24/7.',
-          icon: 'ChatBubbleLeftRightIcon',
-          gradient: 'from-orange-400 to-orange-600',
-          background: 'from-orange-50 to-orange-100/50'
+          description: 'AI trained in your business works around the clock',
+          highlight: '24/7 Service'
         },
         {
           title: 'Outbound Sales',
-          description: 'Specialized sales teams for B2B and B2C with latest technology and CRM.',
-          icon: 'MegaphoneIcon',
-          gradient: 'from-blue-400 to-blue-600',
-          background: 'from-blue-50 to-blue-100/50'
+          description: 'Specialized sales teams in Barcelona with latest technology',
+          highlight: 'Sales Growth'
         },
         {
           title: 'Dedicated Staff',
-          description: 'Rent specialized employee without administration who becomes part of your team.',
-          icon: 'UserGroupIcon',
-          gradient: 'from-purple-400 to-purple-600',
-          background: 'from-purple-50 to-purple-100/50'
+          description: 'Trained employees without administration as part of your team',
+          highlight: 'Full Control'
         }
       ]
     }
@@ -76,126 +60,130 @@ const Hero = ({ currentLanguage, onContactClick }) => {
 
   const currentContent = content[currentLanguage]
 
-  // Icon components mapping - Professional style
-  const iconComponents = {
-    PhoneIcon: ({ className }) => (
-      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-      </svg>
-    ),
-    ChatBubbleLeftRightIcon: ({ className }) => (
-      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        <circle cx="9" cy="10" r="1" fill="currentColor"/>
-        <circle cx="12" cy="10" r="1" fill="currentColor"/>
-        <circle cx="15" cy="10" r="1" fill="currentColor"/>
-      </svg>
-    ),
-    MegaphoneIcon: ({ className }) => (
-      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 2 11 13"></path>
-        <path d="M22 2 15 22 11 13 2 9z"></path>
-      </svg>
-    ),
-    UserGroupIcon: ({ className }) => (
-      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="8" r="5"/>
-        <path d="M20 21a8 8 0 1 0-16 0"/>
-        <path d="M16 11l2 2 4-4"/>
-      </svg>
-    )
-  }
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100/50 pt-16">
-      {/* Premium Hero Section - Inspired by Freddy AI */}
-      <section className="relative overflow-hidden">
-        {/* Subtle background effects */}
+    <div className="min-h-screen relative pt-16">
+      {/* Flowing Gradient Background - Inspired by Menni/Retell AI */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Base gradient similar to Menni's dark with colors */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+        
+        {/* Flowing gradient shapes - blended colors */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(59,130,246,0.05)_0%,_transparent_50%)]"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,_rgba(251,146,60,0.05)_0%,_transparent_50%)]"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_10%,_rgba(139,92,246,0.05)_0%,_transparent_50%)]"></div>
+          {/* Orange flow - top right */}
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-bl from-orange-400/30 via-orange-500/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
+          
+          {/* Blue flow - middle left */}
+          <div className="absolute top-1/3 -left-40 w-80 h-80 bg-gradient-to-tr from-blue-400/25 via-blue-500/15 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          
+          {/* Green flow - bottom center */}
+          <div className="absolute -bottom-40 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-t from-emerald-400/20 via-emerald-500/10 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+          
+          {/* Purple accent - top left */}
+          <div className="absolute -top-20 -left-20 w-64 h-64 bg-gradient-to-br from-purple-400/20 via-purple-500/10 to-transparent rounded-full blur-2xl animate-pulse" style={{animationDelay: '0.5s'}}></div>
+          
+          {/* Additional flowing shapes for depth */}
+          <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-gradient-to-bl from-indigo-400/15 via-indigo-500/8 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}}></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-          <div className="text-center">
-            {/* Premium subtitle badge */}
-            <div className="inline-block bg-gradient-to-r from-orange-100/80 to-orange-200/60 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-orange-200/30">
-              <span className="text-orange-800 font-semibold text-sm tracking-wide uppercase">
-                Lausnir fyrir þjónustuver
-              </span>
-            </div>
-            
-            {/* Premium title with gradient text effect - like Freddy AI */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-8 leading-tight">
-              <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">
-                {currentContent.title}
-              </span>
-            </h1>
-            
-            {/* Subtitle */}
-            <p className="text-xl sm:text-2xl text-slate-600 leading-relaxed max-w-5xl mx-auto mb-12">
-              {currentContent.subtitle}
-            </p>
-            
-            {/* Premium buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
-              <button
-                onClick={() => onContactClick('services')}
-                className="bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-white font-semibold py-4 px-10 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg"
-              >
-                {currentContent.primaryButton}
-              </button>
+        {/* Subtle noise texture overlay */}
+        <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Ccircle cx="7" cy="7" r="1"/%3E%3Ccircle cx="27" cy="7" r="1"/%3E%3Ccircle cx="47" cy="7" r="1"/%3E%3Ccircle cx="7" cy="27" r="1"/%3E%3Ccircle cx="27" cy="27" r="1"/%3E%3Ccircle cx="47" cy="27" r="1"/%3E%3Ccircle cx="7" cy="47" r="1"/%3E%3Ccircle cx="27" cy="47" r="1"/%3E%3Ccircle cx="47" cy="47" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Premium Hero Section */}
+        <section className="relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div className="text-center">
+              {/* Premium subtitle badge */}
+              <div className="inline-block bg-orange-500/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-orange-400/20">
+                <span className="text-orange-300 font-semibold text-sm tracking-wide uppercase">
+                  Lausnir fyrir þjónustuver
+                </span>
+              </div>
               
-              <button
-                onClick={() => onContactClick('consultation')}
-                className="bg-white hover:bg-gray-50 text-slate-800 font-semibold py-4 px-10 rounded-full border border-slate-200 hover:border-slate-300 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg"
-              >
-                {currentContent.secondaryButton}
-              </button>
+              {/* Premium title with gradient text */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-8 leading-tight">
+                <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
+                  {currentContent.title}
+                </span>
+              </h1>
+              
+              {/* Subtitle */}
+              <p className="text-xl sm:text-2xl text-slate-300 leading-relaxed max-w-5xl mx-auto mb-12">
+                {currentContent.subtitle}
+              </p>
+              
+              {/* Premium buttons */}
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <button
+                  onClick={() => onContactClick('services')}
+                  className="bg-white hover:bg-gray-100 text-slate-900 font-semibold py-4 px-10 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg"
+                >
+                  {currentContent.primaryButton}
+                </button>
+                
+                <button
+                  onClick={() => onContactClick('consultation')}
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold py-4 px-10 rounded-full border border-white/20 hover:border-white/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg"
+                >
+                  {currentContent.secondaryButton}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
-      {/* Premium Service Cards - Much more professional */}
-      <section className="relative py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {currentContent.services.map((service, index) => {
-              const IconComponent = iconComponents[service.icon]
-              
-              return (
-                <div 
-                  key={index}
-                  className={`relative bg-gradient-to-br ${service.background} backdrop-blur-sm rounded-2xl p-8 border border-white/60 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer group overflow-hidden`}
-                  onClick={() => onContactClick('service-info')}
-                >
-                  {/* Subtle background decoration */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  {/* Icon with premium gradient */}
-                  <div className="relative mb-6">
-                    <div className={`w-14 h-14 bg-gradient-to-r ${service.gradient} rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="w-7 h-7 text-white" />
-                    </div>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="relative">
-                    <h3 className="text-xl font-bold text-slate-900 mb-4 leading-tight">
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-600 leading-relaxed text-sm">
-                      {service.description}
-                    </p>
-                  </div>
-                  
-                  {/* Subtle accent line */}
-                  <div className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+      {/* Professional Services Overview - More business-focused */}
+      <section className="relative bg-white/95 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
+              {currentLanguage === 'is' ? 'Þjónustulausnir sem skila árangri' : 'Service Solutions That Deliver Results'}
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              {currentLanguage === 'is' 
+                ? 'Veljið á milli mannlegrar þjónustu, gervigreindar eða blöndu af hvoru tveggja. Við aðlögum okkur að þínum þörfum.'
+                : 'Choose between human service, AI, or a combination of both. We adapt to your needs.'
+              }
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            {currentContent.services.map((service, index) => (
+              <div 
+                key={index}
+                className="group relative bg-white rounded-xl p-8 shadow-sm border border-slate-200/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+                onClick={() => onContactClick('service-info')}
+              >
+                {/* Service highlight badge */}
+                <div className="inline-block bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                  {service.highlight}
                 </div>
-              )
-            })}
+                
+                {/* Content */}
+                <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight">
+                  {service.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed text-sm mb-6">
+                  {service.description}
+                </p>
+                
+                {/* Learn more link */}
+                <div className="flex items-center text-slate-400 group-hover:text-slate-600 transition-colors duration-300">
+                  <span className="text-sm font-medium">
+                    {currentLanguage === 'is' ? 'Frekari upplýsingar' : 'Learn more'}
+                  </span>
+                  <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+                
+                {/* Hover effect */}
+                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-slate-200 to-slate-300 rounded-b-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
