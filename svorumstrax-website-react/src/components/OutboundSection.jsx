@@ -6,7 +6,7 @@ import {
   UserGroupIcon
 } from '@heroicons/react/24/outline'
 // You'll need to add a mobile CRM mockup image to assets/images/
-// import crmMobileImage from '../assets/images/crm-mobile.png'
+import crmMobileImage from '../assets/images/outbound-phone.png'
 
 const OutboundSection = ({ currentLanguage, onContactClick }) => {
   const content = {
