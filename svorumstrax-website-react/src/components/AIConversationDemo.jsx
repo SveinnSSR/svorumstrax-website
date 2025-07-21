@@ -118,7 +118,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           }]);
           setIsTyping(false);
           setCurrentStep(prev => prev + 1);
-        }, 1000);
+        }, 600);  // <-- CHANGED from 1000 to 600
       } else {
         // User messages appear instantly
         setMessages(prev => [...prev, {
