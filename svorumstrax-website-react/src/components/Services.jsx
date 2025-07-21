@@ -63,7 +63,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
           </p>
         </div>
         
-        {/* New layout with photo space */}
+        {/* Cleaner layout without busy stats overlay */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Services Cards */}
           <div className="space-y-8">
@@ -99,7 +99,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
             })}
           </div>
           
-          {/* Barcelona Office Image */}
+          {/* Clean Barcelona Office Image - No busy overlays */}
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
@@ -110,29 +110,9 @@ const Services = ({ currentLanguage, onContactClick }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-orange-900/20 via-transparent to-transparent"></div>
             </div>
             
-            {/* Stats overlay */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-6 shadow-lg border border-orange-200/50">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
-                  <UsersIcon className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-gray-900">35+</div>
-                  <div className="text-sm text-gray-600">Sérfræðingar</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="absolute -top-6 -right-6 bg-white rounded-xl p-6 shadow-lg border border-orange-200/50">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center">
-                  <PhoneIcon className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-gray-900">100+</div>
-                  <div className="text-sm text-gray-600">Fyrirtæki</div>
-                </div>
-              </div>
+            {/* Just one subtle accent element */}
+            <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg">
+              <UsersIcon className="w-10 h-10 text-white" />
             </div>
           </div>
         </div>

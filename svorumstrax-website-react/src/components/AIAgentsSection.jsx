@@ -112,23 +112,29 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
 
   const currentContent = content[currentLanguage]
 
-  // Custom chat SVG component
+  // Chat SVG component - NOW matches the feature icon gradient (orange)
   const ChatSVG = ({ className }) => (
     <svg 
       width="36" 
       height="36" 
       viewBox="0 0 24 24" 
       fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
       className={className}
     >
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-      <circle cx="9" cy="10" r="1" fill="currentColor"/>
-      <circle cx="12" cy="10" r="1" fill="currentColor"/>
-      <circle cx="15" cy="10" r="1" fill="currentColor"/>
+      <defs>
+        <linearGradient id="chatGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FF9A3C" />
+          <stop offset="50%" stopColor="#FFA947" />
+          <stop offset="100%" stopColor="#FFB84D" />
+        </linearGradient>
+      </defs>
+      <path 
+        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" 
+        fill="url(#chatGradient)"
+      />
+      <circle cx="9" cy="10" r="1" fill="white"/>
+      <circle cx="12" cy="10" r="1" fill="white"/>
+      <circle cx="15" cy="10" r="1" fill="white"/>
     </svg>
   )
 
@@ -187,8 +193,6 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
             </div>
           </div>
         </div>
-
-
 
         {/* Platforms Section */}
         <div className="mb-20">

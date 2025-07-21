@@ -1,3 +1,4 @@
+
 import { ChatBubbleLeftRightIcon, UsersIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
 
 const ChoiceSection = ({ currentLanguage, onContactClick }) => {
@@ -21,8 +22,8 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
   const currentContent = content[currentLanguage]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-pink-500 relative overflow-hidden">
-      {/* Background Effects */}
+    <section className="py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 relative overflow-hidden">
+      {/* Background Effects - More cohesive with brand orange */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.3)_0%,_transparent_50%)]"></div>
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_75%_75%,_rgba(255,255,255,0.2)_0%,_transparent_50%)]"></div>
