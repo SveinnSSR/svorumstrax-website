@@ -13,24 +13,24 @@ import AIConversationDemo from './AIConversationDemo'
 const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
-      title: 'Gervigreindarfulltrúi',
-      subtitle: 'Nútíma AI tækni þjálfuð í þínu fyrirtæki. Vinnur fyrir þig allan sólarhringinn með rauntímagreiningu og bakendateningu.',
-      mainDescription: 'Gervigreind sem þekkir þitt fyrirtæki út og inn. Svarar viðskiptavinum samstundis og framkvæmir aðgerðir í þínum kerfum.',
+      title: 'Gervigreindarfulltrúar',
+      subtitle: 'Gervigreind þjálfuð í þínu fyrirtæki sem svarar allan sólarhringinn. Veitir nákvæmar upplýsingar, framkvæmir aðgerðir og hjálpar til við sölu.',
+      mainDescription: 'Sérhæfð gervigreind sem þekkir þinn rekstur út og inn. Tekur við pöntunum, bókar tíma og veitir innsýn í hvað viðskiptavinir þurfa.',
       features: [
         {
           icon: ClockIcon,
-          title: '24/7 þjónusta á öllum tungumálum',
-          description: 'Svarar allan sólarhringinn á íslensku, ensku, dönsku og fleiri tungumálum'
+          title: '24/7 þjónusta - aldrei í fríi',
+          description: 'Svarar á íslensku, ensku og öðrum tungumálum. Vinnur þegar þú sefur.'
         },
         {
           icon: CogIcon,
           title: 'Samþætt við þín kerfi',
-          description: 'Tengist beint við þín kerfi - bókar tíma, uppfærir upplýsingar og framkvæmir aðgerðir'
+          description: 'Tengist bókunarkerfum, CRM og öðrum kerfum. Framkvæmir aðgerðir í rauntíma.'
         },
         {
           icon: ChartBarIcon,
-          title: 'Rauntímagreiningar',
-          description: 'Fylgist með öllum samskiptum og veitir innsýn í hvað viðskiptavinir spyrja um'
+          title: 'Þjálfuð í þínu fyrirtæki',
+          description: 'Þekkir þínar vörur, verð og reglur. Aukin sala og betri þjónusta.'
         }
       ],
       platforms: [
@@ -52,33 +52,33 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
       ],
       benefits: [
         'Hentar best fyrir',
-        'Upplýsingagjöf, bókanir, greiningar og fyrstu samskipti',
-        '100+ Tungumál',
+        'Upplýsingagjöf, bókanir, sala og fyrstu samskipti',
         '24/7 Þjónusta',
-        'Samtímis samskipti',
-        'CRM samþætting'
+        'Aukin sala',
+        'Betri þjónusta',
+        'Samþætt við kerfi'
       ],
       button: 'Frekari upplýsingar'
     },
     en: {
       title: 'AI Agents',
-      subtitle: 'Modern AI technology trained in your business. Works for you 24/7 with real-time analytics and backend integration.',
-      mainDescription: 'AI that knows your business inside and out. Answers customers instantly and executes actions in your systems.',
+      subtitle: 'AI trained in your business that answers around the clock. Provides accurate information, executes actions and helps with sales.',
+      mainDescription: 'Specialized AI that knows your business inside and out. Takes orders, books appointments and provides insights into what customers need.',
       features: [
         {
           icon: ClockIcon,
-          title: '24/7 service in all languages',
-          description: 'Answers around the clock in Icelandic, English, Danish and more languages'
+          title: '24/7 service - never off duty',
+          description: 'Answers in Icelandic, English and other languages. Works while you sleep.'
         },
         {
           icon: CogIcon,
           title: 'Integrated with your systems',
-          description: 'Connects directly to your systems - books appointments, updates information and executes actions'
+          description: 'Connects to booking systems, CRM and other systems. Executes actions in real-time.'
         },
         {
           icon: ChartBarIcon,
-          title: 'Real-time analytics',
-          description: 'Monitors all interactions and provides insights into what customers are asking about'
+          title: 'Trained in your business',
+          description: 'Knows your products, prices and rules. Increased sales and better service.'
         }
       ],
       platforms: [
@@ -100,11 +100,11 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
       ],
       benefits: [
         'Best suited for',
-        'Information sharing, bookings, analytics and first contact',
-        '100+ Languages',
+        'Information sharing, bookings, sales and first contact',
         '24/7 Service',
-        'Simultaneous conversations',
-        'CRM integration'
+        'Increased sales',
+        'Better service',
+        'System integration'
       ],
       button: 'Learn More'
     }
@@ -188,31 +188,12 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
 
-        {/* AI Aðstoð Section with Purple */}
-        <div className="mb-20">
-          <div className="bg-gradient-to-r from-purple-100 to-indigo-100 rounded-2xl p-8 text-center">
-            <div className="flex items-center justify-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
-                <ChatSVG className="w-8 h-8 text-white" />
-              </div>
-            </div>
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              AI Aðstoð
-            </h3>
-            <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-              Spjallaðu við gervigreind sem svarar samstundis og hjálpar þér að finna rétta lausnina
-            </p>
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-6 py-3 rounded-full font-medium">
-              <ChatSVG className="w-5 h-5" />
-              <span>Prófa AI spjallið</span>
-            </div>
-          </div>
-        </div>
+
 
         {/* Platforms Section */}
         <div className="mb-20">
           <h3 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            Virkar á öllum helstu kerfum
+            Virkar á öllum samskiptaleiðum
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {currentContent.platforms.map((platform, index) => {

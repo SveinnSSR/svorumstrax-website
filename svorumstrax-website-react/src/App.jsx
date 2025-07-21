@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import Services from './components/Services'
 import AIAgentsSection from './components/AIAgentsSection'
 import ChoiceSection from './components/ChoiceSection'
+import OutboundSection from './components/OutboundSection'
 import JobsSection from './components/JobsSection'
 import TrustSection from './components/TrustSection'
 import TestimonialsSection from './components/TestimonialsSection'
@@ -57,6 +58,11 @@ function App() {
       />
       
       <ChoiceSection 
+        currentLanguage={currentLanguage}
+        onContactClick={openContactModal}
+      />
+
+      <OutboundSection 
         currentLanguage={currentLanguage}
         onContactClick={openContactModal}
       />
