@@ -1,46 +1,53 @@
-import barcelonaOfficeImage from '../assets/images/barcelona-office.png'
+import { 
+  PhoneIcon, 
+  ChartBarIcon,
+  BuildingOffice2Icon,
+  UserGroupIcon
+} from '@heroicons/react/24/outline'
 
-const Services = ({ currentLanguage, onContactClick }) => {
+const OutboundSection = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
-      title: 'Símsvörun',
-      subtitle: 'Áreiðanleg og persónuleg símsvörun síðan 2019. Við bjóðum upp á sérhæfða símsvörun, vöktun tölvupósts og gervigreindarlausnir sem bæta þjónustu og auka afköst.',
-      services: [
+      title: 'Úthringingar',
+      subtitle: 'Sérhæfð söluteymi með reynslu af B2B og B2C markaði. Notum nýjustu tækni og CRM kerfi til að hámarka árangur.',
+      mainDescription: 'Reynsla og tækni sem skilar árangri. Við höfum séð um úthringiátök og verkefni fyrir mörg af stærstu fyrirtækjum landsins.',
+      features: [
         {
-          title: 'Almenn símsvörun',
-          description: 'Einföld og áreiðanleg þjónusta. Við svörum í þínu nafni, sendum símtöl áfram á réttan starfsmann og tökum skilaboð. Léttir álag á starfsfólki og hægt að setja upp með stuttum fyrirvara.',
-          accent: 'border-l-teal-500'
+          icon: BuildingOffice2Icon,
+          title: 'B2B og B2C reynsla',
+          description: 'Sérhæfð teymi fyrir báða markaði með djúpa þekkingu á íslenskum viðskiptum'
         },
         {
-          title: 'Þitt eigið þjónustuver',
-          description: 'Heildarlausn með fullkomlega þjálfuðum starfsmönnum sem þekkja þitt fyrirtæki, vörur og þjónustu. Sérhæfðir starfsmenn sem verða hluti af þínu teymi og geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð byggða á þínum upplýsingakerfum.',
-          accent: 'border-l-blue-500'
+          icon: ChartBarIcon,
+          title: 'Nýjasta CRM tækni',
+          description: 'Tengumst við þín kerfi og mælum árangur í rauntíma'
         },
         {
-          title: 'Gervigreindarsvörun í síma',
-          description: 'Nýjustu gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Ef þörf krefur, getur hún alltaf tengt við okkar eða þína þjónustufulltrúa til að tryggja hámarks þjónustugæði.',
-          accent: 'border-l-orange-500'
+          icon: UserGroupIcon,
+          title: 'Öflugt sölufólk með reynslu',
+          description: 'Þjálfað í þínum vörum og þjónustu með áralanga söluþjálfun'
         }
       ]
     },
     en: {
-      title: 'Phone Support',
-      subtitle: 'Reliable and personal phone service since 2019. We offer specialized phone support, email monitoring and AI solutions that improve service and increase efficiency.',
-      services: [
+      title: 'Outbound Calls',
+      subtitle: 'Specialized sales teams with B2B and B2C market experience. We use the latest technology and CRM systems to maximize results.',
+      mainDescription: 'Experience and technology that delivers results. We have handled outbound campaigns and projects for many of the country\'s largest companies.',
+      features: [
         {
-          title: 'General Phone Support',
-          description: 'Simple and reliable service. We answer in your name, forward calls to the right employee and take messages. Reduces staff burden and can be set up with short notice.',
-          accent: 'border-l-teal-500'
+          icon: BuildingOffice2Icon,
+          title: 'B2B and B2C experience',
+          description: 'Specialized teams for both markets with deep knowledge of Icelandic business'
         },
         {
-          title: 'Your Own Service Center',
-          description: 'Complete solution with perfectly trained staff who know your business, products and services. Specialized staff who become part of your team and can answer complex questions, solve problems and provide technical assistance based on your information systems.',
-          accent: 'border-l-blue-500'
+          icon: ChartBarIcon,
+          title: 'Latest CRM technology',
+          description: 'We connect to your systems and measure results in real-time'
         },
         {
-          title: 'AI Phone Support',
-          description: 'Latest AI solutions that answer phone calls around the clock. AI phone support that knows your business, answers inquiries, takes orders and provides information with speed and accuracy. When needed, it can always connect to our or your service representatives to ensure maximum service quality.',
-          accent: 'border-l-orange-500'
+          icon: UserGroupIcon,
+          title: 'Experienced sales professionals',
+          description: 'Trained in your products and services with years of sales training'
         }
       ]
     }
@@ -49,62 +56,76 @@ const Services = ({ currentLanguage, onContactClick }) => {
   const currentContent = content[currentLanguage]
 
   return (
-    <section id="services" className="py-24 bg-white relative overflow-hidden">
-      {/* Subtle background gradient hints - matching hero section */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-br from-blue-50/30 via-teal-50/20 to-transparent"></div>
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-orange-50/30 via-amber-50/20 to-transparent"></div>
-        
-        {/* Subtle floating elements */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-100/20 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-tl from-orange-100/20 to-transparent rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-24 bg-gradient-to-br from-slate-50 to-slate-100/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8 leading-tight">
             {currentContent.title}
           </h2>
-          <p className="text-lg sm:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             {currentContent.subtitle}
           </p>
         </div>
         
-        {/* Two-column layout: Services left, Image right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        {/* Main Content with CRM Mobile Interface */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          {/* Left side - Three services stacked vertically */}
-          <div className="space-y-8">
-            {currentContent.services.map((service, index) => (
-              <div 
-                key={index}
-                className={`bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 ${service.accent} border-l-4`}
-              >
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
+          {/* CRM Mobile Interface Placeholder - Left Side */}
+          <div className="relative order-1 lg:order-1">
+            <div className="relative max-w-sm mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 shadow-2xl">
+              {/* Phone mockup placeholder */}
+              <div className="bg-white rounded-2xl p-6 min-h-[400px] flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <PhoneIcon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-sm text-gray-600 mb-4">CRM Mobile Interface</div>
+                  <div className="space-y-2 text-xs text-left">
+                    <div className="bg-green-100 p-2 rounded text-green-800">✓ Símtal lokið - Fundur bókaður</div>
+                    <div className="bg-blue-100 p-2 rounded text-blue-800">📞 Næsta símtal: 14:30</div>
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
-
-          {/* Right side - Barcelona Office Image */}
-          <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-lg">
-              <img 
-                src={barcelonaOfficeImage} 
-                alt="Barcelona Office" 
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-transparent"></div>
+          
+          {/* Content - Right Side */}
+          <div className="order-2 lg:order-2">
+            <div className="flex items-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
+                <PhoneIcon className="w-8 h-8 text-white" />
+              </div>
+              <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+            </div>
+            
+            <h3 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
+              {currentContent.mainDescription}
+            </h3>
+            
+            <div className="space-y-6">
+              {currentContent.features.map((feature, index) => {
+                const IconComponent = feature.icon
+                return (
+                  <div key={index} className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-gradient-to-r from-blue-100 to-blue-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                      <IconComponent className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-2">{feature.title}</h4>
+                      <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
+
+
       </div>
     </section>
   )
 }
 
-export default Services
+export default OutboundSection

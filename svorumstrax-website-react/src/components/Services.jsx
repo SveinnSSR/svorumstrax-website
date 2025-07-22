@@ -1,4 +1,3 @@
-
 import barcelonaOfficeImage from '../assets/images/barcelona-office.png'
 
 const Services = ({ currentLanguage, onContactClick }) => {
@@ -71,32 +70,36 @@ const Services = ({ currentLanguage, onContactClick }) => {
           </p>
         </div>
         
-        {/* Three cards side by side - sleeker and longer */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {currentContent.services.map((service, index) => (
-            <div 
-              key={index}
-              className={`bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 ${service.accent} border-l-4 min-h-[320px] flex flex-col`}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed flex-grow">
-                {service.description}
-              </p>
-            </div>
-          ))}
-        </div>
+        {/* Two-column layout: Services left, Image right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          
+          {/* Left side - Three services stacked vertically */}
+          <div className="space-y-8">
+            {currentContent.services.map((service, index) => (
+              <div 
+                key={index}
+                className={`bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 ${service.accent} border-l-4`}
+              >
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
 
-        {/* Barcelona Office Image */}
-        <div className="flex justify-center">
-          <div className="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg">
-            <img 
-              src={barcelonaOfficeImage} 
-              alt="Barcelona Office" 
-              className="w-full h-auto object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-transparent"></div>
+          {/* Right side - Barcelona Office Image */}
+          <div className="relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg">
+              <img 
+                src={barcelonaOfficeImage} 
+                alt="Barcelona Office" 
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-transparent"></div>
+            </div>
           </div>
         </div>
       </div>
