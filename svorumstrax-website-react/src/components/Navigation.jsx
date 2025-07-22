@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import svorumStraxLogo from '../assets/images/svorum-strax-logo.svg'
 
 const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -40,10 +41,12 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="#home" className="flex items-center space-x-2">
-              <div className="text-2xl font-bold bg-gradient-to-r from-slate-800 via-blue-700 to-orange-700 bg-clip-text text-transparent">
-                Svörum strax
-              </div>
+            <a href="#home" className="flex items-center">
+              <img 
+                src={svorumStraxLogo} 
+                alt="Svörum strax" 
+                className="h-8 w-auto"
+              />
             </a>
           </div>
 
