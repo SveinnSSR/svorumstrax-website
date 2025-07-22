@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, memo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import customerAvatar from '../assets/images/customer-avatar.png';
 
 const AIConversationDemo = ({ currentLanguage = 'is' }) => {
@@ -11,9 +11,9 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
   // Clean Professional AI Icon
   const AIIcon = () => (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2L16 8L12 14L8 8L12 2Z" fill="#4f46e5"/>
-      <path d="M12 10L16 16L12 22L8 16L12 10Z" fill="#3730a3"/>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2L16 8L12 14L8 8L12 2Z" fill="#3B82F6"/>
+      <path d="M12 10L16 16L12 22L8 16L12 10Z" fill="#1E40AF"/>
     </svg>
   );
 
@@ -89,93 +89,9 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   };
 
   const steps = conversationSteps[currentLanguage];
+
+  // Keep only 3 messages max
   const visibleMessages = messages.slice(-3);
-
-  // Memoized Message Component for Performance
-  const MemoizedMessage = memo(({ message, index }) => (
-    <div
-      className={`flex items-start gap-3 ${
-        message.type === 'user' ? 'flex-row' : 'flex-row-reverse'
-      } opacity-0`}
-      style={{ 
-        animation: `smoothSlideIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) ${index * 0.1}s forwards`,
-        transform: 'translate3d(0,0,0)',
-        willChange: 'transform, opacity'
-      }}
-    >
-      {/* Refined Avatar */}
-      <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
-        message.type === 'user' 
-          ? 'bg-white shadow-sm' 
-          : 'bg-white shadow-sm'
-      }`}>
-        {message.type === 'user' ? (
-          <img 
-            src={customerAvatar} 
-            alt="Customer" 
-            className="w-full h-full rounded-xl object-cover"
-            onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextSibling.style.display = 'flex';
-            }}
-          />
-        ) : (
-          <AIIcon />
-        )}
-        {message.type === 'user' && (
-          <div 
-            className="w-full h-full rounded-xl bg-blue-600 flex items-center justify-center text-white text-sm font-semibold"
-            style={{display: 'none'}}
-          >
-            K
-          </div>
-        )}
-      </div>
-
-      {/* Professional Message Bubble */}
-      <div className="max-w-[75%] min-w-[30%]">
-        <div
-          className={`px-5 py-3 rounded-xl shadow-sm ${
-            message.type === 'user'
-              ? 'bg-blue-600 text-white'
-              : 'bg-white/95 backdrop-blur-sm border border-gray-100 text-gray-800'
-          }`}
-          style={{
-            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
-            fontSize: '15px',
-            lineHeight: '1.4',
-            fontWeight: '500',
-            WebkitFontSmoothing: 'subpixel-antialiased',
-            MozOsxFontSmoothing: 'grayscale',
-            textRendering: 'optimizeLegibility',
-            letterSpacing: '-0.005em'
-          }}
-        >
-          {message.content}
-          
-          {/* Refined Action Buttons */}
-          {message.hasButtons && message.buttons && (
-            <div className="mt-3 flex flex-wrap gap-2">
-              {message.buttons.map((buttonText, buttonIndex) => (
-                <button 
-                  key={buttonIndex}
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2 rounded-lg text-sm shadow-sm transition-all duration-150 hover:shadow-md transform hover:scale-[1.02]"
-                  style={{
-                    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    WebkitFontSmoothing: 'subpixel-antialiased'
-                  }}
-                >
-                  {buttonText}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  ));
 
   useEffect(() => {
     if (currentStep >= steps.length) return;
@@ -243,60 +159,137 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   return (
     <div className="relative w-full max-w-3xl mx-auto">
       <div className={`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl shadow-2xl border border-slate-700/30 overflow-hidden transition-all duration-500 ${
-        isRestarting ? 'transform translate-y-4 opacity-0 scale-98' : 'transform translate-y-0 opacity-100 scale-100'
+        isRestarting ? 'transform translate-y-8 opacity-0' : 'transform translate-y-0 opacity-100'
       }`}>
         
         <div 
           ref={chatContainerRef}
-          className="h-[500px] overflow-y-auto p-8 flex flex-col justify-end"
+          className="h-[500px] overflow-y-auto p-8"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#475569 transparent'
           }}
         >
-          <div className="space-y-8 flex-1 flex flex-col justify-center min-h-full">
+          <div className="space-y-8">
             {visibleMessages.map((message, index) => (
-              <MemoizedMessage key={message.id} message={message} index={index} />
-            ))}
-
-            {/* Smooth Typing Indicator */}
-            {isTyping && (
-              <div 
-                className="flex items-start gap-3 flex-row-reverse opacity-0" 
+              <div
+                key={message.id}
+                className={`flex items-start gap-4 ${
+                  message.type === 'user' ? 'flex-row' : 'flex-row-reverse'
+                } opacity-0`}
                 style={{ 
-                  animation: 'smoothSlideIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
-                  transform: 'translate3d(0,0,0)'
+                  animation: `slideInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.1}s forwards`
                 }}
               >
-                <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                {/* Refined Profile Pictures */}
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg ${
+                  message.type === 'user' 
+                    ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700' 
+                    : 'bg-white border border-gray-200'
+                }`}>
+                  {message.type === 'user' ? (
+                    <img 
+                      src={customerAvatar} 
+                      alt="Customer" 
+                      className="w-full h-full rounded-xl object-cover"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                  ) : (
+                    <AIIcon />
+                  )}
+                  {message.type === 'user' && (
+                    <div 
+                      className="w-full h-full rounded-xl bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 flex items-center justify-center text-white text-sm font-bold"
+                      style={{display: 'none'}}
+                    >
+                      K
+                    </div>
+                  )}
+                </div>
+
+                {/* Refined Message Bubble */}
+                <div className={`max-w-[70%] ${
+                  message.type === 'user' ? 'mr-16' : 'ml-16'
+                }`}>
+                  <div
+                    className={`px-5 py-3 rounded-xl shadow-sm border ${
+                      message.type === 'user'
+                        ? 'bg-blue-600 text-white border-blue-500/30 rounded-bl-lg'
+                        : 'bg-white text-gray-800 border-gray-200 rounded-br-lg'
+                    }`}
+                    style={{
+                      fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif',
+                      fontSize: '15px',
+                      lineHeight: '1.4',
+                      fontWeight: '500',
+                      WebkitFontSmoothing: 'subpixel-antialiased',
+                      MozOsxFontSmoothing: 'grayscale',
+                      textRendering: 'optimizeLegibility',
+                      letterSpacing: '-0.005em'
+                    }}
+                  >
+                    {message.content}
+                    
+                    {/* Action Buttons */}
+                    {message.hasButtons && message.buttons && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {message.buttons.map((buttonText, buttonIndex) => (
+                          <button 
+                            key={buttonIndex}
+                            className="bg-emerald-500 hover:bg-emerald-600 text-white font-medium px-4 py-2 rounded-lg text-sm shadow-sm hover:shadow-md transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                            style={{
+                              fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif',
+                              fontSize: '14px',
+                              fontWeight: '500',
+                              WebkitFontSmoothing: 'subpixel-antialiased',
+                              MozOsxFontSmoothing: 'grayscale'
+                            }}
+                          >
+                            {buttonText}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {/* Typing Indicator */}
+            {isTyping && (
+              <div className="flex items-start gap-4 flex-row-reverse opacity-0" style={{ animation: 'slideInUp 0.3s ease-out forwards' }}>
+                <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-lg">
                   <AIIcon />
                 </div>
-                <div className="bg-white/95 backdrop-blur-sm border border-gray-100 px-5 py-3 rounded-xl shadow-sm">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+                <div 
+                  className="bg-white border border-gray-200 px-5 py-3 rounded-xl rounded-br-lg shadow-sm ml-16"
+                >
+                  <div className="flex gap-1.5">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Refined Action Bar */}
+            {/* Action Bar */}
             {actionBar && (
-              <div 
-                className="flex justify-center opacity-0" 
-                style={{ animation: 'smoothFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards' }}
-              >
+              <div className="flex justify-center opacity-0" style={{ animation: 'fadeInScale 0.4s ease-out forwards' }}>
                 <div 
-                  className="bg-indigo-600/15 border border-indigo-500/20 text-indigo-300 px-4 py-2 rounded-full text-sm flex items-center gap-2 shadow-sm"
+                  className="bg-blue-500/20 backdrop-blur-sm border border-blue-400/30 text-blue-300 px-4 py-2 rounded-full flex items-center gap-2 shadow-sm"
                   style={{
-                    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
+                    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif',
                     fontSize: '13px',
                     fontWeight: '500',
-                    WebkitFontSmoothing: 'subpixel-antialiased'
+                    WebkitFontSmoothing: 'subpixel-antialiased',
+                    MozOsxFontSmoothing: 'grayscale'
                   }}
                 >
-                  <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-pulse"></div>
+                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
                   {actionBar}
                 </div>
               </div>
@@ -306,21 +299,21 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
       </div>
 
       <style jsx>{`
-        @keyframes smoothSlideIn {
+        @keyframes slideInUp {
           from {
             opacity: 0;
-            transform: translate3d(0, 12px, 0) scale(0.98);
+            transform: translateY(20px) scale(0.95);
           }
           to {
             opacity: 1;
-            transform: translate3d(0, 0, 0) scale(1);
+            transform: translateY(0) scale(1);
           }
         }
         
-        @keyframes smoothFade {
+        @keyframes fadeInScale {
           from {
             opacity: 0;
-            transform: scale(0.96);
+            transform: scale(0.9);
           }
           to {
             opacity: 1;
@@ -328,9 +321,8 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           }
         }
 
-        /* Smooth scrollbar */
         div::-webkit-scrollbar {
-          width: 4px;
+          width: 6px;
         }
         
         div::-webkit-scrollbar-track {
@@ -339,7 +331,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         
         div::-webkit-scrollbar-thumb {
           background: #475569;
-          border-radius: 2px;
+          border-radius: 3px;
         }
         
         div::-webkit-scrollbar-thumb:hover {
