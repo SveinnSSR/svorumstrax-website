@@ -9,7 +9,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [isRestarting, setIsRestarting] = useState(false);
   const chatContainerRef = useRef(null);
 
-  // Professional AI Icon - Optimized for Performance
+  // Professional AI Icon - Clean and Modern
   const AIIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
       <path d="M12 3L18 9L12 15L6 9L12 3Z" fill="#4A90E2"/>
@@ -92,7 +92,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
   const steps = conversationSteps[currentLanguage];
 
-  // Auto-play conversation - Performance optimized
+  // Auto-play conversation
   useEffect(() => {
     if (currentStep >= steps.length) return;
 
@@ -159,109 +159,101 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
   return (
     <div className="relative w-full max-w-3xl mx-auto">
-      {/* Premium Chat Container */}
-      <div className={`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl shadow-2xl border border-slate-700/30 overflow-hidden will-change-transform ${
+      {/* Chat Container - Clean and Modern */}
+      <div className={`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl shadow-2xl border border-slate-700/30 overflow-hidden transition-all duration-500 ${
         isRestarting ? 'transform translate-y-8 opacity-0' : 'transform translate-y-0 opacity-100'
-      }`}
-      style={{ transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)' }}
-      >
+      }`}>
         
-        {/* Messages Area - Performance Optimized */}
+        {/* Messages Area - Pixel Perfect Spacing */}
         <div 
           ref={chatContainerRef}
-          className="h-[500px] overflow-y-auto p-8"
+          className="h-[500px] overflow-y-auto p-8 pt-4"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#475569 transparent'
           }}
         >
-          <div className="space-y-5">
+          <div className="space-y-4">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex items-start gap-3 ${
-                  message.type === 'user' ? 'flex-row' : 'flex-row-reverse'
-                }`}
+                className={`${
+                  message.type === 'user' 
+                    ? 'flex items-center justify-start gap-3' 
+                    : 'flex items-center justify-end gap-3'
+                } mb-5`}
                 style={{ 
-                  animation: 'slideInUp 0.25s ease-out',
-                  willChange: 'transform, opacity'
+                  animation: 'slideInUp 0.25s ease-out'
                 }}
               >
-                {/* Avatar - Balanced Size */}
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden ${
-                  message.type === 'user' 
-                    ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700' 
-                    : 'bg-white shadow-sm'
-                }`}>
-                  {message.type === 'user' ? (
-                    <>
-                      <img 
-                        src={customerAvatar} 
-                        alt="Customer" 
-                        className="w-full h-full object-cover rounded-full"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.nextSibling.style.display = 'flex';
-                        }}
-                      />
-                      <div className="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-bold rounded-full" style={{display: 'none'}}>
-                        K
-                      </div>
-                    </>
-                  ) : (
-                    <AIIcon />
-                  )}
-                </div>
-
-                {/* Message Content - Premium Typography */}
-                <div className={`flex-1 max-w-[75%] ${
-                  message.type === 'user' ? 'ml-3' : 'mr-3'
-                }`}>
-                  {message.type === 'user' ? (
-                    // User messages: Bold, crisp white text
-                    <div 
-                      className="text-slate-100 font-semibold leading-relaxed"
-                      style={{
-                        fontSize: '16px',
-                        fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-                        WebkitFontSmoothing: 'antialiased',
-                        MozOsxFontSmoothing: 'grayscale',
-                        textRendering: 'optimizeLegibility',
-                        letterSpacing: '-0.01em'
+                {/* Customer Message Layout */}
+                {message.type === 'user' && (
+                  <>
+                    <img 
+                      src={customerAvatar} 
+                      alt="Customer" 
+                      className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+                      onError={(e) => {
+                        // Fallback avatar
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
                       }}
+                    />
+                    <div 
+                      className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium flex-shrink-0"
+                      style={{display: 'none'}}
                     >
-                      {message.content}
+                      K
                     </div>
-                  ) : (
-                    // AI messages: Soft, integrated bubble
-                    <div className="bg-gray-50 border border-gray-100 px-4 py-3.5 rounded-2xl shadow-sm">
+                    <div className="bg-white py-3 px-4 rounded-xl shadow-sm max-w-[75%]">
                       <div 
-                        className="text-gray-900 font-semibold leading-relaxed"
                         style={{
                           fontSize: '16px',
-                          fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                          fontWeight: '500',
+                          fontFamily: 'Inter, Helvetica Neue, sans-serif',
                           WebkitFontSmoothing: 'antialiased',
                           MozOsxFontSmoothing: 'grayscale',
-                          textRendering: 'optimizeLegibility',
-                          letterSpacing: '-0.01em'
+                          color: '#1f2937',
+                          lineHeight: '1.5'
+                        }}
+                      >
+                        {message.content}
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {/* Bot Message Layout */}
+                {message.type === 'ai' && (
+                  <>
+                    <div className="bg-white py-3 px-4 rounded-xl shadow-sm max-w-[75%] mr-3">
+                      <div 
+                        style={{
+                          fontSize: '16px',
+                          fontWeight: '500',
+                          fontFamily: 'Inter, Helvetica Neue, sans-serif',
+                          WebkitFontSmoothing: 'antialiased',
+                          MozOsxFontSmoothing: 'grayscale',
+                          color: '#1f2937',
+                          lineHeight: '1.5'
                         }}
                       >
                         {message.content}
                       </div>
                       
-                      {/* Refined Action Buttons */}
+                      {/* Action Buttons - Freddy AI Style */}
                       {message.hasButtons && message.buttons && (
                         <div className="mt-3 flex flex-wrap gap-2">
                           {message.buttons.map((buttonText, buttonIndex) => (
                             <button 
                               key={buttonIndex}
-                              className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-semibold px-4 py-2 rounded-lg shadow-sm transition-all duration-150 will-change-transform"
+                              className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white h-9 px-4 rounded-lg transition-all duration-150"
                               style={{
-                                fontSize: '14px',
-                                fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                                fontSize: '15px',
+                                fontWeight: '500',
+                                fontFamily: 'Inter, Helvetica Neue, sans-serif',
                                 WebkitFontSmoothing: 'antialiased',
-                                MozOsxFontSmoothing: 'grayscale',
-                                transform: 'translateZ(0)' // Force GPU acceleration
+                                MozOsxFontSmoothing: 'grayscale'
                               }}
                             >
                               {buttonText}
@@ -270,32 +262,41 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                         </div>
                       )}
                     </div>
-                  )}
-                </div>
+                    <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                      <AIIcon />
+                    </div>
+                  </>
+                )}
               </div>
             ))}
 
-            {/* Typing Indicator - Clean & Fast */}
+            {/* Typing Indicator - Bot Layout */}
             {isTyping && (
-              <div className="flex items-start gap-3 flex-row-reverse" style={{ animation: 'slideInUp 0.2s ease-out' }}>
-                <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center">
-                  <AIIcon />
-                </div>
-                <div className="bg-gray-50 border border-gray-100 px-4 py-3.5 rounded-2xl shadow-sm mr-3 flex-1 max-w-[75%]">
+              <div className="flex items-center justify-end gap-3 mb-5" style={{ animation: 'slideInUp 0.2s ease-out' }}>
+                <div className="bg-white py-3 px-4 rounded-xl shadow-sm max-w-[75%] mr-3">
                   <div className="flex gap-1.5 items-center">
                     <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce"></div>
                     <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
                     <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                   </div>
                 </div>
+                <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center">
+                  <AIIcon />
+                </div>
               </div>
             )}
           </div>
 
-          {/* Action Bar - Simplified */}
+          {/* Action Bar */}
           {actionBar && (
             <div className="flex justify-center mt-5" style={{ animation: 'fadeIn 0.2s ease-out' }}>
-              <div className="bg-teal-500/20 border border-teal-400/30 text-teal-300 px-4 py-2 rounded-xl text-sm font-medium flex items-center gap-2">
+              <div className="bg-teal-500/20 border border-teal-400/30 text-teal-300 px-4 py-2 rounded-xl flex items-center gap-2"
+                style={{
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  fontFamily: 'Inter, Helvetica Neue, sans-serif'
+                }}
+              >
                 <div className="w-2 h-2 bg-teal-400 rounded-full animate-spin"></div>
                 {actionBar}
               </div>
@@ -304,7 +305,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         </div>
       </div>
 
-      {/* Optimized CSS Animations */}
+      {/* Clean CSS Animations */}
       <style jsx>{`
         @keyframes slideInUp {
           from {
@@ -322,7 +323,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           to { opacity: 1; }
         }
 
-        /* High-performance scrollbar */
+        /* Clean scrollbar */
         div::-webkit-scrollbar {
           width: 6px;
         }
@@ -334,10 +335,6 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         div::-webkit-scrollbar-thumb {
           background: #64748b;
           border-radius: 3px;
-        }
-        
-        div::-webkit-scrollbar-thumb:hover {
-          background: #475569;
         }
       `}</style>
     </div>
