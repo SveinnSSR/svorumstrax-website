@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect, useRef } from 'react';
+import customerAvatar from '../assets/images/customer-avatar.png';
 
 const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [messages, setMessages] = useState([]);
@@ -9,12 +9,21 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [isRestarting, setIsRestarting] = useState(false);
   const chatContainerRef = useRef(null);
 
-  // Sparkle SVG Component for Bot Avatar
+  // Enhanced Sparkle SVG Component with Teal-Orange Gradient
   const SparkleIcon = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M12 0L13.09 8.26L22 9L13.09 9.74L12 18L10.91 9.74L2 9L10.91 8.26L12 0Z" fill="white"/>
-      <path d="M19 4L19.74 6.26L22 7L19.74 7.74L19 10L18.26 7.74L16 7L18.26 6.26L19 4Z" fill="white" opacity="0.8"/>
-      <path d="M5 14L5.74 16.26L8 17L5.74 17.74L5 20L4.26 17.74L2 17L4.26 16.26L5 14Z" fill="white" opacity="0.6"/>
+      <defs>
+        <linearGradient id="sparkleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor: '#26C5D9'}} />
+          <stop offset="50%" style={{stopColor: '#4A90E2'}} />
+          <stop offset="100%" style={{stopColor: '#FFA947'}} />
+        </linearGradient>
+      </defs>
+      {/* Main star - larger and chunkier */}
+      <path d="M12 1L13.5 8.5L21 10L13.5 11.5L12 19L10.5 11.5L3 10L10.5 8.5L12 1Z" fill="url(#sparkleGradient)" strokeWidth="0.5" stroke="white"/>
+      {/* Secondary stars - more professional positioning */}
+      <path d="M18.5 5L19 7L21 7.5L19 8L18.5 10L18 8L16 7.5L18 7L18.5 5Z" fill="url(#sparkleGradient)" opacity="0.9"/>
+      <path d="M5.5 15L6 17L8 17.5L6 18L5.5 20L5 18L3 17.5L5 17L5.5 15Z" fill="url(#sparkleGradient)" opacity="0.8"/>
     </svg>
   );
 
@@ -184,14 +193,26 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                 animation: 'slideInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
             >
-              {/* Big Profile Pictures */}
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg ${
+              {/* Big Profile Pictures with Customer Avatar */}
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg overflow-hidden ${
                 message.type === 'user' 
                   ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700' 
                   : 'bg-gradient-to-br from-slate-700 to-slate-800 border-2 border-teal-400/30'
               }`}>
                 {message.type === 'user' ? (
-                  <span className="text-white text-lg font-bold">K</span>
+                  <>
+                    <img 
+                      src={customerAvatar} 
+                      alt="Customer" 
+                      className="w-full h-full object-cover rounded-2xl"
+                      onError={(e) => {
+                        // Fallback to "K" if image fails to load
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                    <span className="text-white text-lg font-bold" style={{display: 'none'}}>K</span>
+                  </>
                 ) : (
                   <SparkleIcon />
                 )}
@@ -228,7 +249,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
             </div>
           ))}
 
-          {/* Typing Indicator */}
+          {/* Typing Indicator with Enhanced Sparkle */}
           {isTyping && (
             <div className="flex items-start gap-4 flex-row-reverse" style={{ animation: 'slideInUp 0.3s ease-out' }}>
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 border-2 border-teal-400/30 flex items-center justify-center shadow-lg">
