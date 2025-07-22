@@ -70,33 +70,46 @@ const Services = ({ currentLanguage, onContactClick }) => {
           </p>
         </div>
         
-        {/* Two-column layout: Services left, Image right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        {/* 2x2 Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          {/* Left side - Three services stacked vertically */}
-          <div className="space-y-8">
-            {currentContent.services.map((service, index) => (
-              <div 
-                key={index}
-                className={`bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 ${service.accent} border-l-4`}
-              >
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            ))}
+          {/* Top Left - Almenn símsvörun */}
+          <div className={`bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 ${currentContent.services[0].accent} border-l-4`}>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
+              {currentContent.services[0].title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              {currentContent.services[0].description}
+            </p>
           </div>
 
-          {/* Right side - Barcelona Office Image */}
-          <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-lg">
+          {/* Top Right - Þitt eigið þjónustuver */}
+          <div className={`bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 ${currentContent.services[1].accent} border-l-4`}>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
+              {currentContent.services[1].title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              {currentContent.services[1].description}
+            </p>
+          </div>
+
+          {/* Bottom Left - Gervigreindarsvörun í síma */}
+          <div className={`bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 ${currentContent.services[2].accent} border-l-4`}>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
+              {currentContent.services[2].title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              {currentContent.services[2].description}
+            </p>
+          </div>
+
+          {/* Bottom Right - Barcelona Office Image */}
+          <div className="relative flex items-center justify-center">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-lg">
               <img 
                 src={barcelonaOfficeImage} 
                 alt="Barcelona Office" 
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-cover min-h-[280px]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-transparent"></div>
             </div>
