@@ -9,7 +9,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [isRestarting, setIsRestarting] = useState(false);
   const chatContainerRef = useRef(null);
 
-  // Professional AI Icon - Exact Freddy AI Blue Diamond
+  // Professional AI Icon - Exact Freddy AI Style
   const AIIcon = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M12 3L18 9L12 15L6 9L12 3Z" fill="#4A90E2"/>
@@ -170,7 +170,8 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           className="h-[500px] overflow-y-auto p-8 space-y-6"
           style={{
             scrollbarWidth: 'thin',
-            scrollbarColor: '#475569 transparent'
+            scrollbarColor: '#475569 transparent',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", "SF Pro Display", sans-serif'
           }}
         >
           {messages.map((message) => (
@@ -183,8 +184,8 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                 animation: 'slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
             >
-              {/* Profile Pictures - Pixel Perfect Alignment */}
-              <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg overflow-hidden ${
+              {/* Profile Pictures - Perfectly Aligned */}
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 shadow-md overflow-hidden ${
                 message.type === 'user' 
                   ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700' 
                   : 'bg-white'
@@ -209,29 +210,45 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                 )}
               </div>
 
-              {/* Message Content - Exact Freddy AI Typography */}
-              <div className={`flex-1 max-w-[70%] ${
+              {/* Message Content - Freddy AI Styling */}
+              <div className={`flex-1 max-w-[75%] ${
                 message.type === 'user' ? 'ml-4' : 'mr-4'
               }`}>
                 {message.type === 'user' ? (
-                  // User messages: LEFT side, clean text
-                  <div className="text-slate-100 text-[16px] font-semibold leading-[1.4] tracking-tight">
+                  // User messages: LEFT side, clean white text
+                  <div 
+                    className="text-slate-100 text-[16px] font-medium leading-[1.45] tracking-normal"
+                    style={{
+                      WebkitFontSmoothing: 'antialiased',
+                      MozOsxFontSmoothing: 'grayscale'
+                    }}
+                  >
                     {message.content}
                   </div>
                 ) : (
-                  // AI messages: RIGHT side with substantial bubble
-                  <div className="bg-slate-800/95 backdrop-blur-sm border border-slate-600/40 px-7 py-5 rounded-2xl rounded-tr-md shadow-xl">
-                    <div className="text-slate-100 text-[16px] font-semibold leading-[1.4] tracking-tight">
+                  // AI messages: RIGHT side, WHITE bubble with DARK text (Freddy AI style)
+                  <div className="bg-white border border-slate-200/50 px-6 py-4 rounded-xl shadow-md">
+                    <div 
+                      className="text-slate-800 text-[16px] font-medium leading-[1.45] tracking-normal"
+                      style={{
+                        WebkitFontSmoothing: 'antialiased',
+                        MozOsxFontSmoothing: 'grayscale'
+                      }}
+                    >
                       {message.content}
                     </div>
                     
-                    {/* Action Buttons - Enhanced */}
+                    {/* Action Buttons - Freddy AI Style */}
                     {message.hasButtons && message.buttons && (
-                      <div className="mt-5 flex flex-wrap gap-3">
+                      <div className="mt-4 flex flex-wrap gap-3">
                         {message.buttons.map((buttonText, buttonIndex) => (
                           <button 
                             key={buttonIndex}
-                            className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white text-[14px] font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 tracking-tight"
+                            className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white text-[14px] font-medium px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200"
+                            style={{
+                              WebkitFontSmoothing: 'antialiased',
+                              MozOsxFontSmoothing: 'grayscale'
+                            }}
                           >
                             {buttonText}
                           </button>
@@ -244,17 +261,17 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
             </div>
           ))}
 
-          {/* Typing Indicator - RIGHT side like AI messages */}
+          {/* Typing Indicator - RIGHT side, WHITE bubble */}
           {isTyping && (
             <div className="flex items-start gap-4 flex-row-reverse" style={{ animation: 'slideInUp 0.2s ease-out' }}>
-              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md">
                 <AIIcon />
               </div>
-              <div className="bg-slate-800/95 backdrop-blur-sm border border-slate-600/40 px-7 py-5 rounded-2xl rounded-tr-md shadow-xl mr-4 flex-1 max-w-[70%]">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 bg-teal-400 rounded-full animate-bounce"></div>
-                  <div className="w-3 h-3 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                  <div className="w-3 h-3 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+              <div className="bg-white border border-slate-200/50 px-6 py-4 rounded-xl shadow-md mr-4 flex-1 max-w-[75%]">
+                <div className="flex gap-2 items-center">
+                  <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                  <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                 </div>
               </div>
             </div>
@@ -263,8 +280,8 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           {/* Action Bar */}
           {actionBar && (
             <div className="flex justify-center" style={{ animation: 'fadeInScale 0.2s ease-out' }}>
-              <div className="bg-teal-500/20 backdrop-blur-sm border border-teal-400/30 text-teal-300 px-6 py-3 rounded-2xl text-sm font-semibold flex items-center gap-3 shadow-lg">
-                <div className="w-3 h-3 bg-teal-400 rounded-full animate-spin"></div>
+              <div className="bg-teal-500/20 backdrop-blur-sm border border-teal-400/30 text-teal-300 px-6 py-3 rounded-xl text-sm font-medium flex items-center gap-3 shadow-md">
+                <div className="w-2 h-2 bg-teal-400 rounded-full animate-spin"></div>
                 {actionBar}
               </div>
             </div>
@@ -277,7 +294,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         @keyframes slideInUp {
           from {
             opacity: 0;
-            transform: translateY(10px) scale(0.98);
+            transform: translateY(8px) scale(0.98);
           }
           to {
             opacity: 1;
