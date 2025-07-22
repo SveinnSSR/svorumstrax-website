@@ -9,11 +9,11 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [isRestarting, setIsRestarting] = useState(false);
   const chatContainerRef = useRef(null);
 
-  // Professional AI Icon - Simple Blue Diamond (Freddy AI Style)
+  // Professional AI Icon - Clean Blue Diamond
   const AIIcon = () => (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M10 2L15 7L10 12L5 7L10 2Z" fill="#4A90E2"/>
-      <path d="M10 8L15 13L10 18L5 13L10 8Z" fill="#26C5D9" opacity="0.8"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 3L18 9L12 15L6 9L12 3Z" fill="#4A90E2"/>
+      <path d="M12 9L18 15L12 21L6 15L12 9Z" fill="#26C5D9" opacity="0.8"/>
     </svg>
   );
 
@@ -92,7 +92,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
   const steps = conversationSteps[currentLanguage];
 
-  // Auto-play conversation with sharp text appearance
+  // Auto-play conversation
   useEffect(() => {
     if (currentStep >= steps.length) return;
 
@@ -117,7 +117,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           }]);
           setIsTyping(false);
           setCurrentStep(prev => prev + 1);
-        }, 600); // Shorter typing duration for sharper feel
+        }, 600);
       } else {
         setMessages(prev => [...prev, {
           ...step,
@@ -159,7 +159,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
   return (
     <div className="relative w-full max-w-3xl mx-auto">
-      {/* Professional Chat Container */}
+      {/* Professional Chat Container - Chunky & Substantial */}
       <div className={`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl shadow-2xl border border-slate-700/30 overflow-hidden transition-all duration-500 ${
         isRestarting ? 'transform translate-y-8 opacity-0' : 'transform translate-y-0 opacity-100'
       }`}>
@@ -176,46 +176,52 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           {messages.map((message) => (
             <div
               key={message.id}
-              className="flex items-start gap-4"
+              className={`flex items-start gap-4 ${
+                message.type === 'user' ? 'flex-row-reverse' : 'flex-row'
+              }`}
               style={{ 
-                animation: 'slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)', // Faster, sharper animation
-                justifyContent: message.type === 'user' ? 'flex-end' : 'flex-start'
+                animation: 'slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
             >
-              {/* Avatar - Only show for AI messages, positioned properly */}
-              {message.type === 'ai' && (
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
+              {/* Profile Pictures - Chunky Size */}
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg overflow-hidden ${
+                message.type === 'user' 
+                  ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700' 
+                  : 'bg-white'
+              }`}>
+                {message.type === 'user' ? (
+                  <>
+                    <img 
+                      src={customerAvatar} 
+                      alt="Customer" 
+                      className="w-full h-full object-cover rounded-full"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold rounded-full" style={{display: 'none'}}>
+                      K
+                    </div>
+                  </>
+                ) : (
                   <AIIcon />
-                </div>
-              )}
+                )}
+              </div>
 
               {/* Message Content */}
-              <div className={`max-w-[70%] ${message.type === 'user' ? 'order-1' : 'order-2'}`}>
+              <div className={`max-w-[65%] ${
+                message.type === 'user' ? 'mr-4' : 'ml-4'
+              }`}>
                 {message.type === 'user' ? (
-                  // User messages: No background, just text (Freddy AI style)
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
-                      <img 
-                        src={customerAvatar} 
-                        alt="Customer" 
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.nextSibling.style.display = 'flex';
-                        }}
-                      />
-                      <div className="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-bold rounded-full" style={{display: 'none'}}>
-                        K
-                      </div>
-                    </div>
-                    <div className="text-slate-100 text-base leading-relaxed">
-                      {message.content}
-                    </div>
+                  // User messages: Clean text on right side
+                  <div className="text-slate-100 text-base leading-relaxed font-medium">
+                    {message.content}
                   </div>
                 ) : (
-                  // AI messages: Professional bubble
-                  <div className="bg-slate-800/90 backdrop-blur-sm border border-slate-600/30 px-6 py-4 rounded-2xl rounded-tl-lg shadow-lg">
-                    <div className="text-slate-100 text-base leading-relaxed">
+                  // AI messages: Left side with bubble
+                  <div className="bg-slate-800/90 backdrop-blur-sm border border-slate-600/30 px-6 py-4 rounded-2xl rounded-tl-lg shadow-xl">
+                    <div className="text-slate-100 text-base leading-relaxed font-medium">
                       {message.content}
                     </div>
                     
@@ -225,7 +231,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                         {message.buttons.map((buttonText, buttonIndex) => (
                           <button 
                             key={buttonIndex}
-                            className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white text-sm font-semibold px-5 py-3 rounded-xl shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200"
+                            className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200"
                           >
                             {buttonText}
                           </button>
@@ -238,17 +244,17 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
             </div>
           ))}
 
-          {/* Typing Indicator */}
+          {/* Typing Indicator - Left side like AI messages */}
           {isTyping && (
-            <div className="flex items-start gap-4" style={{ animation: 'slideInUp 0.2s ease-out' }}>
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
+            <div className="flex items-start gap-4 flex-row" style={{ animation: 'slideInUp 0.2s ease-out' }}>
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
                 <AIIcon />
               </div>
-              <div className="bg-slate-800/90 backdrop-blur-sm border border-slate-600/30 px-6 py-4 rounded-2xl rounded-tl-lg shadow-lg">
+              <div className="bg-slate-800/90 backdrop-blur-sm border border-slate-600/30 px-6 py-4 rounded-2xl rounded-tl-lg shadow-xl ml-4">
                 <div className="flex gap-2">
-                  <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                  <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                  <div className="w-2.5 h-2.5 bg-teal-400 rounded-full animate-bounce"></div>
+                  <div className="w-2.5 h-2.5 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                  <div className="w-2.5 h-2.5 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                 </div>
               </div>
             </div>
@@ -258,7 +264,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           {actionBar && (
             <div className="flex justify-center" style={{ animation: 'fadeInScale 0.2s ease-out' }}>
               <div className="bg-teal-500/20 backdrop-blur-sm border border-teal-400/30 text-teal-300 px-6 py-3 rounded-2xl text-sm font-semibold flex items-center gap-3 shadow-lg">
-                <div className="w-2 h-2 bg-teal-400 rounded-full animate-spin"></div>
+                <div className="w-2.5 h-2.5 bg-teal-400 rounded-full animate-spin"></div>
                 {actionBar}
               </div>
             </div>
@@ -266,7 +272,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         </div>
       </div>
 
-      {/* Custom CSS Animations - Faster and Sharper */}
+      {/* Custom CSS Animations */}
       <style jsx>{`
         @keyframes slideInUp {
           from {
