@@ -9,7 +9,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [isRestarting, setIsRestarting] = useState(false);
   const chatContainerRef = useRef(null);
 
-  // Enterprise-grade AI Icon
+  // Professional AI Icon - Clean Diamond Shape
   const AIIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
       <path d="M12 3L18 9L12 15L6 9L12 3Z" fill="#4A90E2"/>
@@ -153,6 +153,15 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     }
   }, [currentStep, steps.length]);
 
+  // Freddy AI exact font styles
+  const freddyTextStyle = {
+    fontFamily: '"Roboto", "Helvetica Neue", "Arial Nova", sans-serif',
+    fontSize: '18px',
+    lineHeight: '28px',
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale'
+  };
+
   return (
     <div className="relative w-full max-w-3xl mx-auto">
       <div className={`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl shadow-2xl border border-slate-700/30 overflow-hidden transition-all duration-500 ${
@@ -170,13 +179,14 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           <div className="space-y-5">
             {messages.map((message) => (
               <div key={message.id} className="mb-6">
-                {/* Customer Messages - Clean Inline Text (Left) */}
+                
+                {/* Customer Messages - Left Side, No Bubble */}
                 {message.type === 'user' && (
-                  <div className="flex items-center justify-start gap-3">
+                  <div className="flex items-center gap-3 justify-start">
                     <img 
                       src={customerAvatar} 
                       alt="Customer" 
-                      className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+                      className="w-12 h-12 object-cover rounded-full flex-shrink-0"
                       onError={(e) => {
                         e.target.style.display = 'none';
                         e.target.nextSibling.style.display = 'flex';
@@ -191,11 +201,9 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                     <p 
                       className="text-slate-100 font-medium leading-tight"
                       style={{
-                        fontFamily: 'Inter, Helvetica Neue, sans-serif',
-                        fontSize: '16px',
-                        fontWeight: '500',
-                        WebkitFontSmoothing: 'antialiased',
-                        MozOsxFontSmoothing: 'grayscale'
+                        ...freddyTextStyle,
+                        color: '#E2E8F0', // Light color for dark background
+                        fontWeight: '500'
                       }}
                     >
                       {message.content}
@@ -203,30 +211,28 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                   </div>
                 )}
 
-                {/* Bot Messages - White Bubbles (Right) */}
+                {/* Bot Messages - Right Side, White Bubble */}
                 {message.type === 'ai' && (
-                  <div className="flex items-center justify-end gap-3">
+                  <div className="flex items-center gap-3 justify-end">
                     <div 
-                      className="bg-white rounded-xl shadow-md p-4 max-w-[70%] text-slate-900 leading-relaxed"
+                      className="bg-white text-slate-900 shadow-md rounded-xl py-4 px-5 max-w-[75%]"
                       style={{
-                        fontFamily: 'Inter, Helvetica Neue, sans-serif',
-                        fontSize: '16px',
-                        fontWeight: '500',
-                        WebkitFontSmoothing: 'antialiased',
-                        MozOsxFontSmoothing: 'grayscale'
+                        ...freddyTextStyle,
+                        color: '#1D2026',
+                        fontWeight: '500'
                       }}
                     >
                       {message.content}
                       
-                      {/* Enterprise-Grade Buttons */}
+                      {/* Professional Buttons */}
                       {message.hasButtons && message.buttons && (
                         <div className="mt-3 flex flex-wrap gap-2">
                           {message.buttons.map((buttonText, buttonIndex) => (
                             <button 
                               key={buttonIndex}
-                              className="bg-emerald-500 text-white px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors duration-150"
+                              className="bg-emerald-500 hover:bg-emerald-600 text-white text-sm py-1.5 px-4 rounded-lg transition-colors duration-150 font-medium"
                               style={{
-                                fontFamily: 'Inter, Helvetica Neue, sans-serif',
+                                fontFamily: '"Roboto", "Helvetica Neue", "Arial Nova", sans-serif',
                                 WebkitFontSmoothing: 'antialiased',
                                 MozOsxFontSmoothing: 'grayscale'
                               }}
@@ -237,7 +243,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                         </div>
                       )}
                     </div>
-                    <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 object-cover rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0">
                       <AIIcon />
                     </div>
                   </div>
@@ -248,15 +254,15 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
             {/* Typing Indicator */}
             {isTyping && (
               <div className="mb-6">
-                <div className="flex items-center justify-end gap-3">
-                  <div className="bg-white rounded-xl shadow-md p-4 max-w-[70%]">
+                <div className="flex items-center gap-3 justify-end">
+                  <div className="bg-white shadow-md rounded-xl py-4 px-5 max-w-[75%]">
                     <div className="flex gap-1.5 items-center">
                       <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
                       <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
                       <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                     </div>
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center">
+                  <div className="w-12 h-12 object-cover rounded-full bg-white shadow-sm flex items-center justify-center">
                     <AIIcon />
                   </div>
                 </div>
@@ -270,7 +276,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
               <div 
                 className="bg-teal-500/20 border border-teal-400/30 text-teal-300 px-4 py-2 rounded-xl flex items-center gap-2"
                 style={{
-                  fontFamily: 'Inter, Helvetica Neue, sans-serif',
+                  fontFamily: '"Roboto", "Helvetica Neue", "Arial Nova", sans-serif',
                   fontSize: '14px',
                   fontWeight: '500'
                 }}
