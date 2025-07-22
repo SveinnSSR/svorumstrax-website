@@ -19,7 +19,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
   const currentContent = content[currentLanguage]
 
   return (
-    <div className="min-h-screen relative pt-16 bg-white">
+    <div className="min-h-screen relative pt-8 bg-white">
       {/* Subtle gradient background hints */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Very subtle gradient elements that don't overpower the white background */}
@@ -35,7 +35,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       <div className="relative z-10">
         {/* Hero Section */}
         <section className="relative">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[600px]">
               
               {/* Left side - Text content */}
@@ -117,11 +117,11 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   </div>
                   
                   {/* Phone image - centered in the container */}
-                  <div className="relative flex justify-center items-center py-20">
+                  <div className="relative flex justify-center items-center py-12">
                     <img 
                       src={outboundPhone} 
                       alt="Phone interface showing customer service features"
-                      className="w-full h-auto max-w-72 drop-shadow-2xl z-20"
+                      className="w-full h-auto max-w-sm drop-shadow-2xl z-20"
                     />
                   </div>
                   
