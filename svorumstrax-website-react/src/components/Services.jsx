@@ -70,36 +70,72 @@ const Services = ({ currentLanguage, onContactClick }) => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Services Cards - Stacked on Left */}
-          <div className="space-y-6">
-            {currentContent.services.map((service, index) => (
-              <div 
-                key={index}
-                className={`bg-white border border-gray-200 rounded-lg p-6 shadow-sm ${service.accent} border-l-4`}
-              >
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  {service.description}
-                </p>
-                <button
-                  onClick={() => onContactClick('phone-support')}
-                  className="text-gray-700 hover:text-gray-900 font-medium text-sm inline-flex items-center"
-                >
-                  {currentLanguage === 'is' ? 'Frekari upplýsingar' : 'Learn More'}
-                  <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-            ))}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Top Row - Two cards side by side */}
+          <div 
+            className={`bg-white border border-gray-200 rounded-lg p-6 shadow-sm ${currentContent.services[0].accent} border-l-4`}
+          >
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              {currentContent.services[0].title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              {currentContent.services[0].description}
+            </p>
+            <button
+              onClick={() => onContactClick('phone-support')}
+              className="text-gray-700 hover:text-gray-900 font-medium text-sm inline-flex items-center"
+            >
+              {currentLanguage === 'is' ? 'Frekari upplýsingar' : 'Learn More'}
+              <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
           </div>
-          
-          {/* Barcelona Office Image - Right Side */}
-          <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-lg">
+
+          <div 
+            className={`bg-white border border-gray-200 rounded-lg p-6 shadow-sm ${currentContent.services[1].accent} border-l-4`}
+          >
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              {currentContent.services[1].title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              {currentContent.services[1].description}
+            </p>
+            <button
+              onClick={() => onContactClick('phone-support')}
+              className="text-gray-700 hover:text-gray-900 font-medium text-sm inline-flex items-center"
+            >
+              {currentLanguage === 'is' ? 'Frekari upplýsingar' : 'Learn More'}
+              <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Bottom Row - AI card and smaller image */}
+          <div 
+            className={`bg-white border border-gray-200 rounded-lg p-6 shadow-sm ${currentContent.services[2].accent} border-l-4`}
+          >
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              {currentContent.services[2].title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              {currentContent.services[2].description}
+            </p>
+            <button
+              onClick={() => onContactClick('phone-support')}
+              className="text-gray-700 hover:text-gray-900 font-medium text-sm inline-flex items-center"
+            >
+              {currentLanguage === 'is' ? 'Frekari upplýsingar' : 'Learn More'}
+              <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Barcelona Office Image - Smaller, bottom right */}
+          <div className="relative flex items-center justify-center">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg max-w-sm">
               <img 
                 src={barcelonaOfficeImage} 
                 alt="Barcelona Office" 

@@ -45,7 +45,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
               <img 
                 src={svorumStraxLogo} 
                 alt="Svörum strax" 
-                className="h-8 w-auto"
+                className="h-10 w-auto"
               />
             </a>
           </div>
