@@ -35,13 +35,13 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
   const currentContent = content[currentLanguage]
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300">
+    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
             <a href="#home" className="flex items-center space-x-2">
-              <div className="text-2xl font-bold bg-gradient-to-r from-orangeGradient-start via-orangeGradient-middle to-orangeGradient-end bg-clip-text text-transparent">
+              <div className="text-2xl font-bold bg-gradient-to-r from-slate-800 via-blue-700 to-orange-700 bg-clip-text text-transparent">
                 Svörum strax
               </div>
             </a>
@@ -49,24 +49,24 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">
+            <a href="#home" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
               {currentContent.home}
             </a>
-            <a href="#services" className="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">
+            <a href="#services" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
               {currentContent.services}
             </a>
-            <a href="#about" className="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">
+            <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
               {currentContent.about}
             </a>
-            <a href="#team" className="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">
+            <a href="#team" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
               {currentContent.team}
             </a>
-            <a href="#jobs" className="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">
+            <a href="#jobs" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
               {currentContent.jobs}
             </a>
             <button 
               onClick={() => handleContactClick('contact')}
-              className="bg-gradient-to-r from-orangeGradient-start via-orangeGradient-middle to-orangeGradient-end text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
             >
               {currentContent.contact}
             </button>
@@ -78,7 +78,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
               onClick={() => onLanguageChange('is')}
               className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ${
                 currentLanguage === 'is' 
-                  ? 'bg-primary text-white shadow-sm' 
+                  ? 'bg-blue-600 text-white shadow-sm' 
                   : 'text-gray-600 hover:text-gray-800'
               }`}
             >
@@ -88,7 +88,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
               onClick={() => onLanguageChange('en')}
               className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ${
                 currentLanguage === 'en' 
-                  ? 'bg-primary text-white shadow-sm' 
+                  ? 'bg-blue-600 text-white shadow-sm' 
                   : 'text-gray-600 hover:text-gray-800'
               }`}
             >
@@ -100,7 +100,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="p-2 rounded-md text-gray-700 hover:text-primary transition-colors duration-300"
+              className="p-2 rounded-md text-gray-700 hover:text-blue-600 transition-colors duration-300"
             >
               {isMobileMenuOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -118,41 +118,41 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
               <a
                 href="#home"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
               >
                 {currentContent.home}
               </a>
               <a
                 href="#services"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
               >
                 {currentContent.services}
               </a>
               <a
                 href="#about"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
               >
                 {currentContent.about}
               </a>
               <a
                 href="#team"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
               >
                 {currentContent.team}
               </a>
               <a
                 href="#jobs"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
               >
                 {currentContent.jobs}
               </a>
               <button
                 onClick={() => handleContactClick('contact')}
-                className="w-full mt-4 bg-gradient-to-r from-orangeGradient-start via-orangeGradient-middle to-orangeGradient-end text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300"
+                className="w-full mt-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300"
               >
                 {currentContent.contact}
               </button>
@@ -163,7 +163,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
                   onClick={() => onLanguageChange('is')}
                   className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ${
                     currentLanguage === 'is' 
-                      ? 'bg-primary text-white shadow-sm' 
+                      ? 'bg-blue-600 text-white shadow-sm' 
                       : 'text-gray-600'
                   }`}
                 >
@@ -173,7 +173,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
                   onClick={() => onLanguageChange('en')}
                   className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ${
                     currentLanguage === 'en' 
-                      ? 'bg-primary text-white shadow-sm' 
+                      ? 'bg-blue-600 text-white shadow-sm' 
                       : 'text-gray-600'
                   }`}
                 >
