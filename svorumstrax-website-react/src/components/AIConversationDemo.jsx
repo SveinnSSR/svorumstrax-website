@@ -9,11 +9,11 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [isRestarting, setIsRestarting] = useState(false);
   const chatContainerRef = useRef(null);
 
-  // Clean Professional AI Icon
+  // Minimal Professional AI Icon
   const AIIcon = () => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2L16 8L12 14L8 8L12 2Z" fill="#3B82F6"/>
-      <path d="M12 10L16 16L12 22L8 16L12 10Z" fill="#1E40AF"/>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="3" fill="#4F46E5"/>
+      <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round"/>
     </svg>
   );
 
@@ -164,34 +164,34 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         
         <div 
           ref={chatContainerRef}
-          className="h-[500px] overflow-y-auto p-8"
+          className="h-[500px] overflow-y-auto p-8 flex flex-col justify-center"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#475569 transparent'
           }}
         >
-          <div className="space-y-6">
+          <div className="space-y-10 max-w-2xl mx-auto w-full">
             {visibleMessages.map((message, index) => (
               <div
                 key={message.id}
-                className={`flex items-start gap-4 ${
+                className={`flex items-start gap-3 opacity-0 ${
                   message.type === 'user' ? 'flex-row' : 'flex-row-reverse'
-                } opacity-0`}
+                }`}
                 style={{ 
-                  animation: `slideInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.1}s forwards`
+                  animation: `slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.1}s forwards`
                 }}
               >
-                {/* Profile Pictures */}
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl ${
+                {/* Compact Profile Pictures */}
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
                   message.type === 'user' 
-                    ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700' 
-                    : 'bg-white border border-gray-200'
+                    ? 'bg-white shadow-sm' 
+                    : 'bg-white shadow-sm'
                 }`}>
                   {message.type === 'user' ? (
                     <img 
                       src={customerAvatar} 
                       alt="Customer" 
-                      className="w-full h-full rounded-2xl object-cover"
+                      className="w-full h-full rounded-full object-cover"
                       onError={(e) => {
                         e.target.style.display = 'none';
                         e.target.nextSibling.style.display = 'flex';
@@ -202,7 +202,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                   )}
                   {message.type === 'user' && (
                     <div 
-                      className="w-full h-full rounded-2xl bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 flex items-center justify-center text-white text-lg font-bold"
+                      className="w-full h-full rounded-full bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 flex items-center justify-center text-white text-sm font-semibold"
                       style={{display: 'none'}}
                     >
                       K
@@ -210,86 +210,81 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                   )}
                 </div>
 
-                {/* Message Bubble */}
-                <div className={`max-w-[70%] ${
-                  message.type === 'user' ? 'mr-16' : 'ml-16'
-                }`}>
+                {/* Refined Message Bubble */}
+                <div className="max-w-[65%] flex flex-col">
                   <div
-                    className={`px-6 py-4 rounded-2xl shadow-xl border ${
+                    className={`px-4 py-3 rounded-2xl ${
                       message.type === 'user'
-                        ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white border-blue-500/30 rounded-bl-lg'
-                        : 'bg-white text-gray-900 border-gray-200 rounded-br-lg'
+                        ? 'bg-blue-600 text-white shadow-sm'
+                        : 'bg-white text-slate-800 shadow-sm border border-gray-100'
                     }`}
                     style={{
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif',
-                      fontSize: '16px',
-                      lineHeight: '1.5',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
+                      fontSize: '15px',
+                      lineHeight: '1.4',
                       fontWeight: '500',
                       WebkitFontSmoothing: 'antialiased',
                       MozOsxFontSmoothing: 'grayscale',
-                      textRendering: 'optimizeLegibility',
-                      letterSpacing: '-0.01em'
+                      letterSpacing: '-0.005em'
                     }}
                   >
                     {message.content}
-                    
-                    {/* Action Buttons */}
-                    {message.hasButtons && message.buttons && (
-                      <div className="mt-4 flex flex-wrap gap-3">
-                        {message.buttons.map((buttonText, buttonIndex) => (
-                          <button 
-                            key={buttonIndex}
-                            className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-5 py-2.5 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-                            style={{
-                              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif',
-                              fontSize: '15px',
-                              fontWeight: '600',
-                              WebkitFontSmoothing: 'antialiased',
-                              MozOsxFontSmoothing: 'grayscale'
-                            }}
-                          >
-                            {buttonText}
-                          </button>
-                        ))}
-                      </div>
-                    )}
                   </div>
+                  
+                  {/* Refined Action Buttons */}
+                  {message.hasButtons && message.buttons && (
+                    <div className="flex gap-2 mt-3 ml-2">
+                      {message.buttons.map((buttonText, buttonIndex) => (
+                        <button 
+                          key={buttonIndex}
+                          className="bg-emerald-500 hover:bg-emerald-600 text-white font-medium px-4 py-2 rounded-lg text-sm shadow-sm hover:shadow-md transition-all duration-150 hover:scale-[1.02]"
+                          style={{
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
+                            fontSize: '14px',
+                            fontWeight: '500',
+                            WebkitFontSmoothing: 'antialiased'
+                          }}
+                        >
+                          {buttonText}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
 
-            {/* Typing Indicator */}
+            {/* Refined Typing Indicator */}
             {isTyping && (
-              <div className="flex items-start gap-4 flex-row-reverse opacity-0" style={{ animation: 'slideInUp 0.3s ease-out forwards' }}>
-                <div className="w-14 h-14 rounded-2xl bg-white border border-gray-200 flex items-center justify-center shadow-xl">
+              <div className="flex items-start gap-3 flex-row-reverse opacity-0" style={{ animation: 'slideInUp 0.3s ease-out forwards' }}>
+                <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0">
                   <AIIcon />
                 </div>
                 <div 
-                  className="bg-white border border-gray-200 px-6 py-4 rounded-2xl rounded-br-lg shadow-xl ml-16"
+                  className="bg-white shadow-sm border border-gray-100 px-4 py-3 rounded-2xl"
                 >
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 bg-gray-400 rounded-full animate-bounce"></div>
-                    <div className="w-2.5 h-2.5 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                    <div className="w-2.5 h-2.5 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Action Bar */}
+            {/* Refined Action Bar */}
             {actionBar && (
               <div className="flex justify-center opacity-0" style={{ animation: 'fadeInScale 0.4s ease-out forwards' }}>
                 <div 
-                  className="bg-blue-500/20 backdrop-blur-sm border border-blue-400/30 text-blue-300 px-6 py-3 rounded-2xl flex items-center gap-3 shadow-lg"
+                  className="bg-blue-500/15 border border-blue-400/20 text-blue-300 px-4 py-2 rounded-full text-sm flex items-center gap-2 shadow-sm"
                   style={{
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif',
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    WebkitFontSmoothing: 'antialiased',
-                    MozOsxFontSmoothing: 'grayscale'
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
+                    fontSize: '13px',
+                    fontWeight: '500',
+                    WebkitFontSmoothing: 'antialiased'
                   }}
                 >
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-spin"></div>
+                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
                   {actionBar}
                 </div>
               </div>
@@ -302,18 +297,18 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         @keyframes slideInUp {
           from {
             opacity: 0;
-            transform: translateY(20px) scale(0.95);
+            transform: translateY(15px);
           }
           to {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
           }
         }
         
         @keyframes fadeInScale {
           from {
             opacity: 0;
-            transform: scale(0.9);
+            transform: scale(0.95);
           }
           to {
             opacity: 1;
@@ -322,7 +317,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         }
 
         div::-webkit-scrollbar {
-          width: 6px;
+          width: 4px;
         }
         
         div::-webkit-scrollbar-track {
@@ -331,11 +326,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         
         div::-webkit-scrollbar-thumb {
           background: #475569;
-          border-radius: 3px;
-        }
-        
-        div::-webkit-scrollbar-thumb:hover {
-          background: #64748b;
+          border-radius: 2px;
         }
       `}</style>
     </div>
