@@ -6,7 +6,7 @@ import {
   ComputerDesktopIcon,
   EnvelopeIcon
 } from '@heroicons/react/24/outline'
-import AIConversationDemo from './AIConversationDemo'
+import chatbotUiDemo from '../assets/images/chatbot-ui-demo.png'
 
 const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
   const content = {
@@ -150,9 +150,17 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
             </button>
           </div>
           
-          {/* Right side - Enterprise Chat Demo */}
+          {/* Right side - Static Chatbot UI Image */}
           <div className="relative">
-            <AIConversationDemo currentLanguage={currentLanguage} />
+            <div className="relative max-w-md mx-auto">
+              <img 
+                src={chatbotUiDemo} 
+                alt="Chatbot UI Demo"
+                className="w-full h-auto rounded-3xl shadow-2xl border border-gray-200"
+              />
+              {/* Optional overlay for extra polish */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/5 to-transparent pointer-events-none"></div>
+            </div>
           </div>
         </div>
 
