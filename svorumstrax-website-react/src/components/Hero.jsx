@@ -92,24 +92,24 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                     <div className="absolute bottom-0 left-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-white transform translate-y-1.5"></div>
                   </div>
                   
-                  {/* Quote 2 - Top right, closer to phone */}
-                  <div className="absolute -top-8 right-8 bg-blue-50 rounded-2xl px-4 py-3 shadow-lg border border-blue-100 max-w-48 transform rotate-1 animate-pulse hidden lg:block z-10" style={{animationDelay: '1s'}}>
+                  {/* Quote 2 - Top right, bring down and closer */}
+                  <div className="absolute -top-2 right-4 bg-blue-50 rounded-2xl px-4 py-3 shadow-lg border border-blue-100 max-w-48 transform rotate-1 animate-pulse hidden lg:block z-10" style={{animationDelay: '1s'}}>
                     <div className="text-sm text-gray-700 font-medium">
                       "Getið þið hjálpað mér með pöntunina mína?"
                     </div>
                     <div className="absolute bottom-0 right-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-blue-50 transform translate-y-1.5"></div>
                   </div>
                   
-                  {/* Quote 3 - Bottom left, much closer to phone */}
-                  <div className="absolute bottom-20 left-8 bg-orange-50 rounded-2xl px-4 py-3 shadow-lg border border-orange-100 max-w-52 transform rotate-1 animate-pulse hidden md:block z-10" style={{animationDelay: '2s'}}>
+                  {/* Quote 3 - Bottom left, move further away from phone */}
+                  <div className="absolute bottom-8 left-8 bg-orange-50 rounded-2xl px-4 py-3 shadow-lg border border-orange-100 max-w-52 transform rotate-1 animate-pulse hidden md:block z-10" style={{animationDelay: '2s'}}>
                     <div className="text-sm text-gray-700 font-medium">
                       "Hvenær eruð þið opin á morgun?"
                     </div>
                     <div className="absolute top-0 left-6 w-0 h-0 border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-orange-50 transform -translate-y-1.5"></div>
                   </div>
                   
-                  {/* Quote 4 - Bottom right, much closer to phone */}
-                  <div className="absolute bottom-16 right-12 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-44 transform -rotate-2 animate-pulse hidden lg:block z-10" style={{animationDelay: '3s'}}>
+                  {/* Quote 4 - Bottom right, move further away from phone */}
+                  <div className="absolute bottom-4 right-8 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-44 transform -rotate-2 animate-pulse hidden lg:block z-10" style={{animationDelay: '3s'}}>
                     <div className="text-sm text-gray-700 font-medium">
                       "Get ég fengið verðtilboð?"
                     </div>
