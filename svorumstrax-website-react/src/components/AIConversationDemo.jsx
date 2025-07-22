@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 
 const AIConversationDemo = ({ currentLanguage = 'is' }) => {
@@ -8,28 +9,27 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [isRestarting, setIsRestarting] = useState(false);
   const chatContainerRef = useRef(null);
 
-  // Sparkle SVG Component for Bot Avatar - Subtle theme
+  // Sparkle SVG Component for Bot Avatar
   const SparkleIcon = () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M12 0L13.09 8.26L22 9L13.09 9.74L12 18L10.91 9.74L2 9L10.91 8.26L12 0Z" fill="white"/>
       <path d="M19 4L19.74 6.26L22 7L19.74 7.74L19 10L18.26 7.74L16 7L18.26 6.26L19 4Z" fill="white" opacity="0.8"/>
       <path d="M5 14L5.74 16.26L8 17L5.74 17.74L5 20L4.26 17.74L2 17L4.26 16.26L5 14Z" fill="white" opacity="0.6"/>
     </svg>
   );
 
-  // Auto-scroll chat container only - NOT the whole page
+  // Auto-scroll chat container
   const scrollChatToBottom = () => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   };
 
-  // Scroll chat when messages change - ONLY the chat container
   useEffect(() => {
     scrollChatToBottom();
   }, [messages, isTyping, actionBar]);
 
-  // Conversation content with FASTER timing and MULTIPLE BUTTONS
+  // Conversation content - keep the existing good flow
   const conversationSteps = {
     is: [
       {
@@ -93,7 +93,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
   const steps = conversationSteps[currentLanguage];
 
-  // Auto-play conversation with FASTER timing
+  // Auto-play conversation
   useEffect(() => {
     if (currentStep >= steps.length) return;
 
@@ -109,7 +109,6 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         return;
       }
 
-      // Show typing indicator for AI messages - FASTER
       if (step.type === 'ai') {
         setIsTyping(true);
         setTimeout(() => {
@@ -119,9 +118,8 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           }]);
           setIsTyping(false);
           setCurrentStep(prev => prev + 1);
-        }, 400);  // Much faster typing
+        }, 800);
       } else {
-        // User messages appear instantly
         setMessages(prev => [...prev, {
           ...step,
           id: `${step.type}-${Date.now()}-${Math.random()}`
@@ -133,97 +131,92 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     return () => clearTimeout(timer);
   }, [currentStep, steps, currentLanguage]);
 
-  // Smooth restart with fade out/in animation
+  // Smooth restart with slide down/up animation
   const resetConversation = () => {
     setIsRestarting(true);
     
-    // Fade out current messages
     setTimeout(() => {
       setMessages([]);
       setCurrentStep(0);
       setIsTyping(false);
       setActionBar(null);
       
-      // Fade back in
       setTimeout(() => {
         setIsRestarting(false);
-      }, 200);
-    }, 300);
+      }, 300);
+    }, 500);
   };
 
-  // Reset when language changes
   useEffect(() => {
     resetConversation();
   }, [currentLanguage]);
 
-  // Auto-reset after completion - FASTER restart
   useEffect(() => {
     if (currentStep >= steps.length) {
-      const resetTimer = setTimeout(resetConversation, 4000);
+      const resetTimer = setTimeout(resetConversation, 5000);
       return () => clearTimeout(resetTimer);
     }
   }, [currentStep, steps.length]);
 
   return (
-    <div className="relative max-w-lg mx-auto">
-      {/* Seamless Chat Container - No Header */}
-      <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 overflow-hidden">
+    <div className="relative w-full max-w-3xl mx-auto">
+      {/* Enterprise Chat Container - Freddy AI Style */}
+      <div className={`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl shadow-2xl border border-slate-700/30 overflow-hidden transition-all duration-500 ${
+        isRestarting ? 'transform translate-y-8 opacity-0' : 'transform translate-y-0 opacity-100'
+      }`}>
         
-        {/* Messages Area - Scrollable Container */}
+        {/* Messages Area - Big Window */}
         <div 
           ref={chatContainerRef}
-          className={`h-96 overflow-y-auto p-6 space-y-4 scrollbar-hide transition-opacity duration-300 ${
-            isRestarting ? 'opacity-0' : 'opacity-100'
-          }`}
+          className="h-[500px] overflow-y-auto p-8 space-y-6"
           style={{
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-            scrollBehavior: 'smooth'
+            scrollbarWidth: 'thin',
+            scrollbarColor: '#475569 transparent'
           }}
         >
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`flex items-end gap-3 ${
+              className={`flex items-start gap-4 ${
                 message.type === 'user' ? 'flex-row' : 'flex-row-reverse'
               }`}
               style={{ 
-                animation: 'slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+                animation: 'slideInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
             >
-              {/* Avatar - User on LEFT, Bot on RIGHT */}
-              <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm ${
+              {/* Big Profile Pictures */}
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg ${
                 message.type === 'user' 
                   ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700' 
-                  : 'bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600'
+                  : 'bg-gradient-to-br from-slate-700 to-slate-800 border-2 border-teal-400/30'
               }`}>
                 {message.type === 'user' ? (
-                  <span className="text-white text-sm font-bold">K</span>
+                  <span className="text-white text-lg font-bold">K</span>
                 ) : (
                   <SparkleIcon />
                 )}
               </div>
 
-              {/* Message Bubble */}
-              <div className={`max-w-[75%] relative ${
-                message.type === 'user' ? 'mr-12' : 'ml-12'
+              {/* Message Bubble - Freddy AI Style */}
+              <div className={`max-w-[70%] ${
+                message.type === 'user' ? 'mr-16' : 'ml-16'
               }`}>
                 <div
-                  className={`px-5 py-3 rounded-2xl text-sm font-medium leading-relaxed shadow-sm border backdrop-blur-sm ${
+                  className={`px-6 py-4 rounded-2xl text-base leading-relaxed shadow-lg backdrop-blur-sm border ${
                     message.type === 'user'
-                      ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 text-white border-blue-200/20 rounded-bl-md'
-                      : 'bg-white/95 text-slate-700 border-gray-200/30 rounded-br-md'
+                      ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white border-blue-500/30 rounded-bl-lg'
+                      : 'bg-slate-800/90 text-slate-100 border-slate-600/30 rounded-br-lg'
                   }`}
                 >
                   {message.content}
                   
-                  {/* Multiple Action Buttons - Subtle orange */}
+                  {/* Action Buttons */}
                   {message.hasButtons && message.buttons && (
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="mt-4 flex flex-wrap gap-3">
                       {message.buttons.map((buttonText, buttonIndex) => (
                         <button 
                           key={buttonIndex}
-                          className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200"
+                          className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white text-sm font-semibold px-5 py-3 rounded-xl shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200 border border-teal-400/30"
                         >
                           {buttonText}
                         </button>
@@ -235,27 +228,27 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
             </div>
           ))}
 
-          {/* Typing Indicator - Subtle theme */}
+          {/* Typing Indicator */}
           {isTyping && (
-            <div className="flex items-end gap-3 flex-row-reverse" style={{ animation: 'slideInUp 0.2s ease-out' }}>
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 flex items-center justify-center shadow-sm">
+            <div className="flex items-start gap-4 flex-row-reverse" style={{ animation: 'slideInUp 0.3s ease-out' }}>
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 border-2 border-teal-400/30 flex items-center justify-center shadow-lg">
                 <SparkleIcon />
               </div>
-              <div className="bg-white/95 backdrop-blur-sm border border-gray-200/30 px-5 py-3 rounded-2xl rounded-br-md shadow-sm ml-12">
-                <div className="flex gap-1">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                  <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+              <div className="bg-slate-800/90 backdrop-blur-sm border border-slate-600/30 px-6 py-4 rounded-2xl rounded-br-lg shadow-lg ml-16">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 bg-teal-400 rounded-full animate-bounce"></div>
+                  <div className="w-3 h-3 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                  <div className="w-3 h-3 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Action Bar - Subtle theme */}
+          {/* Action Bar */}
           {actionBar && (
-            <div className="flex justify-center" style={{ animation: 'fadeInScale 0.2s ease-out' }}>
-              <div className="bg-orange-50/90 backdrop-blur-sm border border-orange-200/50 text-orange-700 px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 shadow-sm">
-                <div className="w-2 h-2 bg-orange-400 rounded-full animate-spin"></div>
+            <div className="flex justify-center" style={{ animation: 'fadeInScale 0.3s ease-out' }}>
+              <div className="bg-teal-500/20 backdrop-blur-sm border border-teal-400/30 text-teal-300 px-6 py-3 rounded-2xl text-sm font-semibold flex items-center gap-3 shadow-lg">
+                <div className="w-3 h-3 bg-teal-400 rounded-full animate-spin"></div>
                 {actionBar}
               </div>
             </div>
@@ -264,15 +257,11 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
       </div>
 
       {/* Custom CSS Animations */}
-      <style>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        
+      <style jsx>{`
         @keyframes slideInUp {
           from {
             opacity: 0;
-            transform: translateY(12px) scale(0.97);
+            transform: translateY(15px) scale(0.97);
           }
           to {
             opacity: 1;
@@ -289,6 +278,24 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
             opacity: 1;
             transform: scale(1);
           }
+        }
+
+        /* Custom scrollbar */
+        div::-webkit-scrollbar {
+          width: 6px;
+        }
+        
+        div::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        
+        div::-webkit-scrollbar-thumb {
+          background: #475569;
+          border-radius: 3px;
+        }
+        
+        div::-webkit-scrollbar-thumb:hover {
+          background: #64748b;
         }
       `}</style>
     </div>

@@ -6,6 +6,7 @@ import {
   ComputerDesktopIcon,
   EnvelopeIcon
 } from '@heroicons/react/24/outline'
+import AIConversationDemo from './AIConversationDemo'
 
 const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
   const content = {
@@ -149,62 +150,9 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
             </button>
           </div>
           
-          {/* Right side - AI Phone Mockups showing chat interfaces */}
-          <div className="relative flex justify-center">
-            <div className="grid grid-cols-2 gap-6 items-end">
-              {/* Phone 1 - AI Chat Interface */}
-              <div className="relative">
-                <div className="w-40 h-72 bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl p-1 shadow-2xl">
-                  <div className="w-full h-full bg-black rounded-3xl overflow-hidden relative">
-                    <div className="absolute inset-2 bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-teal-900/40 rounded-2xl p-3">
-                      {/* Chat messages */}
-                      <div className="space-y-2 text-xs">
-                        <div className="bg-blue-600/80 text-white p-2 rounded-lg text-right ml-4">
-                          Hæ! Get ég bókað tíma?
-                        </div>
-                        <div className="bg-white/90 text-gray-800 p-2 rounded-lg mr-4">
-                          Já! Hvað hentar þér best - 11:00 eða 14:30?
-                        </div>
-                        <div className="flex gap-1 justify-center">
-                          <div className="bg-orange-500 px-2 py-1 rounded-full text-white text-xs">11:00</div>
-                          <div className="bg-orange-500 px-2 py-1 rounded-full text-white text-xs">14:30</div>
-                        </div>
-                      </div>
-                      <div className="absolute bottom-2 left-2 right-2 text-white/60 text-xs text-center">
-                        AI Spjallmenni
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Phone 2 - AI Voice Interface */}
-              <div className="relative">
-                <div className="w-44 h-80 bg-gradient-to-br from-teal-500 to-teal-600 rounded-3xl p-1 shadow-2xl">
-                  <div className="w-full h-full bg-black rounded-3xl overflow-hidden relative">
-                    <div className="absolute inset-2 bg-gradient-to-br from-teal-900/40 via-teal-800/30 to-orange-900/40 rounded-2xl flex flex-col items-center justify-center p-3">
-                      {/* AI Voice Waveform */}
-                      <div className="flex items-center gap-1 mb-4">
-                        {[...Array(12)].map((_, i) => (
-                          <div
-                            key={i}
-                            className="w-1 bg-gradient-to-t from-teal-400 to-orange-400 rounded-full animate-pulse"
-                            style={{
-                              height: `${Math.random() * 25 + 8}px`,
-                              animationDelay: `${i * 0.1}s`
-                            }}
-                          />
-                        ))}
-                      </div>
-                      <div className="text-white/80 text-xs font-medium mb-2">AI Símsvörun</div>
-                      <div className="text-white/60 text-xs text-center">
-                        "Hæ! Þakka þér fyrir að hringja í..."
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Right side - Enterprise Chat Demo */}
+          <div className="relative">
+            <AIConversationDemo currentLanguage={currentLanguage} />
           </div>
         </div>
 
