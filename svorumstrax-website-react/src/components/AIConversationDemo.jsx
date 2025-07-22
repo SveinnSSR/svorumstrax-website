@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import customerAvatar from '../assets/images/customer-avatar.jpg';
+import customerAvatar from '../assets/images/customer-avatar.png';
 
 const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [messages, setMessages] = useState([]);
