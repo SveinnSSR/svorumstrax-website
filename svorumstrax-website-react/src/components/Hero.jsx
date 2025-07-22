@@ -4,7 +4,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
       title: 'Snjallar lausnir fyrir nútíma þjónustu',
-      subtitle: 'Yfir 100 fyrirtæki treysta Svörum strax fyrir samskiptum við sína viðskiptavini. Þjónustuver í Barcelona með 35+ íslenskum sérfræðingum í fjarvinnu og gervigreind. Heildarlausn með umsjón alls eða hluta þjónustuvers þíns.',
+      subtitle: 'Yfir 100 fyrirtæki treysta Svörum strax fyrir samskiptum við sína viðskiptavini. Þú velur hvort gervigreind eða mannlegur þjónustufulltrúi svari - eða blöndu af hvoru tveggja. Við aðlögum okkur að þínum þörfum og veitum nákvæmlega þá þjónustu sem hentar þínu fyrirtæki best.',
       primaryButton: 'Sjá alla þjónustu',
       secondaryButton: 'Fá ókeypis ráðgjöf'
     },
