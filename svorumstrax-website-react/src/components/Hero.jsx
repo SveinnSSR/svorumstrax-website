@@ -4,7 +4,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
       title: 'Snjallar lausnir fyrir nútíma þjónustu',
-      subtitle: 'Yfir 100 fyrirtæki treysta Svörum strax fyrir samskiptum við sína viðskiptavini. Þú velur hvort gervigreind eða mannlegur þjónustufulltrúi svari - eða blöndu af hvoru tveggja. Við aðlögum okkur að þínum þörfum og veitum nákvæmlega þá þjónustu sem hentar þínu fyrirtæki best.',
+      subtitle: 'Yfir 100 fyrirtæki treysta Svörum strax fyrir samskiptum við sína viðskiptavini. Þjónustuver í Barcelona með 35+ íslenskum sérfræðingum í fjarvinnu og gervigreind. Heildarlausn með umsjón alls eða hluta þjónustuvers þíns.',
       primaryButton: 'Sjá alla þjónustu',
       secondaryButton: 'Fá ókeypis ráðgjöf'
     },
@@ -79,55 +79,55 @@ const Hero = ({ currentLanguage, onContactClick }) => {
               
               {/* Right side - Phone image with floating quotes */}
               <div className="flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-lg mx-auto">
+                <div className="relative w-full max-w-md mx-auto">
                   {/* Subtle glow effect behind the phone */}
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-200/30 to-orange-200/30 rounded-3xl blur-2xl transform scale-110"></div>
                   
                   {/* Floating customer quotes - positioned in a circle around the phone */}
-                  {/* Quote 1 - Top left, much higher and further left */}
-                  <div className="absolute -top-4 -left-8 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-56 transform -rotate-2 animate-pulse hidden md:block z-10">
+                  {/* Quote 1 - Top left */}
+                  <div className="absolute -top-2 -left-6 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-56 transform -rotate-2 animate-pulse hidden md:block z-10">
                     <div className="text-sm text-gray-700 font-medium">
                       "Hæ! Er hægt að bóka tíma hjá ykkur um helgina?"
                     </div>
                     <div className="absolute bottom-0 left-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-white transform translate-y-1.5"></div>
                   </div>
                   
-                  {/* Quote 2 - Top right, bring down and closer */}
-                  <div className="absolute -top-2 right-4 bg-blue-50 rounded-2xl px-4 py-3 shadow-lg border border-blue-100 max-w-48 transform rotate-1 animate-pulse hidden lg:block z-10" style={{animationDelay: '1s'}}>
+                  {/* Quote 2 - Top right */}
+                  <div className="absolute top-0 right-2 bg-blue-50 rounded-2xl px-4 py-3 shadow-lg border border-blue-100 max-w-48 transform rotate-1 animate-pulse hidden lg:block z-10" style={{animationDelay: '1s'}}>
                     <div className="text-sm text-gray-700 font-medium">
                       "Getið þið hjálpað mér með pöntunina mína?"
                     </div>
                     <div className="absolute bottom-0 right-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-blue-50 transform translate-y-1.5"></div>
                   </div>
                   
-                  {/* Quote 3 - Bottom left, move further away from phone */}
-                  <div className="absolute bottom-8 left-8 bg-orange-50 rounded-2xl px-4 py-3 shadow-lg border border-orange-100 max-w-52 transform rotate-1 animate-pulse hidden md:block z-10" style={{animationDelay: '2s'}}>
+                  {/* Quote 3 - Bottom left */}
+                  <div className="absolute bottom-6 left-6 bg-orange-50 rounded-2xl px-4 py-3 shadow-lg border border-orange-100 max-w-52 transform rotate-1 animate-pulse hidden md:block z-10" style={{animationDelay: '2s'}}>
                     <div className="text-sm text-gray-700 font-medium">
                       "Hvenær eruð þið opin á morgun?"
                     </div>
                     <div className="absolute top-0 left-6 w-0 h-0 border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-orange-50 transform -translate-y-1.5"></div>
                   </div>
                   
-                  {/* Quote 4 - Bottom right, move further away from phone */}
-                  <div className="absolute bottom-4 right-8 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-44 transform -rotate-2 animate-pulse hidden lg:block z-10" style={{animationDelay: '3s'}}>
+                  {/* Quote 4 - Bottom right */}
+                  <div className="absolute bottom-2 right-6 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-44 transform -rotate-2 animate-pulse hidden lg:block z-10" style={{animationDelay: '3s'}}>
                     <div className="text-sm text-gray-700 font-medium">
                       "Get ég fengið verðtilboð?"
                     </div>
                     <div className="absolute top-0 right-6 w-0 h-0 border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-white transform -translate-y-1.5"></div>
                   </div>
                   
-                  {/* Phone image - centered in the container with more padding */}
-                  <div className="relative flex justify-center items-center py-16 px-8">
+                  {/* Phone image - centered in the container, now smaller */}
+                  <div className="relative flex justify-center items-center py-12 px-6">
                     <img 
                       src={outboundPhone} 
                       alt="Phone interface showing customer service features"
-                      className="w-full h-auto max-w-sm drop-shadow-2xl z-20"
+                      className="w-full h-auto max-w-xs drop-shadow-2xl z-20"
                     />
                   </div>
                   
                   {/* Floating elements around the phone */}
-                  <div className="absolute top-1/4 right-1/4 w-20 h-20 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-xl animate-pulse"></div>
-                  <div className="absolute bottom-1/4 left-1/4 w-24 h-24 bg-gradient-to-tr from-orange-500/20 to-transparent rounded-full blur-xl animate-pulse" style={{animationDelay: '1s'}}></div>
+                  <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-xl animate-pulse"></div>
+                  <div className="absolute bottom-1/4 left-1/4 w-20 h-20 bg-gradient-to-tr from-orange-500/20 to-transparent rounded-full blur-xl animate-pulse" style={{animationDelay: '1s'}}></div>
                 </div>
               </div>
               
