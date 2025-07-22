@@ -9,7 +9,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [isRestarting, setIsRestarting] = useState(false);
   const chatContainerRef = useRef(null);
 
-  // Professional AI Icon - Clean and Modern
+  // Enterprise-grade AI Icon
   const AIIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
       <path d="M12 3L18 9L12 15L6 9L12 3Z" fill="#4A90E2"/>
@@ -17,7 +17,6 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     </svg>
   );
 
-  // Auto-scroll chat container
   const scrollChatToBottom = () => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -28,7 +27,6 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     scrollChatToBottom();
   }, [messages, isTyping, actionBar]);
 
-  // Conversation content
   const conversationSteps = {
     is: [
       {
@@ -92,7 +90,6 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
   const steps = conversationSteps[currentLanguage];
 
-  // Auto-play conversation
   useEffect(() => {
     if (currentStep >= steps.length) return;
 
@@ -130,7 +127,6 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     return () => clearTimeout(timer);
   }, [currentStep, steps, currentLanguage]);
 
-  // Smooth restart
   const resetConversation = () => {
     setIsRestarting(true);
     
@@ -159,42 +155,29 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
   return (
     <div className="relative w-full max-w-3xl mx-auto">
-      {/* Chat Container - Clean and Modern */}
       <div className={`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl shadow-2xl border border-slate-700/30 overflow-hidden transition-all duration-500 ${
         isRestarting ? 'transform translate-y-8 opacity-0' : 'transform translate-y-0 opacity-100'
       }`}>
         
-        {/* Messages Area - Pixel Perfect Spacing */}
         <div 
           ref={chatContainerRef}
-          className="h-[500px] overflow-y-auto p-8 pt-4"
+          className="h-[500px] overflow-y-auto p-8 pt-6"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#475569 transparent'
           }}
         >
-          <div className="space-y-4">
+          <div className="space-y-5">
             {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`${
-                  message.type === 'user' 
-                    ? 'flex items-center justify-start gap-3' 
-                    : 'flex items-center justify-end gap-3'
-                } mb-5`}
-                style={{ 
-                  animation: 'slideInUp 0.25s ease-out'
-                }}
-              >
-                {/* Customer Message Layout */}
+              <div key={message.id} className="mb-6">
+                {/* Customer Messages - Clean Inline Text (Left) */}
                 {message.type === 'user' && (
-                  <>
+                  <div className="flex items-center justify-start gap-3">
                     <img 
                       src={customerAvatar} 
                       alt="Customer" 
                       className="w-12 h-12 rounded-full object-cover flex-shrink-0"
                       onError={(e) => {
-                        // Fallback avatar
                         e.target.style.display = 'none';
                         e.target.nextSibling.style.display = 'flex';
                       }}
@@ -205,52 +188,44 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                     >
                       K
                     </div>
-                    <div className="bg-white py-3 px-4 rounded-xl shadow-sm max-w-[75%]">
-                      <div 
-                        style={{
-                          fontSize: '16px',
-                          fontWeight: '500',
-                          fontFamily: 'Inter, Helvetica Neue, sans-serif',
-                          WebkitFontSmoothing: 'antialiased',
-                          MozOsxFontSmoothing: 'grayscale',
-                          color: '#1f2937',
-                          lineHeight: '1.5'
-                        }}
-                      >
-                        {message.content}
-                      </div>
-                    </div>
-                  </>
+                    <p 
+                      className="text-slate-100 font-medium leading-tight"
+                      style={{
+                        fontFamily: 'Inter, Helvetica Neue, sans-serif',
+                        fontSize: '16px',
+                        fontWeight: '500',
+                        WebkitFontSmoothing: 'antialiased',
+                        MozOsxFontSmoothing: 'grayscale'
+                      }}
+                    >
+                      {message.content}
+                    </p>
+                  </div>
                 )}
 
-                {/* Bot Message Layout */}
+                {/* Bot Messages - White Bubbles (Right) */}
                 {message.type === 'ai' && (
-                  <>
-                    <div className="bg-white py-3 px-4 rounded-xl shadow-sm max-w-[75%] mr-3">
-                      <div 
-                        style={{
-                          fontSize: '16px',
-                          fontWeight: '500',
-                          fontFamily: 'Inter, Helvetica Neue, sans-serif',
-                          WebkitFontSmoothing: 'antialiased',
-                          MozOsxFontSmoothing: 'grayscale',
-                          color: '#1f2937',
-                          lineHeight: '1.5'
-                        }}
-                      >
-                        {message.content}
-                      </div>
+                  <div className="flex items-center justify-end gap-3">
+                    <div 
+                      className="bg-white rounded-xl shadow-md p-4 max-w-[70%] text-slate-900 leading-relaxed"
+                      style={{
+                        fontFamily: 'Inter, Helvetica Neue, sans-serif',
+                        fontSize: '16px',
+                        fontWeight: '500',
+                        WebkitFontSmoothing: 'antialiased',
+                        MozOsxFontSmoothing: 'grayscale'
+                      }}
+                    >
+                      {message.content}
                       
-                      {/* Action Buttons - Freddy AI Style */}
+                      {/* Enterprise-Grade Buttons */}
                       {message.hasButtons && message.buttons && (
                         <div className="mt-3 flex flex-wrap gap-2">
                           {message.buttons.map((buttonText, buttonIndex) => (
                             <button 
                               key={buttonIndex}
-                              className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white h-9 px-4 rounded-lg transition-all duration-150"
+                              className="bg-emerald-500 text-white px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors duration-150"
                               style={{
-                                fontSize: '15px',
-                                fontWeight: '500',
                                 fontFamily: 'Inter, Helvetica Neue, sans-serif',
                                 WebkitFontSmoothing: 'antialiased',
                                 MozOsxFontSmoothing: 'grayscale'
@@ -265,23 +240,25 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
                     <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0">
                       <AIIcon />
                     </div>
-                  </>
+                  </div>
                 )}
               </div>
             ))}
 
-            {/* Typing Indicator - Bot Layout */}
+            {/* Typing Indicator */}
             {isTyping && (
-              <div className="flex items-center justify-end gap-3 mb-5" style={{ animation: 'slideInUp 0.2s ease-out' }}>
-                <div className="bg-white py-3 px-4 rounded-xl shadow-sm max-w-[75%] mr-3">
-                  <div className="flex gap-1.5 items-center">
-                    <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                    <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+              <div className="mb-6">
+                <div className="flex items-center justify-end gap-3">
+                  <div className="bg-white rounded-xl shadow-md p-4 max-w-[70%]">
+                    <div className="flex gap-1.5 items-center">
+                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                    </div>
                   </div>
-                </div>
-                <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center">
-                  <AIIcon />
+                  <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center">
+                    <AIIcon />
+                  </div>
                 </div>
               </div>
             )}
@@ -289,12 +266,13 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
           {/* Action Bar */}
           {actionBar && (
-            <div className="flex justify-center mt-5" style={{ animation: 'fadeIn 0.2s ease-out' }}>
-              <div className="bg-teal-500/20 border border-teal-400/30 text-teal-300 px-4 py-2 rounded-xl flex items-center gap-2"
+            <div className="flex justify-center mt-6">
+              <div 
+                className="bg-teal-500/20 border border-teal-400/30 text-teal-300 px-4 py-2 rounded-xl flex items-center gap-2"
                 style={{
+                  fontFamily: 'Inter, Helvetica Neue, sans-serif',
                   fontSize: '14px',
-                  fontWeight: '500',
-                  fontFamily: 'Inter, Helvetica Neue, sans-serif'
+                  fontWeight: '500'
                 }}
               >
                 <div className="w-2 h-2 bg-teal-400 rounded-full animate-spin"></div>
@@ -305,25 +283,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         </div>
       </div>
 
-      {/* Clean CSS Animations */}
       <style jsx>{`
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(4px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        /* Clean scrollbar */
         div::-webkit-scrollbar {
           width: 6px;
         }
