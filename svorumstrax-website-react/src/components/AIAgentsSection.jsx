@@ -13,7 +13,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
     is: {
       title: 'Gervigreindarfulltrúar',
       subtitle: 'Gervigreind þjálfuð í þínu fyrirtæki sem svarar allan sólarhringinn. Veitir nákvæmar upplýsingar, framkvæmir aðgerðir og hjálpar til við sölu.',
-      mainDescription: 'Fullkomlega þjálfuð í þínum vörum og þjónustu. Tekur við pöntunum, bókar tíma og gefur nákvæm svör - eins og þinn besti starfsmaður.',
+      mainDescription: 'Við sérhæfum gervigreind í að svara fyrir þinn rekstur. Tekur við pöntunum, bókar tíma og gefur nákvæm svör - eins og þinn besti starfsmaður.',
       features: [
         {
           icon: ClockIcon,
