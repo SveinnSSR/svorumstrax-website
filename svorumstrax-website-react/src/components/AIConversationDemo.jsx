@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import customerAvatar from '../assets/images/customer-avatar.png';
+import customerAvatar from '../assets/images/customer-avatar.jpg';
 
 const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [messages, setMessages] = useState([]);
@@ -9,21 +9,11 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
   const [isRestarting, setIsRestarting] = useState(false);
   const chatContainerRef = useRef(null);
 
-  // Enhanced Sparkle SVG Component with Teal-Orange Gradient
-  const SparkleIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <defs>
-        <linearGradient id="sparkleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style={{stopColor: '#26C5D9'}} />
-          <stop offset="50%" style={{stopColor: '#4A90E2'}} />
-          <stop offset="100%" style={{stopColor: '#FFA947'}} />
-        </linearGradient>
-      </defs>
-      {/* Main star - larger and chunkier */}
-      <path d="M12 1L13.5 8.5L21 10L13.5 11.5L12 19L10.5 11.5L3 10L10.5 8.5L12 1Z" fill="url(#sparkleGradient)" strokeWidth="0.5" stroke="white"/>
-      {/* Secondary stars - more professional positioning */}
-      <path d="M18.5 5L19 7L21 7.5L19 8L18.5 10L18 8L16 7.5L18 7L18.5 5Z" fill="url(#sparkleGradient)" opacity="0.9"/>
-      <path d="M5.5 15L6 17L8 17.5L6 18L5.5 20L5 18L3 17.5L5 17L5.5 15Z" fill="url(#sparkleGradient)" opacity="0.8"/>
+  // Professional AI Icon - Simple Blue Diamond (Freddy AI Style)
+  const AIIcon = () => (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M10 2L15 7L10 12L5 7L10 2Z" fill="#4A90E2"/>
+      <path d="M10 8L15 13L10 18L5 13L10 8Z" fill="#26C5D9" opacity="0.8"/>
     </svg>
   );
 
@@ -38,7 +28,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
     scrollChatToBottom();
   }, [messages, isTyping, actionBar]);
 
-  // Conversation content - keep the existing good flow
+  // Conversation content
   const conversationSteps = {
     is: [
       {
@@ -102,7 +92,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
   const steps = conversationSteps[currentLanguage];
 
-  // Auto-play conversation
+  // Auto-play conversation with sharp text appearance
   useEffect(() => {
     if (currentStep >= steps.length) return;
 
@@ -127,7 +117,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           }]);
           setIsTyping(false);
           setCurrentStep(prev => prev + 1);
-        }, 800);
+        }, 600); // Shorter typing duration for sharper feel
       } else {
         setMessages(prev => [...prev, {
           ...step,
@@ -135,12 +125,12 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         }]);
         setCurrentStep(prev => prev + 1);
       }
-    }, currentStep === 0 ? 500 : step.delay);
+    }, currentStep === 0 ? 300 : step.delay);
 
     return () => clearTimeout(timer);
   }, [currentStep, steps, currentLanguage]);
 
-  // Smooth restart with slide down/up animation
+  // Smooth restart
   const resetConversation = () => {
     setIsRestarting(true);
     
@@ -169,12 +159,12 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
   return (
     <div className="relative w-full max-w-3xl mx-auto">
-      {/* Enterprise Chat Container - Freddy AI Style */}
+      {/* Professional Chat Container */}
       <div className={`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl shadow-2xl border border-slate-700/30 overflow-hidden transition-all duration-500 ${
         isRestarting ? 'transform translate-y-8 opacity-0' : 'transform translate-y-0 opacity-100'
       }`}>
         
-        {/* Messages Area - Big Window */}
+        {/* Messages Area */}
         <div 
           ref={chatContainerRef}
           className="h-[500px] overflow-y-auto p-8 space-y-6"
@@ -186,80 +176,79 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`flex items-start gap-4 ${
-                message.type === 'user' ? 'flex-row' : 'flex-row-reverse'
-              }`}
+              className="flex items-start gap-4"
               style={{ 
-                animation: 'slideInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
+                animation: 'slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)', // Faster, sharper animation
+                justifyContent: message.type === 'user' ? 'flex-end' : 'flex-start'
               }}
             >
-              {/* Big Profile Pictures with Customer Avatar */}
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg overflow-hidden ${
-                message.type === 'user' 
-                  ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700' 
-                  : 'bg-gradient-to-br from-slate-700 to-slate-800 border-2 border-teal-400/30'
-              }`}>
-                {message.type === 'user' ? (
-                  <>
-                    <img 
-                      src={customerAvatar} 
-                      alt="Customer" 
-                      className="w-full h-full object-cover rounded-2xl"
-                      onError={(e) => {
-                        // Fallback to "K" if image fails to load
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'block';
-                      }}
-                    />
-                    <span className="text-white text-lg font-bold" style={{display: 'none'}}>K</span>
-                  </>
-                ) : (
-                  <SparkleIcon />
-                )}
-              </div>
-
-              {/* Message Bubble - Freddy AI Style */}
-              <div className={`max-w-[70%] ${
-                message.type === 'user' ? 'mr-16' : 'ml-16'
-              }`}>
-                <div
-                  className={`px-6 py-4 rounded-2xl text-base leading-relaxed shadow-lg backdrop-blur-sm border ${
-                    message.type === 'user'
-                      ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white border-blue-500/30 rounded-bl-lg'
-                      : 'bg-slate-800/90 text-slate-100 border-slate-600/30 rounded-br-lg'
-                  }`}
-                >
-                  {message.content}
-                  
-                  {/* Action Buttons */}
-                  {message.hasButtons && message.buttons && (
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      {message.buttons.map((buttonText, buttonIndex) => (
-                        <button 
-                          key={buttonIndex}
-                          className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white text-sm font-semibold px-5 py-3 rounded-xl shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200 border border-teal-400/30"
-                        >
-                          {buttonText}
-                        </button>
-                      ))}
-                    </div>
-                  )}
+              {/* Avatar - Only show for AI messages, positioned properly */}
+              {message.type === 'ai' && (
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <AIIcon />
                 </div>
+              )}
+
+              {/* Message Content */}
+              <div className={`max-w-[70%] ${message.type === 'user' ? 'order-1' : 'order-2'}`}>
+                {message.type === 'user' ? (
+                  // User messages: No background, just text (Freddy AI style)
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+                      <img 
+                        src={customerAvatar} 
+                        alt="Customer" 
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      <div className="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-bold rounded-full" style={{display: 'none'}}>
+                        K
+                      </div>
+                    </div>
+                    <div className="text-slate-100 text-base leading-relaxed">
+                      {message.content}
+                    </div>
+                  </div>
+                ) : (
+                  // AI messages: Professional bubble
+                  <div className="bg-slate-800/90 backdrop-blur-sm border border-slate-600/30 px-6 py-4 rounded-2xl rounded-tl-lg shadow-lg">
+                    <div className="text-slate-100 text-base leading-relaxed">
+                      {message.content}
+                    </div>
+                    
+                    {/* Action Buttons */}
+                    {message.hasButtons && message.buttons && (
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        {message.buttons.map((buttonText, buttonIndex) => (
+                          <button 
+                            key={buttonIndex}
+                            className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white text-sm font-semibold px-5 py-3 rounded-xl shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200"
+                          >
+                            {buttonText}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           ))}
 
-          {/* Typing Indicator with Enhanced Sparkle */}
+          {/* Typing Indicator */}
           {isTyping && (
-            <div className="flex items-start gap-4 flex-row-reverse" style={{ animation: 'slideInUp 0.3s ease-out' }}>
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 border-2 border-teal-400/30 flex items-center justify-center shadow-lg">
-                <SparkleIcon />
+            <div className="flex items-start gap-4" style={{ animation: 'slideInUp 0.2s ease-out' }}>
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
+                <AIIcon />
               </div>
-              <div className="bg-slate-800/90 backdrop-blur-sm border border-slate-600/30 px-6 py-4 rounded-2xl rounded-br-lg shadow-lg ml-16">
+              <div className="bg-slate-800/90 backdrop-blur-sm border border-slate-600/30 px-6 py-4 rounded-2xl rounded-tl-lg shadow-lg">
                 <div className="flex gap-2">
-                  <div className="w-3 h-3 bg-teal-400 rounded-full animate-bounce"></div>
-                  <div className="w-3 h-3 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                  <div className="w-3 h-3 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                  <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                  <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                 </div>
               </div>
             </div>
@@ -267,9 +256,9 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
 
           {/* Action Bar */}
           {actionBar && (
-            <div className="flex justify-center" style={{ animation: 'fadeInScale 0.3s ease-out' }}>
+            <div className="flex justify-center" style={{ animation: 'fadeInScale 0.2s ease-out' }}>
               <div className="bg-teal-500/20 backdrop-blur-sm border border-teal-400/30 text-teal-300 px-6 py-3 rounded-2xl text-sm font-semibold flex items-center gap-3 shadow-lg">
-                <div className="w-3 h-3 bg-teal-400 rounded-full animate-spin"></div>
+                <div className="w-2 h-2 bg-teal-400 rounded-full animate-spin"></div>
                 {actionBar}
               </div>
             </div>
@@ -277,12 +266,12 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         </div>
       </div>
 
-      {/* Custom CSS Animations */}
+      {/* Custom CSS Animations - Faster and Sharper */}
       <style jsx>{`
         @keyframes slideInUp {
           from {
             opacity: 0;
-            transform: translateY(15px) scale(0.97);
+            transform: translateY(10px) scale(0.98);
           }
           to {
             opacity: 1;
@@ -293,7 +282,7 @@ const AIConversationDemo = ({ currentLanguage = 'is' }) => {
         @keyframes fadeInScale {
           from {
             opacity: 0;
-            transform: scale(0.95);
+            transform: scale(0.96);
           }
           to {
             opacity: 1;
