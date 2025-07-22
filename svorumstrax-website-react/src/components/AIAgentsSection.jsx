@@ -152,14 +152,12 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           
           {/* Right side - Static Chatbot UI Image */}
           <div className="relative">
-            <div className="relative max-w-md mx-auto">
+            <div className="relative max-w-xs mx-auto">
               <img 
                 src={chatbotUiDemo} 
                 alt="Chatbot UI Demo"
-                className="w-full h-auto rounded-3xl shadow-2xl border border-gray-200"
+                className="w-full h-auto drop-shadow-xl"
               />
-              {/* Optional overlay for extra polish */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/5 to-transparent pointer-events-none"></div>
             </div>
           </div>
         </div>
