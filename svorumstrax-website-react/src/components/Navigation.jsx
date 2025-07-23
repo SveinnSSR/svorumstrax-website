@@ -62,97 +62,121 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
   const currentContent = content[currentLanguage]
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className="fixed top-0 w-full z-50 transition-all duration-300">
+      {/* Premium backdrop with subtle gradient border */}
+      <div className="absolute inset-0 bg-white/85 backdrop-blur-xl border-b border-gray-200/60"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+      
+      {/* Subtle top accent line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex items-center justify-between h-18">
           {/* Logo */}
           <div className="flex items-center">
-            <button onClick={() => handleNavigation('home')} className="flex items-center">
+            <button 
+              onClick={() => handleNavigation('home')} 
+              className="flex items-center group transition-all duration-300 hover:scale-[1.02]"
+            >
               <img 
                 src={svorumStraxLogo} 
                 alt="Svörum strax" 
-                className="h-10 w-auto"
+                className="h-11 w-auto drop-shadow-sm group-hover:drop-shadow-md transition-all duration-300"
               />
             </button>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-1">
             <button 
               onClick={() => handleNavigation('home')} 
-              className={`font-medium transition-colors duration-300 ${
+              className={`px-4 py-2.5 rounded-xl font-medium transition-all duration-300 relative group ${
                 currentPage === 'home' 
-                  ? 'text-blue-600' 
-                  : 'text-gray-700 hover:text-blue-600'
+                  ? 'text-blue-700 bg-blue-50/80 shadow-sm' 
+                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50/80'
               }`}
             >
               {currentContent.home}
+              {currentPage === 'home' && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+              )}
             </button>
+            
             <button 
               onClick={() => handleScrollToSection('services')} 
-              className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+              className="px-4 py-2.5 rounded-xl text-gray-700 hover:text-blue-600 hover:bg-gray-50/80 font-medium transition-all duration-300"
             >
               {currentContent.services}
             </button>
+            
             <button 
               onClick={() => handleScrollToSection('about')} 
-              className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+              className="px-4 py-2.5 rounded-xl text-gray-700 hover:text-blue-600 hover:bg-gray-50/80 font-medium transition-all duration-300"
             >
               {currentContent.about}
             </button>
+            
             <button 
               onClick={() => handleNavigation('staff')} 
-              className={`font-medium transition-colors duration-300 ${
+              className={`px-4 py-2.5 rounded-xl font-medium transition-all duration-300 relative group ${
                 currentPage === 'staff' 
-                  ? 'text-blue-600' 
-                  : 'text-gray-700 hover:text-blue-600'
+                  ? 'text-blue-700 bg-blue-50/80 shadow-sm' 
+                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50/80'
               }`}
             >
               {currentContent.team}
+              {currentPage === 'staff' && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+              )}
             </button>
+            
             <button 
               onClick={() => handleScrollToSection('jobs')} 
-              className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+              className="px-4 py-2.5 rounded-xl text-gray-700 hover:text-blue-600 hover:bg-gray-50/80 font-medium transition-all duration-300"
             >
               {currentContent.jobs}
             </button>
+            
+            {/* Premium CTA Button */}
             <button 
               onClick={() => handleContactClick('contact')}
-              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+              className="ml-4 bg-gradient-to-r from-blue-600 via-blue-600 to-blue-700 hover:from-blue-700 hover:via-blue-700 hover:to-blue-800 text-white px-6 py-2.5 rounded-xl font-semibold shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 hover:-translate-y-0.5 transition-all duration-300 border border-blue-500/20"
             >
               {currentContent.contact}
             </button>
           </div>
 
-          {/* Language Toggle */}
-          <div className="hidden md:flex items-center space-x-1 bg-gray-100 rounded-full p-1 ml-4">
-            <button
-              onClick={() => onLanguageChange('is')}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ${
-                currentLanguage === 'is' 
-                  ? 'bg-blue-600 text-white shadow-sm' 
-                  : 'text-gray-600 hover:text-gray-800'
-              }`}
-            >
-              IS
-            </button>
-            <button
-              onClick={() => onLanguageChange('en')}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ${
-                currentLanguage === 'en' 
-                  ? 'bg-blue-600 text-white shadow-sm' 
-                  : 'text-gray-600 hover:text-gray-800'
-              }`}
-            >
-              EN
-            </button>
+          {/* Premium Language Toggle */}
+          <div className="hidden md:flex items-center ml-6">
+            <div className="bg-gray-100/80 backdrop-blur border border-gray-200/60 rounded-xl p-1 shadow-sm">
+              <button
+                onClick={() => onLanguageChange('is')}
+                className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                  currentLanguage === 'is' 
+                    ? 'bg-white text-blue-600 shadow-sm border border-gray-200/40' 
+                    : 'text-gray-600 hover:text-gray-800 hover:bg-white/50'
+                }`}
+              >
+                IS
+              </button>
+              <button
+                onClick={() => onLanguageChange('en')}
+                className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                  currentLanguage === 'en' 
+                    ? 'bg-white text-blue-600 shadow-sm border border-gray-200/40' 
+                    : 'text-gray-600 hover:text-gray-800 hover:bg-white/50'
+                }`}
+              >
+                EN
+              </button>
+            </div>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Premium Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="p-2 rounded-md text-gray-700 hover:text-blue-600 transition-colors duration-300"
+              className="p-2.5 rounded-xl text-gray-700 hover:text-blue-600 hover:bg-gray-50/80 transition-all duration-300 border border-gray-200/40 bg-white/60 backdrop-blur"
             >
               {isMobileMenuOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -163,77 +187,83 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Premium Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md border-t border-gray-200/50 rounded-b-lg shadow-lg">
-              <button
-                onClick={() => handleNavigation('home')}
-                className={`block w-full text-left px-3 py-2 font-medium transition-colors duration-300 ${
-                  currentPage === 'home' 
-                    ? 'text-blue-600' 
-                    : 'text-gray-700 hover:text-blue-600'
-                }`}
-              >
-                {currentContent.home}
-              </button>
-              <button
-                onClick={() => handleScrollToSection('services')}
-                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
-              >
-                {currentContent.services}
-              </button>
-              <button
-                onClick={() => handleScrollToSection('about')}
-                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
-              >
-                {currentContent.about}
-              </button>
-              <button
-                onClick={() => handleNavigation('staff')}
-                className={`block w-full text-left px-3 py-2 font-medium transition-colors duration-300 ${
-                  currentPage === 'staff' 
-                    ? 'text-blue-600' 
-                    : 'text-gray-700 hover:text-blue-600'
-                }`}
-              >
-                {currentContent.team}
-              </button>
-              <button
-                onClick={() => handleScrollToSection('jobs')}
-                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
-              >
-                {currentContent.jobs}
-              </button>
-              <button
-                onClick={() => handleContactClick('contact')}
-                className="w-full mt-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300"
-              >
-                {currentContent.contact}
-              </button>
-              
-              {/* Mobile Language Toggle */}
-              <div className="flex items-center justify-center space-x-1 bg-gray-100 rounded-full p-1 mt-4">
+          <div className="md:hidden absolute top-full left-0 right-0 mt-1">
+            <div className="mx-4 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl shadow-gray-900/10 border border-gray-200/60 overflow-hidden">
+              <div className="px-6 py-4 space-y-1">
                 <button
-                  onClick={() => onLanguageChange('is')}
-                  className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ${
-                    currentLanguage === 'is' 
-                      ? 'bg-blue-600 text-white shadow-sm' 
-                      : 'text-gray-600'
+                  onClick={() => handleNavigation('home')}
+                  className={`block w-full text-left px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+                    currentPage === 'home' 
+                      ? 'text-blue-700 bg-blue-50/80' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50/80'
                   }`}
                 >
-                  IS
+                  {currentContent.home}
                 </button>
                 <button
-                  onClick={() => onLanguageChange('en')}
-                  className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ${
-                    currentLanguage === 'en' 
-                      ? 'bg-blue-600 text-white shadow-sm' 
-                      : 'text-gray-600'
+                  onClick={() => handleScrollToSection('services')}
+                  className="block w-full text-left px-4 py-3 rounded-xl text-gray-700 hover:text-blue-600 hover:bg-gray-50/80 font-medium transition-all duration-300"
+                >
+                  {currentContent.services}
+                </button>
+                <button
+                  onClick={() => handleScrollToSection('about')}
+                  className="block w-full text-left px-4 py-3 rounded-xl text-gray-700 hover:text-blue-600 hover:bg-gray-50/80 font-medium transition-all duration-300"
+                >
+                  {currentContent.about}
+                </button>
+                <button
+                  onClick={() => handleNavigation('staff')}
+                  className={`block w-full text-left px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+                    currentPage === 'staff' 
+                      ? 'text-blue-700 bg-blue-50/80' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50/80'
                   }`}
                 >
-                  EN
+                  {currentContent.team}
                 </button>
+                <button
+                  onClick={() => handleScrollToSection('jobs')}
+                  className="block w-full text-left px-4 py-3 rounded-xl text-gray-700 hover:text-blue-600 hover:bg-gray-50/80 font-medium transition-all duration-300"
+                >
+                  {currentContent.jobs}
+                </button>
+                
+                {/* Premium mobile CTA */}
+                <button
+                  onClick={() => handleContactClick('contact')}
+                  className="w-full mt-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  {currentContent.contact}
+                </button>
+                
+                {/* Premium Mobile Language Toggle */}
+                <div className="flex items-center justify-center mt-6 pt-4 border-t border-gray-200/60">
+                  <div className="bg-gray-100/80 rounded-xl p-1 shadow-sm">
+                    <button
+                      onClick={() => onLanguageChange('is')}
+                      className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                        currentLanguage === 'is' 
+                          ? 'bg-white text-blue-600 shadow-sm' 
+                          : 'text-gray-600 hover:bg-white/50'
+                      }`}
+                    >
+                      IS
+                    </button>
+                    <button
+                      onClick={() => onLanguageChange('en')}
+                      className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                        currentLanguage === 'en' 
+                          ? 'bg-white text-blue-600 shadow-sm' 
+                          : 'text-gray-600 hover:bg-white/50'
+                      }`}
+                    >
+                      EN
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
