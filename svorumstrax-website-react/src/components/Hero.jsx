@@ -40,9 +40,9 @@ const Hero = ({ currentLanguage, onContactClick }) => {
               
               {/* Left side - Text content */}
               <div className="flex flex-col justify-center">
-                {/* Subtle badge with green accent - keep this as it works well */}
-                <div className="inline-block bg-gradient-to-r from-[#22C55E]/10 via-blue-600/10 to-orange-600/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-[#22C55E]/30 w-fit">
-                  <span className="bg-gradient-to-r from-[#22C55E] via-[#4A90E2] to-[#FFA947] bg-clip-text text-transparent font-semibold text-sm tracking-wide uppercase">
+                {/* Clean badge - option 1: Just green */}
+                <div className="inline-block bg-[#22C55E]/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-[#22C55E]/30 w-fit">
+                  <span className="text-[#22C55E] font-semibold text-sm tracking-wide uppercase">
                     Lausnir fyrir þjónustuver
                   </span>
                 </div>
