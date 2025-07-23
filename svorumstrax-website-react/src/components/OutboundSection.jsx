@@ -11,7 +11,7 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
     is: {
       title: 'Úthringingar',
       subtitle: 'Sérhæfð söluteymi með reynslu af B2B og B2C markaði. Notum nýjustu tækni og CRM kerfi til að hámarka árangur.',
-      mainDescription: 'Reynsla og tækni sem skilar árangri. Við höfum séð um úthringiátök og verkefni fyrir mörg af stærstu fyrirtækjum landsins.',
+      mainDescription: 'Reynsla og tækni sem skilar árangri. Við höfum séð um úthringiverkefni fyrir mörg af stærstu fyrirtækjum landsins.',
       features: [
         {
           icon: BuildingOffice2Icon,
