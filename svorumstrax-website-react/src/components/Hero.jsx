@@ -40,17 +40,25 @@ const Hero = ({ currentLanguage, onContactClick }) => {
               
               {/* Left side - Text content */}
               <div className="flex flex-col justify-center">
-                {/* Premium subtitle badge - using exact logo colors */}
-                <div className="inline-block bg-gradient-to-r from-blue-600/10 to-orange-600/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-blue-200/50 w-fit">
-                  <span className="bg-gradient-to-r from-[#4A90E2] to-[#FFA947] bg-clip-text text-transparent font-semibold text-sm tracking-wide uppercase">
+                {/* Premium subtitle badge - now with green accent like logo */}
+                <div className="inline-block bg-gradient-to-r from-[#22C55E]/10 via-blue-600/10 to-orange-600/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-[#22C55E]/30 w-fit">
+                  <span className="bg-gradient-to-r from-[#22C55E] via-[#4A90E2] to-[#FFA947] bg-clip-text text-transparent font-semibold text-sm tracking-wide uppercase">
                     Lausnir fyrir þjónustuver
                   </span>
                 </div>
                 
-                {/* Premium title with exact logo gradient colors */}
+                {/* Title that mirrors logo structure: Green accent + Blue + Orange */}
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-8 leading-tight">
-                  <span className="bg-gradient-to-r from-slate-900 via-[#4A90E2] to-[#FFA947] bg-clip-text text-transparent">
-                    {currentContent.title}
+                  <span className="bg-gradient-to-r from-[#22C55E] to-[#4A90E2] bg-clip-text text-transparent">
+                    Snjallar lausnir
+                  </span>
+                  <br />
+                  <span className="bg-gradient-to-r from-[#4A90E2] to-[#5BA0F2] bg-clip-text text-transparent">
+                    fyrir nútíma
+                  </span>
+                  <br />
+                  <span className="bg-gradient-to-r from-[#FF9A3C] to-[#FFB84D] bg-clip-text text-transparent">
+                    þjónustu
                   </span>
                 </h1>
                 
