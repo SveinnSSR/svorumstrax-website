@@ -37,9 +37,15 @@ const TrustSection = ({ currentLanguage }) => {
   ]
 
   return (
-    <section id="about" className="py-20 bg-slate-900 relative overflow-hidden">
-      {/* Navy background with subtle texture */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+    <section 
+      id="about" 
+      className="py-20 relative overflow-hidden"
+      style={{
+        background: 'rgba(10, 14, 39, 0.95)' // True navy like vanilla JS
+      }}
+    >
+      {/* Navy background with subtle texture - matching vanilla */}
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%)' }}></div>
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.1)_0%,_transparent_50%)]"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -50,7 +56,7 @@ const TrustSection = ({ currentLanguage }) => {
           </p>
         </div>
         
-        {/* Logos Grid */}
+        {/* Logos Grid - Bright like vanilla */}
         <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-16">
           {logos.map((logo, index) => (
             <div 
@@ -63,8 +69,8 @@ const TrustSection = ({ currentLanguage }) => {
                 className={`
                   max-h-16 max-w-40 w-auto h-auto object-contain transition-all duration-300
                   ${logo.isLight 
-                    ? 'opacity-70 group-hover:opacity-100' 
-                    : 'brightness-0 invert opacity-70 group-hover:opacity-100 group-hover:brightness-100 group-hover:invert-0'
+                    ? 'opacity-90 group-hover:opacity-100' 
+                    : 'brightness-0 invert opacity-90 group-hover:opacity-100 group-hover:brightness-100 group-hover:invert-0'
                   }
                   group-hover:scale-110
                 `}
