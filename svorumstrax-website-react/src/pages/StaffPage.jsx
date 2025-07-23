@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 // Import staff images - add these to src/assets/images/staff/
@@ -242,17 +241,8 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
             {staffMembers.map((member) => (
               <div 
                 key={member.id}
-                className={`bg-white/80 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
-                  member.isFounder ? 'ring-2 ring-orange-200/50' : ''
-                }`}
+                className="bg-white/80 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
               >
-                {/* Founder Badge */}
-                {member.isFounder && (
-                  <div className="inline-block bg-orange-100/60 text-orange-800 px-4 py-1 rounded-full text-xs font-semibold mb-4 border border-orange-200/30">
-                    {currentContent.founderBadge}
-                  </div>
-                )}
-
                 {/* Avatar */}
                 <div className="relative w-32 h-32 mx-auto mb-6">
                   {member.image ? (
@@ -268,11 +258,6 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                       </span>
                     </div>
                   )}
-                  
-                  {/* Subtle glow for founders */}
-                  {member.isFounder && (
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-400/20 to-amber-400/20 blur-lg -z-10"></div>
-                  )}
                 </div>
 
                 {/* Name */}
@@ -285,11 +270,18 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                   {member.title[currentLanguage]}
                 </p>
 
+                {/* Founder Badge - moved above email */}
+                {member.isFounder && (
+                  <div className="inline-block bg-orange-100/60 text-orange-800 px-4 py-1 rounded-full text-xs font-semibold mb-3 border border-orange-200/30">
+                    {currentContent.founderBadge}
+                  </div>
+                )}
+
                 {/* Email */}
                 {member.email && (
                   <a 
                     href={`mailto:${member.email}`}
-                    className="text-blue-600 hover:text-blue-700 text-sm transition-colors duration-200"
+                    className="text-blue-600 hover:text-blue-700 text-sm transition-colors duration-200 block"
                   >
                     {member.email}
                   </a>
