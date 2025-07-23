@@ -28,7 +28,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
     }
   }
 
-  // Staff data extracted from your vanilla HTML
+  // Staff data with all emails added
   const staffMembers = [
     // Founders
     {
@@ -95,7 +95,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       id: 'joel-kristinsson',
       name: 'Jóel Kristinsson',
       title: { is: 'Rekstrarstjóri Bókhaldssviðs', en: 'Operations Manager - Accounting' },
-      email: null,
+      email: 'joel@svorumstrax.is',
       image: joelKristinssonImg
     },
     // Team members
@@ -103,90 +103,105 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       id: 'frosti-wendel',
       name: 'Frosti Wendel',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'frosti@svorumstrax.is',
       initials: 'FW'
     },
     {
       id: 'sigrun-jonsdottir',
       name: 'Sigrún Fanný Jónsdóttir',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'sigrun@svorumstrax.is',
       image: sigrunJonsdottirImg
     },
     {
       id: 'steinunn-axelsdottir',
       name: 'Steinunn Halldóra Axelsdóttir',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'steinunn@svorumstrax.is',
       initials: 'SHA'
     },
     {
       id: 'freyja-finnbogadottir',
       name: 'Freyja Finnbogadóttir',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'freyja@svorumstrax.is',
       initials: 'FF'
     },
     {
       id: 'theodora-rodriguez',
       name: 'Theodóra Líf Rodriguez Davíðsdóttir',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'theodora@svorumstrax.is',
       initials: 'TLRD'
     },
     {
       id: 'aron-arnarsson',
       name: 'Aron Arnarsson',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'aron@svorumstrax.is',
       initials: 'AA'
     },
     {
       id: 'eydis-agustsdottir',
       name: 'Eydís Erla Ágústsdóttir',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'eydis@svorumstrax.is',
       initials: 'EEÁ'
     },
     {
       id: 'hildur-olafsdottir',
       name: 'Hildur Ósk Ólafsdóttir',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'hildur@svorumstrax.is',
       initials: 'HOÓ'
     },
     {
       id: 'gunnar-dagmararson',
       name: 'Gunnar Óli Dagmararson',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'gunnar@svorumstrax.is',
       initials: 'GOD'
     },
     {
       id: 'klara-haraldsdottir',
       name: 'Klara Valgerður Inga Haraldsdóttir',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'klara@svorumstrax.is',
       initials: 'KVIH'
     },
     {
       id: 'veigar-helgason',
       name: 'Veigar Már Helgason',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'veigar@svorumstrax.is',
       initials: 'VMH'
     },
     {
       id: 'tatjana-tanja',
       name: 'Tatjana Tanja',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'tanja@svorumstrax.is',
       initials: 'TT'
     },
     {
       id: 'maria-mikaelsdottir',
       name: 'María Mikaelsdóttir',
       title: { is: 'Bókhald og Viðskiptastjórnun', en: 'Accounting and Business Management' },
+      email: 'maria@svorumstrax.is',
       initials: 'MM'
     },
     {
       id: 'embla-torfadottir',
       name: 'Embla Torfadóttir',
       title: { is: 'Viðskiptastjóri', en: 'Account Manager' },
+      email: 'embla@svorumstrax.is',
       initials: 'ET'
     },
     {
       id: 'unnar-benediktsson',
       name: 'Unnar Þór Benediktsson',
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'unnar@svorumstrax.is',
       initials: 'UÞB'
     }
   ]
@@ -270,18 +285,18 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                   {member.title[currentLanguage]}
                 </p>
 
-                {/* Founder Badge - moved above email */}
+                {/* Founder Badge - subtle styling like job title */}
                 {member.isFounder && (
-                  <div className="inline-block bg-orange-100/60 text-orange-800 px-4 py-1 rounded-full text-xs font-semibold mb-3 border border-orange-200/30">
+                  <div className="inline-block bg-gray-100/80 text-gray-600 px-3 py-1 rounded-full text-xs font-medium mb-3 border border-gray-200/50">
                     {currentContent.founderBadge}
                   </div>
                 )}
 
-                {/* Email */}
+                {/* Email - improved styling */}
                 {member.email && (
                   <a 
                     href={`mailto:${member.email}`}
-                    className="text-blue-600 hover:text-blue-700 text-sm transition-colors duration-200 block"
+                    className="text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors duration-200 block hover:underline underline-offset-2"
                   >
                     {member.email}
                   </a>
