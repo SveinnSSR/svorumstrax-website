@@ -6,7 +6,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
       services: [
         {
           title: 'Almenn símsvörun',
-          description: 'Einföld og áreiðanleg þjónusta. Við svörum í þínu nafni, sendum símtöl áfram á réttan starfsmann og tökum skilaboð. Léttir álag á starfsfólki og hægt að setja upp með stuttum fyrirvara.',
+          description: 'Einföld og áreiðanleg þjónusta. Við svörum í þínu nafni, sendum símtöl áfram á réttan starfsmann og tökum niður ítarleg skilaboð. Léttir álag á starfsfólki og hægt að setja upp með stuttum fyrirvara.',
           accent: 'border-l-teal-500'
         },
         {
@@ -16,7 +16,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
         },
         {
           title: 'AI símsvörun',
-          description: 'Nýjustu gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Ef þörf krefur, getur hún alltaf tengt við okkar eða þína þjónustufulltrúa til að tryggja hámarks þjónustugæði.',
+          description: 'Nýjustu gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Áframsendir mál á mannlega þjónustufulltrúa (okkar eða þína) eftir þörfum.',
           accent: 'border-l-orange-500'
         }
       ]
