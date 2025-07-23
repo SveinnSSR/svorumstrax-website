@@ -10,12 +10,12 @@ const Services = ({ currentLanguage, onContactClick }) => {
           accent: 'border-l-teal-500'
         },
         {
-          title: 'Þitt eigið þjónustuver',
+          title: 'Þjónustuver',
           description: 'Heildarlausn með fullkomlega þjálfuðum starfsmönnum sem þekkja þitt fyrirtæki, vörur og þjónustu. Sérhæfðir starfsmenn sem verða hluti af þínu teymi og geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð byggða á þínum upplýsingakerfum.',
           accent: 'border-l-blue-500'
         },
         {
-          title: 'Gervigreindarsvörun í síma',
+          title: 'AI símsvörun',
           description: 'Nýjustu gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Ef þörf krefur, getur hún alltaf tengt við okkar eða þína þjónustufulltrúa til að tryggja hámarks þjónustugæði.',
           accent: 'border-l-orange-500'
         }
