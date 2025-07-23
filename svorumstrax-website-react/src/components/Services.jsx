@@ -1,3 +1,5 @@
+import barcelonaOfficeImage from '../assets/images/barcelona-office.png'
+
 const Services = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
@@ -100,63 +102,15 @@ const Services = ({ currentLanguage, onContactClick }) => {
             </p>
           </div>
 
-          {/* Bottom Right - Phone Interface (no white background) */}
-          <div className="flex items-center justify-center">
-            <div className="relative flex items-center justify-center space-x-4">
-              {/* Phone mockups */}
-              <div className="relative transform rotate-12">
-                <div className="w-32 h-56 bg-black rounded-3xl p-2 shadow-xl">
-                  <div className="w-full h-full bg-gray-900 rounded-2xl p-4 flex flex-col justify-between">
-                    <div className="flex justify-center">
-                      <div className="w-8 h-1 bg-white rounded-full opacity-50"></div>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-blue-500 rounded-full mx-auto mb-2 flex items-center justify-center">
-                        <div className="w-6 h-6 bg-white rounded-full"></div>
-                      </div>
-                      <div className="h-8 bg-gray-700 rounded mb-2"></div>
-                      <div className="h-2 bg-blue-400 rounded mb-4"></div>
-                    </div>
-                    <div className="w-12 h-12 bg-red-500 rounded-full mx-auto"></div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="relative transform -rotate-6">
-                <div className="w-32 h-56 bg-black rounded-3xl p-2 shadow-xl">
-                  <div className="w-full h-full bg-gray-900 rounded-2xl p-4 flex flex-col justify-between">
-                    <div className="flex justify-center">
-                      <div className="w-8 h-1 bg-white rounded-full opacity-50"></div>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-green-500 rounded-full mx-auto mb-2 flex items-center justify-center">
-                        <div className="w-6 h-6 bg-white rounded-full"></div>
-                      </div>
-                      <div className="h-8 bg-gray-700 rounded mb-2"></div>
-                      <div className="h-2 bg-green-400 rounded mb-4"></div>
-                    </div>
-                    <div className="w-12 h-12 bg-red-500 rounded-full mx-auto"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative transform rotate-3">
-                <div className="w-32 h-56 bg-black rounded-3xl p-2 shadow-xl">
-                  <div className="w-full h-full bg-gray-900 rounded-2xl p-4 flex flex-col justify-between">
-                    <div className="flex justify-center">
-                      <div className="w-8 h-1 bg-white rounded-full opacity-50"></div>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-orange-500 rounded-full mx-auto mb-2 flex items-center justify-center">
-                        <div className="w-6 h-6 bg-white rounded-full"></div>
-                      </div>
-                      <div className="h-8 bg-gray-700 rounded mb-2"></div>
-                      <div className="h-2 bg-orange-400 rounded mb-4"></div>
-                    </div>
-                    <div className="w-12 h-12 bg-red-500 rounded-full mx-auto"></div>
-                  </div>
-                </div>
-              </div>
+          {/* Bottom Right - Barcelona Office Image */}
+          <div className="relative flex items-center justify-center">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-lg">
+              <img 
+                src={barcelonaOfficeImage} 
+                alt="Barcelona Office" 
+                className="w-full h-full object-cover min-h-[280px]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-transparent"></div>
             </div>
           </div>
         </div>
