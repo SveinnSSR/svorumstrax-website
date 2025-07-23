@@ -4,6 +4,7 @@ import {
   BuildingOffice2Icon,
   UserGroupIcon
 } from '@heroicons/react/24/outline'
+import barcelonaOfficeImage from '../assets/images/barcelona-office.png'
 
 const OutboundSection = ({ currentLanguage, onContactClick }) => {
   const content = {
@@ -68,25 +69,18 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
           </p>
         </div>
         
-        {/* Main Content with CRM Mobile Interface */}
+        {/* Main Content with Barcelona Office Image */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          {/* CRM Mobile Interface Placeholder - Left Side */}
+          {/* Barcelona Office Image - Left Side */}
           <div className="relative order-1 lg:order-1">
-            <div className="relative max-w-sm mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 shadow-2xl">
-              {/* Phone mockup placeholder */}
-              <div className="bg-white rounded-2xl p-6 min-h-[400px] flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <PhoneIcon className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-sm text-gray-600 mb-4">CRM Mobile Interface</div>
-                  <div className="space-y-2 text-xs text-left">
-                    <div className="bg-green-100 p-2 rounded text-green-800">✓ Símtal lokið - Fundur bókaður</div>
-                    <div className="bg-blue-100 p-2 rounded text-blue-800">📞 Næsta símtal: 14:30</div>
-                  </div>
-                </div>
-              </div>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src={barcelonaOfficeImage} 
+                alt="Barcelona Office" 
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-transparent"></div>
             </div>
           </div>
           
