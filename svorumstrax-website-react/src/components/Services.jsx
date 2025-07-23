@@ -104,11 +104,11 @@ const Services = ({ currentLanguage, onContactClick }) => {
 
           {/* Bottom Right - Barcelona Office Image */}
           <div className="relative flex items-center justify-center">
-            <div className="relative w-full rounded-2xl overflow-hidden shadow-lg">
+            <div className="relative max-w-md rounded-2xl overflow-hidden shadow-lg">
               <img 
                 src={barcelonaOfficeImage} 
                 alt="Barcelona Office" 
-                className="w-full h-full object-cover min-h-[280px]"
+                className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-transparent"></div>
             </div>
