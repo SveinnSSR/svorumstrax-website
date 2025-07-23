@@ -37,7 +37,7 @@ const TrustSection = ({ currentLanguage }) => {
   ]
 
   return (
-    <section className="py-20 bg-slate-900 relative overflow-hidden">
+    <section id="about" className="py-20 bg-slate-900 relative overflow-hidden">
       {/* Navy background with subtle texture */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.1)_0%,_transparent_50%)]"></div>

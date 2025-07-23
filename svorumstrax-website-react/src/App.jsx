@@ -11,6 +11,7 @@ import TestimonialsSection from './components/TestimonialsSection'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
 import ChatWidget from './components/ChatWidget'
+import StaffPage from './pages/StaffPage'
 import { 
   ContactModal 
 } from './components/PlaceholderComponents'
@@ -20,6 +21,7 @@ function App() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [contactModalType, setContactModalType] = useState('contact')
   const [currentLanguage, setCurrentLanguage] = useState('is')
+  const [currentPage, setCurrentPage] = useState('home')
 
   const openContactModal = (type = 'contact') => {
     setContactModalType(type)
@@ -34,12 +36,51 @@ function App() {
     setCurrentLanguage(lang)
   }
 
+  const navigateToPage = (page) => {
+    setCurrentPage(page)
+    // Scroll to top when navigating
+    window.scrollTo(0, 0)
+  }
+
+  // STAFF PAGE
+  if (currentPage === 'staff') {
+    return (
+      <div className="App bg-white">
+        <Navigation 
+          currentLanguage={currentLanguage}
+          onLanguageChange={toggleLanguage}
+          onContactClick={openContactModal}
+          onNavigate={navigateToPage}
+          currentPage={currentPage}
+        />
+        
+        <StaffPage currentLanguage={currentLanguage} />
+        
+        <Footer 
+          currentLanguage={currentLanguage}
+          onContactClick={openContactModal}
+        />
+
+        <ContactModal 
+          isOpen={isContactModalOpen}
+          onClose={closeContactModal}
+          type={contactModalType}
+          currentLanguage={currentLanguage}
+        />
+        <ChatWidget />
+      </div>
+    )
+  }
+
+  // HOME PAGE (default)
   return (
     <div className="App bg-white">
       <Navigation 
         currentLanguage={currentLanguage}
         onLanguageChange={toggleLanguage}
         onContactClick={openContactModal}
+        onNavigate={navigateToPage}
+        currentPage={currentPage}
       />
       
       <Hero 
@@ -96,7 +137,7 @@ function App() {
         type={contactModalType}
         currentLanguage={currentLanguage}
       />
-            <ChatWidget />
+      <ChatWidget />
     </div>
   )
 }

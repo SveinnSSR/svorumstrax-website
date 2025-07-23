@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import svorumStraxLogo from '../assets/images/svorum-strax-logo.svg'
 
-const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
+const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavigate, currentPage = 'home' }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const toggleMobileMenu = () => {
@@ -11,6 +11,32 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
 
   const handleContactClick = (type) => {
     onContactClick(type)
+    setIsMobileMenuOpen(false)
+  }
+
+  const handleNavigation = (page) => {
+    onNavigate(page)
+    setIsMobileMenuOpen(false)
+  }
+
+  const handleScrollToSection = (sectionId) => {
+    // If we're not on home page, go to home first
+    if (currentPage !== 'home') {
+      onNavigate('home')
+      // Wait for page to load then scroll
+      setTimeout(() => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    } else {
+      // We're on home page, just scroll
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
     setIsMobileMenuOpen(false)
   }
 
@@ -41,32 +67,55 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="#home" className="flex items-center">
+            <button onClick={() => handleNavigation('home')} className="flex items-center">
               <img 
                 src={svorumStraxLogo} 
                 alt="Svörum strax" 
                 className="h-10 w-auto"
               />
-            </a>
+            </button>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
+            <button 
+              onClick={() => handleNavigation('home')} 
+              className={`font-medium transition-colors duration-300 ${
+                currentPage === 'home' 
+                  ? 'text-blue-600' 
+                  : 'text-gray-700 hover:text-blue-600'
+              }`}
+            >
               {currentContent.home}
-            </a>
-            <a href="#services" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
+            </button>
+            <button 
+              onClick={() => handleScrollToSection('services')} 
+              className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+            >
               {currentContent.services}
-            </a>
-            <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
+            </button>
+            <button 
+              onClick={() => handleScrollToSection('about')} 
+              className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+            >
               {currentContent.about}
-            </a>
-            <a href="#team" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
+            </button>
+            <button 
+              onClick={() => handleNavigation('staff')} 
+              className={`font-medium transition-colors duration-300 ${
+                currentPage === 'staff' 
+                  ? 'text-blue-600' 
+                  : 'text-gray-700 hover:text-blue-600'
+              }`}
+            >
               {currentContent.team}
-            </a>
-            <a href="#jobs" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
+            </button>
+            <button 
+              onClick={() => handleScrollToSection('jobs')} 
+              className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+            >
               {currentContent.jobs}
-            </a>
+            </button>
             <button 
               onClick={() => handleContactClick('contact')}
               className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
@@ -118,41 +167,44 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
         {isMobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md border-t border-gray-200/50 rounded-b-lg shadow-lg">
-              <a
-                href="#home"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+              <button
+                onClick={() => handleNavigation('home')}
+                className={`block w-full text-left px-3 py-2 font-medium transition-colors duration-300 ${
+                  currentPage === 'home' 
+                    ? 'text-blue-600' 
+                    : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
                 {currentContent.home}
-              </a>
-              <a
-                href="#services"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+              </button>
+              <button
+                onClick={() => handleScrollToSection('services')}
+                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
               >
                 {currentContent.services}
-              </a>
-              <a
-                href="#about"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+              </button>
+              <button
+                onClick={() => handleScrollToSection('about')}
+                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
               >
                 {currentContent.about}
-              </a>
-              <a
-                href="#team"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+              </button>
+              <button
+                onClick={() => handleNavigation('staff')}
+                className={`block w-full text-left px-3 py-2 font-medium transition-colors duration-300 ${
+                  currentPage === 'staff' 
+                    ? 'text-blue-600' 
+                    : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
                 {currentContent.team}
-              </a>
-              <a
-                href="#jobs"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
+              </button>
+              <button
+                onClick={() => handleScrollToSection('jobs')}
+                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium"
               >
                 {currentContent.jobs}
-              </a>
+              </button>
               <button
                 onClick={() => handleContactClick('contact')}
                 className="w-full mt-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300"

@@ -56,6 +56,7 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
 
   return (
     <section 
+      id="jobs"
       className="relative min-h-[600px] flex items-center justify-center"
       style={{
         backgroundImage: `url(${barcelonaImage})`,
