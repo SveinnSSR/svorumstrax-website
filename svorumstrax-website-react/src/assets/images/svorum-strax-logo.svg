@@ -1,10 +1,5 @@
 <svg width="420" height="80" viewBox="0 0 420 80" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#4A90E2" />
-      <stop offset="50%" style="stop-color:#5BA0F2" />
-      <stop offset="100%" style="stop-color:#6BB0FF" />
-    </linearGradient>
     <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#FF9A3C" />
       <stop offset="50%" style="stop-color:#FFA947" />
@@ -12,16 +7,21 @@
     </linearGradient>
   </defs>
   
-  <g transform="translate(0, 10)">
-    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="6" y1="20" x2="6" y2="14" stroke="#26C5D9"/>
-      <line x1="12" y1="20" x2="12" y2="4" stroke="#FFA947"/>
-      <line x1="18" y1="20" x2="18" y2="10" stroke="#4A90E2"/>
-    </svg>
+  <g transform="translate(2, 25)">
+    <rect x="0" y="20" width="2.5" height="6" rx="1.25" fill="#1F2937"/>
+    <rect x="4" y="16" width="2.5" height="14" rx="1.25" fill="#1F2937"/>
+    <rect x="8" y="10" width="2.5" height="26" rx="1.25" fill="#1F2937"/>
+    <rect x="12" y="6" width="2.5" height="34" rx="1.25" fill="#1F2937"/>
+    <rect x="16" y="8" width="2.5" height="30" rx="1.25" fill="#1F2937"/>
+    <rect x="20" y="14" width="2.5" height="18" rx="1.25" fill="#1F2937"/>
+    <rect x="24" y="18" width="2.5" height="10" rx="1.25" fill="#1F2937"/>
+    <rect x="28" y="16" width="2.5" height="14" rx="1.25" fill="#1F2937"/>
+    <rect x="32" y="12" width="2.5" height="22" rx="1.25" fill="#1F2937"/>
+    <rect x="36" y="20" width="2.5" height="6" rx="1.25" fill="#1F2937"/>
   </g>
   
-  <text x="70" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="900" letter-spacing="-0.02em">
-    <tspan fill="url(#blueGrad)">Svörum</tspan>
+  <text x="46" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="900" letter-spacing="-0.02em">
+    <tspan fill="#1F2937">Svörum</tspan>
     <tspan fill="url(#orangeGrad)"> strax</tspan>
   </text>
 </svg>
