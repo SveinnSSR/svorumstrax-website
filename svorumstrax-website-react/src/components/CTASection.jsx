@@ -17,8 +17,8 @@ const CTASection = ({ currentLanguage, onContactClick }) => {
   const currentContent = content[currentLanguage]
 
   return (
-    <section className="py-32 bg-gradient-to-br from-orange-50 to-orange-100/30 relative overflow-hidden">
-      {/* Background Effects */}
+    <section className="py-32 bg-white relative overflow-hidden">
+      {/* Background Effects - Optional: Keep these for subtle texture or remove them for pure white */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.8)_0%,_transparent_50%)]"></div>
         <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_75%_75%,_rgba(248,244,240,0.6)_0%,_transparent_50%)]"></div>
