@@ -4,8 +4,7 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
       title: 'Sérsniðin þjónusta – knúin af fólki og gervigreind',
-      mainDescription: 'Við sameinum áralanga reynslu í símsvörun við nýjustu gervigreindartækni og búum til lausnir sem laga sig að þínum rekstri. Hvort sem þú ert að taka fyrstu skrefin með AI eða vilt bæta núverandi þjónustu, hjálpum við þér að greina tilgang samtala, leysa málin strax – og tryggja að það flóknasta lendi hjá réttu fólki.',
-      humanTouch: 'Mannlegir fulltrúar grípa inn í þegar það skiptir máli – og veita nákvæma, persónulega þjónustu sem byggir á djúpri þekkingu á þínu fyrirtæki.',
+      mainDescription: 'Við sameinum áralanga reynslu í símsvörun við nýjustu gervigreindartækni og búum til lausnir sem laga sig að þínum rekstri. Hvort sem þú ert að taka fyrstu skrefin með AI eða vilt bæta núverandi þjónustu, hjálpum við þér að greina tilgang samtala, leysa málin strax – og tryggja að öll mál lendi á réttum stað.',
       formula: {
         ai: 'AI',
         plus: '+',
@@ -14,18 +13,12 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
         solution: 'Fullkomin lausn',
         subtitle: 'fyrir þitt fyrirtæki'
       },
-      benefits: [
-        'Sparar tíma',
-        'Bætir upplifun', 
-        'Gefur rekstrarlega yfirsýn'
-      ],
       teamDescription: 'Hjá okkur starfa yfir 35 íslenskir sérfræðingar – bæði í Barcelona og í fjarvinnu – sem sinna þjónustu fyrir meira en 100 fyrirtæki. Við sjáum um uppsetningu, þjálfun og stuðning – svo þú getur einbeitt þér að þínu rekstri.',
       button: 'Komdu í samband'
     },
     en: {
       title: 'Customized Service – Powered by People and AI',
-      mainDescription: 'We combine years of experience in phone support with the latest AI technology to create solutions that adapt to your business. Whether you\'re taking your first steps with AI or want to improve existing service, we help you identify conversation intent, solve issues immediately – and ensure the most complex matters reach the right people.',
-      humanTouch: 'Human representatives step in when it matters – providing accurate, personal service based on deep knowledge of your business.',
+      mainDescription: 'We combine years of experience in phone support with the latest AI technology to create solutions that adapt to your business. Whether you\'re taking your first steps with AI or want to improve existing service, we help you identify conversation intent, solve issues immediately – and ensure all matters end up in the right place.',
       formula: {
         ai: 'AI',
         plus: '+',
@@ -34,11 +27,6 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
         solution: 'Perfect Solution',
         subtitle: 'for your business'
       },
-      benefits: [
-        'Saves time',
-        'Improves experience',
-        'Provides operational insights'
-      ],
       teamDescription: 'We have over 35 Icelandic specialists – both in Barcelona and working remotely – serving more than 100 companies. We handle setup, training and support – so you can focus on your business.',
       button: 'Get in Touch'
     }
@@ -68,11 +56,8 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
           
           {/* Main Description Block */}
           <div className="max-w-4xl mx-auto">
-            <p className="text-xl text-gray-700 leading-relaxed mb-8 text-center">
+            <p className="text-xl text-gray-700 leading-relaxed text-center">
               {currentContent.mainDescription}
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed text-center">
-              {currentContent.humanTouch}
             </p>
           </div>
 
@@ -104,23 +89,13 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
                 </div>
               </div>
 
-              {/* Benefits */}
-              <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-gray-700">
-                {currentContent.benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                    <span className="font-medium">{benefit}</span>
-                  </div>
-                ))}
+              {/* Team Description */}
+              <div className="max-w-4xl mx-auto text-center border-t border-gray-200/60 pt-8">
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  {currentContent.teamDescription}
+                </p>
               </div>
             </div>
-          </div>
-
-          {/* Team Description */}
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-lg text-gray-600 leading-relaxed">
-              {currentContent.teamDescription}
-            </p>
           </div>
 
           {/* Call to Action */}
