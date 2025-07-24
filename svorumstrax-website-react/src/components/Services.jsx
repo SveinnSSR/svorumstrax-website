@@ -14,7 +14,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
         },
         {
           title: 'Gervigreindarsvörun',
-          description: 'Nýjustu gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Áframsendir mál á mannlega þjónustufulltrúa (okkar eða þína) eftir þörfum.'
+          description: 'Gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Áframsendir mál á mannlega þjónustufulltrúa (okkar eða þína) eftir þörfum.'
         }
       ]
     },
