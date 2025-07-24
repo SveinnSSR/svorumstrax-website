@@ -23,7 +23,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
         {
           icon: CogIcon,
           title: 'Samþætt við þín kerfi',
-          description: 'Tengist við bókunarkerfið þitt of framkvæmir aðgerðir í rauntíma.'
+          description: 'Tengist við bókunarkerfið þitt og framkvæmir aðgerðir í rauntíma.'
         },
         {
           icon: ChartBarIcon,
