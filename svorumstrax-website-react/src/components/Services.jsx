@@ -6,7 +6,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
       services: [
         {
           title: 'Almenn símsvörun',
-          description: 'Einföld og áreiðanleg þjónusta. Við svörum í þínu nafni, sendum símtöl áfram á réttan starfsmann og tökum niður ítarleg skilaboð. Léttir álag á starfsfólki og hægt að setja upp með stuttum fyrirvara.'
+          description: 'Einföld og áreiðanleg þjónusta fyrir öll fyrirtæki. Við svörum í þínu nafni, sendum símtöl áfram á réttan starfsmann og tökum niður ítarleg skilaboð. Léttir álag á starfsfólki og hægt að setja upp með stuttum fyrirvara.'
         },
         {
           title: 'Þjónustuver',
