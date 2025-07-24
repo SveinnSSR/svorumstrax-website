@@ -17,36 +17,30 @@ const CTASection = ({ currentLanguage, onContactClick }) => {
   const currentContent = content[currentLanguage]
 
   return (
-    <section className="py-32 bg-white relative overflow-hidden">
-      {/* Background Effects - Optional: Keep these for subtle texture or remove them for pure white */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.8)_0%,_transparent_50%)]"></div>
-        <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_75%_75%,_rgba(248,244,240,0.6)_0%,_transparent_50%)]"></div>
-      </div>
-      
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        {/* Title */}
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-8 leading-tight">
+    <section className="py-20 bg-white relative">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Title - much more modest sizing */}
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
           {currentContent.title}
         </h2>
         
-        {/* Subtitle */}
-        <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed max-w-4xl mx-auto">
+        {/* Subtitle - more refined */}
+        <p className="text-lg text-gray-600 mb-10 leading-relaxed max-w-3xl mx-auto">
           {currentContent.subtitle}
         </p>
         
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        {/* Buttons - minimal and professional like navigation */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             onClick={() => onContactClick('meeting')}
-            className="bg-gradient-to-r from-orangeGradient-start via-orangeGradient-middle to-orangeGradient-end text-white font-semibold py-4 px-10 rounded-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-lg"
+            className="px-8 py-3 rounded-md font-medium transition-all duration-200 text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
           >
             {currentContent.primaryButton}
           </button>
           
           <button
             onClick={() => onContactClick('pricing')}
-            className="bg-transparent text-gray-800 font-semibold py-4 px-10 rounded-full border-2 border-gray-300 hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 text-lg"
+            className="px-8 py-3 rounded-md font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50 border border-gray-300 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
           >
             {currentContent.secondaryButton}
           </button>
