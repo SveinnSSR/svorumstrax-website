@@ -105,10 +105,10 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
               ))}
             </div>
             
-            {/* CTA Button - UPDATED to match chat widget green */}
+            {/* CTA Button - Clean white button that fits the aesthetic */}
             <button
               onClick={() => onContactClick('job')}
-              className="bg-[#66D893] hover:bg-[#5bc77f] text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 shadow-md"
+              className="bg-white hover:bg-gray-50 text-slate-900 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 shadow-md"
             >
               {currentContent.button}
             </button>
