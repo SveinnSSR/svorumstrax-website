@@ -144,7 +144,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
 
             <button
               onClick={() => onContactClick('ai-service')}
-              className="bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-4 px-8 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              className="bg-gradient-to-r from-[#4A90E2] to-[#5BA0F2] hover:from-[#5BA0F2] hover:to-[#6BB0FF] text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
               {currentContent.button}
             </button>
