@@ -72,7 +72,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
           <div className="flex items-center">
             <button 
               onClick={() => handleNavigation('home')} 
-              className="flex items-center transition-opacity duration-200 hover:opacity-80"
+              className="flex items-center transition-opacity duration-200 hover:opacity-80 focus:outline-none"
             >
               <img 
                 src={svorumStraxLogo} 
@@ -82,13 +82,13 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
             </button>
           </div>
 
-          {/* Desktop Navigation - Minimal like Retell AI */}
+          {/* Desktop Navigation - Minimal and consistent */}
           <div className="hidden md:flex items-center space-x-1">
             <button 
               onClick={() => handleNavigation('home')} 
-              className={`px-4 py-2 rounded-md font-medium transition-all duration-200 ${
+              className={`px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
                 currentPage === 'home' 
-                  ? 'text-gray-900 bg-gray-100/80' 
+                  ? 'text-gray-900 bg-gray-100' 
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
@@ -97,23 +97,23 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
             
             <button 
               onClick={() => handleScrollToSection('services')} 
-              className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200"
+              className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
             >
               {currentContent.services}
             </button>
             
             <button 
               onClick={() => handleScrollToSection('about')} 
-              className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200"
+              className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
             >
               {currentContent.about}
             </button>
             
             <button 
               onClick={() => handleNavigation('staff')} 
-              className={`px-4 py-2 rounded-md font-medium transition-all duration-200 ${
+              className={`px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
                 currentPage === 'staff' 
-                  ? 'text-gray-900 bg-gray-100/80' 
+                  ? 'text-gray-900 bg-gray-100' 
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
@@ -122,15 +122,15 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
             
             <button 
               onClick={() => handleScrollToSection('jobs')} 
-              className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200"
+              className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
             >
               {currentContent.jobs}
             </button>
             
-            {/* Clean CTA Button */}
+            {/* Minimal Contact Button - now matches the others */}
             <button 
               onClick={() => handleContactClick('contact')}
-              className="ml-3 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md font-medium shadow-sm hover:shadow transition-all duration-200"
+              className="ml-3 px-5 py-2 rounded-md font-medium transition-all duration-200 text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
             >
               {currentContent.contact}
             </button>
@@ -141,7 +141,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
             <div className="bg-gray-100/60 rounded-md p-0.5">
               <button
                 onClick={() => onLanguageChange('is')}
-                className={`px-3 py-1.5 rounded text-sm font-medium transition-all duration-200 ${
+                className={`px-3 py-1.5 rounded text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
                   currentLanguage === 'is' 
                     ? 'bg-white text-gray-900 shadow-sm' 
                     : 'text-gray-600 hover:text-gray-900'
@@ -151,7 +151,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
               </button>
               <button
                 onClick={() => onLanguageChange('en')}
-                className={`px-3 py-1.5 rounded text-sm font-medium transition-all duration-200 ${
+                className={`px-3 py-1.5 rounded text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
                   currentLanguage === 'en' 
                     ? 'bg-white text-gray-900 shadow-sm' 
                     : 'text-gray-600 hover:text-gray-900'
@@ -166,7 +166,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200"
+              className="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
             >
               {isMobileMenuOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -184,9 +184,9 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
               <div className="px-4 py-3 space-y-1">
                 <button
                   onClick={() => handleNavigation('home')}
-                  className={`block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 ${
+                  className={`block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
                     currentPage === 'home' 
-                      ? 'text-gray-900 bg-gray-100/80' 
+                      ? 'text-gray-900 bg-gray-100' 
                       : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                   }`}
                 >
@@ -194,21 +194,21 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                 </button>
                 <button
                   onClick={() => handleScrollToSection('services')}
-                  className="block w-full text-left px-3 py-2.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200"
+                  className="block w-full text-left px-3 py-2.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                 >
                   {currentContent.services}
                 </button>
                 <button
                   onClick={() => handleScrollToSection('about')}
-                  className="block w-full text-left px-3 py-2.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200"
+                  className="block w-full text-left px-3 py-2.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                 >
                   {currentContent.about}
                 </button>
                 <button
                   onClick={() => handleNavigation('staff')}
-                  className={`block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 ${
+                  className={`block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
                     currentPage === 'staff' 
-                      ? 'text-gray-900 bg-gray-100/80' 
+                      ? 'text-gray-900 bg-gray-100' 
                       : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                   }`}
                 >
@@ -216,15 +216,15 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                 </button>
                 <button
                   onClick={() => handleScrollToSection('jobs')}
-                  className="block w-full text-left px-3 py-2.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200"
+                  className="block w-full text-left px-3 py-2.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                 >
                   {currentContent.jobs}
                 </button>
                 
-                {/* Clean mobile CTA */}
+                {/* Clean mobile contact button - now matches the others */}
                 <button
                   onClick={() => handleContactClick('contact')}
-                  className="w-full mt-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-md font-medium shadow-sm transition-all duration-200"
+                  className="w-full mt-3 px-4 py-2.5 rounded-md font-medium transition-all duration-200 text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                 >
                   {currentContent.contact}
                 </button>
@@ -234,7 +234,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                   <div className="bg-gray-100/60 rounded-md p-0.5">
                     <button
                       onClick={() => onLanguageChange('is')}
-                      className={`px-3 py-1.5 rounded text-sm font-medium transition-all duration-200 ${
+                      className={`px-3 py-1.5 rounded text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
                         currentLanguage === 'is' 
                           ? 'bg-white text-gray-900 shadow-sm' 
                           : 'text-gray-600'
@@ -244,7 +244,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                     </button>
                     <button
                       onClick={() => onLanguageChange('en')}
-                      className={`px-3 py-1.5 rounded text-sm font-medium transition-all duration-200 ${
+                      className={`px-3 py-1.5 rounded text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
                         currentLanguage === 'en' 
                           ? 'bg-white text-gray-900 shadow-sm' 
                           : 'text-gray-600'
