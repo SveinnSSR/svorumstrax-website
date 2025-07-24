@@ -86,11 +86,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
           <div className="hidden md:flex items-center space-x-1">
             <button 
               onClick={() => handleNavigation('home')} 
-              className={`px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
-                currentPage === 'home' 
-                  ? 'text-gray-900 bg-gray-100' 
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-              }`}
+              className="px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
             >
               {currentContent.home}
             </button>
@@ -111,11 +107,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
             
             <button 
               onClick={() => handleNavigation('staff')} 
-              className={`px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
-                currentPage === 'staff' 
-                  ? 'text-gray-900 bg-gray-100' 
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-              }`}
+              className="px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
             >
               {currentContent.team}
             </button>
@@ -127,10 +119,10 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
               {currentContent.jobs}
             </button>
             
-            {/* Minimal Contact Button - now matches the others */}
+            {/* Minimal Contact Button - now completely minimal */}
             <button 
               onClick={() => handleContactClick('contact')}
-              className="ml-3 px-5 py-2 rounded-md font-medium transition-all duration-200 text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+              className="ml-3 px-5 py-2 rounded-md font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
             >
               {currentContent.contact}
             </button>
@@ -184,11 +176,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
               <div className="px-4 py-3 space-y-1">
                 <button
                   onClick={() => handleNavigation('home')}
-                  className={`block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
-                    currentPage === 'home' 
-                      ? 'text-gray-900 bg-gray-100' 
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                  }`}
+                  className="block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
                 >
                   {currentContent.home}
                 </button>
@@ -206,11 +194,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                 </button>
                 <button
                   onClick={() => handleNavigation('staff')}
-                  className={`block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
-                    currentPage === 'staff' 
-                      ? 'text-gray-900 bg-gray-100' 
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                  }`}
+                  className="block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
                 >
                   {currentContent.team}
                 </button>
@@ -221,10 +205,10 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                   {currentContent.jobs}
                 </button>
                 
-                {/* Clean mobile contact button - now matches the others */}
+                {/* Clean mobile contact button - now completely minimal */}
                 <button
                   onClick={() => handleContactClick('contact')}
-                  className="w-full mt-3 px-4 py-2.5 rounded-md font-medium transition-all duration-200 text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+                  className="w-full mt-3 px-4 py-2.5 rounded-md font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                 >
                   {currentContent.contact}
                 </button>
