@@ -3,30 +3,14 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline'
 const ChoiceSection = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
-      title: 'Sérsniðin þjónusta – knúin af fólki og gervigreind',
+      title: 'Sérsniðin þjónusta fyrir öll fyrirtæki',
       mainDescription: 'Við sameinum áralanga reynslu í símsvörun við nýjustu gervigreindartækni og búum til lausnir sem laga sig að þínum rekstri. Hvort sem þú ert að taka fyrstu skrefin með AI eða vilt bæta núverandi þjónustu, hjálpum við þér að greina tilgang samtala, leysa málin strax – og tryggja að öll mál lendi á réttum stað.',
-      formula: {
-        ai: 'AI',
-        plus: '+',
-        human: 'Mannauður',
-        equals: '=',
-        solution: 'Fullkomin lausn',
-        subtitle: 'fyrir þitt fyrirtæki'
-      },
       teamDescription: 'Hjá okkur starfa yfir 35 íslenskir sérfræðingar – bæði í Barcelona og í fjarvinnu – sem sinna þjónustu fyrir meira en 100 fyrirtæki. Við sjáum um uppsetningu, þjálfun og stuðning – svo þú getur einbeitt þér að þínu rekstri.',
       button: 'Komdu í samband'
     },
     en: {
-      title: 'Customized Service – Powered by People and AI',
+      title: 'Customized Service for All Businesses',
       mainDescription: 'We combine years of experience in phone support with the latest AI technology to create solutions that adapt to your business. Whether you\'re taking your first steps with AI or want to improve existing service, we help you identify conversation intent, solve issues immediately – and ensure all matters end up in the right place.',
-      formula: {
-        ai: 'AI',
-        plus: '+',
-        human: 'Human Team',
-        equals: '=',
-        solution: 'Perfect Solution',
-        subtitle: 'for your business'
-      },
       teamDescription: 'We have over 35 Icelandic specialists – both in Barcelona and working remotely – serving more than 100 companies. We handle setup, training and support – so you can focus on your business.',
       button: 'Get in Touch'
     }
@@ -52,49 +36,21 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
         </div>
 
         {/* Content Grid */}
-        <div className="space-y-16">
+        <div className="space-y-12">
           
           {/* Main Description Block */}
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto mb-16">
             <p className="text-xl text-gray-700 leading-relaxed text-center">
               {currentContent.mainDescription}
             </p>
           </div>
 
-          {/* Formula Section - Visual Highlight */}
+          {/* Team Strength - Highlighted */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-12 border border-gray-200/50 shadow-sm">
-            <div className="flex flex-col items-center space-y-8">
-              
-              {/* Formula Visual */}
-              <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8">
-                <div className="flex items-center space-x-3">
-                  <div className="w-16 h-16 bg-gradient-to-r from-gray-700 to-gray-800 rounded-2xl flex items-center justify-center shadow-lg">
-                    <span className="text-white font-bold text-lg">{currentContent.formula.ai}</span>
-                  </div>
-                </div>
-                
-                <div className="text-3xl text-gray-400 font-light">{currentContent.formula.plus}</div>
-                
-                <div className="flex items-center space-x-3">
-                  <div className="w-16 h-16 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg">
-                    <span className="text-white font-bold text-sm text-center leading-tight">{currentContent.formula.human}</span>
-                  </div>
-                </div>
-                
-                <div className="text-3xl text-gray-400 font-light">{currentContent.formula.equals}</div>
-                
-                <div className="text-center">
-                  <div className="text-2xl font-black text-gray-900">{currentContent.formula.solution}</div>
-                  <div className="text-gray-600 font-medium">{currentContent.formula.subtitle}</div>
-                </div>
-              </div>
-
-              {/* Team Description */}
-              <div className="max-w-4xl mx-auto text-center border-t border-gray-200/60 pt-8">
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  {currentContent.teamDescription}
-                </p>
-              </div>
+            <div className="max-w-4xl mx-auto text-center">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                {currentContent.teamDescription}
+              </p>
             </div>
           </div>
 
