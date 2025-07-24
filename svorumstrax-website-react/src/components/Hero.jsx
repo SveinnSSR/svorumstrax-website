@@ -47,13 +47,9 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   </span>
                 </div>
                 
-                {/* Black title with subtle logo color accent */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-8 leading-tight">
-                  <span className="text-slate-900">
-                    {currentContent.title}
-                  </span>
-                  {/* Subtle logo color dot or accent */}
-                  <span className="inline-block w-3 h-3 bg-gradient-to-r from-[#22C55E] to-[#4A90E2] rounded-full ml-2 mb-2"></span>
+                {/* Clean black title without dot */}
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-8 leading-tight text-slate-900">
+                  {currentContent.title}
                 </h1>
                 
                 {/* Subtitle */}
