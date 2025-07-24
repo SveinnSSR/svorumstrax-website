@@ -83,7 +83,7 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
               {/* Formula Visual */}
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8">
                 <div className="flex items-center space-x-3">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-r from-gray-700 to-gray-800 rounded-2xl flex items-center justify-center shadow-lg">
                     <span className="text-white font-bold text-lg">{currentContent.formula.ai}</span>
                   </div>
                 </div>
@@ -91,7 +91,7 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
                 <div className="text-3xl text-gray-400 font-light">{currentContent.formula.plus}</div>
                 
                 <div className="flex items-center space-x-3">
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg">
                     <span className="text-white font-bold text-sm text-center leading-tight">{currentContent.formula.human}</span>
                   </div>
                 </div>
@@ -108,7 +108,7 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-gray-700">
                 {currentContent.benefits.map((benefit, index) => (
                   <div key={index} className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                     <span className="font-medium">{benefit}</span>
                   </div>
                 ))}
