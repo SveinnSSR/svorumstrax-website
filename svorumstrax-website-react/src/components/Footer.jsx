@@ -1,3 +1,5 @@
+import footerLogo from '../assets/images/svorum-strax-footer-logo.svg'
+
 const Footer = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
@@ -110,9 +112,11 @@ const Footer = ({ currentLanguage, onContactClick }) => {
           <div className="col-span-2 md:col-span-1">
             {/* Logo */}
             <div className="mb-8">
-              <div className="text-2xl font-black bg-gradient-to-r from-orangeGradient-start via-orangeGradient-middle to-orangeGradient-end bg-clip-text text-transparent">
-                Svörum strax
-              </div>
+              <img 
+                src={footerLogo} 
+                alt="Svörum strax" 
+                className="h-10 w-auto"
+              />
             </div>
             
             {/* Description */}
