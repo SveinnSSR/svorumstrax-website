@@ -72,16 +72,15 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
         {/* Main Content with Barcelona Office Image */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          {/* Barcelona Office Image - Left Side - UPDATED for better blending */}
+          {/* Barcelona Office Image - Left Side - Made smaller */}
           <div className="relative order-1 lg:order-1">
-            <div className="relative">
+            <div className="relative max-w-md mx-auto">
               <img 
                 src={barcelonaOfficeImage} 
                 alt="Barcelona Office" 
                 className="w-full h-auto object-contain mix-blend-multiply"
                 style={{
-                  filter: 'contrast(1.1) saturate(1.1)',
-                  maxWidth: '100%'
+                  filter: 'contrast(1.1) saturate(1.1)'
                 }}
               />
             </div>
