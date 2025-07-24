@@ -13,7 +13,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
           description: 'Heildarlausn með fullkomlega þjálfuðum starfsmönnum sem þekkja þitt fyrirtæki, vörur og þjónustu. Sérhæfðir starfsmenn sem verða hluti af þínu teymi og geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð byggða á þínum upplýsingakerfum.'
         },
         {
-          title: 'AI símsvörun',
+          title: 'Gervigreindarsvörun',
           description: 'Nýjustu gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Áframsendir mál á mannlega þjónustufulltrúa (okkar eða þína) eftir þörfum.'
         }
       ]
