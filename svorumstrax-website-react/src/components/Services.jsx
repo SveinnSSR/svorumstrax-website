@@ -6,18 +6,15 @@ const Services = ({ currentLanguage, onContactClick }) => {
       services: [
         {
           title: 'Almenn símsvörun',
-          description: 'Einföld og áreiðanleg þjónusta. Við svörum í þínu nafni, sendum símtöl áfram á réttan starfsmann og tökum niður ítarleg skilaboð. Léttir álag á starfsfólki og hægt að setja upp með stuttum fyrirvara.',
-          accent: 'border-l-teal-500'
+          description: 'Einföld og áreiðanleg þjónusta. Við svörum í þínu nafni, sendum símtöl áfram á réttan starfsmann og tökum niður ítarleg skilaboð. Léttir álag á starfsfólki og hægt að setja upp með stuttum fyrirvara.'
         },
         {
           title: 'Þjónustuver',
-          description: 'Heildarlausn með fullkomlega þjálfuðum starfsmönnum sem þekkja þitt fyrirtæki, vörur og þjónustu. Sérhæfðir starfsmenn sem verða hluti af þínu teymi og geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð byggða á þínum upplýsingakerfum.',
-          accent: 'border-l-blue-500'
+          description: 'Heildarlausn með fullkomlega þjálfuðum starfsmönnum sem þekkja þitt fyrirtæki, vörur og þjónustu. Sérhæfðir starfsmenn sem verða hluti af þínu teymi og geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð byggða á þínum upplýsingakerfum.'
         },
         {
           title: 'AI símsvörun',
-          description: 'Nýjustu gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Áframsendir mál á mannlega þjónustufulltrúa (okkar eða þína) eftir þörfum.',
-          accent: 'border-l-orange-500'
+          description: 'Nýjustu gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Áframsendir mál á mannlega þjónustufulltrúa (okkar eða þína) eftir þörfum.'
         }
       ]
     },
@@ -27,18 +24,15 @@ const Services = ({ currentLanguage, onContactClick }) => {
       services: [
         {
           title: 'General Phone Support',
-          description: 'Simple and reliable service. We answer in your name, forward calls to the right employee and take messages. Reduces staff burden and can be set up with short notice.',
-          accent: 'border-l-teal-500'
+          description: 'Simple and reliable service. We answer in your name, forward calls to the right employee and take messages. Reduces staff burden and can be set up with short notice.'
         },
         {
           title: 'Your Own Service Center',
-          description: 'Complete solution with perfectly trained staff who know your business, products and services. Specialized staff who become part of your team and can answer complex questions, solve problems and provide technical assistance based on your information systems.',
-          accent: 'border-l-blue-500'
+          description: 'Complete solution with perfectly trained staff who know your business, products and services. Specialized staff who become part of your team and can answer complex questions, solve problems and provide technical assistance based on your information systems.'
         },
         {
           title: 'AI Phone Support',
-          description: 'Latest AI solutions that answer phone calls around the clock. AI phone support that knows your business, answers inquiries, takes orders and provides information with speed and accuracy. When needed, it can always connect to our or your service representatives to ensure maximum service quality.',
-          accent: 'border-l-orange-500'
+          description: 'Latest AI solutions that answer phone calls around the clock. AI phone support that knows your business, answers inquiries, takes orders and provides information with speed and accuracy. When needed, it can always connect to our or your service representatives to ensure maximum service quality.'
         }
       ]
     }
@@ -68,11 +62,11 @@ const Services = ({ currentLanguage, onContactClick }) => {
           </p>
         </div>
         
-        {/* Three services in one horizontal line */}
+        {/* Three services in one horizontal line - minimal design */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           {/* Almenn símsvörun */}
-          <div className={`bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 ${currentContent.services[0].accent} border-l-4`}>
+          <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
             <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
               {currentContent.services[0].title}
             </h3>
@@ -82,7 +76,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
           </div>
 
           {/* Þitt eigið þjónustuver */}
-          <div className={`bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 ${currentContent.services[1].accent} border-l-4`}>
+          <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
             <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
               {currentContent.services[1].title}
             </h3>
@@ -92,7 +86,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
           </div>
 
           {/* Gervigreindarsvörun í síma */}
-          <div className={`bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 ${currentContent.services[2].accent} border-l-4`}>
+          <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
             <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
               {currentContent.services[2].title}
             </h3>
