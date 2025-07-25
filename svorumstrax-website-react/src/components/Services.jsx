@@ -62,11 +62,11 @@ const Services = ({ currentLanguage, onContactClick }) => {
           </p>
         </div>
         
-        {/* Three services in one horizontal line - minimal design */}
+        {/* Three services in one horizontal line - transparent cards like Retell AI */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           {/* Almenn símsvörun */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+          <div className="border border-gray-300 rounded-2xl p-8 hover:border-gray-400 transition-all duration-300">
             <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
               {currentContent.services[0].title}
             </h3>
@@ -76,7 +76,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
           </div>
 
           {/* Þitt eigið þjónustuver */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+          <div className="border border-gray-300 rounded-2xl p-8 hover:border-gray-400 transition-all duration-300">
             <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
               {currentContent.services[1].title}
             </h3>
@@ -86,7 +86,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
           </div>
 
           {/* Gervigreindarsvörun í síma */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+          <div className="border border-gray-300 rounded-2xl p-8 hover:border-gray-400 transition-all duration-300">
             <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
               {currentContent.services[2].title}
             </h3>
