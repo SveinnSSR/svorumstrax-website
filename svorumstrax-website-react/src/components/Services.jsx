@@ -19,20 +19,20 @@ const Services = ({ currentLanguage, onContactClick }) => {
       ]
     },
     en: {
-      title: 'Phone Support',
-      subtitle: 'Reliable and personal phone service since 2019. We offer specialized phone support, email monitoring and AI solutions that improve service and increase efficiency.',
+      title: 'Customer Support Solutions',
+      subtitle: 'Professional customer service since 2019. We deliver specialized phone support, email management, and AI-powered solutions that enhance customer experience and boost efficiency.',
       services: [
         {
-          title: 'General Phone Support',
-          description: 'Simple and reliable service. We answer in your name, forward calls to the right employee and take messages. Reduces staff burden and can be set up with short notice.'
+          title: 'Phone Answering Service',
+          description: 'Reliable support for businesses of all sizes. We answer in your company name, route calls to the right team member, and capture detailed messages. Reduces staff workload and can be implemented immediately.'
         },
         {
-          title: 'Your Own Service Center',
-          description: 'Complete solution with perfectly trained staff who know your business, products and services. Specialized staff who become part of your team and can answer complex questions, solve problems and provide technical assistance based on your information systems.'
+          title: 'Dedicated Contact Center',
+          description: 'Complete solution with expertly trained agents who become an extension of your team. Our specialists learn your business inside-out, handle complex inquiries, resolve issues, and provide technical support using your systems and processes.'
         },
         {
-          title: 'AI Phone Support',
-          description: 'Latest AI solutions that answer phone calls around the clock. AI phone support that knows your business, answers inquiries, takes orders and provides information with speed and accuracy. When needed, it can always connect to our or your service representatives to ensure maximum service quality.'
+          title: 'AI-Powered Support',
+          description: 'Smart automation that works 24/7. Our AI learns your business, handles customer inquiries, processes orders, and provides instant information. Seamlessly escalates to human agents when needed for the perfect customer experience.'
         }
       ]
     }

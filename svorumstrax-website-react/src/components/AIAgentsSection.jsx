@@ -48,46 +48,48 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           description: 'Svarar póstkerfinu þínu og sendir upplýsingar sjálfkrafa'
         }
       ],
+      platformsTitle: 'Virkar á öllum samskiptaleiðum',
       button: 'Frekari upplýsingar'
     },
     en: {
-      title: 'AI Agents',
-      subtitle: 'AI trained in your business that answers around the clock. Provides accurate information, executes actions and helps with sales.',
-      mainDescription: 'Perfectly trained in your products and services. Takes orders, books appointments and provides accurate answers - like your best employee.',
+      title: 'AI Customer Agents',
+      subtitle: 'Intelligent agents trained specifically for your business, working around the clock. They provide accurate information, take actions, and drive sales - just like your best team member.',
+      mainDescription: 'Our AI agents are custom-trained on your business. They handle orders, book appointments, and provide expert answers with the knowledge and personality of your top performer.',
       features: [
         {
           icon: ClockIcon,
-          title: '24/7 service - never off duty',
-          description: 'Answers in Icelandic, English and other languages. Works while you sleep.'
+          title: 'Always-on service',
+          description: 'Responds in multiple languages including Icelandic and English. Works while your team sleeps.'
         },
         {
           icon: CogIcon,
           title: 'Integrated with your systems',
-          description: 'Connects to booking systems, CRM and other systems. Executes actions in real-time.'
+          description: 'Connects directly to your booking system, CRM, and tools to take real-time actions.'
         },
         {
           icon: ChartBarIcon,
-          title: 'Analytics system with insights',
-          description: 'Real-time overview where you monitor all communications and get customer insights.'
+          title: 'Advanced analytics dashboard',
+          description: 'Real-time insights into all customer interactions with detailed analytics and performance metrics.'
         }
       ],
       platforms: [
         {
           icon: DevicePhoneMobileIcon,
-          title: 'Website and mobile apps',
-          description: 'Chat widget on your website or integration into your own app'
+          title: 'Website & Mobile Apps',
+          description: 'Chat widget for your website or seamless integration into your existing app'
         },
         {
           icon: ComputerDesktopIcon,
-          title: 'Social media',
-          description: 'Facebook, WhatsApp, Instagram and other platforms'
+          title: 'Social Media',
+          description: 'Facebook Messenger, WhatsApp, Instagram, and other platforms'
         },
         {
           icon: EnvelopeIcon,
-          title: 'Email',
-          description: 'Responds to your email system and sends information automatically'
+          title: 'Email Support',
+          description: 'Automated email responses and intelligent routing based on content'
         }
       ],
+      platformsTitle: 'Works across all communication channels',
       button: 'Learn More'
     }
   }
@@ -116,12 +118,12 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           </p>
         </div>
 
-        {/* Main Content - Split Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-16">
+        {/* Main Content - Split Layout - Mobile optimized */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-16">
           
           {/* Left side - Content */}
           <div>
-            <h3 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 leading-tight">
               {currentContent.mainDescription}
             </h3>
             
@@ -134,8 +136,8 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
                       <IconComponent className="w-5 h-5 text-orange-600" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">{feature.title}</h4>
-                      <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                      <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">{feature.title}</h4>
+                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
                     </div>
                   </div>
                 )
@@ -144,15 +146,15 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
 
             <button
               onClick={() => onContactClick('ai-service')}
-              className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+              className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 w-full sm:w-auto"
             >
               {currentContent.button}
             </button>
           </div>
           
-          {/* Right side - Static Chatbot UI Image */}
-          <div className="relative">
-            <div className="relative max-w-xs mx-auto">
+          {/* Right side - Static Chatbot UI Image - Mobile optimized */}
+          <div className="relative order-first lg:order-last">
+            <div className="relative max-w-xs mx-auto lg:max-w-sm">
               <img 
                 src={chatbotUiDemo} 
                 alt="Chatbot UI Demo"
@@ -165,9 +167,9 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
         {/* Platforms Section - Simple Grid */}
         <div className="border-t border-gray-200 pt-16">
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-12">
-            Virkar á öllum samskiptaleiðum
+            {currentContent.platformsTitle}
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {currentContent.platforms.map((platform, index) => {
               const IconComponent = platform.icon
               return (
@@ -175,8 +177,8 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
                   <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <IconComponent className="w-6 h-6 text-gray-600" />
                   </div>
-                  <h4 className="font-semibold text-gray-900 mb-2">{platform.title}</h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">{platform.description}</p>
+                  <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">{platform.title}</h4>
+                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{platform.description}</p>
                 </div>
               )
             })}
