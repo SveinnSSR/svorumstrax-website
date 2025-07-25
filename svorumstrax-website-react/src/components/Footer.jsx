@@ -36,26 +36,26 @@ const Footer = ({ currentLanguage, onContactClick }) => {
       copyright: '© 2025 Svörum strax. Allur réttur áskilinn.'
     },
     en: {
-      description: 'Powerful contact center in Barcelona with 35+ Icelandic experts. We integrate human service and artificial intelligence to provide outstanding experience for your customers.',
+      description: 'Advanced customer service center in Barcelona with 35+ Icelandic specialists. We combine human expertise and AI technology to deliver exceptional experiences for your customers.',
       legalText: 'Svörum strax is founded and operated in Barcelona, Spain.',
       legalEntity: 'El MUNDO BUENO DE ISLANDIA, SOCIEDAD LIMITADA.',
       services: {
         title: 'Services',
         items: [
           { name: 'Phone Support', action: 'phone-support' },
-          { name: 'Email Service', action: 'email-service' },
-          { name: 'AI Service', action: 'ai-service' },
+          { name: 'Email Management', action: 'email-service' },
+          { name: 'AI Solutions', action: 'ai-service' },
           { name: 'Business Analytics', action: 'analytics' },
-          { name: 'Outbound Calls', action: 'outbound' },
-          { name: 'FTEs', action: 'fte' }
+          { name: 'Outbound Sales', action: 'outbound' },
+          { name: 'Dedicated Teams', action: 'fte' }
         ]
       },
       company: {
         title: 'Company',
         items: [
-          { name: 'About Us', href: '#about' },
-          { name: 'Jobs', action: 'job' },
-          { name: 'Our Team', href: '/team' },
+          { name: 'About', href: '#about' },
+          { name: 'Careers', action: 'job' },
+          { name: 'Team', href: '/team' },
           { name: 'Barcelona', href: '#barcelona' },
           { name: 'Clients', href: '#clients' }
         ]
@@ -104,23 +104,23 @@ const Footer = ({ currentLanguage, onContactClick }) => {
       {/* Subtle top border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-400/30 to-transparent"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        {/* Main Footer Content - Mobile optimized */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           
-          {/* Company Column */}
-          <div className="col-span-2 md:col-span-1">
+          {/* Company Column - Mobile optimized */}
+          <div className="sm:col-span-2 lg:col-span-1">
             {/* Logo */}
-            <div className="mb-8">
+            <div className="mb-6 sm:mb-8">
               <img 
                 src={footerLogo} 
                 alt="Svörum strax" 
-                className="h-10 w-auto"
+                className="h-8 sm:h-10 w-auto"
               />
             </div>
             
             {/* Description */}
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
+            <p className="text-gray-400 text-sm leading-relaxed mb-4 sm:mb-6">
               {currentContent.description}
             </p>
             
@@ -132,10 +132,10 @@ const Footer = ({ currentLanguage, onContactClick }) => {
           
           {/* Services Column */}
           <div>
-            <h4 className="text-gray-400 uppercase tracking-wider text-xs font-semibold mb-6">
+            <h4 className="text-gray-400 uppercase tracking-wider text-xs font-semibold mb-4 sm:mb-6">
               {currentContent.services.title}
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {currentContent.services.items.map((item, index) => (
                 <li key={index}>
                   <button
@@ -151,10 +151,10 @@ const Footer = ({ currentLanguage, onContactClick }) => {
           
           {/* Company Links Column */}
           <div>
-            <h4 className="text-gray-400 uppercase tracking-wider text-xs font-semibold mb-6">
+            <h4 className="text-gray-400 uppercase tracking-wider text-xs font-semibold mb-4 sm:mb-6">
               {currentContent.company.title}
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {currentContent.company.items.map((item, index) => (
                 <li key={index}>
                   {item.href ? (
@@ -177,12 +177,12 @@ const Footer = ({ currentLanguage, onContactClick }) => {
             </ul>
           </div>
           
-          {/* Contact Column */}
+          {/* Contact Column - Mobile optimized */}
           <div>
-            <h4 className="text-gray-400 uppercase tracking-wider text-xs font-semibold mb-6">
+            <h4 className="text-gray-400 uppercase tracking-wider text-xs font-semibold mb-4 sm:mb-6">
               {currentContent.contact.title}
             </h4>
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {/* Email */}
               <div className="flex items-center space-x-3">
                 <div className="text-orange-400 flex-shrink-0">
@@ -190,7 +190,7 @@ const Footer = ({ currentLanguage, onContactClick }) => {
                 </div>
                 <a
                   href={`mailto:${currentContent.contact.email}`}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 text-sm break-all"
                 >
                   {currentContent.contact.email}
                 </a>
@@ -222,17 +222,15 @@ const Footer = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
         
-        {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-gray-500 text-sm">
+        {/* Bottom Section - Mobile optimized */}
+        <div className="border-t border-gray-800 mt-8 sm:mt-12 pt-6 sm:pt-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <p className="text-gray-500 text-sm text-center sm:text-left">
               {currentContent.copyright}
             </p>
-            <div className="mt-4 sm:mt-0">
-              <p className="text-gray-500 text-xs">
-                {currentContent.legalText}
-              </p>
-            </div>
+            <p className="text-gray-500 text-xs text-center sm:text-right">
+              {currentContent.legalText}
+            </p>
           </div>
         </div>
       </div>
