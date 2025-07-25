@@ -114,7 +114,7 @@ const MessageFormatter = ({ message }) => {
 };
 
 // External Text Bar Component
-const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
+const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
 
@@ -134,16 +134,25 @@ const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
       close: "Loka"
     },
     en: {
-      message: "Hi! I'm an AI assistant at Svörum strax. Can I help you?",
+      message: "Hi! I'm an AI specialist at Svörum strax. How can I help your business today?",
       close: "Close"
     }
   };
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.stopPropagation(); // Prevent opening chat when closing
     setIsClosing(true);
     setTimeout(() => {
       onClose();
     }, 300);
+  };
+
+  const handleClick = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+      onOpenChat();
+    }, 150);
   };
 
   if (!isVisible) return null;
@@ -152,6 +161,7 @@ const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
 
   return (
     <div 
+      onClick={handleClick}
       style={{
         position: 'fixed',
         bottom: '110px', // Position above the chat widget
@@ -167,7 +177,8 @@ const ExternalTextBar = ({ isVisible, onClose, getCurrentLanguage }) => {
         transform: isClosing ? 'translateY(10px)' : 'translateY(0)',
         opacity: isClosing ? 0 : 1,
         transition: 'all 0.3s ease',
-        animation: !isClosing ? 'slideInFromBottom 0.4s ease-out' : 'none'
+        animation: !isClosing ? 'slideInFromBottom 0.4s ease-out' : 'none',
+        cursor: 'pointer'
       }}
     >
       {/* Close button */}
@@ -297,7 +308,7 @@ const ChatWidget = () => {
       subtitle: "Svörum strax",
       placeholder: "Type a message...",
       send: "Send",
-      welcome: "Hello! I'm your AI assistant at Svörum strax. Are you a business interested in our services? Or are you looking to join our team in Barcelona?",
+      welcome: "Hello! I'm your AI assistant at Svörum strax. Are you a business looking to enhance your customer service? Or perhaps you're interested in joining our Barcelona team?",
       error: "Sorry, something went wrong. Please try again."
     }
   };
@@ -607,6 +618,12 @@ const ChatWidget = () => {
     }
   };
 
+  const handleOpenChatFromTextBar = () => {
+    setIsMinimized(false);
+    setHasInteracted(true);
+    setShowTextBar(false);
+  };
+
   const lang = getCurrentLanguage();
   const t = translations[lang];
 
@@ -616,6 +633,7 @@ const ChatWidget = () => {
       <ExternalTextBar 
         isVisible={showTextBar && isMinimized} 
         onClose={() => setShowTextBar(false)}
+        onOpenChat={handleOpenChatFromTextBar}
         getCurrentLanguage={getCurrentLanguage}
       />
 
