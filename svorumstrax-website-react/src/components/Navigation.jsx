@@ -40,6 +40,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
     setIsMobileMenuOpen(false)
   }
 
+  // Natural English navigation labels
   const content = {
     is: {
       home: 'Heim',
@@ -52,9 +53,9 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
     en: {
       home: 'Home',
       services: 'Services',
-      about: 'About Us',
-      team: 'Our Team',
-      jobs: 'Jobs',
+      about: 'About',
+      team: 'Team',
+      jobs: 'Careers',
       contact: 'Contact'
     }
   }

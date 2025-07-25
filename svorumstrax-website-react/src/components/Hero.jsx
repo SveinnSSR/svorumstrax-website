@@ -1,4 +1,3 @@
-
 import outboundPhone from '../assets/images/outbound-phone.png'
 
 const Hero = ({ currentLanguage, onContactClick }) => {
@@ -7,13 +6,27 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       title: 'Snjallar lausnir fyrir nútíma þjónustu',
       subtitle: 'Yfir 100 fyrirtæki treysta Svörum strax fyrir þjónustu við viðskiptavini. Þú velur hvort gervigreind eða mannlegur fulltrúi svari - eða blöndu af hvoru tveggja.',
       primaryButton: 'Sjá alla þjónustu',
-      secondaryButton: 'Fá ókeypis ráðgjöf'
+      secondaryButton: 'Fá ókeypis ráðgjöf',
+      badge: 'Lausnir fyrir þjónustuver',
+      quotes: [
+        "Hæ! Er hægt að bóka tíma hjá ykkur um helgina?",
+        "Getið þið hjálpað mér með pöntunina mína?",
+        "Hvenær eruð þið opin á morgun?",
+        "Get ég fengið verðtilboð?"
+      ]
     },
     en: {
-      title: 'Smart solutions for modern customer service',
-      subtitle: 'Over 100 companies trust us for phone support and AI. The only company in Iceland offering both - experienced Icelandic specialists and advanced AI technology.',
-      primaryButton: 'See All Services',
-      secondaryButton: 'Get Free Consultation'
+      title: 'Next-generation customer service',
+      subtitle: 'Trusted by 100+ companies across Iceland. Get the perfect blend of human expertise and AI efficiency - exactly when your customers need it.',
+      primaryButton: 'Explore Services',
+      secondaryButton: 'Get Free Consultation',
+      badge: 'Customer Service Solutions',
+      quotes: [
+        "Can I book an appointment for this weekend?",
+        "Could you help me with my order?",
+        "What are your hours tomorrow?",
+        "Can I get a quote?"
+      ]
     }
   }
 
@@ -44,7 +57,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                 {/* Clean badge - consistent with button system */}
                 <div className="inline-block bg-white rounded-xl px-6 py-2 mb-8 border border-gray-300 w-fit shadow-sm">
                   <span className="text-gray-700 font-semibold text-sm tracking-wide uppercase">
-                    Lausnir fyrir þjónustuver
+                    {currentContent.badge}
                   </span>
                 </div>
                 
@@ -86,7 +99,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   {/* Quote 1 - Top left */}
                   <div className="absolute -top-2 -left-6 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-56 transform -rotate-2 animate-pulse hidden md:block z-10">
                     <div className="text-sm text-gray-700 font-medium">
-                      "Hæ! Er hægt að bóka tíma hjá ykkur um helgina?"
+                      "{currentContent.quotes[0]}"
                     </div>
                     <div className="absolute bottom-0 left-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-white transform translate-y-1.5"></div>
                   </div>
@@ -94,7 +107,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   {/* Quote 2 - Top right - using logo blue */}
                   <div className="absolute top-0 right-2 bg-[#4A90E2]/10 rounded-2xl px-4 py-3 shadow-lg border border-[#4A90E2]/20 max-w-48 transform rotate-1 animate-pulse hidden lg:block z-10" style={{animationDelay: '1s'}}>
                     <div className="text-sm text-gray-700 font-medium">
-                      "Getið þið hjálpað mér með pöntunina mína?"
+                      "{currentContent.quotes[1]}"
                     </div>
                     <div className="absolute bottom-0 right-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-[#4A90E2]/10 transform translate-y-1.5"></div>
                   </div>
@@ -102,7 +115,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   {/* Quote 3 - Bottom left - using logo orange */}
                   <div className="absolute bottom-6 left-6 bg-[#FFA947]/10 rounded-2xl px-4 py-3 shadow-lg border border-[#FFA947]/20 max-w-52 transform rotate-1 animate-pulse hidden md:block z-10" style={{animationDelay: '2s'}}>
                     <div className="text-sm text-gray-700 font-medium">
-                      "Hvenær eruð þið opin á morgun?"
+                      "{currentContent.quotes[2]}"
                     </div>
                     <div className="absolute top-0 left-6 w-0 h-0 border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-[#FFA947]/10 transform -translate-y-1.5"></div>
                   </div>
@@ -110,7 +123,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   {/* Quote 4 - Bottom right */}
                   <div className="absolute bottom-2 right-6 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-44 transform -rotate-2 animate-pulse hidden lg:block z-10" style={{animationDelay: '3s'}}>
                     <div className="text-sm text-gray-700 font-medium">
-                      "Get ég fengið verðtilboð?"
+                      "{currentContent.quotes[3]}"
                     </div>
                     <div className="absolute top-0 right-6 w-0 h-0 border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-white transform -translate-y-1.5"></div>
                   </div>
