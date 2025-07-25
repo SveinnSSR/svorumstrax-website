@@ -283,9 +283,9 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                   {member.title[currentLanguage]}
                 </p>
 
-                {/* Founder Badge - transparent like service cards and button style */}
+                {/* Founder Badge - ultra subtle, just text */}
                 {member.isFounder && (
-                  <div className="inline-block border border-gray-300 text-gray-700 px-3 py-1 rounded-xl text-xs font-medium mb-3 hover:border-gray-400 transition-all duration-300">
+                  <div className="text-gray-600 text-xs font-medium mb-3">
                     {currentContent.founderBadge}
                   </div>
                 )}
