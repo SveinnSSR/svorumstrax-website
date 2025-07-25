@@ -29,18 +29,18 @@ const CTASection = ({ currentLanguage, onContactClick }) => {
           {currentContent.subtitle}
         </p>
         
-        {/* Buttons - minimal and professional like navigation */}
+        {/* Updated buttons - perfectly consistent with navbar and other sections */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             onClick={() => onContactClick('meeting')}
-            className="px-8 py-3 rounded-md font-medium transition-all duration-200 text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+            className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
           >
             {currentContent.primaryButton}
           </button>
           
           <button
             onClick={() => onContactClick('pricing')}
-            className="px-8 py-3 rounded-md font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50 border border-gray-300 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+            className="px-8 py-3 rounded-xl font-semibold transition-all duration-300 text-gray-600 hover:text-gray-900 hover:bg-gray-50 border border-gray-300 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 hover:shadow-lg hover:-translate-y-1"
           >
             {currentContent.secondaryButton}
           </button>

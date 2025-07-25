@@ -57,18 +57,18 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   {currentContent.subtitle}
                 </p>
                 
-                {/* Premium buttons - using logo blue */}
+                {/* Updated buttons - consistent with navbar and choice section style */}
                 <div className="flex flex-col sm:flex-row gap-6">
                   <button
                     onClick={() => onContactClick('services')}
-                    className="bg-gradient-to-r from-[#4A90E2] to-[#5BA0F2] hover:from-[#5BA0F2] hover:to-[#6BB0FF] text-white font-semibold py-4 px-10 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg"
+                    className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                   >
                     {currentContent.primaryButton}
                   </button>
                   
                   <button
                     onClick={() => onContactClick('consultation')}
-                    className="bg-white hover:bg-gray-50 text-slate-900 font-semibold py-4 px-10 rounded-full border-2 border-slate-300 hover:border-slate-400 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg"
+                    className="px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 text-gray-600 hover:text-gray-900 hover:bg-gray-50 border border-gray-300 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 hover:shadow-lg hover:-translate-y-1"
                   >
                     {currentContent.secondaryButton}
                   </button>
