@@ -1,3 +1,4 @@
+
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 
 const ChoiceSection = ({ currentLanguage, onContactClick }) => {
@@ -9,9 +10,9 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
       button: 'Komdu í samband'
     },
     en: {
-      title: 'Customized Service for All Businesses',
-      mainDescription: 'We combine years of experience in phone support with the latest AI technology to create solutions that adapt to your business. Whether you\'re taking your first steps with AI or want to improve existing service, we help you identify conversation intent, solve issues immediately – and ensure all matters end up in the right place.',
-      teamDescription: 'We have over 35 Icelandic specialists – both in Barcelona and working remotely – serving more than 100 companies. We handle setup, training and support – so you can focus on your business.',
+      title: 'Custom solutions for every business',
+      mainDescription: 'We blend years of customer service expertise with cutting-edge AI technology to create solutions that adapt to your business. Whether you\'re exploring AI for the first time or enhancing existing support, we help you understand customer intent, resolve issues instantly, and ensure every interaction reaches the right destination.',
+      teamDescription: 'Our team of 35+ Icelandic specialists—working from Barcelona and remotely—serves over 100 companies. We handle setup, training, and ongoing support, so you can focus on growing your business.',
       button: 'Get in Touch'
     }
   }
@@ -28,37 +29,37 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Main Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-8 leading-tight">
+        {/* Main Title - Mobile optimized */}
+        <div className="text-center mb-16 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-8 leading-tight">
             {currentContent.title}
           </h2>
         </div>
 
-        {/* Content Grid */}
-        <div className="space-y-12">
+        {/* Content Grid - Mobile optimized */}
+        <div className="space-y-8 sm:space-y-12">
           
-          {/* Main Description Block */}
-          <div className="max-w-4xl mx-auto mb-16">
-            <p className="text-xl text-gray-700 leading-relaxed text-center">
+          {/* Main Description Block - Mobile optimized */}
+          <div className="max-w-4xl mx-auto mb-12 sm:mb-16">
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed text-center">
               {currentContent.mainDescription}
             </p>
           </div>
 
-          {/* Team Strength - Highlighted */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-12 border border-gray-200/50 shadow-sm">
+          {/* Team Strength - Highlighted - Mobile optimized */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border border-gray-200/50 shadow-sm">
             <div className="max-w-4xl mx-auto text-center">
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
                 {currentContent.teamDescription}
               </p>
             </div>
           </div>
 
-          {/* Call to Action */}
+          {/* Call to Action - Mobile optimized */}
           <div className="text-center">
             <button
               onClick={() => onContactClick('consultation')}
-              className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 inline-flex items-center space-x-2"
+              className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 inline-flex items-center space-x-2 w-full sm:w-auto justify-center"
             >
               <span>{currentContent.button}</span>
               <ArrowRightIcon className="w-5 h-5" />

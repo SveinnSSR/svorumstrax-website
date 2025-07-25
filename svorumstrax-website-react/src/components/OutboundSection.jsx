@@ -31,24 +31,24 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
       ]
     },
     en: {
-      title: 'Outbound Calls',
-      subtitle: 'Specialized sales teams with B2B and B2C market experience. We use the latest technology and CRM systems to maximize results.',
-      mainDescription: 'Experience and technology that delivers results. We have handled outbound campaigns and projects for many of the country\'s largest companies.',
+      title: 'Outbound Sales',
+      subtitle: 'Expert sales teams with proven B2B and B2C market experience. We leverage advanced technology and CRM systems to maximize your results.',
+      mainDescription: 'Results-driven experience you can trust. We\'ve managed outbound campaigns for many of Iceland\'s largest companies, delivering measurable growth.',
       features: [
         {
           icon: BuildingOffice2Icon,
-          title: 'B2B and B2C experience',
-          description: 'Specialized teams for both markets with deep knowledge of Icelandic business'
+          title: 'B2B & B2C expertise',
+          description: 'Specialized teams for each market with deep understanding of Icelandic business culture and consumer behavior'
         },
         {
           icon: ChartBarIcon,
-          title: 'Latest CRM technology',
-          description: 'We connect to your systems and measure results in real-time'
+          title: 'Advanced CRM integration',
+          description: 'Seamless connection to your existing systems with real-time performance tracking and detailed analytics'
         },
         {
           icon: UserGroupIcon,
-          title: 'Experienced sales professionals',
-          description: 'Trained in your products and services with years of sales training'
+          title: 'Professional sales specialists',
+          description: 'Extensively trained on your products and services, with years of proven sales experience and ongoing coaching'
         }
       ]
     }
@@ -69,12 +69,12 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
           </p>
         </div>
         
-        {/* Main Content with Barcelona Office Image */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        {/* Main Content with Barcelona Office Image - Mobile optimized */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* Barcelona Office Image - Left Side - Made smaller */}
-          <div className="relative order-1 lg:order-1">
-            <div className="relative max-w-md mx-auto">
+          {/* Barcelona Office Image - Left Side - Mobile optimized */}
+          <div className="relative order-2 lg:order-1">
+            <div className="relative max-w-sm mx-auto lg:max-w-md">
               <img 
                 src={barcelonaOfficeImage} 
                 alt="Barcelona Office" 
@@ -86,30 +86,30 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
             </div>
           </div>
           
-          {/* Content - Right Side */}
-          <div className="order-2 lg:order-2">
-            <div className="flex items-center mb-8">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
-                <PhoneIcon className="w-8 h-8 text-white" />
+          {/* Content - Right Side - Mobile optimized */}
+          <div className="order-1 lg:order-2">
+            <div className="flex items-center mb-6 sm:mb-8">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-3 sm:mr-4 shadow-lg">
+                <PhoneIcon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
               </div>
-              <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+              <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
             </div>
             
-            <h3 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
               {currentContent.mainDescription}
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {currentContent.features.map((feature, index) => {
                 const IconComponent = feature.icon
                 return (
-                  <div key={index} className="flex items-start space-x-4">
+                  <div key={index} className="flex items-start space-x-3 sm:space-x-4">
                     <div className="w-10 h-10 bg-gradient-to-r from-blue-100 to-blue-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
                       <IconComponent className="w-5 h-5 text-blue-600" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">{feature.title}</h4>
-                      <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                      <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">{feature.title}</h4>
+                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
                     </div>
                   </div>
                 )

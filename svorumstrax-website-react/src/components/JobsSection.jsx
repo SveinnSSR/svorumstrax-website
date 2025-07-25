@@ -27,28 +27,28 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
       button: 'Sækja um starf'
     },
     en: {
-      title: 'Jobs for Icelanders in Spain',
-      subtitle: 'Are you an Icelander living in Spain? We\'re always looking for talented people who want to work in a fun international environment in Barcelona, elsewhere in Spain, or remotely.',
+      title: 'Careers for Icelanders in Spain',
+      subtitle: 'Are you an Icelander living in Spain? We\'re always seeking talented individuals who want to work in an exciting international environment in Barcelona, elsewhere in Spain, or remotely.',
       benefits: [
         {
           icon: '☀️',
-          title: 'Quality of Life in Barcelona',
-          description: 'Enjoy the sun and culture while working for the Icelandic market'
+          title: 'Barcelona lifestyle',
+          description: 'Enjoy Mediterranean living while working with Icelandic businesses and maintaining your career growth'
         },
         {
           icon: '🏠',
-          title: 'Flexibility',
-          description: 'Remote work and flexible shifts that fit your life'
+          title: 'Work flexibility',
+          description: 'Remote work options and flexible scheduling that fits your life in Spain'
         },
         {
           icon: '📈',
-          title: 'Development Opportunities',
-          description: 'Learn new things and develop professionally with a great team'
+          title: 'Career development',
+          description: 'Grow your skills in customer service, AI, and technology with ongoing training and mentorship'
         }
       ],
-      statsTitle: 'Icelandic experts in Barcelona',
-      statsDescription: 'We\'re proud to be one of the largest Icelandic workplaces in Spain, creating jobs for Icelanders abroad.',
-      button: 'Apply for Job'
+      statsTitle: 'Icelandic professionals in Barcelona',
+      statsDescription: 'We\'re proud to be one of the largest Icelandic employers in Spain, creating meaningful career opportunities for Icelanders abroad.',
+      button: 'Apply Now'
     }
   }
 
@@ -69,35 +69,35 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
       <div className="absolute inset-0 bg-slate-900/85"></div>
       
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* Left Side - Benefits */}
-          <div className="space-y-8">
+          {/* Left Side - Benefits - Mobile optimized */}
+          <div className="space-y-6 sm:space-y-8">
             <div>
-              <h2 className="text-4xl sm:text-5xl font-black text-white mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 sm:mb-6 leading-tight">
                 {currentContent.title}
               </h2>
-              <p className="text-xl text-slate-200 leading-relaxed">
+              <p className="text-lg sm:text-xl text-slate-200 leading-relaxed">
                 {currentContent.subtitle}
               </p>
             </div>
             
-            {/* Benefits Cards */}
-            <div className="space-y-6">
+            {/* Benefits Cards - Mobile optimized */}
+            <div className="space-y-4 sm:space-y-6">
               {currentContent.benefits.map((benefit, index) => (
                 <div 
                   key={index}
-                  className="flex items-start gap-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300"
+                  className="flex items-start gap-3 sm:gap-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0 text-xl">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0 text-lg sm:text-xl">
                     {benefit.icon}
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-2">
+                    <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">
                       {benefit.title}
                     </h3>
-                    <p className="text-slate-300 leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                       {benefit.description}
                     </p>
                   </div>
@@ -105,25 +105,25 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
               ))}
             </div>
             
-            {/* CTA Button - Clean white button that fits the aesthetic */}
+            {/* CTA Button - Mobile optimized */}
             <button
               onClick={() => onContactClick('job')}
-              className="bg-white hover:bg-gray-50 text-slate-900 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 shadow-md"
+              className="bg-white hover:bg-gray-50 text-slate-900 font-semibold py-4 px-6 sm:px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 shadow-md w-full sm:w-auto"
             >
               {currentContent.button}
             </button>
           </div>
           
-          {/* Right Side - Stats */}
+          {/* Right Side - Stats - Mobile optimized */}
           <div className="text-center lg:text-left">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-12">
-              <div className="text-8xl font-black text-white mb-4">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 sm:p-12">
+              <div className="text-6xl sm:text-7xl lg:text-8xl font-black text-white mb-3 sm:mb-4">
                 35+
               </div>
-              <h3 className="text-2xl font-semibold text-white mb-6">
+              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">
                 {currentContent.statsTitle}
               </h3>
-              <p className="text-slate-300 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                 {currentContent.statsDescription}
               </p>
             </div>
