@@ -1,3 +1,4 @@
+
 import outboundPhone from '../assets/images/outbound-phone.png'
 
 const Hero = ({ currentLanguage, onContactClick }) => {
@@ -40,9 +41,9 @@ const Hero = ({ currentLanguage, onContactClick }) => {
               
               {/* Left side - Text content */}
               <div className="flex flex-col justify-center">
-                {/* Clean badge - option 1: Just green */}
-                <div className="inline-block bg-slate-100 rounded-full px-6 py-2 mb-8 border border-slate-200 w-fit">
-                  <span className="text-slate-700 font-semibold text-sm tracking-wide uppercase">
+                {/* Clean badge - consistent with button system */}
+                <div className="inline-block bg-white rounded-xl px-6 py-2 mb-8 border border-gray-300 w-fit shadow-sm">
+                  <span className="text-gray-700 font-semibold text-sm tracking-wide uppercase">
                     Lausnir fyrir þjónustuver
                   </span>
                 </div>
