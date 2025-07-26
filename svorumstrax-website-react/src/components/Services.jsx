@@ -74,20 +74,20 @@ const Services = ({ currentLanguage, onContactClick }) => {
           {currentContent.services.map((service, index) => (
             <div 
               key={index}
-              className="border border-gray-300 rounded-2xl p-8 hover:border-gray-400 transition-all duration-300 cursor-pointer group"
+              className="border border-gray-300 rounded-2xl p-8 hover:border-gray-400 transition-all duration-300 cursor-pointer"
               onClick={() => onContactClick(service.contactType)}
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-orange-600 transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
                 {service.title}
               </h3>
               <p className="text-gray-600 leading-relaxed mb-6">
                 {service.description}
               </p>
               
-              {/* Call to action */}
-              <div className="flex items-center text-orange-600 font-semibold text-sm group-hover:text-orange-700 transition-colors duration-300">
+              {/* Call to action - keeping it black */}
+              <div className="flex items-center text-gray-900 font-semibold text-sm">
                 <span>{currentLanguage === 'is' ? 'Frekari upplýsingar' : 'Learn More'}</span>
-                <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>

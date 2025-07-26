@@ -350,7 +350,7 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
                     name="website"
                     value={formData.website}
                     onChange={handleInputChange}
-                    placeholder="https://example.com"
+                    placeholder=""  // Remove the example.com
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 text-gray-900 placeholder-gray-400"
                   />
                 </div>
