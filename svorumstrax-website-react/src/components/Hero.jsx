@@ -1,4 +1,5 @@
 import outboundPhone from '../assets/images/outbound-phone.png'
+import customerAvatar from '../assets/images/customer-avatar.png'
 
 const Hero = ({ currentLanguage, onContactClick }) => {
   const content = {
@@ -8,11 +9,27 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       primaryButton: 'Sjá alla þjónustu',
       secondaryButton: 'Fá ókeypis ráðgjöf',
       badge: 'Lausnir fyrir þjónustuver',
-      quotes: [
-        "Hæ! Er hægt að bóka tíma hjá ykkur um helgina?",
-        "Getið þið hjálpað mér með pöntunina mína?",
-        "Hvenær eruð þið opin á morgun?",
-        "Get ég fengið verðtilboð?"
+      callCards: [
+        {
+          name: 'Guðrún Jónsdóttir',
+          company: 'Rafal ehf.',
+          time: 'Núna'
+        },
+        {
+          name: 'Magnús Ólafsson', 
+          company: 'FlyOver Iceland',
+          time: '2 mín'
+        },
+        {
+          name: 'Elísabet Þórsdóttir',
+          company: 'Epal',
+          time: 'Núna'
+        },
+        {
+          name: 'Kristján Helgason',
+          company: 'Fyrirtæki ehf.',
+          time: '1 mín'
+        }
       ]
     },
     en: {
@@ -21,16 +38,109 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       primaryButton: 'Explore Services',
       secondaryButton: 'Get Free Consultation',
       badge: 'Customer Service Solutions',
-      quotes: [
-        "Can I book an appointment for this weekend?",
-        "Could you help me with my order?",
-        "What are your hours tomorrow?",
-        "Can I get a quote?"
+      callCards: [
+        {
+          name: 'Guðrún Jónsdóttir',
+          company: 'Rafal ehf.',
+          time: 'Now'
+        },
+        {
+          name: 'Magnús Ólafsson',
+          company: 'FlyOver Iceland', 
+          time: '2 min'
+        },
+        {
+          name: 'Elísabet Þórsdóttir',
+          company: 'Epal',
+          time: 'Now'
+        },
+        {
+          name: 'Kristján Helgason',
+          company: 'Company Ltd.',
+          time: '1 min'
+        }
       ]
     }
   }
 
   const currentContent = content[currentLanguage]
+
+  // Phone call interface component
+  const PhoneCallCard = ({ caller, position, delay = 0, isActive = false }) => {
+    const cardStyle = {
+      position: 'absolute',
+      ...position,
+      animation: `floatCall 4s ease-in-out infinite ${delay}s, fadeInScale 0.8s ease-out ${delay}s both`,
+      zIndex: 20
+    }
+
+    return (
+      <div 
+        className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 p-4 w-80 max-w-sm"
+        style={cardStyle}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-xs font-medium text-gray-600">
+              Incoming call • {caller.time}
+            </span>
+          </div>
+          <div className="text-xs text-gray-500">+354 537-0800</div>
+        </div>
+
+        {/* Caller Info */}
+        <div className="flex items-center space-x-4 mb-4">
+          <div className="relative">
+            <img 
+              src={customerAvatar} 
+              alt={caller.name}
+              className="w-12 h-12 rounded-full border-2 border-white shadow-sm"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+            <div 
+              className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-sm"
+              style={{display: 'none'}}
+            >
+              {caller.name.charAt(0)}
+            </div>
+            {isActive && (
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse"></div>
+            )}
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="font-semibold text-gray-900 text-base truncate">
+              {caller.name}
+            </div>
+            <div className="text-sm text-gray-600 truncate">
+              {caller.company}
+            </div>
+          </div>
+        </div>
+
+        {/* Call Controls */}
+        <div className="flex justify-center space-x-8">
+          {/* Decline */}
+          <button className="w-14 h-14 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110">
+            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 9c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3zm0-7C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm5.293 14.707L12 11.414 6.707 16.707c-.391.391-1.023.391-1.414 0s-.391-1.023 0-1.414L10.586 10 5.293 4.707c-.391-.391-.391-1.023 0-1.414s1.023-.391 1.414 0L12 8.586l5.293-5.293c.391-.391 1.023-.391 1.414 0s.391 1.023 0 1.414L13.414 10l5.293 5.293c.391.391.391 1.023 0 1.414s-1.023.391-1.414 0z"/>
+            </svg>
+          </button>
+
+          {/* Accept */}
+          <button className="w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110">
+            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen relative pt-8 bg-white">
@@ -89,51 +199,60 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                 </div>
               </div>
               
-              {/* Right side - Phone image with floating quotes */}
+              {/* Right side - Phone image with floating call mockups */}
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full max-w-md mx-auto">
                   {/* Subtle glow effect behind the phone - using logo colors */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#4A90E2]/20 to-[#FFA947]/20 rounded-3xl blur-2xl transform scale-110"></div>
                   
-                  {/* Floating customer quotes - positioned in a circle around the phone */}
-                  {/* Quote 1 - Top left */}
-                  <div className="absolute -top-2 -left-6 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-56 transform -rotate-2 animate-pulse hidden md:block z-10">
-                    <div className="text-sm text-gray-700 font-medium">
-                      "{currentContent.quotes[0]}"
-                    </div>
-                    <div className="absolute bottom-0 left-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-white transform translate-y-1.5"></div>
+                  {/* Phone Call Mockups - positioned around the phone */}
+                  
+                  {/* Call 1 - Top left - Active call */}
+                  <PhoneCallCard 
+                    caller={currentContent.callCards[0]}
+                    position={{ top: '-10px', left: '-120px' }}
+                    delay={0}
+                    isActive={true}
+                  />
+                  
+                  {/* Call 2 - Top right */}
+                  <PhoneCallCard 
+                    caller={currentContent.callCards[1]}
+                    position={{ top: '20px', right: '-140px' }}
+                    delay={1.5}
+                    isActive={false}
+                  />
+                  
+                  {/* Call 3 - Bottom left */}
+                  <PhoneCallCard 
+                    caller={currentContent.callCards[2]}
+                    position={{ bottom: '60px', left: '-100px' }}
+                    delay={3}
+                    isActive={true}
+                  />
+                  
+                  {/* Call 4 - Bottom right - smaller, partially visible */}
+                  <div 
+                    className="absolute bottom-10 right-[-80px] z-15"
+                    style={{
+                      animation: 'floatCall 4s ease-in-out infinite 4.5s, fadeInScale 0.8s ease-out 4.5s both',
+                      transform: 'scale(0.8)'
+                    }}
+                  >
+                    <PhoneCallCard 
+                      caller={currentContent.callCards[3]}
+                      position={{ position: 'relative' }}
+                      delay={0}
+                      isActive={false}
+                    />
                   </div>
                   
-                  {/* Quote 2 - Top right - using logo blue */}
-                  <div className="absolute top-0 right-2 bg-[#4A90E2]/10 rounded-2xl px-4 py-3 shadow-lg border border-[#4A90E2]/20 max-w-48 transform rotate-1 animate-pulse hidden lg:block z-10" style={{animationDelay: '1s'}}>
-                    <div className="text-sm text-gray-700 font-medium">
-                      "{currentContent.quotes[1]}"
-                    </div>
-                    <div className="absolute bottom-0 right-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-[#4A90E2]/10 transform translate-y-1.5"></div>
-                  </div>
-                  
-                  {/* Quote 3 - Bottom left - using logo orange */}
-                  <div className="absolute bottom-6 left-6 bg-[#FFA947]/10 rounded-2xl px-4 py-3 shadow-lg border border-[#FFA947]/20 max-w-52 transform rotate-1 animate-pulse hidden md:block z-10" style={{animationDelay: '2s'}}>
-                    <div className="text-sm text-gray-700 font-medium">
-                      "{currentContent.quotes[2]}"
-                    </div>
-                    <div className="absolute top-0 left-6 w-0 h-0 border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-[#FFA947]/10 transform -translate-y-1.5"></div>
-                  </div>
-                  
-                  {/* Quote 4 - Bottom right */}
-                  <div className="absolute bottom-2 right-6 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-44 transform -rotate-2 animate-pulse hidden lg:block z-10" style={{animationDelay: '3s'}}>
-                    <div className="text-sm text-gray-700 font-medium">
-                      "{currentContent.quotes[3]}"
-                    </div>
-                    <div className="absolute top-0 right-6 w-0 h-0 border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-white transform -translate-y-1.5"></div>
-                  </div>
-                  
-                  {/* Phone image - centered in the container, now smaller */}
-                  <div className="relative flex justify-center items-center py-12 px-6">
+                  {/* Phone image - centered in the container */}
+                  <div className="relative flex justify-center items-center py-12 px-6 z-10">
                     <img 
                       src={outboundPhone} 
                       alt="Phone interface showing customer service features"
-                      className="w-full h-auto max-w-xs drop-shadow-2xl z-20"
+                      className="w-full h-auto max-w-xs drop-shadow-2xl"
                     />
                   </div>
                   
@@ -147,6 +266,54 @@ const Hero = ({ currentLanguage, onContactClick }) => {
           </div>
         </section>
       </div>
+
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes floatCall {
+          0%, 100% { 
+            transform: translateY(0px) scale(1); 
+          }
+          50% { 
+            transform: translateY(-15px) scale(1.02); 
+          }
+        }
+        
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 1024px) {
+          .absolute[style*="left: -120px"] {
+            left: -80px !important;
+          }
+          .absolute[style*="right: -140px"] {
+            right: -80px !important;
+          }
+          .absolute[style*="left: -100px"] {
+            left: -60px !important;
+          }
+          .absolute[style*="right: -80px"] {
+            right: -40px !important;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .absolute[style*="left:"] {
+            display: none;
+          }
+          .absolute[style*="right:"] {
+            display: none;
+          }
+        }
+      `}</style>
     </div>
   )
 }
