@@ -9,10 +9,10 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       secondaryButton: 'Fá ókeypis ráðgjöf',
       badge: 'Lausnir fyrir þjónustuver',
       incomingCalls: [
-        { name: 'Guðrún Jónsdóttir', location: 'Reykjavík' },
-        { name: 'Magnús Ólafsson', location: 'Akureyri' }, 
-        { name: 'Elísabet Þórsdóttir', location: 'Kópavogur' },
-        { name: 'Kristján Helgason', location: 'Hafnarfjörður' }
+        '+354 581-2345',
+        '+354 692-7834', 
+        '+354 456-9012',
+        '+354 773-5681'
       ]
     },
     en: {
@@ -22,67 +22,34 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       secondaryButton: 'Get Free Consultation',
       badge: 'Customer Service Solutions',
       incomingCalls: [
-        { name: 'Guðrún Jónsdóttir', location: 'Reykjavík' },
-        { name: 'Magnús Ólafsson', location: 'Akureyri' },
-        { name: 'Elísabet Þórsdóttir', location: 'Kópavogur' }, 
-        { name: 'Kristján Helgason', location: 'Hafnarfjörður' }
+        '+354 581-2345',
+        '+354 692-7834',
+        '+354 456-9012', 
+        '+354 773-5681'
       ]
     }
   }
 
   const currentContent = content[currentLanguage]
 
-  // Incoming call notification like smith.ai
-  const IncomingCall = ({ caller, position, delay = 0 }) => {
-    const callStyle = {
+  // Subtle activity indicator - just small notification dots
+  const ActivityDot = ({ phoneNumber, position, delay = 0, type = 'incoming' }) => {
+    const dotStyle = {
       position: 'absolute',
       ...position,
-      animation: `gentleFloat 6s ease-in-out infinite ${delay}s, slideInCall 1s ease-out ${delay}s both`,
-      zIndex: 15
+      animation: `subtleFloat 8s ease-in-out infinite ${delay}s, fadeIn 1.5s ease-out ${delay}s both`,
+      zIndex: 12
     }
 
     return (
       <div 
-        className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-3 w-72 max-w-sm"
-        style={callStyle}
+        className="flex items-center space-x-2 bg-gray-900/5 backdrop-blur-sm rounded-full px-3 py-1 border border-gray-200/40"
+        style={dotStyle}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center space-x-1">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-xs font-medium text-gray-600">Incoming call</span>
-          </div>
-          <span className="text-xs text-gray-500">+354 537-0800</span>
-        </div>
-
-        {/* Caller Info */}
-        <div className="flex items-center space-x-3 mb-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm shadow-sm">
-            {caller.name.charAt(0)}
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="font-semibold text-gray-900 text-sm truncate">
-              {caller.name}
-            </div>
-            <div className="text-xs text-gray-600 truncate">
-              {caller.location}
-            </div>
-          </div>
-        </div>
-
-        {/* Call Actions */}
-        <div className="flex justify-center space-x-6">
-          <button className="w-11 h-11 bg-red-500 rounded-full flex items-center justify-center shadow-md hover:bg-red-600 transition-colors">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path d="M18 6L6 18M6 6l12 12"/>
-            </svg>
-          </button>
-          <button className="w-11 h-11 bg-green-500 rounded-full flex items-center justify-center shadow-md hover:bg-green-600 transition-colors">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-          </button>
-        </div>
+        <div className={`w-1.5 h-1.5 rounded-full ${type === 'incoming' ? 'bg-green-500 animate-pulse' : 'bg-orange-500'}`}></div>
+        <span className="text-gray-700 font-medium text-xs">
+          {phoneNumber}
+        </span>
       </div>
     )
   }
@@ -160,42 +127,34 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   {/* Enhanced glow behind phone */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#4A90E2]/15 to-[#FFA947]/15 rounded-3xl blur-3xl transform scale-110"></div>
                   
-                  {/* Incoming call notifications like smith.ai */}
-                  <IncomingCall 
-                    caller={currentContent.incomingCalls[0]}
-                    position={{ top: '10px', left: '-120px' }}
+                  {/* Subtle activity indicators */}
+                  <ActivityDot 
+                    phoneNumber={currentContent.incomingCalls[0]}
+                    position={{ top: '40px', left: '-25px' }}
                     delay={0}
+                    type="incoming"
                   />
                   
-                  <IncomingCall 
-                    caller={currentContent.incomingCalls[1]}
-                    position={{ top: '80px', right: '-130px' }}
-                    delay={1.5}
+                  <ActivityDot 
+                    phoneNumber={currentContent.incomingCalls[1]}
+                    position={{ top: '120px', right: '-30px' }}
+                    delay={2}
+                    type="outgoing"
                   />
                   
-                  <IncomingCall 
-                    caller={currentContent.incomingCalls[2]}
-                    position={{ bottom: '120px', left: '-110px' }}
-                    delay={3}
+                  <ActivityDot 
+                    phoneNumber={currentContent.incomingCalls[2]}
+                    position={{ bottom: '140px', left: '-20px' }}
+                    delay={4}
+                    type="incoming"
                   />
                   
-                  {/* Smaller call indicator */}
-                  <div 
-                    className="absolute z-15"
-                    style={{
-                      bottom: '50px',
-                      right: '-100px',
-                      animation: 'gentleFloat 6s ease-in-out infinite 4.5s, slideInCall 1s ease-out 4.5s both',
-                      transform: 'scale(0.85)',
-                      zIndex: 15
-                    }}
-                  >
-                    <IncomingCall 
-                      caller={currentContent.incomingCalls[3]}
-                      position={{ position: 'relative' }}
-                      delay={0}
-                    />
-                  </div>
+                  <ActivityDot 
+                    phoneNumber={currentContent.incomingCalls[3]}
+                    position={{ bottom: '80px', right: '-25px' }}
+                    delay={6}
+                    type="outgoing"
+                  />
                   
                   {/* Main phone image */}
                   <div className="relative flex justify-center items-center py-12 px-6 z-10">
@@ -219,50 +178,41 @@ const Hero = ({ currentLanguage, onContactClick }) => {
 
       {/* Refined CSS Animations */}
       <style jsx>{`
-        @keyframes gentleFloat {
+        @keyframes subtleFloat {
           0%, 100% { 
-            transform: translateY(0px) rotate(0deg); 
+            transform: translateY(0px); 
+            opacity: 0.8;
           }
           50% { 
-            transform: translateY(-10px) rotate(1deg); 
+            transform: translateY(-4px); 
+            opacity: 1;
           }
         }
         
-        @keyframes slideInCall {
+        @keyframes fadeIn {
           from {
             opacity: 0;
-            transform: translateY(20px) scale(0.9);
+            transform: translateY(8px);
           }
           to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-        
-        @keyframes activityPulse {
-          0%, 100% { 
-            transform: scale(1);
-            opacity: 0.3;
-          }
-          50% { 
-            transform: scale(1.2);
-            opacity: 0.6;
+            opacity: 0.8;
+            transform: translateY(0);
           }
         }
 
         /* Mobile responsive */
         @media (max-width: 1024px) {
-          .absolute[style*="left: -120px"] {
-            left: -80px !important;
+          .absolute[style*="left: -25px"] {
+            left: -15px !important;
           }
-          .absolute[style*="right: -130px"] {
-            right: -90px !important;
+          .absolute[style*="right: -30px"] {
+            right: -20px !important;
           }
-          .absolute[style*="left: -110px"] {
-            left: -70px !important;
+          .absolute[style*="left: -20px"] {
+            left: -10px !important;
           }
-          div[style*="right: -100px"] {
-            right: -60px !important;
+          .absolute[style*="right: -25px"] {
+            right: -15px !important;
           }
         }
         
@@ -271,9 +221,6 @@ const Hero = ({ currentLanguage, onContactClick }) => {
             display: none;
           }
           .absolute[style*="right: -"] {
-            display: none;
-          }
-          div[style*="right: -"] {
             display: none;
           }
         }
