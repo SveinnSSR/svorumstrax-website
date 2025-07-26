@@ -8,11 +8,11 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       primaryButton: 'Sjá alla þjónustu',
       secondaryButton: 'Fá ókeypis ráðgjöf',
       badge: 'Lausnir fyrir þjónustuver',
-      incomingCalls: [
-        '+354 581-2345',
-        '+354 692-7834', 
-        '+354 456-9012',
-        '+354 773-5681'
+      quotes: [
+        "Hæ! Er hægt að bóka tíma hjá ykkur um helgina?",
+        "Getið þið hjálpað mér með pöntunina mína?",
+        "Hvenær eruð þið opin á morgun?",
+        "Get ég fengið verðtilboð?"
       ]
     },
     en: {
@@ -21,89 +21,57 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       primaryButton: 'Explore Services',
       secondaryButton: 'Get Free Consultation',
       badge: 'Customer Service Solutions',
-      incomingCalls: [
-        '+354 581-2345',
-        '+354 692-7834',
-        '+354 456-9012', 
-        '+354 773-5681'
+      quotes: [
+        "Can I book an appointment for this weekend?",
+        "Could you help me with my order?",
+        "What are your hours tomorrow?",
+        "Can I get a quote?"
       ]
     }
   }
 
   const currentContent = content[currentLanguage]
 
-  // Subtle activity indicator - just small notification dots
-  const ActivityDot = ({ phoneNumber, position, delay = 0, type = 'incoming' }) => {
-    const dotStyle = {
-      position: 'absolute',
-      ...position,
-      animation: `subtleFloat 8s ease-in-out infinite ${delay}s, fadeIn 1.5s ease-out ${delay}s both`,
-      zIndex: 12
-    }
-
-    return (
-      <div 
-        className="flex items-center space-x-2 bg-gray-900/5 backdrop-blur-sm rounded-full px-3 py-1 border border-gray-200/40"
-        style={dotStyle}
-      >
-        <div className={`w-1.5 h-1.5 rounded-full ${type === 'incoming' ? 'bg-green-500 animate-pulse' : 'bg-orange-500'}`}></div>
-        <span className="text-gray-700 font-medium text-xs">
-          {phoneNumber}
-        </span>
-      </div>
-    )
-  }
-
-  // Subtle activity indicator
-  const ActivityPulse = ({ position, delay = 0 }) => {
-    const pulseStyle = {
-      position: 'absolute',
-      ...position,
-      animation: `activityPulse 3s ease-in-out infinite ${delay}s, fadeInScale 1s ease-out ${delay}s both`,
-      zIndex: 5
-    }
-
-    return (
-      <div 
-        className="w-8 h-8 bg-gradient-to-r from-blue-400/20 to-green-400/20 rounded-full blur-sm"
-        style={pulseStyle}
-      />
-    )
-  }
-
   return (
     <div className="min-h-screen relative pt-8 bg-white">
-      {/* Subtle gradient background hints */}
+      {/* Subtle gradient background hints - updated to match logo colors */}
       <div className="absolute inset-0 overflow-hidden">
+        {/* Very subtle gradient elements using logo colors */}
         <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-br from-blue-50/40 via-teal-50/20 to-transparent"></div>
         <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-orange-50/40 via-amber-50/20 to-transparent"></div>
         
+        {/* Subtle floating elements with logo colors */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-100/20 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-tl from-orange-100/20 to-transparent rounded-full blur-3xl"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10">
+        {/* Hero Section */}
         <section className="relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[600px]">
               
               {/* Left side - Text content */}
               <div className="flex flex-col justify-center">
+                {/* Clean badge - consistent with button system */}
                 <div className="inline-block bg-white rounded-xl px-6 py-2 mb-8 border border-gray-300 w-fit shadow-sm">
                   <span className="text-gray-700 font-semibold text-sm tracking-wide uppercase">
                     {currentContent.badge}
                   </span>
                 </div>
                 
+                {/* Clean black title without dot */}
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-8 leading-tight text-slate-900">
                   {currentContent.title}
                 </h1>
                 
+                {/* Subtitle */}
                 <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed mb-12">
                   {currentContent.subtitle}
                 </p>
                 
+                {/* Updated buttons - consistent with navbar and choice section style */}
                 <div className="flex flex-col sm:flex-row gap-6">
                   <button
                     onClick={() => onContactClick('services')}
@@ -121,53 +89,57 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                 </div>
               </div>
               
-              {/* Right side - Phone with subtle call indicators */}
+              {/* Right side - Phone image with floating quotes */}
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full max-w-md mx-auto">
-                  {/* Enhanced glow behind phone */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#4A90E2]/15 to-[#FFA947]/15 rounded-3xl blur-3xl transform scale-110"></div>
+                  {/* Subtle glow effect behind the phone - using logo colors */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#4A90E2]/20 to-[#FFA947]/20 rounded-3xl blur-2xl transform scale-110"></div>
                   
-                  {/* Subtle activity indicators */}
-                  <ActivityDot 
-                    phoneNumber={currentContent.incomingCalls[0]}
-                    position={{ top: '40px', left: '-25px' }}
-                    delay={0}
-                    type="incoming"
-                  />
+                  {/* Floating customer quotes - positioned in a circle around the phone */}
+                  {/* Quote 1 - Top left */}
+                  <div className="absolute -top-2 -left-6 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-56 transform -rotate-2 animate-pulse hidden md:block z-10">
+                    <div className="text-sm text-gray-700 font-medium">
+                      "{currentContent.quotes[0]}"
+                    </div>
+                    <div className="absolute bottom-0 left-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-white transform translate-y-1.5"></div>
+                  </div>
                   
-                  <ActivityDot 
-                    phoneNumber={currentContent.incomingCalls[1]}
-                    position={{ top: '120px', right: '-30px' }}
-                    delay={2}
-                    type="outgoing"
-                  />
+                  {/* Quote 2 - Top right - using logo blue */}
+                  <div className="absolute top-0 right-2 bg-[#4A90E2]/10 rounded-2xl px-4 py-3 shadow-lg border border-[#4A90E2]/20 max-w-48 transform rotate-1 animate-pulse hidden lg:block z-10" style={{animationDelay: '1s'}}>
+                    <div className="text-sm text-gray-700 font-medium">
+                      "{currentContent.quotes[1]}"
+                    </div>
+                    <div className="absolute bottom-0 right-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-[#4A90E2]/10 transform translate-y-1.5"></div>
+                  </div>
                   
-                  <ActivityDot 
-                    phoneNumber={currentContent.incomingCalls[2]}
-                    position={{ bottom: '140px', left: '-20px' }}
-                    delay={4}
-                    type="incoming"
-                  />
+                  {/* Quote 3 - Bottom left - using logo orange */}
+                  <div className="absolute bottom-6 left-6 bg-[#FFA947]/10 rounded-2xl px-4 py-3 shadow-lg border border-[#FFA947]/20 max-w-52 transform rotate-1 animate-pulse hidden md:block z-10" style={{animationDelay: '2s'}}>
+                    <div className="text-sm text-gray-700 font-medium">
+                      "{currentContent.quotes[2]}"
+                    </div>
+                    <div className="absolute top-0 left-6 w-0 h-0 border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-[#FFA947]/10 transform -translate-y-1.5"></div>
+                  </div>
                   
-                  <ActivityDot 
-                    phoneNumber={currentContent.incomingCalls[3]}
-                    position={{ bottom: '80px', right: '-25px' }}
-                    delay={6}
-                    type="outgoing"
-                  />
+                  {/* Quote 4 - Bottom right */}
+                  <div className="absolute bottom-2 right-6 bg-white rounded-2xl px-4 py-3 shadow-lg border border-gray-100 max-w-44 transform -rotate-2 animate-pulse hidden lg:block z-10" style={{animationDelay: '3s'}}>
+                    <div className="text-sm text-gray-700 font-medium">
+                      "{currentContent.quotes[3]}"
+                    </div>
+                    <div className="absolute top-0 right-6 w-0 h-0 border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-white transform -translate-y-1.5"></div>
+                  </div>
                   
-                  {/* Main phone image */}
-                  <div className="relative flex justify-center items-center py-12 px-6 z-10">
+                  {/* Phone image - centered in the container, now smaller */}
+                  <div className="relative flex justify-center items-center py-12 px-6">
                     <img 
                       src={outboundPhone} 
-                      alt="Professional phone interface"
-                      className="w-full h-auto max-w-xs drop-shadow-2xl"
+                      alt="Phone interface showing customer service features"
+                      className="w-full h-auto max-w-xs drop-shadow-2xl z-20"
                     />
                   </div>
                   
-                  {/* Subtle ambient elements */}
-                  <div className="absolute top-1/3 right-1/3 w-12 h-12 bg-gradient-to-br from-[#4A90E2]/10 to-transparent rounded-full blur-xl animate-pulse"></div>
-                  <div className="absolute bottom-1/3 left-1/3 w-16 h-16 bg-gradient-to-tr from-[#FFA947]/10 to-transparent rounded-full blur-xl animate-pulse" style={{animationDelay: '2s'}}></div>
+                  {/* Floating elements around the phone - using logo colors */}
+                  <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-gradient-to-br from-[#4A90E2]/20 to-transparent rounded-full blur-xl animate-pulse"></div>
+                  <div className="absolute bottom-1/4 left-1/4 w-20 h-20 bg-gradient-to-tr from-[#FFA947]/20 to-transparent rounded-full blur-xl animate-pulse" style={{animationDelay: '1s'}}></div>
                 </div>
               </div>
               
@@ -175,56 +147,6 @@ const Hero = ({ currentLanguage, onContactClick }) => {
           </div>
         </section>
       </div>
-
-      {/* Refined CSS Animations */}
-      <style jsx>{`
-        @keyframes subtleFloat {
-          0%, 100% { 
-            transform: translateY(0px); 
-            opacity: 0.8;
-          }
-          50% { 
-            transform: translateY(-4px); 
-            opacity: 1;
-          }
-        }
-        
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(8px);
-          }
-          to {
-            opacity: 0.8;
-            transform: translateY(0);
-          }
-        }
-
-        /* Mobile responsive */
-        @media (max-width: 1024px) {
-          .absolute[style*="left: -25px"] {
-            left: -15px !important;
-          }
-          .absolute[style*="right: -30px"] {
-            right: -20px !important;
-          }
-          .absolute[style*="left: -20px"] {
-            left: -10px !important;
-          }
-          .absolute[style*="right: -25px"] {
-            right: -15px !important;
-          }
-        }
-        
-        @media (max-width: 768px) {
-          .absolute[style*="left: -"] {
-            display: none;
-          }
-          .absolute[style*="right: -"] {
-            display: none;
-          }
-        }
-      `}</style>
     </div>
   )
 }
