@@ -21,6 +21,7 @@
   </g>
   
   <text x="46" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="900" letter-spacing="-0.02em">
-    <tspan fill="#1F2937">Svörum</tspan><tspan fill="url(#orangeGrad)">strax</tspan>
+    <tspan fill="#1F2937">Svörum</tspan>
+    <tspan fill="url(#orangeGrad)"> strax</tspan>
   </text>
 </svg>
