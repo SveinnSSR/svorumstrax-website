@@ -28,7 +28,8 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
           title: 'Öflugt sölufólk með reynslu',
           description: 'Þjálfað í þínum vörum og þjónustu með áralanga söluþjálfun'
         }
-      ]
+      ],
+      button: 'Fá tilboð'
     },
     en: {
       title: 'Outbound Sales',
@@ -50,7 +51,8 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
           title: 'Professional sales specialists',
           description: 'Extensively trained on your products and services, with years of proven sales experience and ongoing coaching'
         }
-      ]
+      ],
+      button: 'Get Quote'
     }
   }
 
@@ -99,7 +101,7 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
               {currentContent.mainDescription}
             </h3>
             
-            <div className="space-y-4 sm:space-y-6">
+            <div className="space-y-4 sm:space-y-6 mb-8">
               {currentContent.features.map((feature, index) => {
                 const IconComponent = feature.icon
                 return (
@@ -115,6 +117,14 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
                 )
               })}
             </div>
+
+            {/* Call to Action Button */}
+            <button
+              onClick={() => onContactClick('outbound')}
+              className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 w-full sm:w-auto"
+            >
+              {currentContent.button}
+            </button>
           </div>
         </div>
       </div>

@@ -6,15 +6,18 @@ const Services = ({ currentLanguage, onContactClick }) => {
       services: [
         {
           title: 'Almenn símsvörun',
-          description: 'Einföld og áreiðanleg þjónusta fyrir öll fyrirtæki. Við svörum í þínu nafni, sendum símtöl áfram á réttan starfsmann og tökum niður ítarleg skilaboð. Léttir álag á starfsfólki og hægt að setja upp með stuttum fyrirvara.'
+          description: 'Einföld og áreiðanleg þjónusta fyrir öll fyrirtæki. Við svörum í þínu nafni, sendum símtöl áfram á réttan starfsmann og tökum niður ítarleg skilaboð. Léttir álag á starfsfólki og hægt að setja upp með stuttum fyrirvara.',
+          contactType: 'phone-support'
         },
         {
           title: 'Þjónustuver',
-          description: 'Heildarlausn með fullkomlega þjálfuðum starfsmönnum sem þekkja þitt fyrirtæki, vörur og þjónustu. Sérhæfðir starfsmenn sem verða hluti af þínu teymi og geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð byggða á þínum upplýsingakerfum.'
+          description: 'Heildarlausn með fullkomlega þjálfuðum starfsmönnum sem þekkja þitt fyrirtæki, vörur og þjónustu. Sérhæfðir starfsmenn sem verða hluti af þínu teymi og geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð byggða á þínum upplýsingakerfum.',
+          contactType: 'phone-support'
         },
         {
           title: 'Gervigreindarsvörun',
-          description: 'Gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Áframsendir mál á mannlega þjónustufulltrúa (okkar eða þína) eftir þörfum.'
+          description: 'Gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Áframsendir mál á mannlega þjónustufulltrúa (okkar eða þína) eftir þörfum.',
+          contactType: 'ai-service'
         }
       ]
     },
@@ -24,15 +27,18 @@ const Services = ({ currentLanguage, onContactClick }) => {
       services: [
         {
           title: 'Phone Answering Service',
-          description: 'Reliable support for businesses of all sizes. We answer in your company name, route calls to the right team member, and capture detailed messages. Reduces staff workload and can be implemented immediately.'
+          description: 'Reliable support for businesses of all sizes. We answer in your company name, route calls to the right team member, and capture detailed messages. Reduces staff workload and can be implemented immediately.',
+          contactType: 'phone-support'
         },
         {
           title: 'Dedicated Contact Center',
-          description: 'Complete solution with expertly trained agents who become an extension of your team. Our specialists learn your business inside-out, handle complex inquiries, resolve issues, and provide technical support using your systems and processes.'
+          description: 'Complete solution with expertly trained agents who become an extension of your team. Our specialists learn your business inside-out, handle complex inquiries, resolve issues, and provide technical support using your systems and processes.',
+          contactType: 'phone-support'
         },
         {
           title: 'AI-Powered Support',
-          description: 'Smart automation that works 24/7. Our AI learns your business, handles customer inquiries, processes orders, and provides instant information. Seamlessly escalates to human agents when needed for the perfect customer experience.'
+          description: 'Smart automation that works 24/7. Our AI learns your business, handles customer inquiries, processes orders, and provides instant information. Seamlessly escalates to human agents when needed for the perfect customer experience.',
+          contactType: 'ai-service'
         }
       ]
     }
@@ -65,35 +71,28 @@ const Services = ({ currentLanguage, onContactClick }) => {
         {/* Three services in one horizontal line - transparent cards like Retell AI */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          {/* Almenn símsvörun */}
-          <div className="border border-gray-300 rounded-2xl p-8 hover:border-gray-400 transition-all duration-300">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
-              {currentContent.services[0].title}
-            </h3>
-            <p className="text-gray-600 leading-relaxed">
-              {currentContent.services[0].description}
-            </p>
-          </div>
-
-          {/* Þitt eigið þjónustuver */}
-          <div className="border border-gray-300 rounded-2xl p-8 hover:border-gray-400 transition-all duration-300">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
-              {currentContent.services[1].title}
-            </h3>
-            <p className="text-gray-600 leading-relaxed">
-              {currentContent.services[1].description}
-            </p>
-          </div>
-
-          {/* Gervigreindarsvörun í síma */}
-          <div className="border border-gray-300 rounded-2xl p-8 hover:border-gray-400 transition-all duration-300">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
-              {currentContent.services[2].title}
-            </h3>
-            <p className="text-gray-600 leading-relaxed">
-              {currentContent.services[2].description}
-            </p>
-          </div>
+          {currentContent.services.map((service, index) => (
+            <div 
+              key={index}
+              className="border border-gray-300 rounded-2xl p-8 hover:border-gray-400 transition-all duration-300 cursor-pointer group"
+              onClick={() => onContactClick(service.contactType)}
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-orange-600 transition-colors duration-300">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                {service.description}
+              </p>
+              
+              {/* Call to action */}
+              <div className="flex items-center text-orange-600 font-semibold text-sm group-hover:text-orange-700 transition-colors duration-300">
+                <span>{currentLanguage === 'is' ? 'Frekari upplýsingar' : 'Learn More'}</span>
+                <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
