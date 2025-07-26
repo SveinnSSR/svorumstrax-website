@@ -9,11 +9,10 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       secondaryButton: 'Fá ókeypis ráðgjöf',
       badge: 'Lausnir fyrir þjónustuver',
       incomingCalls: [
-        '+354 581-2345',
-        '+354 692-7834', 
-        '+354 456-9012',
-        '+354 773-5681',
-        '+354 824-1907'
+        { name: 'Guðrún Jónsdóttir', location: 'Reykjavík' },
+        { name: 'Magnús Ólafsson', location: 'Akureyri' }, 
+        { name: 'Elísabet Þórsdóttir', location: 'Kópavogur' },
+        { name: 'Kristján Helgason', location: 'Hafnarfjörður' }
       ]
     },
     en: {
@@ -23,36 +22,66 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       secondaryButton: 'Get Free Consultation',
       badge: 'Customer Service Solutions',
       incomingCalls: [
-        '+354 581-2345',
-        '+354 692-7834',
-        '+354 456-9012', 
-        '+354 773-5681',
-        '+354 824-1907'
+        { name: 'Guðrún Jónsdóttir', location: 'Reykjavík' },
+        { name: 'Magnús Ólafsson', location: 'Akureyri' },
+        { name: 'Elísabet Þórsdóttir', location: 'Kópavogur' }, 
+        { name: 'Kristján Helgason', location: 'Hafnarfjörður' }
       ]
     }
   }
 
   const currentContent = content[currentLanguage]
 
-  // Minimal phone call indicator
-  const CallIndicator = ({ phoneNumber, position, delay = 0, isActive = false }) => {
-    const indicatorStyle = {
+  // Incoming call notification like smith.ai
+  const IncomingCall = ({ caller, position, delay = 0 }) => {
+    const callStyle = {
       position: 'absolute',
       ...position,
-      animation: `gentleFloat 6s ease-in-out infinite ${delay}s, fadeInUp 1.2s ease-out ${delay}s both`,
+      animation: `gentleFloat 6s ease-in-out infinite ${delay}s, slideInCall 1s ease-out ${delay}s both`,
       zIndex: 15
     }
 
     return (
       <div 
-        className="bg-white/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/30 shadow-lg"
-        style={indicatorStyle}
+        className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-3 w-72 max-w-sm"
+        style={callStyle}
       >
-        <div className="flex items-center space-x-2">
-          <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-green-400 animate-pulse' : 'bg-orange-400'}`}></div>
-          <span className="text-white font-medium text-sm tracking-wide">
-            {phoneNumber}
-          </span>
+        {/* Header */}
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center space-x-1">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-xs font-medium text-gray-600">Incoming call</span>
+          </div>
+          <span className="text-xs text-gray-500">+354 537-0800</span>
+        </div>
+
+        {/* Caller Info */}
+        <div className="flex items-center space-x-3 mb-3">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm shadow-sm">
+            {caller.name.charAt(0)}
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="font-semibold text-gray-900 text-sm truncate">
+              {caller.name}
+            </div>
+            <div className="text-xs text-gray-600 truncate">
+              {caller.location}
+            </div>
+          </div>
+        </div>
+
+        {/* Call Actions */}
+        <div className="flex justify-center space-x-6">
+          <button className="w-11 h-11 bg-red-500 rounded-full flex items-center justify-center shadow-md hover:bg-red-600 transition-colors">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+          </button>
+          <button className="w-11 h-11 bg-green-500 rounded-full flex items-center justify-center shadow-md hover:bg-green-600 transition-colors">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </button>
         </div>
       </div>
     )
@@ -131,45 +160,42 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   {/* Enhanced glow behind phone */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#4A90E2]/15 to-[#FFA947]/15 rounded-3xl blur-3xl transform scale-110"></div>
                   
-                  {/* Subtle call indicators floating around */}
-                  <CallIndicator 
-                    phoneNumber={currentContent.incomingCalls[0]}
-                    position={{ top: '20px', left: '-45px' }}
+                  {/* Incoming call notifications like smith.ai */}
+                  <IncomingCall 
+                    caller={currentContent.incomingCalls[0]}
+                    position={{ top: '10px', left: '-120px' }}
                     delay={0}
-                    isActive={true}
                   />
                   
-                  <CallIndicator 
-                    phoneNumber={currentContent.incomingCalls[1]}
-                    position={{ top: '100px', right: '-50px' }}
-                    delay={2}
-                    isActive={false}
+                  <IncomingCall 
+                    caller={currentContent.incomingCalls[1]}
+                    position={{ top: '80px', right: '-130px' }}
+                    delay={1.5}
                   />
                   
-                  <CallIndicator 
-                    phoneNumber={currentContent.incomingCalls[2]}
-                    position={{ bottom: '140px', left: '-40px' }}
-                    delay={4}
-                    isActive={true}
-                  />
-                  
-                  <CallIndicator 
-                    phoneNumber={currentContent.incomingCalls[3]}
-                    position={{ bottom: '60px', right: '-45px' }}
-                    delay={6}
-                    isActive={false}
-                  />
-                  
-                  {/* Activity pulses for extra subtle movement */}
-                  <ActivityPulse 
-                    position={{ top: '30%', left: '-15px' }}
-                    delay={1}
-                  />
-                  
-                  <ActivityPulse 
-                    position={{ bottom: '35%', right: '-15px' }}
+                  <IncomingCall 
+                    caller={currentContent.incomingCalls[2]}
+                    position={{ bottom: '120px', left: '-110px' }}
                     delay={3}
                   />
+                  
+                  {/* Smaller call indicator */}
+                  <div 
+                    className="absolute z-15"
+                    style={{
+                      bottom: '50px',
+                      right: '-100px',
+                      animation: 'gentleFloat 6s ease-in-out infinite 4.5s, slideInCall 1s ease-out 4.5s both',
+                      transform: 'scale(0.85)',
+                      zIndex: 15
+                    }}
+                  >
+                    <IncomingCall 
+                      caller={currentContent.incomingCalls[3]}
+                      position={{ position: 'relative' }}
+                      delay={0}
+                    />
+                  </div>
                   
                   {/* Main phone image */}
                   <div className="relative flex justify-center items-center py-12 px-6 z-10">
@@ -195,34 +221,21 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       <style jsx>{`
         @keyframes gentleFloat {
           0%, 100% { 
-            transform: translateY(0px); 
-            opacity: 1;
+            transform: translateY(0px) rotate(0deg); 
           }
           50% { 
-            transform: translateY(-8px); 
-            opacity: 1;
+            transform: translateY(-10px) rotate(1deg); 
           }
         }
         
-        @keyframes fadeInUp {
+        @keyframes slideInCall {
           from {
             opacity: 0;
-            transform: translateY(15px);
+            transform: translateY(20px) scale(0.9);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes fadeInScale {
-          from {
-            opacity: 0;
-            transform: scale(0.8);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
+            transform: translateY(0) scale(1);
           }
         }
         
@@ -239,28 +252,29 @@ const Hero = ({ currentLanguage, onContactClick }) => {
 
         /* Mobile responsive */
         @media (max-width: 1024px) {
-          .absolute[style*="left: -45px"] {
-            left: -30px !important;
+          .absolute[style*="left: -120px"] {
+            left: -80px !important;
           }
-          .absolute[style*="right: -50px"] {
-            right: -35px !important;
+          .absolute[style*="right: -130px"] {
+            right: -90px !important;
           }
-          .absolute[style*="left: -40px"] {
-            left: -25px !important;
+          .absolute[style*="left: -110px"] {
+            left: -70px !important;
           }
-          .absolute[style*="right: -45px"] {
-            right: -30px !important;
+          div[style*="right: -100px"] {
+            right: -60px !important;
           }
         }
         
         @media (max-width: 768px) {
           .absolute[style*="left: -"] {
-            left: -20px !important;
-            opacity: 0.7;
+            display: none;
           }
           .absolute[style*="right: -"] {
-            right: -20px !important;
-            opacity: 0.7;
+            display: none;
+          }
+          div[style*="right: -"] {
+            display: none;
           }
         }
       `}</style>
