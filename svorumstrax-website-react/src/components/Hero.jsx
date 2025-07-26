@@ -45,12 +45,12 @@ const Hero = ({ currentLanguage, onContactClick }) => {
 
     return (
       <div 
-        className="bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/20 shadow-lg"
+        className="bg-white/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/30 shadow-lg"
         style={indicatorStyle}
       >
         <div className="flex items-center space-x-2">
           <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-green-400 animate-pulse' : 'bg-orange-400'}`}></div>
-          <span className="text-white/90 font-medium text-sm tracking-wide">
+          <span className="text-white font-medium text-sm tracking-wide">
             {phoneNumber}
           </span>
         </div>
@@ -134,40 +134,40 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   {/* Subtle call indicators floating around */}
                   <CallIndicator 
                     phoneNumber={currentContent.incomingCalls[0]}
-                    position={{ top: '10px', left: '-60px' }}
+                    position={{ top: '20px', left: '-45px' }}
                     delay={0}
                     isActive={true}
                   />
                   
                   <CallIndicator 
                     phoneNumber={currentContent.incomingCalls[1]}
-                    position={{ top: '80px', right: '-80px' }}
+                    position={{ top: '100px', right: '-50px' }}
                     delay={2}
                     isActive={false}
                   />
                   
                   <CallIndicator 
                     phoneNumber={currentContent.incomingCalls[2]}
-                    position={{ bottom: '120px', left: '-70px' }}
+                    position={{ bottom: '140px', left: '-40px' }}
                     delay={4}
                     isActive={true}
                   />
                   
                   <CallIndicator 
                     phoneNumber={currentContent.incomingCalls[3]}
-                    position={{ bottom: '40px', right: '-65px' }}
+                    position={{ bottom: '60px', right: '-45px' }}
                     delay={6}
                     isActive={false}
                   />
                   
                   {/* Activity pulses for extra subtle movement */}
                   <ActivityPulse 
-                    position={{ top: '30%', left: '-30px' }}
+                    position={{ top: '30%', left: '-15px' }}
                     delay={1}
                   />
                   
                   <ActivityPulse 
-                    position={{ bottom: '35%', right: '-25px' }}
+                    position={{ bottom: '35%', right: '-15px' }}
                     delay={3}
                   />
                   
@@ -196,7 +196,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
         @keyframes gentleFloat {
           0%, 100% { 
             transform: translateY(0px); 
-            opacity: 0.8;
+            opacity: 1;
           }
           50% { 
             transform: translateY(-8px); 
@@ -210,7 +210,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
             transform: translateY(15px);
           }
           to {
-            opacity: 0.8;
+            opacity: 1;
             transform: translateY(0);
           }
         }
@@ -239,26 +239,28 @@ const Hero = ({ currentLanguage, onContactClick }) => {
 
         /* Mobile responsive */
         @media (max-width: 1024px) {
-          .absolute[style*="left: -60px"] {
-            left: -40px !important;
+          .absolute[style*="left: -45px"] {
+            left: -30px !important;
           }
-          .absolute[style*="right: -80px"] {
-            right: -50px !important;
+          .absolute[style*="right: -50px"] {
+            right: -35px !important;
           }
-          .absolute[style*="left: -70px"] {
-            left: -45px !important;
+          .absolute[style*="left: -40px"] {
+            left: -25px !important;
           }
-          .absolute[style*="right: -65px"] {
-            right: -40px !important;
+          .absolute[style*="right: -45px"] {
+            right: -30px !important;
           }
         }
         
         @media (max-width: 768px) {
           .absolute[style*="left: -"] {
-            display: none;
+            left: -20px !important;
+            opacity: 0.7;
           }
           .absolute[style*="right: -"] {
-            display: none;
+            right: -20px !important;
+            opacity: 0.7;
           }
         }
       `}</style>
