@@ -80,17 +80,9 @@ const Services = ({ currentLanguage, onContactClick }) => {
               <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
                 {service.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <p className="text-gray-600 leading-relaxed">
                 {service.description}
               </p>
-              
-              {/* Call to action - keeping it black */}
-              <div className="flex items-center text-gray-900 font-semibold text-sm">
-                <span>{currentLanguage === 'is' ? 'Frekari upplýsingar' : 'Learn More'}</span>
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
             </div>
           ))}
         </div>
