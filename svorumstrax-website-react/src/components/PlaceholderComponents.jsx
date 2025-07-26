@@ -35,7 +35,7 @@ const modalContent = {
     },
     'ai-service': {
       title: 'AI þjónusta',
-      subtitle: 'Kynntu þér heildstæðar AI lausnir okkar.',
+      subtitle: 'Kynntu þér heildstæðar gervigreindarlausnir.',
       submitText: 'Fá upplýsingar'
     },
     analytics: {
