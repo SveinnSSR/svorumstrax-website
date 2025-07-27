@@ -181,11 +181,9 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
       </div>
 
       {/* Dark Platforms Section */}
-      <div className="relative" style={{ background: 'rgba(10, 14, 39, 0.95)' }}>
-        {/* Navy background with subtle texture */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%)' }}></div>
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.1)_0%,_transparent_50%)]"></div>
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_75%_75%,_rgba(255,255,255,0.05)_0%,_transparent_50%)]"></div>
+      <div className="relative bg-gray-900">
+        {/* Subtle texture overlay */}
+        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.1)_0%,_transparent_50%)]"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16">
           {/* Header */}
@@ -193,24 +191,24 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
             <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
               {currentContent.platformsTitle}
             </h3>
-            <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               {currentContent.platformsSubtitle}
             </p>
           </div>
           
-          {/* Platform Grid */}
+          {/* Platform Grid - Retell AI Style */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {currentContent.platforms.map((platform, index) => (
               <div 
                 key={index} 
-                className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-2 text-center"
+                className="group bg-gray-800 border border-gray-700 rounded-xl p-6 hover:bg-gray-750 hover:border-gray-600 transition-all duration-300 hover:-translate-y-1 text-center"
               >
                 {/* Platform Icon */}
-                <div className="w-12 h-12 mx-auto mb-4 p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-colors duration-300 flex items-center justify-center">
+                <div className="w-12 h-12 mx-auto mb-4 p-2 bg-white rounded-lg flex items-center justify-center">
                   <img 
                     src={platform.icon} 
                     alt={platform.name}
-                    className="w-8 h-8 opacity-90 group-hover:opacity-100 transition-opacity duration-300 filter brightness-0 invert"
+                    className="w-8 h-8"
                   />
                 </div>
                 
@@ -218,7 +216,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
                 <h4 className="font-semibold text-white mb-2 text-sm sm:text-base">
                   {platform.name}
                 </h4>
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
                   {platform.description}
                 </p>
               </div>
@@ -227,7 +225,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
 
           {/* Bottom CTA */}
           <div className="text-center mt-12">
-            <p className="text-slate-400 text-sm">
+            <p className="text-gray-500 text-sm">
               {currentLanguage === 'is' 
                 ? '+ Vefsíður, símforrit, innri starfsmannakerfi og önnur samskiptakerfi' 
                 : '+ Websites, mobile apps, internal staff systems and other platforms'
