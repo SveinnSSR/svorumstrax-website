@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 
-// GUN METAL GREY THEME - Premium and sophisticated
+// LIGHT GUN METAL GREY THEME - Exactly matches scrollbar
 const WIDGET_THEME = {
-  color: '#6b7280',  // Gun metal grey (matches scrollbar)
-  colorHover: '#4b5563', // Darker gun metal grey for hover states
-  gradient: 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)', // Subtle grey gradient
+  color: '#6b7280',  // Main gun metal grey (matches scrollbar exactly)
+  colorLight: '#9ca3af', // Lighter version for subtle elements
+  colorHover: '#4b5563', // Only for hover states
+  gradient: 'linear-gradient(135deg, #6b7280 0%, #6b7280 100%)', // Solid, not darker
 };
 
 // Constants for session management
@@ -209,7 +210,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
         <div style={{
           width: '32px',
           height: '32px',
-          background: WIDGET_THEME.gradient,
+          background: WIDGET_THEME.color,
           borderRadius: '50%',
           display: 'flex',
           alignItems: 'center',
@@ -639,7 +640,7 @@ const ChatWidget = () => {
         width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
         height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
         maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
-        background: isMinimized ? WIDGET_THEME.gradient : 'rgba(250, 250, 250, 0.98)',
+        background: isMinimized ? WIDGET_THEME.color : 'rgba(250, 250, 250, 0.98)',
         borderRadius: isMinimized ? '50%' : '16px',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
         overflow: 'hidden',
@@ -659,7 +660,7 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            background: isMinimized ? WIDGET_THEME.gradient : WIDGET_THEME.gradient,
+            background: isMinimized ? WIDGET_THEME.color : WIDGET_THEME.color,
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
@@ -784,13 +785,13 @@ const ChatWidget = () => {
                       maxWidth: '70%',
                       padding: '12px 16px',
                       borderRadius: '16px',
-                      backgroundColor: msg.type === 'user' ? WIDGET_THEME.colorHover : 'rgba(229, 231, 235, 0.95)',
+                      backgroundColor: msg.type === 'user' ? '#374151' : 'rgba(229, 231, 235, 0.95)',
                       color: msg.type === 'user' ? 'white' : '#1f2937',
                       fontSize: '14px',
                       lineHeight: '1.5',
                       boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                       border: msg.type === 'user' ? 
-                        `1px solid ${WIDGET_THEME.color}40` : 
+                        `1px solid ${WIDGET_THEME.colorLight}40` : 
                         '1px solid rgba(0, 0, 0, 0.08)',
                       position: 'relative',
                       overflowWrap: 'break-word',
@@ -881,7 +882,7 @@ const ChatWidget = () => {
             <button
               onClick={handleSend}
               style={{
-                background: WIDGET_THEME.gradient,
+                background: WIDGET_THEME.color,
                 color: 'white',
                 border: 'none',
                 padding: '8px 20px',
@@ -898,7 +899,7 @@ const ChatWidget = () => {
                 e.target.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.15)';
               }}
               onMouseLeave={(e) => {
-                e.target.style.background = WIDGET_THEME.gradient;
+                e.target.style.background = WIDGET_THEME.color;
                 e.target.style.transform = 'translateY(0)';
                 e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
               }}
