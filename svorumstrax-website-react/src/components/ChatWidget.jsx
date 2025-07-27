@@ -6,12 +6,12 @@ const WIDGET_THEME = {
 };
 */
 
-// LIGHT PROFESSIONAL GREEN (from your design file)
+// YOUR ACTUAL LOGO GREEN
 const WIDGET_THEME = {
-  color: '#10b981',          // Light professional green
-  colorLight: '#34d399',     // Even lighter for subtle elements  
-  colorHover: '#059669',     // Darker green for hover
-  gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', // Subtle gradient
+  color: '#22C55E',          // Your exact logo green
+  colorLight: '#4ade80',     // Lighter version
+  colorHover: '#16a34a',     // Darker for hover
+  gradient: 'linear-gradient(135deg, #22C55E 0%, #16a34a 100%)',
 };
 
 // Constants for session management
