@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
-/*
-const WIDGET_THEME = {
-  color: '#FFA947',  // Your preferred warm orange
-  gradient: 'linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%)', // Logo gradient
-};
-*/
 
-// REPLACE WITH (GREEN OPTION):
+// GUN METAL GREY THEME - Premium and sophisticated
 const WIDGET_THEME = {
-  color: '#66D893',  // Beautiful ELKO green
-  gradient: '#66D893', // Solid green background
+  color: '#6b7280',  // Gun metal grey (matches scrollbar)
+  colorHover: '#4b5563', // Darker gun metal grey for hover states
+  gradient: 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)', // Subtle grey gradient
 };
 
 // Constants for session management
@@ -52,7 +47,7 @@ class ErrorBoundary extends Component {
             style={{
               padding: '4px 8px',
               backgroundColor: WIDGET_THEME.color,
-              color: '#0A0E27',
+              color: 'white',
               border: 'none',
               borderRadius: '4px',
               cursor: 'pointer',
@@ -678,7 +673,7 @@ const ChatWidget = () => {
             height: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
             width: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
             borderRadius: '50%',
-            backgroundColor: isMinimized ? 'white' : 'white',
+            backgroundColor: 'white',
             padding: '8px',
             boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)',
             display: 'flex',
@@ -789,7 +784,7 @@ const ChatWidget = () => {
                       maxWidth: '70%',
                       padding: '12px 16px',
                       borderRadius: '16px',
-                      backgroundColor: msg.type === 'user' ? '#0A0E27' : 'rgba(229, 231, 235, 0.95)',
+                      backgroundColor: msg.type === 'user' ? WIDGET_THEME.colorHover : 'rgba(229, 231, 235, 0.95)',
                       color: msg.type === 'user' ? 'white' : '#1f2937',
                       fontSize: '14px',
                       lineHeight: '1.5',
@@ -896,6 +891,16 @@ const ChatWidget = () => {
                 fontWeight: '600',
                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                 transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = WIDGET_THEME.colorHover;
+                e.target.style.transform = 'translateY(-1px)';
+                e.target.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = WIDGET_THEME.gradient;
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
               }}
             >
               {t.send}
