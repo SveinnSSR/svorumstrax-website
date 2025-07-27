@@ -158,7 +158,7 @@ const TestimonialsSection = ({ currentLanguage }) => {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:-translate-x-5 border border-white/20"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/8 hover:bg-white/12 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:-translate-x-5 border border-white/20"
             disabled={totalSlides <= 1}
           >
             <ChevronLeftIcon className="w-6 h-6 text-white" />
@@ -166,24 +166,24 @@ const TestimonialsSection = ({ currentLanguage }) => {
           
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:translate-x-5 border border-white/20"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/8 hover:bg-white/12 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:translate-x-5 border border-white/20"
             disabled={totalSlides <= 1}
           >
             <ChevronRightIcon className="w-6 h-6 text-white" />
           </button>
         </div>
 
-        {/* Dots Navigation */}
+        {/* Dots Navigation - Minimalist Gray */}
         {totalSlides > 1 && (
-          <div className="flex justify-center mt-12 space-x-3">
+          <div className="flex justify-center mt-12 space-x-2">
             {Array.from({ length: totalSlides }, (_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   currentSlide === index 
-                    ? 'bg-orange-500 scale-110' 
-                    : 'bg-white/30 hover:bg-white/50'
+                    ? 'bg-white scale-125' 
+                    : 'bg-white/40 hover:bg-white/60'
                 }`}
               />
             ))}
