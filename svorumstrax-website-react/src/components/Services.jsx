@@ -16,7 +16,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
         },
         {
           title: '24/7 símsvörun',
-          description: 'AI símsvörun sem vinnur allan sólarhringinn. Þekkir þitt fyrirtæki, svarar spurningum og tekur við pöntunum með nákvæmni og hraða. Sendir flókin mál áfram til okkar eða þíns starfsfólks. Vinnur meðan þú sefur og missir aldrei af símtali.',
+          description: 'Gervigreindarfulltrúi sem vinnur allan sólarhringinn. Þekkir þitt fyrirtæki, svarar spurningum og tekur við pöntunum með nákvæmni og hraða. Sendir flókin mál áfram til okkar eða þíns starfsfólks. Vinnur meðan þú sefur og missir aldrei af símtali.',
           contactType: 'ai-service'
         }
       ]
