@@ -7,10 +7,10 @@ const WIDGET_THEME = {
 */
 
 const WIDGET_THEME = {
-  color: '#4A90E2',          // Your logo blue
-  colorLight: '#6BB0FF',     // Lightest blue
-  colorHover: '#FF9A3C',     // Your logo orange for hover
-  gradient: 'linear-gradient(135deg, #4A90E2 0%, #6BB0FF 50%, #FFA947 100%)', // Blue to orange
+  color: '#6BB0FF',          // Just the lightest blue
+  colorLight: '#93C5FD',     // Even lighter
+  colorHover: '#5BA0F2',     // Your middle blue for hover
+  gradient: 'linear-gradient(135deg, #6BB0FF 0%, #5BA0F2 100%)',
 };
 
 // Constants for session management
