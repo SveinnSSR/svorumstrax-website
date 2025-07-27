@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
-import svorumStraxLogo from '../assets/images/svorum-strax-logo.svg';
-
-// SOPHISTICATED BLACK THEME - Premium and elegant
+/*
 const WIDGET_THEME = {
-  color: '#1f2937',          // Sophisticated dark gray (matches your logo!)
-  colorLight: '#374151',     // Lighter gray for subtle elements
-  colorHover: '#111827',     // Deeper black for hover states
-  gradient: 'linear-gradient(135deg, #1f2937 0%, #111827 100%)', // Elegant black gradient
+  color: '#FFA947',  // Your preferred warm orange
+  gradient: 'linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%)', // Logo gradient
+};
+*/
+
+// REPLACE WITH (GREEN OPTION):
+const WIDGET_THEME = {
+  color: '#66D893',  // Beautiful ELKO green
+  gradient: '#66D893', // Solid green background
 };
 
 // Constants for session management
@@ -49,7 +52,7 @@ class ErrorBoundary extends Component {
             style={{
               padding: '4px 8px',
               backgroundColor: WIDGET_THEME.color,
-              color: 'white',
+              color: '#0A0E27',
               border: 'none',
               borderRadius: '4px',
               cursor: 'pointer',
@@ -207,30 +210,24 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
         gap: '12px',
         paddingRight: '24px'
       }}>
-        {/* AI Avatar - Your Logo */}
+        {/* AI Avatar */}
         <div style={{
           width: '32px',
           height: '32px',
-          background: 'white',
+          background: WIDGET_THEME.gradient,
           borderRadius: '50%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0,
-          marginTop: '2px',
-          padding: '6px',
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-          border: '1px solid rgba(0, 0, 0, 0.1)'
+          marginTop: '2px'
         }}>
-          <img 
-            src={svorumStraxLogo} 
-            alt="Svörum strax" 
-            style={{
-              width: '100%',
-              height: 'auto',
-              objectFit: 'contain'
-            }}
-          />
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
+            <circle cx="6" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
+            <circle cx="10" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
+            <circle cx="14" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
+          </svg>
         </div>
 
         {/* Message text */}
@@ -484,7 +481,7 @@ const ChatWidget = () => {
     <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '16px', alignItems: 'flex-start', gap: '8px' }}>
       <div style={{ position: 'relative', height: '32px', width: '32px' }}>
         <div style={{
-          background: 'white',
+          background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
           borderRadius: '50%',
           width: '100%',
           height: '100%',
@@ -492,18 +489,14 @@ const ChatWidget = () => {
           alignItems: 'center',
           justifyContent: 'center',
           border: `1px solid rgba(0, 0, 0, 0.06)`,
-          boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)',
-          padding: '4px'
+          boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
-          <img 
-            src={svorumStraxLogo} 
-            alt="Svörum strax" 
-            style={{
-              width: '100%',
-              height: 'auto',
-              objectFit: 'contain'
-            }}
-          />
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
+              <circle cx="6" cy="8.5" r="1" fill="white"/>
+              <circle cx="10" cy="8.5" r="1" fill="white"/>
+              <circle cx="14" cy="8.5" r="1" fill="white"/>
+          </svg>
         </div>
       </div>
       <div style={{
@@ -653,7 +646,7 @@ const ChatWidget = () => {
         maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
         background: isMinimized ? WIDGET_THEME.gradient : 'rgba(250, 250, 250, 0.98)',
         borderRadius: isMinimized ? '50%' : '16px',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)', // Stronger shadow for black
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
         overflow: 'hidden',
         transformOrigin: 'bottom right',
         transition: 'all 0.3s ease',
@@ -677,7 +670,7 @@ const ChatWidget = () => {
             boxSizing: 'border-box',
             flexDirection: isMinimized ? 'row' : 'column',
             boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)',
-            borderBottom: isMinimized ? 'none' : '1px solid rgba(255, 255, 255, 0.1)'
+            borderBottom: isMinimized ? 'none' : '1px solid rgba(0, 0, 0, 0.12)'
           }}
         >
           <div style={{
@@ -685,22 +678,19 @@ const ChatWidget = () => {
             height: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
             width: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
             borderRadius: '50%',
-            backgroundColor: 'white',
-            padding: isMinimized ? '8px' : '12px',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+            backgroundColor: isMinimized ? 'white' : 'white',
+            padding: '8px',
+            boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-            <img 
-              src={svorumStraxLogo} 
-              alt="Svörum strax" 
-              style={{
-                width: '100%',
-                height: 'auto',
-                objectFit: 'contain'
-              }}
-            />
+            <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
+                <circle cx="10" cy="14" r="2" fill="white"/>
+                <circle cx="16" cy="14" r="2" fill="white"/>
+                <circle cx="22" cy="14" r="2" fill="white"/>
+            </svg>
           </div>
           
           {!isMinimized && (
@@ -776,25 +766,21 @@ const ChatWidget = () => {
                       position: 'relative',
                       height: '32px',
                       width: '32px',
-                      background: 'white',
+                      background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
                       border: `1px solid rgba(0, 0, 0, 0.06)`,
-                      boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)',
-                      padding: '4px'
+                      boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
-                      <img 
-                        src={svorumStraxLogo} 
-                        alt="Svörum strax" 
-                        style={{
-                          width: '100%',
-                          height: 'auto',
-                          objectFit: 'contain'
-                        }}
-                      />
+                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                          <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
+                          <circle cx="6" cy="8.5" r="1" fill="white"/>
+                          <circle cx="10" cy="8.5" r="1" fill="white"/>
+                          <circle cx="14" cy="8.5" r="1" fill="white"/>
+                      </svg>
                     </div>
                   )}
                   
@@ -803,13 +789,13 @@ const ChatWidget = () => {
                       maxWidth: '70%',
                       padding: '12px 16px',
                       borderRadius: '16px',
-                      backgroundColor: msg.type === 'user' ? WIDGET_THEME.color : 'rgba(229, 231, 235, 0.95)',
+                      backgroundColor: msg.type === 'user' ? '#0A0E27' : 'rgba(229, 231, 235, 0.95)',
                       color: msg.type === 'user' ? 'white' : '#1f2937',
                       fontSize: '14px',
                       lineHeight: '1.5',
-                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                       border: msg.type === 'user' ? 
-                        'none' : 
+                        `1px solid ${WIDGET_THEME.color}40` : 
                         '1px solid rgba(0, 0, 0, 0.08)',
                       position: 'relative',
                       overflowWrap: 'break-word',
@@ -908,18 +894,8 @@ const ChatWidget = () => {
                 cursor: 'pointer',
                 fontSize: '14px',
                 fontWeight: '600',
-                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)',
+                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                 transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = WIDGET_THEME.colorHover;
-                e.target.style.transform = 'translateY(-1px)';
-                e.target.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.25)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = WIDGET_THEME.gradient;
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.15)';
               }}
             >
               {t.send}
