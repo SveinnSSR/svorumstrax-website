@@ -1,12 +1,15 @@
 import { 
   ClockIcon, 
   CogIcon, 
-  ChartBarIcon,
-  DevicePhoneMobileIcon,
-  ComputerDesktopIcon,
-  EnvelopeIcon
+  ChartBarIcon
 } from '@heroicons/react/24/outline'
 import chatbotUiDemo from '../assets/images/chatbot-ui-demo.png'
+
+// Import platform icons
+import whatsappIcon from '../assets/images/platform-icons/whatsapp.svg'
+import messengerIcon from '../assets/images/platform-icons/messenger.svg'
+import instagramIcon from '../assets/images/platform-icons/instagram.svg'
+import gmailIcon from '../assets/images/platform-icons/gmail.svg'
 
 const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
   const content = {
@@ -31,24 +34,30 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           description: 'Yfirsýn í rauntíma þar sem þú fylgist með öllum samskiptum og færð greiningu á viðskiptavinum.'
         }
       ],
+      platformsTitle: 'Virkar á öllum samskiptaleiðum',
+      platformsSubtitle: 'Ein gervigreind sem svarar þínum viðskiptavinum hvar sem þeir eru',
       platforms: [
         {
-          icon: DevicePhoneMobileIcon,
-          title: 'Vefsíða og símforrit',
-          description: 'Spjallgluggi á vefsíðuna þína eða samþætting í þitt eigið app'
+          icon: whatsappIcon,
+          name: 'WhatsApp',
+          description: 'WhatsApp Business og WhatsApp Web samþætting'
         },
         {
-          icon: ComputerDesktopIcon,
-          title: 'Samskiptamiðlar',
-          description: 'Facebook, WhatsApp, Instagram og aðrir miðlar'
+          icon: messengerIcon,
+          name: 'Messenger',
+          description: 'Facebook Messenger fyrir viðskiptasíður'
         },
         {
-          icon: EnvelopeIcon,
-          title: 'Tölvupóstur',
-          description: 'Svarar póstkerfinu þínu og sendir upplýsingar sjálfkrafa'
+          icon: instagramIcon,
+          name: 'Instagram',
+          description: 'Instagram Direct Messages og kommentakerfið'
+        },
+        {
+          icon: gmailIcon,
+          name: 'Tölvupóstur',
+          description: 'Gmail, Outlook og öll helstu póstkerfin'
         }
       ],
-      platformsTitle: 'Virkar á öllum samskiptaleiðum',
       button: 'Frekari upplýsingar'
     },
     en: {
@@ -72,24 +81,30 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           description: 'Real-time insights into all customer interactions with detailed analytics and performance metrics.'
         }
       ],
+      platformsTitle: 'Works across all communication channels',
+      platformsSubtitle: 'One AI that meets your customers wherever they are',
       platforms: [
         {
-          icon: DevicePhoneMobileIcon,
-          title: 'Website & Mobile Apps',
-          description: 'Chat widget for your website or seamless integration into your existing app'
+          icon: whatsappIcon,
+          name: 'WhatsApp',
+          description: 'WhatsApp Business and WhatsApp Web integration'
         },
         {
-          icon: ComputerDesktopIcon,
-          title: 'Social Media',
-          description: 'Facebook Messenger, WhatsApp, Instagram, and other platforms'
+          icon: messengerIcon,
+          name: 'Messenger',
+          description: 'Facebook Messenger for business pages'
         },
         {
-          icon: EnvelopeIcon,
-          title: 'Email Support',
-          description: 'Automated email responses and intelligent routing based on content'
+          icon: instagramIcon,
+          name: 'Instagram',
+          description: 'Instagram Direct Messages and comment management'
+        },
+        {
+          icon: gmailIcon,
+          name: 'Email',
+          description: 'Gmail, Outlook and all major email providers'
         }
       ],
-      platformsTitle: 'Works across all communication channels',
       button: 'Learn More'
     }
   }
@@ -164,24 +179,53 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
 
-        {/* Platforms Section - Simple Grid */}
+        {/* Enhanced Platforms Section */}
         <div className="border-t border-gray-200 pt-16">
-          <h3 className="text-2xl font-bold text-gray-900 text-center mb-12">
-            {currentContent.platformsTitle}
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            {currentContent.platforms.map((platform, index) => {
-              const IconComponent = platform.icon
-              return (
-                <div key={index} className="text-center">
-                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <IconComponent className="w-6 h-6 text-gray-600" />
-                  </div>
-                  <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">{platform.title}</h4>
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{platform.description}</p>
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              {currentContent.platformsTitle}
+            </h3>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              {currentContent.platformsSubtitle}
+            </p>
+          </div>
+          
+          {/* Platform Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {currentContent.platforms.map((platform, index) => (
+              <div 
+                key={index} 
+                className="group bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 text-center"
+              >
+                {/* Platform Icon */}
+                <div className="w-12 h-12 mx-auto mb-4 p-2 bg-gray-50 rounded-lg group-hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center">
+                  <img 
+                    src={platform.icon} 
+                    alt={platform.name}
+                    className="w-8 h-8 opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                  />
                 </div>
-              )
-            })}
+                
+                {/* Platform Info */}
+                <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
+                  {platform.name}
+                </h4>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                  {platform.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-12">
+            <p className="text-gray-600 text-sm">
+              {currentLanguage === 'is' 
+                ? '+ Vefsíður, símforrit og önnur samskiptakerfi' 
+                : '+ Websites, mobile apps and other communication systems'
+              }
+            </p>
           </div>
         </div>
       </div>
