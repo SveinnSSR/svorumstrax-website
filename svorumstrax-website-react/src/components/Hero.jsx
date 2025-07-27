@@ -8,6 +8,12 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       primaryButton: 'Sjá alla þjónustu',
       secondaryButton: 'Fá ókeypis ráðgjöf',
       badge: 'Lausnir fyrir þjónustuver',
+      stats: {
+        companies: '100+ fyrirtæki',
+        calls: '240K+ símtöl árlega', 
+        staff: '35+ sérfræðingar',
+        experience: 'Síðan 2019'
+      },
       quotes: [
         "Hæ! Er hægt að bóka tíma hjá ykkur um helgina?",
         "Getið þið hjálpað mér með pöntunina mína?",
@@ -21,6 +27,12 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       primaryButton: 'Explore Services',
       secondaryButton: 'Get Free Consultation',
       badge: 'Customer Service Solutions',
+      stats: {
+        companies: '100+ companies',
+        calls: '240K+ calls annually',
+        staff: '35+ specialists', 
+        experience: 'Since 2019'
+      },
       quotes: [
         "Can I book an appointment for this weekend?",
         "Could you help me with my order?",
@@ -67,9 +79,29 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                 </h1>
                 
                 {/* Subtitle */}
-                <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed mb-12">
+                <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed mb-8">
                   {currentContent.subtitle}
                 </p>
+
+                {/* Stats Bar - NEW */}
+                <div className="flex flex-wrap justify-start gap-6 sm:gap-8 mb-12 text-sm text-gray-600">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span className="font-medium">{currentContent.stats.companies}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    <span className="font-medium">{currentContent.stats.calls}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="font-medium">{currentContent.stats.staff}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    <span className="font-medium">{currentContent.stats.experience}</span>
+                  </div>
+                </div>
                 
                 {/* Updated buttons - consistent with navbar and choice section style */}
                 <div className="flex flex-col sm:flex-row gap-6">
