@@ -179,61 +179,6 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
       </div>
-
-      {/* Dark Platforms Section */}
-      <div className="relative bg-gray-900">
-        {/* Subtle texture overlay */}
-        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.1)_0%,_transparent_50%)]"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-              {currentContent.platformsTitle}
-            </h3>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              {currentContent.platformsSubtitle}
-            </p>
-          </div>
-          
-          {/* Platform Grid - Retell AI Style */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {currentContent.platforms.map((platform, index) => (
-              <div 
-                key={index} 
-                className="group bg-gray-800 border border-gray-700 rounded-xl p-6 hover:bg-gray-750 hover:border-gray-600 transition-all duration-300 hover:-translate-y-1 text-center"
-              >
-                {/* Platform Icon */}
-                <div className="w-12 h-12 mx-auto mb-4 p-2 bg-white rounded-lg flex items-center justify-center">
-                  <img 
-                    src={platform.icon} 
-                    alt={platform.name}
-                    className="w-8 h-8"
-                  />
-                </div>
-                
-                {/* Platform Info */}
-                <h4 className="font-semibold text-white mb-2 text-sm sm:text-base">
-                  {platform.name}
-                </h4>
-                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
-                  {platform.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom CTA */}
-          <div className="text-center mt-12">
-            <p className="text-gray-500 text-sm">
-              {currentLanguage === 'is' 
-                ? '+ Vefsíður, símforrit, innri starfsmannakerfi og önnur samskiptakerfi' 
-                : '+ Websites, mobile apps, internal staff systems and other platforms'
-              }
-            </p>
-          </div>
-        </div>
-      </div>
     </section>
   )
 }
