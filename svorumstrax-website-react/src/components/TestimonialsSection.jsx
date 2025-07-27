@@ -158,7 +158,7 @@ const TestimonialsSection = ({ currentLanguage }) => {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/8 hover:bg-white/12 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:-translate-x-5 border border-white/20"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/8 hover:bg-white/12 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:-translate-x-5 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30"
             disabled={totalSlides <= 1}
           >
             <ChevronLeftIcon className="w-6 h-6 text-white" />
@@ -166,7 +166,7 @@ const TestimonialsSection = ({ currentLanguage }) => {
           
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/8 hover:bg-white/12 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:translate-x-5 border border-white/20"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/8 hover:bg-white/12 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:translate-x-5 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30"
             disabled={totalSlides <= 1}
           >
             <ChevronRightIcon className="w-6 h-6 text-white" />
@@ -180,7 +180,7 @@ const TestimonialsSection = ({ currentLanguage }) => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 ${
                   currentSlide === index 
                     ? 'bg-white scale-125' 
                     : 'bg-white/40 hover:bg-white/60'
