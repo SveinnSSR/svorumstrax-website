@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
+import svorumStraxLogo from '../assets/images/svorum-strax-logo.svg';
 
 // SOPHISTICATED BLACK THEME - Premium and elegant
 const WIDGET_THEME = {
-  color: '#1f2937',          // Sophisticated dark gray (not harsh pure black)
+  color: '#1f2937',          // Sophisticated dark gray (matches your logo!)
   colorLight: '#374151',     // Lighter gray for subtle elements
   colorHover: '#111827',     // Deeper black for hover states
   gradient: 'linear-gradient(135deg, #1f2937 0%, #111827 100%)', // Elegant black gradient
@@ -206,24 +207,30 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
         gap: '12px',
         paddingRight: '24px'
       }}>
-        {/* AI Avatar */}
+        {/* AI Avatar - Your Logo */}
         <div style={{
           width: '32px',
           height: '32px',
-          background: WIDGET_THEME.gradient,
+          background: 'white',
           borderRadius: '50%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0,
-          marginTop: '2px'
+          marginTop: '2px',
+          padding: '6px',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          border: '1px solid rgba(0, 0, 0, 0.1)'
         }}>
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
-            <circle cx="6" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
-            <circle cx="10" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
-            <circle cx="14" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
-          </svg>
+          <img 
+            src={svorumStraxLogo} 
+            alt="Svörum strax" 
+            style={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'contain'
+            }}
+          />
         </div>
 
         {/* Message text */}
@@ -477,7 +484,7 @@ const ChatWidget = () => {
     <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '16px', alignItems: 'flex-start', gap: '8px' }}>
       <div style={{ position: 'relative', height: '32px', width: '32px' }}>
         <div style={{
-          background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
+          background: 'white',
           borderRadius: '50%',
           width: '100%',
           height: '100%',
@@ -485,14 +492,18 @@ const ChatWidget = () => {
           alignItems: 'center',
           justifyContent: 'center',
           border: `1px solid rgba(0, 0, 0, 0.06)`,
-          boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
+          boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)',
+          padding: '4px'
         }}>
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-              <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
-              <circle cx="6" cy="8.5" r="1" fill="white"/>
-              <circle cx="10" cy="8.5" r="1" fill="white"/>
-              <circle cx="14" cy="8.5" r="1" fill="white"/>
-          </svg>
+          <img 
+            src={svorumStraxLogo} 
+            alt="Svörum strax" 
+            style={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'contain'
+            }}
+          />
         </div>
       </div>
       <div style={{
@@ -675,18 +686,21 @@ const ChatWidget = () => {
             width: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
             borderRadius: '50%',
             backgroundColor: 'white',
-            padding: '8px',
+            padding: isMinimized ? '8px' : '12px',
             boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
           }}>
-            <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
-                <circle cx="10" cy="14" r="2" fill="white"/>
-                <circle cx="16" cy="14" r="2" fill="white"/>
-                <circle cx="22" cy="14" r="2" fill="white"/>
-            </svg>
+            <img 
+              src={svorumStraxLogo} 
+              alt="Svörum strax" 
+              style={{
+                width: '100%',
+                height: 'auto',
+                objectFit: 'contain'
+              }}
+            />
           </div>
           
           {!isMinimized && (
@@ -762,21 +776,25 @@ const ChatWidget = () => {
                       position: 'relative',
                       height: '32px',
                       width: '32px',
-                      background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
+                      background: 'white',
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
                       border: `1px solid rgba(0, 0, 0, 0.06)`,
-                      boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
+                      boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)',
+                      padding: '4px'
                     }}>
-                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                          <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
-                          <circle cx="6" cy="8.5" r="1" fill="white"/>
-                          <circle cx="10" cy="8.5" r="1" fill="white"/>
-                          <circle cx="14" cy="8.5" r="1" fill="white"/>
-                      </svg>
+                      <img 
+                        src={svorumStraxLogo} 
+                        alt="Svörum strax" 
+                        style={{
+                          width: '100%',
+                          height: 'auto',
+                          objectFit: 'contain'
+                        }}
+                      />
                     </div>
                   )}
                   
