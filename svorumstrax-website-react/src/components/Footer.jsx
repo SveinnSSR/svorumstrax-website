@@ -1,6 +1,6 @@
 import footerLogo from '../assets/images/svorum-strax-footer-logo.svg'
 
-const Footer = ({ currentLanguage, onContactClick }) => {
+const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
   const content = {
     is: {
       description: 'Öflugt þjónustuver í Barcelona með 35+ íslenska sérfræðinga. Við samþættum mannlega þjónustu og gervigreind til að veita framúrskarandi upplifun fyrir þína viðskiptavini.',
@@ -20,11 +20,11 @@ const Footer = ({ currentLanguage, onContactClick }) => {
       company: {
         title: 'Fyrirtækið',
         items: [
-          { name: 'Um okkur', href: '#um-okkur' },
+          { name: 'Um okkur', href: '#about' },
           { name: 'Störf', action: 'job' },
-          { name: 'Mannauður', href: '/mannaudur' },
-          { name: 'Barcelona', href: '#barcelona' },
-          { name: 'Viðskiptavinir', href: '#clients' }
+          { name: 'Mannauður', action: 'staff' },
+          { name: 'Barcelona', href: '#jobs' },
+          { name: 'Viðskiptavinir', href: '#about' }
         ]
       },
       contact: {
@@ -55,9 +55,9 @@ const Footer = ({ currentLanguage, onContactClick }) => {
         items: [
           { name: 'About', href: '#about' },
           { name: 'Careers', action: 'job' },
-          { name: 'Team', href: '/team' },
-          { name: 'Barcelona', href: '#barcelona' },
-          { name: 'Clients', href: '#clients' }
+          { name: 'Team', action: 'staff' },
+          { name: 'Barcelona', href: '#jobs' },
+          { name: 'Clients', href: '#about' }
         ]
       },
       contact: {
@@ -94,7 +94,9 @@ const Footer = ({ currentLanguage, onContactClick }) => {
   )
 
   const handleLinkClick = (item) => {
-    if (item.action) {
+    if (item.action === 'staff') {
+      onNavigate('staff')
+    } else if (item.action) {
       onContactClick(item.action)
     }
   }

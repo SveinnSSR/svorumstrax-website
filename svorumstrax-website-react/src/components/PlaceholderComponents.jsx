@@ -250,7 +250,7 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
     <>
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-slate-900/95 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
         onClick={handleBackdropClick}
       >
         {/* Modal */}

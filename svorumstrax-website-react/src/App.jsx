@@ -59,6 +59,7 @@ function App() {
         <Footer 
           currentLanguage={currentLanguage}
           onContactClick={openContactModal}
+          onNavigate={navigateToPage}
         />
 
         <ContactModal 
@@ -129,6 +130,7 @@ function App() {
       <Footer 
         currentLanguage={currentLanguage}
         onContactClick={openContactModal}
+        onNavigate={navigateToPage}
       />
 
       <ContactModal 
