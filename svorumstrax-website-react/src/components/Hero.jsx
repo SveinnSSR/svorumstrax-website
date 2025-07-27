@@ -9,7 +9,6 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       secondaryButton: 'Fá ókeypis ráðgjöf',
       badge: 'Lausnir fyrir þjónustuver',
       stats: {
-        companies: '100+ fyrirtæki',
         calls: '240K+ símtöl árlega', 
         staff: '35+ sérfræðingar',
         experience: 'Síðan 2019'
@@ -28,7 +27,6 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       secondaryButton: 'Get Free Consultation',
       badge: 'Customer Service Solutions',
       stats: {
-        companies: '100+ companies',
         calls: '240K+ calls annually',
         staff: '35+ specialists', 
         experience: 'Since 2019'
@@ -83,12 +81,8 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                   {currentContent.subtitle}
                 </p>
 
-                {/* Stats Bar - NEW */}
+                {/* Stats Bar - 3 clean stats in a row */}
                 <div className="flex flex-wrap justify-start gap-6 sm:gap-8 mb-12 text-sm text-gray-600">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="font-medium">{currentContent.stats.companies}</span>
-                  </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                     <span className="font-medium">{currentContent.stats.calls}</span>
