@@ -15,8 +15,8 @@ const Services = ({ currentLanguage, onContactClick }) => {
           contactType: 'phone-support'
         },
         {
-          title: 'Gervigreindarsvörun',
-          description: 'Gervigreindarlausnir sem svara símtölum allan sólarhringinn. AI símsvörun sem þekkir þitt fyrirtæki, svarar fyrirspurnum, tekur pöntun og veitir upplýsingar með hraða og nákvæmni. Áframsendir mál á mannlega þjónustufulltrúa (okkar eða þína) eftir þörfum.',
+          title: '24/7 símsvörun',
+          description: 'Símsvörun sem vinnur allan sólarhringinn. Þekkir þitt fyrirtæki, svarar spurningum og tekur við pöntunum með nákvæmni og hraða. Sendir flókin mál áfram til okkar eða þíns starfsfólks. Vinnur meðan þú sefur og missir aldrei af símtali.',
           contactType: 'ai-service'
         }
       ]
