@@ -6,12 +6,12 @@ const WIDGET_THEME = {
 };
 */
 
-// YOUR ACTUAL LOGO GREEN
+// YOUR ACTUAL LOGO BLUE GRADIENT - Direct from your footer logo
 const WIDGET_THEME = {
-  color: '#22C55E',          // Your exact logo green
-  colorLight: '#4ade80',     // Lighter version
-  colorHover: '#16a34a',     // Darker for hover
-  gradient: 'linear-gradient(135deg, #22C55E 0%, #16a34a 100%)',
+  color: '#4A90E2',          // Your logo blue start
+  colorLight: '#6BB0FF',     // Your logo blue end (lightest)
+  colorHover: '#4A90E2',     // Darker blue for hover
+  gradient: 'linear-gradient(135deg, #4A90E2 0%, #5BA0F2 50%, #6BB0FF 100%)', // Exact logo gradient
 };
 
 // Constants for session management
