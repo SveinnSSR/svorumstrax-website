@@ -1,4 +1,3 @@
-
 import { 
   ClockIcon, 
   CogIcon, 
@@ -81,9 +80,9 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header - White background like other sections */}
+        {/* Header - Mobile optimized title sizing */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 mb-8 leading-tight">
             {currentContent.title}
           </h2>
           <p className="text-lg sm:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
