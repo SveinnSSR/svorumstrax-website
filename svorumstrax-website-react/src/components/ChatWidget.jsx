@@ -6,11 +6,10 @@ const WIDGET_THEME = {
 };
 */
 
+// REPLACE WITH (GREEN OPTION):
 const WIDGET_THEME = {
-  color: '#6BB0FF',          // Just the lightest blue
-  colorLight: '#93C5FD',     // Even lighter
-  colorHover: '#5BA0F2',     // Your middle blue for hover
-  gradient: 'linear-gradient(135deg, #6BB0FF 0%, #5BA0F2 100%)',
+  color: '#66D893',  // Beautiful ELKO green
+  gradient: '#66D893', // Solid green background
 };
 
 // Constants for session management
