@@ -127,7 +127,7 @@ const TestimonialsSection = ({ currentLanguage }) => {
                           className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 relative"
                         >
                           {/* Quote Icon */}
-                          <div className="absolute top-4 sm:top-6 left-6 sm:left-8 text-4xl sm:text-6xl text-orange-500/30 font-serif leading-none">
+                          <div className="absolute top-4 sm:top-6 left-6 sm:left-8 text-4xl sm:text-6xl text-white/20 font-serif leading-none">
                             "
                           </div>
                           
@@ -139,7 +139,7 @@ const TestimonialsSection = ({ currentLanguage }) => {
                             
                             {/* Author Info */}
                             <div className="border-t border-white/10 pt-4 sm:pt-6">
-                              <div className="text-orange-400 font-semibold text-base sm:text-lg mb-1">
+                              <div className="text-white font-semibold text-base sm:text-lg mb-1">
                                 {testimonial.author}
                               </div>
                               <div className="text-slate-400 text-xs sm:text-sm">
