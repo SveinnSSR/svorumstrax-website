@@ -6,12 +6,12 @@ const WIDGET_THEME = {
 };
 */
 
-// BLUE THEME - From Úthringingar section  
+// LIGHT PROFESSIONAL BLUE (from your designs)
 const WIDGET_THEME = {
-  color: '#3B82F6',  
-  colorLight: '#60A5FA', 
-  colorHover: '#2563EB', 
-  gradient: '#3B82F6', 
+  color: '#3b82f6',          // Light professional blue
+  colorLight: '#60A5FA',     // Even lighter for subtle elements  
+  colorHover: '#2563eb',     // Darker blue for hover
+  gradient: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', // Your gradient
 };
 
 // Constants for session management
