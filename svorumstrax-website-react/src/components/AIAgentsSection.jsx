@@ -1,7 +1,10 @@
 import { 
   ClockIcon, 
   CogIcon, 
-  ChartBarIcon
+  ChartBarIcon,
+  AcademicCapIcon,
+  UserGroupIcon,
+  BookOpenIcon
 } from '@heroicons/react/24/outline'
 import chatbotUiDemo from '../assets/images/chatbot-ui-demo.png'
 
@@ -15,13 +18,13 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
       title: 'Gervigreindarfulltrúar',
-      subtitle: 'Gervigreind þjálfuð í þínu fyrirtæki sem svarar allan sólarhringinn. Veitir nákvæmar upplýsingar, framkvæmir aðgerðir og hjálpar til við sölu.',
-      mainDescription: 'Við sérhæfum gervigreind í að svara fyrir þinn rekstur. Tekur við pöntunum, bókar tíma og gefur nákvæm svör - eins og þinn besti starfsmaður.',
+      subtitle: 'Gervigreind þjálfuð í þínu fyrirtæki sem svarar allan sólarhringinn og þjálfar starfsfólkið þitt. Veitir viðskiptavinum nákvæmar upplýsingar og hjálpar teyminu þínu að læra verkferla og reglur.',
+      mainDescription: 'Við búum til tvær gervigreindir fyrir þig: eina sem svarar viðskiptavinum þínum og aðra sem þjálfar starfsfólkið þitt í verkferlum og reglum fyrirtækisins.',
       features: [
         {
           icon: ClockIcon,
-          title: '24/7 þjónusta - aldrei í fríi',
-          description: 'Svarar á íslensku, ensku og öðrum tungumálum. Vinnur þegar þú sefur.'
+          title: '24/7 þjónusta viðskiptavina',
+          description: 'Svarar á íslensku, ensku og öðrum tungumálum. Tekur við pöntunum og bókar tíma allan sólarhringinn.'
         },
         {
           icon: CogIcon,
@@ -32,6 +35,21 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           icon: ChartBarIcon,
           title: 'Greiningarkerfi með innsýn',
           description: 'Yfirsýn í rauntíma þar sem þú fylgist með öllum samskiptum og færð greiningu á viðskiptavinum.'
+        },
+        {
+          icon: AcademicCapIcon,
+          title: 'Starfsmannaþjálfun með AI',
+          description: 'Innri AI sem þekkir allar verklagsreglur þínar og þjálfar nýtt fólk strax.'
+        },
+        {
+          icon: UserGroupIcon,
+          title: 'Þekkingamiðlun',
+          description: 'Varðveitir þekkingu reynslumikilla starfsmanna og gerir hana aðgengilega öllum.'
+        },
+        {
+          icon: BookOpenIcon,
+          title: 'Verkferlaráðgjöf',
+          description: 'Starfsfólk getur spurt AI um stefnur, verkferla og reglur og fengið tafarlaus svör.'
         }
       ],
       platformsTitle: 'Virkar á öllum samskiptaleiðum',
@@ -62,13 +80,13 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
     },
     en: {
       title: 'AI Customer Agents',
-      subtitle: 'Intelligent agents trained specifically for your business, working around the clock. They provide accurate information, take actions, and drive sales - just like your best team member.',
-      mainDescription: 'Our AI agents are custom-trained on your business. They handle orders, book appointments, and provide expert answers with the knowledge and personality of your top performer.',
+      subtitle: 'Intelligent agents trained specifically for your business, working around the clock to serve customers and train your team. They provide accurate customer service while helping your staff master company procedures and policies.',
+      mainDescription: 'We create two AI systems for you: one that serves your customers with expert support, and another that trains your staff on procedures and company knowledge.',
       features: [
         {
           icon: ClockIcon,
-          title: 'Always-on service',
-          description: 'Responds in multiple languages including Icelandic and English. Works while your team sleeps.'
+          title: 'Always-on customer service',
+          description: 'Responds in multiple languages including Icelandic and English. Handles orders and bookings 24/7.'
         },
         {
           icon: CogIcon,
@@ -79,6 +97,21 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           icon: ChartBarIcon,
           title: 'Advanced analytics dashboard',
           description: 'Real-time insights into all customer interactions with detailed analytics and performance metrics.'
+        },
+        {
+          icon: AcademicCapIcon,
+          title: 'AI-powered staff training',
+          description: 'Internal AI that knows all your procedures and trains new employees instantly.'
+        },
+        {
+          icon: UserGroupIcon,
+          title: 'Knowledge preservation',
+          description: 'Captures expertise from experienced staff and makes it accessible to everyone.'
+        },
+        {
+          icon: BookOpenIcon,
+          title: 'Procedure assistance',
+          description: 'Staff can ask AI about policies, procedures, and rules for immediate answers.'
         }
       ],
       platformsTitle: 'Works across all communication channels',
@@ -112,23 +145,19 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
   const currentContent = content[currentLanguage]
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      {/* Subtle background gradient hints - consistent with other sections */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-br from-orange-50/30 via-amber-50/20 to-transparent"></div>
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-blue-50/30 via-teal-50/20 to-transparent"></div>
-        
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-orange-100/20 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-gradient-to-tl from-blue-100/20 to-transparent rounded-full blur-3xl"></div>
-      </div>
+    <section className="py-24 relative overflow-hidden" style={{ background: 'rgba(10, 14, 39, 0.95)' }}>
+      {/* Navy background with subtle texture */}
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%)' }}></div>
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.1)_0%,_transparent_50%)]"></div>
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_75%_75%,_rgba(255,255,255,0.05)_0%,_transparent_50%)]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header - White background like other sections */}
+        {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8 leading-tight">
+          <h2 className="text-5xl sm:text-6xl font-black text-white mb-8 leading-tight">
             {currentContent.title}
           </h2>
-          <p className="text-lg sm:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
             {currentContent.subtitle}
           </p>
         </div>
@@ -138,21 +167,23 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           
           {/* Left side - Content */}
           <div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 leading-tight">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 leading-tight">
               {currentContent.mainDescription}
             </h3>
             
-            <div className="space-y-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               {currentContent.features.map((feature, index) => {
                 const IconComponent = feature.icon
                 return (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-gradient-to-r from-orange-100 to-orange-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                      <IconComponent className="w-5 h-5 text-orange-600" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">{feature.title}</h4>
-                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
+                  <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-8 h-8 bg-gradient-to-r from-orange-400/20 to-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <IconComponent className="w-4 h-4 text-orange-400" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <h4 className="font-semibold text-white mb-1 text-sm">{feature.title}</h4>
+                        <p className="text-slate-300 leading-relaxed text-xs">{feature.description}</p>
+                      </div>
                     </div>
                   </div>
                 )
@@ -161,7 +192,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
 
             <button
               onClick={() => onContactClick('ai-service')}
-              className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 w-full sm:w-auto"
+              className="bg-white hover:bg-gray-50 text-slate-900 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white/20 w-full sm:w-auto"
             >
               {currentContent.button}
             </button>
@@ -173,20 +204,20 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
               <img 
                 src={chatbotUiDemo} 
                 alt="Chatbot UI Demo"
-                className="w-full h-auto drop-shadow-xl"
+                className="w-full h-auto drop-shadow-2xl"
               />
             </div>
           </div>
         </div>
 
         {/* Enhanced Platforms Section */}
-        <div className="border-t border-gray-200 pt-16">
+        <div className="border-t border-white/10 pt-16">
           {/* Header */}
           <div className="text-center mb-12">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
               {currentContent.platformsTitle}
             </h3>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <p className="text-slate-300 text-lg max-w-2xl mx-auto">
               {currentContent.platformsSubtitle}
             </p>
           </div>
@@ -196,7 +227,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
             {currentContent.platforms.map((platform, index) => (
               <div 
                 key={index} 
-                className="group bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 text-center"
+                className="group bg-white rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-center"
               >
                 {/* Platform Icon */}
                 <div className="w-12 h-12 mx-auto mb-4 p-2 bg-gray-50 rounded-lg group-hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center">
@@ -220,10 +251,10 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
 
           {/* Bottom CTA */}
           <div className="text-center mt-12">
-            <p className="text-gray-600 text-sm">
+            <p className="text-slate-400 text-sm">
               {currentLanguage === 'is' 
-                ? '+ Vefsíður, símforrit og önnur samskiptakerfi' 
-                : '+ Websites, mobile apps and other communication systems'
+                ? '+ Vefsíður, símforrit, innri kerfi og önnur samskiptakerfi' 
+                : '+ Websites, mobile apps, internal systems and other platforms'
               }
             </p>
           </div>
