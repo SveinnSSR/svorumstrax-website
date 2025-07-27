@@ -1,108 +1,66 @@
+
 import { 
   ClockIcon, 
   CogIcon, 
-  ChartBarIcon
+  ChartBarIcon,
+  LightBulbIcon
 } from '@heroicons/react/24/outline'
 import chatbotUiDemo from '../assets/images/chatbot-ui-demo.png'
-
-// Import platform icons
-import whatsappIcon from '../assets/images/platform-icons/whatsapp.svg'
-import messengerIcon from '../assets/images/platform-icons/messenger.svg'
-import instagramIcon from '../assets/images/platform-icons/instagram.svg'
-import gmailIcon from '../assets/images/platform-icons/gmail.svg'
 
 const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
       title: 'Gervigreindarfulltrúar',
-      subtitle: 'Gervigreind þjálfuð í þínu fyrirtæki sem svarar allan sólarhringinn. Veitir nákvæmar upplýsingar, framkvæmir aðgerðir og hjálpar til við sölu.',
-      mainDescription: 'Við sérhæfum gervigreind í að svara fyrir þinn rekstur. Tekur við pöntunum, bókar tíma og gefur nákvæm svör - eins og þinn besti starfsmaður.',
+      subtitle: 'Sérfræðingar sem þekkja þínar vörur, þjónustu og kerfi. Svara flóknum spurningum og framkvæma raunverulegar aðgerðir.',
+      mainDescription: 'Við þjálfum gervigreindina í að vera sérfræðingur í þínum rekstri. Hún lærir verðskrá, stefnur, samstarfsaðila og tengist kerfunum þínum til að geta tekið við pöntunum og bókað tíma.',
       features: [
         {
           icon: ClockIcon,
-          title: '24/7 þjónusta - aldrei í fríi',
-          description: 'Svarar á íslensku, ensku og öðrum tungumálum. Vinnur þegar þú sefur.'
+          title: 'Sérfræðiþekking á þínum rekstri',
+          description: 'Þekkir verð, tilboð, samstarfsaðila og allar reglur - eins og þinn besti starfsmaður með margra ára reynslu.'
         },
         {
           icon: CogIcon,
-          title: 'Samþætt við þín kerfi',
-          description: 'Tengist við bókunarkerfið þitt og framkvæmir aðgerðir í rauntíma.'
+          title: 'Meðhöndlar flóknar spurningar',
+          description: 'Svarar um greiðslukort, afsláttarkerfi og sérstaka kröfur viðskiptavina með nákvæmni og þolinmæði.'
         },
         {
           icon: ChartBarIcon,
-          title: 'Greiningarkerfi með innsýn',
-          description: 'Yfirsýn í rauntíma þar sem þú fylgist með öllum samskiptum og færð greiningu á viðskiptavinum.'
-        }
-      ],
-      platformsTitle: 'Virkar á öllum samskiptaleiðum',
-      platformsSubtitle: 'Ein gervigreind sem svarar þínum viðskiptavinum hvar sem þeir eru - og getur einnig þjálfað starfsfólkið þitt',
-      platforms: [
-        {
-          icon: whatsappIcon,
-          name: 'WhatsApp',
-          description: 'WhatsApp Business og WhatsApp Web samþætting'
+          title: 'Framkvæmir raunverulegar aðgerðir',
+          description: 'Bókar tíma, tekur við pöntunum og tengist við öll þín kerfi til að ljúka verkefnum strax.'
         },
         {
-          icon: messengerIcon,
-          name: 'Messenger',
-          description: 'Facebook Messenger fyrir viðskiptasíður'
-        },
-        {
-          icon: instagramIcon,
-          name: 'Instagram',
-          description: 'Instagram Direct Messages og kommentakerfið'
-        },
-        {
-          icon: gmailIcon,
-          name: 'Tölvupóstur',
-          description: 'Gmail, Outlook og öll helstu póstkerfin'
+          icon: LightBulbIcon,
+          title: 'Umbreytir samskiptum í viðskiptalega innsýn',
+          description: 'Greinir samtöl til að hjálpa þér að taka betri ákvarðanir.'
         }
       ],
       button: 'Frekari upplýsingar'
     },
     en: {
       title: 'AI Customer Agents',
-      subtitle: 'Intelligent agents trained specifically for your business, working around the clock. They provide accurate information, take actions, and drive sales - just like your best team member.',
-      mainDescription: 'Our AI agents are custom-trained on your business. They handle orders, book appointments, and provide expert answers with the knowledge and personality of your top performer.',
+      subtitle: 'Specialists who know your products, services and systems. They handle complex questions and take real actions.',
+      mainDescription: 'We train AI to become experts in your business. They learn pricing, policies, partnerships and integrate with your systems to handle orders and bookings.',
       features: [
         {
           icon: ClockIcon,
-          title: 'Always-on service',
-          description: 'Responds in multiple languages including Icelandic and English. Works while your team sleeps.'
+          title: 'Expert knowledge of your business',
+          description: 'Knows pricing, offers, partners and all policies - like your best employee with years of experience.'
         },
         {
           icon: CogIcon,
-          title: 'Integrated with your systems',
-          description: 'Connects directly to your booking system, CRM, and tools to take real-time actions.'
+          title: 'Handles complex questions',
+          description: 'Answers about payment cards, discount systems and special customer requirements with accuracy and patience.'
         },
         {
           icon: ChartBarIcon,
-          title: 'Advanced analytics dashboard',
-          description: 'Real-time insights into all customer interactions with detailed analytics and performance metrics.'
-        }
-      ],
-      platformsTitle: 'Works across all communication channels',
-      platformsSubtitle: 'One AI that serves your customers wherever they are - and can also train your staff',
-      platforms: [
-        {
-          icon: whatsappIcon,
-          name: 'WhatsApp',
-          description: 'WhatsApp Business and WhatsApp Web integration'
+          title: 'Takes real actions',
+          description: 'Books appointments, processes orders and integrates with all your systems to complete tasks immediately.'
         },
         {
-          icon: messengerIcon,
-          name: 'Messenger',
-          description: 'Facebook Messenger for business pages'
-        },
-        {
-          icon: instagramIcon,
-          name: 'Instagram',
-          description: 'Instagram Direct Messages and comment management'
-        },
-        {
-          icon: gmailIcon,
-          name: 'Email',
-          description: 'Gmail, Outlook and all major email providers'
+          icon: LightBulbIcon,
+          title: 'Converts conversations into business insights',
+          description: 'Analyzes conversations to help you make better decisions.'
         }
       ],
       button: 'Learn More'
@@ -142,7 +100,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
               {currentContent.mainDescription}
             </h3>
             
-            <div className="space-y-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               {currentContent.features.map((feature, index) => {
                 const IconComponent = feature.icon
                 return (
@@ -150,7 +108,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
                     <div className="w-10 h-10 bg-gradient-to-r from-orange-100 to-orange-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
                       <IconComponent className="w-5 h-5 text-orange-600" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">{feature.title}</h4>
                       <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
                     </div>
