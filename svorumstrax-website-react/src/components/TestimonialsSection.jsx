@@ -124,7 +124,7 @@ const TestimonialsSection = ({ currentLanguage }) => {
                       .map((testimonial, index) => (
                         <div 
                           key={slideIndex * 2 + index}
-                          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 relative"
+                          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 relative"
                         >
                           {/* Quote Icon */}
                           <div className="absolute top-4 sm:top-6 left-6 sm:left-8 text-4xl sm:text-6xl text-white/20 font-serif leading-none">
