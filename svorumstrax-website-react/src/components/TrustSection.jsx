@@ -6,10 +6,12 @@ import rafalLogo from '../assets/images/logos/Rafal-Logo.png'
 const TrustSection = ({ currentLanguage }) => {
   const content = {
     is: {
-      title: 'Treyst af leiðandi fyrirtækjum'
+      title: 'Meðhöndlum 240.000+ símtöl árlega fyrir 100+ íslensk fyrirtæki',
+      subtitle: 'Treyst af leiðandi fyrirtækjum'
     },
     en: {
-      title: 'Trusted by leading companies'
+      title: 'Handling 240,000+ calls annually for 100+ Icelandic companies',
+      subtitle: 'Trusted by leading companies'
     }
   }
 
@@ -49,10 +51,13 @@ const TrustSection = ({ currentLanguage }) => {
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.1)_0%,_transparent_50%)]"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header - Mobile optimized */}
+        {/* Header - Mobile optimized with stats */}
         <div className="text-center mb-12 sm:mb-16">
-          <p className="text-lg sm:text-xl text-slate-300 font-medium">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
             {currentContent.title}
+          </h2>
+          <p className="text-base sm:text-lg text-slate-300 font-medium">
+            {currentContent.subtitle}
           </p>
         </div>
         
