@@ -10,7 +10,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       badge: 'Lausnir fyrir þjónustuver',
       stats: {
         calls: '240K+ símtöl árlega', 
-        staff: '35+ sérfræðingar',
+        staff: '35+ starfsmenn',
         experience: 'Síðan 2019'
       },
       quotes: [
@@ -28,7 +28,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
       badge: 'Customer Service Solutions',
       stats: {
         calls: '240K+ calls annually',
-        staff: '35+ specialists', 
+        staff: '35+ remote workers', 
         experience: 'Since 2019'
       },
       quotes: [
