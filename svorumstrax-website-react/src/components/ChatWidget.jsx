@@ -558,16 +558,17 @@ const ChatWidget = () => {
     setIsTyping(true);
 
     try {
-      const response = await fetch('https://svorumstrax-chatbot-api.vercel.app/api/', {
+      const response = await fetch('https://svorumstrax-chatbot-api.vercel.app/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'x-api-key': 'svorum2025_sk3j8k4j5k6j7k8j9k0j1k2'  // ✅ Add API key
         },
         body: JSON.stringify({ 
           messages: [
             { role: 'user', content: messageText }
           ],
-          sessionId: sessionId
+          threadId: sessionId  // ✅ Use threadId with messages array
         }),
       });
 
