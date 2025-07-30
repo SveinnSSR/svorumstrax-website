@@ -562,7 +562,6 @@ const ChatWidget = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key': 'svorum2025_sk3j8k4j5k6j7k8j9k0j1k2'  // ✅ Add API key
         },
         body: JSON.stringify({ 
           messages: [
