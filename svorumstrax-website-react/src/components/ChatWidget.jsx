@@ -6,10 +6,10 @@ const WIDGET_THEME = {
 };
 */
 
-// REPLACE WITH (GREEN OPTION):
+// REPLACE WITH (Golden yellow OPTION):
 const WIDGET_THEME = {
-  color: '#66D893',  // Beautiful ELKO green
-  gradient: '#66D893', // Solid green background
+  color: '#F4B960',  // Golden yellow
+  gradient: 'linear-gradient(135deg, #F4B960 0%, #F2B347 50%, #F0AD2E 100%)', // Golden gradient
 };
 
 // Constants for session management
