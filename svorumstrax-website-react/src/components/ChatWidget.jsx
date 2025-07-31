@@ -8,8 +8,8 @@ const WIDGET_THEME = {
 
 // REPLACE WITH (GREEN OPTION):
 const WIDGET_THEME = {
-  color: '#66D893',  // Beautiful ELKO green
-  gradient: '#66D893', // Solid green background
+  color: '#66D893',  // Beautiful ELKO green.
+  gradient: '#66D893', // Solid green background.
 };
 
 // Constants for session management
