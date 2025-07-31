@@ -9,6 +9,7 @@ const WIDGET_THEME = {
 // REPLACE WITH (Golden yellow OPTION):
 const WIDGET_THEME = {
   color: '#F4B960',  // Golden yellow
+  gradient: 'linear-gradient(135deg, #F4B960 0%, #F4B960 50%, #F2B347 100%)'
 };
 
 // Constants for session management
