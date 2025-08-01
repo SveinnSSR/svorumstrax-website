@@ -135,7 +135,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
 
   const textBarTranslations = {
     is: {
-      message: "Hæ! Ég er gervigreindarfulltrúi. Get ég hjálpað þér?",
+      message: "Hæ! Ég er AI þjónustufulltrúi hjá Svörum strax. Get ég hjálpað?",
       close: "Loka"
     },
     en: {
