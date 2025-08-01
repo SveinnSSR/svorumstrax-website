@@ -57,78 +57,102 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
   return (
     <section 
       id="jobs"
-      className="relative min-h-[600px] flex items-center justify-center"
-      style={{
-        backgroundImage: `url(${barcelonaImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
+      className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-slate-50 via-white to-orange-50/20 relative overflow-hidden"
     >
-      {/* Navy Overlay */}
-      <div className="absolute inset-0 bg-slate-900/85"></div>
+      {/* Subtle background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_25%_25%,_rgba(251,146,60,0.08)_0%,_transparent_50%)]"></div>
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_75%_75%,_rgba(30,58,138,0.06)_0%,_transparent_50%)]"></div>
+      </div>
       
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Header Section */}
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight">
+            {currentContent.title}
+          </h2>
+          <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            {currentContent.subtitle}
+          </p>
+        </div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-12">
           
-          {/* Left Side - Benefits - Mobile optimized */}
-          <div className="space-y-6 sm:space-y-8">
-            <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 sm:mb-6 leading-tight">
-                {currentContent.title}
-              </h2>
-              <p className="text-lg sm:text-xl text-slate-200 leading-relaxed">
-                {currentContent.subtitle}
-              </p>
-            </div>
-            
-            {/* Benefits Cards - Mobile optimized */}
-            <div className="space-y-4 sm:space-y-6">
-              {currentContent.benefits.map((benefit, index) => (
-                <div 
-                  key={index}
-                  className="flex items-start gap-3 sm:gap-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300"
-                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0 text-lg sm:text-xl">
-                    {benefit.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </div>
+          {/* CTA Card - Top Left */}
+          <div className="lg:col-span-5">
+            <div className="bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-center text-white shadow-lg">
+              <div className="mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4">
+                  <span className="text-2xl">💼</span>
                 </div>
-              ))}
-            </div>
-            
-            {/* CTA Button - Mobile optimized */}
-            <button
-              onClick={() => onContactClick('job')}
-              className="bg-white hover:bg-gray-50 text-slate-900 font-semibold py-4 px-6 sm:px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 shadow-md w-full sm:w-auto"
-            >
-              {currentContent.button}
-            </button>
-          </div>
-          
-          {/* Right Side - Stats - Mobile optimized */}
-          <div className="text-center lg:text-left">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 sm:p-12">
-              <div className="text-6xl sm:text-7xl lg:text-8xl font-black text-white mb-3 sm:mb-4">
-                35+
+                <h3 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight">
+                  {currentContent.button}
+                </h3>
+                <p className="text-orange-50 opacity-90 mb-6 leading-relaxed">
+                  {currentContent.subtitle}
+                </p>
               </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">
-                {currentContent.statsTitle}
-              </h3>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                {currentContent.statsDescription}
-              </p>
+              <button
+                onClick={() => onContactClick('job')}
+                className="bg-white hover:bg-gray-50 text-orange-500 font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 w-full sm:w-auto"
+              >
+                {currentContent.button}
+              </button>
             </div>
           </div>
-          
+
+          {/* Barcelona Image Card - Top Right */}
+          <div className="lg:col-span-7">
+            <div className="relative h-[300px] sm:h-[350px] lg:h-full min-h-[280px] rounded-2xl overflow-hidden shadow-lg">
+              <img 
+                src={barcelonaImage}
+                alt="Barcelona skyline"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent"></div>
+              
+              {/* Stats Overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                  <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 mb-2">
+                    35+
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-2">
+                    {currentContent.statsTitle}
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {currentContent.statsDescription}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Benefits Cards - Bottom Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {currentContent.benefits.map((benefit, index) => (
+            <div 
+              key={index}
+              className="bg-white/60 backdrop-blur-sm border border-white/40 rounded-xl p-6 sm:p-8 hover:bg-white/80 transition-all duration-300 hover:shadow-lg"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center flex-shrink-0 text-xl">
+                  {benefit.icon}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-3 leading-tight">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
