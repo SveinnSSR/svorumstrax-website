@@ -84,25 +84,21 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-12">
           
-          {/* CTA Card - Glassmorphic like Barcelona Stats Card */}
+          {/* CTA Card - Refined Scandinavian Muted Style */}
           <div className="lg:col-span-5">
-            <div className="bg-white/20 backdrop-blur-md border border-white/25 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-center shadow-lg">
+            <div className="bg-gray-50/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-300">
               <div className="mb-8">
-                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-6 border border-white/30">
-                  <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6.294a7.707 7.707 0 01-2-.933" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-semibold mb-4 leading-tight text-gray-900">
+                {/* No icon - clean minimal approach */}
+                <h3 className="text-2xl sm:text-3xl font-semibold mb-6 leading-tight text-gray-900">
                   {currentContent.button}
                 </h3>
-                <p className="text-gray-700 mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   {currentContent.subtitle}
                 </p>
               </div>
               <button
                 onClick={() => onContactClick('job')}
-                className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 w-full sm:w-auto"
+                className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-sm w-full sm:w-auto"
               >
                 {currentContent.button}
               </button>
@@ -139,28 +135,49 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
 
-        {/* Glassmorphic Benefits Cards - Same Style as Barcelona Card */}
+        {/* Refined Scandinavian Benefits Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
-          {currentContent.benefits.map((benefit, index) => (
-            <div 
-              key={index}
-              className="bg-white/20 backdrop-blur-md border border-white/25 rounded-xl p-6 sm:p-8 shadow-lg hover:bg-white/25 transition-all duration-300"
-            >
-              <div className="flex items-start gap-4">
-                <div className="text-2xl">
-                  {benefit.icon}
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 leading-tight">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                    {benefit.description}
-                  </p>
+          {currentContent.benefits.map((benefit, index) => {
+            // Smart icon mapping instead of emojis
+            const iconMap = {
+              0: ( // Barcelona lifestyle
+                <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                </svg>
+              ),
+              1: ( // Flexibility
+                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                </svg>
+              ),
+              2: ( // Career development
+                <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                </svg>
+              )
+            }
+
+            return (
+              <div 
+                key={index}
+                className="bg-gray-50/60 backdrop-blur-sm border border-gray-200/40 rounded-xl p-6 sm:p-8 shadow-sm hover:bg-gray-50/80 hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 border border-gray-200/50 shadow-sm">
+                    {iconMap[index]}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {benefit.description}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
