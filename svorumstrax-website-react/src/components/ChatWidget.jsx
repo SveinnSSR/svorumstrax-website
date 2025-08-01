@@ -108,33 +108,13 @@ const MessageFormatter = ({ message }) => {
   );
 };
 
-// Simple sparkles icon - classic 4-pointed diamond stars like the emoji
-const SparklesIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <g>
-      {/* Large sparkle - 4-pointed diamond */}
-      <path 
-        d="M12 3l1.5 6L19 10.5l-5.5 1.5L12 18l-1.5-5.5L5 10.5l5.5-1.5L12 3z" 
-        fill={color}
-      />
-      {/* Medium sparkle */}
-      <path 
-        d="M19 6l0.75 2.25L22 9l-2.25 0.75L19 12l-0.75-2.25L16 9l2.25-0.75L19 6z" 
-        fill={color} 
-        opacity="0.8"
-      />
-      {/* Small sparkle */}
-      <path 
-        d="M6 16l0.5 1.5L8 18l-1.5 0.5L6 20l-0.5-1.5L4 18l1.5-0.5L6 16z" 
-        fill={color} 
-        opacity="0.6"
-      />
-    </g>
+// Simple chat bubble icon - clean and recognizable
+const ChatIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
+  <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={color}/>
+    <circle cx="10" cy="14" r="2" fill="white"/>
+    <circle cx="16" cy="14" r="2" fill="white"/>
+    <circle cx="22" cy="14" r="2" fill="white"/>
   </svg>
 );
 
@@ -247,7 +227,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
           flexShrink: 0,
           marginTop: '2px'
         }}>
-          <SparklesIcon size={18} color="white" />
+          <ChatIcon size={18} color="white" />
         </div>
 
         {/* Message text */}
@@ -511,7 +491,7 @@ const ChatWidget = () => {
           border: `1px solid rgba(0, 0, 0, 0.06)`,
           boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
-          <SparklesIcon size={14} color={WIDGET_THEME.color} />
+          <ChatIcon size={14} color={WIDGET_THEME.color} />
         </div>
       </div>
       <div style={{
@@ -702,7 +682,7 @@ const ChatWidget = () => {
             justifyContent: 'center',
             backdropFilter: 'blur(5px)'
           }}>
-            <SparklesIcon 
+            <ChatIcon 
               size={isMinimized ? (windowWidth <= 768 ? 24 : 28) : 32} 
               color={WIDGET_THEME.color} 
             />
@@ -783,7 +763,7 @@ const ChatWidget = () => {
                       border: `1px solid rgba(0, 0, 0, 0.06)`,
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
-                      <SparklesIcon size={14} color={WIDGET_THEME.color} />
+                      <ChatIcon size={14} color={WIDGET_THEME.color} />
                     </div>
                   )}
                   
