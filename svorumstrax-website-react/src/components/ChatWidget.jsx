@@ -108,7 +108,7 @@ const MessageFormatter = ({ message }) => {
   );
 };
 
-// Sparkles icon component - perfect for AI chatbot
+// Simple sparkles icon - classic 4-pointed diamond stars like the emoji
 const SparklesIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
   <svg 
     width={size} 
@@ -117,26 +117,23 @@ const SparklesIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <g>
-      {/* Large sparkle */}
+      {/* Large sparkle - 4-pointed diamond */}
       <path 
-        d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" 
+        d="M12 3l1.5 6L19 10.5l-5.5 1.5L12 18l-1.5-5.5L5 10.5l5.5-1.5L12 3z" 
         fill={color}
       />
       {/* Medium sparkle */}
       <path 
-        d="M18 4l0.75 2.25L21 7.5l-2.25 0.75L18 11l-0.75-2.25L15 7.5l2.25-0.75L18 4z" 
+        d="M19 6l0.75 2.25L22 9l-2.25 0.75L19 12l-0.75-2.25L16 9l2.25-0.75L19 6z" 
         fill={color} 
         opacity="0.8"
       />
       {/* Small sparkle */}
       <path 
-        d="M6 15l0.5 1.5L8 17.5l-1.5 0.5L6 20l-0.5-1.5L4 17.5l1.5-0.5L6 15z" 
+        d="M6 16l0.5 1.5L8 18l-1.5 0.5L6 20l-0.5-1.5L4 18l1.5-0.5L6 16z" 
         fill={color} 
         opacity="0.6"
       />
-      {/* Tiny sparkle */}
-      <circle cx="19" cy="15" r="1" fill={color} opacity="0.4"/>
-      <circle cx="4" cy="6" r="0.8" fill={color} opacity="0.4"/>
     </g>
   </svg>
 );
