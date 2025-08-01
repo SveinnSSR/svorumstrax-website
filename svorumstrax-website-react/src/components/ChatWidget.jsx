@@ -108,25 +108,32 @@ const MessageFormatter = ({ message }) => {
   );
 };
 
-// Soundwave icon component from your logo
+// Flowing soundwave icon component - much more elegant
 const SoundwaveIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
   <svg 
     width={size} 
-    height={size} 
-    viewBox="0 0 40 45" 
+    height={size * 0.6} 
+    viewBox="0 0 40 24" 
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g transform="translate(2, 2.5)">
-      <rect x="0" y="20" width="2.5" height="6" rx="1.25" fill={color}/>
-      <rect x="4" y="16" width="2.5" height="14" rx="1.25" fill={color}/>
-      <rect x="8" y="10" width="2.5" height="26" rx="1.25" fill={color}/>
-      <rect x="12" y="6" width="2.5" height="34" rx="1.25" fill={color}/>
-      <rect x="16" y="8" width="2.5" height="30" rx="1.25" fill={color}/>
-      <rect x="20" y="14" width="2.5" height="18" rx="1.25" fill={color}/>
-      <rect x="24" y="18" width="2.5" height="10" rx="1.25" fill={color}/>
-      <rect x="28" y="16" width="2.5" height="14" rx="1.25" fill={color}/>
-      <rect x="32" y="12" width="2.5" height="22" rx="1.25" fill={color}/>
-      <rect x="36" y="20" width="2.5" height="6" rx="1.25" fill={color}/>
+    <g>
+      <rect x="0" y="11" width="1.5" height="2" rx="0.75" fill={color} opacity="0.4"/>
+      <rect x="2.5" y="9" width="1.5" height="6" rx="0.75" fill={color} opacity="0.6"/>
+      <rect x="5" y="7" width="1.5" height="10" rx="0.75" fill={color} opacity="0.8"/>
+      <rect x="7.5" y="4" width="1.5" height="16" rx="0.75" fill={color}/>
+      <rect x="10" y="6" width="1.5" height="12" rx="0.75" fill={color}/>
+      <rect x="12.5" y="8" width="1.5" height="8" rx="0.75" fill={color}/>
+      <rect x="15" y="5" width="1.5" height="14" rx="0.75" fill={color}/>
+      <rect x="17.5" y="3" width="1.5" height="18" rx="0.75" fill={color}/>
+      <rect x="20" y="1" width="1.5" height="22" rx="0.75" fill={color}/>
+      <rect x="22.5" y="3" width="1.5" height="18" rx="0.75" fill={color}/>
+      <rect x="25" y="5" width="1.5" height="14" rx="0.75" fill={color}/>
+      <rect x="27.5" y="8" width="1.5" height="8" rx="0.75" fill={color}/>
+      <rect x="30" y="6" width="1.5" height="12" rx="0.75" fill={color}/>
+      <rect x="32.5" y="4" width="1.5" height="16" rx="0.75" fill={color}/>
+      <rect x="35" y="7" width="1.5" height="10" rx="0.75" fill={color} opacity="0.8"/>
+      <rect x="37.5" y="9" width="1.5" height="6" rx="0.75" fill={color} opacity="0.6"/>
+      <rect x="40" y="11" width="1.5" height="2" rx="0.75" fill={color} opacity="0.4"/>
     </g>
   </svg>
 );
@@ -240,7 +247,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
           flexShrink: 0,
           marginTop: '2px'
         }}>
-          <SoundwaveIcon size={16} color="white" />
+          <SoundwaveIcon size={18} color="white" />
         </div>
 
         {/* Message text */}
@@ -504,7 +511,7 @@ const ChatWidget = () => {
           border: `1px solid rgba(0, 0, 0, 0.06)`,
           boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
-          <SoundwaveIcon size={16} color={WIDGET_THEME.color} />
+          <SoundwaveIcon size={14} color={WIDGET_THEME.color} />
         </div>
       </div>
       <div style={{
@@ -696,7 +703,7 @@ const ChatWidget = () => {
             backdropFilter: 'blur(5px)'
           }}>
             <SoundwaveIcon 
-              size={isMinimized ? (windowWidth <= 768 ? 20 : 24) : 28} 
+              size={isMinimized ? (windowWidth <= 768 ? 24 : 28) : 32} 
               color={WIDGET_THEME.color} 
             />
           </div>
@@ -715,13 +722,6 @@ const ChatWidget = () => {
                 textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
               }}>
                 {t.subtitle}
-              </span>
-              <span style={{ 
-                color: 'rgba(255, 255, 255, 0.9)',
-                fontSize: '14px',
-                fontWeight: '500'
-              }}>
-                {t.title}
               </span>
             </div>
           )}
@@ -783,7 +783,7 @@ const ChatWidget = () => {
                       border: `1px solid rgba(0, 0, 0, 0.06)`,
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
-                      <SoundwaveIcon size={16} color={WIDGET_THEME.color} />
+                      <SoundwaveIcon size={14} color={WIDGET_THEME.color} />
                     </div>
                   )}
                   
