@@ -108,32 +108,35 @@ const MessageFormatter = ({ message }) => {
   );
 };
 
-// Flowing soundwave icon component - much more elegant
-const SoundwaveIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
+// Sparkles icon component - perfect for AI chatbot
+const SparklesIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
   <svg 
     width={size} 
-    height={size * 0.6} 
-    viewBox="0 0 40 24" 
+    height={size} 
+    viewBox="0 0 24 24" 
     xmlns="http://www.w3.org/2000/svg"
   >
     <g>
-      <rect x="0" y="11" width="1.5" height="2" rx="0.75" fill={color} opacity="0.4"/>
-      <rect x="2.5" y="9" width="1.5" height="6" rx="0.75" fill={color} opacity="0.6"/>
-      <rect x="5" y="7" width="1.5" height="10" rx="0.75" fill={color} opacity="0.8"/>
-      <rect x="7.5" y="4" width="1.5" height="16" rx="0.75" fill={color}/>
-      <rect x="10" y="6" width="1.5" height="12" rx="0.75" fill={color}/>
-      <rect x="12.5" y="8" width="1.5" height="8" rx="0.75" fill={color}/>
-      <rect x="15" y="5" width="1.5" height="14" rx="0.75" fill={color}/>
-      <rect x="17.5" y="3" width="1.5" height="18" rx="0.75" fill={color}/>
-      <rect x="20" y="1" width="1.5" height="22" rx="0.75" fill={color}/>
-      <rect x="22.5" y="3" width="1.5" height="18" rx="0.75" fill={color}/>
-      <rect x="25" y="5" width="1.5" height="14" rx="0.75" fill={color}/>
-      <rect x="27.5" y="8" width="1.5" height="8" rx="0.75" fill={color}/>
-      <rect x="30" y="6" width="1.5" height="12" rx="0.75" fill={color}/>
-      <rect x="32.5" y="4" width="1.5" height="16" rx="0.75" fill={color}/>
-      <rect x="35" y="7" width="1.5" height="10" rx="0.75" fill={color} opacity="0.8"/>
-      <rect x="37.5" y="9" width="1.5" height="6" rx="0.75" fill={color} opacity="0.6"/>
-      <rect x="40" y="11" width="1.5" height="2" rx="0.75" fill={color} opacity="0.4"/>
+      {/* Large sparkle */}
+      <path 
+        d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" 
+        fill={color}
+      />
+      {/* Medium sparkle */}
+      <path 
+        d="M18 4l0.75 2.25L21 7.5l-2.25 0.75L18 11l-0.75-2.25L15 7.5l2.25-0.75L18 4z" 
+        fill={color} 
+        opacity="0.8"
+      />
+      {/* Small sparkle */}
+      <path 
+        d="M6 15l0.5 1.5L8 17.5l-1.5 0.5L6 20l-0.5-1.5L4 17.5l1.5-0.5L6 15z" 
+        fill={color} 
+        opacity="0.6"
+      />
+      {/* Tiny sparkle */}
+      <circle cx="19" cy="15" r="1" fill={color} opacity="0.4"/>
+      <circle cx="4" cy="6" r="0.8" fill={color} opacity="0.4"/>
     </g>
   </svg>
 );
@@ -155,11 +158,11 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
 
   const textBarTranslations = {
     is: {
-      message: "Hæ! Ég er AI þjónustufulltrúi hjá Svörum strax. Get ég hjálpað?",
+      message: "Hæ! Ég er gervigreindarfulltrúi. Get ég hjálpað þér?",
       close: "Loka"
     },
     en: {
-      message: "Hi! I'm an AI specialist at Svörum strax. How can I help your business today?",
+      message: "Hi! I'm your AI assistant. How can I help you today?",
       close: "Close"
     }
   };
@@ -247,7 +250,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
           flexShrink: 0,
           marginTop: '2px'
         }}>
-          <SoundwaveIcon size={18} color="white" />
+          <SparklesIcon size={18} color="white" />
         </div>
 
         {/* Message text */}
@@ -317,7 +320,7 @@ const ChatWidget = () => {
   const translations = {
     is: {
       title: "Gervigreindarfulltrúi",
-      subtitle: "Svörum strax",
+      subtitle: "Gervigreindarfulltrúi",
       placeholder: "Skrifaðu skilaboð...",
       send: "Senda",
       welcome: "Hæ! Ég er AI spjallmenni hjá Svörum strax. Ertu með fyrirtæki og hefur áhuga á þjónustu okkar? Eða hefur þú áhuga á að ganga til liðs við okkur í Barcelona?",
@@ -325,7 +328,7 @@ const ChatWidget = () => {
     },
     en: {
       title: "AI Assistant",
-      subtitle: "Svörum strax",
+      subtitle: "AI Assistant",
       placeholder: "Type a message...",
       send: "Send",
       welcome: "Hello! I'm your AI assistant at Svörum strax. Are you a business looking to enhance your customer service? Or perhaps you're interested in joining our Barcelona team?",
@@ -511,7 +514,7 @@ const ChatWidget = () => {
           border: `1px solid rgba(0, 0, 0, 0.06)`,
           boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
-          <SoundwaveIcon size={14} color={WIDGET_THEME.color} />
+          <SparklesIcon size={14} color={WIDGET_THEME.color} />
         </div>
       </div>
       <div style={{
@@ -702,7 +705,7 @@ const ChatWidget = () => {
             justifyContent: 'center',
             backdropFilter: 'blur(5px)'
           }}>
-            <SoundwaveIcon 
+            <SparklesIcon 
               size={isMinimized ? (windowWidth <= 768 ? 24 : 28) : 32} 
               color={WIDGET_THEME.color} 
             />
@@ -783,7 +786,7 @@ const ChatWidget = () => {
                       border: `1px solid rgba(0, 0, 0, 0.06)`,
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
-                      <SoundwaveIcon size={14} color={WIDGET_THEME.color} />
+                      <SparklesIcon size={14} color={WIDGET_THEME.color} />
                     </div>
                   )}
                   
