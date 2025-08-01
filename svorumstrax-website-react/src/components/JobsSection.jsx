@@ -1,4 +1,3 @@
-
 import barcelonaImage from '../assets/images/barcelona-skyline.jpg'
 
 const JobsSection = ({ currentLanguage, onContactClick }) => {
@@ -85,19 +84,19 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-12">
           
-          {/* CTA Card - Pure Sterile White Style like Screenshot #1 */}
+          {/* CTA Card - Glassmorphic like Barcelona Stats Card */}
           <div className="lg:col-span-5">
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-center shadow-sm">
+            <div className="bg-white/20 backdrop-blur-md border border-white/25 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-center shadow-lg">
               <div className="mb-8">
-                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-6">
-                  <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-6 border border-white/30">
+                  <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6.294a7.707 7.707 0 01-2-.933" />
                   </svg>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-semibold mb-4 leading-tight text-gray-900">
                   {currentContent.button}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-700 mb-6 leading-relaxed">
                   {currentContent.subtitle}
                 </p>
               </div>
@@ -140,12 +139,12 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
 
-        {/* Clean White Benefits Cards - Screenshot #1 Style */}
+        {/* Glassmorphic Benefits Cards - Same Style as Barcelona Card */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
           {currentContent.benefits.map((benefit, index) => (
             <div 
               key={index}
-              className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300"
+              className="bg-white/20 backdrop-blur-md border border-white/25 rounded-xl p-6 sm:p-8 shadow-lg hover:bg-white/25 transition-all duration-300"
             >
               <div className="flex items-start gap-4">
                 <div className="text-2xl">
@@ -155,7 +154,7 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
                   <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 leading-tight">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
