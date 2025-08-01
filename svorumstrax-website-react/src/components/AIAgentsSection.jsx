@@ -11,7 +11,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
     is: {
       title: 'Gervigreindarfulltrúar',
       subtitle: 'Sérfræðingar sem þekkja þínar vörur, þjónustu og kerfi. Svara flóknum spurningum og framkvæma raunverulegar aðgerðir.',
-      mainDescription: 'Við þjálfum gervigreindina í að vera sérfræðingur í þínum rekstri. Hún lærir verðskrá, stefnur, samstarfsaðila og tengist kerfunum þínum til að geta tekið við pöntunum og bókað tíma.',
+      mainDescription: 'Við þjálfum gervigreind í að vera sérfræðingur í þínum rekstri. Hún lærir verðskrá, stefnur, samstarfsaðila og tengist kerfunum þínum til að geta tekið við pöntunum og bókað tíma.',
       features: [
         {
           icon: ClockIcon,
