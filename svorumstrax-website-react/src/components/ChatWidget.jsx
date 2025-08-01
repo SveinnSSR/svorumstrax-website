@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
-/*
-const WIDGET_THEME = {
-  color: '#FFA947',  // Your preferred warm orange
-  gradient: 'linear-gradient(135deg, #FF9A3C 0%, #FFA947 50%, #FFB84D 100%)', // Logo gradient
-};
-*/
 
-// REPLACE WITH (GREEN OPTION):
+// Updated theme with translucent/glassmorphic options
 const WIDGET_THEME = {
   color: '#66D893',  // Beautiful ELKO green.
-  gradient: '#66D893', // Solid green background.
+  gradient: 'linear-gradient(135deg, rgba(102, 216, 147, 0.85) 0%, rgba(52, 211, 153, 0.9) 100%)', // Translucent gradient
+  solidGradient: 'linear-gradient(135deg, #66D893 0%, #34D399 100%)', // Solid fallback if needed
 };
 
 // Constants for session management
@@ -654,7 +649,7 @@ const ChatWidget = () => {
         zIndex: 9999,
         maxWidth: isMinimized ? 'auto' : '90vw'
       }}>
-        {/* Header - Click anywhere to toggle */}
+        {/* Header - Translucent Glassmorphic Style */}
         <div 
           onClick={handleToggleChat}
           style={{
@@ -665,12 +660,13 @@ const ChatWidget = () => {
             cursor: 'pointer',
             gap: '12px',
             background: isMinimized ? WIDGET_THEME.gradient : WIDGET_THEME.gradient,
+            backdropFilter: isMinimized ? 'none' : 'blur(10px)',
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
             flexDirection: isMinimized ? 'row' : 'column',
             boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)',
-            borderBottom: isMinimized ? 'none' : '1px solid rgba(0, 0, 0, 0.12)'
+            borderBottom: isMinimized ? 'none' : '1px solid rgba(255, 255, 255, 0.2)'
           }}
         >
           <div style={{
@@ -678,12 +674,13 @@ const ChatWidget = () => {
             height: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
             width: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
             borderRadius: '50%',
-            backgroundColor: isMinimized ? 'white' : 'white',
+            backgroundColor: isMinimized ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.9)',
             padding: '8px',
             boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            backdropFilter: 'blur(5px)'
           }}>
             <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
