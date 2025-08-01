@@ -57,11 +57,15 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
   return (
     <section 
       id="jobs"
-      className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-slate-50 via-white to-orange-50/20 relative overflow-hidden"
+      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
+      style={{
+        background: 'linear-gradient(135deg, rgba(248, 250, 252, 0.8) 0%, rgba(241, 245, 249, 0.9) 50%, rgba(254, 252, 232, 0.6) 100%)'
+      }}
     >
-      {/* Subtle background effects */}
+      {/* Soft gradient background for warmth */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_25%_25%,_rgba(251,146,60,0.08)_0%,_transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50/80 via-white/60 to-amber-50/40"></div>
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_25%_25%,_rgba(244,185,96,0.08)_0%,_transparent_50%)]"></div>
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_75%_75%,_rgba(30,58,138,0.06)_0%,_transparent_50%)]"></div>
       </div>
       
@@ -80,49 +84,51 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-12">
           
-          {/* CTA Card - Top Left */}
+          {/* CTA Card - Scandinavian Muted Style */}
           <div className="lg:col-span-5">
-            <div className="bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-center text-white shadow-lg">
+            <div className="bg-slate-800/95 backdrop-blur-sm border border-slate-700/20 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-center text-white shadow-xl">
               <div className="mb-6">
-                <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center mb-4 border border-white/20">
                   <span className="text-2xl">💼</span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold mb-4 leading-tight">
                   {currentContent.button}
                 </h3>
-                <p className="text-orange-50 opacity-90 mb-6 leading-relaxed">
+                <p className="text-slate-200 opacity-90 mb-6 leading-relaxed">
                   {currentContent.subtitle}
                 </p>
               </div>
               <button
                 onClick={() => onContactClick('job')}
-                className="bg-white hover:bg-gray-50 text-orange-500 font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 w-full sm:w-auto"
+                className="bg-white/95 hover:bg-white text-slate-800 font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 backdrop-blur-sm w-full sm:w-auto"
               >
                 {currentContent.button}
               </button>
             </div>
           </div>
 
-          {/* Barcelona Image Card - Top Right */}
+          {/* Barcelona Image Card with Gradient Overlay */}
           <div className="lg:col-span-7">
-            <div className="relative h-[300px] sm:h-[350px] lg:h-full min-h-[280px] rounded-2xl overflow-hidden shadow-lg">
+            <div className="relative h-[300px] sm:h-[350px] lg:h-full min-h-[280px] rounded-2xl overflow-hidden shadow-xl">
               <img 
                 src={barcelonaImage}
                 alt="Barcelona skyline"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent"></div>
+              {/* Gradient overlay like original design */}
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-800/60 via-slate-900/40 to-slate-800/70"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
               
-              {/* Stats Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 mb-2">
+              {/* Glassmorphic Stats Overlay */}
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="bg-white/15 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-lg">
+                  <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-2 drop-shadow-sm">
                     35+
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-2">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
                     {currentContent.statsTitle}
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
+                  <p className="text-sm text-white/90 leading-relaxed">
                     {currentContent.statsDescription}
                   </p>
                 </div>
@@ -131,22 +137,22 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
 
-        {/* Benefits Cards - Bottom Row */}
+        {/* Glassmorphic Benefits Cards - Bottom Row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentContent.benefits.map((benefit, index) => (
             <div 
               key={index}
-              className="bg-white/60 backdrop-blur-sm border border-white/40 rounded-xl p-6 sm:p-8 hover:bg-white/80 transition-all duration-300 hover:shadow-lg"
+              className="bg-white/40 backdrop-blur-md border border-white/30 rounded-xl p-6 sm:p-8 hover:bg-white/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 shadow-sm"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center flex-shrink-0 text-xl">
+                <div className="w-12 h-12 bg-white/50 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0 text-xl border border-white/30 shadow-sm">
                   {benefit.icon}
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-3 leading-tight">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
