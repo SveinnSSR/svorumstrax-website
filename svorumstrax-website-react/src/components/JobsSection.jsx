@@ -1,3 +1,4 @@
+
 import barcelonaImage from '../assets/images/barcelona-skyline.jpg'
 
 const JobsSection = ({ currentLanguage, onContactClick }) => {
@@ -84,25 +85,25 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-12">
           
-          {/* CTA Card - Sterile Minimal Tech Style */}
+          {/* CTA Card - Pure Sterile White Style like Screenshot #1 */}
           <div className="lg:col-span-5">
-            <div className="bg-white/95 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-300">
+            <div className="bg-white border border-gray-200 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-center shadow-sm">
               <div className="mb-8">
-                <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center mb-6 border border-gray-200/50">
-                  <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-6">
+                  <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6.294a7.707 7.707 0 01-2-.933" />
                   </svg>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-semibold mb-4 leading-tight text-gray-900">
                   {currentContent.button}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed text-sm">
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   {currentContent.subtitle}
                 </p>
               </div>
               <button
                 onClick={() => onContactClick('job')}
-                className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 w-full sm:w-auto text-sm tracking-wide"
+                className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 w-full sm:w-auto"
               >
                 {currentContent.button}
               </button>
@@ -117,20 +118,20 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
                 alt="Barcelona skyline"
                 className="w-full h-full object-cover"
               />
-              {/* Gradient overlay like original design */}
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-800/60 via-slate-900/40 to-slate-800/70"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+              {/* Lighter gradient overlay to brighten image */}
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-800/40 via-slate-900/25 to-slate-800/45"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
               
-              {/* Glassmorphic Stats Overlay - More Transparent */}
+              {/* Stats Overlay - Back to original visibility */}
               <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-white/12 backdrop-blur-lg rounded-xl p-6 border border-white/15 shadow-xl">
-                  <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-2 drop-shadow-lg">
+                <div className="bg-white/20 backdrop-blur-md rounded-xl p-6 border border-white/25 shadow-lg">
+                  <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-2 drop-shadow-sm">
                     35+
                   </div>
                   <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
                     {currentContent.statsTitle}
                   </h3>
-                  <p className="text-sm text-white/95 leading-relaxed">
+                  <p className="text-sm text-white/90 leading-relaxed">
                     {currentContent.statsDescription}
                   </p>
                 </div>
@@ -139,22 +140,22 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
 
-        {/* Minimal Tech Benefits Cards - Bottom Row */}
+        {/* Clean White Benefits Cards - Screenshot #1 Style */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
           {currentContent.benefits.map((benefit, index) => (
             <div 
               key={index}
-              className="bg-white/80 backdrop-blur-lg border border-gray-200/40 rounded-xl p-6 sm:p-8 hover:bg-white/90 hover:border-gray-300/50 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 shadow-sm"
+              className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300"
             >
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-gray-50/80 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 text-lg border border-gray-200/50 shadow-sm">
+                <div className="text-2xl">
                   {benefit.icon}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 leading-tight">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 leading-tight">
                     {benefit.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
