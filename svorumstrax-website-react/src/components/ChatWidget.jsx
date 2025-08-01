@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 
-// Updated theme with sophisticated purple gradient
+// Back to the beautiful green translucent theme
 const WIDGET_THEME = {
-  color: '#667eea',  // Primary purple
-  gradient: 'linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.9) 100%)', // Translucent purple gradient
-  solidGradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', // Solid fallback if needed
-  darkPurple: '#764ba2',
+  color: '#66D893',  // Beautiful ELKO green
+  gradient: 'linear-gradient(135deg, rgba(102, 216, 147, 0.85) 0%, rgba(52, 211, 153, 0.9) 100%)', // Translucent green gradient
+  solidGradient: 'linear-gradient(135deg, #66D893 0%, #34D399 100%)', // Solid fallback if needed
 };
 
 // Constants for session management
@@ -109,6 +108,29 @@ const MessageFormatter = ({ message }) => {
   );
 };
 
+// Soundwave icon component from your logo
+const SoundwaveIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 40 45" 
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g transform="translate(2, 2.5)">
+      <rect x="0" y="20" width="2.5" height="6" rx="1.25" fill={color}/>
+      <rect x="4" y="16" width="2.5" height="14" rx="1.25" fill={color}/>
+      <rect x="8" y="10" width="2.5" height="26" rx="1.25" fill={color}/>
+      <rect x="12" y="6" width="2.5" height="34" rx="1.25" fill={color}/>
+      <rect x="16" y="8" width="2.5" height="30" rx="1.25" fill={color}/>
+      <rect x="20" y="14" width="2.5" height="18" rx="1.25" fill={color}/>
+      <rect x="24" y="18" width="2.5" height="10" rx="1.25" fill={color}/>
+      <rect x="28" y="16" width="2.5" height="14" rx="1.25" fill={color}/>
+      <rect x="32" y="12" width="2.5" height="22" rx="1.25" fill={color}/>
+      <rect x="36" y="20" width="2.5" height="6" rx="1.25" fill={color}/>
+    </g>
+  </svg>
+);
+
 // External Text Bar Component
 const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage }) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -206,7 +228,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
         gap: '12px',
         paddingRight: '24px'
       }}>
-        {/* AI Avatar with purple gradient */}
+        {/* AI Avatar with green gradient and soundwave */}
         <div style={{
           width: '32px',
           height: '32px',
@@ -218,12 +240,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
           flexShrink: 0,
           marginTop: '2px'
         }}>
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill="white"/>
-            <circle cx="6" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
-            <circle cx="10" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
-            <circle cx="14" cy="8.5" r="1" fill={WIDGET_THEME.color}/>
-          </svg>
+          <SoundwaveIcon size={16} color="white" />
         </div>
 
         {/* Message text */}
@@ -487,12 +504,7 @@ const ChatWidget = () => {
           border: `1px solid rgba(0, 0, 0, 0.06)`,
           boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-              <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
-              <circle cx="6" cy="8.5" r="1" fill="white"/>
-              <circle cx="10" cy="8.5" r="1" fill="white"/>
-              <circle cx="14" cy="8.5" r="1" fill="white"/>
-          </svg>
+          <SoundwaveIcon size={16} color={WIDGET_THEME.color} />
         </div>
       </div>
       <div style={{
@@ -650,7 +662,7 @@ const ChatWidget = () => {
         zIndex: 9999,
         maxWidth: isMinimized ? 'auto' : '90vw'
       }}>
-        {/* Header - Translucent Purple Glassmorphic Style */}
+        {/* Header - Translucent Green Glassmorphic Style with Soundwave */}
         <div 
           onClick={handleToggleChat}
           style={{
@@ -683,12 +695,10 @@ const ChatWidget = () => {
             justifyContent: 'center',
             backdropFilter: 'blur(5px)'
           }}>
-            <svg width={isMinimized ? '24' : '32'} height={isMinimized ? '24' : '32'} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={WIDGET_THEME.color}/>
-                <circle cx="10" cy="14" r="2" fill="white"/>
-                <circle cx="16" cy="14" r="2" fill="white"/>
-                <circle cx="22" cy="14" r="2" fill="white"/>
-            </svg>
+            <SoundwaveIcon 
+              size={isMinimized ? (windowWidth <= 768 ? 20 : 24) : 28} 
+              color={WIDGET_THEME.color} 
+            />
           </div>
           
           {!isMinimized && (
@@ -773,12 +783,7 @@ const ChatWidget = () => {
                       border: `1px solid rgba(0, 0, 0, 0.06)`,
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
-                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                          <path d="M17.5 12.5a1.25 1.25 0 0 1-1.25 1.25H6.25L3.75 16.25V5a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 5v7.5z" fill={WIDGET_THEME.color}/>
-                          <circle cx="6" cy="8.5" r="1" fill="white"/>
-                          <circle cx="10" cy="8.5" r="1" fill="white"/>
-                          <circle cx="14" cy="8.5" r="1" fill="white"/>
-                      </svg>
+                      <SoundwaveIcon size={16} color={WIDGET_THEME.color} />
                     </div>
                   )}
                   
