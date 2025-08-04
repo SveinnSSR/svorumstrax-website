@@ -15,6 +15,25 @@ const CHUNK_REVEAL_DELAY = 250;
 const FADE_IN_DURATION = 300;
 const MOBILE_BREAKPOINT = 768;
 
+// Smart URL detection - automatically uses the right backend
+const getBackendUrl = () => {
+  // If running locally (localhost), use local backend
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return 'http://localhost:8080';
+  }
+  // If running on Vercel (production), use production backend  
+  return 'https://svorumstrax-chatbot-api.vercel.app';  // Your actual backend URL
+};
+
+const getWebSocketUrl = () => {
+  // WebSocket only works locally - Vercel doesn't support WebSocket
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return 'ws://localhost:8080';
+  }
+  // Return null for production - will use SSE instead
+  return null;
+};
+
 // Error boundary for graceful error handling
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -281,12 +300,19 @@ const ChatWidget = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isStreaming, setIsStreaming] = useState(false);
+  const [streamingMode, setStreamingMode] = useState(true);
   const [sessionId, setSessionId] = useState('');
+  const [currentStreamMessage, setCurrentStreamMessage] = useState('');
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const [typingMessages, setTypingMessages] = useState({});
   const [showTextBar, setShowTextBar] = useState(true);
   const [hasInteracted, setHasInteracted] = useState(false);
   const isMobile = windowWidth <= MOBILE_BREAKPOINT;
+
+  const wsRef = useRef(null);
+  const reconnectTimeoutRef = useRef(null);
 
   // Get current language - updated to work with React state
   const getCurrentLanguage = useCallback(() => {
@@ -360,7 +386,115 @@ const ChatWidget = () => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, typingMessages]);
+  }, [messages, typingMessages, currentStreamMessage]);
+
+  // WebSocket connection management
+  const connectWebSocket = () => {
+    if (wsRef.current?.readyState === WebSocket.OPEN) {
+      return;
+    }
+
+    // Get WebSocket URL (null in production)
+    const wsUrl = getWebSocketUrl();
+    if (!wsUrl) {
+      console.log('WebSocket not available in production - using SSE mode');
+      return;
+    }
+
+    try {
+      wsRef.current = new WebSocket(wsUrl);
+      
+      wsRef.current.onopen = () => {
+        console.log('🔌 WebSocket connected');
+        if (reconnectTimeoutRef.current) {
+          clearTimeout(reconnectTimeoutRef.current);
+          reconnectTimeoutRef.current = null;
+        }
+      };
+
+      wsRef.current.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          console.log('📨 WebSocket message:', data);
+
+          switch (data.type) {
+            case 'stream-connected':
+              console.log('✅ Stream connected:', data.streamId);
+              break;
+
+            case 'stream-chunk':
+              setCurrentStreamMessage(prev => prev + data.content);
+              break;
+
+            case 'stream-complete':
+              console.log('✅ Stream complete');
+              setMessages(prev => [...prev, {
+                id: `bot-${Date.now()}`,
+                text: data.completeContent,
+                sender: 'bot',
+                timestamp: new Date()
+              }]);
+              
+              // Start the chunked reveal effect
+              const botMsgId = `bot-${Date.now()}-complete`;
+              renderMessage(botMsgId, data.completeContent);
+              
+              setCurrentStreamMessage('');
+              setIsStreaming(false);
+              setIsLoading(false);
+              break;
+
+            case 'stream-error':
+              console.error('❌ Stream error:', data.error);
+              setMessages(prev => [...prev, {
+                id: `error-${Date.now()}`,
+                text: 'Sorry, there was an error with the streaming response. Please try again.',
+                sender: 'bot',
+                timestamp: new Date(),
+                isError: true
+              }]);
+              setCurrentStreamMessage('');
+              setIsStreaming(false);
+              setIsLoading(false);
+              break;
+          }
+        } catch (error) {
+          console.error('❌ Error parsing WebSocket message:', error);
+        }
+      };
+
+      wsRef.current.onclose = () => {
+        console.log('🔌 WebSocket disconnected');
+        reconnectTimeoutRef.current = setTimeout(() => {
+          console.log('🔄 Attempting to reconnect WebSocket...');
+          connectWebSocket();
+        }, 3000);
+      };
+
+      wsRef.current.onerror = (error) => {
+        console.error('❌ WebSocket error:', error);
+      };
+
+    } catch (error) {
+      console.error('❌ Error creating WebSocket connection:', error);
+    }
+  };
+
+  // Initialize WebSocket connection
+  useEffect(() => {
+    if (streamingMode) {
+      connectWebSocket();
+    }
+
+    return () => {
+      if (wsRef.current) {
+        wsRef.current.close();
+      }
+      if (reconnectTimeoutRef.current) {
+        clearTimeout(reconnectTimeoutRef.current);
+      }
+    };
+  }, [streamingMode]);
 
   // Chunked reveal effect (premium feel)
   const renderMessage = useCallback((messageId, fullText) => {
@@ -477,6 +611,133 @@ const ChatWidget = () => {
     }
   }, [isMinimized, messages.length, renderMessage, getCurrentLanguage]);
 
+  // Send message via WebSocket (streaming)
+  const sendStreamingMessage = async (messageText) => {
+    if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
+      console.log('⚠️ WebSocket not connected, trying to connect...');
+      connectWebSocket();
+      
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
+        throw new Error('WebSocket connection failed');
+      }
+    }
+
+    const message = {
+      type: 'chat',
+      message: messageText,
+      sessionId: sessionId
+    };
+
+    wsRef.current.send(JSON.stringify(message));
+  };
+
+  // Send message via SSE (Vercel compatible!)
+  const sendSSEMessage = async (messageText) => {
+    console.log('📡 Starting SSE stream for message:', messageText);
+    
+    try {
+      const response = await fetch(`${getBackendUrl()}/chat-stream`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': 'svorum2025_sk3j8k4j5k6j7k8j9k0j1k2',
+        },
+        body: JSON.stringify({
+          message: messageText,
+          sessionId: sessionId
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // Read the stream
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        
+        if (done) {
+          console.log('📡 SSE stream ended');
+          break;
+        }
+
+        // Decode the chunk
+        const chunk = decoder.decode(value);
+        const lines = chunk.split('\n');
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = line.slice(6); // Remove 'data: ' prefix
+            
+            if (data.trim() === '[DONE]') {
+              console.log('✅ SSE stream complete signal received');
+              continue;
+            }
+
+            try {
+              const parsed = JSON.parse(data);
+              console.log('📨 SSE message:', parsed);
+
+              // Handle the same message types as WebSocket
+              switch (parsed.type) {
+                case 'stream-connected':
+                  console.log('✅ SSE stream connected:', parsed.streamId);
+                  break;
+
+                case 'stream-chunk':
+                  setCurrentStreamMessage(prev => prev + parsed.content);
+                  break;
+
+                case 'stream-complete':
+                  console.log('✅ SSE stream complete');
+                  setMessages(prev => [...prev, {
+                    id: `bot-${Date.now()}`,
+                    text: parsed.completeContent,
+                    sender: 'bot',
+                    timestamp: new Date()
+                  }]);
+                  
+                  // Start the chunked reveal effect (same as WebSocket)
+                  const botMsgId = `bot-${Date.now()}-complete`;
+                  renderMessage(botMsgId, parsed.completeContent);
+                  
+                  setCurrentStreamMessage('');
+                  setIsStreaming(false);
+                  setIsLoading(false);
+                  break;
+
+                case 'stream-error':
+                  console.error('❌ SSE stream error:', parsed.error);
+                  setMessages(prev => [...prev, {
+                    id: `error-${Date.now()}`,
+                    text: 'Sorry, there was an error with the streaming response. Please try again.',
+                    sender: 'bot',
+                    timestamp: new Date(),
+                    isError: true
+                  }]);
+                  setCurrentStreamMessage('');
+                  setIsStreaming(false);
+                  setIsLoading(false);
+                  break;
+              }
+            } catch (parseError) {
+              console.error('❌ Error parsing SSE data:', parseError);
+            }
+          }
+        }
+      }
+
+    } catch (error) {
+      console.error('❌ SSE streaming error:', error);
+      throw error;
+    }
+  };
+
   const TypingIndicator = () => (
     <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '16px', alignItems: 'flex-start', gap: '8px' }}>
       <div style={{ position: 'relative', height: '32px', width: '32px' }}>
@@ -544,54 +805,74 @@ const ChatWidget = () => {
 
     const userMsgId = 'user-' + Date.now();
     setMessages(prev => [...prev, {
-      type: 'user',
-      content: messageText,
       id: userMsgId,
+      text: messageText,
+      sender: 'user',
       timestamp: Date.now()
     }]);
     
-    setIsTyping(true);
+    setIsLoading(true);
 
     try {
-      const response = await fetch('https://svorumstrax-chatbot-api.vercel.app/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          messages: [
-            { role: 'user', content: messageText }
-          ],
-          threadId: sessionId  // ✅ Use threadId with messages array
-        }),
-      });
+      if (streamingMode) {
+        setIsStreaming(true);
+        setCurrentStreamMessage('');
+        
+        // Smart mode selection - use SSE on Vercel, WebSocket locally
+        const useSSE = window.location.hostname !== 'localhost';
+        
+        if (useSSE) {
+          console.log('🔄 Using SSE streaming (production mode)...');
+          await sendSSEMessage(messageText);
+        } else {
+          console.log('🔄 Using WebSocket streaming (development mode)...');
+          await sendStreamingMessage(messageText);
+        }
+      } else {
+        // HTTP API mode
+        const response = await fetch(`${getBackendUrl()}/chat`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            messages: [
+              { role: 'user', content: messageText }
+            ],
+            threadId: sessionId  // ✅ Use threadId with messages array
+          }),
+        });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        if (data.sessionId && data.sessionId !== sessionId) {
+          setSessionId(data.sessionId);
+          localStorage.setItem(SESSION_ID_KEY, data.sessionId);
+        }
+
+        const botMsgId = 'bot-' + Date.now();
+        setMessages(prev => [...prev, { 
+          type: 'bot', 
+          content: data.message,
+          id: botMsgId,
+          timestamp: Date.now()
+        }]);
+        
+        renderMessage(botMsgId, data.message);
+        setIsLoading(false);
       }
-
-      const data = await response.json();
-      
-      if (data.sessionId && data.sessionId !== sessionId) {
-        setSessionId(data.sessionId);
-        localStorage.setItem(SESSION_ID_KEY, data.sessionId);
-      }
-
-      const botMsgId = 'bot-' + Date.now();
-      setMessages(prev => [...prev, { 
-        type: 'bot', 
-        content: data.message,
-        id: botMsgId,
-        timestamp: Date.now()
-      }]);
-      
-      renderMessage(botMsgId, data.message);
     } catch (error) {
       console.error('Chat request failed:', error);
       
       const errorMsgId = 'error-' + Date.now();
       const lang = getCurrentLanguage();
-      const errorMessage = translations[lang].error;
+      const errorMessage = streamingMode ? 
+        'Sorry, I couldn\'t process your message. Streaming mode failed. Please try again.' :
+        'Sorry, I couldn\'t process your message. HTTP request failed. Please try again.';
       
       setMessages(prev => [...prev, { 
         type: 'bot', 
@@ -600,8 +881,9 @@ const ChatWidget = () => {
       }]);
       
       renderMessage(errorMsgId, errorMessage);
-    } finally {
-      setIsTyping(false);
+      setIsLoading(false);
+      setIsStreaming(false);
+      setCurrentStreamMessage('');
     }
   };
 
@@ -617,6 +899,14 @@ const ChatWidget = () => {
     setIsMinimized(false);
     setHasInteracted(true);
     setShowTextBar(false);
+  };
+
+  // Toggle between streaming and HTTP modes
+  const toggleMode = () => {
+    setStreamingMode(!streamingMode);
+    setIsLoading(false);
+    setIsStreaming(false);
+    setCurrentStreamMessage('');
   };
 
   const lang = getCurrentLanguage();
@@ -703,6 +993,23 @@ const ChatWidget = () => {
               }}>
                 {t.subtitle}
               </span>
+              {/* Mode toggle */}
+              {!isMinimized && (
+                <div style={{ 
+                  fontSize: '12px', 
+                  color: 'rgba(255,255,255,0.9)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleMode();
+                }}>
+                  {streamingMode ? '⚡ Real-time' : '📡 Standard'}
+                </div>
+              )}
             </div>
           )}
           
@@ -738,18 +1045,18 @@ const ChatWidget = () => {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  alignItems: msg.type === 'user' ? 'flex-end' : 'flex-start',
+                  alignItems: msg.type === 'user' || msg.sender === 'user' ? 'flex-end' : 'flex-start',
                   marginBottom: '16px'
                 }}
               >
                 <div style={{
                   display: 'flex',
-                  justifyContent: msg.type === 'user' ? 'flex-end' : 'flex-start',
+                  justifyContent: msg.type === 'user' || msg.sender === 'user' ? 'flex-end' : 'flex-start',
                   alignItems: 'flex-start',
                   width: '100%',
                   gap: '8px'
                 }}>
-                  {msg.type === 'bot' && (
+                  {(msg.type === 'bot' || msg.sender === 'bot') && (
                     <div style={{
                       position: 'relative',
                       height: '32px',
@@ -772,12 +1079,12 @@ const ChatWidget = () => {
                       maxWidth: '70%',
                       padding: '12px 16px',
                       borderRadius: '16px',
-                      backgroundColor: msg.type === 'user' ? '#0A0E27' : 'rgba(229, 231, 235, 0.95)',
-                      color: msg.type === 'user' ? 'white' : '#1f2937',
+                      backgroundColor: msg.type === 'user' || msg.sender === 'user' ? '#0A0E27' : 'rgba(229, 231, 235, 0.95)',
+                      color: msg.type === 'user' || msg.sender === 'user' ? 'white' : '#1f2937',
                       fontSize: '14px',
                       lineHeight: '1.5',
                       boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-                      border: msg.type === 'user' ? 
+                      border: msg.type === 'user' || msg.sender === 'user' ? 
                         `1px solid ${WIDGET_THEME.color}40` : 
                         '1px solid rgba(0, 0, 0, 0.08)',
                       position: 'relative',
@@ -786,7 +1093,7 @@ const ChatWidget = () => {
                       wordBreak: 'break-word'
                     }}
                   >
-                    {msg.type === 'bot' ? (
+                    {(msg.type === 'bot' || msg.sender === 'bot') ? (
                       typingMessages[msg.id || ''] ? (
                         <div style={{ 
                           position: 'relative',
@@ -810,17 +1117,79 @@ const ChatWidget = () => {
                           </div>
                         </div>
                       ) : (
-                        <MessageFormatter message={msg.content} />
+                        <MessageFormatter message={msg.text || msg.content} />
                       )
                     ) : (
-                      msg.content
+                      msg.text || msg.content
                     )}
                   </div>
                 </div>
               </div>
             ))}
 
-            {isTyping && <TypingIndicator />}
+            {/* Streaming message preview */}
+            {isStreaming && currentStreamMessage && (
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                marginBottom: '16px'
+              }}>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start',
+                  width: '100%',
+                  gap: '8px'
+                }}>
+                  <div style={{
+                    position: 'relative',
+                    height: '32px',
+                    width: '32px',
+                    background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    border: `1px solid rgba(0, 0, 0, 0.06)`,
+                    boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
+                  }}>
+                    <ChatIcon size={14} color={WIDGET_THEME.color} />
+                  </div>
+                  
+                  <div style={{
+                    maxWidth: '70%',
+                    padding: '12px 16px',
+                    borderRadius: '16px',
+                    backgroundColor: 'rgba(229, 231, 235, 0.95)',
+                    color: '#1f2937',
+                    fontSize: '14px',
+                    lineHeight: '1.5',
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
+                    position: 'relative',
+                    overflowWrap: 'break-word',
+                    wordWrap: 'break-word',
+                    wordBreak: 'break-word'
+                  }}>
+                    {currentStreamMessage}
+                    <span style={{
+                      display: 'inline-block',
+                      width: '2px',
+                      height: '16px',
+                      backgroundColor: WIDGET_THEME.color,
+                      marginLeft: '2px',
+                      animation: 'blink 1s infinite'
+                    }}>|</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Loading indicator for HTTP mode */}
+            {isLoading && !isStreaming && <TypingIndicator />}
+
             <div ref={messagesEndRef} />
           </div>
         )}
@@ -844,7 +1213,8 @@ const ChatWidget = () => {
                   handleSend();
                 }
               }}
-              placeholder={t.placeholder}
+              placeholder={streamingMode ? `${t.placeholder} (streaming)` : t.placeholder}
+              disabled={isLoading}
               style={{
                 flex: 1,
                 padding: '8px 16px',
@@ -868,20 +1238,22 @@ const ChatWidget = () => {
             />
             <button
               onClick={handleSend}
+              disabled={!inputValue.trim() || isLoading}
               style={{
                 background: WIDGET_THEME.gradient,
                 color: 'white',
                 border: 'none',
                 padding: '8px 20px',
                 borderRadius: '20px',
-                cursor: 'pointer',
+                cursor: isLoading ? 'not-allowed' : 'pointer',
                 fontSize: '14px',
                 fontWeight: '600',
                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                opacity: isLoading ? 0.7 : 1
               }}
             >
-              {t.send}
+              {isLoading ? (streamingMode ? '⚡' : '⏳') : t.send}
             </button>
           </div>
         )}
@@ -905,6 +1277,15 @@ const ChatWidget = () => {
             30% {
               transform: translateY(-6px);
               opacity: 1;
+            }
+          }
+
+          @keyframes blink {
+            0%, 50% {
+              opacity: 1;
+            }
+            51%, 100% {
+              opacity: 0;
             }
           }
           
