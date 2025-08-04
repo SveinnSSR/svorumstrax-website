@@ -423,6 +423,11 @@ const ChatWidget = () => {
               break;
 
             case 'stream-chunk':
+              // TYPING INDICATOR FIX: Hide typing indicator on first chunk
+              if (currentStreamMessage === '') {
+                console.log('🎯 First WebSocket chunk received - hiding typing indicator');
+                setIsTyping(false);
+              }
               setCurrentStreamMessage(prev => prev + data.content);
               break;
 
@@ -442,6 +447,7 @@ const ChatWidget = () => {
               setCurrentStreamMessage('');
               setIsStreaming(false);
               setIsLoading(false);
+              setIsTyping(false);
               break;
 
             case 'stream-error':
@@ -456,6 +462,7 @@ const ChatWidget = () => {
               setCurrentStreamMessage('');
               setIsStreaming(false);
               setIsLoading(false);
+              setIsTyping(false);
               break;
           }
         } catch (error) {
@@ -690,6 +697,11 @@ const ChatWidget = () => {
                   break;
 
                 case 'stream-chunk':
+                  // TYPING INDICATOR FIX: Hide typing indicator on first chunk
+                  if (currentStreamMessage === '') {
+                    console.log('🎯 First SSE chunk received - hiding typing indicator');
+                    setIsTyping(false);
+                  }
                   setCurrentStreamMessage(prev => prev + parsed.content);
                   break;
 
@@ -709,6 +721,7 @@ const ChatWidget = () => {
                   setCurrentStreamMessage('');
                   setIsStreaming(false);
                   setIsLoading(false);
+                  setIsTyping(false);
                   break;
 
                 case 'stream-error':
@@ -723,6 +736,7 @@ const ChatWidget = () => {
                   setCurrentStreamMessage('');
                   setIsStreaming(false);
                   setIsLoading(false);
+                  setIsTyping(false);
                   break;
               }
             } catch (parseError) {
@@ -811,6 +825,9 @@ const ChatWidget = () => {
       timestamp: Date.now()
     }]);
     
+    // TYPING INDICATOR FIX: Show typing indicator immediately
+    console.log('🟡 Showing typing indicator immediately');
+    setIsTyping(true);
     setIsLoading(true);
 
     try {
@@ -864,6 +881,7 @@ const ChatWidget = () => {
         
         renderMessage(botMsgId, data.message);
         setIsLoading(false);
+        setIsTyping(false);
       }
     } catch (error) {
       console.error('Chat request failed:', error);
@@ -884,6 +902,7 @@ const ChatWidget = () => {
       setIsLoading(false);
       setIsStreaming(false);
       setCurrentStreamMessage('');
+      setIsTyping(false);
     }
   };
 
@@ -907,6 +926,7 @@ const ChatWidget = () => {
     setIsLoading(false);
     setIsStreaming(false);
     setCurrentStreamMessage('');
+    setIsTyping(false);
   };
 
   const lang = getCurrentLanguage();
@@ -1111,7 +1131,7 @@ const ChatWidget = () => {
               </div>
             ))}
 
-            {/* Streaming message preview */}
+            {/* Streaming message preview (no cursor for premium feel) */}
             {isStreaming && currentStreamMessage && (
               <div style={{
                 display: 'flex',
@@ -1158,21 +1178,13 @@ const ChatWidget = () => {
                     wordBreak: 'break-word'
                   }}>
                     {currentStreamMessage}
-                    <span style={{
-                      display: 'inline-block',
-                      width: '2px',
-                      height: '16px',
-                      backgroundColor: WIDGET_THEME.color,
-                      marginLeft: '2px',
-                      animation: 'blink 1s infinite'
-                    }}>|</span>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Loading indicator for HTTP mode */}
-            {isLoading && !isStreaming && <TypingIndicator />}
+            {/* TYPING INDICATOR: Show during dead air before first chunk arrives */}
+            {isTyping && !currentStreamMessage && <TypingIndicator />}
 
             <div ref={messagesEndRef} />
           </div>
