@@ -993,23 +993,7 @@ const ChatWidget = () => {
               }}>
                 {t.subtitle}
               </span>
-              {/* Mode toggle */}
-              {!isMinimized && (
-                <div style={{ 
-                  fontSize: '12px', 
-                  color: 'rgba(255,255,255,0.9)',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px'
-                }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleMode();
-                }}>
-                  {streamingMode ? '⚡ Real-time' : '📡 Standard'}
-                </div>
-              )}
+
             </div>
           )}
           
@@ -1213,7 +1197,7 @@ const ChatWidget = () => {
                   handleSend();
                 }
               }}
-              placeholder={streamingMode ? `${t.placeholder} (streaming)` : t.placeholder}
+              placeholder={t.placeholder}
               disabled={isLoading}
               style={{
                 flex: 1,
