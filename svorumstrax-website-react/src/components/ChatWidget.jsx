@@ -1205,12 +1205,11 @@ const ChatWidget = () => {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={(e) => {
-                if (e.key === 'Enter') {
+                if (e.key === 'Enter' && !isLoading && inputValue.trim()) {
                   handleSend();
                 }
               }}
               placeholder={t.placeholder}
-              disabled={isLoading}
               style={{
                 flex: 1,
                 padding: '8px 16px',
