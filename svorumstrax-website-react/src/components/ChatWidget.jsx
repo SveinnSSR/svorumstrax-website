@@ -137,54 +137,35 @@ const ChatIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
   </svg>
 );
 
-// OPTIMIZED External Text Bar Component - Like Sky Lagoon (Fast & Simple)
+// SIMPLIFIED External Text Bar Component - EXACTLY like Sky Lagoon (Minimal & Fast)
 const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage }) => {
-  const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
-
-  // Listen for language changes
-  useEffect(() => {
-    const handleLanguageChange = () => {
-      setCurrentLang(getCurrentLanguage());
-    };
-
-    window.addEventListener('languageChanged', handleLanguageChange);
-    return () => window.removeEventListener('languageChanged', handleLanguageChange);
-  }, [getCurrentLanguage]);
-
-  const textBarTranslations = {
-    is: {
-      message: "Hæ! Ég er AI þjónustufulltrúi hjá Svörum strax. Get ég hjálpað?",
-    },
-    en: {
-      message: "Hi! I'm your AI assistant. How can I help you today?",
-    }
-  };
-
   if (!isVisible) return null;
 
-  const t = textBarTranslations[currentLang];
+  const currentLang = getCurrentLanguage();
+  const message = currentLang === 'is' 
+    ? "Hæ! Ég er AI þjónustufulltrúi hjá Svörum strax. Get ég hjálpað?"
+    : "Hi! I'm your AI assistant. How can I help you today?";
 
   return (
     <div 
       onClick={onOpenChat}
       style={{
         position: 'fixed',
-        bottom: '110px',
+        bottom: '100px',
         right: '20px',
         maxWidth: '280px',
-        background: 'white',
-        borderRadius: '12px',
+        backgroundColor: 'white',
+        color: '#4d5a41',
         padding: '14px 18px',
+        borderRadius: '12px',
         boxShadow: '0 3px 10px rgba(0, 0, 0, 0.08)',
-        border: '1px solid rgba(0,0,0,0.05)',
         zIndex: 9998,
-        transition: 'opacity 0.3s ease-in-out',
-        cursor: 'pointer',
         fontSize: '14px',
         lineHeight: '1.5',
-        color: '#2D3748',
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-        userSelect: 'none'
+        fontFamily: 'Arial, sans-serif',
+        cursor: 'pointer',
+        userSelect: 'none',
+        border: '1px solid rgba(0,0,0,0.05)'
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-2px)';
@@ -195,7 +176,6 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
         e.currentTarget.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.08)';
       }}
     >
-      {/* Close button */}
       <div
         onClick={(e) => {
           e.stopPropagation();
@@ -207,13 +187,11 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
           right: '10px',
           cursor: 'pointer',
           fontSize: '18px',
-          fontWeight: 'normal',
           color: '#999',
           lineHeight: '14px',
           width: '16px',
           height: '16px',
-          textAlign: 'center',
-          borderRadius: '50%',
+          textAlign: 'center'
         }}
         onMouseOver={(e) => e.target.style.color = '#666'}
         onMouseOut={(e) => e.target.style.color = '#999'}
@@ -221,34 +199,10 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
         ×
       </div>
 
-      {/* Message text with avatar */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-        paddingRight: '24px'
-      }}>
-        {/* Green gradient avatar */}
-        <div style={{
-          width: '32px',
-          height: '32px',
-          background: WIDGET_THEME.gradient,
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0
-        }}>
-          <ChatIcon size={18} color="white" />
-        </div>
-
-        {/* Message text */}
-        <div style={{ fontWeight: '500' }}>
-          {t.message}
-        </div>
+      <div style={{ paddingRight: '24px' }}>
+        {message}
       </div>
 
-      {/* Pointer arrow */}
       <div style={{
         position: 'absolute',
         bottom: '-8px',
@@ -257,21 +211,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
         height: '0',
         borderLeft: '8px solid transparent',
         borderRight: '8px solid transparent',
-        borderTop: '8px solid white',
-        zIndex: '1'
-      }} />
-      
-      {/* Border for the pointer */}
-      <div style={{
-        position: 'absolute',
-        bottom: '-9px',
-        right: '28px',
-        width: '0',
-        height: '0',
-        borderLeft: '8px solid transparent',
-        borderRight: '8px solid transparent',
-        borderTop: '8px solid rgba(0,0,0,0.05)',
-        zIndex: '0'
+        borderTop: '8px solid white'
       }} />
     </div>
   );
