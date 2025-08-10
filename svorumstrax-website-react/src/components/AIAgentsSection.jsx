@@ -5,6 +5,7 @@ import {
   LightBulbIcon
 } from '@heroicons/react/24/outline'
 import chatbotUiDemo from '../assets/images/chatbot-ui-demo.png'
+import soleyChatInterface from '../assets/images/soley-chat-interface.png'
 
 const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
   const content = {
@@ -124,14 +125,30 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
             </button>
           </div>
           
-          {/* Right side - Static Chatbot UI Image - Mobile optimized */}
+          {/* Right side - Dual Image Layout - Mobile optimized */}
           <div className="relative order-first lg:order-last">
-            <div className="relative max-w-xs mx-auto lg:max-w-sm">
-              <img 
-                src={chatbotUiDemo} 
-                alt="Chatbot UI Demo"
-                className="w-full h-auto drop-shadow-xl"
-              />
+            <div className="relative">
+              {/* Sóley Chat Interface - Primary Image */}
+              <div className="relative max-w-xs mx-auto lg:max-w-sm mb-6">
+                <div className="relative bg-gradient-to-br from-teal-50 via-blue-50 to-orange-50 rounded-2xl p-4 shadow-xl">
+                  <img 
+                    src={soleyChatInterface} 
+                    alt="Sóley AI Chat Interface"
+                    className="w-full h-auto rounded-lg"
+                  />
+                  {/* Subtle glow effect */}
+                  <div className="absolute -inset-1 bg-gradient-to-br from-teal-200/20 via-blue-200/20 to-orange-200/20 rounded-2xl blur-xl -z-10"></div>
+                </div>
+              </div>
+              
+              {/* Original Chatbot UI Demo - Secondary/Smaller */}
+              <div className="relative max-w-xs mx-auto lg:max-w-sm lg:ml-12 -mt-4">
+                <img 
+                  src={chatbotUiDemo} 
+                  alt="Chatbot UI Demo"
+                  className="w-4/5 h-auto drop-shadow-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
+                />
+              </div>
             </div>
           </div>
         </div>

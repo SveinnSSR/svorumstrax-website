@@ -1,3 +1,8 @@
+
+import soleyPhoneAnswering from '../assets/images/soley-phone-answering.png'
+import soleyIntegrations from '../assets/images/soley-integrations.png'
+import soleyAiVoice from '../assets/images/soley-ai-voice.png'
+
 const Services = ({ currentLanguage, onContactClick }) => {
   const content = {
     is: {
@@ -7,17 +12,20 @@ const Services = ({ currentLanguage, onContactClick }) => {
         {
           title: 'Almenn símsvörun',
           description: 'Einföld og áreiðanleg þjónusta fyrir öll fyrirtæki. Við svörum í þínu nafni, sendum símtöl áfram á réttan starfsmann og tökum niður ítarleg skilaboð. Léttir álag á starfsfólki og hægt að setja upp með stuttum fyrirvara.',
-          contactType: 'phone-support'
+          contactType: 'phone-support',
+          image: soleyPhoneAnswering
         },
         {
           title: 'Þjónustuver',
           description: 'Heildarlausn með fullkomlega þjálfuðum starfsmönnum sem þekkja þitt fyrirtæki, vörur og þjónustu. Sérhæfðir starfsmenn sem verða hluti af þínu teymi og geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð byggða á þínum upplýsingakerfum.',
-          contactType: 'phone-support'
+          contactType: 'phone-support',
+          image: soleyIntegrations
         },
         {
           title: '24/7 símsvörun',
           description: 'Gervigreindarfulltrúi sem vinnur allan sólarhringinn. Þekkir þitt fyrirtæki, svarar spurningum og tekur við pöntunum með nákvæmni og hraða. Sendir flókin mál áfram til okkar eða þíns starfsfólks. Vinnur meðan þú sefur og missir aldrei af símtali.',
-          contactType: 'ai-service'
+          contactType: 'ai-service',
+          image: soleyAiVoice
         }
       ]
     },
@@ -28,17 +36,20 @@ const Services = ({ currentLanguage, onContactClick }) => {
         {
           title: 'Phone Answering Service',
           description: 'Reliable support for businesses of all sizes. We answer in your company name, route calls to the right team member, and capture detailed messages. Reduces staff workload and can be implemented immediately.',
-          contactType: 'phone-support'
+          contactType: 'phone-support',
+          image: soleyPhoneAnswering
         },
         {
           title: 'Dedicated Contact Center',
           description: 'Complete solution with expertly trained agents who become an extension of your team. Our specialists learn your business inside-out, handle complex inquiries, resolve issues, and provide technical support using your systems and processes.',
-          contactType: 'phone-support'
+          contactType: 'phone-support',
+          image: soleyIntegrations
         },
         {
           title: 'AI-Powered Support',
           description: 'Smart automation that works 24/7. Our AI learns your business, handles customer inquiries, processes orders, and provides instant information. Seamlessly escalates to human agents when needed for the perfect customer experience.',
-          contactType: 'ai-service'
+          contactType: 'ai-service',
+          image: soleyAiVoice
         }
       ]
     }
@@ -74,15 +85,33 @@ const Services = ({ currentLanguage, onContactClick }) => {
           {currentContent.services.map((service, index) => (
             <div 
               key={index}
-              className="border border-gray-300 rounded-2xl p-8 hover:border-gray-400 transition-all duration-300 cursor-pointer"
+              className="border border-gray-300 rounded-2xl hover:border-gray-400 transition-all duration-300 cursor-pointer group overflow-hidden"
               onClick={() => onContactClick(service.contactType)}
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {service.description}
-              </p>
+              {/* Sóley Image at Top of Card */}
+              <div className="relative h-48 bg-gradient-to-br from-teal-50 via-blue-50 to-orange-50 overflow-hidden">
+                <img 
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
+                  style={{
+                    objectPosition: 'center bottom',
+                    maxHeight: '100%'
+                  }}
+                />
+                {/* Gradient overlay for smooth transition */}
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
+              </div>
+              
+              {/* Content */}
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
