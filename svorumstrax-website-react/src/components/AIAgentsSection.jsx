@@ -4,7 +4,6 @@ import {
   ChartBarIcon,
   LightBulbIcon
 } from '@heroicons/react/24/outline'
-import soleyChatInterface from '../assets/images/soley-chat-interface.png'
 
 const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
   const content = {
@@ -80,7 +79,7 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header - Mobile optimized title sizing */}
+        {/* Header - Centered */}
         <div className="text-center mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 mb-8 leading-tight">
             {currentContent.title}
@@ -90,53 +89,41 @@ const AIAgentsSection = ({ currentLanguage, onContactClick }) => {
           </p>
         </div>
 
-        {/* Main Content - Split Layout - Mobile optimized */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-16">
-          
-          {/* Left side - Content */}
-          <div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 leading-tight">
+        {/* Main Content - Centered and Full Width */}
+        <div className="max-w-5xl mx-auto">
+          {/* Main Description - Centered */}
+          <div className="text-center mb-16">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 leading-tight max-w-4xl mx-auto">
               {currentContent.mainDescription}
             </h3>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-              {currentContent.features.map((feature, index) => {
-                const IconComponent = feature.icon
-                return (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-gradient-to-r from-orange-100 to-orange-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                      <IconComponent className="w-5 h-5 text-orange-600" />
-                    </div>
-                    <div className="min-w-0">
-                      <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">{feature.title}</h4>
-                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
-                    </div>
+          </div>
+          
+          {/* Features Grid - 2x2 Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-16">
+            {currentContent.features.map((feature, index) => {
+              const IconComponent = feature.icon
+              return (
+                <div key={index} className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-orange-100 to-orange-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <IconComponent className="w-6 h-6 text-orange-600" />
                   </div>
-                )
-              })}
-            </div>
+                  <div className="min-w-0">
+                    <h4 className="font-semibold text-gray-900 mb-2 text-base sm:text-lg">{feature.title}</h4>
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
 
+          {/* Call to Action - Centered */}
+          <div className="text-center">
             <button
               onClick={() => onContactClick('ai-service')}
-              className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 w-full sm:w-auto"
+              className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
             >
               {currentContent.button}
             </button>
-          </div>
-          
-          {/* Right side - Clean Sóley Image Display - Mobile optimized */}
-          <div className="relative order-first lg:order-last flex items-center justify-center">
-            <div className="relative max-w-sm mx-auto lg:max-w-md">
-              <div className="relative bg-gradient-to-br from-teal-50 via-blue-50 to-orange-50 rounded-2xl p-6 shadow-xl">
-                <img 
-                  src={soleyChatInterface} 
-                  alt="Sóley AI Chat Interface"
-                  className="w-full h-auto rounded-lg"
-                />
-                {/* Subtle glow effect */}
-                <div className="absolute -inset-1 bg-gradient-to-br from-teal-200/20 via-blue-200/20 to-orange-200/20 rounded-2xl blur-xl -z-10"></div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
