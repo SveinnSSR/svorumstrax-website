@@ -4,7 +4,6 @@ import {
   BuildingOffice2Icon,
   UserGroupIcon
 } from '@heroicons/react/24/outline'
-import barcelonaOfficeImage from '../assets/images/barcelona-office.png'
 
 const OutboundSection = ({ currentLanguage, onContactClick }) => {
   const content = {
@@ -27,6 +26,11 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
           icon: UserGroupIcon,
           title: 'Öflugt sölufólk með reynslu',
           description: 'Þjálfað í þínum vörum og þjónustu með áralanga söluþjálfun'
+        },
+        {
+          icon: PhoneIcon,
+          title: 'Persónuleg og árangursrík samskipti',
+          description: 'Byggjum traust og sköpum varanlegt gildi í hverju samtali'
         }
       ],
       button: 'Fá tilboð'
@@ -39,17 +43,22 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
         {
           icon: BuildingOffice2Icon,
           title: 'B2B & B2C expertise',
-          description: 'Specialized teams for each market with deep understanding of Icelandic business culture and consumer behavior'
+          description: 'Specialized teams for each market with deep understanding of Icelandic business culture'
         },
         {
           icon: ChartBarIcon,
           title: 'Advanced CRM integration',
-          description: 'Seamless connection to your existing systems with real-time performance tracking and detailed analytics'
+          description: 'Seamless connection to your existing systems with real-time performance tracking'
         },
         {
           icon: UserGroupIcon,
           title: 'Professional sales specialists',
-          description: 'Extensively trained on your products and services, with years of proven sales experience and ongoing coaching'
+          description: 'Extensively trained on your products and services with proven sales experience'
+        },
+        {
+          icon: PhoneIcon,
+          title: 'Personal and effective communication',
+          description: 'Building trust and creating lasting value in every conversation'
         }
       ],
       button: 'Get Quote'
@@ -59,69 +68,60 @@ const OutboundSection = ({ currentLanguage, onContactClick }) => {
   const currentContent = content[currentLanguage]
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 to-slate-100/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+    <section className="py-24 bg-gradient-to-br from-slate-50 via-gray-50 to-white relative overflow-hidden">
+      {/* Very subtle background effects - matching AIAgentsSection style */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_25%_25%,_rgba(100,116,139,0.03)_0%,_transparent_50%)]"></div>
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_75%_75%,_rgba(148,163,184,0.04)_0%,_transparent_50%)]"></div>
+        
+        {/* Subtle floating elements using blue tones for outbound theme */}
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-100/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-gradient-to-tl from-indigo-100/20 to-transparent rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header - Centered like AIAgentsSection */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl sm:text-6xl font-black text-gray-900 mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 mb-8 leading-tight">
             {currentContent.title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
             {currentContent.subtitle}
           </p>
         </div>
-        
-        {/* Main Content with Barcelona Office Image - Mobile optimized */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          
-          {/* Barcelona Office Image - Left Side - Mobile optimized */}
-          <div className="relative order-2 lg:order-1">
-            <div className="relative max-w-sm mx-auto lg:max-w-md">
-              <img 
-                src={barcelonaOfficeImage} 
-                alt="Barcelona Office" 
-                className="w-full h-auto object-contain mix-blend-multiply"
-                style={{
-                  filter: 'contrast(1.1) saturate(1.1)'
-                }}
-              />
-            </div>
-          </div>
-          
-          {/* Content - Right Side - Mobile optimized */}
-          <div className="order-1 lg:order-2">
-            <div className="flex items-center mb-6 sm:mb-8">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-3 sm:mr-4 shadow-lg">
-                <PhoneIcon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-              </div>
-              <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
-            </div>
-            
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
+
+        {/* Main Content - Centered and Full Width like AIAgentsSection */}
+        <div className="max-w-5xl mx-auto">
+          {/* Main Description - Centered */}
+          <div className="text-center mb-16">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 leading-tight max-w-4xl mx-auto">
               {currentContent.mainDescription}
             </h3>
-            
-            <div className="space-y-4 sm:space-y-6 mb-8">
-              {currentContent.features.map((feature, index) => {
-                const IconComponent = feature.icon
-                return (
-                  <div key={index} className="flex items-start space-x-3 sm:space-x-4">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-100 to-blue-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                      <IconComponent className="w-5 h-5 text-blue-600" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">{feature.title}</h4>
-                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
-                    </div>
+          </div>
+          
+          {/* Features Grid - 2x2 Layout like AIAgentsSection */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-16">
+            {currentContent.features.map((feature, index) => {
+              const IconComponent = feature.icon
+              return (
+                <div key={index} className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-100 to-blue-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <IconComponent className="w-6 h-6 text-blue-600" />
                   </div>
-                )
-              })}
-            </div>
+                  <div className="min-w-0">
+                    <h4 className="font-semibold text-gray-900 mb-2 text-base sm:text-lg">{feature.title}</h4>
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
 
-            {/* Call to Action Button */}
+          {/* Call to Action - Centered like AIAgentsSection */}
+          <div className="text-center">
             <button
               onClick={() => onContactClick('outbound')}
-              className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 w-full sm:w-auto"
+              className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
             >
               {currentContent.button}
             </button>
