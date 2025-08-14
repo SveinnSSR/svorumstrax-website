@@ -1,4 +1,3 @@
-
 import barcelonaOfficeImage from '../assets/images/barcelona-office.png'
 
 const Hero = ({ currentLanguage, onContactClick }) => {
@@ -119,27 +118,27 @@ const Hero = ({ currentLanguage, onContactClick }) => {
               {/* Right side - Barcelona Office Image */}
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full max-w-lg mx-auto">
-                  {/* Subtle glow effect behind the image - using logo colors */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#4A90E2]/10 to-[#FFA947]/10 rounded-3xl blur-2xl transform scale-110"></div>
+                  {/* Modern gradient glow effect inspired by phone UI */}
+                  <div className="absolute inset-0 rounded-3xl overflow-hidden transform scale-110">
+                    <div className="absolute inset-0 bg-gradient-to-br from-teal-400/30 via-emerald-400/20 to-orange-400/30 blur-2xl"></div>
+                  </div>
                   
-                  {/* Barcelona Office Image - clean and professional */}
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  {/* Barcelona Office Image with gradient background */}
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-teal-500 via-emerald-500 to-orange-500">
+                    {/* The actual image - no blend modes to avoid white background */}
                     <img 
                       src={barcelonaOfficeImage} 
                       alt="Barcelona Office - Our team serving Icelandic businesses"
-                      className="w-full h-auto object-contain mix-blend-multiply"
+                      className="relative w-full h-auto object-contain z-10"
                       style={{
-                        filter: 'contrast(1.05) saturate(1.05)'
+                        filter: 'contrast(1.1)'
                       }}
                     />
-                    
-                    {/* Optional subtle overlay to enhance the image */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 via-transparent to-transparent"></div>
                   </div>
                   
-                  {/* Floating elements around the image - subtle and professional */}
-                  <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-gradient-to-br from-[#4A90E2]/20 to-transparent rounded-full blur-xl animate-pulse"></div>
-                  <div className="absolute bottom-1/4 left-1/4 w-20 h-20 bg-gradient-to-tr from-[#FFA947]/20 to-transparent rounded-full blur-xl animate-pulse" style={{animationDelay: '1s'}}></div>
+                  {/* Floating elements with matching colors */}
+                  <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-gradient-to-br from-teal-400/30 to-transparent rounded-full blur-xl animate-pulse"></div>
+                  <div className="absolute bottom-1/4 left-1/4 w-20 h-20 bg-gradient-to-tr from-orange-400/30 to-transparent rounded-full blur-xl animate-pulse" style={{animationDelay: '1s'}}></div>
                 </div>
               </div>
               
