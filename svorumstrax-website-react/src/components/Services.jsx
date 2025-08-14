@@ -104,10 +104,11 @@ const Services = ({ currentLanguage, onContactClick }) => {
                       alt={service.title}
                       className="w-auto transform group-hover:scale-105 transition-transform duration-500"
                       style={{
-                        height: '380px',  // Double the container height to show only top half
-                        maxWidth: '85%',
+                        height: '320px',  // Reduced size to better match other phones
+                        maxWidth: '70%',  // Reduced width to match others
                         objectFit: 'contain',
-                        marginBottom: '-190px'  // Push down to hide bottom half
+                        marginBottom: '-140px',  // Adjusted to show top portion with space above
+                        marginTop: 'auto'
                       }}
                     />
                   </div>
