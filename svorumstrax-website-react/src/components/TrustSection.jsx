@@ -1,11 +1,10 @@
-import { useEffect } from 'react'
-
 // Import logo images
 import flyoverLogo from '../assets/images/logos/Flyover-Iceland-Logo.webp'
 import epalLogo from '../assets/images/logos/Epal-Logo.png'
 import rafalLogo from '../assets/images/logos/Rafal-Logo.png'
 import islandsbilarLogo from '../assets/images/logos/islandsbilar-logo.svg'
 import ntcLogo from '../assets/images/logos/ntc-logo.svg'
+import icewearLogo from '../assets/images/logos/Icewear-Logo.jpg'
 
 const TrustSection = ({ currentLanguage }) => {
   const content = {
@@ -24,13 +23,9 @@ const TrustSection = ({ currentLanguage }) => {
     { src: epalLogo, alt: 'Epal' },
     { src: rafalLogo, alt: 'Rafal' },
     { src: islandsbilarLogo, alt: 'Íslandsbílar' },
-    { src: ntcLogo, alt: 'NTC' }
+    { src: ntcLogo, alt: 'NTC' },
+    { src: icewearLogo, alt: 'Icewear' }
   ]
-
-  // Debug: Log all logo sources
-  useEffect(() => {
-    console.log('Logos loaded:', logos.map(l => ({ alt: l.alt, src: l.src })))
-  }, [])
 
   return (
     <section 
@@ -50,22 +45,21 @@ const TrustSection = ({ currentLanguage }) => {
         
         {/* Desktop: Flowing logos with normalized sizes */}
         <div className="hidden md:block relative overflow-hidden">
-          <div className="flex items-center animate-gentle-flow">
+          <div className="flex items-center animate-logo-scroll">
             {[...logos, ...logos, ...logos].map((logo, index) => (
               <div 
                 key={index}
-                className="flex-shrink-0 px-12 lg:px-16 flex items-center justify-center"
+                className="flex-shrink-0 px-10 lg:px-12 flex items-center justify-center"
               >
-                <div className="w-32 lg:w-36 h-14 flex items-center justify-center">
+                <div className="w-28 lg:w-32 h-12 flex items-center justify-center">
                   <img 
                     src={logo.src}
                     alt={logo.alt}
                     className="max-h-full max-w-full w-auto h-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-500"
                     style={{
-                      maxHeight: '56px',
-                      maxWidth: '144px'
+                      maxHeight: '48px',
+                      maxWidth: '128px'
                     }}
-                    onError={(e) => console.error(`Failed to load logo: ${logo.alt}`)}
                   />
                 </div>
               </div>
@@ -73,9 +67,9 @@ const TrustSection = ({ currentLanguage }) => {
           </div>
         </div>
         
-        {/* Mobile: Static grid with normalized sizes - ensuring all 5 logos show */}
+        {/* Mobile: Static grid with all 6 logos */}
         <div className="md:hidden">
-          <div className="flex flex-wrap justify-center items-center gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
             {logos.map((logo) => (
               <div key={logo.alt} className="flex items-center justify-center">
                 <div className="w-24 h-10 flex items-center justify-center">
@@ -92,7 +86,7 @@ const TrustSection = ({ currentLanguage }) => {
       </div>
 
       <style jsx>{`
-        @keyframes gentle-flow {
+        @keyframes logo-scroll {
           0% {
             transform: translateX(0);
           }
@@ -101,16 +95,16 @@ const TrustSection = ({ currentLanguage }) => {
           }
         }
         
-        .animate-gentle-flow {
-          animation: gentle-flow 20s linear infinite;
+        .animate-logo-scroll {
+          animation: logo-scroll 15s linear infinite;
         }
         
-        .animate-gentle-flow:hover {
+        .animate-logo-scroll:hover {
           animation-play-state: paused;
         }
         
         @media (prefers-reduced-motion: reduce) {
-          .animate-gentle-flow {
+          .animate-logo-scroll {
             animation: none;
             justify-content: center;
           }
