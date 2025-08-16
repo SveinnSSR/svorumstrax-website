@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
@@ -93,11 +94,11 @@ const TestimonialsSection = ({ currentLanguage }) => {
   }
 
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-gradient-to-br from-gray-100 via-gray-50 to-white relative overflow-hidden">
       {/* Subtle Background Effects - Light and minimal */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_20%,_rgba(249,250,251,0.8)_0%,_transparent_50%)]"></div>
-        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_70%_80%,_rgba(243,244,246,0.6)_0%,_transparent_50%)]"></div>
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_20%,_rgba(156,163,175,0.2)_0%,_transparent_50%)]"></div>
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_70%_80%,_rgba(209,213,219,0.3)_0%,_transparent_50%)]"></div>
       </div>
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -124,25 +125,25 @@ const TestimonialsSection = ({ currentLanguage }) => {
                       .map((testimonial, index) => (
                         <div 
                           key={slideIndex * 2 + index}
-                          className="bg-gradient-to-b from-gray-50 to-gray-100 border border-gray-300 rounded-2xl p-8 sm:p-10 relative shadow-md hover:shadow-lg transition-all duration-300"
+                          className="bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 rounded-2xl p-8 sm:p-10 relative shadow-xl hover:shadow-2xl transition-all duration-300"
                         >
-                          {/* Quote Icon - Subtle and sophisticated */}
-                          <div className="absolute top-6 sm:top-8 left-8 sm:left-10 text-5xl sm:text-6xl text-gray-400 font-serif leading-none opacity-50">
+                          {/* Quote Icon - Light contrast against dark background */}
+                          <div className="absolute top-6 sm:top-8 left-8 sm:left-10 text-5xl sm:text-6xl text-slate-500 font-serif leading-none opacity-40">
                             "
                           </div>
                           
                           {/* Testimonial Text */}
                           <div className="pt-10 sm:pt-12">
-                            <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-8 sm:mb-10 relative z-10">
+                            <p className="text-base sm:text-lg text-slate-100 leading-relaxed mb-8 sm:mb-10 relative z-10">
                               {testimonial.text}
                             </p>
                             
-                            {/* Author Info - Clean and minimal */}
-                            <div className="border-t-2 border-gray-200 pt-6">
-                              <div className="text-gray-900 font-semibold text-base sm:text-lg mb-2">
+                            {/* Author Info - Light text on dark */}
+                            <div className="border-t-2 border-slate-600 pt-6">
+                              <div className="text-white font-semibold text-base sm:text-lg mb-2">
                                 {testimonial.author}
                               </div>
-                              <div className="text-gray-600 text-sm">
+                              <div className="text-slate-300 text-sm">
                                 {testimonial.role}
                               </div>
                             </div>
