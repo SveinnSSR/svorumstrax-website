@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
@@ -125,30 +124,25 @@ const TestimonialsSection = ({ currentLanguage }) => {
                       .map((testimonial, index) => (
                         <div 
                           key={slideIndex * 2 + index}
-                          className="rounded-2xl p-8 sm:p-10 relative shadow-lg hover:shadow-xl transition-all duration-300"
-                          style={{
-                            background: 'linear-gradient(135deg, #8D918D 0%, #767A76 100%)',
-                            border: '1px solid #767A76'
-                          }}
+                          className="bg-gradient-to-br from-gray-600 to-gray-700 border border-gray-500 rounded-2xl p-8 sm:p-10 relative shadow-xl hover:shadow-2xl transition-all duration-300"
                         >
-                          {/* Quote Icon - Darker for contrast */}
-                          <div className="absolute top-6 sm:top-8 left-8 sm:left-10 text-5xl sm:text-6xl font-serif leading-none opacity-30"
-                               style={{ color: '#494B49' }}>
+                          {/* Quote Icon - Light contrast against dark background */}
+                          <div className="absolute top-6 sm:top-8 left-8 sm:left-10 text-5xl sm:text-6xl text-gray-400 font-serif leading-none opacity-50">
                             "
                           </div>
                           
                           {/* Testimonial Text */}
                           <div className="pt-10 sm:pt-12">
-                            <p className="text-base sm:text-lg text-white leading-relaxed mb-8 sm:mb-10 relative z-10">
+                            <p className="text-base sm:text-lg text-gray-100 leading-relaxed mb-8 sm:mb-10 relative z-10">
                               {testimonial.text}
                             </p>
                             
-                            {/* Author Info */}
-                            <div className="pt-6" style={{ borderTop: '2px solid #767A76' }}>
+                            {/* Author Info - Light text on dark */}
+                            <div className="border-t-2 border-gray-500 pt-6">
                               <div className="text-white font-semibold text-base sm:text-lg mb-2">
                                 {testimonial.author}
                               </div>
-                              <div className="text-sm" style={{ color: '#D3D5D3' }}>
+                              <div className="text-gray-300 text-sm">
                                 {testimonial.role}
                               </div>
                             </div>
