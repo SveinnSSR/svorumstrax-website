@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 // Import logo images
 import brimborLogo from '../assets/images/logos/brimborg-logo.png'
-import skylagoonLogo from '../assets/images/logos/skylagoon-logo.svg'
+import skylagoonLogo from '../assets/images/logos/skylagoon-logo.jpg'
 import elkoLogo from '../assets/images/logos/elko-logo.svg'
 import flyoverLogo from '../assets/images/logos/Flyover-Iceland-Logo.webp'
 import epalLogo from '../assets/images/logos/Epal-Logo.png'
