@@ -93,17 +93,17 @@ const TestimonialsSection = ({ currentLanguage }) => {
   }
 
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-      {/* Background Effects */}
+    <section className="py-16 sm:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+      {/* Subtle Background Effects - Light and minimal */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_20%,_rgba(59,130,246,0.3)_0%,_transparent_50%)]"></div>
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_70%_80%,_rgba(34,197,94,0.3)_0%,_transparent_50%)]"></div>
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_20%,_rgba(249,250,251,0.8)_0%,_transparent_50%)]"></div>
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_70%_80%,_rgba(243,244,246,0.6)_0%,_transparent_50%)]"></div>
       </div>
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header - Mobile optimized */}
         <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-100 mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-8 leading-tight">
             {currentContent.title}
           </h2>
         </div>
@@ -124,25 +124,25 @@ const TestimonialsSection = ({ currentLanguage }) => {
                       .map((testimonial, index) => (
                         <div 
                           key={slideIndex * 2 + index}
-                          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 relative"
+                          className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 relative shadow-sm hover:shadow-md transition-all duration-300"
                         >
-                          {/* Quote Icon */}
-                          <div className="absolute top-4 sm:top-6 left-6 sm:left-8 text-4xl sm:text-6xl text-white/20 font-serif leading-none">
+                          {/* Quote Icon - Light gray */}
+                          <div className="absolute top-4 sm:top-6 left-6 sm:left-8 text-4xl sm:text-6xl text-gray-200 font-serif leading-none">
                             "
                           </div>
                           
                           {/* Testimonial Text */}
                           <div className="pt-6 sm:pt-8">
-                            <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-6 sm:mb-8 relative z-10">
+                            <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6 sm:mb-8 relative z-10">
                               {testimonial.text}
                             </p>
                             
                             {/* Author Info */}
-                            <div className="border-t border-white/10 pt-4 sm:pt-6">
-                              <div className="text-white font-semibold text-base sm:text-lg mb-1">
+                            <div className="border-t border-gray-200 pt-4 sm:pt-6">
+                              <div className="text-gray-900 font-semibold text-base sm:text-lg mb-1">
                                 {testimonial.author}
                               </div>
-                              <div className="text-slate-400 text-xs sm:text-sm">
+                              <div className="text-gray-500 text-xs sm:text-sm">
                                 {testimonial.role}
                               </div>
                             </div>
@@ -155,35 +155,35 @@ const TestimonialsSection = ({ currentLanguage }) => {
             </div>
           </div>
 
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Updated for light theme */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/8 hover:bg-white/12 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:-translate-x-5 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white hover:bg-gray-50 rounded-full p-3 transition-all duration-300 hover:-translate-x-5 border border-gray-300 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
             disabled={totalSlides <= 1}
           >
-            <ChevronLeftIcon className="w-6 h-6 text-white" />
+            <ChevronLeftIcon className="w-6 h-6 text-gray-700" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/8 hover:bg-white/12 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:translate-x-5 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white hover:bg-gray-50 rounded-full p-3 transition-all duration-300 hover:translate-x-5 border border-gray-300 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
             disabled={totalSlides <= 1}
           >
-            <ChevronRightIcon className="w-6 h-6 text-white" />
+            <ChevronRightIcon className="w-6 h-6 text-gray-700" />
           </button>
         </div>
 
-        {/* Dots Navigation - Minimalist Gray */}
+        {/* Dots Navigation - Updated for light theme */}
         {totalSlides > 1 && (
           <div className="flex justify-center mt-12 space-x-2">
             {Array.from({ length: totalSlides }, (_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 ${
+                className={`w-2 h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
                   currentSlide === index 
-                    ? 'bg-white scale-125' 
-                    : 'bg-white/40 hover:bg-white/60'
+                    ? 'bg-gray-900 scale-125' 
+                    : 'bg-gray-400 hover:bg-gray-600'
                 }`}
               />
             ))}
