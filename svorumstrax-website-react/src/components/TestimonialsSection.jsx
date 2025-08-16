@@ -93,11 +93,11 @@ const TestimonialsSection = ({ currentLanguage }) => {
   }
 
   return (
-    <section className="py-16 sm:py-24 bg-gray-100 relative overflow-hidden">
-      {/* Subtle Background Effects - Clinical grey base */}
+    <section className="py-16 sm:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+      {/* Subtle Background Effects - Light and minimal */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_20%,_rgba(243,244,246,0.8)_0%,_transparent_50%)]"></div>
-        <div className="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_70%_80%,_rgba(229,231,235,0.6)_0%,_transparent_50%)]"></div>
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_20%,_rgba(249,250,251,0.8)_0%,_transparent_50%)]"></div>
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_70%_80%,_rgba(243,244,246,0.6)_0%,_transparent_50%)]"></div>
       </div>
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -124,9 +124,9 @@ const TestimonialsSection = ({ currentLanguage }) => {
                       .map((testimonial, index) => (
                         <div 
                           key={slideIndex * 2 + index}
-                          className="bg-gray-50 border border-gray-200/60 rounded-2xl p-6 sm:p-8 relative shadow-sm hover:shadow-md transition-all duration-300 hover:bg-white"
+                          className="bg-gray-100 border border-gray-200 rounded-2xl p-6 sm:p-8 relative shadow-sm hover:shadow-md transition-all duration-300"
                         >
-                          {/* Quote Icon - Subtle grey */}
+                          {/* Quote Icon - Darker grey for contrast */}
                           <div className="absolute top-4 sm:top-6 left-6 sm:left-8 text-4xl sm:text-6xl text-gray-300 font-serif leading-none">
                             "
                           </div>
@@ -138,11 +138,11 @@ const TestimonialsSection = ({ currentLanguage }) => {
                             </p>
                             
                             {/* Author Info */}
-                            <div className="border-t border-gray-200 pt-4 sm:pt-6">
+                            <div className="border-t border-gray-300 pt-4 sm:pt-6">
                               <div className="text-gray-900 font-semibold text-base sm:text-lg mb-1">
                                 {testimonial.author}
                               </div>
-                              <div className="text-gray-500 text-xs sm:text-sm">
+                              <div className="text-gray-600 text-xs sm:text-sm">
                                 {testimonial.role}
                               </div>
                             </div>
@@ -155,7 +155,7 @@ const TestimonialsSection = ({ currentLanguage }) => {
             </div>
           </div>
 
-          {/* Navigation Arrows - Clinical grey theme */}
+          {/* Navigation Arrows - Updated for light theme */}
           <button
             onClick={prevSlide}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white hover:bg-gray-50 rounded-full p-3 transition-all duration-300 hover:-translate-x-5 border border-gray-300 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
@@ -173,7 +173,7 @@ const TestimonialsSection = ({ currentLanguage }) => {
           </button>
         </div>
 
-        {/* Dots Navigation - Dark grey */}
+        {/* Dots Navigation - Updated for light theme */}
         {totalSlides > 1 && (
           <div className="flex justify-center mt-12 space-x-2">
             {Array.from({ length: totalSlides }, (_, index) => (
@@ -182,7 +182,7 @@ const TestimonialsSection = ({ currentLanguage }) => {
                 onClick={() => goToSlide(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 ${
                   currentSlide === index 
-                    ? 'bg-gray-800 scale-125' 
+                    ? 'bg-gray-900 scale-125' 
                     : 'bg-gray-400 hover:bg-gray-600'
                 }`}
               />
