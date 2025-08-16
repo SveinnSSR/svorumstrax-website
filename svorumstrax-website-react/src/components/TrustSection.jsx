@@ -36,41 +36,49 @@ const TrustSection = ({ currentLanguage }) => {
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50/20 via-white to-gray-50/20"></div>
       
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Clean, small title */}
+        {/* Clean title - slightly more prominent */}
         <div className="text-center mb-14">
-          <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-[0.2em]">
+          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-[0.15em]">
             {currentContent.title}
           </h3>
         </div>
         
-        {/* Desktop: Flowing logos */}
+        {/* Desktop: Flowing logos with normalized sizes */}
         <div className="hidden md:block relative overflow-hidden">
-          <div className="flex items-center justify-between animate-gentle-flow">
+          <div className="flex items-center animate-gentle-flow">
             {[...logos, ...logos].map((logo, index) => (
               <div 
                 key={index}
-                className="flex-shrink-0 px-10 lg:px-14"
+                className="flex-shrink-0 px-12 lg:px-16 flex items-center justify-center"
               >
-                <img 
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="h-12 lg:h-14 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-500"
-                />
+                <div className="w-32 lg:w-36 h-14 flex items-center justify-center">
+                  <img 
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="max-h-full max-w-full w-auto h-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      maxHeight: '56px',
+                      maxWidth: '144px'
+                    }}
+                  />
+                </div>
               </div>
             ))}
           </div>
         </div>
         
-        {/* Mobile: Static grid */}
+        {/* Mobile: Static grid with normalized sizes */}
         <div className="md:hidden">
-          <div className="flex flex-wrap justify-center items-center gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
             {logos.map((logo) => (
               <div key={logo.alt} className="flex items-center justify-center">
-                <img 
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="h-10 w-auto object-contain opacity-80"
-                />
+                <div className="w-28 h-12 flex items-center justify-center">
+                  <img 
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="max-h-full max-w-full w-auto h-auto object-contain opacity-80"
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -88,7 +96,7 @@ const TrustSection = ({ currentLanguage }) => {
         }
         
         .animate-gentle-flow {
-          animation: gentle-flow 45s linear infinite;
+          animation: gentle-flow 30s linear infinite;
         }
         
         .animate-gentle-flow:hover {
