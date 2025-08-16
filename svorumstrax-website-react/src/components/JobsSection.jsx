@@ -135,7 +135,7 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
 
-        {/* Refined Scandinavian Benefits Cards */}
+        {/* Refined Scandinavian Benefits Cards - NOW WITH TRANSLUCENT STYLE */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
           {currentContent.benefits.map((benefit, index) => {
             // Smart icon mapping instead of emojis
@@ -160,17 +160,17 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
             return (
               <div 
                 key={index}
-                className="bg-gray-50/60 backdrop-blur-sm border border-gray-200/40 rounded-xl p-6 sm:p-8 shadow-sm hover:bg-gray-50/80 hover:shadow-md transition-all duration-300"
+                className="bg-white/40 backdrop-blur-md rounded-xl p-6 sm:p-8 border border-white/50 shadow-lg hover:bg-white/50 hover:shadow-xl transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 border border-gray-200/50 shadow-sm">
+                  <div className="w-10 h-10 bg-white/60 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 border border-white/70 shadow-sm">
                     {iconMap[index]}
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight">
                       {benefit.title}
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
+                    <p className="text-sm text-gray-700 leading-relaxed">
                       {benefit.description}
                     </p>
                   </div>
