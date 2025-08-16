@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
@@ -124,26 +125,43 @@ const TestimonialsSection = ({ currentLanguage }) => {
                       .map((testimonial, index) => (
                         <div 
                           key={slideIndex * 2 + index}
-                          className="bg-gray-100 border border-gray-200 rounded-2xl p-6 sm:p-8 relative shadow-sm hover:shadow-md transition-all duration-300"
+                          className="relative bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl p-8 sm:p-10 shadow-lg hover:shadow-xl transition-all duration-300 group"
                         >
-                          {/* Quote Icon - Darker grey for contrast */}
-                          <div className="absolute top-4 sm:top-6 left-6 sm:left-8 text-4xl sm:text-6xl text-gray-300 font-serif leading-none">
-                            "
+                          {/* Subtle accent bar at top */}
+                          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-400 to-orange-500 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          
+                          {/* Quote Icon - More stylized */}
+                          <div className="absolute -top-2 left-8 sm:left-10">
+                            <div className="bg-gradient-to-br from-orange-400 to-orange-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md">
+                              <span className="text-2xl font-serif leading-none">"</span>
+                            </div>
                           </div>
                           
                           {/* Testimonial Text */}
-                          <div className="pt-6 sm:pt-8">
-                            <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6 sm:mb-8 relative z-10">
+                          <div className="pt-8 sm:pt-10">
+                            <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-8 sm:mb-10 relative z-10 italic">
                               {testimonial.text}
                             </p>
                             
-                            {/* Author Info */}
-                            <div className="border-t border-gray-300 pt-4 sm:pt-6">
-                              <div className="text-gray-900 font-semibold text-base sm:text-lg mb-1">
-                                {testimonial.author}
-                              </div>
-                              <div className="text-gray-600 text-xs sm:text-sm">
-                                {testimonial.role}
+                            {/* Author Info - Enhanced styling */}
+                            <div className="border-t-2 border-gray-100 pt-6">
+                              <div className="flex items-center justify-between">
+                                <div>
+                                  <div className="text-gray-900 font-bold text-base sm:text-lg mb-1">
+                                    {testimonial.author}
+                                  </div>
+                                  <div className="text-gray-500 text-sm">
+                                    {testimonial.role}
+                                  </div>
+                                </div>
+                                {/* Star rating decoration */}
+                                <div className="flex space-x-1 opacity-30">
+                                  {[...Array(5)].map((_, i) => (
+                                    <svg key={i} className="w-4 h-4 text-orange-400 fill-current" viewBox="0 0 20 20">
+                                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                  ))}
+                                </div>
                               </div>
                             </div>
                           </div>
