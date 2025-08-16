@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
 // Import logo images
 import flyoverLogo from '../assets/images/logos/Flyover-Iceland-Logo.webp'
@@ -27,6 +27,11 @@ const TrustSection = ({ currentLanguage }) => {
     { src: ntcLogo, alt: 'NTC' }
   ]
 
+  // Debug: Log all logo sources
+  useEffect(() => {
+    console.log('Logos loaded:', logos.map(l => ({ alt: l.alt, src: l.src })))
+  }, [])
+
   return (
     <section 
       id="about" 
@@ -46,7 +51,7 @@ const TrustSection = ({ currentLanguage }) => {
         {/* Desktop: Flowing logos with normalized sizes */}
         <div className="hidden md:block relative overflow-hidden">
           <div className="flex items-center animate-gentle-flow">
-            {[...logos, ...logos].map((logo, index) => (
+            {[...logos, ...logos, ...logos].map((logo, index) => (
               <div 
                 key={index}
                 className="flex-shrink-0 px-12 lg:px-16 flex items-center justify-center"
@@ -60,6 +65,7 @@ const TrustSection = ({ currentLanguage }) => {
                       maxHeight: '56px',
                       maxWidth: '144px'
                     }}
+                    onError={(e) => console.error(`Failed to load logo: ${logo.alt}`)}
                   />
                 </div>
               </div>
@@ -67,12 +73,12 @@ const TrustSection = ({ currentLanguage }) => {
           </div>
         </div>
         
-        {/* Mobile: Static grid with normalized sizes */}
+        {/* Mobile: Static grid with normalized sizes - ensuring all 5 logos show */}
         <div className="md:hidden">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center items-center gap-6">
             {logos.map((logo) => (
               <div key={logo.alt} className="flex items-center justify-center">
-                <div className="w-28 h-12 flex items-center justify-center">
+                <div className="w-24 h-10 flex items-center justify-center">
                   <img 
                     src={logo.src}
                     alt={logo.alt}
@@ -91,12 +97,12 @@ const TrustSection = ({ currentLanguage }) => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translateX(-33.333%);
           }
         }
         
         .animate-gentle-flow {
-          animation: gentle-flow 30s linear infinite;
+          animation: gentle-flow 20s linear infinite;
         }
         
         .animate-gentle-flow:hover {
