@@ -135,23 +135,23 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
 
-        {/* Translucent Benefits Cards - Same style as 35+ card */}
+        {/* Translucent Benefits Cards - Grey translucent like 35+ card */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
           {currentContent.benefits.map((benefit, index) => {
             // Smart icon mapping instead of emojis
             const iconMap = {
               0: ( // Barcelona lifestyle
-                <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                 </svg>
               ),
               1: ( // Flexibility
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                 </svg>
               ),
               2: ( // Career development
-                <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
                 </svg>
               )
@@ -162,26 +162,26 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
                 key={index}
                 className="rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.2)',
+                  background: 'rgba(71, 85, 105, 0.25)',  // Grey translucent like the 35+ card
                   backdropFilter: 'blur(12px)',
                   WebkitBackdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(255, 255, 255, 0.25)'
+                  border: '1px solid rgba(148, 163, 184, 0.2)'
                 }}
               >
                 <div className="flex items-start gap-4">
                   <div 
                     className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.3)',
+                      background: 'rgba(248, 250, 252, 0.5)',  // Light grey/white for icon background
                       backdropFilter: 'blur(8px)',
                       WebkitBackdropFilter: 'blur(8px)',
-                      border: '1px solid rgba(255, 255, 255, 0.4)'
+                      border: '1px solid rgba(226, 232, 240, 0.6)'
                     }}
                   >
                     {iconMap[index]}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3 leading-tight">
                       {benefit.title}
                     </h3>
                     <p className="text-sm text-gray-700 leading-relaxed">
