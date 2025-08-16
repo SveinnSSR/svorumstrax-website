@@ -135,7 +135,7 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
 
-        {/* Translucent Benefits Cards - Grey translucent like 35+ card */}
+        {/* Clean minimal benefit cards - matches site aesthetic */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
           {currentContent.benefits.map((benefit, index) => {
             // Smart icon mapping instead of emojis
@@ -160,31 +160,17 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
             return (
               <div 
                 key={index}
-                className="rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-                style={{
-                  background: 'rgba(71, 85, 105, 0.25)',  // Grey translucent like the 35+ card
-                  backdropFilter: 'blur(12px)',
-                  WebkitBackdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(148, 163, 184, 0.2)'
-                }}
+                className="bg-white rounded-xl p-6 sm:p-8 border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm"
-                    style={{
-                      background: 'rgba(248, 250, 252, 0.5)',  // Light grey/white for icon background
-                      backdropFilter: 'blur(8px)',
-                      WebkitBackdropFilter: 'blur(8px)',
-                      border: '1px solid rgba(226, 232, 240, 0.6)'
-                    }}
-                  >
+                  <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0 border border-gray-200">
                     {iconMap[index]}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3 leading-tight">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight">
                       {benefit.title}
                     </h3>
-                    <p className="text-sm text-gray-700 leading-relaxed">
+                    <p className="text-sm text-gray-600 leading-relaxed">
                       {benefit.description}
                     </p>
                   </div>
