@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
@@ -125,25 +124,25 @@ const TestimonialsSection = ({ currentLanguage }) => {
                       .map((testimonial, index) => (
                         <div 
                           key={slideIndex * 2 + index}
-                          className="bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 rounded-2xl p-8 sm:p-10 relative shadow-xl hover:shadow-2xl transition-all duration-300"
+                          className="bg-gradient-to-br from-gray-600 to-gray-700 border border-gray-500 rounded-2xl p-8 sm:p-10 relative shadow-xl hover:shadow-2xl transition-all duration-300"
                         >
                           {/* Quote Icon - Light contrast against dark background */}
-                          <div className="absolute top-6 sm:top-8 left-8 sm:left-10 text-5xl sm:text-6xl text-slate-500 font-serif leading-none opacity-40">
+                          <div className="absolute top-6 sm:top-8 left-8 sm:left-10 text-5xl sm:text-6xl text-gray-400 font-serif leading-none opacity-50">
                             "
                           </div>
                           
                           {/* Testimonial Text */}
                           <div className="pt-10 sm:pt-12">
-                            <p className="text-base sm:text-lg text-slate-100 leading-relaxed mb-8 sm:mb-10 relative z-10">
+                            <p className="text-base sm:text-lg text-gray-100 leading-relaxed mb-8 sm:mb-10 relative z-10">
                               {testimonial.text}
                             </p>
                             
                             {/* Author Info - Light text on dark */}
-                            <div className="border-t-2 border-slate-600 pt-6">
+                            <div className="border-t-2 border-gray-500 pt-6">
                               <div className="text-white font-semibold text-base sm:text-lg mb-2">
                                 {testimonial.author}
                               </div>
-                              <div className="text-slate-300 text-sm">
+                              <div className="text-gray-300 text-sm">
                                 {testimonial.role}
                               </div>
                             </div>
