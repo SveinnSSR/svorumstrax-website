@@ -9,6 +9,8 @@ import ntcLogo from '../assets/images/logos/ntc-logo.svg'
 import icewearLogo from '../assets/images/logos/Icewear-Logo.jpg'
 import fjallakofinnLogo from '../assets/images/logos/fjallakofinn-logo.png'
 import happdraettiLogo from '../assets/images/logos/happdraetti_das-logo.jpeg'
+import logthingLogo from '../assets/images/logos/logthing-logo.png'
+import febaeturLogo from '../assets/images/logos/febaetur-logo.png'
 
 const TrustSection = ({ currentLanguage }) => {
   const content = {
@@ -27,41 +29,14 @@ const TrustSection = ({ currentLanguage }) => {
     { src: epalLogo, alt: 'Epal', name: 'epal' },
     { src: rafalLogo, alt: 'Rafal', name: 'rafal' },
     { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' },
-    { src: ntcLogo, alt: 'NTC', name: 'ntc' },
+    // NTC SVG has issues, show as text fallback for now
+    { src: null, alt: 'NTC', name: 'ntc', isText: true },
     { src: icewearLogo, alt: 'Icewear', name: 'icewear' },
     { src: fjallakofinnLogo, alt: 'Fjallakofinn', name: 'fjallakofinn' },
-    { src: happdraettiLogo, alt: 'Happdrætti DAS', name: 'happdraetti' }
+    { src: happdraettiLogo, alt: 'Happdrætti DAS', name: 'happdraetti' },
+    { src: logthingLogo, alt: 'Lögþing', name: 'logthing' },
+    { src: febaeturLogo, alt: 'Fébætur', name: 'febaetur' }
   ]
-
-  // Debug logging for SVG issues
-  useEffect(() => {
-    // Log all logo paths
-    console.log('All logo imports:', {
-      flyover: flyoverLogo,
-      epal: epalLogo,
-      rafal: rafalLogo,
-      islandsbilar: islandsbilarLogo,
-      ntc: ntcLogo,
-      icewear: icewearLogo,
-      fjallakofinn: fjallakofinnLogo,
-      happdraetti: happdraettiLogo
-    })
-    
-    // Specifically test NTC and Islandsbilar SVGs
-    const testSVG = (name, src) => {
-      const img = new Image()
-      img.onload = () => console.log(`✅ ${name} SVG loaded successfully`)
-      img.onerror = (e) => console.error(`❌ ${name} SVG failed:`, e, 'Path:', src)
-      img.src = src
-    }
-    
-    testSVG('NTC', ntcLogo)
-    testSVG('Íslandsbílar', islandsbilarLogo)
-    
-    // Check if NTC path is a valid string
-    console.log('NTC logo type:', typeof ntcLogo)
-    console.log('NTC logo value:', ntcLogo)
-  }, [])
 
   // Double the logos for seamless infinite scroll
   const scrollingLogos = [...logos, ...logos]
@@ -95,9 +70,9 @@ const TrustSection = ({ currentLanguage }) => {
                 className="flex-shrink-0 px-2 lg:px-3 flex items-center justify-center"
               >
                 <div className="w-24 lg:w-28 h-12 flex items-center justify-center">
-                  {/* Special handling for NTC in case it's not loading */}
-                  {logo.name === 'ntc' && !ntcLogo ? (
-                    <span className="text-gray-400 font-medium text-sm">NTC</span>
+                  {logo.isText ? (
+                    // Text fallback for NTC
+                    <span className="text-gray-500 font-bold text-xl tracking-wider">NTC</span>
                   ) : (
                     <img 
                       src={logo.src}
@@ -108,7 +83,7 @@ const TrustSection = ({ currentLanguage }) => {
                         maxWidth: '112px'
                       }}
                       onError={(e) => {
-                        console.error(`Failed to load: ${logo.alt}`, 'Source:', logo.src)
+                        console.error(`Failed to load: ${logo.alt}`)
                         // Show text fallback
                         const span = document.createElement('span')
                         span.className = 'text-gray-400 font-medium text-sm'
@@ -129,8 +104,8 @@ const TrustSection = ({ currentLanguage }) => {
             {logos.map((logo) => (
               <div key={logo.name} className="flex items-center justify-center">
                 <div className="w-20 h-10 flex items-center justify-center">
-                  {logo.name === 'ntc' && !ntcLogo ? (
-                    <span className="text-gray-400 text-xs">NTC</span>
+                  {logo.isText ? (
+                    <span className="text-gray-500 font-bold text-base">NTC</span>
                   ) : (
                     <img 
                       src={logo.src}
@@ -166,7 +141,7 @@ const TrustSection = ({ currentLanguage }) => {
         }
         
         .animate-logo-scroll {
-          animation: logo-scroll 22s linear infinite;
+          animation: logo-scroll 28s linear infinite;
           width: max-content;
         }
         
