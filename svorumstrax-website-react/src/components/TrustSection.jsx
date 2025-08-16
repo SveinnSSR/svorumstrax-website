@@ -1,6 +1,9 @@
 import { useEffect } from 'react'
 
 // Import logo images
+import brimborLogo from '../assets/images/logos/brimborg-logo.png'
+import skylagoonLogo from '../assets/images/logos/skylagoon-logo.svg'
+import elkoLogo from '../assets/images/logos/elko-logo.svg'
 import flyoverLogo from '../assets/images/logos/Flyover-Iceland-Logo.webp'
 import epalLogo from '../assets/images/logos/Epal-Logo.png'
 import rafalLogo from '../assets/images/logos/Rafal-Logo.png'
@@ -25,6 +28,11 @@ const TrustSection = ({ currentLanguage }) => {
   const currentContent = content[currentLanguage]
 
   const logos = [
+    // New prominent clients first
+    { src: brimborLogo, alt: 'Brimborg', name: 'brimborg' },
+    { src: skylagoonLogo, alt: 'Sky Lagoon', name: 'skylagoon' },
+    { src: elkoLogo, alt: 'ELKO', name: 'elko' },
+    // Existing clients
     { src: flyoverLogo, alt: 'FlyOver Iceland', name: 'flyover' },
     { src: epalLogo, alt: 'Epal', name: 'epal' },
     { src: rafalLogo, alt: 'Rafal', name: 'rafal' },
@@ -141,7 +149,7 @@ const TrustSection = ({ currentLanguage }) => {
         }
         
         .animate-logo-scroll {
-          animation: logo-scroll 28s linear infinite;
+          animation: logo-scroll 32s linear infinite;
           width: max-content;
         }
         
