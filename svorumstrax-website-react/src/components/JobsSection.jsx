@@ -160,10 +160,24 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
             return (
               <div 
                 key={index}
-                className="bg-white/20 backdrop-blur-md rounded-xl p-6 sm:p-8 border border-white/25 shadow-lg hover:bg-white/30 hover:shadow-xl transition-all duration-300"
+                className="rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  border: '1px solid rgba(255, 255, 255, 0.25)'
+                }}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-white/30 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 border border-white/40 shadow-sm">
+                  <div 
+                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm"
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.3)',
+                      backdropFilter: 'blur(8px)',
+                      WebkitBackdropFilter: 'blur(8px)',
+                      border: '1px solid rgba(255, 255, 255, 0.4)'
+                    }}
+                  >
                     {iconMap[index]}
                   </div>
                   <div className="flex-1">
