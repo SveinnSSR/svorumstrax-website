@@ -29,7 +29,7 @@ const TrustSection = ({ currentLanguage }) => {
     { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' },
     { src: ntcLogo, alt: 'NTC', name: 'ntc' },
     { src: icewearLogo, alt: 'Icewear', name: 'icewear' },
-    { src: fjallakofinnLogoPng, alt: 'Fjallakofinn', name: 'fjallakofinn' }  // Using PNG version
+    { src: fjallakofinnLogoPng, alt: 'Fjallakofinn', name: 'fjallakofinn' },  // Using PNG version
     { src: fjallakofinnLogoJpg, alt: 'Fjallakofinn', name: 'fjallakofinn' }  // Uncomment to test JPG
   ]
 
