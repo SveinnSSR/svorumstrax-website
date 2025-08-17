@@ -29,8 +29,7 @@ const TrustSection = ({ currentLanguage }) => {
     { src: epalLogo, alt: 'Epal', name: 'epal' },
     { src: rafalLogo, alt: 'Rafal', name: 'rafal' },
     { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' },
-    // NTC SVG has issues, show as text fallback for now
-    { src: null, alt: 'NTC', name: 'ntc', isText: true },
+    { src: ntcLogo, alt: 'NTC', name: 'ntc' },  // Now using the cleaned SVG
     { src: icewearLogo, alt: 'Icewear', name: 'icewear' },
     { src: fjallakofinnLogo, alt: 'Fjallakofinn', name: 'fjallakofinn' },
     { src: happdraettiLogo, alt: 'Happdrætti DAS', name: 'happdraetti' },
@@ -70,28 +69,23 @@ const TrustSection = ({ currentLanguage }) => {
                 className="flex-shrink-0 px-2 lg:px-3 flex items-center justify-center"
               >
                 <div className="w-24 lg:w-28 h-12 flex items-center justify-center">
-                  {logo.isText ? (
-                    // Text fallback for NTC
-                    <span className="text-gray-500 font-bold text-xl tracking-wider">NTC</span>
-                  ) : (
-                    <img 
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="max-h-full max-w-full w-auto h-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-500"
-                      style={{
-                        maxHeight: '48px',
-                        maxWidth: '112px'
-                      }}
-                      onError={(e) => {
-                        console.error(`Failed to load: ${logo.alt}`)
-                        // Show text fallback
-                        const span = document.createElement('span')
-                        span.className = 'text-gray-400 font-medium text-sm'
-                        span.textContent = logo.alt
-                        e.target.parentElement.replaceChild(span, e.target)
-                      }}
-                    />
-                  )}
+                  <img 
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="max-h-full max-w-full w-auto h-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      maxHeight: '48px',
+                      maxWidth: '112px'
+                    }}
+                    onError={(e) => {
+                      console.error(`Failed to load: ${logo.alt}`)
+                      // Show text fallback
+                      const span = document.createElement('span')
+                      span.className = 'text-gray-400 font-medium text-sm'
+                      span.textContent = logo.alt
+                      e.target.parentElement.replaceChild(span, e.target)
+                    }}
+                  />
                 </div>
               </div>
             ))}
@@ -104,25 +98,21 @@ const TrustSection = ({ currentLanguage }) => {
             {logos.map((logo) => (
               <div key={logo.name} className="flex items-center justify-center">
                 <div className="w-20 h-10 flex items-center justify-center">
-                  {logo.isText ? (
-                    <span className="text-gray-500 font-bold text-base">NTC</span>
-                  ) : (
-                    <img 
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="max-h-full max-w-full w-auto h-auto object-contain opacity-80"
-                      style={{
-                        maxHeight: '40px',
-                        maxWidth: '80px'
-                      }}
-                      onError={(e) => {
-                        const span = document.createElement('span')
-                        span.className = 'text-gray-400 text-xs'
-                        span.textContent = logo.alt
-                        e.target.parentElement.replaceChild(span, e.target)
-                      }}
-                    />
-                  )}
+                  <img 
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="max-h-full max-w-full w-auto h-auto object-contain opacity-80"
+                    style={{
+                      maxHeight: '40px',
+                      maxWidth: '80px'
+                    }}
+                    onError={(e) => {
+                      const span = document.createElement('span')
+                      span.className = 'text-gray-400 text-xs'
+                      span.textContent = logo.alt
+                      e.target.parentElement.replaceChild(span, e.target)
+                    }}
+                  />
                 </div>
               </div>
             ))}
