@@ -5,7 +5,6 @@ import flyoverLogo from '../assets/images/logos/Flyover-Iceland-Logo.webp'
 import epalLogo from '../assets/images/logos/Epal-Logo.png'
 import rafalLogo from '../assets/images/logos/Rafal-Logo.png'
 import islandsbilarLogo from '../assets/images/logos/islandsbilar-logo.svg'
-import ntcLogo from '../assets/images/logos/ntc-logo.svg'
 import icewearLogo from '../assets/images/logos/Icewear-Logo.jpg'
 import fjallakofinnLogo from '../assets/images/logos/fjallakofinn-logo.png'
 import happdraettiLogo from '../assets/images/logos/happdraetti_das-logo.jpeg'
@@ -28,13 +27,12 @@ const TrustSection = ({ currentLanguage }) => {
     { src: flyoverLogo, alt: 'FlyOver Iceland', name: 'flyover' },
     { src: epalLogo, alt: 'Epal', name: 'epal' },
     { src: rafalLogo, alt: 'Rafal', name: 'rafal' },
-    { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' },
-    { src: ntcLogo, alt: 'NTC', name: 'ntc' },  // Now using the cleaned SVG
     { src: icewearLogo, alt: 'Icewear', name: 'icewear' },
     { src: fjallakofinnLogo, alt: 'Fjallakofinn', name: 'fjallakofinn' },
     { src: happdraettiLogo, alt: 'Happdrætti DAS', name: 'happdraetti' },
     { src: logthingLogo, alt: 'Lögþing', name: 'logthing' },
-    { src: febaeturLogo, alt: 'Fébætur', name: 'febaetur' }
+    { src: febaeturLogo, alt: 'Fébætur', name: 'febaetur' },
+    { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' }
   ]
 
   // Double the logos for seamless infinite scroll
