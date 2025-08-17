@@ -214,8 +214,8 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Staff Hero Section */}
-      <section className="relative py-24 bg-white overflow-hidden">
+      {/* Staff Hero Section - Reduced spacing */}
+      <section className="relative py-12 sm:py-16 bg-white overflow-hidden">
         {/* Subtle background effects matching hero */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-br from-blue-50/40 via-teal-50/20 to-transparent"></div>
@@ -226,16 +226,16 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-20">
+          <div className="text-center mb-10">
             {/* Title matching hero style - clean and minimal */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-8 leading-tight text-slate-900">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight text-slate-900">
               {currentContent.title}
             </h1>
             
-            {/* Introduction in a card */}
+            {/* Introduction in a card - More compact */}
             <div className="max-w-4xl mx-auto">
-              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-lg border border-gray-100">
-                <p className="text-lg sm:text-xl text-slate-600 leading-relaxed mb-6">
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 sm:p-8 shadow-lg border border-gray-100">
+                <p className="text-lg sm:text-xl text-slate-600 leading-relaxed mb-4">
                   {currentContent.heroIntro}
                 </p>
                 <p className="text-lg text-slate-600 leading-relaxed font-medium">
@@ -247,8 +247,8 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
         </div>
       </section>
 
-      {/* Staff Grid Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-50 to-slate-100/50 relative overflow-hidden">
+      {/* Staff Grid Section - Reduced top padding */}
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-slate-50 to-slate-100/50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {staffMembers.map((member) => (
