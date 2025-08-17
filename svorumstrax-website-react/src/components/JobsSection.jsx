@@ -107,11 +107,9 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
                     
                     {/* Title with icon */}
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-orange-100 rounded-xl flex items-center justify-center">
-                        <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
+                      <svg className="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
                       <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
                         {currentContent.button}
                       </h3>
@@ -171,7 +169,7 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
             // Icon components for professional look
             const iconMap = {
               0: ( // Barcelona lifestyle - sun icon
-                <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                 </svg>
               ),
@@ -189,7 +187,7 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
 
             // Subtle gradient backgrounds inspired by Mediterranean colors
             const gradientMap = {
-              0: 'from-amber-50/50 via-orange-50/30 to-yellow-50/40', // Warm sunset
+              0: 'from-gray-50/50 via-gray-50/30 to-white/40', // Neutral professional
               1: 'from-blue-50/50 via-sky-50/30 to-cyan-50/40', // Mediterranean sea
               2: 'from-emerald-50/50 via-teal-50/30 to-green-50/40' // Growth
             }
