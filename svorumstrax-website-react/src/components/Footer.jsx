@@ -145,7 +145,7 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
                 <li key={index}>
                   <button
                     onClick={() => handleLinkClick(item)}
-                    className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm text-left block font-medium"
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm text-left block font-medium focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 rounded-md"
                   >
                     {item.name}
                   </button>
@@ -165,14 +165,14 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium"
+                      className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 rounded-md"
                     >
                       {item.name}
                     </a>
                   ) : (
                     <button
                       onClick={() => handleLinkClick(item)}
-                      className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm text-left block font-medium"
+                      className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm text-left block font-medium focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 rounded-md"
                     >
                       {item.name}
                     </button>
@@ -195,7 +195,7 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
                 </div>
                 <a
                   href={`mailto:${currentContent.contact.email}`}
-                  className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm break-all font-medium"
+                  className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm break-all font-medium focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 rounded-md"
                 >
                   {currentContent.contact.email}
                 </a>
@@ -208,7 +208,7 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
                 </div>
                 <a
                   href={`tel:+354${currentContent.contact.phone.replace('-', '')}`}
-                  className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium"
+                  className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 rounded-md"
                 >
                   {currentContent.contact.phone}
                 </a>
