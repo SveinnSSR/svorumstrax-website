@@ -165,64 +165,62 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
 
-        {/* UPGRADED Benefit Cards with Barcelona Background */}
+        {/* Refined Benefit Cards - Subtle Mediterranean-inspired gradients */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
           {currentContent.benefits.map((benefit, index) => {
-            // Icon components instead of emojis for more professional look
+            // Icon components for professional look
             const iconMap = {
-              0: ( // Barcelona lifestyle
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              0: ( // Barcelona lifestyle - sun icon
+                <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                 </svg>
               ),
-              1: ( // Flexibility
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              1: ( // Flexibility - home icon
+                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                 </svg>
               ),
-              2: ( // Career development
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              2: ( // Career development - chart icon
+                <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
                 </svg>
               )
             }
 
+            // Subtle gradient backgrounds inspired by Mediterranean colors
+            const gradientMap = {
+              0: 'from-amber-50/50 via-orange-50/30 to-yellow-50/40', // Warm sunset
+              1: 'from-blue-50/50 via-sky-50/30 to-cyan-50/40', // Mediterranean sea
+              2: 'from-emerald-50/50 via-teal-50/30 to-green-50/40' // Growth
+            }
+
             return (
               <div 
                 key={index}
-                className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 group"
+                className="relative overflow-hidden rounded-xl shadow-sm hover:shadow-lg transition-all duration-500 group bg-white border border-gray-200 hover:border-gray-300"
               >
-                {/* Barcelona background image */}
-                <div className="absolute inset-0">
-                  <img 
-                    src={barcelonaImage}
-                    alt="Barcelona"
-                    className="w-full h-full object-cover transform scale-110 group-hover:scale-125 transition-transform duration-700"
-                  />
-                </div>
+                {/* Very subtle gradient background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${gradientMap[index]} opacity-60 group-hover:opacity-80 transition-opacity duration-500`}></div>
                 
-                {/* Translucent grey overlay similar to stats card */}
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-800/70 via-slate-900/65 to-slate-800/75"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent"></div>
+                {/* Subtle decorative element */}
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-white/40 to-transparent rounded-full blur-3xl"></div>
                 
-                {/* Content with glassmorphic background */}
+                {/* Content */}
                 <div className="relative p-6 sm:p-8 h-full">
-                  <div className="bg-white/15 backdrop-blur-sm rounded-xl p-6 border border-white/20 h-full">
-                    <div className="flex items-start gap-4">
-                      {/* Icon with glassmorphic background */}
-                      <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center flex-shrink-0 border border-white/30 shadow-lg">
-                        {iconMap[index]}
-                      </div>
-                      
-                      {/* Text content */}
-                      <div className="flex-1">
-                        <h3 className="text-lg font-bold text-white mb-3 leading-tight">
-                          {benefit.title}
-                        </h3>
-                        <p className="text-sm text-white/85 leading-relaxed">
-                          {benefit.description}
-                        </p>
-                      </div>
+                  <div className="flex items-start gap-4">
+                    {/* Icon with subtle colored background */}
+                    <div className={`w-10 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm border border-gray-100`}>
+                      {iconMap[index]}
+                    </div>
+                    
+                    {/* Text content */}
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2 leading-tight">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {benefit.description}
+                      </p>
                     </div>
                   </div>
                 </div>
