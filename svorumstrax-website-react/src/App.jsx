@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
+import TrustSection from './components/TrustSection'
 import Services from './components/Services'
 import AIAgentsSection from './components/AIAgentsSection'
 import ChoiceSection from './components/ChoiceSection'
 import OutboundSection from './components/OutboundSection'
 import JobsSection from './components/JobsSection'
-import TrustSection from './components/TrustSection'
 import TestimonialsSection from './components/TestimonialsSection'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
@@ -89,6 +89,10 @@ function App() {
         onContactClick={openContactModal}
       />
       
+      <TrustSection 
+        currentLanguage={currentLanguage}
+      />
+      
       <Services 
         currentLanguage={currentLanguage}
         onContactClick={openContactModal}
@@ -112,10 +116,6 @@ function App() {
       <JobsSection 
         currentLanguage={currentLanguage}
         onContactClick={openContactModal}
-      />
-      
-      <TrustSection 
-        currentLanguage={currentLanguage}
       />
       
       <TestimonialsSection 
