@@ -24,7 +24,8 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
       ],
       statsTitle: 'Íslenskir sérfræðingar í Barcelona',
       statsDescription: 'Við erum stolt af að vera einn stærsti íslenski vinnustaðurinn á Spáni og skapa störf fyrir Íslendinga erlendis.',
-      button: 'Sækja um starf'
+      button: 'Sækja um starf',
+      ctaTagline: 'Vertu hluti af teyminu'
     },
     en: {
       title: 'Careers for Icelanders in Spain',
@@ -48,7 +49,8 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
       ],
       statsTitle: 'Icelandic professionals in Barcelona',
       statsDescription: 'We\'re proud to be one of the largest Icelandic employers in Spain, creating meaningful career opportunities for Icelanders abroad.',
-      button: 'Apply Now'
+      button: 'Apply Now',
+      ctaTagline: 'Join our team'
     }
   }
 
@@ -84,24 +86,62 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-12">
           
-          {/* CTA Card - Refined Scandinavian Muted Style */}
+          {/* UPGRADED CTA Card - Modern Glassmorphic Design with Subtle Gradient */}
           <div className="lg:col-span-5">
-            <div className="bg-gray-50/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-8 sm:p-10 h-full flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="mb-8">
-                {/* No icon - clean minimal approach */}
-                <h3 className="text-2xl sm:text-3xl font-semibold mb-6 leading-tight text-gray-900">
-                  {currentContent.button}
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {currentContent.subtitle}
-                </p>
+            <div className="relative h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 group">
+              {/* Subtle gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
+              
+              {/* Animated gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 via-transparent to-orange-600/20 opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+              
+              {/* Subtle pattern overlay */}
+              <div 
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 1px)`,
+                  backgroundSize: '40px 40px'
+                }}
+              ></div>
+              
+              {/* Content */}
+              <div className="relative p-8 sm:p-10 h-full flex flex-col justify-between">
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-teal-500 to-orange-500"></div>
+                
+                <div>
+                  {/* Tagline */}
+                  <p className="text-blue-300 text-sm font-semibold uppercase tracking-wider mb-4">
+                    {currentContent.ctaTagline}
+                  </p>
+                  
+                  {/* Title with icon */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                      {currentContent.button}
+                    </h3>
+                  </div>
+                  
+                  {/* Description */}
+                  <p className="text-gray-300 mb-8 leading-relaxed">
+                    {currentContent.subtitle}
+                  </p>
+                </div>
+                
+                {/* Button with hover effect */}
+                <button
+                  onClick={() => onContactClick('job')}
+                  className="relative overflow-hidden bg-white text-gray-900 font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 group/btn w-full sm:w-auto"
+                >
+                  <span className="relative z-10">{currentContent.button}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-orange-500 opacity-0 group-hover/btn:opacity-10 transition-opacity duration-300"></div>
+                </button>
               </div>
-              <button
-                onClick={() => onContactClick('job')}
-                className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-sm w-full sm:w-auto"
-              >
-                {currentContent.button}
-              </button>
             </div>
           </div>
 
@@ -117,7 +157,7 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
               <div className="absolute inset-0 bg-gradient-to-br from-slate-800/40 via-slate-900/25 to-slate-800/45"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
               
-              {/* Stats Overlay - Back to original visibility */}
+              {/* Stats Overlay */}
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-white/20 backdrop-blur-md rounded-xl p-6 border border-white/25 shadow-lg">
                   <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-2 drop-shadow-sm">
@@ -135,24 +175,24 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           </div>
         </div>
 
-        {/* Clean minimal benefit cards - matches site aesthetic */}
+        {/* UPGRADED Benefit Cards with Barcelona Background */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
           {currentContent.benefits.map((benefit, index) => {
-            // Smart icon mapping instead of emojis
+            // Icon components instead of emojis for more professional look
             const iconMap = {
               0: ( // Barcelona lifestyle
-                <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                 </svg>
               ),
               1: ( // Flexibility
-                <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                 </svg>
               ),
               2: ( // Career development
-                <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
                 </svg>
               )
             }
@@ -160,19 +200,40 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
             return (
               <div 
                 key={index}
-                className="bg-white rounded-xl p-6 sm:p-8 border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-300"
+                className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 group"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0 border border-gray-200">
-                    {iconMap[index]}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      {benefit.description}
-                    </p>
+                {/* Barcelona background image */}
+                <div className="absolute inset-0">
+                  <img 
+                    src={barcelonaImage}
+                    alt="Barcelona"
+                    className="w-full h-full object-cover transform scale-110 group-hover:scale-125 transition-transform duration-700"
+                  />
+                </div>
+                
+                {/* Translucent grey overlay similar to stats card */}
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-800/70 via-slate-900/65 to-slate-800/75"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent"></div>
+                
+                {/* Content with glassmorphic background */}
+                <div className="relative p-6 sm:p-8 h-full">
+                  <div className="bg-white/15 backdrop-blur-sm rounded-xl p-6 border border-white/20 h-full">
+                    <div className="flex items-start gap-4">
+                      {/* Icon with glassmorphic background */}
+                      <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center flex-shrink-0 border border-white/30 shadow-lg">
+                        {iconMap[index]}
+                      </div>
+                      
+                      {/* Text content */}
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold text-white mb-3 leading-tight">
+                          {benefit.title}
+                        </h3>
+                        <p className="text-sm text-white/85 leading-relaxed">
+                          {benefit.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
