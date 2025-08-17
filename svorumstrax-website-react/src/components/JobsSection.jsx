@@ -86,61 +86,51 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-12">
           
-          {/* UPGRADED CTA Card - Modern Glassmorphic Design with Subtle Gradient */}
+          {/* CTA Card - Subtle Translucent Style matching the stats card */}
           <div className="lg:col-span-5">
             <div className="relative h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 group">
-              {/* Subtle gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
+              {/* Light background with subtle gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50"></div>
               
-              {/* Animated gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 via-transparent to-orange-600/20 opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
-              
-              {/* Subtle pattern overlay */}
-              <div 
-                className="absolute inset-0 opacity-10"
-                style={{
-                  backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 1px)`,
-                  backgroundSize: '40px 40px'
-                }}
-              ></div>
+              {/* Very subtle animated gradient overlay using site colors */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-50/30 via-transparent to-orange-50/30 opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               {/* Content */}
               <div className="relative p-8 sm:p-10 h-full flex flex-col justify-between">
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-teal-500 to-orange-500"></div>
-                
-                <div>
-                  {/* Tagline */}
-                  <p className="text-blue-300 text-sm font-semibold uppercase tracking-wider mb-4">
-                    {currentContent.ctaTagline}
-                  </p>
-                  
-                  {/* Title with icon */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
+                {/* Translucent glassmorphic container */}
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 h-full flex flex-col justify-between">
+                  <div>
+                    {/* Tagline with subtle color */}
+                    <p className="text-gray-500 text-sm font-semibold uppercase tracking-wider mb-4">
+                      {currentContent.ctaTagline}
+                    </p>
+                    
+                    {/* Title with icon */}
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-orange-100 rounded-xl flex items-center justify-center">
+                        <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
+                        {currentContent.button}
+                      </h3>
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                      {currentContent.button}
-                    </h3>
+                    
+                    {/* Description */}
+                    <p className="text-gray-600 mb-8 leading-relaxed">
+                      {currentContent.subtitle}
+                    </p>
                   </div>
                   
-                  {/* Description */}
-                  <p className="text-gray-300 mb-8 leading-relaxed">
-                    {currentContent.subtitle}
-                  </p>
+                  {/* Button matching site style */}
+                  <button
+                    onClick={() => onContactClick('job')}
+                    className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 w-full sm:w-auto"
+                  >
+                    {currentContent.button}
+                  </button>
                 </div>
-                
-                {/* Button with hover effect */}
-                <button
-                  onClick={() => onContactClick('job')}
-                  className="relative overflow-hidden bg-white text-gray-900 font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 group/btn w-full sm:w-auto"
-                >
-                  <span className="relative z-10">{currentContent.button}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-orange-500 opacity-0 group-hover/btn:opacity-10 transition-opacity duration-300"></div>
-                </button>
               </div>
             </div>
           </div>
