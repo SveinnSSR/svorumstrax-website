@@ -214,8 +214,8 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Staff Hero Section - Reduced spacing */}
-      <section className="relative py-12 sm:py-16 bg-white overflow-hidden">
+      {/* Staff Hero Section - Balanced spacing */}
+      <section className="relative pt-20 sm:pt-24 pb-12 sm:pb-16 bg-white overflow-hidden">
         {/* Subtle background effects matching hero */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-br from-blue-50/40 via-teal-50/20 to-transparent"></div>
