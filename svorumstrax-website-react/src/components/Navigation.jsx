@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import svorumStraxLogo from '../assets/images/svorum-strax-logo.svg'
+import svorumStraxLogo from '../assets/images/svorumstrx-logo.png'
 
 const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavigate, currentPage = 'home' }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
