@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
-import svorumLogo from '../assets/images/svorum-strax-logo-icon.png';
 
-// Updated to beautiful golden-yellow theme - more elegant and premium
+// Back to the beautiful green translucent theme
 const WIDGET_THEME = {
-  color: '#F4C430',  // Beautiful golden-yellow (more elegant than orange)
-  lightGradient: 'linear-gradient(135deg, rgba(244, 196, 48, 0.4) 0%, rgba(255, 215, 0, 0.5) 100%)', // Very translucent for opened chat
-  solidGradient: 'linear-gradient(135deg, #F4C430 0%, #FFD700 100%)', // Vibrant for minimized state
-  accentColor: '#FFD700', // Gold accent
+  color: '#66D893',  // Beautiful ELKO green
+  gradient: 'linear-gradient(135deg, rgba(102, 216, 147, 0.85) 0%, rgba(52, 211, 153, 0.9) 100%)', // Translucent green gradient
+  solidGradient: 'linear-gradient(135deg, #66D893 0%, #34D399 100%)', // Solid fallback if needed
 };
 
 // Constants for session management
@@ -129,18 +127,14 @@ const MessageFormatter = ({ message }) => {
   );
 };
 
-// Updated logo component - uses your Svörum Strax logo
-const ChatIcon = ({ size = 24 }) => (
-  <img 
-    src={svorumLogo} 
-    alt="Svörum Strax" 
-    width={size} 
-    height={size}
-    style={{ 
-      borderRadius: '4px',
-      objectFit: 'contain'
-    }}
-  />
+// Simple chat bubble icon - clean and recognizable
+const ChatIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
+  <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={color}/>
+    <circle cx="10" cy="14" r="2" fill="white"/>
+    <circle cx="16" cy="14" r="2" fill="white"/>
+    <circle cx="22" cy="14" r="2" fill="white"/>
+  </svg>
 );
 
 // SIMPLIFIED External Text Bar Component - EXACTLY like Sky Lagoon (Minimal & Fast)
@@ -696,7 +690,7 @@ const ChatWidget = () => {
           border: `1px solid rgba(0, 0, 0, 0.06)`,
           boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
-          <ChatIcon size={14} />
+          <ChatIcon size={14} color={WIDGET_THEME.color} />
         </div>
       </div>
       <div style={{
@@ -879,7 +873,7 @@ const ChatWidget = () => {
         width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
         height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
         maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
-        background: isMinimized ? WIDGET_THEME.solidGradient : 'rgba(250, 250, 250, 0.98)',
+        background: isMinimized ? WIDGET_THEME.gradient : 'rgba(250, 250, 250, 0.98)',
         borderRadius: isMinimized ? '50%' : '16px',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
         overflow: 'hidden',
@@ -889,7 +883,7 @@ const ChatWidget = () => {
         zIndex: 9999,
         maxWidth: isMinimized ? 'auto' : '90vw'
       }}>
-        {/* Header - Elegant Golden Glassmorphic Style */}
+        {/* Header - Translucent Green Glassmorphic Style with Soundwave */}
         <div 
           onClick={handleToggleChat}
           style={{
@@ -899,14 +893,14 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            background: isMinimized ? WIDGET_THEME.solidGradient : WIDGET_THEME.lightGradient,
-            backdropFilter: isMinimized ? 'none' : 'blur(15px)',
+            background: isMinimized ? WIDGET_THEME.gradient : WIDGET_THEME.gradient,
+            backdropFilter: isMinimized ? 'none' : 'blur(10px)',
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
             flexDirection: isMinimized ? 'row' : 'column',
             boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)',
-            borderBottom: isMinimized ? 'none' : '1px solid rgba(255, 255, 255, 0.3)'
+            borderBottom: isMinimized ? 'none' : '1px solid rgba(255, 255, 255, 0.2)'
           }}
         >
           <div style={{
@@ -924,6 +918,7 @@ const ChatWidget = () => {
           }}>
             <ChatIcon 
               size={isMinimized ? (windowWidth <= 768 ? 24 : 28) : 32} 
+              color={WIDGET_THEME.color} 
             />
           </div>
           
@@ -935,10 +930,10 @@ const ChatWidget = () => {
               gap: '4px'
             }}>
               <span style={{ 
-                color: isMinimized ? 'white' : 'rgba(77, 90, 65, 0.9)',
+                color: 'white',
                 fontSize: '16px',
                 fontWeight: '600',
-                textShadow: isMinimized ? '0 1px 3px rgba(0, 0, 0, 0.3)' : 'none'
+                textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
               }}>
                 {t.subtitle}
               </span>
@@ -953,7 +948,7 @@ const ChatWidget = () => {
               viewBox="0 0 24 24" 
               fill="none"
               style={{ 
-                color: 'rgba(77, 90, 65, 0.8)',
+                color: 'white',
                 position: 'absolute',
                 right: '16px',
                 top: '16px'
@@ -1003,7 +998,7 @@ const ChatWidget = () => {
                       border: `1px solid rgba(0, 0, 0, 0.06)`,
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
-                      <ChatIcon size={14} />
+                      <ChatIcon size={14} color={WIDGET_THEME.color} />
                     </div>
                   )}
                   
@@ -1088,7 +1083,7 @@ const ChatWidget = () => {
                     border: `1px solid rgba(0, 0, 0, 0.06)`,
                     boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                   }}>
-                    <ChatIcon size={14} />
+                    <ChatIcon size={14} color={WIDGET_THEME.color} />
                   </div>
                   
                   <div style={{
@@ -1164,7 +1159,7 @@ const ChatWidget = () => {
               onClick={handleSend}
               disabled={!inputValue.trim() || isLoading}
               style={{
-                background: WIDGET_THEME.solidGradient,
+                background: WIDGET_THEME.gradient,
                 color: 'white',
                 border: 'none',
                 padding: '8px 20px',
