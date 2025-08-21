@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 import svorumLogo from '../assets/images/svorum-strax-logo-icon.png';
 
-// Updated to beautiful orange theme matching your logo
+// Updated to beautiful golden-yellow theme - more elegant and premium
 const WIDGET_THEME = {
-  color: '#F2AF57',  // Beautiful Svörum Strax orange
-  gradient: 'linear-gradient(135deg, rgba(242, 175, 87, 0.85) 0%, rgba(255, 165, 0, 0.9) 100%)', // Translucent orange gradient
-  solidGradient: 'linear-gradient(135deg, #F2AF57 0%, #FFA500 100%)', // Solid fallback if needed
+  color: '#F4C430',  // Beautiful golden-yellow (more elegant than orange)
+  lightGradient: 'linear-gradient(135deg, rgba(244, 196, 48, 0.4) 0%, rgba(255, 215, 0, 0.5) 100%)', // Very translucent for opened chat
+  solidGradient: 'linear-gradient(135deg, #F4C430 0%, #FFD700 100%)', // Vibrant for minimized state
+  accentColor: '#FFD700', // Gold accent
 };
 
 // Constants for session management
@@ -878,7 +879,7 @@ const ChatWidget = () => {
         width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
         height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
         maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
-        background: isMinimized ? WIDGET_THEME.gradient : 'rgba(250, 250, 250, 0.98)',
+        background: isMinimized ? WIDGET_THEME.solidGradient : 'rgba(250, 250, 250, 0.98)',
         borderRadius: isMinimized ? '50%' : '16px',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
         overflow: 'hidden',
@@ -888,7 +889,7 @@ const ChatWidget = () => {
         zIndex: 9999,
         maxWidth: isMinimized ? 'auto' : '90vw'
       }}>
-        {/* Header - Translucent Orange Glassmorphic Style with Soundwave */}
+        {/* Header - Elegant Golden Glassmorphic Style */}
         <div 
           onClick={handleToggleChat}
           style={{
@@ -898,14 +899,14 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            background: isMinimized ? WIDGET_THEME.gradient : WIDGET_THEME.gradient,
-            backdropFilter: isMinimized ? 'none' : 'blur(10px)',
+            background: isMinimized ? WIDGET_THEME.solidGradient : WIDGET_THEME.lightGradient,
+            backdropFilter: isMinimized ? 'none' : 'blur(15px)',
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
             flexDirection: isMinimized ? 'row' : 'column',
             boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)',
-            borderBottom: isMinimized ? 'none' : '1px solid rgba(255, 255, 255, 0.2)'
+            borderBottom: isMinimized ? 'none' : '1px solid rgba(255, 255, 255, 0.3)'
           }}
         >
           <div style={{
@@ -934,10 +935,10 @@ const ChatWidget = () => {
               gap: '4px'
             }}>
               <span style={{ 
-                color: 'white',
+                color: isMinimized ? 'white' : 'rgba(77, 90, 65, 0.9)',
                 fontSize: '16px',
                 fontWeight: '600',
-                textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+                textShadow: isMinimized ? '0 1px 3px rgba(0, 0, 0, 0.3)' : 'none'
               }}>
                 {t.subtitle}
               </span>
@@ -952,7 +953,7 @@ const ChatWidget = () => {
               viewBox="0 0 24 24" 
               fill="none"
               style={{ 
-                color: 'white',
+                color: 'rgba(77, 90, 65, 0.8)',
                 position: 'absolute',
                 right: '16px',
                 top: '16px'
@@ -1163,7 +1164,7 @@ const ChatWidget = () => {
               onClick={handleSend}
               disabled={!inputValue.trim() || isLoading}
               style={{
-                background: WIDGET_THEME.gradient,
+                background: WIDGET_THEME.solidGradient,
                 color: 'white',
                 border: 'none',
                 padding: '8px 20px',
