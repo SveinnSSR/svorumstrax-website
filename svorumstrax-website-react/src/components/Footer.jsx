@@ -1,4 +1,4 @@
-import footerLogo from '../assets/images/svorum-strax-logo.svg'
+import footerLogo from '../assets/images/svorumstrx-logo.png'
 
 const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
   const content = {
@@ -113,14 +113,18 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
         {/* Main Footer Content - Mobile optimized */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           
-          {/* Company Column - Mobile optimized */}
+          {/* Company Column - Mobile optimized with enhanced logo styling */}
           <div className="sm:col-span-2 lg:col-span-1">
-            {/* Logo */}
+            {/* Logo - Enhanced for PNG with better sizing and quality */}
             <div className="mb-6 sm:mb-8">
               <img 
                 src={footerLogo} 
                 alt="Svörum strax" 
-                className="h-8 sm:h-10 w-auto opacity-90 hover:opacity-100 transition-opacity duration-200"
+                className="h-10 sm:h-12 lg:h-14 w-auto opacity-90 hover:opacity-100 transition-opacity duration-200"
+                style={{ 
+                  filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05))',
+                  maxWidth: '200px'
+                }}
               />
             </div>
             

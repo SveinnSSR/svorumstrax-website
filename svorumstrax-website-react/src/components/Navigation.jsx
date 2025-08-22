@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import svorumStraxLogo from '../assets/images/svorum-strax-logo.svg'
+import svorumStraxLogo from '../assets/images/svorumstrx-logo.png'
 
 const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavigate, currentPage = 'home' }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -69,7 +69,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo - Enhanced sizing for PNG logo */}
           <div className="flex items-center">
             <button 
               onClick={() => handleNavigation('home')} 
@@ -78,7 +78,10 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
               <img 
                 src={svorumStraxLogo} 
                 alt="Svörum strax" 
-                className="h-10 w-auto"
+                className="h-12 sm:h-14 w-auto max-w-none"
+                style={{ 
+                  filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05))'
+                }}
               />
             </button>
           </div>
