@@ -1,13 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
-import svorumIcon from '../assets/images/svorumstrax-icon-black.png';
 
-// Updated theme with your brand colors
+// Back to the beautiful green translucent theme
 const WIDGET_THEME = {
-  color: '#FFAE49',  // Orange for closed button
-  accent: '#FFAE49',  // Your logo's orange
-  dark: '#1F2937',    // Your logo's black
-  gradient: 'linear-gradient(135deg, #FFAE49 0%, #FB923C 100%)', // Orange gradient for closed button
-  darkGradient: 'linear-gradient(135deg, #1F2937 0%, #374151 100%)', // Dark gradient for header
+  color: '#66D893',  // Beautiful ELKO green
+  gradient: 'linear-gradient(135deg, rgba(102, 216, 147, 0.85) 0%, rgba(52, 211, 153, 0.9) 100%)', // Translucent green gradient
+  solidGradient: 'linear-gradient(135deg, #66D893 0%, #34D399 100%)', // Solid fallback if needed
 };
 
 // Constants for session management
@@ -129,6 +126,16 @@ const MessageFormatter = ({ message }) => {
     </>
   );
 };
+
+// Simple chat bubble icon - clean and recognizable
+const ChatIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
+  <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M28 20a2.67 2.67 0 0 1-2.67 2.67H9.33L4 28V6.67A2.67 2.67 0 0 1 6.67 4h18.66A2.67 2.67 0 0 1 28 6.67V20z" fill={color}/>
+    <circle cx="10" cy="14" r="2" fill="white"/>
+    <circle cx="16" cy="14" r="2" fill="white"/>
+    <circle cx="22" cy="14" r="2" fill="white"/>
+  </svg>
+);
 
 // SIMPLIFIED External Text Bar Component - EXACTLY like Sky Lagoon (Minimal & Fast)
 const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage }) => {
@@ -673,7 +680,7 @@ const ChatWidget = () => {
     <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '16px', alignItems: 'flex-start', gap: '8px' }}>
       <div style={{ position: 'relative', height: '32px', width: '32px' }}>
         <div style={{
-          background: `white`,
+          background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
           borderRadius: '50%',
           width: '100%',
           height: '100%',
@@ -683,11 +690,7 @@ const ChatWidget = () => {
           border: `1px solid rgba(0, 0, 0, 0.06)`,
           boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
-          <img 
-            src={svorumIcon} 
-            alt="AI" 
-            style={{ width: '20px', height: '20px' }}
-          />
+          <ChatIcon size={14} color={WIDGET_THEME.color} />
         </div>
       </div>
       <div style={{
@@ -703,7 +706,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: WIDGET_THEME.accent,
+          background: WIDGET_THEME.color,
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite'
@@ -711,7 +714,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: WIDGET_THEME.accent,
+          background: WIDGET_THEME.color,
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite',
@@ -720,7 +723,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: WIDGET_THEME.accent,
+          background: WIDGET_THEME.color,
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite',
@@ -880,7 +883,7 @@ const ChatWidget = () => {
         zIndex: 9999,
         maxWidth: isMinimized ? 'auto' : '90vw'
       }}>
-        {/* Header - Dark Theme when open */}
+        {/* Header - Translucent Green Glassmorphic Style with Soundwave */}
         <div 
           onClick={handleToggleChat}
           style={{
@@ -890,37 +893,32 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            background: isMinimized ? WIDGET_THEME.gradient : WIDGET_THEME.darkGradient,
+            background: isMinimized ? WIDGET_THEME.gradient : WIDGET_THEME.gradient,
             backdropFilter: isMinimized ? 'none' : 'blur(10px)',
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
             flexDirection: isMinimized ? 'row' : 'column',
             boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)',
-            borderBottom: isMinimized ? 'none' : '1px solid rgba(255, 255, 255, 0.1)'
+            borderBottom: isMinimized ? 'none' : '1px solid rgba(255, 255, 255, 0.2)'
           }}
         >
           <div style={{
             position: 'relative',
-            height: isMinimized ? (windowWidth <= 768 ? '44px' : '54px') : '60px',
-            width: isMinimized ? (windowWidth <= 768 ? '44px' : '54px') : '60px',
+            height: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
+            width: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
             borderRadius: '50%',
-            backgroundColor: 'white',
-            padding: isMinimized ? '2px' : '8px',
+            backgroundColor: isMinimized ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.9)',
+            padding: '8px',
             boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             backdropFilter: 'blur(5px)'
           }}>
-            <img 
-              src={svorumIcon} 
-              alt="Svörum strax AI"
-              style={{
-                width: isMinimized ? '100%' : '36px',
-                height: isMinimized ? '100%' : '36px',
-                objectFit: 'contain'
-              }}
+            <ChatIcon 
+              size={isMinimized ? (windowWidth <= 768 ? 24 : 28) : 32} 
+              color={WIDGET_THEME.color} 
             />
           </div>
           
@@ -939,6 +937,7 @@ const ChatWidget = () => {
               }}>
                 {t.subtitle}
               </span>
+
             </div>
           )}
           
@@ -990,7 +989,7 @@ const ChatWidget = () => {
                       position: 'relative',
                       height: '32px',
                       width: '32px',
-                      background: `white`,
+                      background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
@@ -999,11 +998,7 @@ const ChatWidget = () => {
                       border: `1px solid rgba(0, 0, 0, 0.06)`,
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
-                      <img 
-                        src={svorumIcon} 
-                        alt="AI" 
-                        style={{ width: '20px', height: '20px' }}
-                      />
+                      <ChatIcon size={14} color={WIDGET_THEME.color} />
                     </div>
                   )}
                   
@@ -1012,13 +1007,13 @@ const ChatWidget = () => {
                       maxWidth: '70%',
                       padding: '12px 16px',
                       borderRadius: '16px',
-                      backgroundColor: msg.type === 'user' || msg.sender === 'user' ? WIDGET_THEME.dark : 'rgba(229, 231, 235, 0.95)',
+                      backgroundColor: msg.type === 'user' || msg.sender === 'user' ? '#0A0E27' : 'rgba(229, 231, 235, 0.95)',
                       color: msg.type === 'user' || msg.sender === 'user' ? 'white' : '#1f2937',
                       fontSize: '14px',
                       lineHeight: '1.5',
                       boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                       border: msg.type === 'user' || msg.sender === 'user' ? 
-                        `1px solid ${WIDGET_THEME.accent}40` : 
+                        `1px solid ${WIDGET_THEME.color}40` : 
                         '1px solid rgba(0, 0, 0, 0.08)',
                       position: 'relative',
                       overflowWrap: 'break-word',
@@ -1079,7 +1074,7 @@ const ChatWidget = () => {
                     position: 'relative',
                     height: '32px',
                     width: '32px',
-                    background: `white`,
+                    background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
@@ -1088,11 +1083,7 @@ const ChatWidget = () => {
                     border: `1px solid rgba(0, 0, 0, 0.06)`,
                     boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                   }}>
-                    <img 
-                      src={svorumIcon} 
-                      alt="AI" 
-                      style={{ width: '20px', height: '20px' }}
-                    />
+                    <ChatIcon size={14} color={WIDGET_THEME.color} />
                   </div>
                   
                   <div style={{
@@ -1156,8 +1147,8 @@ const ChatWidget = () => {
                 color: '#374151'
               }}
               onFocus={(e) => {
-                e.target.style.borderColor = WIDGET_THEME.accent;
-                e.target.style.boxShadow = `0 0 0 2px ${WIDGET_THEME.accent}20`;
+                e.target.style.borderColor = WIDGET_THEME.color;
+                e.target.style.boxShadow = `0 0 0 2px ${WIDGET_THEME.color}20`;
               }}
               onBlur={(e) => {
                 e.target.style.borderColor = '#D1D5DB';
@@ -1168,7 +1159,7 @@ const ChatWidget = () => {
               onClick={handleSend}
               disabled={!inputValue.trim() || isLoading}
               style={{
-                background: WIDGET_THEME.accent,
+                background: WIDGET_THEME.gradient,
                 color: 'white',
                 border: 'none',
                 padding: '8px 20px',
