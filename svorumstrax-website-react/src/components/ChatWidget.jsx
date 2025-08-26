@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 import svorumIcon from '../assets/images/svorumstrax-icon-black.png';
 
-// Brand colors from your logo
+// Updated theme with your brand colors
 const WIDGET_THEME = {
-  primary: '#1F2937',  // Your logo's black
-  accent: '#FFAE49',   // Your logo's orange
-  primaryRGB: '31, 41, 55',
-  accentRGB: '255, 174, 73'
+  color: '#FFAE49',  // Orange for closed button
+  accent: '#FFAE49',  // Your logo's orange
+  dark: '#1F2937',    // Your logo's black
+  gradient: 'linear-gradient(135deg, #FFAE49 0%, #FB923C 100%)', // Orange gradient for closed button
+  darkGradient: 'linear-gradient(135deg, #1F2937 0%, #374151 100%)', // Dark gradient for header
 };
 
 // Constants for session management
@@ -67,7 +68,7 @@ class ErrorBoundary extends Component {
             onClick={() => window.location.reload()}
             style={{
               padding: '4px 8px',
-              backgroundColor: WIDGET_THEME.accent,
+              backgroundColor: WIDGET_THEME.color,
               color: 'white',
               border: 'none',
               borderRadius: '4px',
@@ -115,7 +116,7 @@ const MessageFormatter = ({ message }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    style={{ color: WIDGET_THEME.accent, textDecoration: 'underline' }}
+                    style={{ color: WIDGET_THEME.color, textDecoration: 'underline' }}
                   >
                     View location on Google Maps 📍
                   </a>
@@ -129,7 +130,7 @@ const MessageFormatter = ({ message }) => {
   );
 };
 
-// SIMPLIFIED External Text Bar Component
+// SIMPLIFIED External Text Bar Component - EXACTLY like Sky Lagoon (Minimal & Fast)
 const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage }) => {
   if (!isVisible) return null;
 
@@ -147,7 +148,7 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
         right: '20px',
         maxWidth: '280px',
         backgroundColor: 'white',
-        color: WIDGET_THEME.primary,
+        color: '#4d5a41',
         padding: '14px 18px',
         borderRadius: '12px',
         boxShadow: '0 3px 10px rgba(0, 0, 0, 0.08)',
@@ -339,6 +340,7 @@ const ChatWidget = () => {
               break;
 
             case 'stream-chunk':
+              // TYPING INDICATOR FIX: Hide typing indicator on first chunk
               if (currentStreamMessage === '') {
                 console.log('🎯 First WebSocket chunk received - hiding typing indicator');
                 setIsTyping(false);
@@ -355,6 +357,7 @@ const ChatWidget = () => {
                 timestamp: new Date()
               }]);
               
+              // Start the chunked reveal effect
               const botMsgId = `bot-${Date.now()}-complete`;
               renderMessage(botMsgId, data.completeContent);
               
@@ -611,6 +614,7 @@ const ChatWidget = () => {
                   break;
 
                 case 'stream-chunk':
+                  // TYPING INDICATOR FIX: Hide typing indicator on first chunk
                   if (currentStreamMessage === '') {
                     console.log('🎯 First SSE chunk received - hiding typing indicator');
                     setIsTyping(false);
@@ -627,6 +631,7 @@ const ChatWidget = () => {
                     timestamp: new Date()
                   }]);
                   
+                  // Start the chunked reveal effect (same as WebSocket)
                   const botMsgId = `bot-${Date.now()}-complete`;
                   renderMessage(botMsgId, parsed.completeContent);
                   
@@ -668,31 +673,32 @@ const ChatWidget = () => {
     <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '16px', alignItems: 'flex-start', gap: '8px' }}>
       <div style={{ position: 'relative', height: '32px', width: '32px' }}>
         <div style={{
-          background: 'white',
+          background: `white`,
           borderRadius: '50%',
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          border: `1px solid rgba(0, 0, 0, 0.06)`,
           boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
         }}>
           <img 
             src={svorumIcon} 
             alt="AI" 
-            style={{ width: '18px', height: '18px' }}
+            style={{ width: '20px', height: '20px' }}
           />
         </div>
       </div>
       <div style={{
         padding: '12px 16px',
         borderRadius: '16px',
-        background: 'rgba(255, 255, 255, 0.1)',
+        background: 'rgba(229, 231, 235, 0.95)',
         display: 'flex',
         gap: '4px',
         alignItems: 'center',
         boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-        border: '1px solid rgba(255, 255, 255, 0.1)'
+        border: '1px solid rgba(0, 0, 0, 0.08)'
       }}>
         <span style={{
           height: '8px',
@@ -740,6 +746,7 @@ const ChatWidget = () => {
       timestamp: Date.now()
     }]);
     
+    // TYPING INDICATOR FIX: Show typing indicator immediately
     console.log('🟡 Showing typing indicator immediately');
     setIsTyping(true);
     setIsLoading(true);
@@ -749,6 +756,7 @@ const ChatWidget = () => {
         setIsStreaming(true);
         setCurrentStreamMessage('');
         
+        // Smart mode selection - use SSE on Vercel, WebSocket locally
         const useSSE = window.location.hostname !== 'localhost';
         
         if (useSSE) {
@@ -769,7 +777,7 @@ const ChatWidget = () => {
             messages: [
               { role: 'user', content: messageText }
             ],
-            threadId: sessionId
+            threadId: sessionId  // ✅ Use threadId with messages array
           }),
         });
 
@@ -833,12 +841,21 @@ const ChatWidget = () => {
     setShowTextBar(false);
   };
 
+  // Toggle between streaming and HTTP modes
+  const toggleMode = () => {
+    setStreamingMode(!streamingMode);
+    setIsLoading(false);
+    setIsStreaming(false);
+    setCurrentStreamMessage('');
+    setIsTyping(false);
+  };
+
   const lang = getCurrentLanguage();
   const t = translations[lang];
 
   return (
     <ErrorBoundary>
-      {/* External Text Bar */}
+      {/* OPTIMIZED External Text Bar */}
       <ExternalTextBar 
         isVisible={showTextBar && isMinimized} 
         onClose={() => setShowTextBar(false)}
@@ -853,7 +870,7 @@ const ChatWidget = () => {
         width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
         height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
         maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
-        background: isMinimized ? WIDGET_THEME.primary : 'rgba(250, 250, 250, 0.98)',
+        background: isMinimized ? WIDGET_THEME.gradient : 'rgba(250, 250, 250, 0.98)',
         borderRadius: isMinimized ? '50%' : '16px',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
         overflow: 'hidden',
@@ -863,7 +880,7 @@ const ChatWidget = () => {
         zIndex: 9999,
         maxWidth: isMinimized ? 'auto' : '90vw'
       }}>
-        {/* Header - Dark Theme */}
+        {/* Header - Dark Theme when open */}
         <div 
           onClick={handleToggleChat}
           style={{
@@ -873,31 +890,35 @@ const ChatWidget = () => {
             justifyContent: isMinimized ? 'center' : 'flex-start',
             cursor: 'pointer',
             gap: '12px',
-            background: isMinimized ? WIDGET_THEME.primary : WIDGET_THEME.primary,
+            background: isMinimized ? WIDGET_THEME.gradient : WIDGET_THEME.darkGradient,
+            backdropFilter: isMinimized ? 'none' : 'blur(10px)',
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
-            flexDirection: isMinimized ? 'row' : 'column'
+            flexDirection: isMinimized ? 'row' : 'column',
+            boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)',
+            borderBottom: isMinimized ? 'none' : '1px solid rgba(255, 255, 255, 0.1)'
           }}
         >
           <div style={{
             position: 'relative',
-            height: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
-            width: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
+            height: isMinimized ? (windowWidth <= 768 ? '44px' : '54px') : '60px',
+            width: isMinimized ? (windowWidth <= 768 ? '44px' : '54px') : '60px',
             borderRadius: '50%',
             backgroundColor: 'white',
-            padding: '8px',
+            padding: isMinimized ? '2px' : '8px',
             boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            backdropFilter: 'blur(5px)'
           }}>
             <img 
               src={svorumIcon} 
               alt="Svörum strax AI"
               style={{
-                width: isMinimized ? '24px' : '32px',
-                height: isMinimized ? '24px' : '32px',
+                width: isMinimized ? '100%' : '36px',
+                height: isMinimized ? '100%' : '36px',
                 objectFit: 'contain'
               }}
             />
@@ -969,18 +990,19 @@ const ChatWidget = () => {
                       position: 'relative',
                       height: '32px',
                       width: '32px',
-                      background: 'white',
+                      background: `white`,
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
+                      border: `1px solid rgba(0, 0, 0, 0.06)`,
                       boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                     }}>
                       <img 
                         src={svorumIcon} 
-                        alt="AI"
-                        style={{ width: '18px', height: '18px' }}
+                        alt="AI" 
+                        style={{ width: '20px', height: '20px' }}
                       />
                     </div>
                   )}
@@ -990,7 +1012,7 @@ const ChatWidget = () => {
                       maxWidth: '70%',
                       padding: '12px 16px',
                       borderRadius: '16px',
-                      backgroundColor: msg.type === 'user' || msg.sender === 'user' ? WIDGET_THEME.primary : 'white',
+                      backgroundColor: msg.type === 'user' || msg.sender === 'user' ? WIDGET_THEME.dark : 'rgba(229, 231, 235, 0.95)',
                       color: msg.type === 'user' || msg.sender === 'user' ? 'white' : '#1f2937',
                       fontSize: '14px',
                       lineHeight: '1.5',
@@ -1038,7 +1060,7 @@ const ChatWidget = () => {
               </div>
             ))}
 
-            {/* Streaming message preview */}
+            {/* Streaming message preview (no cursor for premium feel) */}
             {isStreaming && currentStreamMessage && (
               <div style={{
                 display: 'flex',
@@ -1057,18 +1079,19 @@ const ChatWidget = () => {
                     position: 'relative',
                     height: '32px',
                     width: '32px',
-                    background: 'white',
+                    background: `white`,
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
+                    border: `1px solid rgba(0, 0, 0, 0.06)`,
                     boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
                   }}>
                     <img 
                       src={svorumIcon} 
-                      alt="AI"
-                      style={{ width: '18px', height: '18px' }}
+                      alt="AI" 
+                      style={{ width: '20px', height: '20px' }}
                     />
                   </div>
                   
@@ -1076,7 +1099,7 @@ const ChatWidget = () => {
                     maxWidth: '70%',
                     padding: '12px 16px',
                     borderRadius: '16px',
-                    backgroundColor: 'white',
+                    backgroundColor: 'rgba(229, 231, 235, 0.95)',
                     color: '#1f2937',
                     fontSize: '14px',
                     lineHeight: '1.5',
@@ -1093,6 +1116,7 @@ const ChatWidget = () => {
               </div>
             )}
 
+            {/* TYPING INDICATOR: Show during dead air before first chunk arrives */}
             {isTyping && !currentStreamMessage && <TypingIndicator />}
 
             <div ref={messagesEndRef} />
@@ -1181,6 +1205,15 @@ const ChatWidget = () => {
             30% {
               transform: translateY(-6px);
               opacity: 1;
+            }
+          }
+
+          @keyframes blink {
+            0%, 50% {
+              opacity: 1;
+            }
+            51%, 100% {
+              opacity: 0;
             }
           }
           
