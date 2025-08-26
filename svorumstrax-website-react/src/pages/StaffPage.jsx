@@ -50,7 +50,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
     {
       id: 'sveinn-rafnsson',
       name: 'Sveinn Sigurður Rafnsson',
-      title: { is: 'Viðskiptaþróunarstjóri', en: 'CTO / Head of Business Development' },
+      title: { },
       email: 'sveinn@svorumstrax.is',
       image: sveinnRafnssonImg,
       isFounder: true
