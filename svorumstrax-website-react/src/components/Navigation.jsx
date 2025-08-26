@@ -45,7 +45,6 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
     is: {
       home: 'Heim',
       services: 'Þjónusta',
-      about: 'Um okkur',
       team: 'Mannauður',
       jobs: 'Störf',
       contact: 'Hafa samband'
@@ -53,7 +52,6 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
     en: {
       home: 'Home',
       services: 'Services',
-      about: 'About',
       team: 'Team',
       jobs: 'Careers',
       contact: 'Contact'
@@ -100,13 +98,6 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
               className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
             >
               {currentContent.services}
-            </button>
-            
-            <button 
-              onClick={() => handleScrollToSection('about')} 
-              className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
-            >
-              {currentContent.about}
             </button>
             
             <button 
@@ -189,12 +180,6 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                   className="block w-full text-left px-3 py-2.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                 >
                   {currentContent.services}
-                </button>
-                <button
-                  onClick={() => handleScrollToSection('about')}
-                  className="block w-full text-left px-3 py-2.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
-                >
-                  {currentContent.about}
                 </button>
                 <button
                   onClick={() => handleNavigation('staff')}

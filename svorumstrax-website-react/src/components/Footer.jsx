@@ -20,7 +20,6 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
       company: {
         title: 'Fyrirtækið',
         items: [
-          { name: 'Um okkur', href: '#about' },
           { name: 'Störf', action: 'job' },
           { name: 'Mannauður', action: 'staff' },
           { name: 'Barcelona', href: '#jobs' },
@@ -53,7 +52,6 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
       company: {
         title: 'Company',
         items: [
-          { name: 'About', href: '#about' },
           { name: 'Careers', action: 'job' },
           { name: 'Team', action: 'staff' },
           { name: 'Barcelona', href: '#jobs' },
