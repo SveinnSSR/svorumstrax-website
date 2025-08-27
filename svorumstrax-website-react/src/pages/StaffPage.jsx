@@ -293,7 +293,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                       src={member.image} 
                       alt={member.name}
                       className={`w-full h-full object-cover rounded-full shadow-lg ring-4 ring-white ${
-                        member.id === 'joel-kristinsson' || member.id === 'tatjana-tanja' ? 'grayscale' : ''
+                        member.id === 'joel-kristinsson' || member.id === 'tatjana-tanja' || member.id === 'kaleb-joshua' ? 'grayscale' : ''
                       }`}
                       style={{
                         objectPosition: [
