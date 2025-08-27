@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 // Import staff images - add these to src/assets/images/staff/
@@ -198,6 +197,34 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       title: { is: 'Viðskiptastjóri', en: 'Account Manager' },
       email: 'embla@svorumstrax.is',
       initials: 'ET'
+    },
+    {
+      id: 'kaleb-joshua',
+      name: 'Kaleb Joshua',
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'kaleb@svorumstrax.is',
+      initials: 'KJ'
+    },
+    {
+      id: 'hildur-eythorsdottir',
+      name: 'Hildur Eyþórsdóttir',
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'hildur.e@svorumstrax.is',
+      initials: 'HE'
+    },
+    {
+      id: 'helga-martinsdottir',
+      name: 'Helga Lilja Martinsdóttir',
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'helga@svorumstrax.is',
+      initials: 'HLM'
+    },
+    {
+      id: 'bergthor-brynjarsson',
+      name: 'Bergþór Gylfi Brynjarsson',
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'bergthor@svorumstrax.is',
+      initials: 'BGB'
     },
     {
       id: 'unnar-benediktsson',
