@@ -265,6 +265,18 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                       className={`w-full h-full object-cover rounded-full shadow-lg ring-4 ring-white ${
                         member.id === 'joel-kristinsson' ? 'grayscale' : ''
                       }`}
+                      style={{
+                        objectPosition: [
+                          'daniel-irvine',
+                          'aris-crespo', 
+                          'sveinn-rafnsson',
+                          'elma-thorhallsdottir',
+                          'bryndis-asgeirsdottir',
+                          'oddny-oddsdottir',
+                          'daniel-thorstensen',
+                          'joel-kristinsson'
+                        ].includes(member.id) ? 'center 20%' : 'center center'
+                      }}
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-slate-600 to-slate-700 rounded-full flex items-center justify-center shadow-lg ring-4 ring-white">
