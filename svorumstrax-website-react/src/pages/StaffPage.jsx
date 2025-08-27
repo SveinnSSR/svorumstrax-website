@@ -268,13 +268,8 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                       style={{
                         objectPosition: [
                           'daniel-irvine',
-                          'aris-crespo', 
-                          'sveinn-rafnsson',
-                          'elma-thorhallsdottir',
                           'bryndis-asgeirsdottir',
-                          'oddny-oddsdottir',
-                          'daniel-thorstensen',
-                          'joel-kristinsson'
+                          'oddny-oddsdottir'
                         ].includes(member.id) ? 'center 20%' : 'center center'
                       }}
                     />
