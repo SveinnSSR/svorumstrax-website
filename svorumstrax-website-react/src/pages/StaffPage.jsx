@@ -1,3 +1,4 @@
+
 import React from 'react'
 
 // Import staff images - add these to src/assets/images/staff/
@@ -100,6 +101,13 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       image: tatjanaTanjaImg
     },
     {
+      id: 'sigrun-jonsdottir',
+      name: 'Sigrún Fanný Jónsdóttir',
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'sigrun@svorumstrax.is',
+      image: sigrunJonsdottirImg
+    },
+    {
       id: 'david-hlynsson',
       name: 'Davíð Freyr Hlynsson',
       title: { is: 'Vefsíðu- og kerfisstjóri', en: 'Web and Systems Manager' },
@@ -113,13 +121,6 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
       email: 'frosti@svorumstrax.is',
       initials: 'FW'
-    },
-    {
-      id: 'sigrun-jonsdottir',
-      name: 'Sigrún Fanný Jónsdóttir',
-      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
-      email: 'sigrun@svorumstrax.is',
-      image: sigrunJonsdottirImg
     },
     {
       id: 'steinunn-axelsdottir',
