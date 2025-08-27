@@ -11,6 +11,7 @@ import joelKristinssonImg from '../assets/images/staff/joel-kristinsson.jpeg'
 import oddnyOddsdottirImg from '../assets/images/staff/oddny-oddsdottir.jpeg'
 import sigrunJonsdottirImg from '../assets/images/staff/sigrun-jonsdottir.jpeg'
 import sveinnRafnssonImg from '../assets/images/staff/sveinn-rafnsson.jpeg'
+import tatjanaTanjaImg from '../assets/images/staff/tatjana-tanja.jpg'
 
 const StaffPage = ({ currentLanguage = 'is' }) => {
   const content = {
@@ -85,11 +86,11 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       image: danielThorstensenImg
     },
     {
-      id: 'david-hlynsson',
-      name: 'Davíð Freyr Hlynsson',
-      title: { is: 'Vefsíðu- og kerfisstjóri', en: 'Web and Systems Manager' },
-      email: 'david@svorumstrax.is',
-      image: davidHlynssonImg
+      id: 'tatjana-tanja',
+      name: 'Tatjana Tanja',
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'tanja@svorumstrax.is',
+      image: tatjanaTanjaImg
     },
     {
       id: 'joel-kristinsson',
@@ -97,6 +98,13 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       title: { is: 'Rekstrarstjóri Bókhaldssviðs', en: 'Operations Manager - Accounting' },
       email: 'joel@svorumstrax.is',
       image: joelKristinssonImg
+    },
+    {
+      id: 'david-hlynsson',
+      name: 'Davíð Freyr Hlynsson',
+      title: { is: 'Vefsíðu- og kerfisstjóri', en: 'Web and Systems Manager' },
+      email: 'david@svorumstrax.is',
+      image: davidHlynssonImg
     },
     // Team members
     {
@@ -175,13 +183,6 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
       email: 'veigar@svorumstrax.is',
       initials: 'VMH'
-    },
-    {
-      id: 'tatjana-tanja',
-      name: 'Tatjana Tanja',
-      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
-      email: 'tanja@svorumstrax.is',
-      initials: 'TT'
     },
     {
       id: 'maria-mikaelsdottir',
@@ -263,7 +264,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                       src={member.image} 
                       alt={member.name}
                       className={`w-full h-full object-cover rounded-full shadow-lg ring-4 ring-white ${
-                        member.id === 'joel-kristinsson' ? 'grayscale' : ''
+                        member.id === 'joel-kristinsson' || member.id === 'tatjana-tanja' ? 'grayscale' : ''
                       }`}
                       style={{
                         objectPosition: [
