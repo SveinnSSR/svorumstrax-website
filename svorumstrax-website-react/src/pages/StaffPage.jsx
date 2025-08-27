@@ -121,7 +121,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       email: 'kaleb@svorumstrax.is',
       image: kalebJoshuaImg
     },
-    // Team members
+    // Team members.
     {
       id: 'frosti-wendel',
       name: 'Frosti Wendel',
