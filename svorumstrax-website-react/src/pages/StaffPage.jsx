@@ -12,6 +12,7 @@ import oddnyOddsdottirImg from '../assets/images/staff/oddny-oddsdottir.jpeg'
 import sigrunJonsdottirImg from '../assets/images/staff/sigrun-jonsdottir.jpeg'
 import sveinnRafnssonImg from '../assets/images/staff/sveinn-rafnsson.jpeg'
 import tatjanaTanjaImg from '../assets/images/staff/tatjana-tanja.jpg'
+import kalebJoshuaImg from '../assets/images/staff/kaleb-joshua.jpg'
 
 const StaffPage = ({ currentLanguage = 'is' }) => {
   const content = {
@@ -113,6 +114,13 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       email: 'david@svorumstrax.is',
       image: davidHlynssonImg
     },
+    {
+      id: 'kaleb-joshua',
+      name: 'Kaleb Joshua',
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'kaleb@svorumstrax.is',
+      image: kalebJoshuaImg
+    },
     // Team members
     {
       id: 'frosti-wendel',
@@ -197,13 +205,6 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       title: { is: 'Viðskiptastjóri', en: 'Account Manager' },
       email: 'embla@svorumstrax.is',
       initials: 'ET'
-    },
-    {
-      id: 'kaleb-joshua',
-      name: 'Kaleb Joshua',
-      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
-      email: 'kaleb@svorumstrax.is',
-      initials: 'KJ'
     },
     {
       id: 'hildur-eythorsdottir',
