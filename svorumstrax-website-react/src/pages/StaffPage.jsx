@@ -267,7 +267,6 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                       }`}
                       style={{
                         objectPosition: [
-                          'daniel-irvine',
                           'bryndis-asgeirsdottir',
                           'oddny-oddsdottir'
                         ].includes(member.id) ? 'center 20%' : 'center center'
