@@ -1,3 +1,4 @@
+
 import footerLogo from '../assets/images/svorumstrax-logo-black.png'
 
 const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
@@ -10,11 +11,11 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
         title: 'Þjónusta',
         items: [
           { name: 'Símsvörun', action: 'phone-support' },
-          { name: 'Tölvupóstþjónusta', action: 'email-service' },
-          { name: 'AI þjónusta', action: 'ai-service' },
-          { name: 'Viðskiptagreining', action: 'analytics' },
+          { name: 'Bókhaldsþjónusta', action: 'accounting-service' },
+          { name: 'Gervigreindarlausnir', action: 'ai-service' },
+          { name: 'Vefsíðugerð', action: 'web-service' },
           { name: 'Úthringingar', action: 'outbound' },
-          { name: 'Stöðugildi', action: 'fte' }
+          { name: 'Stöðugildi til leigu', action: 'fte' }
         ]
       },
       company: {
@@ -22,7 +23,7 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
         items: [
           { name: 'Störf', action: 'job' },
           { name: 'Mannauður', action: 'staff' },
-          { name: 'Barcelona', href: '#jobs' },
+          { name: 'Vinna í útlöndum', href: '#jobs' },
           { name: 'Viðskiptavinir', href: '#about' }
         ]
       },
@@ -42,9 +43,9 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
         title: 'Services',
         items: [
           { name: 'Phone Support', action: 'phone-support' },
-          { name: 'Email Management', action: 'email-service' },
+          { name: 'Accounting Services', action: 'accounting-service' },
           { name: 'AI Solutions', action: 'ai-service' },
-          { name: 'Business Analytics', action: 'analytics' },
+          { name: 'Web Development', action: 'web-service' },
           { name: 'Outbound Sales', action: 'outbound' },
           { name: 'Dedicated Teams', action: 'fte' }
         ]
@@ -54,7 +55,7 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
         items: [
           { name: 'Careers', action: 'job' },
           { name: 'Team', action: 'staff' },
-          { name: 'Barcelona', href: '#jobs' },
+          { name: 'Work Abroad', href: '#jobs' },
           { name: 'Clients', href: '#about' }
         ]
       },

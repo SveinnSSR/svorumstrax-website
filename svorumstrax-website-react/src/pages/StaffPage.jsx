@@ -254,7 +254,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
             {staffMembers.map((member) => (
               <div 
                 key={member.id}
-                className="bg-white/80 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+                className="bg-white/80 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 text-center"
               >
                 {/* Avatar */}
                 <div className="relative w-32 h-32 mx-auto mb-6">
@@ -262,7 +262,9 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                     <img 
                       src={member.image} 
                       alt={member.name}
-                      className="w-full h-full object-cover rounded-full shadow-lg ring-4 ring-white"
+                      className={`w-full h-full object-cover rounded-full shadow-lg ring-4 ring-white ${
+                        member.id === 'joel-kristinsson' ? 'grayscale' : ''
+                      }`}
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-slate-600 to-slate-700 rounded-full flex items-center justify-center shadow-lg ring-4 ring-white">
