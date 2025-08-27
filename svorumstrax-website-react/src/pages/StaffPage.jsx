@@ -86,18 +86,18 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       image: danielThorstensenImg
     },
     {
-      id: 'tatjana-tanja',
-      name: 'Tatjana Tanja',
-      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
-      email: 'tanja@svorumstrax.is',
-      image: tatjanaTanjaImg
-    },
-    {
       id: 'joel-kristinsson',
       name: 'Jóel Kristinsson',
       title: { is: 'Rekstrarstjóri Bókhaldssviðs', en: 'Operations Manager - Accounting' },
       email: 'joel@svorumstrax.is',
       image: joelKristinssonImg
+    },
+    {
+      id: 'tatjana-tanja',
+      name: 'Tatjana Tanja',
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'tanja@svorumstrax.is',
+      image: tatjanaTanjaImg
     },
     {
       id: 'david-hlynsson',
