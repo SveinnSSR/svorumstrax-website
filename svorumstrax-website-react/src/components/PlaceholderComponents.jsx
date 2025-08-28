@@ -20,7 +20,7 @@ const modalContent = {
     },
     'accounting-service': {
       title: 'Bókhaldsþjónusta - Frekari upplýsingar',
-      subtitle: 'Fáðu tilboð í bókhaldsþjónustu og fjármálastjórnun fyrir þitt fyrirtæki.',
+      subtitle: 'Fáðu tilboð í bókhaldsþjónustu og rekstrarráðgjöf fyrir þitt fyrirtæki.',
       submitText: 'Fá tilboð'
     },
     'web-service': {
