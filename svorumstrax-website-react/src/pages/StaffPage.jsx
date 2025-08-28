@@ -299,7 +299,8 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                       style={{
                         objectPosition: [
                           'bryndis-asgeirsdottir',
-                          'oddny-oddsdottir'
+                          'oddny-oddsdottir',
+                          'steinunn-axelsdottir'
                         ].includes(member.id) ? 'center 20%' : 'center center'
                       }}
                     />
