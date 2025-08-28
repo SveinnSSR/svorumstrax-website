@@ -1,4 +1,3 @@
-
 import footerLogo from '../assets/images/svorumstrax-logo-black.png'
 
 const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
@@ -23,8 +22,8 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
         items: [
           { name: 'Störf', action: 'job' },
           { name: 'Mannauður', action: 'staff' },
-          { name: 'Vinna í útlöndum', href: '#jobs' },
-          { name: 'Viðskiptavinir', href: '#about' }
+          { name: 'Vinna í útlöndum', action: 'jobs-section' },
+          { name: 'Viðskiptavinir', action: 'about-section' }
         ]
       },
       contact: {
@@ -55,8 +54,8 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
         items: [
           { name: 'Careers', action: 'job' },
           { name: 'Team', action: 'staff' },
-          { name: 'Work Abroad', href: '#jobs' },
-          { name: 'Clients', href: '#about' }
+          { name: 'Work Abroad', action: 'jobs-section' },
+          { name: 'Clients', action: 'about-section' }
         ]
       },
       contact: {
@@ -95,6 +94,24 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
   const handleLinkClick = (item) => {
     if (item.action === 'staff') {
       onNavigate('staff')
+    } else if (item.action === 'jobs-section') {
+      // Navigate to home page and scroll to jobs section
+      onNavigate('home')
+      setTimeout(() => {
+        const element = document.getElementById('jobs')
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    } else if (item.action === 'about-section') {
+      // Navigate to home page and scroll to about section (trust section)
+      onNavigate('home')
+      setTimeout(() => {
+        const element = document.getElementById('about')
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
     } else if (item.action) {
       onContactClick(item.action)
     }
@@ -164,21 +181,12 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
             <ul className="space-y-2 sm:space-y-3">
               {currentContent.company.items.map((item, index) => (
                 <li key={index}>
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 rounded-md"
-                    >
-                      {item.name}
-                    </a>
-                  ) : (
-                    <button
-                      onClick={() => handleLinkClick(item)}
-                      className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm text-left block font-medium focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 rounded-md"
-                    >
-                      {item.name}
-                    </button>
-                  )}
+                  <button
+                    onClick={() => handleLinkClick(item)}
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm text-left block font-medium focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 rounded-md"
+                  >
+                    {item.name}
+                  </button>
                 </li>
               ))}
             </ul>

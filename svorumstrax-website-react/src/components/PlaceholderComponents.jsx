@@ -18,6 +18,16 @@ const modalContent = {
       subtitle: 'Fáðu tilboð í sérhæfða símsvörun fyrir þitt fyrirtæki.',
       submitText: 'Fá tilboð'
     },
+    'accounting-service': {
+      title: 'Bókhaldsþjónusta - Frekari upplýsingar',
+      subtitle: 'Fáðu tilboð í bókhaldsþjónustu og fjármálastjórnun fyrir þitt fyrirtæki.',
+      submitText: 'Fá tilboð'
+    },
+    'web-service': {
+      title: 'Vefsíðugerð - Frekari upplýsingar',
+      subtitle: 'Fáðu tilboð í vefsíðugerð og vefþróun fyrir þitt fyrirtæki.',
+      submitText: 'Fá tilboð'
+    },
     'email-service': {
       title: 'Tölvupóstþjónusta - Frekari upplýsingar',
       subtitle: 'Láttu okkur sjá um tölvupóstsamskipti þín.',
@@ -34,7 +44,7 @@ const modalContent = {
       submitText: 'Fá upplýsingar'
     },
     'ai-service': {
-      title: 'AI þjónusta',
+      title: 'Gervigreindarlausnir',
       subtitle: 'Kynntu þér heildstæðar gervigreindarlausnir.',
       submitText: 'Fá upplýsingar'
     },
@@ -95,6 +105,16 @@ const modalContent = {
       subtitle: 'Get a quote for specialized phone support for your company.',
       submitText: 'Get Quote'
     },
+    'accounting-service': {
+      title: 'Accounting Services - Learn More',
+      subtitle: 'Get a quote for accounting services and financial management for your business.',
+      submitText: 'Get Quote'
+    },
+    'web-service': {
+      title: 'Web Development - Learn More',
+      subtitle: 'Get a quote for website development and web services for your business.',
+      submitText: 'Get Quote'
+    },
     'email-service': {
       title: 'Email Service - Learn More',
       subtitle: 'Let us handle your email communications.',
@@ -111,7 +131,7 @@ const modalContent = {
       submitText: 'Get Information'
     },
     'ai-service': {
-      title: 'AI Service',
+      title: 'AI Solutions',
       subtitle: 'Learn about our comprehensive AI solutions.',
       submitText: 'Get Information'
     },
