@@ -13,6 +13,7 @@ import sigrunJonsdottirImg from '../assets/images/staff/sigrun-jonsdottir.jpeg'
 import sveinnRafnssonImg from '../assets/images/staff/sveinn-rafnsson.jpeg'
 import tatjanaTanjaImg from '../assets/images/staff/tatjana-tanja.jpg'
 import kalebJoshuaImg from '../assets/images/staff/kaleb-joshua.jpeg'
+import steinunnAxelsdottirImg from '../assets/images/staff/steinunn-axelsdottir.jpg'
 
 const StaffPage = ({ currentLanguage = 'is' }) => {
   const content = {
@@ -108,11 +109,11 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       image: sigrunJonsdottirImg
     },
     {
-      id: 'david-hlynsson',
-      name: 'Davíð Freyr Hlynsson',
-      title: { is: 'Vefsíðu- og kerfisstjóri', en: 'Web and Systems Manager' },
-      email: 'david@svorumstrax.is',
-      image: davidHlynssonImg
+      id: 'steinunn-axelsdottir',
+      name: 'Steinunn Halldóra Axelsdóttir',
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'steinunn@svorumstrax.is',
+      image: steinunnAxelsdottirImg
     },
     {
       id: 'kaleb-joshua',
@@ -121,6 +122,13 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       email: 'kaleb@svorumstrax.is',
       image: kalebJoshuaImg
     },
+    {
+      id: 'david-hlynsson',
+      name: 'Davíð Freyr Hlynsson',
+      title: { is: 'Vefsíðu- og kerfisstjóri', en: 'Web and Systems Manager' },
+      email: 'david@svorumstrax.is',
+      image: davidHlynssonImg
+    },
     // Team members
     {
       id: 'frosti-wendel',
@@ -128,13 +136,6 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
       email: 'frosti@svorumstrax.is',
       initials: 'FW'
-    },
-    {
-      id: 'steinunn-axelsdottir',
-      name: 'Steinunn Halldóra Axelsdóttir',
-      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
-      email: 'steinunn@svorumstrax.is',
-      initials: 'SHA'
     },
     {
       id: 'freyja-finnbogadottir',
@@ -293,7 +294,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                       src={member.image} 
                       alt={member.name}
                       className={`w-full h-full object-cover rounded-full shadow-lg ring-4 ring-white ${
-                        member.id === 'joel-kristinsson' || member.id === 'tatjana-tanja' || member.id === 'kaleb-joshua' ? 'grayscale' : ''
+                        member.id === 'joel-kristinsson' || member.id === 'tatjana-tanja' || member.id === 'kaleb-joshua' || member.id === 'steinunn-axelsdottir' ? 'grayscale' : ''
                       }`}
                       style={{
                         objectPosition: [
