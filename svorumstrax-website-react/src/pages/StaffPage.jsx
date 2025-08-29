@@ -124,18 +124,18 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       image: kalebJoshuaImg
     },
     {
-      id: 'theodora-rodriguez',
-      name: 'Theodóra Líf Rodriguez Davíðsdóttir',
-      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
-      email: 'theodora@svorumstrax.is',
-      image: theodoraRodriguezImg
-    },
-    {
       id: 'david-hlynsson',
       name: 'Davíð Freyr Hlynsson',
       title: { is: 'Vefsíðu- og kerfisstjóri', en: 'Web and Systems Manager' },
       email: 'david@svorumstrax.is',
       image: davidHlynssonImg
+    },
+    {
+      id: 'theodora-rodriguez',
+      name: 'Theodóra Líf Rodriguez Davíðsdóttir',
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'theodora@svorumstrax.is',
+      image: theodoraRodriguezImg
     },
     // Team members
     {
