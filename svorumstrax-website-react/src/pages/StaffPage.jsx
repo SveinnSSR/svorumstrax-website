@@ -14,6 +14,7 @@ import sveinnRafnssonImg from '../assets/images/staff/sveinn-rafnsson.jpeg'
 import tatjanaTanjaImg from '../assets/images/staff/tatjana-tanja.jpg'
 import kalebJoshuaImg from '../assets/images/staff/kaleb-joshua.jpeg'
 import steinunnAxelsdottirImg from '../assets/images/staff/steinunn-axelsdottir.jpg'
+import theodoraRodriguezImg from '../assets/images/staff/theodora-rodriguez.jpg'
 
 const StaffPage = ({ currentLanguage = 'is' }) => {
   const content = {
@@ -123,6 +124,13 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       image: kalebJoshuaImg
     },
     {
+      id: 'theodora-rodriguez',
+      name: 'Theodóra Líf Rodriguez Davíðsdóttir',
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      email: 'theodora@svorumstrax.is',
+      image: theodoraRodriguezImg
+    },
+    {
       id: 'david-hlynsson',
       name: 'Davíð Freyr Hlynsson',
       title: { is: 'Vefsíðu- og kerfisstjóri', en: 'Web and Systems Manager' },
@@ -143,13 +151,6 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
       email: 'freyja@svorumstrax.is',
       initials: 'FF'
-    },
-    {
-      id: 'theodora-rodriguez',
-      name: 'Theodóra Líf Rodriguez Davíðsdóttir',
-      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
-      email: 'theodora@svorumstrax.is',
-      initials: 'TLRD'
     },
     {
       id: 'aron-arnarsson',
@@ -294,7 +295,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                       src={member.image} 
                       alt={member.name}
                       className={`w-full h-full object-cover rounded-full shadow-lg ring-4 ring-white ${
-                        member.id === 'joel-kristinsson' || member.id === 'tatjana-tanja' || member.id === 'kaleb-joshua' || member.id === 'steinunn-axelsdottir' ? 'grayscale' : ''
+                        member.id === 'joel-kristinsson' || member.id === 'tatjana-tanja' || member.id === 'kaleb-joshua' || member.id === 'steinunn-axelsdottir' || member.id === 'theodora-rodriguez' ? 'grayscale' : ''
                       }`}
                       style={{
                         objectPosition: [
