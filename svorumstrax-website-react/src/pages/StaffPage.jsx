@@ -14,7 +14,7 @@ import sveinnRafnssonImg from '../assets/images/staff/sveinn-rafnsson.jpeg'
 import tatjanaTanjaImg from '../assets/images/staff/tatjana-tanja.jpg'
 import kalebJoshuaImg from '../assets/images/staff/kaleb-joshua.jpeg'
 import steinunnAxelsdottirImg from '../assets/images/staff/steinunn-axelsdottir.jpg'
-import theodoraRodriguezImg from '../assets/images/staff/theodora-rodriguez.jpg'
+import theodoraRodriguezImg from '../assets/images/staff/theodora-rodriguez.jpeg'
 
 const StaffPage = ({ currentLanguage = 'is' }) => {
   const content = {
