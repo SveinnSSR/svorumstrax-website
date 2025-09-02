@@ -275,22 +275,20 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
       >
         {/* Modal - Matches Claimframe's natural sizing */}
         <div className="bg-white rounded-2xl shadow-xl max-w-md w-full transform transition-all overflow-hidden">
-          {/* Header */}
-          <div className="flex items-center justify-between p-6 sm:p-8 border-b border-gray-100">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+          {/* Close button - positioned like Claimframe */}
+          <button
+            onClick={onClose}
+            className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            ×
+          </button>
+          
+          {/* Content - matches Claimframe layout */}
+          <div className="p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
               {currentContent.title}
             </h2>
-            <button
-              onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors duration-200 text-2xl font-light"
-            >
-              ×
-            </button>
-          </div>
-
-          {/* Content */}
-          <div className="p-6 sm:p-8">
-            <p className="text-gray-600 mb-8 leading-relaxed">
+            <p className="text-gray-600 mb-6">
               {currentContent.subtitle}
             </p>
 
