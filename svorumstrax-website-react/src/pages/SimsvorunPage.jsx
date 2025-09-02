@@ -100,7 +100,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
           description: 'Barcelona pakkinn er sérsniðinn að þörfum stærri fyrirtækja sem leggja áherslu á persónulega og faglega þjónustu við viðskiptavini sína.',
           features: [
             'Símsvörun',
-            'Ótakmarkuð símtöl',
+            'Ótakmörkuð símtöl',
             'Tímabókanir',
             'Sala',
             'Vinnutími eftir samkomulagi',
