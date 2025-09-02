@@ -41,7 +41,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
       packages: [
         {
           name: 'Almenn símsvörun',
-          description: 'Grunnþjónusta fyrir dagleg bókhaldsverkefni',
+          description: 'Frábær og þægileg lausn fyrir minni fyrirtæki og stofnanir með lítil umsvif. Eða einfaldlega þau sem að vilja fá aðstoð á álagstímum.',
           features: [
             'Símsvörun á dagvinnutíma',
             'Tímabókanir og skilaboðataka',
@@ -65,7 +65,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
       servicePackages: [
         {
           name: 'Girona',
-          description: 'Frábær og þægileg lausn fyrir minni fyrirtæki og stofnanir með lítil umsvif. Eða einfaldlega þau sem að vilja fá aðstoð á álagstímum.',
+          description: 'Frábær og þægileg lausn fyrir minni fyrirtæki og stofnanir með lítil umsvif. Eða einföldlega þau sem að vilja fá aðstoð á álagstímum.',
           features: [
             'Símsvörun',
             '40 símtöl innifalin',
@@ -151,7 +151,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
       packages: [
         {
           name: 'Basic Phone Service',
-          description: 'Basic services for daily accounting tasks',
+          description: 'Great and convenient solution for smaller companies and institutions with low volume. Or simply those who want assistance during busy periods.',
           features: [
             'Phone answering during business hours',
             'Appointment booking and message taking',
@@ -333,7 +333,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         </div>
       </section>
 
-      {/* Additional Service Packages Section - New cards from screenshot */}
+      {/* Additional Service Packages Section - New cards from screenshot with flexible heights */}
       <section className="py-16 sm:py-20 bg-gradient-to-br from-slate-50 to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -342,9 +342,9 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
             {currentContent.servicePackages.map((pkg, index) => (
-              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden h-fit">
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-3">
                     {pkg.name}
