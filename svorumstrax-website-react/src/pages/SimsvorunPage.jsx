@@ -13,7 +13,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
       subtitle: 'Áreiðanleg og persónuleg símsvörun síðan 2019',
       description: 'Við hjá Svörum strax bjóðum fyrirtækjum upp á símsvörun af ýmsu tagi. Okkur þykir fátt skemmtilegra en að veita fyrsta flokks þjónustu og leggjum okkur fram við að kynnast þínu fyrirtæki vel, ásamt því að meta þarfir hvers og eins til þess að geta tengst viðskiptavinum á sem bestan hátt.',
       description2: 'Að útvista símtölum sem berast yfir allan daginn minnkar álag á annarri starfsemi fyrirtækisins og skilar sér í hærra þjónustustigi þvert á fyrirtækið. Það er hagkvæmt að útvista símsvörun til Svörum Strax, en hjá okkur starfar hópur sérfræðinga sem hefur mikla reynslu af símsvörun og samskiptum við viðskiptavini.',
-      description3: 'Við erum með hágæða símkerfi auk Microsoft CRM kerfis, sem gerir þjónustuna örugga og gagnsæja. Einnig ábyrgjumst við það að við hugsum um þína viðskiptavini líkt og þeir væru okkar eigin. Við getum tengst ykkar upplýsingakerfi til að veita sem besta þjónustu.',
+      description3: 'Þjónustan byggir á öflugum símkerfum og samþættingu við CRM-kerfi, sem tryggir bæði öryggi og gagnsæi. Við hugsum um þína viðskiptavini eins og okkar eigin og getum tengst ykkar upplýsingakerfum til að veita sem besta þjónustu.',
       servicesTitle: 'Við bjóðum upp á',
       services: [
         {
@@ -34,33 +34,64 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         {
           icon: CogIcon,
           title: 'Þinn þjónustufulltrúi',
-          description: 'Við getum framkvæmt flóknari verkefni í samráði við þitt fyrirtæki. Hjá Svörum strax starfar mjög hæft starfsfólk með hátt menntunarstig sem geta tekið að sér flóknari sérverkefni.'
+          description: 'Við tökum að okkur flóknari verkefni í nánu samráði við þitt fyrirtæki. Hjá Svörum strax starfar reynslumikið og sérhæft starfsfólk sem getur sinnt sérverkefnum af ýmsu tagi.'
         }
       ],
-      packagesTitle: 'Þjónustupakkar',
+      packagesTitle: 'Þjónusta',
       packages: [
         {
-          name: 'Almenn símsvörun',
+          name: 'Girona',
           description: 'Frábær og þægileg lausn fyrir minni fyrirtæki og stofnanir með lítil umsvif. Eða einfaldlega þau sem að vilja fá aðstoð á álagstímum.',
           features: [
-            'Símsvörun á dagvinnutíma',
-            'Tímabókanir og skilaboðataka',
-            'Persónuleg þjónusta í þínu nafni',
-            'Daglegur uppgjör og skýrslur'
+            'Símsvörun',
+            '40 símtöl innifalin',
+            'Dagvinnutími',
+            'Tímabókanir'
           ]
         },
         {
-          name: 'Þjónustuver',
-          description: 'Heildarlausn fyrir fyrirtæki sem þurfa sérhæfða þjónustu og vilja að starfsfólk okkar verði hluti af þeirra teymi.',
+          name: 'Bilbao',
+          description: 'Vinsæll pakki fyrir litil og meðalstór fyrirtæki.',
           features: [
-            'Sérhæft og þjálfað starfsfólk',
-            'Þekking á þínum vörum og þjónustu',
-            'Tengingar við þín upplýsingakerfi',
-            'Flóknar fyrirspurnir og vandamálalausn',
-            'Mánaðarlegar skýrslur og greining'
+            'Símsvörun',
+            '100 símtöl innifalin',
+            'Dagvinnutími',
+            'Tímabókanir',
+            'Þjónustuver'
+          ]
+        },
+        {
+          name: 'Valencia',
+          description: 'Einstakleg góð lausn fyrir flest fyrirtæki og stofnanir. Með Valencia einfaldar þú þinn rekstur!',
+          features: [
+            'Símsvörun',
+            '300 símtöl innifalin',
+            'Dagvinnutími',
+            'Tímabókanir',
+            'Þjónustuver'
+          ]
+        },
+        {
+          name: 'Barcelona',
+          description: 'Barcelona er fyrir stærri fyrirtækin sem að vilja hugsa einstakleg um sína viðskiptavini á meðan önnur verkefni eru unnin án truflunar.',
+          features: [
+            'Símsvörun',
+            'Ótakmarkuð símtöl',
+            'Tímabókanir',
+            'Sala',
+            'Vinnutími eftir samkomulagi',
+            'Netspjall',
+            'Svörun á Messenger',
+            'Tölvupóstur',
+            'Skiptiborð',
+            'Skýrsla í lok mánaðar',
+            'Önnur verkefni eftir samkomulagi',
+            'Þjónustuver'
           ]
         }
       ],
+      technologyTitle: 'Tæknilausnir',
+      technologySubtitle: 'Við notum leiðandi tækni til að veita þér bestu þjónustuna',
       ctaTitle: 'Fáðu tilboð fyrir þitt fyrirtæki',
       ctaDescription: 'Við metum þarfir hvers fyrirtækis fyrir sig og gerum sérsniðið tilboð. Hafðu samband til að fá ókeypis mat á þínum þörfum.',
       ctaButton: 'Fá tilboð'
@@ -70,7 +101,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
       subtitle: 'Reliable and professional phone service since 2019',
       description: 'At Svörum strax, we offer companies various types of phone answering services. Nothing pleases us more than providing first-class service, and we strive to get to know your business well while assessing each client\'s needs to connect with customers in the best possible way.',
       description2: 'Outsourcing incoming calls throughout the day reduces pressure on other business operations and results in higher service levels across the company. Outsourcing phone answering to Svörum Strax is cost-effective, as we have a team of specialists with extensive experience in phone answering and customer communication.',
-      description3: 'We have high-quality phone systems along with Microsoft CRM systems, making our service secure and transparent. We also guarantee that we care for your customers as if they were our own. We can integrate with your information systems to provide the best possible service.',
+      description3: 'The service is built on powerful phone systems and CRM integration, ensuring both security and transparency. We care for your customers as if they were our own and can integrate with your information systems to provide the best possible service.',
       servicesTitle: 'What we offer',
       services: [
         {
@@ -91,33 +122,64 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         {
           icon: CogIcon,
           title: 'Your Service Representative',
-          description: 'We can perform more complex projects in consultation with your company. At Svörum strax, we have highly qualified staff with high education levels who can take on more complex specialized projects.'
+          description: 'We take on more complex projects in close consultation with your company. At Svörum strax, we have experienced and specialized staff who can handle various special projects.'
         }
       ],
-      packagesTitle: 'Service Packages',
+      packagesTitle: 'Services',
       packages: [
         {
-          name: 'Basic Phone Service',
+          name: 'Girona',
           description: 'Great and convenient solution for smaller companies and institutions with low volume. Or simply those who want assistance during busy periods.',
           features: [
-            'Phone answering during business hours',
-            'Appointment booking and message taking',
-            'Personal service in your name',
-            'Daily reports and summaries'
+            'Phone answering',
+            '40 calls included',
+            'Business hours',
+            'Appointment booking'
           ]
         },
         {
-          name: 'Customer Service Center',
-          description: 'Complete solution for companies that need specialized service and want our staff to become part of their team.',
+          name: 'Bilbao',
+          description: 'Popular package for small and medium-sized companies.',
           features: [
-            'Specialized and trained staff',
-            'Knowledge of your products and services',
-            'Integration with your information systems',
-            'Complex inquiries and problem solving',
-            'Monthly reports and analysis'
+            'Phone answering',
+            '100 calls included',
+            'Business hours',
+            'Appointment booking',
+            'Customer service'
+          ]
+        },
+        {
+          name: 'Valencia',
+          description: 'Exceptionally good solution for most companies and institutions. With Valencia you simplify your operations!',
+          features: [
+            'Phone answering',
+            '300 calls included',
+            'Business hours',
+            'Appointment booking',
+            'Customer service'
+          ]
+        },
+        {
+          name: 'Barcelona',
+          description: 'Barcelona is for larger companies that want to think exceptionally about their customers while other projects are completed without interruption.',
+          features: [
+            'Phone answering',
+            'Unlimited calls',
+            'Appointment booking',
+            'Sales',
+            'Working hours by agreement',
+            'Web chat',
+            'Messenger response',
+            'Email',
+            'Switchboard',
+            'Monthly reports',
+            'Other projects by agreement',
+            'Customer service'
           ]
         }
       ],
+      technologyTitle: 'Technology Solutions',
+      technologySubtitle: 'We use leading technology to provide you with the best service',
       ctaTitle: 'Get a quote for your business',
       ctaDescription: 'We assess each company\'s needs individually and create customized quotes. Contact us to get a free assessment of your requirements.',
       ctaButton: 'Get Quote'
@@ -202,27 +264,71 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
             {currentContent.packages.map((pkg, index) => (
-              <div key={index} className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+              <div key={index} className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    {pkg.name}
-                  </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  {/* Package Name with gradient accent */}
+                  <div className="mb-6">
+                    <div className="inline-block bg-gradient-to-r from-orange-500 to-blue-500 text-white px-4 py-2 rounded-lg font-bold text-lg">
+                      {pkg.name}
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-600 mb-6 leading-relaxed text-sm">
                     {pkg.description}
                   </p>
-                  <ul className="space-y-3">
+                  
+                  <ul className="space-y-2">
                     {pkg.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-700">{feature}</span>
+                        <div className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-gray-700 text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-slate-50 to-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
+              {currentContent.technologyTitle}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              {currentContent.technologySubtitle}
+            </p>
+          </div>
+
+          {/* Technology Logos */}
+          <div className="flex justify-center items-center space-x-12 sm:space-x-16">
+            <div className="flex items-center justify-center w-24 h-24 sm:w-32 sm:h-32 bg-white rounded-2xl shadow-sm border border-gray-200/50">
+              <img 
+                src="/src/assets/images/logos/3cx-logo.jpeg"
+                alt="3CX" 
+                className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+              />
+            </div>
+            <div className="flex items-center justify-center w-24 h-24 sm:w-32 sm:h-32 bg-white rounded-2xl shadow-sm border border-gray-200/50">
+              <img 
+                src="/src/assets/images/logos/teams-logo.png" 
+                alt="Microsoft Teams" 
+                className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+              />
+            </div>
+            <div className="flex items-center justify-center w-24 h-24 sm:w-32 sm:h-32 bg-white rounded-2xl shadow-sm border border-gray-200/50">
+              <img 
+                src="/src/assets/images/logos/bodleid-logo.png" 
+                alt="Bodleid" 
+                className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+              />
+            </div>
           </div>
         </div>
       </section>
