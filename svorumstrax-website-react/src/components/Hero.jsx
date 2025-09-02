@@ -1,6 +1,6 @@
 import outboundPhone from '../assets/images/outbound-phone.png'
 
-const Hero = ({ currentLanguage, onContactClick }) => {
+const Hero = ({ currentLanguage, onContactClick, onViewAllServices }) => {
   const content = {
     is: {
       title: 'Snjallar lausnir fyrir nútíma þjónustu',
@@ -100,7 +100,7 @@ const Hero = ({ currentLanguage, onContactClick }) => {
                 {/* Updated buttons - consistent with navbar and choice section style */}
                 <div className="flex flex-col sm:flex-row gap-6">
                   <button
-                    onClick={() => onContactClick('services')}
+                    onClick={onViewAllServices}
                     className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                   >
                     {currentContent.primaryButton}

@@ -1,22 +1,30 @@
 import { useState } from 'react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import svorumStraxLogo from '../assets/images/svorumstrax-logo.svg'
 
 const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavigate, currentPage = 'home' }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
+    setIsServicesDropdownOpen(false) // Close dropdown when mobile menu toggles
+  }
+
+  const toggleServicesDropdown = () => {
+    setIsServicesDropdownOpen(!isServicesDropdownOpen)
   }
 
   const handleContactClick = (type) => {
     onContactClick(type)
     setIsMobileMenuOpen(false)
+    setIsServicesDropdownOpen(false)
   }
 
   const handleNavigation = (page) => {
     onNavigate(page)
     setIsMobileMenuOpen(false)
+    setIsServicesDropdownOpen(false)
   }
 
   const handleScrollToSection = (sectionId) => {
@@ -38,6 +46,29 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
       }
     }
     setIsMobileMenuOpen(false)
+    setIsServicesDropdownOpen(false)
+  }
+
+  const handleServiceSelect = (serviceType) => {
+    switch (serviceType) {
+      case 'simsvorun':
+        handleNavigation('simsvorun')
+        break
+      case 'ai':
+        handleScrollToSection('ai-agents')
+        break
+      case 'bokhaldsthjonusta':
+        handleNavigation('bokhaldsthjonusta')
+        break
+      case 'web':
+        handleContactClick('web-service')
+        break
+      case 'uthringar':
+        handleScrollToSection('outbound')
+        break
+      default:
+        break
+    }
   }
 
   // Natural English navigation labels
@@ -47,14 +78,28 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
       services: 'Þjónusta',
       team: 'Mannauður',
       jobs: 'Störf',
-      contact: 'Hafa samband'
+      contact: 'Hafa samband',
+      servicesDropdown: {
+        simsvorun: 'Símsvörun',
+        ai: 'Gervigreindarlausnir',
+        bokhaldsthjonusta: 'Bókhaldsþjónusta',
+        web: 'Vefsíðugerð',
+        uthringar: 'Úthringingar'
+      }
     },
     en: {
       home: 'Home',
       services: 'Services',
       team: 'Team',
       jobs: 'Careers',
-      contact: 'Contact'
+      contact: 'Contact',
+      servicesDropdown: {
+        simsvorun: 'Phone Service',
+        ai: 'AI Solutions',
+        bokhaldsthjonusta: 'Accounting',
+        web: 'Web Development',
+        uthringar: 'Outbound Sales'
+      }
     }
   }
 
@@ -93,12 +138,58 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
               {currentContent.home}
             </button>
             
-            <button 
-              onClick={() => handleScrollToSection('services')} 
-              className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
-            >
-              {currentContent.services}
-            </button>
+            {/* Services Dropdown */}
+            <div className="relative">
+              <button
+                onClick={toggleServicesDropdown}
+                className="flex items-center px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+              >
+                {currentContent.services}
+                <ChevronDownIcon 
+                  className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                    isServicesDropdownOpen ? 'rotate-180' : ''
+                  }`} 
+                />
+              </button>
+              
+              {/* Dropdown Menu */}
+              {isServicesDropdownOpen && (
+                <div className="absolute top-full left-0 mt-1 w-56 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200/40 overflow-hidden z-50">
+                  <div className="py-1">
+                    <button
+                      onClick={() => handleServiceSelect('simsvorun')}
+                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200"
+                    >
+                      {currentContent.servicesDropdown.simsvorun}
+                    </button>
+                    <button
+                      onClick={() => handleServiceSelect('ai')}
+                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200"
+                    >
+                      {currentContent.servicesDropdown.ai}
+                    </button>
+                    <button
+                      onClick={() => handleServiceSelect('bokhaldsthjonusta')}
+                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200"
+                    >
+                      {currentContent.servicesDropdown.bokhaldsthjonusta}
+                    </button>
+                    <button
+                      onClick={() => handleServiceSelect('web')}
+                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200"
+                    >
+                      {currentContent.servicesDropdown.web}
+                    </button>
+                    <button
+                      onClick={() => handleServiceSelect('uthringar')}
+                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200"
+                    >
+                      {currentContent.servicesDropdown.uthringar}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
             
             <button 
               onClick={() => handleNavigation('staff')} 
@@ -175,12 +266,46 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                 >
                   {currentContent.home}
                 </button>
-                <button
-                  onClick={() => handleScrollToSection('services')}
-                  className="block w-full text-left px-3 py-2.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
-                >
-                  {currentContent.services}
-                </button>
+                
+                {/* Services Section in Mobile */}
+                <div>
+                  <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    {currentContent.services}
+                  </div>
+                  <div className="ml-3 space-y-1">
+                    <button
+                      onClick={() => handleServiceSelect('simsvorun')}
+                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                    >
+                      {currentContent.servicesDropdown.simsvorun}
+                    </button>
+                    <button
+                      onClick={() => handleServiceSelect('ai')}
+                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                    >
+                      {currentContent.servicesDropdown.ai}
+                    </button>
+                    <button
+                      onClick={() => handleServiceSelect('bokhaldsthjonusta')}
+                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                    >
+                      {currentContent.servicesDropdown.bokhaldsthjonusta}
+                    </button>
+                    <button
+                      onClick={() => handleServiceSelect('web')}
+                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                    >
+                      {currentContent.servicesDropdown.web}
+                    </button>
+                    <button
+                      onClick={() => handleServiceSelect('uthringar')}
+                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                    >
+                      {currentContent.servicesDropdown.uthringar}
+                    </button>
+                  </div>
+                </div>
+                
                 <button
                   onClick={() => handleNavigation('staff')}
                   className="block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
