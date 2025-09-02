@@ -273,8 +273,8 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
         className="fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
         onClick={handleBackdropClick}
       >
-        {/* Modal */}
-        <div className="bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+        {/* Modal - Changed from max-w-lg to max-w-md to match Claimframe size */}
+        <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
           {/* Header */}
           <div className="flex items-center justify-between p-6 sm:p-8 border-b border-gray-100">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
