@@ -293,90 +293,154 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Company Name */}
-              <div>
-                <label htmlFor="companyName" className="block text-sm font-medium text-gray-900 mb-1">
-                  {currentLanguage === 'is' ? 'Nafn fyrirtækis' : 'Company Name'} *
-                </label>
-                <input
-                  type="text"
-                  id="companyName"
-                  name="companyName"
-                  value={formData.companyName}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
-                />
-              </div>
+              {/* Job Application - Different fields */}
+              {isJobApplication ? (
+                <>
+                  {/* Full Name */}
+                  <div>
+                    <label htmlFor="contactPerson" className="block text-sm font-medium text-gray-900 mb-1">
+                      {currentLanguage === 'is' ? 'Fullt nafn' : 'Full Name'} *
+                    </label>
+                    <input
+                      type="text"
+                      id="contactPerson"
+                      name="contactPerson"
+                      value={formData.contactPerson}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
+                    />
+                  </div>
 
-              {/* Contact Person */}
-              <div>
-                <label htmlFor="contactPerson" className="block text-sm font-medium text-gray-900 mb-1">
-                  {currentLanguage === 'is' ? 'Nafn tengiliðs' : 'Your Name'} *
-                </label>
-                <input
-                  type="text"
-                  id="contactPerson"
-                  name="contactPerson"
-                  value={formData.contactPerson}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
-                />
-              </div>
+                  {/* Email */}
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-1">
+                      {currentLanguage === 'is' ? 'Netfang' : 'Email'} *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
+                    />
+                  </div>
 
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-1">
-                  {currentLanguage === 'is' ? 'Netfang' : 'Work Email'} *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
-                />
-              </div>
+                  {/* Phone */}
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-900 mb-1">
+                      {currentLanguage === 'is' ? 'Símanúmer' : 'Phone Number'}
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
+                    />
+                  </div>
 
-              {/* Phone */}
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-900 mb-1">
-                  {currentLanguage === 'is' ? 'Símanúmer' : 'Phone Number'}
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
-                />
-              </div>
+                  {/* Message/About yourself */}
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-1">
+                      {currentLanguage === 'is' ? 'Kynning á þér' : 'About yourself'}
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      rows={3}
+                      placeholder={currentLanguage === 'is' ? 'Segðu okkur aðeins frá þér...' : 'Tell us about yourself...'}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400 resize-none"
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Regular Contact Form */}
+                  {/* Company Name */}
+                  <div>
+                    <label htmlFor="companyName" className="block text-sm font-medium text-gray-900 mb-1">
+                      {currentLanguage === 'is' ? 'Nafn fyrirtækis' : 'Company Name'} *
+                    </label>
+                    <input
+                      type="text"
+                      id="companyName"
+                      name="companyName"
+                      value={formData.companyName}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
+                    />
+                  </div>
 
-              {/* Message */}
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-1">
-                  {isJobApplication 
-                    ? (currentLanguage === 'is' ? 'Kynning á þér' : 'About yourself')
-                    : (currentLanguage === 'is' ? 'Hvernig getum við hjálpað?' : 'How can we help?')
-                  }
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={3}
-                  placeholder={isJobApplication 
-                    ? (currentLanguage === 'is' ? 'Segðu okkur aðeins frá þér...' : 'Tell us about yourself...')
-                    : ''
-                  }
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400 resize-none"
-                />
-              </div>
+                  {/* Contact Person */}
+                  <div>
+                    <label htmlFor="contactPerson" className="block text-sm font-medium text-gray-900 mb-1">
+                      {currentLanguage === 'is' ? 'Nafn tengiliðs' : 'Your Name'} *
+                    </label>
+                    <input
+                      type="text"
+                      id="contactPerson"
+                      name="contactPerson"
+                      value={formData.contactPerson}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-1">
+                      {currentLanguage === 'is' ? 'Netfang' : 'Work Email'} *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
+                    />
+                  </div>
+
+                  {/* Phone */}
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-900 mb-1">
+                      {currentLanguage === 'is' ? 'Símanúmer' : 'Phone Number'}
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
+                    />
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-1">
+                      {currentLanguage === 'is' ? 'Hvernig getum við hjálpað?' : 'How can we help?'}
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      rows={3}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400 resize-none"
+                    />
+                  </div>
+                </>
+              )}
 
               {/* Submit Button */}
               <button
