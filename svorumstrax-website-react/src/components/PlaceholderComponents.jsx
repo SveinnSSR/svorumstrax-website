@@ -294,11 +294,11 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
               {currentContent.subtitle}
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
               {/* Company Name */}
               <div>
-                <label htmlFor="companyName" className="block text-sm font-medium text-gray-900 mb-2">
-                  {currentLanguage === 'is' ? 'Nafn fyrirtækis' : 'Company Name'}
+                <label htmlFor="companyName" className="block text-sm font-medium text-gray-900 mb-1">
+                  {currentLanguage === 'is' ? 'Nafn fyrirtækis' : 'Company Name'} *
                 </label>
                 <input
                   type="text"
@@ -307,14 +307,14 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
                   value={formData.companyName}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 text-gray-900 placeholder-gray-400"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
                 />
               </div>
 
               {/* Contact Person */}
               <div>
-                <label htmlFor="contactPerson" className="block text-sm font-medium text-gray-900 mb-2">
-                  {currentLanguage === 'is' ? 'Nafn tengiliðs' : 'Contact Person'}
+                <label htmlFor="contactPerson" className="block text-sm font-medium text-gray-900 mb-1">
+                  {currentLanguage === 'is' ? 'Nafn tengiliðs' : 'Your Name'} *
                 </label>
                 <input
                   type="text"
@@ -323,14 +323,14 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
                   value={formData.contactPerson}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 text-gray-900 placeholder-gray-400"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
-                  {currentLanguage === 'is' ? 'Netfang' : 'Email'}
+                <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-1">
+                  {currentLanguage === 'is' ? 'Netfang' : 'Work Email'} *
                 </label>
                 <input
                   type="email"
@@ -339,13 +339,13 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 text-gray-900 placeholder-gray-400"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
                 />
               </div>
 
               {/* Phone */}
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-900 mb-2">
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-900 mb-1">
                   {currentLanguage === 'is' ? 'Símanúmer' : 'Phone Number'}
                 </label>
                 <input
@@ -354,34 +354,16 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 text-gray-900 placeholder-gray-400"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400"
                 />
               </div>
 
-              {/* Website - Hide for job applications */}
-              {!isJobApplication && (
-                <div>
-                  <label htmlFor="website" className="block text-sm font-medium text-gray-900 mb-2">
-                    {currentLanguage === 'is' ? 'Vefsíða fyrirtækis' : 'Company Website'}
-                  </label>
-                  <input
-                    type="text"
-                    id="website"
-                    name="website"
-                    value={formData.website}
-                    onChange={handleInputChange}
-                    placeholder=""  // Remove the example.com
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 text-gray-900 placeholder-gray-400"
-                  />
-                </div>
-              )}
-
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-1">
                   {isJobApplication 
                     ? (currentLanguage === 'is' ? 'Kynning á þér' : 'About yourself')
-                    : (currentLanguage === 'is' ? 'Skilaboð' : 'Message')
+                    : (currentLanguage === 'is' ? 'Hvernig getum við hjálpað?' : 'How can we help?')
                   }
                 </label>
                 <textarea
@@ -389,12 +371,12 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  rows={4}
+                  rows={3}
                   placeholder={isJobApplication 
                     ? (currentLanguage === 'is' ? 'Segðu okkur aðeins frá þér...' : 'Tell us about yourself...')
                     : ''
                   }
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors duration-200 text-gray-900 placeholder-gray-400 resize-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900 transition-all text-gray-900 placeholder-gray-400 resize-none"
                 />
               </div>
 
@@ -402,11 +384,11 @@ export const ContactModal = ({ isOpen, onClose, type, currentLanguage }) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gray-900 hover:bg-gray-800 disabled:bg-gray-400 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 disabled:cursor-not-allowed disabled:transform-none"
+                className="w-full bg-gray-900 hover:bg-gray-800 disabled:bg-gray-400 text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md disabled:cursor-not-allowed disabled:transform-none"
               >
                 {isSubmitting 
                   ? (currentLanguage === 'is' ? 'Sendi...' : 'Sending...')
-                  : currentContent.submitText
+                  : (currentLanguage === 'is' ? 'Senda fyrirspurn' : 'Send Request')
                 }
               </button>
             </form>
