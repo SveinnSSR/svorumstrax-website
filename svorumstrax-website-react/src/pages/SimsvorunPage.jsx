@@ -97,7 +97,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         },
         {
           name: 'Barcelona',
-          description: 'Barcelona pakkinn er sérsniðinn að þörfum stærri fyrirtækja sem leggja áherslu á persónulega og faglega þjónustu við viðskiptavini sína. Með honum fær fyrirtækið þitt heildarlausn þar sem símtöl, tímabókanir og þjónustubeiðnir eru afgreidd á skilvirkan og áreiðanlegan hátt — án þess að dagleg starfsemi truflist.',
+          description: 'Barcelona pakkinn er sérsniðinn að þörfum stærri fyrirtækja sem leggja áherslu á persónulega og faglega þjónustu við viðskiptavini sína.',
           features: [
             'Símsvörun',
             'Ótakmarkuð símtöl',
