@@ -40,6 +40,30 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
       packagesTitle: 'Þjónusta',
       packages: [
         {
+          name: 'Almenn símsvörun',
+          description: 'Grunnþjónusta fyrir dagleg bókhaldsverkefni',
+          features: [
+            'Símsvörun á dagvinnutíma',
+            'Tímabókanir og skilaboðataka',
+            'Persónuleg þjónusta í þínu nafni',
+            'Daglegur uppgjör og skýrslur'
+          ]
+        },
+        {
+          name: 'Þjónustuver',
+          description: 'Heildarlausn fyrir fyrirtæki sem þurfa sérhæfða þjónustu og vilja að starfsfólk okkar verði hluti af þeirra teymi.',
+          features: [
+            'Sérhæft og þjálfað starfsfólk',
+            'Þekking á þínum vörum og þjónustu',
+            'Tengingar við þín upplýsingakerfi',
+            'Flóknar fyrirspurnir og vandamálalausn',
+            'Mánaðarlegar skýrslur og greining'
+          ]
+        }
+      ],
+      servicePackagesTitle: 'Þjónustupakkar',
+      servicePackages: [
+        {
           name: 'Girona',
           description: 'Frábær og þægileg lausn fyrir minni fyrirtæki og stofnanir með lítil umsvif. Eða einfaldlega þau sem að vilja fá aðstoð á álagstímum.',
           features: [
@@ -62,7 +86,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         },
         {
           name: 'Valencia',
-          description: 'Einstakleg góð lausn fyrir flest fyrirtæki og stofnanir. Með Valencia einfaldar þú þinn rekstur!',
+          description: 'Einstaklega góð lausn fyrir flest fyrirtæki og stofnanir. Með Valencia einfaldar þú þinn rekstur!',
           features: [
             'Símsvörun',
             '300 símtöl innifalin',
@@ -90,8 +114,6 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
           ]
         }
       ],
-      technologyTitle: 'Tæknilausnir',
-      technologySubtitle: 'Við notum leiðandi tækni til að veita þér bestu þjónustuna',
       ctaTitle: 'Fáðu tilboð fyrir þitt fyrirtæki',
       ctaDescription: 'Við metum þarfir hvers fyrirtækis fyrir sig og gerum sérsniðið tilboð. Hafðu samband til að fá ókeypis mat á þínum þörfum.',
       ctaButton: 'Fá tilboð'
@@ -125,8 +147,32 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
           description: 'We take on more complex projects in close consultation with your company. At Svörum strax, we have experienced and specialized staff who can handle various special projects.'
         }
       ],
-      packagesTitle: 'Services',
+      packagesTitle: 'Service Areas',
       packages: [
+        {
+          name: 'Basic Phone Service',
+          description: 'Basic services for daily accounting tasks',
+          features: [
+            'Phone answering during business hours',
+            'Appointment booking and message taking',
+            'Personal service in your name',
+            'Daily reports and summaries'
+          ]
+        },
+        {
+          name: 'Customer Service Center',
+          description: 'Complete solution for companies that need specialized service and want our staff to become part of their team.',
+          features: [
+            'Specialized and trained staff',
+            'Knowledge of your products and services',
+            'Integration with your information systems',
+            'Complex inquiries and problem solving',
+            'Monthly reports and analysis'
+          ]
+        }
+      ],
+      servicePackagesTitle: 'Service Packages',
+      servicePackages: [
         {
           name: 'Girona',
           description: 'Great and convenient solution for smaller companies and institutions with low volume. Or simply those who want assistance during busy periods.',
@@ -178,8 +224,6 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
           ]
         }
       ],
-      technologyTitle: 'Technology Solutions',
-      technologySubtitle: 'We use leading technology to provide you with the best service',
       ctaTitle: 'Get a quote for your business',
       ctaDescription: 'We assess each company\'s needs individually and create customized quotes. Contact us to get a free assessment of your requirements.',
       ctaButton: 'Get Quote'
@@ -255,7 +299,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         </div>
       </section>
 
-      {/* Service Packages Section */}
+      {/* Service Packages Section - Original two cards */}
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -264,26 +308,21 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {currentContent.packages.map((pkg, index) => (
-              <div key={index} className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+              <div key={index} className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                 <div className="p-8">
-                  {/* Package Name with gradient accent */}
-                  <div className="mb-6">
-                    <div className="inline-block bg-gradient-to-r from-orange-500 to-blue-500 text-white px-4 py-2 rounded-lg font-bold text-lg">
-                      {pkg.name}
-                    </div>
-                  </div>
-                  
-                  <p className="text-gray-600 mb-6 leading-relaxed text-sm">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    {pkg.name}
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
                     {pkg.description}
                   </p>
-                  
-                  <ul className="space-y-2">
+                  <ul className="space-y-3">
                     {pkg.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start space-x-3">
-                        <div className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-700 text-sm">{feature}</span>
+                        <div className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-gray-700">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -294,41 +333,36 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         </div>
       </section>
 
-      {/* Technology Section */}
+      {/* Additional Service Packages Section - New cards from screenshot */}
       <section className="py-16 sm:py-20 bg-gradient-to-br from-slate-50 to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
-              {currentContent.technologyTitle}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-8">
+              {currentContent.servicePackagesTitle}
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {currentContent.technologySubtitle}
-            </p>
           </div>
 
-          {/* Technology Logos */}
-          <div className="flex justify-center items-center space-x-12 sm:space-x-16">
-            <div className="flex items-center justify-center w-24 h-24 sm:w-32 sm:h-32 bg-white rounded-2xl shadow-sm border border-gray-200/50">
-              <img 
-                src="/src/assets/images/logos/3cx-logo.jpeg"
-                alt="3CX" 
-                className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
-              />
-            </div>
-            <div className="flex items-center justify-center w-24 h-24 sm:w-32 sm:h-32 bg-white rounded-2xl shadow-sm border border-gray-200/50">
-              <img 
-                src="/src/assets/images/logos/teams-logo.png" 
-                alt="Microsoft Teams" 
-                className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
-              />
-            </div>
-            <div className="flex items-center justify-center w-24 h-24 sm:w-32 sm:h-32 bg-white rounded-2xl shadow-sm border border-gray-200/50">
-              <img 
-                src="/src/assets/images/logos/bodleid-logo.png" 
-                alt="Bodleid" 
-                className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
-              />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {currentContent.servicePackages.map((pkg, index) => (
+              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {pkg.name}
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed text-sm">
+                    {pkg.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {pkg.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start space-x-2">
+                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-gray-700 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
