@@ -14,43 +14,43 @@ const BokhaldsthjonustaPage = ({ currentLanguage = 'is', onContactClick }) => {
     is: {
       title: 'Bókhaldsþjónusta',
       subtitle: 'Viltu koma bókhaldinu þínu í nútímalegra form?',
-      description: 'Með því að láta okkur sjá um bókhaldið þitt þá setjum við upp þjónustuna í samráði við þig þannig að við nýtum okkur þá tækni sem er til staðar í dag til að skjala alla reikninga og það sem skiptir máli í skýinu.',
+      description: 'Við sjáum um bókhaldið í nánu samráði við þig og nýtum nútímatækni til að skjala og varðveita reikninga og skjöl í skýinu. Þannig færðu skilvirka og örugga þjónustu sem sparar tíma og einfaldar daglega starfsemi.',
       servicesTitle: 'Við bjóðum upp á',
       services: [
         {
           icon: CalculatorIcon,
           title: 'Færsla bókhalds',
-          description: 'Svörum strax býður upp á alla almenna bókhaldsþjónustu þar sem bókhaldið er fært í hinu frábæra Uniconta bókhaldskerfi. Fjárhagskerfi Uniconta gerir notendum kleift að hafa heildaryfirsýn yfir rekstur og efnahag. Allar aðgerðir styðja við skýrslugerð og heilstæða yfirsýn yfir fjármálin.',
+          description: 'Við tökum að okkur alla almenna bókhaldsþjónustu þar sem bókhaldið er fært í Uniconta bókhaldskerfi. Fjárhagskerfið veitir heildaryfirsýn yfir rekstur og efnahag og styður allar aðgerðir sem tengjast skýrslugerð og fjármálastjórnun.',
           category: 'almenn'
         },
         {
           icon: DocumentTextIcon,
           title: 'Sölureikningagerð',
-          description: 'Starfsfólk Svörum strax sér um að stofna og senda út sölureikninga fyrir viðskiptavini sína.',
+          description: 'Við stofnum og sendum út sölureikninga fyrir viðskiptavini okkar.',
           category: 'almenn'
         },
         {
           icon: CurrencyDollarIcon,
           title: 'Virðisaukaskattskil',
-          description: 'Starfsfólk Svörum strax sér um að senda virðisaukaskattsskýrsluna í rafrænu formi til skattstjóra og verður í sambandi við viðskiptavini sína um greiðslu á virðisaukaskattskröfu ef á við.',
+          description: 'Við sendum virðisaukaskattsskýrslur í rafrænu formi til Skattsins og höldum sambandi við viðskiptavini um greiðslu á virðisaukaskattskröfum þegar það á við.',
           category: 'almenn'
         },
         {
           icon: ChartBarIcon,
           title: 'Afstemmingar og uppgjör',
-          description: 'Starfsfólk Svörum strax sér um hinar ýmsu afstemmingar fyrir viðskiptavini sína hvort sem er afstemmingar banka, viðskiptavina, lánardrottna eða árslokaafstemmingar á öllum liðum fjárhagsins.',
+          description: 'Við framkvæmum hinar ýmsu afstemmingar, þar á meðal banka-, viðskiptavina- og lánardrottnaafstemmingar, auk árslokaafstemminga á öllum liðum fjárhagsins.',
           category: 'serfraedi'
         },
         {
           icon: ClipboardDocumentListIcon,
           title: 'Reikningsskil',
-          description: 'Starfsfólk Svörum strax sér um afstemmingar og ársreikningagerð fyrir viðskiptavini sína. Skila afriti ársreiknings til fyrirtækjaskrár.',
+          description: 'Við sjáum um afstemmingar og ársreikningagerð og skilum afriti ársreiknings til fyrirtækjaskrár.',
           category: 'serfraedi'
         },
         {
           icon: PresentationChartBarIcon,
           title: 'Skattskil',
-          description: 'Starfsfólk Svörum strax sér framtalsgerð fyrir fyrirtæki og einstaklinga ásamt skilum á launa-, verktaka-, hlutafjármiðum. Skil á framtali ásamt ársreikningi til ríkisskattstjóra.',
+          description: 'Við tökum að okkur framtalsgerð fyrir fyrirtæki og einstaklinga ásamt skilum á launa-, verktaka- og hlutafjármiðum. Framtali og ársreikningi er skilað til Skattsins á réttum tíma.',
           category: 'serfraedi'
         }
       ],
@@ -86,7 +86,7 @@ const BokhaldsthjonustaPage = ({ currentLanguage = 'is', onContactClick }) => {
         email: 'svorumstrax@svorumstrax.is'
       },
       ctaTitle: 'Komdu bókhaldinu í nútímalegra form',
-      ctaDescription: 'Lát okkur meta þinn bókhaldslegan þörf og búa til sérsniðna lausn fyrir þitt fyrirtæki.',
+      ctaDescription: 'Við greinum þínar þarfir og setjum upp lausn sem einfaldar bókhaldið og sparar tíma.',
       ctaButton: 'Fá tilboð'
     },
     en: {
@@ -98,37 +98,37 @@ const BokhaldsthjonustaPage = ({ currentLanguage = 'is', onContactClick }) => {
         {
           icon: CalculatorIcon,
           title: 'Bookkeeping Services',
-          description: 'Svörum strax offers comprehensive bookkeeping services using the excellent Uniconta accounting system. Uniconta\'s financial system enables users to have a complete overview of operations and finances. All functions support reporting and comprehensive financial oversight.',
+          description: 'Comprehensive bookkeeping services using the Uniconta accounting system. Uniconta provides a complete overview of operations and finances, with full support for reporting and financial management.',
           category: 'general'
         },
         {
           icon: DocumentTextIcon,
           title: 'Sales Invoice Creation',
-          description: 'Svörum strax staff handle the creation and sending of sales invoices for their clients.',
+          description: 'Creation and distribution of sales invoices on behalf of your company.',
           category: 'general'
         },
         {
           icon: CurrencyDollarIcon,
           title: 'VAT Returns',
-          description: 'Svörum strax staff handle sending VAT reports electronically to the tax authorities and contact clients regarding VAT payment requirements when applicable.',
+          description: 'Preparation and electronic submission of VAT reports to the tax authorities, with follow-up on payment requirements when applicable.',
           category: 'general'
         },
         {
           icon: ChartBarIcon,
           title: 'Reconciliations and Settlements',
-          description: 'Svörum strax staff handle various reconciliations for their clients, whether bank reconciliations, customer reconciliations, supplier reconciliations, or year-end reconciliations for all financial items.',
+          description: 'Full range of reconciliations, including bank, customer, and supplier reconciliations, as well as year-end reconciliations across all financial items.',
           category: 'specialist'
         },
         {
           icon: ClipboardDocumentListIcon,
           title: 'Financial Statements',
-          description: 'Svörum strax staff handle reconciliations and annual financial statement preparation for their clients. Submit copies of financial statements to the company registry.',
+          description: 'Preparation of annual financial statements, including reconciliations, and submission of statements to the company registry.',
           category: 'specialist'
         },
         {
           icon: PresentationChartBarIcon,
           title: 'Tax Returns',
-          description: 'Svörum strax staff handle tax return preparation for companies and individuals, along with submissions of wage, contractor, and dividend forms. Submit tax returns along with financial statements to the tax authorities.',
+          description: 'Preparation of tax returns for companies and individuals, including wage, contractor, and dividend forms, with submission of returns and financial statements to the tax authorities.',
           category: 'specialist'
         }
       ],
