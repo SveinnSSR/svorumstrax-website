@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/24/outline'
 import joelKristinssonImg from '../assets/images/staff/joel-kristinsson.jpeg'
 
-const BokhaldsthjonustaPage = ({ currentLanguage = 'is' }) => {
+const BokhaldsthjonustaPage = ({ currentLanguage = 'is', onContactClick }) => {
   const content = {
     is: {
       title: 'Bókhaldsþjónusta',
@@ -209,7 +209,7 @@ const BokhaldsthjonustaPage = ({ currentLanguage = 'is' }) => {
             {currentContent.services.map((service, index) => {
               const IconComponent = service.icon
               return (
-                <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
+                <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl flex items-center justify-center flex-shrink-0">
                       <IconComponent className="w-6 h-6 text-gray-700" />
@@ -241,7 +241,7 @@ const BokhaldsthjonustaPage = ({ currentLanguage = 'is' }) => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {currentContent.packages.map((pkg, index) => (
-              <div key={index} className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+              <div key={index} className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
                     {pkg.title}
@@ -321,7 +321,10 @@ const BokhaldsthjonustaPage = ({ currentLanguage = 'is' }) => {
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
             {currentContent.ctaDescription}
           </p>
-          <button className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg">
+          <button 
+            onClick={() => onContactClick && onContactClick('accounting-service')}
+            className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+          >
             {currentContent.ctaButton}
           </button>
         </div>

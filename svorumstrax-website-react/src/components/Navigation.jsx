@@ -158,31 +158,31 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                   <div className="py-1">
                     <button
                       onClick={() => handleServiceSelect('simsvorun')}
-                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200"
+                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.simsvorun}
                     </button>
                     <button
                       onClick={() => handleServiceSelect('ai')}
-                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200"
+                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.ai}
                     </button>
                     <button
                       onClick={() => handleServiceSelect('bokhaldsthjonusta')}
-                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200"
+                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.bokhaldsthjonusta}
                     </button>
                     <button
                       onClick={() => handleServiceSelect('web')}
-                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200"
+                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.web}
                     </button>
                     <button
                       onClick={() => handleServiceSelect('uthringar')}
-                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200"
+                      className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.uthringar}
                     </button>
@@ -275,31 +275,31 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                   <div className="ml-3 space-y-1">
                     <button
                       onClick={() => handleServiceSelect('simsvorun')}
-                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.simsvorun}
                     </button>
                     <button
                       onClick={() => handleServiceSelect('ai')}
-                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.ai}
                     </button>
                     <button
                       onClick={() => handleServiceSelect('bokhaldsthjonusta')}
-                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.bokhaldsthjonusta}
                     </button>
                     <button
                       onClick={() => handleServiceSelect('web')}
-                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.web}
                     </button>
                     <button
                       onClick={() => handleServiceSelect('uthringar')}
-                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                      className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.uthringar}
                     </button>

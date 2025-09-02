@@ -3,7 +3,7 @@ import soleyPhoneAnswering from '../assets/images/soley-phone-answering.png'
 import soleyIntegrations from '../assets/images/soley-integrations.png'
 import soleyAiVoice from '../assets/images/soley-ai-voice.png'
 
-const Services = ({ currentLanguage, onContactClick }) => {
+const Services = ({ currentLanguage, onContactClick, onNavigate }) => {
   const content = {
     is: {
       title: 'Símsvörun',
@@ -12,14 +12,14 @@ const Services = ({ currentLanguage, onContactClick }) => {
         {
           title: 'Almenn símsvörun',
           description: 'Einföld og áreiðanleg þjónusta fyrir öll fyrirtæki. Við svörum í þínu nafni, sendum símtöl áfram á réttan starfsmann og tökum niður ítarleg skilaboð. Léttir álag á starfsfólki og hægt að setja upp með stuttum fyrirvara.',
-          contactType: 'phone-support',
+          contactType: 'simsvorun-page',
           image: outboundPhone,
           isFullPhone: true  // Flag to indicate this needs to be cropped to half
         },
         {
           title: 'Þjónustuver',
           description: 'Heildarlausn með fullkomlega þjálfuðum starfsmönnum sem þekkja þitt fyrirtæki, vörur og þjónustu. Sérhæfðir starfsmenn sem verða hluti af þínu teymi og geta svarað flóknum spurningum, leyst vandamál og veitt tæknilega aðstoð byggða á þínum upplýsingakerfum.',
-          contactType: 'phone-support',
+          contactType: 'simsvorun-page',
           image: soleyIntegrations,
           isFullPhone: false
         },
@@ -39,14 +39,14 @@ const Services = ({ currentLanguage, onContactClick }) => {
         {
           title: 'Phone Answering Service',
           description: 'Reliable support for businesses of all sizes. We answer in your company name, route calls to the right team member, and capture detailed messages. Reduces staff workload and can be implemented immediately.',
-          contactType: 'phone-support',
+          contactType: 'simsvorun-page',
           image: outboundPhone,
           isFullPhone: true  // Flag to indicate this needs to be cropped to half
         },
         {
           title: 'Dedicated Contact Center',
           description: 'Complete solution with expertly trained agents who become an extension of your team. Our specialists learn your business inside-out, handle complex inquiries, resolve issues, and provide technical support using your systems and processes.',
-          contactType: 'phone-support',
+          contactType: 'simsvorun-page',
           image: soleyIntegrations,
           isFullPhone: false
         },
@@ -62,6 +62,16 @@ const Services = ({ currentLanguage, onContactClick }) => {
   }
 
   const currentContent = content[currentLanguage]
+
+  const handleServiceClick = (service) => {
+    if (service.contactType === 'simsvorun-page') {
+      // Navigate to Símsvörun page
+      onNavigate('simsvorun')
+    } else {
+      // Use contact modal for other services (like AI)
+      onContactClick(service.contactType)
+    }
+  }
 
   return (
     <section id="services" className="py-24 bg-white relative overflow-hidden">
@@ -92,7 +102,7 @@ const Services = ({ currentLanguage, onContactClick }) => {
             <div 
               key={index}
               className="border border-gray-300 rounded-2xl hover:border-gray-400 transition-all duration-300 cursor-pointer group overflow-hidden"
-              onClick={() => onContactClick(service.contactType)}
+              onClick={() => handleServiceClick(service)}
             >
               {/* Image at Top of Card - Adjusted to show half phone UI consistently */}
               <div className="relative h-48 bg-gradient-to-br from-teal-50 via-blue-50 to-orange-50 overflow-hidden">

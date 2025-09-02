@@ -105,7 +105,10 @@ function App() {
           currentPage={currentPage}
         />
         
-        <SimsvorunPage currentLanguage={currentLanguage} />
+        <SimsvorunPage 
+          currentLanguage={currentLanguage} 
+          onContactClick={openContactModal}
+        />
         
         <Footer 
           currentLanguage={currentLanguage}
@@ -136,7 +139,10 @@ function App() {
           currentPage={currentPage}
         />
         
-        <BokhaldsthjonustaPage currentLanguage={currentLanguage} />
+        <BokhaldsthjonustaPage 
+          currentLanguage={currentLanguage} 
+          onContactClick={openContactModal}
+        />
         
         <Footer 
           currentLanguage={currentLanguage}
@@ -179,6 +185,7 @@ function App() {
       <Services 
         currentLanguage={currentLanguage}
         onContactClick={openContactModal}
+        onNavigate={navigateToPage}
       />
       
       <AIAgentsSection 

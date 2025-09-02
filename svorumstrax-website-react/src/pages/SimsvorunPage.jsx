@@ -6,7 +6,7 @@ import {
   CogIcon
 } from '@heroicons/react/24/outline'
 
-const SimsvorunPage = ({ currentLanguage = 'is' }) => {
+const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
   const content = {
     is: {
       title: 'Símsvörun',
@@ -29,7 +29,7 @@ const SimsvorunPage = ({ currentLanguage = 'is' }) => {
         {
           icon: ShareIcon,
           title: 'Samfélagsmiðlar',
-          description: 'Uppsetning á Facebook, Instagram og LinkedIn. Eða einfaldlega að vakta og svara öllum skilaboðum og athugasemdum sem að koma inn á síðurnar.'
+          description: 'Uppsetning á Facebook og Instagram. Eða einfaldlega að vakta og svara öllum skilaboðum og athugasemdum sem að koma inn á síðurnar.'
         },
         {
           icon: CogIcon,
@@ -59,16 +59,6 @@ const SimsvorunPage = ({ currentLanguage = 'is' }) => {
             'Flóknar fyrirspurnir og vandamálalausn',
             'Mánaðarlegar skýrslur og greining'
           ]
-        },
-        {
-          name: 'Netspjall',
-          description: 'Láttu þjónustufulltrúana okkar taka á móti þínum viðskiptavinum í gegnum netspjall á þægilegan máta.',
-          features: [
-            'Lifandi spjall á vefsíðu þinni',
-            'Svörun á Messenger og öðrum miðlum',
-            'Fljót uppsetning og samþætting',
-            'Skýrslur um samtöl og árangur'
-          ]
         }
       ],
       ctaTitle: 'Fáðu tilboð fyrir þitt fyrirtæki',
@@ -96,7 +86,7 @@ const SimsvorunPage = ({ currentLanguage = 'is' }) => {
         {
           icon: ShareIcon,
           title: 'Social Media',
-          description: 'Setup on Facebook, Instagram and LinkedIn. Or simply monitoring and responding to all messages and comments that come to the pages.'
+          description: 'Setup on Facebook and Instagram. Or simply monitoring and responding to all messages and comments that come to the pages.'
         },
         {
           icon: CogIcon,
@@ -125,16 +115,6 @@ const SimsvorunPage = ({ currentLanguage = 'is' }) => {
             'Integration with your information systems',
             'Complex inquiries and problem solving',
             'Monthly reports and analysis'
-          ]
-        },
-        {
-          name: 'Live Chat',
-          description: 'Let our service representatives welcome your customers through live chat in a convenient way.',
-          features: [
-            'Live chat on your website',
-            'Responses on Messenger and other platforms',
-            'Quick setup and integration',
-            'Reports on conversations and results'
           ]
         }
       ],
@@ -192,7 +172,7 @@ const SimsvorunPage = ({ currentLanguage = 'is' }) => {
             {currentContent.services.map((service, index) => {
               const IconComponent = service.icon
               return (
-                <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
+                <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl flex items-center justify-center flex-shrink-0">
                       <IconComponent className="w-6 h-6 text-gray-700" />
@@ -222,9 +202,9 @@ const SimsvorunPage = ({ currentLanguage = 'is' }) => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {currentContent.packages.map((pkg, index) => (
-              <div key={index} className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+              <div key={index} className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
                     {pkg.name}
@@ -256,7 +236,10 @@ const SimsvorunPage = ({ currentLanguage = 'is' }) => {
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
             {currentContent.ctaDescription}
           </p>
-          <button className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg">
+          <button 
+            onClick={() => onContactClick && onContactClick('phone-support')}
+            className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+          >
             {currentContent.ctaButton}
           </button>
         </div>
