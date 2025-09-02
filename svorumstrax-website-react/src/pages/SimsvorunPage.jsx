@@ -12,7 +12,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
       title: 'Símsvörun',
       subtitle: 'Áreiðanleg og persónuleg símsvörun síðan 2019',
       description: 'Við hjá Svörum strax bjóðum fyrirtækjum upp á símsvörun af ýmsu tagi. Okkur þykir fátt skemmtilegra en að veita fyrsta flokks þjónustu og leggjum okkur fram við að kynnast þínu fyrirtæki vel, ásamt því að meta þarfir hvers og eins til þess að geta tengst viðskiptavinum á sem bestan hátt.',
-      description2: 'Að útvista símtölum sem berast yfir allan daginn minnkar álag á annarri starfsemi fyrirtækisins og skilar sér í hærra þjónustustigi þvert á fyrirtækið. Það er hagkvæmt að útvista símsvörun til Svörum Strax, en hjá okkur starfar hópur sérfræðinga sem hefur mikla reynslu af símsvörun og samskiptum við viðskiptavini.',
+      description2: 'Að útvista símtölum sem berast yfir allan daginn minnkar álag á annarri starfsemi fyrirtækisins og skilar sér í hærra þjónustustigi þvert á fyrirtækið. Það er hagkvæmt að útvista símsvörun til Svörum strax, en hjá okkur starfar hópur sérfræðinga sem hefur mikla reynslu af símsvörun og samskiptum við viðskiptavini.',
       description3: 'Þjónustan byggir á öflugum símkerfum og samþættingu við CRM-kerfi, sem tryggir bæði öryggi og gagnsæi. Við hugsum um þína viðskiptavini eins og okkar eigin og getum tengst ykkar upplýsingakerfum til að veita sem besta þjónustu.',
       servicesTitle: 'Við bjóðum upp á',
       services: [
@@ -24,29 +24,29 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         {
           icon: EnvelopeIcon,
           title: 'Tölvupóstur',
-          description: 'Við tökum að okkur að svara öllum fyrirspurnum sem að berast á ykkar tölvupóstföng í ykkar nafni. Einfalt í uppsetningu og viðskiptavinir ykkar fá svör hratt og örugglega.'
+          description: 'Við svörum fyrirspurnum sem berast á ykkar netföng í ykkar nafni. Uppsetningin er einföld og viðskiptavinir ykkar fá skjót og fagleg svör.'
         },
         {
           icon: ShareIcon,
           title: 'Samfélagsmiðlar',
-          description: 'Uppsetning á Facebook og Instagram. Eða einfaldlega að vakta og svara öllum skilaboðum og athugasemdum sem að koma inn á síðurnar.'
+          description: 'Við getum tekið að okkur að vakta og svara öllum skilaboðum og athugasemdum á samfélagsmiðlum eins og Facebook og Instagram..'
         },
         {
           icon: CogIcon,
           title: 'Þinn þjónustufulltrúi',
-          description: 'Við tökum að okkur flóknari verkefni í nánu samráði við þitt fyrirtæki. Hjá Svörum strax starfar reynslumikið og sérhæft starfsfólk sem getur sinnt sérverkefnum af ýmsu tagi.'
+          description: 'Við leysum flóknari verkefni í nánu samstarfi við þitt fyrirtæki. Starfsfólk okkar er reynslumikið og sérhæft og getur sinnt sérverkefnum eftir þörfum.'
         }
       ],
       packagesTitle: 'Þjónusta',
       packages: [
         {
           name: 'Almenn símsvörun',
-          description: 'Frábær og þægileg lausn fyrir minni fyrirtæki og stofnanir með lítil umsvif. Eða einfaldlega þau sem að vilja fá aðstoð á álagstímum.',
+          description: 'Almenn símsvörun er hentug lausn fyrir fyrirtæki og stofnanir sem vilja tryggja áreiðanlega og persónulega þjónustu við sína viðskiptavini. Hún hentar jafnt fyrir daglega símsvörun sem og þegar þörf er á að létta álagi af starfsmönnum.',
           features: [
             'Símsvörun á dagvinnutíma',
-            'Tímabókanir og skilaboðataka',
+            'Tímabókanir og móttaka skilaboða',
             'Persónuleg þjónusta í þínu nafni',
-            'Daglegur uppgjör og skýrslur'
+            'Reglulegar skýrslur um símtöl'
           ]
         },
         {
@@ -56,7 +56,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
             'Sérhæft og þjálfað starfsfólk',
             'Þekking á þínum vörum og þjónustu',
             'Tengingar við þín upplýsingakerfi',
-            'Flóknar fyrirspurnir og vandamálalausn',
+            'Afgreiðsla flókinna erinda',
             'Mánaðarlegar skýrslur og greining'
           ]
         }
@@ -65,7 +65,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
       servicePackages: [
         {
           name: 'Girona',
-          description: 'Frábær og þægileg lausn fyrir minni fyrirtæki og stofnanir með lítil umsvif. Eða einföldlega þau sem að vilja fá aðstoð á álagstímum.',
+          description: 'Frábær og þægileg lausn fyrir minni fyrirtæki og stofnanir með lítil umsvif. Eða einfaldlega þau sem að vilja fá aðstoð á álagstímum.',
           features: [
             'Símsvörun',
             '40 símtöl innifalin',
@@ -75,7 +75,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         },
         {
           name: 'Bilbao',
-          description: 'Vinsæll pakki fyrir litil og meðalstór fyrirtæki.',
+          description: 'Vinsæll pakki fyrir lítil og meðalstór fyrirtæki.',
           features: [
             'Símsvörun',
             '100 símtöl innifalin',
@@ -97,19 +97,18 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         },
         {
           name: 'Barcelona',
-          description: 'Barcelona er fyrir stærri fyrirtækin sem að vilja hugsa einstakleg um sína viðskiptavini á meðan önnur verkefni eru unnin án truflunar.',
+          description: 'Barcelona pakkinn er sérsniðinn að þörfum stærri fyrirtækja sem leggja áherslu á persónulega og faglega þjónustu við viðskiptavini sína. Með honum fær fyrirtækið þitt heildarlausn þar sem símtöl, tímabókanir og þjónustubeiðnir eru afgreidd á skilvirkan og áreiðanlegan hátt — án þess að dagleg starfsemi truflist.',
           features: [
             'Símsvörun',
             'Ótakmarkuð símtöl',
             'Tímabókanir',
             'Sala',
             'Vinnutími eftir samkomulagi',
-            'Netspjall',
-            'Svörun á Messenger',
             'Tölvupóstur',
             'Skiptiborð',
             'Skýrsla í lok mánaðar',
             'Önnur verkefni eftir samkomulagi',
+            'Sérhæfður starfskraftur',
             'Þjónustuver'
           ]
         }
