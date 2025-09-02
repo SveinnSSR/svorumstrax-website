@@ -41,7 +41,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
       packages: [
         {
           name: 'Almenn símsvörun',
-          description: 'Almenn símsvörun er hentug lausn fyrir fyrirtæki og stofnanir sem vilja tryggja áreiðanlega og persónulega þjónustu við sína viðskiptavini. Hún hentar jafnt fyrir daglega símsvörun sem og þegar þörf er á að létta álagi af starfsmönnum.',
+          description: 'Hentug lausn fyrir fyrirtæki og stofnanir sem vilja tryggja áreiðanlega og persónulega þjónustu við sína viðskiptavini.',
           features: [
             'Símsvörun á dagvinnutíma',
             'Tímabókanir og móttaka skilaboða',
