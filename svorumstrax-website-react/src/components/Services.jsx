@@ -1,9 +1,14 @@
+import { useNavigate, useParams } from 'react-router-dom'
 import outboundPhone from '../assets/images/outbound-phone.png'
 import soleyPhoneAnswering from '../assets/images/soley-phone-answering.png'
 import soleyIntegrations from '../assets/images/soley-integrations.png'
 import soleyAiVoice from '../assets/images/soley-ai-voice.png'
 
-const Services = ({ currentLanguage, onContactClick, onNavigate }) => {
+const Services = ({ currentLanguage, onContactClick }) => {
+  const navigate = useNavigate()
+  const params = useParams()
+  const lang = params.lang || currentLanguage
+
   const content = {
     is: {
       title: 'Símsvörun',
@@ -65,8 +70,9 @@ const Services = ({ currentLanguage, onContactClick, onNavigate }) => {
 
   const handleServiceClick = (service) => {
     if (service.contactType === 'simsvorun-page') {
-      // Navigate to Símsvörun page
-      onNavigate('simsvorun')
+      // Navigate to Símsvörun page using React Router
+      const url = `/${lang}/${lang === 'is' ? 'simsvorun' : 'phone-service'}`
+      navigate(url)
     } else {
       // Use contact modal for other services (like AI)
       onContactClick(service.contactType)

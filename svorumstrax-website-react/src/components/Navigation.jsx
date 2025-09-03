@@ -1,14 +1,16 @@
 import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import svorumStraxLogo from '../assets/images/svorumstrax-logo.svg'
 
-const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavigate, currentPage = 'home' }) => {
+const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
+  const location = useLocation()
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
-    setIsServicesDropdownOpen(false) // Close dropdown when mobile menu toggles
+    setIsServicesDropdownOpen(false)
   }
 
   const toggleServicesDropdown = () => {
@@ -21,23 +23,21 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
     setIsServicesDropdownOpen(false)
   }
 
-  const handleNavigation = (page) => {
-    onNavigate(page)
+  const closeMenus = () => {
     setIsMobileMenuOpen(false)
     setIsServicesDropdownOpen(false)
   }
 
   const handleScrollToSection = (sectionId) => {
-    // If we're not on home page, go to home first
-    if (currentPage !== 'home') {
-      onNavigate('home')
-      // Wait for page to load then scroll
-      setTimeout(() => {
-        const element = document.getElementById(sectionId)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
-        }
-      }, 100)
+    // If we're not on home page, navigate to home first
+    const isOnHomePage = location.pathname === `/${currentLanguage}` || 
+                         location.pathname === '/' || 
+                         location.pathname === `/is` || 
+                         location.pathname === `/en`
+    
+    if (!isOnHomePage) {
+      // Navigate to home and scroll after navigation
+      window.location.href = `/${currentLanguage}#${sectionId}`
     } else {
       // We're on home page, just scroll
       const element = document.getElementById(sectionId)
@@ -45,20 +45,19 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
         element.scrollIntoView({ behavior: 'smooth' })
       }
     }
-    setIsMobileMenuOpen(false)
-    setIsServicesDropdownOpen(false)
+    closeMenus()
   }
 
   const handleServiceSelect = (serviceType) => {
     switch (serviceType) {
       case 'simsvorun':
-        handleNavigation('simsvorun')
+        // Will be handled by Link component
         break
       case 'ai':
         handleScrollToSection('ai-agents')
         break
       case 'bokhaldsthjonusta':
-        handleNavigation('bokhaldsthjonusta')
+        // Will be handled by Link component
         break
       case 'web':
         handleContactClick('web-service')
@@ -69,7 +68,14 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
       default:
         break
     }
+    closeMenus()
   }
+
+  // URL construction helpers
+  const getHomeUrl = () => `/${currentLanguage}`
+  const getTeamUrl = () => `/${currentLanguage}/${currentLanguage === 'is' ? 'mannaudur' : 'team'}`
+  const getSimsvorunUrl = () => `/${currentLanguage}/${currentLanguage === 'is' ? 'simsvorun' : 'phone-service'}`
+  const getBokhaldsthjonustaUrl = () => `/${currentLanguage}/${currentLanguage === 'is' ? 'bokhaldsthjonusta' : 'accounting'}`
 
   // Natural English navigation labels
   const content = {
@@ -112,10 +118,10 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - Using SVG now */}
+          {/* Logo */}
           <div className="flex items-center">
-            <button 
-              onClick={() => handleNavigation('home')} 
+            <Link 
+              to={getHomeUrl()} 
               className="flex items-center transition-opacity duration-200 hover:opacity-80 focus:outline-none"
             >
               <img 
@@ -126,17 +132,17 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                   maxWidth: '200px'
                 }}
               />
-            </button>
+            </Link>
           </div>
 
-          {/* Desktop Navigation - Minimal and consistent */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            <button 
-              onClick={() => handleNavigation('home')} 
+            <Link 
+              to={getHomeUrl()} 
               className="px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
             >
               {currentContent.home}
-            </button>
+            </Link>
             
             {/* Services Dropdown */}
             <div className="relative">
@@ -156,24 +162,26 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
               {isServicesDropdownOpen && (
                 <div className="absolute top-full left-0 mt-1 w-56 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200/40 overflow-hidden z-50">
                   <div className="py-1">
-                    <button
-                      onClick={() => handleServiceSelect('simsvorun')}
+                    <Link
+                      to={getSimsvorunUrl()}
+                      onClick={closeMenus}
                       className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.simsvorun}
-                    </button>
+                    </Link>
                     <button
                       onClick={() => handleServiceSelect('ai')}
                       className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.ai}
                     </button>
-                    <button
-                      onClick={() => handleServiceSelect('bokhaldsthjonusta')}
+                    <Link
+                      to={getBokhaldsthjonustaUrl()}
+                      onClick={closeMenus}
                       className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.bokhaldsthjonusta}
-                    </button>
+                    </Link>
                     <button
                       onClick={() => handleServiceSelect('web')}
                       className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
@@ -191,12 +199,12 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
               )}
             </div>
             
-            <button 
-              onClick={() => handleNavigation('staff')} 
+            <Link 
+              to={getTeamUrl()} 
               className="px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
             >
               {currentContent.team}
-            </button>
+            </Link>
             
             <button 
               onClick={() => handleScrollToSection('jobs')} 
@@ -214,7 +222,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
             </button>
           </div>
 
-          {/* Minimal Language Toggle */}
+          {/* Language Toggle */}
           <div className="hidden md:flex items-center ml-4">
             <div className="bg-gray-100/60 rounded-md p-0.5">
               <button
@@ -240,7 +248,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
             </div>
           </div>
 
-          {/* Minimal Mobile Menu Button */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
@@ -255,17 +263,18 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
           </div>
         </div>
 
-        {/* Clean Mobile Menu */}
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 mt-1">
             <div className="mx-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200/40 overflow-hidden">
               <div className="px-4 py-3 space-y-1">
-                <button
-                  onClick={() => handleNavigation('home')}
+                <Link
+                  to={getHomeUrl()}
+                  onClick={closeMenus}
                   className="block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
                 >
                   {currentContent.home}
-                </button>
+                </Link>
                 
                 {/* Services Section in Mobile */}
                 <div>
@@ -273,24 +282,26 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                     {currentContent.services}
                   </div>
                   <div className="ml-3 space-y-1">
-                    <button
-                      onClick={() => handleServiceSelect('simsvorun')}
+                    <Link
+                      to={getSimsvorunUrl()}
+                      onClick={closeMenus}
                       className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.simsvorun}
-                    </button>
+                    </Link>
                     <button
                       onClick={() => handleServiceSelect('ai')}
                       className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.ai}
                     </button>
-                    <button
-                      onClick={() => handleServiceSelect('bokhaldsthjonusta')}
+                    <Link
+                      to={getBokhaldsthjonustaUrl()}
+                      onClick={closeMenus}
                       className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.bokhaldsthjonusta}
-                    </button>
+                    </Link>
                     <button
                       onClick={() => handleServiceSelect('web')}
                       className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
@@ -306,12 +317,14 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                   </div>
                 </div>
                 
-                <button
-                  onClick={() => handleNavigation('staff')}
+                <Link
+                  to={getTeamUrl()}
+                  onClick={closeMenus}
                   className="block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
                 >
                   {currentContent.team}
-                </button>
+                </Link>
+                
                 <button
                   onClick={() => handleScrollToSection('jobs')}
                   className="block w-full text-left px-3 py-2.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
@@ -319,7 +332,6 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                   {currentContent.jobs}
                 </button>
                 
-                {/* Clean mobile contact button - now completely minimal */}
                 <button
                   onClick={() => handleContactClick('contact')}
                   className="w-full mt-3 px-4 py-2.5 rounded-md font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
@@ -327,7 +339,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick, onNavig
                   {currentContent.contact}
                 </button>
                 
-                {/* Clean Mobile Language Toggle */}
+                {/* Mobile Language Toggle */}
                 <div className="flex items-center justify-center mt-4 pt-3 border-t border-gray-200/60">
                   <div className="bg-gray-100/60 rounded-md p-0.5">
                     <button

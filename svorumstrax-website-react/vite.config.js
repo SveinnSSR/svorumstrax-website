@@ -6,6 +6,14 @@ export default defineConfig({
   plugins: [react()],
   base: './',
   build: {
-    outDir: 'dist'
+    outDir: 'dist',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom']
+        }
+      }
+    }
   }
 })
