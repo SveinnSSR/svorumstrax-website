@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, useParams, useLocation, useNavigate, Navigate } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import TrustSection from './components/TrustSection'
@@ -242,6 +243,7 @@ function App() {
 
   return (
     <div className="App bg-white">
+      <ScrollToTop />
       <Routes>
         {/* Root redirect to Icelandic */}
         <Route path="/" element={<Navigate to="/is" replace />} />
