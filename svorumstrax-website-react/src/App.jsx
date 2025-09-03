@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, useParams, useLocation, useNavigate } from 'react-router-dom'
+import { Routes, Route, useParams, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import TrustSection from './components/TrustSection'
@@ -243,8 +243,8 @@ function App() {
   return (
     <div className="App bg-white">
       <Routes>
-        {/* Root redirect */}
-        <Route path="/" element={<div />} />
+        {/* Root redirect to Icelandic */}
+        <Route path="/" element={<Navigate to="/is" replace />} />
         
         {/* Language-based routes */}
         <Route path="/:lang/*" element={
