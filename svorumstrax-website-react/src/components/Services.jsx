@@ -71,7 +71,10 @@ const Services = ({ currentLanguage, onContactClick }) => {
   const handleServiceClick = (service) => {
     if (service.contactType === 'simsvorun-page') {
       // Navigate to Símsvörun page using React Router
-      const url = `/${lang}/${lang === 'is' ? 'simsvorun' : 'phone-service'}`
+      // NEW: Icelandic at root, English under /en
+      const base = (lang === 'en') ? '/en' : ''
+      const slug = (lang === 'en') ? 'phone-service' : 'simsvorun'
+      const url = `${base}/${slug}`
       navigate(url)
     } else {
       // Use contact modal for other services (like AI)
