@@ -285,7 +285,7 @@ function App() {
                   } />
                   
                   {/* Staff/Team page (IS) */}
-                  <Route path="mannaudur" element={
+                  <Route path="/mannaudur" element={
                     <PageWithSEO
                       seoData={{
                         is: {
@@ -302,7 +302,7 @@ function App() {
                   } />
                   
                   {/* Símsvörun (IS) */}
-                  <Route path="simsvorun" element={
+                  <Route path="/simsvorun" element={
                     <PageWithSEO
                       seoData={{
                         is: {
@@ -322,7 +322,7 @@ function App() {
                   } />
                   
                   {/* Bókhald (IS) */}
-                  <Route path="bokhaldsthjonusta" element={
+                  <Route path="/bokhaldsthjonusta" element={
                     <PageWithSEO
                       seoData={{
                         is: {
