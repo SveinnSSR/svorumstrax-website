@@ -367,9 +367,9 @@ function App() {
           element={<Navigate to={window.location.pathname.replace(/^\/is/, '') || '/'} replace />}
         />
 
-        {/* ✅ Keep language-based routes for EN (and legacy IS) */}
-        <Route path="/:lang/*" element={
-          <LanguageWrapper>
+        {/* ✅ English lives only under /en/* */}
+        <Route path="/en/*" element={
+          <LanguageWrapper defaultLang="en">
             {({ currentLanguage, onLanguageChange, onNavigate }) => (
               <>
                 <Navigation 
@@ -482,7 +482,7 @@ function App() {
                     <PageWithSEO
                       seoData={{
                         is: {
-                          title: 'Bókhaldsþjónusta - Nútímaleg bókhaldslausn í Barcelona',
+                          title: 'Bókhaldsþjónusta - Nútímaleg bókhaldsþjónusta í Barcelona',
                           description: 'Faggleg bókhaldsþjónusta með Uniconta. Jóel Kristinsson M.Acc leiðir teymi sérfræðinga. Fáðu tilboð í dag.',
                           canonical: 'https://svorumstrax.is/bokhaldsthjonusta'
                         },
@@ -505,7 +505,7 @@ function App() {
                     <PageWithSEO
                       seoData={{
                         is: {
-                          title: 'Bókhaldsþjónusta - Nútímaleg bókhaldslausn í Barcelona',
+                          title: 'Bókhaldsþjónusta - Nútímaleg bókhaldsþjónusta í Barcelona',
                           description: 'Faggleg bókhaldsþjónusta með Uniconta. Jóel Kristinsson M.Acc leiðir teymi sérfræðinga. Fáðu tilboð í dag.',
                           canonical: 'https://svorumstrax.is/bokhaldsthjonusta'
                         },
