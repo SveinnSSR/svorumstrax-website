@@ -58,9 +58,14 @@ const updatePageMeta = (title, description, canonical, lang = 'is') => {
   const baseUrl = 'https://svorumstrax.is'
   const currentPath = window.location.pathname
   
-  // Add hreflang for both languages
-  const isPath = currentPath.replace('/en', '/is')
-  const enPath = currentPath.replace('/is', '/en')
+// Normalize a version of the path with NO lang prefix (strip /en or /is)
+const pathNoLang = currentPath.replace(/^\/(en|is)/, '') || '/'
+
+// Icelandic path = no prefix
+const isPath = pathNoLang
+
+// English path = /en + no-prefix
+const enPath = `/en${pathNoLang === '/' ? '' : pathNoLang}`
   
   const isHreflang = document.createElement('link')
   isHreflang.rel = 'alternate'
@@ -82,55 +87,67 @@ const LanguageWrapper = ({ children, defaultLang = 'is' }) => {
   const navigate = useNavigate()
   const [currentLanguage, setCurrentLanguage] = useState(defaultLang)
 
-  // Extract language from URL params
+  // Extract language from URL params OR derive from path
   useEffect(() => {
-    const urlLang = params.lang || defaultLang
+    const urlLang = params.lang || (location.pathname.startsWith('/en') ? 'en' : defaultLang)
     if (urlLang !== currentLanguage) {
       setCurrentLanguage(urlLang)
     }
-  }, [params.lang, currentLanguage, defaultLang])
+  }, [params.lang, location.pathname, currentLanguage, defaultLang])
 
-  // Redirect root to default language
-  useEffect(() => {
-    if (location.pathname === '/') {
-      navigate('/is', { replace: true })
-    }
-  }, [location.pathname, navigate])
+  // ❌ REMOVE root redirect (so / stays as-is)
+  // useEffect(() => {
+  //   if (location.pathname === '/') {
+  //     navigate('/is', { replace: true })
+  //   }
+  // }, [location.pathname, navigate])
 
   const handleLanguageChange = (newLang) => {
-    const currentPath = location.pathname
-    let newPath = currentPath
-    
-    // Replace language in path or add it
-    if (currentPath.startsWith('/is') || currentPath.startsWith('/en')) {
-      newPath = currentPath.replace(/^\/(is|en)/, `/${newLang}`)
+    const { pathname, search, hash } = location
+    let newPath = pathname
+
+    if (newLang === 'en') {
+      // Ensure /en prefix
+      newPath = pathname.startsWith('/en') ? pathname : `/en${pathname === '/' ? '' : pathname}`
     } else {
-      newPath = `/${newLang}${currentPath}`
+      // Icelandic: strip /en or /is if present
+      if (pathname.startsWith('/en')) {
+        newPath = pathname.replace(/^\/en/, '') || '/'
+      } else if (pathname.startsWith('/is')) {
+        newPath = pathname.replace(/^\/is/, '') || '/'
+      } else {
+        newPath = pathname // already root-IS style
+      }
     }
     
-    navigate(newPath)
+    navigate(`${newPath}${search}${hash}`)
   }
 
   const handleNavigation = (page) => {
-    let path = `/${currentLanguage}`
+    const isEN = currentLanguage === 'en'
+    const prefix = isEN ? '/en' : ''  // IS has no prefix now
+    
+    let path = isEN ? `${prefix}` : `/`
     
     switch (page) {
       case 'home':
-        // Just go to language root
+        // stay at language root
         break
       case 'simsvorun':
-        path += currentLanguage === 'is' ? '/simsvorun' : '/phone-service'
+        path += isEN ? `/phone-service` : `simsvorun`
         break
       case 'bokhaldsthjonusta':
-        path += currentLanguage === 'is' ? '/bokhaldsthjonusta' : '/accounting'
+        path += isEN ? `/accounting` : `bokhaldsthjonusta`
         break
       case 'staff':
-        path += currentLanguage === 'is' ? '/mannaudur' : '/team'
+        path += isEN ? `/team` : `mannaudur`
         break
       default:
         break
     }
     
+    // avoid double slashes
+    path = path.replace(/\/+/g, '/')
     navigate(path)
   }
 
@@ -149,7 +166,7 @@ const HomePage = ({ currentLanguage, onContactClick, onNavigate }) => {
       is: {
         title: 'Svörum strax - Snjallar lausnir fyrir þjónustuver og símsvörun',
         description: 'Yfir 100 fyrirtæki treysta Svörum strax fyrir þjónustu við viðskiptavini. Símsvörun, gervigreind og bókhaldsþjónusta í Barcelona.',
-        canonical: 'https://svorumstrax.is/is'
+        canonical: 'https://svorumstrax.is' // ← root, no /is
       },
       en: {
         title: 'Svörum strax - Smart Customer Service Solutions',
@@ -245,10 +262,112 @@ function App() {
     <div className="App bg-white">
       <ScrollToTop />
       <Routes>
-        {/* Root redirect to Icelandic */}
-        <Route path="/" element={<Navigate to="/is" replace />} />
-        
-        {/* Language-based routes */}
+        {/* ✅ NEW: Icelandic default at root (no /is) */}
+        <Route path="/*" element={
+          <LanguageWrapper defaultLang="is">
+            {({ currentLanguage, onLanguageChange, onNavigate }) => (
+              <>
+                <Navigation 
+                  currentLanguage={currentLanguage}
+                  onLanguageChange={onLanguageChange}
+                  onContactClick={openContactModal}
+                  onNavigate={onNavigate}
+                />
+                
+                <Routes>
+                  {/* Homepage (IS) */}
+                  <Route index element={
+                    <HomePage 
+                      currentLanguage="is"
+                      onContactClick={openContactModal}
+                      onNavigate={onNavigate}
+                    />
+                  } />
+                  
+                  {/* Staff/Team page (IS) */}
+                  <Route path="mannaudur" element={
+                    <PageWithSEO
+                      seoData={{
+                        is: {
+                          title: 'Mannauður - Svörum strax teymið í Barcelona',
+                          description: 'Kynntu þér 35+ íslenska sérfræðinga okkar í Barcelona. Reynslumikið teymi í þjónustu, bókhaldi og tækniþróun.',
+                          canonical: 'https://svorumstrax.is/mannaudur'
+                        },
+                        en: { title: '', description: '', canonical: '' }
+                      }}
+                      currentLanguage="is"
+                    >
+                      <StaffPage currentLanguage="is" />
+                    </PageWithSEO>
+                  } />
+                  
+                  {/* Símsvörun (IS) */}
+                  <Route path="simsvorun" element={
+                    <PageWithSEO
+                      seoData={{
+                        is: {
+                          title: 'Símsvörun - Fagleg símsvörun síðan 2019',
+                          description: 'Áreiðanleg símsvörun fyrir yfir 100 fyrirtæki. Almenn símsvörun, þjónustuver og AI lausnir. Fáðu tilboð í dag.',
+                          canonical: 'https://svorumstrax.is/simsvorun'
+                        },
+                        en: { title: '', description: '', canonical: '' }
+                      }}
+                      currentLanguage="is"
+                    >
+                      <SimsvorunPage 
+                        currentLanguage="is" 
+                        onContactClick={openContactModal}
+                      />
+                    </PageWithSEO>
+                  } />
+                  
+                  {/* Bókhald (IS) */}
+                  <Route path="bokhaldsthjonusta" element={
+                    <PageWithSEO
+                      seoData={{
+                        is: {
+                          title: 'Bókhaldsþjónusta - Nútímaleg bókhaldslausn í Barcelona',
+                          description: 'Faggleg bókhaldsþjónusta með Uniconta. Jóel Kristinsson M.Acc leiðir teymi sérfræðinga. Fáðu tilboð í dag.',
+                          canonical: 'https://svorumstrax.is/bokhaldsthjonusta'
+                        },
+                        en: { title: '', description: '', canonical: '' }
+                      }}
+                      currentLanguage="is"
+                    >
+                      <BokhaldsthjonustaPage 
+                        currentLanguage="is" 
+                        onContactClick={openContactModal}
+                      />
+                    </PageWithSEO>
+                  } />
+                </Routes>
+                
+                <Footer 
+                  currentLanguage="is"
+                  onContactClick={openContactModal}
+                  onNavigate={onNavigate}
+                />
+
+                <ContactModal 
+                  isOpen={isContactModalOpen}
+                  onClose={closeContactModal}
+                  type={contactModalType}
+                  currentLanguage="is"
+                />
+                <ChatWidget />
+              </>
+            )}
+          </LanguageWrapper>
+        } />
+
+        {/* 🔁 Redirect legacy /is URLs to the new no-prefix Icelandic paths */}
+        <Route path="/is" element={<Navigate to="/" replace />} />
+        <Route
+          path="/is/*"
+          element={<Navigate to={window.location.pathname.replace(/^\/is/, '') || '/'} replace />}
+        />
+
+        {/* ✅ Keep language-based routes for EN (and legacy IS) */}
         <Route path="/:lang/*" element={
           <LanguageWrapper>
             {({ currentLanguage, onLanguageChange, onNavigate }) => (
@@ -277,7 +396,7 @@ function App() {
                         is: {
                           title: 'Mannauður - Svörum strax teymið í Barcelona',
                           description: 'Kynntu þér 35+ íslenska sérfræðinga okkar í Barcelona. Reynslumikið teymi í þjónustu, bókhaldi og tækniþróun.',
-                          canonical: 'https://svorumstrax.is/is/mannaudur'
+                          canonical: 'https://svorumstrax.is/mannaudur'
                         },
                         en: {
                           title: 'Our Team - Icelandic Experts in Barcelona',
@@ -297,7 +416,7 @@ function App() {
                         is: {
                           title: 'Mannauður - Svörum strax teymið í Barcelona',
                           description: 'Kynntu þér 35+ íslenska sérfræðinga okkar í Barcelona. Reynslumikið teymi í þjónustu, bókhaldi og tækniþróun.',
-                          canonical: 'https://svorumstrax.is/is/mannaudur'
+                          canonical: 'https://svorumstrax.is/mannaudur'
                         },
                         en: {
                           title: 'Our Team - Icelandic Experts in Barcelona',
@@ -318,7 +437,7 @@ function App() {
                         is: {
                           title: 'Símsvörun - Fagleg símsvörun síðan 2019',
                           description: 'Áreiðanleg símsvörun fyrir yfir 100 fyrirtæki. Almenn símsvörun, þjónustuver og AI lausnir. Fáðu tilboð í dag.',
-                          canonical: 'https://svorumstrax.is/is/simsvorun'
+                          canonical: 'https://svorumstrax.is/simsvorun'
                         },
                         en: {
                           title: 'Phone Answering Service - Professional Support Since 2019',
@@ -341,7 +460,7 @@ function App() {
                         is: {
                           title: 'Símsvörun - Fagleg símsvörun síðan 2019',
                           description: 'Áreiðanleg símsvörun fyrir yfir 100 fyrirtæki. Almenn símsvörun, þjónustuver og AI lausnir. Fáðu tilboð í dag.',
-                          canonical: 'https://svorumstrax.is/is/simsvorun'
+                          canonical: 'https://svorumstrax.is/simsvorun'
                         },
                         en: {
                           title: 'Phone Answering Service - Professional Support Since 2019',
@@ -365,7 +484,7 @@ function App() {
                         is: {
                           title: 'Bókhaldsþjónusta - Nútímaleg bókhaldslausn í Barcelona',
                           description: 'Faggleg bókhaldsþjónusta með Uniconta. Jóel Kristinsson M.Acc leiðir teymi sérfræðinga. Fáðu tilboð í dag.',
-                          canonical: 'https://svorumstrax.is/is/bokhaldsthjonusta'
+                          canonical: 'https://svorumstrax.is/bokhaldsthjonusta'
                         },
                         en: {
                           title: 'Accounting Services - Modern Accounting Solutions from Barcelona',
@@ -388,7 +507,7 @@ function App() {
                         is: {
                           title: 'Bókhaldsþjónusta - Nútímaleg bókhaldslausn í Barcelona',
                           description: 'Faggleg bókhaldsþjónusta með Uniconta. Jóel Kristinsson M.Acc leiðir teymi sérfræðinga. Fáðu tilboð í dag.',
-                          canonical: 'https://svorumstrax.is/is/bokhaldsthjonusta'
+                          canonical: 'https://svorumstrax.is/bokhaldsthjonusta'
                         },
                         en: {
                           title: 'Accounting Services - Modern Accounting Solutions from Barcelona',

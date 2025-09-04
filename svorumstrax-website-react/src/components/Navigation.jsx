@@ -8,6 +8,9 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
   const location = useLocation()
 
+  const isEN = currentLanguage === 'en'
+  const prefix = isEN ? '/en' : ''
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
     setIsServicesDropdownOpen(false)
@@ -29,21 +32,17 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
   }
 
   const handleScrollToSection = (sectionId) => {
-    // If we're not on home page, navigate to home first
-    const isOnHomePage = location.pathname === `/${currentLanguage}` || 
-                         location.pathname === '/' || 
-                         location.pathname === `/is` || 
-                         location.pathname === `/en`
-    
+    // Are we on the correct-language homepage?
+    const homePath = isEN ? '/en' : '/'
+    const isOnHomePage = location.pathname === homePath
+
     if (!isOnHomePage) {
-      // Navigate to home and scroll after navigation
-      window.location.href = `/${currentLanguage}#${sectionId}`
+      // Navigate to the right homepage and anchor
+      window.location.href = `${homePath}#${sectionId}`
     } else {
-      // We're on home page, just scroll
-      const element = document.getElementById(sectionId)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
+      // Already on home: smooth scroll
+      const el = document.getElementById(sectionId)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
     }
     closeMenus()
   }
@@ -51,13 +50,11 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
   const handleServiceSelect = (serviceType) => {
     switch (serviceType) {
       case 'simsvorun':
-        // Will be handled by Link component
+      case 'bokhaldsthjonusta':
+        // handled by <Link> targets
         break
       case 'ai':
         handleScrollToSection('ai-agents')
-        break
-      case 'bokhaldsthjonusta':
-        // Will be handled by Link component
         break
       case 'web':
         handleContactClick('web-service')
@@ -71,13 +68,13 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
     closeMenus()
   }
 
-  // URL construction helpers
-  const getHomeUrl = () => `/${currentLanguage}`
-  const getTeamUrl = () => `/${currentLanguage}/${currentLanguage === 'is' ? 'mannaudur' : 'team'}`
-  const getSimsvorunUrl = () => `/${currentLanguage}/${currentLanguage === 'is' ? 'simsvorun' : 'phone-service'}`
-  const getBokhaldsthjonustaUrl = () => `/${currentLanguage}/${currentLanguage === 'is' ? 'bokhaldsthjonusta' : 'accounting'}`
+  // URL helpers — IS at root, EN under /en
+  const getHomeUrl = () => (isEN ? '/en' : '/')
+  const getTeamUrl = () => (isEN ? '/en/team' : '/mannaudur')
+  const getSimsvorunUrl = () => (isEN ? '/en/phone-service' : '/simsvorun')
+  const getBokhaldsthjonustaUrl = () => (isEN ? '/en/accounting' : '/bokhaldsthjonusta')
 
-  // Natural English navigation labels
+  // Labels
   const content = {
     is: {
       home: 'Heim',
@@ -128,9 +125,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
                 src={svorumStraxLogo} 
                 alt="Svörum strax" 
                 className="h-10 sm:h-12 w-auto"
-                style={{ 
-                  maxWidth: '200px'
-                }}
+                style={{ maxWidth: '200px' }}
               />
             </Link>
           </div>
@@ -152,9 +147,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
               >
                 {currentContent.services}
                 <ChevronDownIcon 
-                  className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                    isServicesDropdownOpen ? 'rotate-180' : ''
-                  }`} 
+                  className={`w-4 h-4 ml-1 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} 
                 />
               </button>
               
@@ -213,7 +206,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
               {currentContent.jobs}
             </button>
             
-            {/* Minimal Contact Button - now completely minimal */}
+            {/* Minimal Contact Button */}
             <button 
               onClick={() => handleContactClick('contact')}
               className="ml-3 px-5 py-2 rounded-md font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
