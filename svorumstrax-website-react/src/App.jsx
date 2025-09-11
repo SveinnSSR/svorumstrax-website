@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, useParams, useLocation, useNavigate, Navigate } from 'react-router-dom'
+import { Analytics } from "@vercel/analytics/react";
 import ScrollToTop from './components/ScrollToTop'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
@@ -543,6 +544,7 @@ function App() {
           </LanguageWrapper>
         } />
       </Routes>
+      <Analytics />
     </div>
   )
 }
