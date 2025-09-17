@@ -10,6 +10,7 @@ import fjallakofinnLogo from '../assets/images/logos/fjallakofinn-logo.png'
 import happdraettiLogo from '../assets/images/logos/happdraetti_das-logo.jpeg'
 import logthingLogo from '../assets/images/logos/logthing-logo.png'
 import febaeturLogo from '../assets/images/logos/febaetur-logo.png'
+import elkoLogo from '../assets/images/logos/ELKO-Logo.svg' // NEW
 
 const TrustSection = ({ currentLanguage }) => {
   const content = {
@@ -24,9 +25,10 @@ const TrustSection = ({ currentLanguage }) => {
   const currentContent = content[currentLanguage]
 
   const logos = [
-    { src: flyoverLogo, alt: 'FlyOver Iceland', name: 'flyover' },
-    { src: epalLogo, alt: 'Epal', name: 'epal' },
     { src: rafalLogo, alt: 'Rafal', name: 'rafal' },
+    { src: epalLogo, alt: 'Epal', name: 'epal' },
+    { src: elkoLogo, alt: 'ELKO', name: 'elko' }, // NEW
+    { src: flyoverLogo, alt: 'FlyOver Iceland', name: 'flyover' },
     { src: icewearLogo, alt: 'Icewear', name: 'icewear' },
     { src: fjallakofinnLogo, alt: 'Fjallakofinn', name: 'fjallakofinn' },
     { src: happdraettiLogo, alt: 'Happdrætti DAS', name: 'happdraetti' },
