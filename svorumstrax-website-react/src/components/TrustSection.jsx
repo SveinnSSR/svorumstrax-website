@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 // Import logo images
-import flyoverLogo from '../assets/images/logos/Flyover-Iceland-Logo.png'
+import flyoverLogo from '../assets/images/logos/Flyover-Iceland-Logo.webp'
 import epalLogo from '../assets/images/logos/Epal-Logo.png'
 import rafalLogo from '../assets/images/logos/Rafal-Logo.png'
 import islandsbilarLogo from '../assets/images/logos/islandsbilar-logo.svg'
