@@ -29,7 +29,8 @@ const TrustSection = ({ currentLanguage }) => {
 
   // Optional per-logo size tweaks (e.g., for SVGs with big viewBox padding)
   const sizeOverrides = {
-    bmvalla: { maxHeight: '60px', maxWidth: '140px' } // bump BM Vallá up a bit
+    bmvalla: { maxHeight: '90px', maxWidth: '200px' },  // give it more breathing room
+    flyover: { maxHeight: '65px', maxWidth: '150px' }   // make FlyOver a bit larger
   }
 
   const logos = [
