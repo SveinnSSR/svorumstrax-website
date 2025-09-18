@@ -35,8 +35,8 @@ const TrustSection = ({ currentLanguage }) => {
 
   const logos = [
     { src: rafalLogo, alt: 'Rafal', name: 'rafal' },
-    { src: epalLogo, alt: 'Epal', name: 'epal' },
     { src: bmvallaLogo, alt: 'BM Vallá', name: 'bmvalla' },
+    { src: epalLogo, alt: 'Epal', name: 'epal' },
     { src: elkoLogo, alt: 'ELKO', name: 'elko' },
     { src: flyoverLogo, alt: 'FlyOver Iceland', name: 'flyover' },
     { src: icewearLogo, alt: 'Icewear', name: 'icewear' },
