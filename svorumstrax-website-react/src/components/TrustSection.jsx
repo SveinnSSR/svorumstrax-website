@@ -6,8 +6,9 @@ import epalLogo from '../assets/images/logos/Epal-Logo.png'
 import rafalLogo from '../assets/images/logos/Rafal-Logo.png'
 import islandsbilarLogo from '../assets/images/logos/islandsbilar-logo.svg'
 import icewearLogo from '../assets/images/logos/Icewear-Logo.jpg'
-import fjallakofinnLogo from '../assets/images/logos/fjallakofinn-logo.png'
-import happdraettiLogo from '../assets/images/logos/happdraetti_das-logo.jpeg'
+// removed fjallakofinn/happdraetti imports
+// import fjallakofinnLogo from '../assets/images/logos/fjallakofinn-logo.png'
+// import happdraettiLogo from '../assets/images/logos/happdraetti_das-logo.jpeg'
 import logthingLogo from '../assets/images/logos/logthing-logo.png'
 import febaeturLogo from '../assets/images/logos/febaetur-logo.png'
 import elkoLogo from '../assets/images/logos/ELKO-Logo.svg'
@@ -26,6 +27,11 @@ const TrustSection = ({ currentLanguage }) => {
 
   const currentContent = content[currentLanguage]
 
+  // Optional per-logo size tweaks (e.g., for SVGs with big viewBox padding)
+  const sizeOverrides = {
+    bmvalla: { maxHeight: '60px', maxWidth: '140px' } // bump BM Vallá up a bit
+  }
+
   const logos = [
     { src: rafalLogo, alt: 'Rafal', name: 'rafal' },
     { src: epalLogo, alt: 'Epal', name: 'epal' },
@@ -36,9 +42,8 @@ const TrustSection = ({ currentLanguage }) => {
     { src: hornsteinnLogo, alt: 'Eignarhaldsfélagið Hornsteinn', name: 'hornsteinn' },
     { src: logthingLogo, alt: 'Lögþing', name: 'logthing' },
     { src: febaeturLogo, alt: 'Fébætur', name: 'febaetur' },
-    { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' },
-    { src: fjallakofinnLogo, alt: 'Fjallakofinn', name: 'fjallakofinn' },
-    { src: happdraettiLogo, alt: 'Happdrætti DAS', name: 'happdraetti' }
+    { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' }
+    // fjallakofinn + happdraetti removed as requested
   ]
 
   // Double the logos for seamless infinite scroll
@@ -79,7 +84,8 @@ const TrustSection = ({ currentLanguage }) => {
                     className="max-h-full max-w-full w-auto h-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-500"
                     style={{
                       maxHeight: '48px',
-                      maxWidth: '112px'
+                      maxWidth: '112px',
+                      ...(sizeOverrides[logo.name] || {})
                     }}
                     onError={(e) => {
                       console.error(`Failed to load: ${logo.alt}`)
@@ -108,7 +114,8 @@ const TrustSection = ({ currentLanguage }) => {
                     className="max-h-full max-w-full w-auto h-auto object-contain opacity-80"
                     style={{
                       maxHeight: '40px',
-                      maxWidth: '80px'
+                      maxWidth: '80px',
+                      ...(sizeOverrides[logo.name] || {})
                     }}
                     onError={(e) => {
                       const span = document.createElement('span')
