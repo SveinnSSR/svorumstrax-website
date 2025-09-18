@@ -141,7 +141,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
     {
       id: 'frosti-wendel',
       name: 'Frosti Wendel',
-      title: { is: 'Þjónustufulltrúi / Innheimta', en: 'Customer Support Specialist' },
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
       email: 'frosti@svorumstrax.is',
       initials: 'FW'
     },
