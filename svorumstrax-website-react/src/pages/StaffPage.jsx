@@ -63,7 +63,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
     {
       id: 'elma-thorhallsdottir',
       name: 'Elma Jenný Þórhallsdóttir',
-      title: { is: 'Yfirmaður í Þjónustuveri', en: 'Head of Customer Service' },
+      title: { is: 'Þjónustustjóri', en: 'Head of Customer Service' },
       email: 'elma.j@svorumstrax.is',
       image: elmaThorhallsdottirImg
     },
@@ -84,7 +84,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
     {
       id: 'daniel-thorstensen',
       name: 'Daníel Thorstensen',
-      title: { is: 'Viðskiptastjóri', en: 'Key Account Manager' },
+      title: { is: 'Sölustjóri', en: 'Key Account Manager' },
       email: 'daniel.t@svorumstrax.is',
       image: danielThorstensenImg
     },
@@ -92,7 +92,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       id: 'joel-kristinsson',
       name: 'Jóel Kristinsson',
       title: { is: 'Rekstrarstjóri Bókhaldssviðs', en: 'Operations Manager - Accounting' },
-      email: 'joel@svorumstrax.is',
+      email: 'svorumstrax@svorumstrax.is',
       image: joelKristinssonImg
     },
     {
@@ -105,7 +105,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
     {
       id: 'sigrun-jonsdottir',
       name: 'Sigrún Fanný Jónsdóttir',
-      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      title: { is: 'Þjónustufulltrúi / Innheimta', en: 'Customer Support Specialist' },
       email: 'sigrun@svorumstrax.is',
       image: sigrunJonsdottirImg
     },
@@ -127,7 +127,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       id: 'david-hlynsson',
       name: 'Davíð Freyr Hlynsson',
       title: { is: 'Vefsíðu- og kerfisstjóri', en: 'Web and Systems Manager' },
-      email: 'david@svorumstrax.is',
+      email: 'svorumstrax@svorumstrax.is',
       image: davidHlynssonImg
     },
     {
@@ -141,7 +141,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
     {
       id: 'frosti-wendel',
       name: 'Frosti Wendel',
-      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
+      title: { is: 'Þjónustufulltrúi / Innheimta', en: 'Customer Support Specialist' },
       email: 'frosti@svorumstrax.is',
       initials: 'FW'
     },
