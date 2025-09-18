@@ -35,12 +35,12 @@ const TrustSection = ({ currentLanguage }) => {
 
   const logos = [
     { src: rafalLogo, alt: 'Rafal', name: 'rafal' },
-    { src: bmvallaLogo, alt: 'BM Vallá', name: 'bmvalla' },
     { src: epalLogo, alt: 'Epal', name: 'epal' },
     { src: elkoLogo, alt: 'ELKO', name: 'elko' },
     { src: flyoverLogo, alt: 'FlyOver Iceland', name: 'flyover' },
     { src: icewearLogo, alt: 'Icewear', name: 'icewear' },
     { src: hornsteinnLogo, alt: 'Eignarhaldsfélagið Hornsteinn', name: 'hornsteinn' },
+    { src: bmvallaLogo, alt: 'BM Vallá', name: 'bmvalla' },
     { src: logthingLogo, alt: 'Lögþing', name: 'logthing' },
     { src: febaeturLogo, alt: 'Fébætur', name: 'febaetur' },
     { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' }
