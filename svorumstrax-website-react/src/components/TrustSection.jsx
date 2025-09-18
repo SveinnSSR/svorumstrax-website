@@ -10,7 +10,9 @@ import fjallakofinnLogo from '../assets/images/logos/fjallakofinn-logo.png'
 import happdraettiLogo from '../assets/images/logos/happdraetti_das-logo.jpeg'
 import logthingLogo from '../assets/images/logos/logthing-logo.png'
 import febaeturLogo from '../assets/images/logos/febaetur-logo.png'
-import elkoLogo from '../assets/images/logos/ELKO-Logo.svg' // NEW
+import elkoLogo from '../assets/images/logos/ELKO-Logo.svg'
+import bmvallaLogo from '../assets/images/logos/bmvalla-logo.svg'
+import hornsteinnLogo from '../assets/images/logos/hornsteinn-logo.svg'
 
 const TrustSection = ({ currentLanguage }) => {
   const content = {
@@ -27,14 +29,16 @@ const TrustSection = ({ currentLanguage }) => {
   const logos = [
     { src: rafalLogo, alt: 'Rafal', name: 'rafal' },
     { src: epalLogo, alt: 'Epal', name: 'epal' },
-    { src: elkoLogo, alt: 'ELKO', name: 'elko' }, // NEW
+    { src: elkoLogo, alt: 'ELKO', name: 'elko' },
     { src: flyoverLogo, alt: 'FlyOver Iceland', name: 'flyover' },
     { src: icewearLogo, alt: 'Icewear', name: 'icewear' },
-    { src: fjallakofinnLogo, alt: 'Fjallakofinn', name: 'fjallakofinn' },
-    { src: happdraettiLogo, alt: 'Happdrætti DAS', name: 'happdraetti' },
+    { src: bmvallaLogo, alt: 'BM Vallá', name: 'bmvalla' },
+    { src: hornsteinnLogo, alt: 'Eignarhaldsfélagið Hornsteinn', name: 'hornsteinn' },
     { src: logthingLogo, alt: 'Lögþing', name: 'logthing' },
     { src: febaeturLogo, alt: 'Fébætur', name: 'febaetur' },
-    { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' }
+    { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' },
+    { src: fjallakofinnLogo, alt: 'Fjallakofinn', name: 'fjallakofinn' },
+    { src: happdraettiLogo, alt: 'Happdrætti DAS', name: 'happdraetti' }
   ]
 
   // Double the logos for seamless infinite scroll
