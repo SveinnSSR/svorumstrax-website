@@ -15,7 +15,7 @@ import icewearLogo from '../assets/images/logos/Icewear-Logo.jpg'
 import elkoLogo from '../assets/images/logos/ELKO-Logo.svg'
 import bmvallaLogo from '../assets/images/logos/bmvalla-logo.svg'
 import hornsteinnLogo from '../assets/images/logos/hornsteinn-logo.svg'
-import brimborgLogo from '../assets/images/logos/brimborg-logo.png'
+import brimborgLogo from '../assets/images/logos/brimborg-logo.jpg'
 import max1Logo from '../assets/images/logos/max1-logo.jpg'
 import velalandLogo from '../assets/images/logos/velaland-logo.jpg'
 
@@ -36,7 +36,7 @@ const TrustSection = ({ currentLanguage }) => {
     bmvalla: { maxHeight: '90px', maxWidth: '200px' },    // bigger BM Vallá
     flyover: { maxHeight: '65px', maxWidth: '150px' },    // slightly larger FlyOver
     // brimborg → back to default, no overrides
-    max1: { maxHeight: '45px', maxWidth: '110px' }        // scaled down slightly
+    // max1 → back to default, no overrides
     // velaland → back to default, no overrides
   }
 
