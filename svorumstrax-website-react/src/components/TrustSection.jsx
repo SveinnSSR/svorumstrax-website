@@ -33,10 +33,11 @@ const TrustSection = ({ currentLanguage }) => {
 
   // Per-logo size tweaks
   const sizeOverrides = {
-    bmvalla: { maxHeight: '90px', maxWidth: '200px' },   // bigger BM Vallá
-    flyover: { maxHeight: '65px', maxWidth: '150px' },   // slightly larger FlyOver
-    brimborg: { maxHeight: '70px', maxWidth: '160px' },  // scale up Brimborg
-    max1: { maxHeight: '50px', maxWidth: '120px' }       // scale down MAX1 a bit
+    bmvalla: { maxHeight: '90px', maxWidth: '200px' },    // keep as is
+    flyover: { maxHeight: '65px', maxWidth: '150px' },    // keep as is
+    brimborg: { maxHeight: '85px', maxWidth: '180px' },   // scale up more
+    max1: { maxHeight: '45px', maxWidth: '110px' },       // scale down further
+    velaland: { maxHeight: '70px', maxWidth: '170px' }    // scale up
   }
 
   const logos = [
