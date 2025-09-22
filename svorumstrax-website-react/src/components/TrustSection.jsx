@@ -15,7 +15,7 @@ import icewearLogo from '../assets/images/logos/Icewear-Logo.jpg'
 import elkoLogo from '../assets/images/logos/ELKO-Logo.svg'
 import bmvallaLogo from '../assets/images/logos/bmvalla-logo.svg'
 import hornsteinnLogo from '../assets/images/logos/hornsteinn-logo.svg'
-import brimborgLogo from '../assets/images/logos/brimborg-logo.jpg'
+import brimborgLogo from '../assets/images/logos/brimborg-logo.png'
 import max1Logo from '../assets/images/logos/max1-logo.jpg'
 import velalandLogo from '../assets/images/logos/velaland-logo.jpg'
 
