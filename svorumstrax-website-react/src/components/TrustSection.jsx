@@ -4,19 +4,20 @@ import { useEffect } from 'react'
 import flyoverLogo from '../assets/images/logos/Flyover-Iceland-Logo.webp'
 import epalLogo from '../assets/images/logos/Epal-Logo.png'
 import rafalLogo from '../assets/images/logos/Rafal-Logo.png'
-import islandsbilarLogo from '../assets/images/logos/islandsbilar-logo.svg' // commented out in logos
-import icewearLogo from '../assets/images/logos/Icewear-Logo.jpg'
+// commented out imports (not in use now)
+// import islandsbilarLogo from '../assets/images/logos/islandsbilar-logo.svg'
+// import logthingLogo from '../assets/images/logos/logthing-logo.png'
+// import febaeturLogo from '../assets/images/logos/febaetur-logo.png'
 // removed fjallakofinn/happdraetti imports
 // import fjallakofinnLogo from '../assets/images/logos/fjallakofinn-logo.png'
 // import happdraettiLogo from '../assets/images/logos/happdraetti_das-logo.jpeg'
-import logthingLogo from '../assets/images/logos/logthing-logo.png' // commented out in logos
-import febaeturLogo from '../assets/images/logos/febaetur-logo.png' // commented out in logos
+import icewearLogo from '../assets/images/logos/Icewear-Logo.jpg'
 import elkoLogo from '../assets/images/logos/ELKO-Logo.svg'
 import bmvallaLogo from '../assets/images/logos/bmvalla-logo.svg'
 import hornsteinnLogo from '../assets/images/logos/hornsteinn-logo.svg'
-import brimborgLogo from '../assets/images/logos/brimborg-logo.png'   // NEW
-import max1Logo from '../assets/images/logos/max1-logo.jpg'          // NEW
-import velalandLogo from '../assets/images/logos/velaland-logo.jpg'  // NEW
+import brimborgLogo from '../assets/images/logos/brimborg-logo.png'
+import max1Logo from '../assets/images/logos/max1-logo.jpg'
+import velalandLogo from '../assets/images/logos/velaland-logo.jpg'
 
 const TrustSection = ({ currentLanguage }) => {
   const content = {
@@ -30,10 +31,12 @@ const TrustSection = ({ currentLanguage }) => {
 
   const currentContent = content[currentLanguage]
 
-  // Optional per-logo size tweaks (e.g., for SVGs with big viewBox padding)
+  // Per-logo size tweaks
   const sizeOverrides = {
-    bmvalla: { maxHeight: '90px', maxWidth: '200px' },  // give it more breathing room
-    flyover: { maxHeight: '65px', maxWidth: '150px' }   // make FlyOver a bit larger
+    bmvalla: { maxHeight: '90px', maxWidth: '200px' },   // bigger BM Vallá
+    flyover: { maxHeight: '65px', maxWidth: '150px' },   // slightly larger FlyOver
+    brimborg: { maxHeight: '70px', maxWidth: '160px' },  // scale up Brimborg
+    max1: { maxHeight: '50px', maxWidth: '120px' }       // scale down MAX1 a bit
   }
 
   const logos = [
@@ -44,12 +47,12 @@ const TrustSection = ({ currentLanguage }) => {
     { src: icewearLogo, alt: 'Icewear', name: 'icewear' },
     { src: hornsteinnLogo, alt: 'Eignarhaldsfélagið Hornsteinn', name: 'hornsteinn' },
     { src: bmvallaLogo, alt: 'BM Vallá', name: 'bmvalla' },
-    { src: brimborgLogo, alt: 'Brimborg', name: 'brimborg' },       // NEW
-    { src: max1Logo, alt: 'MAX1', name: 'max1' },                   // NEW
-    { src: velalandLogo, alt: 'Vélaland', name: 'velaland' }        // NEW
-    // { src: logthingLogo, alt: 'Lögþing', name: 'logthing' },      // commented out
-    // { src: febaeturLogo, alt: 'Fébætur', name: 'febaetur' },     // commented out
-    // { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' }, // commented out
+    { src: brimborgLogo, alt: 'Brimborg', name: 'brimborg' },
+    { src: max1Logo, alt: 'MAX1', name: 'max1' },
+    { src: velalandLogo, alt: 'Vélaland', name: 'velaland' }
+    // { src: logthingLogo, alt: 'Lögþing', name: 'logthing' },
+    // { src: febaeturLogo, alt: 'Fébætur', name: 'febaetur' },
+    // { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' },
     // fjallakofinn + happdraetti removed as requested
   ]
 
