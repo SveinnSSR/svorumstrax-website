@@ -35,11 +35,7 @@ const TrustSection = ({ currentLanguage }) => {
   const sizeOverrides = {
     bmvalla: { maxHeight: '90px', maxWidth: '200px' },    // bigger BM Vallá
     flyover: { maxHeight: '65px', maxWidth: '150px' },    // slightly larger FlyOver
-    brimborg: { 
-      maxHeight: '85px', 
-      maxWidth: '180px',
-      objectPosition: 'center bottom'   // nudges logo visually lower
-    },
+    // brimborg → back to default, no overrides
     max1: { maxHeight: '45px', maxWidth: '110px' }        // scaled down slightly
     // velaland → back to default, no overrides
   }
