@@ -4,16 +4,19 @@ import { useEffect } from 'react'
 import flyoverLogo from '../assets/images/logos/Flyover-Iceland-Logo.webp'
 import epalLogo from '../assets/images/logos/Epal-Logo.png'
 import rafalLogo from '../assets/images/logos/Rafal-Logo.png'
-import islandsbilarLogo from '../assets/images/logos/islandsbilar-logo.svg'
+import islandsbilarLogo from '../assets/images/logos/islandsbilar-logo.svg' // commented out in logos
 import icewearLogo from '../assets/images/logos/Icewear-Logo.jpg'
 // removed fjallakofinn/happdraetti imports
 // import fjallakofinnLogo from '../assets/images/logos/fjallakofinn-logo.png'
 // import happdraettiLogo from '../assets/images/logos/happdraetti_das-logo.jpeg'
-import logthingLogo from '../assets/images/logos/logthing-logo.png'
-import febaeturLogo from '../assets/images/logos/febaetur-logo.png'
+import logthingLogo from '../assets/images/logos/logthing-logo.png' // commented out in logos
+import febaeturLogo from '../assets/images/logos/febaetur-logo.png' // commented out in logos
 import elkoLogo from '../assets/images/logos/ELKO-Logo.svg'
 import bmvallaLogo from '../assets/images/logos/bmvalla-logo.svg'
 import hornsteinnLogo from '../assets/images/logos/hornsteinn-logo.svg'
+import brimborgLogo from '../assets/images/logos/brimborg-logo.png'   // NEW
+import max1Logo from '../assets/images/logos/max1-logo.jpg'          // NEW
+import velalandLogo from '../assets/images/logos/velaland-logo.jpg'  // NEW
 
 const TrustSection = ({ currentLanguage }) => {
   const content = {
@@ -34,7 +37,6 @@ const TrustSection = ({ currentLanguage }) => {
   }
 
   const logos = [
-    { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' },
     { src: rafalLogo, alt: 'Rafal', name: 'rafal' },
     { src: epalLogo, alt: 'Epal', name: 'epal' },
     { src: elkoLogo, alt: 'ELKO', name: 'elko' },
@@ -42,8 +44,12 @@ const TrustSection = ({ currentLanguage }) => {
     { src: icewearLogo, alt: 'Icewear', name: 'icewear' },
     { src: hornsteinnLogo, alt: 'Eignarhaldsfélagið Hornsteinn', name: 'hornsteinn' },
     { src: bmvallaLogo, alt: 'BM Vallá', name: 'bmvalla' },
-    { src: logthingLogo, alt: 'Lögþing', name: 'logthing' },
-    { src: febaeturLogo, alt: 'Fébætur', name: 'febaetur' }
+    { src: brimborgLogo, alt: 'Brimborg', name: 'brimborg' },       // NEW
+    { src: max1Logo, alt: 'MAX1', name: 'max1' },                   // NEW
+    { src: velalandLogo, alt: 'Vélaland', name: 'velaland' }        // NEW
+    // { src: logthingLogo, alt: 'Lögþing', name: 'logthing' },      // commented out
+    // { src: febaeturLogo, alt: 'Fébætur', name: 'febaetur' },     // commented out
+    // { src: islandsbilarLogo, alt: 'Íslandsbílar', name: 'islandsbilar' }, // commented out
     // fjallakofinn + happdraetti removed as requested
   ]
 
