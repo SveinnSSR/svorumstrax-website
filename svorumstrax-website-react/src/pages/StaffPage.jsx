@@ -245,9 +245,9 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
   }
 
   const getImagePosition = (memberId) => {
-    // Daniel needs to be positioned lower
+    // Daniel needs to show more of his head
     if (memberId === 'daniel-irvine') {
-      return 'center 30%'
+      return 'center 15%'
     }
     // These need special centering
     if (['aris-crespo', 'sveinn-rafnsson', 'bryndis-asgeirsdottir', 'oddny-oddsdottir', 'steinunn-axelsdottir'].includes(memberId)) {
