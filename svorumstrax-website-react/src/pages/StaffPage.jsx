@@ -126,7 +126,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
     {
       id: 'david-hlynsson',
       name: 'Davíð Freyr Hlynsson',
-      title: { is: 'Vefsíðu- og kerfisstjóri', en: 'Web and Systems Manager' },
+      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
       email: 'svorumstrax@svorumstrax.is',
       image: davidHlynssonImg
     },
@@ -299,6 +299,9 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                       }`}
                       style={{
                         objectPosition: [
+                          'daniel-irvine',
+                          'aris-crespo',
+                          'sveinn-rafnsson',
                           'bryndis-asgeirsdottir',
                           'oddny-oddsdottir',
                           'steinunn-axelsdottir'
