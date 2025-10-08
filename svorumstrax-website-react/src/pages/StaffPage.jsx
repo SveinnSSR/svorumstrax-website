@@ -244,6 +244,19 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
     return name.split(' ').map(n => n[0]).join('').substring(0, 3)
   }
 
+  const getImagePosition = (memberId) => {
+    // Daniel needs to be positioned lower
+    if (memberId === 'daniel-irvine') {
+      return 'center 30%'
+    }
+    // These need special centering
+    if (['aris-crespo', 'sveinn-rafnsson', 'bryndis-asgeirsdottir', 'oddny-oddsdottir', 'steinunn-axelsdottir'].includes(memberId)) {
+      return 'center 20%'
+    }
+    // Default positioning
+    return 'center center'
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Staff Hero Section - Balanced spacing */}
@@ -298,14 +311,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
                         member.id === 'joel-kristinsson' || member.id === 'tatjana-tanja' || member.id === 'kaleb-joshua' || member.id === 'steinunn-axelsdottir' || member.id === 'theodora-rodriguez' ? 'grayscale' : ''
                       }`}
                       style={{
-                        objectPosition: [
-                          'daniel-irvine',
-                          'aris-crespo',
-                          'sveinn-rafnsson',
-                          'bryndis-asgeirsdottir',
-                          'oddny-oddsdottir',
-                          'steinunn-axelsdottir'
-                        ].includes(member.id) ? 'center 20%' : 'center center'
+                        objectPosition: getImagePosition(member.id)
                       }}
                     />
                   ) : (
