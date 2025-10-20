@@ -250,7 +250,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       return 'center 15%'
     }
     // These need special centering
-    if (['aris-crespo', 'sveinn-rafnsson', 'bryndis-asgeirsdottir', 'oddny-oddsdottir', 'steinunn-axelsdottir', 'elma-thorhallsdottir'].includes(memberId)) {
+    if (['aris-crespo', 'bryndis-asgeirsdottir', 'oddny-oddsdottir', 'steinunn-axelsdottir', 'elma-thorhallsdottir'].includes(memberId)) {
       return 'center 20%'
     }
     // Default positioning
