@@ -246,7 +246,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
 
   const getImagePosition = (memberId) => {
     // Daniel needs to show more of his head
-    if (memberId === 'daniel-irvine') {
+    if (['daniel-irvine', 'sveinn-rafnsson'].includes(memberId)) {
       return 'center 15%'
     }
     // These need special centering
