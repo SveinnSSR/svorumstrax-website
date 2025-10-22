@@ -5,7 +5,7 @@ import arisCrespoImg from '../assets/images/staff/aris-crespo.jpeg'
 import bryndisAsgeirsdottirImg from '../assets/images/staff/bryndis-asgeirsdottir.jpeg'
 import danielIrvineImg from '../assets/images/staff/daniel-irvine.jpeg'
 import danielThorstensenImg from '../assets/images/staff/daniel-thorstensen.jpeg'
-import davidHlynssonImg from '../assets/images/staff/david-hlynsson.jpeg'
+// import davidHlynssonImg from '../assets/images/staff/david-hlynsson.jpeg' // he has quit. safe to delete
 import elmaThorhallsdottirImg from '../assets/images/staff/elma-thorhallsdottir.jpeg'
 import joelKristinssonImg from '../assets/images/staff/joel-kristinsson.jpeg'
 import oddnyOddsdottirImg from '../assets/images/staff/oddny-oddsdottir.jpeg'
@@ -122,13 +122,6 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
       email: 'kaleb@svorumstrax.is',
       image: kalebJoshuaImg
-    },
-    {
-      id: 'david-hlynsson',
-      name: 'Davíð Freyr Hlynsson',
-      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
-      email: 'svorumstrax@svorumstrax.is',
-      image: davidHlynssonImg
     },
     {
       id: 'theodora-rodriguez',
