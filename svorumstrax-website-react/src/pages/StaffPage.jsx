@@ -54,7 +54,7 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
     {
       id: 'sveinn-rafnsson',
       name: 'Sveinn Sigurður Rafnsson',
-      title: { is: 'Rekstrarstjóri', en: 'Operations Manager' },
+      title: { is: 'Rekstrarstjóri', en: 'COO' },
       email: 'sveinn@svorumstrax.is',
       image: sveinnRafnssonImg,
       isFounder: true
