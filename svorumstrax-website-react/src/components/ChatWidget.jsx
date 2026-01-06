@@ -603,7 +603,7 @@ const ChatWidget = () => {
 
         for (const line of lines) {
           if (line.startsWith('data: ')) {
-            const data = line.slice(6); // Remove 'data: ' prefix
+            const data = line.slice(6);
             
             if (data.trim() === '[DONE]') {
               console.log('✅ SSE stream complete signal received');
@@ -780,7 +780,7 @@ const ChatWidget = () => {
             messages: [
               { role: 'user', content: messageText }
             ],
-            threadId: sessionId  // ✅ Use threadId with messages array
+            threadId: sessionId
           }),
         });
 
@@ -868,26 +868,26 @@ const ChatWidget = () => {
 
       <div style={{
         position: 'fixed',
-        bottom: '20px',
-        right: '20px',
-        width: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : '400px',
-        height: isMinimized ? (windowWidth <= 768 ? '60px' : '70px') : 'auto',
-        maxHeight: isMinimized ? 'auto' : 'calc(100vh - 40px)',
+        bottom: isMobile ? '10px' : '20px',
+        right: isMobile ? '10px' : '20px',
+        width: isMinimized ? (isMobile ? '60px' : '70px') : (isMobile ? '90vw' : '450px'),
+        height: isMinimized ? (isMobile ? '60px' : '70px') : 'auto',
+        maxHeight: isMinimized ? 'auto' : (isMobile ? '85vh' : 'calc(100vh - 40px)'),
         background: isMinimized ? WIDGET_THEME.gradient : 'rgba(250, 250, 250, 0.98)',
-        borderRadius: isMinimized ? '50%' : '16px',
+        borderRadius: isMinimized ? '50%' : (isMobile ? '16px' : '16px'),
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
         overflow: 'hidden',
         transformOrigin: 'bottom right',
         transition: 'all 0.3s ease',
         backdropFilter: 'blur(10px)',
         zIndex: 9999,
-        maxWidth: isMinimized ? 'auto' : '90vw'
+        maxWidth: isMinimized ? 'auto' : (isMobile ? '90vw' : '90vw')
       }}>
         {/* Header - Translucent Green Glassmorphic Style with Soundwave */}
         <div 
           onClick={handleToggleChat}
           style={{
-            padding: isMinimized ? '0' : '20px 16px',
+            padding: isMinimized ? '0' : (isMobile ? '16px 12px' : '20px 16px'),
             display: 'flex',
             alignItems: 'center',
             justifyContent: isMinimized ? 'center' : 'flex-start',
@@ -905,8 +905,8 @@ const ChatWidget = () => {
         >
           <div style={{
             position: 'relative',
-            height: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
-            width: isMinimized ? (windowWidth <= 768 ? '40px' : '50px') : '60px',
+            height: isMinimized ? (isMobile ? '35px' : '50px') : (isMobile ? '50px' : '60px'),
+            width: isMinimized ? (isMobile ? '35px' : '50px') : (isMobile ? '50px' : '60px'),
             borderRadius: '50%',
             backgroundColor: isMinimized ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.9)',
             padding: '8px',
@@ -917,7 +917,7 @@ const ChatWidget = () => {
             backdropFilter: 'blur(5px)'
           }}>
             <ChatIcon 
-              size={isMinimized ? (windowWidth <= 768 ? 24 : 28) : 32} 
+              size={isMinimized ? (isMobile ? 20 : 28) : (isMobile ? 24 : 32)} 
               color={WIDGET_THEME.color} 
             />
           </div>
@@ -931,13 +931,12 @@ const ChatWidget = () => {
             }}>
               <span style={{ 
                 color: 'white',
-                fontSize: '16px',
+                fontSize: isMobile ? '14px' : '16px',
                 fontWeight: '600',
                 textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
               }}>
                 {t.subtitle}
               </span>
-
             </div>
           )}
           
@@ -950,8 +949,8 @@ const ChatWidget = () => {
               style={{ 
                 color: 'white',
                 position: 'absolute',
-                right: '16px',
-                top: '16px'
+                right: isMobile ? '12px' : '16px',
+                top: isMobile ? '12px' : '16px'
               }}
             >
               <path d="M19 9L12 16L5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -962,10 +961,10 @@ const ChatWidget = () => {
         {/* Chat area */}
         {!isMinimized && (
           <div style={{
-            height: '400px',
+            height: isMobile ? '60vh' : '450px',
             backgroundColor: '#FAFAFA',
             overflowY: 'auto',
-            padding: '16px'
+            padding: isMobile ? '12px' : '16px'
           }}>
             {messages.map((msg) => (
               <div 
@@ -1004,12 +1003,12 @@ const ChatWidget = () => {
                   
                   <div
                     style={{
-                      maxWidth: '70%',
-                      padding: '12px 16px',
+                      maxWidth: isMobile ? '75%' : '70%',
+                      padding: isMobile ? '10px 14px' : '12px 16px',
                       borderRadius: '16px',
                       backgroundColor: msg.type === 'user' || msg.sender === 'user' ? '#0A0E27' : 'rgba(229, 231, 235, 0.95)',
                       color: msg.type === 'user' || msg.sender === 'user' ? 'white' : '#1f2937',
-                      fontSize: '14px',
+                      fontSize: isMobile ? '13px' : '14px',
                       lineHeight: '1.5',
                       boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                       border: msg.type === 'user' || msg.sender === 'user' ? 
@@ -1087,12 +1086,12 @@ const ChatWidget = () => {
                   </div>
                   
                   <div style={{
-                    maxWidth: '70%',
-                    padding: '12px 16px',
+                    maxWidth: isMobile ? '75%' : '70%',
+                    padding: isMobile ? '10px 14px' : '12px 16px',
                     borderRadius: '16px',
                     backgroundColor: 'rgba(229, 231, 235, 0.95)',
                     color: '#1f2937',
-                    fontSize: '14px',
+                    fontSize: isMobile ? '13px' : '14px',
                     lineHeight: '1.5',
                     boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                     border: '1px solid rgba(0, 0, 0, 0.08)',
@@ -1117,7 +1116,7 @@ const ChatWidget = () => {
         {/* Input area */}
         {!isMinimized && (
           <div style={{
-            padding: '12px 16px',
+            padding: isMobile ? '10px 12px' : '12px 16px',
             backgroundColor: '#FAFAFA',
             borderTop: '1px solid #E5E7EB',
             display: 'flex',
@@ -1136,11 +1135,11 @@ const ChatWidget = () => {
               placeholder={t.placeholder}
               style={{
                 flex: 1,
-                padding: '8px 16px',
+                padding: isMobile ? '8px 14px' : '8px 16px',
                 borderRadius: '20px',
                 border: '1px solid #D1D5DB',
                 outline: 'none',
-                fontSize: '14px',
+                fontSize: isMobile ? '13px' : '14px',
                 boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
                 transition: 'all 0.2s ease',
                 backgroundColor: '#F3F4F6',
@@ -1162,10 +1161,10 @@ const ChatWidget = () => {
                 background: WIDGET_THEME.gradient,
                 color: 'white',
                 border: 'none',
-                padding: '8px 20px',
+                padding: isMobile ? '8px 18px' : '8px 20px',
                 borderRadius: '20px',
                 cursor: isLoading ? 'not-allowed' : 'pointer',
-                fontSize: '14px',
+                fontSize: isMobile ? '13px' : '14px',
                 fontWeight: '600',
                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                 transition: 'all 0.3s ease',
