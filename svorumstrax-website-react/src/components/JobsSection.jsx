@@ -47,7 +47,7 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           description: 'Grow your skills in customer service, AI, and technology with ongoing training and mentorship'
         }
       ],
-      statsTitle: 'Icelandic team members in Barcelona',
+      statsTitle: 'Icelandic team members in Spain',
       statsDescription: 'We\'re proud to be one of the largest Icelandic employers in Spain, creating meaningful career opportunities for Icelanders abroad.',
       button: 'Apply Now',
       ctaTagline: 'Join our team'
