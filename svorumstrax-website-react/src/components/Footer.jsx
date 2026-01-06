@@ -3,7 +3,7 @@ import footerLogo from '../assets/images/svorumstrax-logo-black.png'
 const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
   const content = {
     is: {
-      description: 'Öflugt þjónustuver í Barcelona með 35+ íslenska sérfræðinga. Við samþættum mannlega þjónustu og gervigreind til að veita framúrskarandi upplifun fyrir þína viðskiptavini.',
+      description: 'Öflugt þjónustuver í Barcelona með 35+ íslenskum starfsmönnum. Við samþættum mannlega þjónustu og gervigreind til að veita framúrskarandi upplifun fyrir þína viðskiptavini.',
       legalText: 'Svörum strax er stofnað og rekið í Barcelona á Spáni.',
       legalEntity: 'El MUNDO BUENO DE ISLANDIA, SOCIEDAD LIMITADA.',
       services: {
