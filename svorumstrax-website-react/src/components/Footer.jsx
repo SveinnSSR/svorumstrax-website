@@ -32,7 +32,7 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
         phone: '537-0800',
         location: 'Barcelona, Spánn'
       },
-      copyright: '© 2025 Svörum strax. Allur réttur áskilinn.'
+      copyright: '© 2026 Svörum strax. Allur réttur áskilinn.'
     },
     en: {
       description: 'Advanced customer service center in Barcelona with 35+ Icelandic specialists. We combine human expertise and AI technology to deliver exceptional experiences for your customers.',
@@ -64,7 +64,7 @@ const Footer = ({ currentLanguage, onContactClick, onNavigate }) => {
         phone: '537-0800',
         location: 'Barcelona, Spain'
       },
-      copyright: '© 2025 Svörum strax. All rights reserved.'
+      copyright: '© 2026 Svörum strax. All rights reserved.'
     }
   }
 

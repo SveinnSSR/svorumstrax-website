@@ -20,13 +20,13 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
   const content = {
     is: {
       title: 'Mannauður',
-      heroIntro: 'Hjá Svörum strax starfa yfir 35 íslenskir sérfræðingar í Barcelona og víðar á Spáni sem deila ástríðu fyrir framúrskarandi þjónustu. Við sameinum reynslu, nýsköpun og alþjóðlegt sjónarhorn til að skapa einstakt vinnuumhverfi þar sem fagmennska og gleði fara saman.',
+      heroIntro: 'Hjá Svörum strax starfa yfir 35 íslenskir starfsmenn í Barcelona og víðar á Spáni sem deila ástríðu fyrir framúrskarandi þjónustu. Við sameinum reynslu, nýsköpun og alþjóðlegt sjónarhorn til að skapa einstakt vinnuumhverfi þar sem fagmennska og gleði fara saman.',
       heroIntro2: 'Fjölbreyttur bakgrunnur starfsfólks okkar, nútímaleg tækni og sveigjanleg vinnuaðstaða gera okkur kleift að veita persónulega og skilvirka þjónustu sem stenst alþjóðlegan samanburð.',
       founderBadge: 'Stofnandi'
     },
     en: {
       title: 'Our Team',
-      heroIntro: 'At Svörum strax, over 35 Icelandic experts work in Barcelona and across Spain, all sharing a passion for outstanding service. We combine experience, innovation, and an international perspective to create a unique work environment where professionalism and joy go together.',
+      heroIntro: 'At Svörum strax, over 35 Icelandic team members work in Barcelona and across Spain, all sharing a passion for outstanding service. We combine experience, innovation, and an international perspective to create a unique work environment where professionalism and joy go together.',
       heroIntro2: 'The diverse background of our staff, modern technology and flexible workplace enable us to provide personal and efficient service that meets international standards.',
       founderBadge: 'Founder'
     }
@@ -222,13 +222,6 @@ const StaffPage = ({ currentLanguage = 'is' }) => {
       email: 'bergthor@svorumstrax.is',
       initials: 'BGB'
     },
-    {
-      id: 'unnar-benediktsson',
-      name: 'Unnar Þór Benediktsson',
-      title: { is: 'Þjónustufulltrúi', en: 'Customer Support Specialist' },
-      email: 'unnar@svorumstrax.is',
-      initials: 'UÞB'
-    }
   ]
 
   const currentContent = content[currentLanguage]

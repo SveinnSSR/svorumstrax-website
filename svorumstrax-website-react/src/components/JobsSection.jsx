@@ -22,7 +22,7 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           description: 'Lærðu nýja hluti og þróaðu þig í starfi með frábæru teymi'
         }
       ],
-      statsTitle: 'Íslenskir sérfræðingar í Barcelona',
+      statsTitle: 'Íslenskir starfsmenn á Spáni',
       statsDescription: 'Við erum stolt af að vera einn stærsti íslenski vinnustaðurinn á Spáni og skapa störf fyrir Íslendinga erlendis.',
       button: 'Sækja um starf',
       ctaTagline: 'Vertu hluti af teyminu'
@@ -47,7 +47,7 @@ const JobsSection = ({ currentLanguage, onContactClick }) => {
           description: 'Grow your skills in customer service, AI, and technology with ongoing training and mentorship'
         }
       ],
-      statsTitle: 'Icelandic professionals in Barcelona',
+      statsTitle: 'Icelandic team members in Barcelona',
       statsDescription: 'We\'re proud to be one of the largest Icelandic employers in Spain, creating meaningful career opportunities for Icelanders abroad.',
       button: 'Apply Now',
       ctaTagline: 'Join our team'
