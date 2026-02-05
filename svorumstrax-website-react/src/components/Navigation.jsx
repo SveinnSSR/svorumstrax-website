@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import svorumStraxLogo from '../assets/images/svorumstrax-logo.svg'
@@ -7,6 +7,22 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
   const location = useLocation()
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isServicesDropdownOpen) {
+        // Check if click is outside the services dropdown
+        const dropdown = event.target.closest('.services-dropdown-container')
+        if (!dropdown) {
+          setIsServicesDropdownOpen(false)
+        }
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [isServicesDropdownOpen])
 
   const isEN = currentLanguage === 'en'
   const prefix = isEN ? '/en' : ''
@@ -29,6 +45,21 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
   const closeMenus = () => {
     setIsMobileMenuOpen(false)
     setIsServicesDropdownOpen(false)
+  }
+
+  const handleHomeClick = (e) => {
+    e.preventDefault()
+    const homePath = isEN ? '/en' : '/'
+    const isOnHomePage = location.pathname === homePath
+
+    if (isOnHomePage) {
+      // Already on home - scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      // Navigate to home
+      window.location.href = homePath
+    }
+    closeMenus()
   }
 
   const handleScrollToSection = (sectionId) => {
@@ -132,15 +163,16 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            <Link 
-              to={getHomeUrl()} 
+            <a
+              href={getHomeUrl()}
+              onClick={handleHomeClick}
               className="px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
             >
               {currentContent.home}
-            </Link>
+              </a>
             
             {/* Services Dropdown */}
-            <div className="relative">
+            <div className="relative services-dropdown-container">
               <button
                 onClick={toggleServicesDropdown}
                 className="flex items-center px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
@@ -261,13 +293,13 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
           <div className="md:hidden absolute top-full left-0 right-0 mt-1">
             <div className="mx-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200/40 overflow-hidden">
               <div className="px-4 py-3 space-y-1">
-                <Link
-                  to={getHomeUrl()}
-                  onClick={closeMenus}
+                <a
+                  href={getHomeUrl()}
+                  onClick={handleHomeClick}
                   className="block w-full text-left px-3 py-2.5 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
                 >
                   {currentContent.home}
-                </Link>
+                </a>
                 
                 {/* Services Section in Mobile */}
                 <div>

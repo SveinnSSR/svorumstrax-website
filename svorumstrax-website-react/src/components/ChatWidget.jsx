@@ -1113,37 +1113,60 @@ const ChatWidget = () => {
           </div>
         )}
 
-        {/* Input area */}
-        {!isMinimized && (
+      {/* Input area */}
+      {!isMinimized && (
+        <div style={{
+          padding: isMobile ? '10px 12px' : '12px 16px',
+          backgroundColor: '#FAFAFA',
+          borderTop: '1px solid #E5E7EB',
+          flexShrink: 0
+        }}>
           <div style={{
-            padding: isMobile ? '10px 12px' : '12px 16px',
-            backgroundColor: '#FAFAFA',
-            borderTop: '1px solid #E5E7EB',
             display: 'flex',
-            gap: '8px'
+            alignItems: 'center',
+            gap: isMobile ? '6px' : '8px'
           }}>
-            <input
+            {/* Textarea */}
+            <textarea
               ref={inputRef}
-              type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter' && !isLoading && inputValue.trim()) {
-                  handleSend();
+              onKeyDown={(e) => {
+                // Shift+Enter → newline (allow default behavior)
+                if (e.key === 'Enter' && e.shiftKey) {
+                  return;
+                }
+
+                // Enter → send
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  if (!isLoading && inputValue.trim()) {
+                    handleSend();
+                  }
                 }
               }}
               placeholder={t.placeholder}
+              rows={2}
               style={{
                 flex: 1,
-                padding: isMobile ? '8px 14px' : '8px 16px',
-                borderRadius: '20px',
+                height: isMobile ? '50px' : '60px',
+                maxHeight: isMobile ? '50px' : '60px',
+                padding: isMobile ? '8px 14px' : '10px 18px',
+                borderRadius: '22px',
                 border: '1px solid #D1D5DB',
                 outline: 'none',
                 fontSize: isMobile ? '13px' : '14px',
                 boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
                 transition: 'all 0.2s ease',
                 backgroundColor: '#F3F4F6',
-                color: '#374151'
+                color: '#374151',
+                resize: 'none',
+                fontFamily: 'inherit',
+                lineHeight: '1.4',
+                overflowY: 'auto',
+                boxSizing: 'border-box',
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none'
               }}
               onFocus={(e) => {
                 e.target.style.borderColor = WIDGET_THEME.color;
@@ -1154,27 +1177,47 @@ const ChatWidget = () => {
                 e.target.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
               }}
             />
+
+            {/* Send button - Sky Lagoon style with arrow */}
             <button
               onClick={handleSend}
               disabled={!inputValue.trim() || isLoading}
               style={{
-                background: WIDGET_THEME.gradient,
+                background: WIDGET_THEME.solidGradient,
                 color: 'white',
                 border: 'none',
-                padding: isMobile ? '8px 18px' : '8px 20px',
-                borderRadius: '20px',
-                cursor: isLoading ? 'not-allowed' : 'pointer',
-                fontSize: isMobile ? '13px' : '14px',
-                fontWeight: '600',
-                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                transition: 'all 0.3s ease',
-                opacity: isLoading ? 0.7 : 1
+                width: isMobile ? '35px' : '40px',
+                height: isMobile ? '35px' : '40px',
+                borderRadius: '50%',
+                cursor: (!inputValue.trim() || isLoading) ? 'default' : 'pointer',
+                fontSize: isMobile ? '14px' : '16px',
+                boxShadow: '0 3px 12px rgba(102, 216, 147, 0.35)',
+                transition: 'all 0.2s ease',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                opacity: (!inputValue.trim() || isLoading) ? 0.65 : 1,
+                flexShrink: 0,
+                pointerEvents: (!inputValue.trim() || isLoading) ? 'none' : 'auto'
+              }}
+              onMouseEnter={(e) => {
+                if (inputValue.trim() && !isLoading) {
+                  e.currentTarget.style.transform = 'scale(1.08)';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(102, 216, 147, 0.5)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 3px 12px rgba(102, 216, 147, 0.35)';
               }}
             >
-              {isLoading ? (streamingMode ? '⚡' : '⏳') : t.send}
+              <svg width={isMobile ? '24' : '28'} height={isMobile ? '24' : '28'} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+              </svg>
             </button>
           </div>
-        )}
+        </div>
+      )}
 
         {/* Styles */}
         <style jsx>{`
@@ -1211,6 +1254,10 @@ const ChatWidget = () => {
             input, button {
               font-size: 16px !important;
             }
+          }
+          
+          textarea::-webkit-scrollbar {
+            display: none;
           }
         `}</style>
       </div>
