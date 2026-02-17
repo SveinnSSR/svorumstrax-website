@@ -3,7 +3,7 @@ import outboundPhone from '../assets/images/outbound-phone.png'
 const Hero = ({ currentLanguage, onContactClick, onViewAllServices }) => {
   const content = {
     is: {
-      title: 'Snjallar lausnir fyrir nútíma þjónustu',
+      title: 'Snjallar lausnir fyrir nútíma þjónustu', // Snjallar lausnir fyrir nútíma þjónustu
       subtitle: 'Yfir 100 fyrirtæki treysta Svörum strax fyrir þjónustu við viðskiptavini. Þú velur hvort gervigreind eða mannlegur fulltrúi svari - eða blöndu af hvoru tveggja.',
       primaryButton: 'Sjá alla þjónustu',
       secondaryButton: 'Fá ókeypis ráðgjöf',

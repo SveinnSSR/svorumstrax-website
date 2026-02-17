@@ -1,10 +1,18 @@
-import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
 
-// Back to the beautiful green translucent theme
+import React, { useState, useEffect, useRef, useCallback, Component } from 'react';
+import logoYellow from '../assets/images/logo_yellow.png';
+
+// Theme: Green accent kept for FAB only, neutral everywhere else
 const WIDGET_THEME = {
-  color: '#66D893',  // Beautiful ELKO green
-  gradient: 'linear-gradient(135deg, rgba(102, 216, 147, 0.85) 0%, rgba(52, 211, 153, 0.9) 100%)', // Translucent green gradient
-  solidGradient: 'linear-gradient(135deg, #66D893 0%, #34D399 100%)', // Solid fallback if needed
+  color: '#66D893',  // Beautiful ELKO green - kept for FAB
+  gradient: 'linear-gradient(135deg, rgba(102, 216, 147, 0.85) 0%, rgba(52, 211, 153, 0.9) 100%)', // FAB only
+  solidGradient: 'linear-gradient(135deg, #66D893 0%, #34D399 100%)', // FAB only
+  headerBg: '#F3F4F6', // Light grey - matches message area
+  headerBorder: '#E5E7EB',
+  headerText: '#1f2937',
+  headerSubtext: '#6B7280',
+  sendBg: '#1f2937', // Dark send button — prompt-box style
+  sendBgHover: '#374151',
 };
 
 // Constants for session management
@@ -137,14 +145,23 @@ const ChatIcon = ({ size = 24, color = WIDGET_THEME.color }) => (
   </svg>
 );
 
+// Three-dots (kebab) menu icon — borrowed from internal widget
+const KebabIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="5" r="2" fill="currentColor"/>
+    <circle cx="12" cy="12" r="2" fill="currentColor"/>
+    <circle cx="12" cy="19" r="2" fill="currentColor"/>
+  </svg>
+);
+
 // SIMPLIFIED External Text Bar Component - EXACTLY like Sky Lagoon (Minimal & Fast)
 const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage }) => {
   if (!isVisible) return null;
 
   const currentLang = getCurrentLanguage();
   const message = currentLang === 'is' 
-    ? "Hæ! Ég er AI þjónustufulltrúi hjá Svörum strax. Get ég hjálpað?"
-    : "Hi! I'm your AI assistant. How can I help you today?";
+    ? "Hæ! Hvernig getum við aðstoðað?"
+    : "Ask us anything";
 
   return (
     <div 
@@ -217,9 +234,78 @@ const ExternalTextBar = ({ isVisible, onClose, onOpenChat, getCurrentLanguage })
   );
 };
 
+// ─── Image compression helper — matches AssistantPage implementation ───
+async function compressImage(file, targetSizeKB = 400) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event) => {
+      const img = new Image();
+      img.src = event.target.result;
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+        const maxWidth = 1200;
+        if (width > maxWidth) {
+          height = (height * maxWidth) / width;
+          width = maxWidth;
+        }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        let quality = 0.85;
+        let compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+        let attempts = 0;
+        const maxAttempts = 10;
+        const targetBytes = targetSizeKB * 1024;
+        while (compressedDataUrl.length > targetBytes && quality > 0.3 && attempts < maxAttempts) {
+          quality -= 0.1;
+          compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+          attempts++;
+        }
+        const base64Data = compressedDataUrl.split(',')[1];
+        resolve({
+          filename: file.name,
+          mimeType: 'image/jpeg',
+          data: base64Data,
+          size: base64Data.length,
+          preview: compressedDataUrl
+        });
+      };
+      img.onerror = reject;
+    };
+    reader.onerror = reject;
+  });
+}
+
+// ─── File to base64 helper ───
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+  });
+}
+
+// ─── File icon helper ───
+function getFileIcon(mimeType) {
+  if (mimeType.includes('pdf')) return '📄';
+  if (mimeType.includes('word') || mimeType.includes('document')) return '📝';
+  if (mimeType.includes('excel') || mimeType.includes('sheet')) return '📊';
+  if (mimeType.includes('text')) return '📃';
+  if (mimeType.startsWith('image/')) return '🖼️';
+  return '📎';
+}
+
 const ChatWidget = () => {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const kebabMenuRef = useRef(null); // Ref for kebab menu to detect outside clicks
+  const uploadMenuRef = useRef(null); // Ref for upload menu to detect outside clicks
+  const fileInputRef = useRef(null); // Hidden file input for images + documents
   const [isMinimized, setIsMinimized] = useState(true);
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -233,15 +319,23 @@ const ChatWidget = () => {
   const [typingMessages, setTypingMessages] = useState({});
   const [showTextBar, setShowTextBar] = useState(true);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [showKebabMenu, setShowKebabMenu] = useState(false); // Kebab menu state
+  const [isExpanded, setIsExpanded] = useState(false); // Resize state — expanded mode
+  const [uploadedFiles, setUploadedFiles] = useState([]); // Files/images queued for sending
+  const [showUploadMenu, setShowUploadMenu] = useState(false); // Upload menu visibility
+  const [isDraggingOver, setIsDraggingOver] = useState(false); // Drag-and-drop visual feedback
   const isMobile = windowWidth <= MOBILE_BREAKPOINT;
 
   const wsRef = useRef(null);
   const reconnectTimeoutRef = useRef(null);
 
-  // Get current language - updated to work with React state
+  // Get current language - derived from URL path (syncs with Navigation)
   const getCurrentLanguage = useCallback(() => {
-    return localStorage.getItem('language') || 'is';
+    return window.location.pathname.startsWith('/en') ? 'en' : 'is';
   }, []);
+
+  // Track language state so widget re-renders on language change
+  const [widgetLang, setWidgetLang] = useState(getCurrentLanguage());
 
   // Enhanced translations with professional messaging
   const translations = {
@@ -251,7 +345,10 @@ const ChatWidget = () => {
       placeholder: "Skrifaðu skilaboð...",
       send: "Senda",
       welcome: "Hæ! Ég er AI spjallmenni hjá Svörum strax. Ertu með fyrirtæki og hefur áhuga á þjónustu okkar? Eða hefur þú áhuga á að ganga til liðs við okkur í Barcelona?",
-      error: "Fyrirgefðu, eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur."
+      error: "Fyrirgefðu, eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur.",
+      newChat: "Nýtt spjall",
+      close: "Loka",
+      addFiles: "Bæta við skrám eða myndum",
     },
     en: {
       title: "AI Assistant",
@@ -259,7 +356,10 @@ const ChatWidget = () => {
       placeholder: "Type a message...",
       send: "Send",
       welcome: "Hello! I'm your AI assistant at Svörum strax. Are you a business looking to enhance your customer service? Or perhaps you're interested in joining our Barcelona team?",
-      error: "Sorry, something went wrong. Please try again."
+      error: "Sorry, something went wrong. Please try again.",
+      newChat: "New chat",
+      close: "Close",
+      addFiles: "Add files or photos",
     }
   };
 
@@ -298,6 +398,85 @@ const ChatWidget = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Watch for language changes via URL path (Navigation language toggle)
+  useEffect(() => {
+    const checkLanguage = () => {
+      const newLang = getCurrentLanguage();
+      if (newLang !== widgetLang) {
+        console.log(`🌐 Language changed: ${widgetLang} → ${newLang}`);
+        setWidgetLang(newLang);
+        // Clear messages so welcome re-renders in new language
+        setMessages([]);
+      }
+    };
+
+    // Listen for popstate (back/forward) and also poll for SPA navigation
+    window.addEventListener('popstate', checkLanguage);
+    const intervalId = setInterval(checkLanguage, 500);
+
+    return () => {
+      window.removeEventListener('popstate', checkLanguage);
+      clearInterval(intervalId);
+    };
+  }, [widgetLang, getCurrentLanguage]);
+
+  // Close kebab menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (kebabMenuRef.current && !kebabMenuRef.current.contains(event.target) && showKebabMenu) {
+        setShowKebabMenu(false);
+      }
+    };
+
+    if (showKebabMenu) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showKebabMenu]);
+
+  // Close upload menu when clicking outside
+  useEffect(() => {
+    const handleClickOutsideUpload = (event) => {
+      if (uploadMenuRef.current && !uploadMenuRef.current.contains(event.target) && showUploadMenu) {
+        setShowUploadMenu(false);
+      }
+    };
+
+    if (showUploadMenu) {
+      document.addEventListener('mousedown', handleClickOutsideUpload);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutsideUpload);
+    };
+  }, [showUploadMenu]);
+
+  // Close entire widget when clicking outside (ultra utility feel)
+  const widgetRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutsideWidget = (event) => {
+      if (widgetRef.current && !widgetRef.current.contains(event.target) && !isMinimized) {
+        // Don't close if clicking the external text bar
+        if (event.target.closest('[data-textbar]')) return;
+        setIsMinimized(true);
+      }
+    };
+
+    if (!isMinimized) {
+      // Small delay so the opening click doesn't immediately close it
+      const timer = setTimeout(() => {
+        document.addEventListener('mousedown', handleClickOutsideWidget);
+      }, 100);
+      return () => {
+        clearTimeout(timer);
+        document.removeEventListener('mousedown', handleClickOutsideWidget);
+      };
+    }
+  }, [isMinimized]);
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
@@ -525,22 +704,22 @@ const ChatWidget = () => {
     }
   };
 
-  // Welcome message
-  useEffect(() => {
-    if (!isMinimized && messages.length === 0) {
-      const lang = getCurrentLanguage();
-      const welcomeMessage = translations[lang].welcome;
-      const welcomeId = 'welcome-' + Date.now();
-      
-      setMessages([{
-        type: 'bot',
-        content: welcomeMessage,
-        id: welcomeId
-      }]);
-      
-      renderMessage(welcomeId, welcomeMessage);
-    }
-  }, [isMinimized, messages.length, renderMessage, getCurrentLanguage]);
+  // Welcome message — DISABLED: now using embedded background text instead
+  // useEffect(() => {
+  //   if (!isMinimized && messages.length === 0) {
+  //     const lang = getCurrentLanguage();
+  //     const welcomeMessage = translations[lang].welcome;
+  //     const welcomeId = 'welcome-' + Date.now();
+  //     
+  //     setMessages([{
+  //       type: 'bot',
+  //       content: welcomeMessage,
+  //       id: welcomeId
+  //     }]);
+  //     
+  //     renderMessage(welcomeId, welcomeMessage);
+  //   }
+  // }, [isMinimized, messages.length, renderMessage, getCurrentLanguage]);
 
   // Send message via WebSocket (streaming)
   const sendStreamingMessage = async (messageText) => {
@@ -564,9 +743,13 @@ const ChatWidget = () => {
     wsRef.current.send(JSON.stringify(message));
   };
 
-  // Send message via SSE (Vercel compatible!)
-  const sendSSEMessage = async (messageText) => {
+  // Send message via SSE (Vercel compatible!) — ENHANCED: now supports images and files
+  const sendSSEMessage = async (messageText, filesToSend = []) => {
     console.log('📡 Starting SSE stream for message:', messageText);
+
+    // Separate images from documents for the backend
+    const images = filesToSend.filter(f => f.mimeType.startsWith('image/'));
+    const documents = filesToSend.filter(f => !f.mimeType.startsWith('image/'));
     
     try {
       const response = await fetch(`${getBackendUrl()}/chat-stream`, {
@@ -577,7 +760,10 @@ const ChatWidget = () => {
         },
         body: JSON.stringify({
           message: messageText,
-          sessionId: sessionId
+          sessionId: sessionId,
+          // Only include images/files if present (keeps payload small for text-only messages)
+          ...(images.length > 0 && { images }),
+          ...(documents.length > 0 && { files: documents }),
         })
       });
 
@@ -676,23 +862,9 @@ const ChatWidget = () => {
     }
   };
 
+  // Typing indicator — no avatar, just dots (prompt-box style)
   const TypingIndicator = () => (
-    <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '16px', alignItems: 'flex-start', gap: '8px' }}>
-      <div style={{ position: 'relative', height: '32px', width: '32px' }}>
-        <div style={{
-          background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
-          borderRadius: '50%',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          border: `1px solid rgba(0, 0, 0, 0.06)`,
-          boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
-        }}>
-          <ChatIcon size={14} color={WIDGET_THEME.color} />
-        </div>
-      </div>
+    <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '16px' }}>
       <div style={{
         padding: '12px 16px',
         borderRadius: '16px',
@@ -706,7 +878,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: WIDGET_THEME.color,
+          background: '#9CA3AF',
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite'
@@ -714,7 +886,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: WIDGET_THEME.color,
+          background: '#9CA3AF',
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite',
@@ -723,7 +895,7 @@ const ChatWidget = () => {
         <span style={{
           height: '8px',
           width: '8px',
-          background: WIDGET_THEME.color,
+          background: '#9CA3AF',
           borderRadius: '50%',
           opacity: '0.8',
           animation: 'typing 1.4s infinite',
@@ -733,20 +905,162 @@ const ChatWidget = () => {
     </div>
   );
 
+  // Handle new chat — clears conversation and starts fresh
+  const handleNewChat = () => {
+    console.log('🆕 Starting new chat');
+    setMessages([]);
+    setCurrentStreamMessage('');
+    setIsTyping(false);
+    setIsLoading(false);
+    setIsStreaming(false);
+    setShowKebabMenu(false);
+    setUploadedFiles([]); // Clear any queued files
+
+    // Generate new session ID
+    const newSessionId = generateSessionId();
+    setSessionId(newSessionId);
+    localStorage.setItem(SESSION_ID_KEY, newSessionId);
+
+    // Welcome message removed — now using embedded background text
+    // Previous welcome bubble logic preserved in translations if needed
+
+  };
+
+  // ─── File selection handler — single input accepts both images and documents ───
+  const handleFileSelection = async (e) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    const selectedFiles = Array.from(e.target.files);
+
+    try {
+      const newUploads = [];
+
+      for (const file of selectedFiles) {
+        const sizeMB = file.size / (1024 * 1024);
+
+        if (file.type.startsWith('image/')) {
+          // Image: max 10MB, compress to ~400KB
+          if (sizeMB > 10) continue;
+          const currentImages = uploadedFiles.filter(f => f.mimeType.startsWith('image/'));
+          if (currentImages.length + newUploads.filter(f => f.mimeType.startsWith('image/')).length >= 3) continue; // max 3 images
+          const compressed = await compressImage(file, 400);
+          newUploads.push(compressed);
+        } else {
+          // Document: max 5MB, allowed types only
+          if (sizeMB > 5) continue;
+          const allowedTypes = [
+            'application/pdf',
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'application/vnd.ms-excel',
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'text/plain'
+          ];
+          if (!allowedTypes.includes(file.type)) continue;
+          const currentDocs = uploadedFiles.filter(f => !f.mimeType.startsWith('image/'));
+          if (currentDocs.length + newUploads.filter(f => !f.mimeType.startsWith('image/')).length >= 2) continue; // max 2 docs
+          const b64 = await fileToBase64(file);
+          newUploads.push({ filename: file.name, mimeType: file.type, data: b64, size: file.size });
+        }
+      }
+
+      if (newUploads.length > 0) {
+        setUploadedFiles(prev => [...prev, ...newUploads]);
+        console.log(`📎 ${newUploads.length} file(s) queued for sending`);
+      }
+    } catch (error) {
+      console.error('❌ File upload failed:', error);
+    }
+
+    // Reset the input so the same file can be re-selected
+    if (fileInputRef.current) fileInputRef.current.value = '';
+    setShowUploadMenu(false);
+  };
+
+  // Remove a queued file by index
+  const removeUploadedFile = (index) => {
+    setUploadedFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
+  // ─── Drag-and-drop handlers — matches AssistantPage implementation ───
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDraggingOver(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDraggingOver(false);
+  };
+
+  const handleDrop = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDraggingOver(false);
+
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    if (droppedFiles.length === 0) return;
+
+    const allowedDocTypes = [
+      'application/pdf',
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      'application/vnd.ms-excel',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      'text/plain'
+    ];
+
+    try {
+      const newUploads = [];
+
+      for (const file of droppedFiles) {
+        const sizeMB = file.size / (1024 * 1024);
+
+        if (file.type.startsWith('image/')) {
+          // Image: max 10MB, compress to ~400KB, max 3 total
+          if (sizeMB > 10) continue;
+          const currentImages = uploadedFiles.filter(f => f.mimeType.startsWith('image/'));
+          if (currentImages.length + newUploads.filter(f => f.mimeType.startsWith('image/')).length >= 3) continue;
+          const compressed = await compressImage(file, 400);
+          newUploads.push(compressed);
+        } else if (allowedDocTypes.includes(file.type)) {
+          // Document: max 5MB, max 2 total
+          if (sizeMB > 5) continue;
+          const currentDocs = uploadedFiles.filter(f => !f.mimeType.startsWith('image/'));
+          if (currentDocs.length + newUploads.filter(f => !f.mimeType.startsWith('image/')).length >= 2) continue;
+          const b64 = await fileToBase64(file);
+          newUploads.push({ filename: file.name, mimeType: file.type, data: b64, size: file.size });
+        }
+        // Skip unsupported file types silently
+      }
+
+      if (newUploads.length > 0) {
+        setUploadedFiles(prev => [...prev, ...newUploads]);
+        console.log(`📎 ${newUploads.length} file(s) dropped and queued`);
+      }
+    } catch (error) {
+      console.error('❌ File drop failed:', error);
+    }
+  };
+
   const handleSend = async () => {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim() && uploadedFiles.length === 0) return;
 
     const messageText = inputValue.trim();
+    const filesToSend = [...uploadedFiles]; // Snapshot current files
     setInputValue('');
+    setUploadedFiles([]); // Clear file queue immediately
     setHasInteracted(true);
     setShowTextBar(false);
 
     const userMsgId = 'user-' + Date.now();
     setMessages(prev => [...prev, {
       id: userMsgId,
-      text: messageText,
+      text: messageText || `[${filesToSend.length} file${filesToSend.length > 1 ? 's' : ''} attached]`,
       sender: 'user',
-      timestamp: Date.now()
+      timestamp: Date.now(),
+      attachedFiles: filesToSend, // Store files with message for display
     }]);
     
     // TYPING INDICATOR FIX: Show typing indicator immediately
@@ -764,10 +1078,15 @@ const ChatWidget = () => {
         
         if (useSSE) {
           console.log('🔄 Using SSE streaming (production mode)...');
-          await sendSSEMessage(messageText);
+          await sendSSEMessage(messageText, filesToSend);
         } else {
           console.log('🔄 Using WebSocket streaming (development mode)...');
-          await sendStreamingMessage(messageText);
+          // WebSocket doesn't support files — use SSE if files are present
+          if (filesToSend.length > 0) {
+            await sendSSEMessage(messageText, filesToSend);
+          } else {
+            await sendStreamingMessage(messageText);
+          }
         }
       } else {
         // HTTP API mode
@@ -853,8 +1172,12 @@ const ChatWidget = () => {
     setIsTyping(false);
   };
 
-  const lang = getCurrentLanguage();
+  const lang = widgetLang;
   const t = translations[lang];
+
+  // Dynamic dimensions based on expanded state
+  const widgetWidth = isExpanded ? (isMobile ? '95vw' : '640px') : (isMobile ? '90vw' : '480px');
+  const chatHeight = isExpanded ? (isMobile ? '75vh' : '620px') : (isMobile ? '65vh' : '520px');
 
   return (
     <ErrorBoundary>
@@ -866,161 +1189,356 @@ const ChatWidget = () => {
         getCurrentLanguage={getCurrentLanguage}
       />
 
-      <div style={{
+      {/* Hidden file input — accepts both images and documents */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt"
+        multiple
+        onChange={handleFileSelection}
+        style={{ display: 'none' }}
+      />
+
+      <div ref={widgetRef} style={{
         position: 'fixed',
         bottom: isMobile ? '10px' : '20px',
         right: isMobile ? '10px' : '20px',
-        width: isMinimized ? (isMobile ? '60px' : '70px') : (isMobile ? '90vw' : '450px'),
+        width: isMinimized ? (isMobile ? '60px' : '70px') : widgetWidth,
         height: isMinimized ? (isMobile ? '60px' : '70px') : 'auto',
         maxHeight: isMinimized ? 'auto' : (isMobile ? '85vh' : 'calc(100vh - 40px)'),
-        background: isMinimized ? WIDGET_THEME.gradient : 'rgba(250, 250, 250, 0.98)',
+        background: isMinimized ? '#FFFFFF' : '#FAFAFA',
         borderRadius: isMinimized ? '50%' : (isMobile ? '16px' : '16px'),
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+        boxShadow: isMinimized
+          ? '0 2px 12px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.04)'
+          : '0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06)',
         overflow: 'hidden',
         transformOrigin: 'bottom right',
         transition: 'all 0.3s ease',
-        backdropFilter: 'blur(10px)',
         zIndex: 9999,
-        maxWidth: isMinimized ? 'auto' : (isMobile ? '90vw' : '90vw')
+        maxWidth: isMinimized ? 'auto' : (isMobile ? '95vw' : '90vw')
       }}>
-        {/* Header - Translucent Green Glassmorphic Style with Soundwave */}
+        {/* ── HEADER — Compact toolbar with kebab menu ── */}
         <div 
-          onClick={handleToggleChat}
           style={{
-            padding: isMinimized ? '0' : (isMobile ? '16px 12px' : '20px 16px'),
+            padding: isMinimized ? '0' : (isMobile ? '14px 16px' : '16px 20px'),
             display: 'flex',
             alignItems: 'center',
-            justifyContent: isMinimized ? 'center' : 'flex-start',
+            justifyContent: isMinimized ? 'center' : 'space-between',
             cursor: 'pointer',
-            gap: '12px',
-            background: isMinimized ? WIDGET_THEME.gradient : WIDGET_THEME.gradient,
-            backdropFilter: isMinimized ? 'none' : 'blur(10px)',
+            background: isMinimized ? '#FFFFFF' : WIDGET_THEME.headerBg,
             width: '100%',
             height: isMinimized ? '100%' : 'auto',
             boxSizing: 'border-box',
-            flexDirection: isMinimized ? 'row' : 'column',
-            boxShadow: isMinimized ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.06)',
-            borderBottom: isMinimized ? 'none' : '1px solid rgba(255, 255, 255, 0.2)'
+            borderBottom: isMinimized ? 'none' : `1px solid ${WIDGET_THEME.headerBorder}`,
           }}
+          onClick={isMinimized ? handleToggleChat : handleToggleChat}
         >
-          <div style={{
-            position: 'relative',
-            height: isMinimized ? (isMobile ? '35px' : '50px') : (isMobile ? '50px' : '60px'),
-            width: isMinimized ? (isMobile ? '35px' : '50px') : (isMobile ? '50px' : '60px'),
-            borderRadius: '50%',
-            backgroundColor: isMinimized ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.9)',
-            padding: '8px',
-            boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backdropFilter: 'blur(5px)'
-          }}>
-            <ChatIcon 
-              size={isMinimized ? (isMobile ? 20 : 28) : (isMobile ? 24 : 32)} 
-              color={WIDGET_THEME.color} 
-            />
-          </div>
-          
-          {!isMinimized && (
+          {/* FAB state — white circle with up-arrow prompt icon (minimized) */}
+          {isMinimized && (
             <div style={{
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
-              gap: '4px'
+              justifyContent: 'center',
+              width: isMobile ? '32px' : '38px',
+              height: isMobile ? '32px' : '38px',
+              borderRadius: '10px',
+              backgroundColor: '#9CA3AF',
             }}>
-              <span style={{ 
-                color: 'white',
-                fontSize: isMobile ? '14px' : '16px',
-                fontWeight: '600',
-                textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
-              }}>
-                {t.subtitle}
-              </span>
+              <svg 
+                width={isMobile ? 16 : 20} 
+                height={isMobile ? 16 : 20} 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="white" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+              </svg>
             </div>
           )}
-          
-          {!isMinimized && (
-            <svg 
-              width="20" 
-              height="20" 
-              viewBox="0 0 24 24" 
-              fill="none"
-              style={{ 
-                color: 'white',
-                position: 'absolute',
-                right: isMobile ? '12px' : '16px',
-                top: isMobile ? '12px' : '16px'
-              }}
-            >
-              <path d="M19 9L12 16L5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          )}
-        </div>
 
-        {/* Chat area */}
-        {!isMinimized && (
-          <div style={{
-            height: isMobile ? '60vh' : '450px',
-            backgroundColor: '#FAFAFA',
-            overflowY: 'auto',
-            padding: isMobile ? '12px' : '16px'
-          }}>
-            {messages.map((msg) => (
-              <div 
-                key={msg.id || Math.random()} 
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: msg.type === 'user' || msg.sender === 'user' ? 'flex-end' : 'flex-start',
-                  marginBottom: '16px'
-                }}
-              >
-                <div style={{
-                  display: 'flex',
-                  justifyContent: msg.type === 'user' || msg.sender === 'user' ? 'flex-end' : 'flex-start',
-                  alignItems: 'flex-start',
-                  width: '100%',
-                  gap: '8px'
-                }}>
-                  {(msg.type === 'bot' || msg.sender === 'bot') && (
-                    <div style={{
-                      position: 'relative',
-                      height: '32px',
-                      width: '32px',
-                      background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
-                      borderRadius: '50%',
+          {/* Open state — compact toolbar with chat icon + kebab menu */}
+          {!isMinimized && (
+            <>
+              {/* Left side: empty, entire header is clickable to close */}
+              <div style={{ flex: 1 }} />
+
+              {/* Right side: resize + kebab menu */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                {!isMobile && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent header close
+                      console.log('↔️ Resize toggled:', !isExpanded ? 'expanded' : 'compact');
+                      setIsExpanded(!isExpanded);
+                    }}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      borderRadius: '6px',
+                      padding: '6px',
+                      cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      flexShrink: 0,
-                      border: `1px solid rgba(0, 0, 0, 0.06)`,
-                      boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
+                      color: WIDGET_THEME.headerSubtext,
+                      transition: 'background 0.15s ease',
+                      outline: 'none',
+                      WebkitTapHighlightColor: 'transparent'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.04)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                    title={isExpanded ? 'Minna' : 'Stærra'}
+                  >
+                    {isExpanded ? (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="4 14 10 14 10 20" />
+                        <polyline points="20 10 14 10 14 4" />
+                        <line x1="14" y1="10" x2="21" y2="3" />
+                        <line x1="3" y1="21" x2="10" y2="14" />
+                      </svg>
+                    ) : (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="15 3 21 3 21 9" />
+                        <polyline points="9 21 3 21 3 15" />
+                        <line x1="21" y1="3" x2="14" y2="10" />
+                        <line x1="3" y1="21" x2="10" y2="14" />
+                      </svg>
+                    )}
+                  </button>
+                )}
+
+                {/* Kebab menu — three dots */}
+                <div ref={kebabMenuRef} style={{ position: 'relative' }}>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowKebabMenu(!showKebabMenu);
+                    }}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      borderRadius: '6px',
+                      padding: '6px',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: WIDGET_THEME.headerSubtext,
+                      transition: 'background 0.15s ease',
+                      outline: 'none',
+                      WebkitTapHighlightColor: 'transparent'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.04)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                  >
+                    <KebabIcon size={18} />
+                  </button>
+
+                  {/* Kebab dropdown menu */}
+                  {showKebabMenu && (
+                    <div style={{
+                      position: 'absolute',
+                      top: '36px',
+                      right: '0',
+                      backgroundColor: 'white',
+                      borderRadius: '10px',
+                      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06)',
+                      minWidth: '140px',
+                      zIndex: 10000,
+                      overflow: 'hidden'
                     }}>
-                      <ChatIcon size={14} color={WIDGET_THEME.color} />
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleNewChat();
+                        }}
+                        style={{
+                          width: '100%',
+                          padding: '10px 16px',
+                          border: 'none',
+                          background: 'white',
+                          textAlign: 'left',
+                          cursor: 'pointer',
+                          fontSize: '13px',
+                          color: '#374151',
+                          transition: 'background 0.15s ease'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.background = '#F3F4F6'}
+                        onMouseLeave={(e) => e.currentTarget.style.background = 'white'}
+                      >
+                        {t.newChat}
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setShowKebabMenu(false);
+                          setIsMinimized(true);
+                        }}
+                        style={{
+                          width: '100%',
+                          padding: '10px 16px',
+                          border: 'none',
+                          background: 'white',
+                          textAlign: 'left',
+                          cursor: 'pointer',
+                          fontSize: '13px',
+                          color: '#374151',
+                          borderTop: '1px solid #F3F4F6',
+                          transition: 'background 0.15s ease'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.background = '#F3F4F6'}
+                        onMouseLeave={(e) => e.currentTarget.style.background = 'white'}
+                      >
+                        {t.close}
+                      </button>
                     </div>
                   )}
-                  
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* ── CHAT AREA ── */}
+        {!isMinimized && (
+          <div
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+            style={{
+            height: chatHeight,
+            backgroundColor: '#FAFAFA',
+            overflowY: 'auto',
+            padding: isMobile ? '12px' : '16px',
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'relative',
+          }}>
+            {/* Drag-and-drop overlay — subtle visual feedback */}
+            {isDraggingOver && (
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundColor: 'rgba(243, 244, 246, 0.85)',
+                zIndex: 10,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '4px',
+                border: '2px dashed #D1D5DB',
+                margin: '8px',
+                pointerEvents: 'none',
+              }}>
+                <div style={{ color: '#6B7280', fontSize: '14px', fontWeight: '500' }}>
+                  {getCurrentLanguage() === 'is' ? 'Slepptu skrám hér' : 'Drop files here'}
+                </div>
+              </div>
+            )}
+            {/* Branding — always visible at top of chat area */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              paddingTop: isMobile ? '24px' : '36px',
+              paddingBottom: isMobile ? '16px' : '24px',
+              flexShrink: 0,
+            }}>
+              <img 
+                src={logoYellow} 
+                alt="Svörum strax" 
+                style={{
+                  height: isMobile ? '36px' : '42px',
+                  width: 'auto',
+                  opacity: 0.8,
+                }}
+              />
+            </div>
+
+            {/* Embedded background text — empty state (like internal assistant) */}
+            {messages.length === 0 && (
+              <div style={{
+                textAlign: 'center',
+                paddingBottom: isMobile ? '24px' : '32px',
+                flexShrink: 0,
+              }}>
+                <div style={{
+                  fontSize: isMobile ? '13px' : '14px',
+                  color: '#9CA3AF',
+                }}>
+                  {getCurrentLanguage() === 'is' ? 'Hvernig getum við aðstoðað?' : 'How can we help?'}
+                </div>
+              </div>
+            )}    
+
+            {messages.map((msg) => {
+              const isUser = msg.type === 'user' || msg.sender === 'user';
+              const isBot = msg.type === 'bot' || msg.sender === 'bot';
+
+              return (
+                <div 
+                  key={msg.id || Math.random()} 
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: isUser ? 'flex-end' : 'flex-start',
+                    marginBottom: '16px'
+                  }}
+                >
+                  {/* Attached file indicators — shown above user bubbles */}
+                  {isUser && msg.attachedFiles && msg.attachedFiles.length > 0 && (
+                    <div style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: '4px',
+                      marginBottom: '4px',
+                      justifyContent: 'flex-end',
+                      maxWidth: isMobile ? '80%' : '75%',
+                    }}>
+                      {msg.attachedFiles.map((f, i) => (
+                        <div key={i} style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                          padding: '3px 8px',
+                          backgroundColor: 'rgba(10, 14, 39, 0.08)',
+                          borderRadius: '6px',
+                          fontSize: '11px',
+                          color: '#6B7280',
+                        }}>
+                          {f.preview ? (
+                            <img src={f.preview} alt="" style={{ width: '16px', height: '16px', borderRadius: '3px', objectFit: 'cover' }} />
+                          ) : (
+                            <span style={{ fontSize: '11px' }}>{getFileIcon(f.mimeType)}</span>
+                          )}
+                          <span style={{ maxWidth: '80px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{f.filename}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Message bubble — no avatars */}
                   <div
                     style={{
-                      maxWidth: isMobile ? '75%' : '70%',
+                      maxWidth: isMobile ? '80%' : '75%',
                       padding: isMobile ? '10px 14px' : '12px 16px',
                       borderRadius: '16px',
-                      backgroundColor: msg.type === 'user' || msg.sender === 'user' ? '#0A0E27' : 'rgba(229, 231, 235, 0.95)',
-                      color: msg.type === 'user' || msg.sender === 'user' ? 'white' : '#1f2937',
+                      backgroundColor: isUser ? '#0A0E27' : 'rgba(229, 231, 235, 0.95)',
+                      color: isUser ? 'white' : '#1f2937',
                       fontSize: isMobile ? '13px' : '14px',
                       lineHeight: '1.5',
-                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-                      border: msg.type === 'user' || msg.sender === 'user' ? 
-                        `1px solid ${WIDGET_THEME.color}40` : 
-                        '1px solid rgba(0, 0, 0, 0.08)',
+                      boxShadow: '0 1px 4px rgba(0, 0, 0, 0.06)',
+                      border: isUser
+                        ? 'none'
+                        : '1px solid rgba(0, 0, 0, 0.06)',
                       position: 'relative',
                       overflowWrap: 'break-word',
                       wordWrap: 'break-word',
                       wordBreak: 'break-word'
                     }}
                   >
-                    {(msg.type === 'bot' || msg.sender === 'bot') ? (
+                    {isBot ? (
                       typingMessages[msg.id || ''] ? (
                         <div style={{ 
                           position: 'relative',
@@ -1051,8 +1569,8 @@ const ChatWidget = () => {
                     )}
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
             {/* Streaming message preview (no cursor for premium feel) */}
             {isStreaming && currentStreamMessage && (
@@ -1063,45 +1581,21 @@ const ChatWidget = () => {
                 marginBottom: '16px'
               }}>
                 <div style={{
-                  display: 'flex',
-                  justifyContent: 'flex-start',
-                  alignItems: 'flex-start',
-                  width: '100%',
-                  gap: '8px'
+                  maxWidth: isMobile ? '80%' : '75%',
+                  padding: isMobile ? '10px 14px' : '12px 16px',
+                  borderRadius: '16px',
+                  backgroundColor: 'rgba(229, 231, 235, 0.95)',
+                  color: '#1f2937',
+                  fontSize: isMobile ? '13px' : '14px',
+                  lineHeight: '1.5',
+                  boxShadow: '0 1px 4px rgba(0, 0, 0, 0.06)',
+                  border: '1px solid rgba(0, 0, 0, 0.06)',
+                  position: 'relative',
+                  overflowWrap: 'break-word',
+                  wordWrap: 'break-word',
+                  wordBreak: 'break-word'
                 }}>
-                  <div style={{
-                    position: 'relative',
-                    height: '32px',
-                    width: '32px',
-                    background: `linear-gradient(135deg, white 0%, #FAFAFA 100%)`,
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                    border: `1px solid rgba(0, 0, 0, 0.06)`,
-                    boxShadow: '0 1px 4px rgba(0, 0, 0, 0.08)'
-                  }}>
-                    <ChatIcon size={14} color={WIDGET_THEME.color} />
-                  </div>
-                  
-                  <div style={{
-                    maxWidth: isMobile ? '75%' : '70%',
-                    padding: isMobile ? '10px 14px' : '12px 16px',
-                    borderRadius: '16px',
-                    backgroundColor: 'rgba(229, 231, 235, 0.95)',
-                    color: '#1f2937',
-                    fontSize: isMobile ? '13px' : '14px',
-                    lineHeight: '1.5',
-                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-                    border: '1px solid rgba(0, 0, 0, 0.08)',
-                    position: 'relative',
-                    overflowWrap: 'break-word',
-                    wordWrap: 'break-word',
-                    wordBreak: 'break-word'
-                  }}>
-                    {currentStreamMessage}
-                  </div>
+                  {currentStreamMessage}
                 </div>
               </div>
             )}
@@ -1113,7 +1607,7 @@ const ChatWidget = () => {
           </div>
         )}
 
-      {/* Input area */}
+      {/* ── INPUT AREA — Unified prompt bar ── */}
       {!isMinimized && (
         <div style={{
           padding: isMobile ? '10px 12px' : '12px 16px',
@@ -1121,16 +1615,156 @@ const ChatWidget = () => {
           borderTop: '1px solid #E5E7EB',
           flexShrink: 0
         }}>
+          {/* File preview chips — shown above prompt bar when files are queued */}
+          {uploadedFiles.length > 0 && (
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '6px',
+              marginBottom: '8px',
+            }}>
+              {uploadedFiles.map((file, index) => (
+                <div key={index} style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '4px 8px',
+                  backgroundColor: '#F3F4F6',
+                  border: '1px solid #E5E7EB',
+                  borderRadius: '8px',
+                  fontSize: '12px',
+                  color: '#374151',
+                }}>
+                  {file.preview ? (
+                    <img src={file.preview} alt={file.filename} style={{ width: '24px', height: '24px', borderRadius: '4px', objectFit: 'cover' }} />
+                  ) : (
+                    <span style={{ fontSize: '13px' }}>{getFileIcon(file.mimeType)}</span>
+                  )}
+                  <span style={{ maxWidth: '100px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{file.filename}</span>
+                  <button
+                    onClick={() => removeUploadedFile(index)}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      color: '#9CA3AF',
+                      fontSize: '14px',
+                      lineHeight: 1,
+                      padding: '0 2px',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#374151'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#9CA3AF'}
+                  >
+                    ×
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Unified input container — + button + textarea + send in one bar */}
           <div style={{
             display: 'flex',
-            alignItems: 'center',
-            gap: isMobile ? '6px' : '8px'
-          }}>
-            {/* Textarea */}
+            alignItems: 'flex-end',
+            gap: isMobile ? '4px' : '6px',
+            backgroundColor: '#F3F4F6',
+            border: '1px solid #D1D5DB',
+            borderRadius: '22px',
+            padding: isMobile ? '6px 6px 6px 6px' : '8px 8px 8px 8px',
+            transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+          }}
+          onFocus={() => {}}
+          >
+            {/* ── + Upload button (left side, inside prompt bar) ── */}
+            <div ref={uploadMenuRef} style={{ position: 'relative', flexShrink: 0 }}>
+              <button
+                type="button"
+                onClick={() => setShowUploadMenu(!showUploadMenu)}
+                disabled={isLoading}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: isMobile ? '28px' : '32px',
+                  height: isMobile ? '28px' : '32px',
+                  cursor: isLoading ? 'default' : 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#9CA3AF',
+                  transition: 'color 0.15s ease, background 0.15s ease',
+                  opacity: isLoading ? 0.4 : 1,
+                  padding: 0,
+                  outline: 'none',
+                  WebkitTapHighlightColor: 'transparent',
+                }}
+                onMouseEnter={(e) => { if (!isLoading) { e.currentTarget.style.color = '#6B7280'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; } }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#9CA3AF'; e.currentTarget.style.background = 'transparent'; }}
+              >
+                <svg width={isMobile ? 16 : 18} height={isMobile ? 16 : 18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+
+              {/* Upload dropdown — single option with paperclip, like AssistantPage */}
+              {showUploadMenu && (
+                <div style={{
+                  position: 'absolute',
+                  bottom: 'calc(100% + 8px)',
+                  left: '0',
+                  backgroundColor: 'white',
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06)',
+                  minWidth: '180px',
+                  zIndex: 10001,
+                  overflow: 'hidden',
+                }}>
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    style={{
+                      width: '100%',
+                      padding: '10px 14px',
+                      border: 'none',
+                      background: 'white',
+                      textAlign: 'left',
+                      cursor: 'pointer',
+                      fontSize: '13px',
+                      color: '#374151',
+                      transition: 'background 0.15s ease',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = '#F3F4F6'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'white'}
+                  >
+                    {/* Paperclip SVG icon — clean and subtle */}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+                    </svg>
+                    {t.addFiles}
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Textarea — no border, transparent bg, auto-grows on shift+enter */}
             <textarea
               ref={inputRef}
               value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
+              onChange={(e) => {
+                setInputValue(e.target.value);
+                // Auto-resize textarea to fit content (up to ~5 lines)
+                const el = e.target;
+                el.style.height = 'auto';
+                const maxH = isMobile ? 100 : 120; // ~5 lines
+                el.style.height = Math.min(el.scrollHeight, maxH) + 'px';
+                el.style.overflowY = el.scrollHeight > maxH ? 'auto' : 'hidden';
+              }}
               onKeyDown={(e) => {
                 // Shift+Enter → newline (allow default behavior)
                 if (e.key === 'Enter' && e.shiftKey) {
@@ -1140,79 +1774,93 @@ const ChatWidget = () => {
                 // Enter → send
                 if (e.key === 'Enter') {
                   e.preventDefault();
-                  if (!isLoading && inputValue.trim()) {
+                  if (!isLoading && (inputValue.trim() || uploadedFiles.length > 0)) {
                     handleSend();
+                    // Reset textarea height after send
+                    if (inputRef.current) {
+                      inputRef.current.style.height = 'auto';
+                    }
                   }
                 }
               }}
               placeholder={t.placeholder}
-              rows={2}
+              rows={1}
               style={{
                 flex: 1,
-                height: isMobile ? '50px' : '60px',
-                maxHeight: isMobile ? '50px' : '60px',
-                padding: isMobile ? '8px 14px' : '10px 18px',
-                borderRadius: '22px',
-                border: '1px solid #D1D5DB',
+                minHeight: isMobile ? '24px' : '28px',
+                maxHeight: isMobile ? '100px' : '120px',
+                height: 'auto',
+                padding: '0',
+                border: 'none',
                 outline: 'none',
                 fontSize: isMobile ? '13px' : '14px',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
-                transition: 'all 0.2s ease',
-                backgroundColor: '#F3F4F6',
+                backgroundColor: 'transparent',
                 color: '#374151',
                 resize: 'none',
                 fontFamily: 'inherit',
-                lineHeight: '1.4',
-                overflowY: 'auto',
-                boxSizing: 'border-box',
+                lineHeight: '1.5',
+                overflowY: 'hidden',
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none'
               }}
               onFocus={(e) => {
-                e.target.style.borderColor = WIDGET_THEME.color;
-                e.target.style.boxShadow = `0 0 0 2px ${WIDGET_THEME.color}20`;
+                // Style the parent container on focus
+                const container = e.target.parentElement;
+                if (container) {
+                  container.style.borderColor = '#9CA3AF';
+                  container.style.boxShadow = '0 0 0 1px rgba(156, 163, 175, 0.3)';
+                }
               }}
               onBlur={(e) => {
-                e.target.style.borderColor = '#D1D5DB';
-                e.target.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
+                const container = e.target.parentElement;
+                if (container) {
+                  container.style.borderColor = '#D1D5DB';
+                  container.style.boxShadow = 'none';
+                }
               }}
             />
 
-            {/* Send button - Sky Lagoon style with arrow */}
+            {/* Send button — always rendered for stable layout, invisible when empty */}
             <button
-              onClick={handleSend}
-              disabled={!inputValue.trim() || isLoading}
+              onClick={() => {
+                if ((!inputValue.trim() && uploadedFiles.length === 0) || isLoading) return;
+                handleSend();
+                // Reset textarea height after send
+                if (inputRef.current) {
+                  inputRef.current.style.height = 'auto';
+                }
+              }}
+              disabled={(!inputValue.trim() && uploadedFiles.length === 0) || isLoading}
               style={{
-                background: WIDGET_THEME.solidGradient,
+                background: (inputValue.trim() || uploadedFiles.length > 0) ? WIDGET_THEME.sendBg : 'transparent',
                 color: 'white',
                 border: 'none',
-                width: isMobile ? '35px' : '40px',
-                height: isMobile ? '35px' : '40px',
+                width: isMobile ? '32px' : '36px',
+                height: isMobile ? '32px' : '36px',
                 borderRadius: '50%',
-                cursor: (!inputValue.trim() || isLoading) ? 'default' : 'pointer',
-                fontSize: isMobile ? '14px' : '16px',
-                boxShadow: '0 3px 12px rgba(102, 216, 147, 0.35)',
+                cursor: ((!inputValue.trim() && uploadedFiles.length === 0) || isLoading) ? 'default' : 'pointer',
                 transition: 'all 0.2s ease',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                opacity: (!inputValue.trim() || isLoading) ? 0.65 : 1,
+                opacity: (inputValue.trim() || uploadedFiles.length > 0) ? (isLoading ? 0.3 : 1) : 0,
                 flexShrink: 0,
-                pointerEvents: (!inputValue.trim() || isLoading) ? 'none' : 'auto'
+                pointerEvents: ((!inputValue.trim() && uploadedFiles.length === 0) || isLoading) ? 'none' : 'auto',
               }}
               onMouseEnter={(e) => {
-                if (inputValue.trim() && !isLoading) {
-                  e.currentTarget.style.transform = 'scale(1.08)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(102, 216, 147, 0.5)';
+                if ((inputValue.trim() || uploadedFiles.length > 0) && !isLoading) {
+                  e.currentTarget.style.background = WIDGET_THEME.sendBgHover;
                 }
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.boxShadow = '0 3px 12px rgba(102, 216, 147, 0.35)';
+                if (inputValue.trim() || uploadedFiles.length > 0) {
+                  e.currentTarget.style.background = WIDGET_THEME.sendBg;
+                }
               }}
             >
-              <svg width={isMobile ? '24' : '28'} height={isMobile ? '24' : '28'} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+              {/* Up arrow — matches internal assistant style */}
+              <svg width={isMobile ? '16' : '18'} height={isMobile ? '16' : '18'} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 10l7-7m0 0l7 7m-7-7v18"/>
               </svg>
             </button>
           </div>

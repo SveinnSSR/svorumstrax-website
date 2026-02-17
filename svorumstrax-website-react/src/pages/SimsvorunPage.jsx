@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { 
   CalendarIcon,
@@ -5,15 +6,16 @@ import {
   ShareIcon,
   CogIcon
 } from '@heroicons/react/24/outline'
+import TrustSection from '../components/TrustSection'
 
 const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
   const content = {
     is: {
       title: 'Símsvörun',
-      subtitle: 'Áreiðanleg og persónuleg símsvörun síðan 2019',
-      description: 'Við hjá Svörum strax bjóðum fyrirtækjum upp á símsvörun af ýmsu tagi. Okkur þykir fátt skemmtilegra en að veita fyrsta flokks þjónustu og leggjum okkur fram við að kynnast þínu fyrirtæki vel, ásamt því að meta þarfir hvers og eins til þess að geta tengst viðskiptavinum á sem bestan hátt.',
-      description2: 'Að útvista símtölum sem berast yfir allan daginn minnkar álag á annarri starfsemi fyrirtækisins og skilar sér í hærra þjónustustigi þvert á fyrirtækið. Það er hagkvæmt að útvista símsvörun til Svörum strax, en hjá okkur starfar hópur sérfræðinga sem hefur mikla reynslu af símsvörun og samskiptum við viðskiptavini.',
-      description3: 'Þjónustan byggir á öflugum símkerfum og samþættingu við CRM-kerfi, sem tryggir bæði öryggi og gagnsæi. Við hugsum um þína viðskiptavini eins og okkar eigin og getum tengst ykkar upplýsingakerfum til að veita sem besta þjónustu.',
+      subtitle: 'Áreiðanleg símsvörunarþjónusta síðan 2019',
+      intro1: 'Við hjá Svörum strax bjóðum fyrirtækjum upp á símsvörun af ýmsu tagi. Okkur þykir fátt skemmtilegra en að veita fyrsta flokks þjónustu og leggjum okkur fram við að kynnast þínu fyrirtæki vel, ásamt því að meta þarfir hvers og eins til þess að geta tengst viðskiptavinum á sem bestan hátt.',
+      intro2: 'Að útvista símtölum sem berast yfir allan daginn minnkar álag á annarri starfsemi fyrirtækisins og skilar sér í hærra þjónustustigi þvert á fyrirtækið. Það er hagkvæmt að útvista símsvörun til Svörum strax, en hjá okkur starfar hópur sérfræðinga sem hefur mikla reynslu af símsvörun og samskiptum við viðskiptavini.',
+      intro3: 'Þjónustan byggir á öflugum símkerfum og samþættingu við CRM-kerfi, sem tryggir bæði öryggi og gagnsæi. Við hugsum um þína viðskiptavini eins og okkar eigin og getum tengst ykkar upplýsingakerfum til að veita sem besta þjónustu.',
       servicesTitle: 'Við bjóðum upp á',
       services: [
         {
@@ -120,9 +122,9 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
     en: {
       title: 'Phone Answering Service',
       subtitle: 'Reliable and professional phone service since 2019',
-      description: 'At Svörum strax, we offer companies various types of phone answering services. Nothing pleases us more than providing first-class service, and we strive to get to know your business well while assessing each client\'s needs to connect with customers in the best possible way.',
-      description2: 'Outsourcing incoming calls throughout the day reduces pressure on other business operations and results in higher service levels across the company. Outsourcing phone answering to Svörum Strax is cost-effective, as we have a team of specialists with extensive experience in phone answering and customer communication.',
-      description3: 'The service is built on powerful phone systems and CRM integration, ensuring both security and transparency. We care for your customers as if they were our own and can integrate with your information systems to provide the best possible service.',
+      intro1: 'At Svörum strax, we offer companies various types of phone answering services. Nothing pleases us more than providing first-class service, and we strive to get to know your business well while assessing each client\'s needs to connect with customers in the best possible way.',
+      intro2: 'Outsourcing incoming calls throughout the day reduces pressure on other business operations and results in higher service levels across the company. Outsourcing phone answering to Svörum Strax is cost-effective, as we have a team of specialists with extensive experience in phone answering and customer communication.',
+      intro3: 'The service is built on powerful phone systems and CRM integration, ensuring both security and transparency. We care for your customers as if they were our own and can integrate with your information systems to provide the best possible service.',
       servicesTitle: 'What we offer',
       services: [
         {
@@ -233,36 +235,42 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Dark Hero Banner */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-br from-blue-500 to-transparent"></div>
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-orange-500 to-transparent"></div>
+      {/* Hero Section - Title + Subtitle + Text Content */}
+      <section className="relative pt-20 sm:pt-24 pb-16 sm:pb-20 bg-white overflow-hidden">
+        {/* Subtle background gradients - matching homepage */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-br from-blue-50/40 via-teal-50/20 to-transparent"></div>
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-orange-50/40 via-amber-50/20 to-transparent"></div>
+          
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-100/20 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-tl from-orange-100/20 to-transparent rounded-full blur-3xl"></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+          {/* Title + Subtitle centered */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight text-slate-900">
               {currentContent.title}
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto">
+            
+            <p className="text-xl sm:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               {currentContent.subtitle}
             </p>
+          </div>
+
+          {/* Text paragraphs - integrated into hero */}
+          <div className="max-w-5xl mx-auto">
+            <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+              <p>{currentContent.intro1}</p>
+              <p>{currentContent.intro2}</p>
+              <p>{currentContent.intro3}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Introduction Section */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-8 text-lg text-gray-700 leading-relaxed">
-            <p>{currentContent.description}</p>
-            <p>{currentContent.description2}</p>
-            <p>{currentContent.description3}</p>
-          </div>
-        </div>
-      </section>
+      {/* Trust Section - Logo flow */}
+      <TrustSection currentLanguage={currentLanguage} />
 
       {/* Services Section */}
       <section className="py-16 sm:py-20 bg-gradient-to-br from-slate-50 to-gray-50">
@@ -332,7 +340,7 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         </div>
       </section>
 
-      {/* Additional Service Packages Section - New cards from screenshot with flexible heights */}
+      {/* Additional Service Packages Section */}
       <section className="py-16 sm:py-20 bg-gradient-to-br from-slate-50 to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -366,18 +374,18 @@ const SimsvorunPage = ({ currentLanguage = 'is', onContactClick }) => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+      {/* CTA Section - Light version */}
+      <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
             {currentContent.ctaTitle}
           </h2>
-          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
             {currentContent.ctaDescription}
           </p>
           <button 
             onClick={() => onContactClick && onContactClick('phone-support')}
-            className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+            className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
           >
             {currentContent.ctaButton}
           </button>

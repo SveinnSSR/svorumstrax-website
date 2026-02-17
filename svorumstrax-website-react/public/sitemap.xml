@@ -1,92 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-  <!-- Homepage (Icelandic default) -->
+  <!-- Homepage (Icelandic default at root) -->
   <url>
     <loc>https://svorumstrax.is/</loc>
-    <lastmod>2025-09-03</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en" />
   </url>
   
-  <!-- Icelandic Homepage -->
-  <url>
-    <loc>https://svorumstrax.is/is</loc>
-    <lastmod>2025-09-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/is" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en" />
-  </url>
-  
   <!-- English Homepage -->
   <url>
     <loc>https://svorumstrax.is/en</loc>
-    <lastmod>2025-09-03</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/is" />
+    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en" />
   </url>
   
-  <!-- Símsvörun Service -->
+  <!-- Símsvörun / Phone Service -->
   <url>
-    <loc>https://svorumstrax.is/is/simsvorun</loc>
-    <lastmod>2025-09-03</lastmod>
+    <loc>https://svorumstrax.is/simsvorun</loc>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/is/simsvorun" />
+    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/simsvorun" />
     <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en/phone-service" />
   </url>
   
   <!-- Phone Service (English) -->
   <url>
     <loc>https://svorumstrax.is/en/phone-service</loc>
-    <lastmod>2025-09-03</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/is/simsvorun" />
+    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/simsvorun" />
     <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en/phone-service" />
   </url>
   
-  <!-- Bókhaldsþjónusta -->
+  <!-- Gervigreindarlausnir / AI Solutions (NEW) -->
   <url>
-    <loc>https://svorumstrax.is/is/bokhaldsthjonusta</loc>
-    <lastmod>2025-09-03</lastmod>
+    <loc>https://svorumstrax.is/gervigreindarlausnir</loc>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/is/bokhaldsthjonusta" />
+    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/gervigreindarlausnir" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en/ai-solutions" />
+  </url>
+  
+  <url>
+    <loc>https://svorumstrax.is/en/ai-solutions</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/gervigreindarlausnir" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en/ai-solutions" />
+  </url>
+  
+  <!-- Úthringingar / Outbound Calling (NEW) -->
+  <url>
+    <loc>https://svorumstrax.is/uthringar</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/uthringar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en/outbound-calling" />
+  </url>
+  
+  <url>
+    <loc>https://svorumstrax.is/en/outbound-calling</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/uthringar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en/outbound-calling" />
+  </url>
+  
+  <!-- Bókhaldsþjónusta / Accounting -->
+  <url>
+    <loc>https://svorumstrax.is/bokhaldsthjonusta</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/bokhaldsthjonusta" />
     <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en/accounting" />
   </url>
   
   <!-- Accounting (English) -->
   <url>
     <loc>https://svorumstrax.is/en/accounting</loc>
-    <lastmod>2025-09-03</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/is/bokhaldsthjonusta" />
+    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/bokhaldsthjonusta" />
     <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en/accounting" />
   </url>
   
-  <!-- Team Pages -->
+  <!-- Mannauður / Team -->
   <url>
-    <loc>https://svorumstrax.is/is/mannaudur</loc>
-    <lastmod>2025-09-03</lastmod>
+    <loc>https://svorumstrax.is/mannaudur</loc>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/is/mannaudur" />
+    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/mannaudur" />
     <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en/team" />
   </url>
   
   <url>
     <loc>https://svorumstrax.is/en/team</loc>
-    <lastmod>2025-09-03</lastmod>
+    <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/is/mannaudur" />
+    <xhtml:link rel="alternate" hreflang="is" href="https://svorumstrax.is/mannaudur" />
     <xhtml:link rel="alternate" hreflang="en" href="https://svorumstrax.is/en/team" />
   </url>
 

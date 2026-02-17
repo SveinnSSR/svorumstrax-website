@@ -1,8 +1,10 @@
+
 import { useState, useEffect } from 'react'
 import { Routes, Route, useParams, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import { Analytics } from "@vercel/analytics/react";
 import ScrollToTop from './components/ScrollToTop'
 import Navigation from './components/Navigation'
+import StructuredData from './components/StructuredData'
 import Hero from './components/Hero'
 import TrustSection from './components/TrustSection'
 import Services from './components/Services'
@@ -17,6 +19,8 @@ import ChatWidget from './components/ChatWidget'
 import StaffPage from './pages/StaffPage'
 import SimsvorunPage from './pages/SimsvorunPage'
 import BokhaldsthjonustaPage from './pages/BokhaldsthjonustaPage'
+import GervigreindarlausnirPage from './pages/GervigreindarlausnirPage'
+import UthringingarPage from './pages/UthringingarPage'
 import { 
   ContactModal 
 } from './components/PlaceholderComponents'
@@ -96,13 +100,6 @@ const LanguageWrapper = ({ children, defaultLang = 'is' }) => {
     }
   }, [params.lang, location.pathname, currentLanguage, defaultLang])
 
-  // ❌ REMOVE root redirect (so / stays as-is)
-  // useEffect(() => {
-  //   if (location.pathname === '/') {
-  //     navigate('/is', { replace: true })
-  //   }
-  // }, [location.pathname, navigate])
-
   const handleLanguageChange = (newLang) => {
     const { pathname, search, hash } = location
     let newPath = pathname
@@ -139,6 +136,12 @@ const LanguageWrapper = ({ children, defaultLang = 'is' }) => {
         break
       case 'bokhaldsthjonusta':
         path += isEN ? `/accounting` : `bokhaldsthjonusta`
+        break
+      case 'gervigreindarlausnir':
+        path += isEN ? `/ai-solutions` : `gervigreindarlausnir`
+        break
+      case 'uthringar':
+        path += isEN ? `/outbound-calling` : `uthringar`
         break
       case 'staff':
         path += isEN ? `/team` : `mannaudur`
@@ -263,7 +266,7 @@ function App() {
     <div className="App bg-white">
       <ScrollToTop />
       <Routes>
-        {/* ✅ NEW: Icelandic default at root (no /is) */}
+        {/* ✅ Icelandic default at root (no /is) */}
         <Route path="/*" element={
           <LanguageWrapper defaultLang="is">
             {({ currentLanguage, onLanguageChange, onNavigate }) => (
@@ -274,6 +277,7 @@ function App() {
                   onContactClick={openContactModal}
                   onNavigate={onNavigate}
                 />
+                <StructuredData currentLanguage="is" />
                 
                 <Routes>
                   {/* Homepage (IS) */}
@@ -307,8 +311,8 @@ function App() {
                     <PageWithSEO
                       seoData={{
                         is: {
-                          title: 'Símsvörun - Fagleg símsvörun síðan 2019',
-                          description: 'Áreiðanleg símsvörun fyrir yfir 100 fyrirtæki. Almenn símsvörun, þjónustuver og AI lausnir. Fáðu tilboð í dag.',
+                          title: 'Símsvörun - Fagleg símsvörunarþjónusta síðan 2019',
+                          description: 'Áreiðanleg símsvörunarþjónusta fyrir yfir 100 fyrirtæki. Almenn símsvörun, þjónustuver og AI lausnir. Fáðu tilboð í dag.',
                           canonical: 'https://svorumstrax.is/simsvorun'
                         },
                         en: { title: '', description: '', canonical: '' }
@@ -336,6 +340,46 @@ function App() {
                       currentLanguage="is"
                     >
                       <BokhaldsthjonustaPage 
+                        currentLanguage="is" 
+                        onContactClick={openContactModal}
+                      />
+                    </PageWithSEO>
+                  } />
+                  
+                  {/* Gervigreindarlausnir (IS) */}
+                  <Route path="/gervigreindarlausnir" element={
+                    <PageWithSEO
+                      seoData={{
+                        is: {
+                          title: 'Gervigreindarlausnir - Raunverulegar AI lausnir fyrir fyrirtæki',
+                          description: 'Við hönnum og rekum gervigreindarlausnir sem byggja á gögnum, reglum og ferlum fyrirtækisins þíns. Fyrir viðskiptavini, starfsfólk og tölvupóst.',
+                          canonical: 'https://svorumstrax.is/gervigreindarlausnir'
+                        },
+                        en: { title: '', description: '', canonical: '' }
+                      }}
+                      currentLanguage="is"
+                    >
+                      <GervigreindarlausnirPage 
+                        currentLanguage="is" 
+                        onContactClick={openContactModal}
+                      />
+                    </PageWithSEO>
+                  } />
+                  
+                  {/* Úthringingar (IS) */}
+                  <Route path="/uthringar" element={
+                    <PageWithSEO
+                      seoData={{
+                        is: {
+                          title: 'Úthringingar - Söluteymi sem skila árangri',
+                          description: 'Reynslumikil söluteymi fyrir B2B og B2C markað. Notum nýjustu CRM tækni og höfum séð um verkefni fyrir stærstu fyrirtæki landsins.',
+                          canonical: 'https://svorumstrax.is/uthringar'
+                        },
+                        en: { title: '', description: '', canonical: '' }
+                      }}
+                      currentLanguage="is"
+                    >
+                      <UthringingarPage 
                         currentLanguage="is" 
                         onContactClick={openContactModal}
                       />
@@ -379,6 +423,7 @@ function App() {
                   onContactClick={openContactModal}
                   onNavigate={onNavigate}
                 />
+                <StructuredData currentLanguage={currentLanguage} />
                 
                 <Routes>
                   {/* Homepage */}
@@ -436,8 +481,8 @@ function App() {
                     <PageWithSEO
                       seoData={{
                         is: {
-                          title: 'Símsvörun - Fagleg símsvörun síðan 2019',
-                          description: 'Áreiðanleg símsvörun fyrir yfir 100 fyrirtæki. Almenn símsvörun, þjónustuver og AI lausnir. Fáðu tilboð í dag.',
+                          title: 'Símsvörun - Fagleg símsvörunarþjónusta síðan 2019',
+                          description: 'Áreiðanleg símsvörunarþjónusta fyrir yfir 100 fyrirtæki. Almenn símsvörun, þjónustuver og AI lausnir. Fáðu tilboð í dag.',
                           canonical: 'https://svorumstrax.is/simsvorun'
                         },
                         en: {
@@ -459,8 +504,8 @@ function App() {
                     <PageWithSEO
                       seoData={{
                         is: {
-                          title: 'Símsvörun - Fagleg símsvörun síðan 2019',
-                          description: 'Áreiðanleg símsvörun fyrir yfir 100 fyrirtæki. Almenn símsvörun, þjónustuver og AI lausnir. Fáðu tilboð í dag.',
+                          title: 'Símsvörun - Fagleg símsvörunarþjónusta síðan 2019',
+                          description: 'Áreiðanleg símsvörunarþjónusta fyrir yfir 100 fyrirtæki. Almenn símsvörun, þjónustuver og AI lausnir. Fáðu tilboð í dag.',
                           canonical: 'https://svorumstrax.is/simsvorun'
                         },
                         en: {
@@ -519,6 +564,100 @@ function App() {
                       currentLanguage={currentLanguage}
                     >
                       <BokhaldsthjonustaPage 
+                        currentLanguage={currentLanguage} 
+                        onContactClick={openContactModal}
+                      />
+                    </PageWithSEO>
+                  } />
+                  
+                  {/* Gervigreindarlausnir/AI Solutions pages */}
+                  <Route path="gervigreindarlausnir" element={
+                    <PageWithSEO
+                      seoData={{
+                        is: {
+                          title: 'Gervigreindarlausnir - Raunverulegar AI lausnir fyrir fyrirtæki',
+                          description: 'Við hönnum og rekum gervigreindarlausnir sem byggja á gögnum, reglum og ferlum fyrirtækisins þíns. Fyrir viðskiptavini, starfsfólk og tölvupóst.',
+                          canonical: 'https://svorumstrax.is/gervigreindarlausnir'
+                        },
+                        en: {
+                          title: 'AI Solutions - Real AI Solutions for Business Operations',
+                          description: 'We design and operate AI solutions built on your company\'s data, rules, and processes. For customers, staff, and email support.',
+                          canonical: 'https://svorumstrax.is/en/ai-solutions'
+                        }
+                      }}
+                      currentLanguage={currentLanguage}
+                    >
+                      <GervigreindarlausnirPage 
+                        currentLanguage={currentLanguage} 
+                        onContactClick={openContactModal}
+                      />
+                    </PageWithSEO>
+                  } />
+                  
+                  <Route path="ai-solutions" element={
+                    <PageWithSEO
+                      seoData={{
+                        is: {
+                          title: 'Gervigreindarlausnir - Raunverulegar AI lausnir fyrir fyrirtæki',
+                          description: 'Við hönnum og rekum gervigreindarlausnir sem byggja á gögnum, reglum og ferlum fyrirtækisins þíns. Fyrir viðskiptavini, starfsfólk og tölvupóst.',
+                          canonical: 'https://svorumstrax.is/gervigreindarlausnir'
+                        },
+                        en: {
+                          title: 'AI Solutions - Real AI Solutions for Business Operations',
+                          description: 'We design and operate AI solutions built on your company\'s data, rules, and processes. For customers, staff, and email support.',
+                          canonical: 'https://svorumstrax.is/en/ai-solutions'
+                        }
+                      }}
+                      currentLanguage={currentLanguage}
+                    >
+                      <GervigreindarlausnirPage 
+                        currentLanguage={currentLanguage} 
+                        onContactClick={openContactModal}
+                      />
+                    </PageWithSEO>
+                  } />
+                  
+                  {/* Úthringingar/Outbound Calling pages */}
+                  <Route path="uthringar" element={
+                    <PageWithSEO
+                      seoData={{
+                        is: {
+                          title: 'Úthringingar - Söluteymi sem skila árangri',
+                          description: 'Reynslumikil söluteymi fyrir B2B og B2C markað. Notum nýjustu CRM tækni og höfum séð um verkefni fyrir stærstu fyrirtæki landsins.',
+                          canonical: 'https://svorumstrax.is/uthringar'
+                        },
+                        en: {
+                          title: 'Outbound Calling - Sales Teams That Deliver Results',
+                          description: 'Experienced sales teams for B2B and B2C markets. Using the latest CRM technology with proven results for Iceland\'s largest companies.',
+                          canonical: 'https://svorumstrax.is/en/outbound-calling'
+                        }
+                      }}
+                      currentLanguage={currentLanguage}
+                    >
+                      <UthringingarPage 
+                        currentLanguage={currentLanguage} 
+                        onContactClick={openContactModal}
+                      />
+                    </PageWithSEO>
+                  } />
+                  
+                  <Route path="outbound-calling" element={
+                    <PageWithSEO
+                      seoData={{
+                        is: {
+                          title: 'Úthringingar - Söluteymi sem skila árangri',
+                          description: 'Reynslumikil söluteymi fyrir B2B og B2C markað. Notum nýjustu CRM tækni og höfum séð um verkefni fyrir stærstu fyrirtæki landsins.',
+                          canonical: 'https://svorumstrax.is/uthringar'
+                        },
+                        en: {
+                          title: 'Outbound Calling - Sales Teams That Deliver Results',
+                          description: 'Experienced sales teams for B2B and B2C markets. Using the latest CRM technology with proven results for Iceland\'s largest companies.',
+                          canonical: 'https://svorumstrax.is/en/outbound-calling'
+                        }
+                      }}
+                      currentLanguage={currentLanguage}
+                    >
+                      <UthringingarPage 
                         currentLanguage={currentLanguage} 
                         onContactClick={openContactModal}
                       />

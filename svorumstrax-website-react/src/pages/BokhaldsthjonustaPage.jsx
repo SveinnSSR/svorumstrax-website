@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { 
   CalculatorIcon, 
@@ -14,7 +15,7 @@ const BokhaldsthjonustaPage = ({ currentLanguage = 'is', onContactClick }) => {
     is: {
       title: 'Bókhaldsþjónusta',
       subtitle: 'Viltu koma bókhaldinu þínu í nútímalegra form?',
-      description: 'Við sjáum um bókhaldið í nánu samráði við þig og nýtum nútímatækni til að skjala og varðveita reikninga og skjöl í skýinu. Þannig færðu skilvirka og örugga þjónustu sem sparar tíma og einfaldar daglega starfsemi.',
+      intro1: 'Við sjáum um bókhaldið í nánu samráði við þig og nýtum nútímatækni til að skjala og varðveita reikninga og skjöl í skýinu. Þannig færðu skilvirka og örugga þjónustu sem sparar tíma og einfaldar daglega starfsemi.',
       servicesTitle: 'Við bjóðum upp á',
       services: [
         {
@@ -92,7 +93,7 @@ const BokhaldsthjonustaPage = ({ currentLanguage = 'is', onContactClick }) => {
     en: {
       title: 'Accounting Services',
       subtitle: 'Ready to modernize your accounting?',
-      description: 'By letting us handle your accounting, we set up the service in consultation with you so that we utilize the technology available today to document all invoices and important matters in the cloud.',
+      intro1: 'By letting us handle your accounting, we set up the service in consultation with you so that we utilize the technology available today to document all invoices and important matters in the cloud.',
       servicesTitle: 'What we offer',
       services: [
         {
@@ -173,25 +174,34 @@ const BokhaldsthjonustaPage = ({ currentLanguage = 'is', onContactClick }) => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Dark Hero Banner */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-br from-blue-500 to-transparent"></div>
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-orange-500 to-transparent"></div>
+      {/* Hero Section - Title + Subtitle + Text Content */}
+      <section className="relative pt-20 sm:pt-24 pb-16 sm:pb-20 bg-white overflow-hidden">
+        {/* Subtle background gradients - matching homepage */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-br from-blue-50/40 via-teal-50/20 to-transparent"></div>
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-orange-50/40 via-amber-50/20 to-transparent"></div>
+          
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-100/20 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-tl from-orange-100/20 to-transparent rounded-full blur-3xl"></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+          {/* Title + Subtitle centered */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight text-slate-900">
               {currentContent.title}
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
+            
+            <p className="text-xl sm:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               {currentContent.subtitle}
             </p>
-            <p className="text-lg text-gray-400 max-w-4xl mx-auto leading-relaxed">
-              {currentContent.description}
-            </p>
+          </div>
+
+          {/* Text paragraph - integrated into hero */}
+          <div className="max-w-5xl mx-auto">
+            <div className="text-lg text-gray-700 leading-relaxed">
+              <p>{currentContent.intro1}</p>
+            </div>
           </div>
         </div>
       </section>
@@ -312,18 +322,18 @@ const BokhaldsthjonustaPage = ({ currentLanguage = 'is', onContactClick }) => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+      {/* CTA Section - Light version */}
+      <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
             {currentContent.ctaTitle}
           </h2>
-          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
             {currentContent.ctaDescription}
           </p>
           <button 
             onClick={() => onContactClick && onContactClick('accounting-service')}
-            className="bg-white text-gray-900 hover:bg-gray-100 font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
+            className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
           >
             {currentContent.ctaButton}
           </button>

@@ -5,13 +5,13 @@ const ChoiceSection = ({ currentLanguage, onContactClick }) => {
     is: {
       title: 'Sérsniðin þjónusta fyrir öll fyrirtæki',
       mainDescription: 'Við sameinum áralanga reynslu í símsvörun við nýjustu gervigreindartækni og búum til lausnir sem laga sig að þínum rekstri. Hvort sem þú ert að taka fyrstu skrefin með AI eða vilt bæta núverandi þjónustu, hjálpum við þér að greina tilgang samtala, leysa málin strax – og tryggja að öll mál lendi á réttum stað.',
-      teamDescription: 'Hjá okkur starfa yfir 35 íslenskir sérfræðingar – bæði í Barcelona og í fjarvinnu – sem sinna þjónustu fyrir meira en 100 fyrirtæki. Við sjáum um uppsetningu, þjálfun og stuðning – svo þú getur einbeitt þér að þínu rekstri.',
+      teamDescription: 'Hjá okkur starfa yfir 35 íslenskir starfsmenn – bæði í Barcelona og í fjarvinnu – sem sinna þjónustu fyrir meira en 100 fyrirtæki. Við sjáum um uppsetningu, þjálfun og stuðning – svo þú getur einbeitt þér að þínu rekstri.',
       button: 'Komdu í samband'
     },
     en: {
       title: 'Custom solutions for every business',
       mainDescription: 'We blend years of customer service expertise with cutting-edge AI technology to create solutions that adapt to your business. Whether you\'re exploring AI for the first time or enhancing existing support, we help you understand customer intent, resolve issues instantly, and ensure every interaction reaches the right destination.',
-      teamDescription: 'Our team of 35+ Icelandic specialists—working from Barcelona and remotely—serves over 100 companies. We handle setup, training, and ongoing support, so you can focus on growing your business.',
+      teamDescription: 'Our team of 35+ Icelandic staff, based in Spain and working remotely, serves over 100 companies. We handle setup, training, and ongoing support, so you can focus on growing your business.',
       button: 'Get in Touch'
     }
   }

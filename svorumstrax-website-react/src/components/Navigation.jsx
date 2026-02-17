@@ -82,16 +82,12 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
     switch (serviceType) {
       case 'simsvorun':
       case 'bokhaldsthjonusta':
-        // handled by <Link> targets
-        break
       case 'ai':
-        handleScrollToSection('ai-agents')
+      case 'uthringar':
+        // handled by <Link> targets
         break
       case 'web':
         handleContactClick('web-service')
-        break
-      case 'uthringar':
-        handleScrollToSection('outbound')
         break
       default:
         break
@@ -104,6 +100,8 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
   const getTeamUrl = () => (isEN ? '/en/team' : '/mannaudur')
   const getSimsvorunUrl = () => (isEN ? '/en/phone-service' : '/simsvorun')
   const getBokhaldsthjonustaUrl = () => (isEN ? '/en/accounting' : '/bokhaldsthjonusta')
+  const getGervigreindarlausnirUrl = () => (isEN ? '/en/ai-solutions' : '/gervigreindarlausnir')
+  const getUthringingarUrl = () => (isEN ? '/en/outbound-calling' : '/uthringar')
 
   // Labels
   const content = {
@@ -169,7 +167,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
               className="px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100"
             >
               {currentContent.home}
-              </a>
+            </a>
             
             {/* Services Dropdown */}
             <div className="relative services-dropdown-container">
@@ -194,12 +192,13 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
                     >
                       {currentContent.servicesDropdown.simsvorun}
                     </Link>
-                    <button
-                      onClick={() => handleServiceSelect('ai')}
+                    <Link
+                      to={getGervigreindarlausnirUrl()}
+                      onClick={closeMenus}
                       className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.ai}
-                    </button>
+                    </Link>
                     <Link
                       to={getBokhaldsthjonustaUrl()}
                       onClick={closeMenus}
@@ -213,12 +212,13 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
                     >
                       {currentContent.servicesDropdown.web}
                     </button>
-                    <button
-                      onClick={() => handleServiceSelect('uthringar')}
+                    <Link
+                      to={getUthringingarUrl()}
+                      onClick={closeMenus}
                       className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.uthringar}
-                    </button>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -314,12 +314,13 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
                     >
                       {currentContent.servicesDropdown.simsvorun}
                     </Link>
-                    <button
-                      onClick={() => handleServiceSelect('ai')}
+                    <Link
+                      to={getGervigreindarlausnirUrl()}
+                      onClick={closeMenus}
                       className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.ai}
-                    </button>
+                    </Link>
                     <Link
                       to={getBokhaldsthjonustaUrl()}
                       onClick={closeMenus}
@@ -333,12 +334,13 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
                     >
                       {currentContent.servicesDropdown.web}
                     </button>
-                    <button
-                      onClick={() => handleServiceSelect('uthringar')}
+                    <Link
+                      to={getUthringingarUrl()}
+                      onClick={closeMenus}
                       className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {currentContent.servicesDropdown.uthringar}
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 
