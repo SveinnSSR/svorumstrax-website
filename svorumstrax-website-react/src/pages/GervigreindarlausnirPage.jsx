@@ -13,9 +13,9 @@ import analyticsDashboard from '../assets/images/analytics-dashboard.png'
 import finalCall from '../assets/images/final-call.svg'
 import logoYellow from '../assets/images/logo_yellow.png'
 // Import icons (PNG for better rendering at small sizes)
-import icon1 from '../assets/images/icon_1.png'
-import icon2 from '../assets/images/icon_2.png'
-import icon3 from '../assets/images/icon_3.png'
+import icon1 from '../assets/images/icon_1.svg'
+import icon2 from '../assets/images/icon_2.svg'
+import icon3 from '../assets/images/icon_3.svg'
 
 const GervigreindarlausnirPage = ({ currentLanguage = 'is', onContactClick }) => {
   const content = {
