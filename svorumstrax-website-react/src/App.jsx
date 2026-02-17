@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react'
 import { Routes, Route, useParams, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import { Analytics } from "@vercel/analytics/react";
@@ -141,7 +140,7 @@ const LanguageWrapper = ({ children, defaultLang = 'is' }) => {
         path += isEN ? `/ai-solutions` : `gervigreindarlausnir`
         break
       case 'uthringar':
-        path += isEN ? `/outbound-calling` : `uthringar`
+        path += isEN ? `/outbound-calling` : `uthringingar`
         break
       case 'staff':
         path += isEN ? `/team` : `mannaudur`
@@ -367,13 +366,13 @@ function App() {
                   } />
                   
                   {/* Úthringingar (IS) */}
-                  <Route path="/uthringar" element={
+                  <Route path="/uthringingar" element={
                     <PageWithSEO
                       seoData={{
                         is: {
                           title: 'Úthringingar - Söluteymi sem skila árangri',
                           description: 'Reynslumikil söluteymi fyrir B2B og B2C markað. Notum nýjustu CRM tækni og höfum séð um verkefni fyrir stærstu fyrirtæki landsins.',
-                          canonical: 'https://svorumstrax.is/uthringar'
+                          canonical: 'https://svorumstrax.is/uthringingar'
                         },
                         en: { title: '', description: '', canonical: '' }
                       }}
@@ -618,13 +617,13 @@ function App() {
                   } />
                   
                   {/* Úthringingar/Outbound Calling pages */}
-                  <Route path="uthringar" element={
+                  <Route path="uthringingar" element={
                     <PageWithSEO
                       seoData={{
                         is: {
                           title: 'Úthringingar - Söluteymi sem skila árangri',
                           description: 'Reynslumikil söluteymi fyrir B2B og B2C markað. Notum nýjustu CRM tækni og höfum séð um verkefni fyrir stærstu fyrirtæki landsins.',
-                          canonical: 'https://svorumstrax.is/uthringar'
+                          canonical: 'https://svorumstrax.is/uthringingar'
                         },
                         en: {
                           title: 'Outbound Calling - Sales Teams That Deliver Results',
@@ -647,7 +646,7 @@ function App() {
                         is: {
                           title: 'Úthringingar - Söluteymi sem skila árangri',
                           description: 'Reynslumikil söluteymi fyrir B2B og B2C markað. Notum nýjustu CRM tækni og höfum séð um verkefni fyrir stærstu fyrirtæki landsins.',
-                          canonical: 'https://svorumstrax.is/uthringar'
+                          canonical: 'https://svorumstrax.is/uthringingar'
                         },
                         en: {
                           title: 'Outbound Calling - Sales Teams That Deliver Results',

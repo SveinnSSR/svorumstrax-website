@@ -101,7 +101,7 @@ const Navigation = ({ currentLanguage, onLanguageChange, onContactClick }) => {
   const getSimsvorunUrl = () => (isEN ? '/en/phone-service' : '/simsvorun')
   const getBokhaldsthjonustaUrl = () => (isEN ? '/en/accounting' : '/bokhaldsthjonusta')
   const getGervigreindarlausnirUrl = () => (isEN ? '/en/ai-solutions' : '/gervigreindarlausnir')
-  const getUthringingarUrl = () => (isEN ? '/en/outbound-calling' : '/uthringar')
+  const getUthringingarUrl = () => (isEN ? '/en/outbound-calling' : '/uthringingar')
 
   // Labels
   const content = {

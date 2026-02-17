@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
@@ -92,7 +91,7 @@ const StructuredData = ({ currentLanguage }) => {
       })
     }
 
-    if (path.includes('uthringar') || path.includes('outbound-calling')) {
+    if (path.includes('uthringingar') || path.includes('outbound-calling')) {
       schemas.push({
         "@context": "https://schema.org",
         "@type": "Service",
@@ -107,7 +106,7 @@ const StructuredData = ({ currentLanguage }) => {
         "serviceType": "Outbound Calling Service",
         "areaServed": { "@type": "Country", "name": "Iceland" },
         "url": currentLanguage === 'is'
-          ? "https://svorumstrax.is/uthringar"
+          ? "https://svorumstrax.is/uthringingar"
           : "https://svorumstrax.is/en/outbound-calling"
       })
     }
