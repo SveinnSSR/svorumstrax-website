@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/24/outline'
 import TrustSectionAI from '../components/TrustSectionAI'
 
-// Import images
+// Import images.
 import analyticsDashboard from '../assets/images/analytics-dashboard.png'
 import finalCall from '../assets/images/final-call.svg'
 import logoYellow from '../assets/images/logo_yellow.png'
