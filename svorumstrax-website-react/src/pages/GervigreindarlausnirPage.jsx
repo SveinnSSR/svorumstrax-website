@@ -122,7 +122,7 @@ const GervigreindarlausnirPage = ({ currentLanguage = 'is', onContactClick }) =>
       solutionsTitle: 'Solutions',
       solutions: [
         {
-          title: 'AI for Customers',
+          title: 'AI Agents',
           subtitle: 'Chat & Service',
           description: 'AI that answers complex customer questions based on real information from your operations.',
           features: [
