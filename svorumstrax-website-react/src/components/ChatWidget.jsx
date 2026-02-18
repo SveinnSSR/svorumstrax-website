@@ -4,7 +4,7 @@ import logoYellow from '../assets/images/logo_yellow.png';
 
 // Theme: Green accent kept for FAB only, neutral everywhere else
 const WIDGET_THEME = {
-  color: '#66D893',  // Beautiful ELKO green - kept for FAB
+  color: '#66D893',  // Beautiful ELKO green - kept for FAB - ATT: We don't use green anymore - colour is controlled somewhere else.
   gradient: 'linear-gradient(135deg, rgba(102, 216, 147, 0.85) 0%, rgba(52, 211, 153, 0.9) 100%)', // FAB only
   solidGradient: 'linear-gradient(135deg, #66D893 0%, #34D399 100%)', // FAB only
   headerBg: '#F3F4F6', // Light grey - matches message area
@@ -1456,21 +1456,19 @@ const ChatWidget = () => {
               />
             </div>
 
-            {/* Embedded background text — empty state (like internal assistant) */}
-            {messages.length === 0 && (
+            {/* Embedded background text — always visible (like internal assistant) */}
+            <div style={{
+              textAlign: 'center',
+              paddingBottom: isMobile ? '24px' : '32px',
+              flexShrink: 0,
+            }}>
               <div style={{
-                textAlign: 'center',
-                paddingBottom: isMobile ? '24px' : '32px',
-                flexShrink: 0,
+                fontSize: isMobile ? '13px' : '14px',
+                color: '#9CA3AF',
               }}>
-                <div style={{
-                  fontSize: isMobile ? '13px' : '14px',
-                  color: '#9CA3AF',
-                }}>
-                  {getCurrentLanguage() === 'is' ? 'Hvernig getum við aðstoðað?' : 'How can we help?'}
-                </div>
+                {getCurrentLanguage() === 'is' ? 'Hvernig getum við aðstoðað?' : 'How can we help?'}
               </div>
-            )}    
+            </div> 
 
             {messages.map((msg) => {
               const isUser = msg.type === 'user' || msg.sender === 'user';
