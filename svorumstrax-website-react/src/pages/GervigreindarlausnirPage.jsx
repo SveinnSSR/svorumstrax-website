@@ -134,7 +134,7 @@ const GervigreindarlausnirPage = ({ currentLanguage = 'is', onContactClick }) =>
           icon: icon1
         },
         {
-          title: 'Internal AI for Staff',
+          title: 'Staff Assistant',
           subtitle: 'Daily Work Support',
           description: 'Knowledge system that supports staff in real-time, guides through procedures and suggests next steps.',
           features: [
