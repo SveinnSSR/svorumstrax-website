@@ -146,7 +146,7 @@ const GervigreindarlausnirPage = ({ currentLanguage = 'is', onContactClick }) =>
           icon: icon2
         },
         {
-          title: 'AI for Email',
+          title: 'Email Assistant',
           subtitle: 'Written Responses',
           description: 'AI trained on your data and used to prepare accurate, consistent email responses.',
           features: [
