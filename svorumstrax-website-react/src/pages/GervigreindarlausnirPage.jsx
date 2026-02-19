@@ -124,7 +124,7 @@ const GervigreindarlausnirPage = ({ currentLanguage = 'is', onContactClick }) =>
         {
           title: 'AI Agents',
           subtitle: 'Chat & Service',
-          description: 'AI that answers complex customer questions based on real information from your operations.',
+          description: 'AI that answers customer questions based on your data and processes.',
           features: [
             'Specialized in your company and services',
             'Responds consistently and with confidence',
