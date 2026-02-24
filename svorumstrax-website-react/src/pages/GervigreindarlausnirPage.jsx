@@ -251,7 +251,7 @@ const GervigreindarlausnirPage = ({ currentLanguage = 'is', onContactClick }) =>
       </section>
 
       {/* Trust Section - AI clients (commented out until more logos ready) */}
-      {/* <TrustSectionAI currentLanguage={currentLanguage} /> */}
+       <TrustSectionAI currentLanguage={currentLanguage} /> 
 
       {/* Solutions Section - Clean with MASSIVE icons */}
       <section className="py-16 sm:py-20 bg-gradient-to-br from-slate-50 to-gray-50">

@@ -44,8 +44,8 @@ const UthringingarPage = ({ currentLanguage = 'is', onContactClick }) => {
         },
         {
           icon: PresentationChartLineIcon,
-          title: 'Viðskiptavinaþjónusta',
-          description: 'Fylgjum eftir sölu, sækjum endurgjöf og tryggum ánægju viðskiptavina. Byggjum sterk sambönd sem skila sér í endurtekinni sölu.'
+          title: 'Eftirfylgni',
+          description: 'Fylgjum eftir sölu og tryggum ánægju viðskiptavina. Byggjum sterk sambönd sem skila sér í endurtekinni sölu.'
         }
       ],
       
@@ -69,8 +69,8 @@ const UthringingarPage = ({ currentLanguage = 'is', onContactClick }) => {
         },
         {
           icon: CheckCircleIcon,
-          title: 'Sannað árangursmet',
-          description: 'Við höfum séð um verkefni fyrir mörg af stærstu fyrirtækjum landsins með frábærum árangri. Við skulum ræða tilvísanir.'
+          title: 'Reynsla af umfangsmiklum verkefnum',
+          description: 'Úthringiverkefni fyrir leiðandi fyrirtæki á íslenskum markaði.'
         }
       ],
       

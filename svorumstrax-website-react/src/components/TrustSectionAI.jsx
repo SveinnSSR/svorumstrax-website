@@ -1,7 +1,8 @@
 // Import AI client logos
 import keycarLogo from '../assets/images/logos/keycar.svg'
 import drifaLogo from '../assets/images/logos/drifa.png'
-import skylagoonLogo from '../assets/images/logos/skylagoon.png'
+import skylagoonLogo from '../assets/images/logos/skylagoonmoss.svg'
+import fastpartsLogo from '../assets/images/logos/fastparts.png'
 import svefnheilsaLogo from '../assets/images/logos/svefnheilsa.png'
 
 const TrustSectionAI = ({ currentLanguage }) => {
@@ -23,11 +24,16 @@ const TrustSectionAI = ({ currentLanguage }) => {
   }
 
   const logos = [
-    { src: keycarLogo, alt: 'Key Car Rental', name: 'keycar' },
-    { src: drifaLogo, alt: 'Drífa', name: 'drifa' },
+//    { src: keycarLogo, alt: 'Key Car Rental', name: 'keycar' },
+//    { src: drifaLogo, alt: 'Drífa', name: 'drifa' },
+//    { src: fastpartsLogo, alt: 'Fast Parts', name: 'fastparts' }, // Waiting on approval and better quality logo
 //    { src: skylagoonLogo, alt: 'Sky lagoon', name: 'skylagoon' }, // Waiting on approval and better quality logo
-//    { src: svefnheilsaLogo, alt: 'Svefn og Heilsa', name: 'svefnheilsa' } // Not started yet
+//    { src: svefnheilsaLogo, alt: 'Svefn og Heilsa', name: 'svefnheilsa' }, // Not started yet
   ]
+
+  // Don't render the section at all if no logos are active
+  // (prevents empty "Treyst af leiðandi fyrirtækjum" title from showing on the page)
+  if (logos.length === 0) return null
 
   // NOTE: With only 3 logos, we're using STATIC display (no scrolling animation)
   // Once you have 5+ logos, uncomment the scrolling version below and comment out the static version
