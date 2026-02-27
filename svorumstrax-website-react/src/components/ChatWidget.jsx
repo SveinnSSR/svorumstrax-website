@@ -1177,7 +1177,7 @@ const ChatWidget = () => {
 
   // Dynamic dimensions based on expanded state
   const widgetWidth = isExpanded ? (isMobile ? '95vw' : '640px') : (isMobile ? '90vw' : '480px');
-  const chatHeight = isExpanded ? (isMobile ? '75vh' : '620px') : (isMobile ? '65vh' : '520px');
+  const chatHeight = isExpanded ? (isMobile ? '75vh' : '587px') : (isMobile ? '65vh' : '520px'); // Changed 620px to 587px because 620 clips the navbar
 
   return (
     <ErrorBoundary>
